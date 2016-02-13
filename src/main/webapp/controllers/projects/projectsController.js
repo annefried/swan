@@ -418,6 +418,7 @@ angular
                                                     + "/"
                                                     + $window.sessionStorage.uId);
                                         }
+                                        $scope.projectToggeled(response.data);
 
                                     }, function () {
                                         $rootScope.addAlert({type: 'danger', msg: 'A Project with this name already exists.'});
