@@ -1,0 +1,92 @@
+.annotationfield {
+    margin-left: 0.5em;
+}
+
+.annotationtitle {
+    margin-left: 0.5em;
+    margin-top: 4.5em;
+}
+
+.accordionfield {
+    margin-right: 0.5em;
+}
+
+.annotationoptions {
+    margin-left:  2em;
+    margin-right: 2em;
+}
+
+.graph {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.filename {
+    font-weight: bold;
+    font-size: 115%;
+}
+
+.annotationtext {
+    margin-top: 1em;
+}
+
+.annotationbox {
+    stroke-width: 1;
+    fill-opacity: 0.6;
+    stroke-opacity: 0.8;
+}
+
+.target {
+    fill: #EFC94C;
+    fill-opacity: 0.4;
+}
+
+.annotationboxtext {
+    text-anchor: middle;
+}
+
+.rightwindow {
+    position: fixed;
+    padding: 2em;
+    left: 79%;
+    top: 7.7em;
+    transform: translateX(-50%);
+}
+
+.unevenline {
+
+}
+
+.evenline {
+
+}
+
+.optiontitle {
+    font-weight: bold;
+}
+
+.optiontext {
+    margin-right: 1em;
+}
+
+.optionsinput {
+    margin-left:  1em;
+}
+
+.unselectable {
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+
+    /* No support for these yet, use at own risk */
+    -o-user-select: none;
+    user-select: none;
+}
+
+::selection {
+    background: #dbdbdb; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: #dbdbdb; /* Gecko Browsers */
+}

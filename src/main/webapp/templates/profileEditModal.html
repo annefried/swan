@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="modal-header">
+            <h3 class="modal-title">Edit User...</h3>
+        </div>
+        <div class="modal-body">
+            <form name="form" ng-submit="vm.addUser()" role="form">
+                <div class="form-group"
+                     ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
+                    <label for="pw">Password (Min. 5 characters):</label>
+                    <input type="password" pattern=".{5,}" title="5 characters minimum"
+                           name="pw" id="pw" class="form-control" ng-model="vm.pw"
+                           ng-init="vm.fname = password" required />
+                    <label for="rpw">repeat password:</label>
+                    <input type="password" pattern=".{5,}" title="5 characters minimum"
+                           name="pw" id="rpw" class="form-control" ng-model="vm.rpw"
+                           ng-init="vm.fname = password" required />
+                </div>
+                <div class="form-actions">
+                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading || vm.pw != vm.rpw"
+                            class="btn btn-primary" ng-click="changePassword(vm.pw)">
+                        Change Password
+                    </button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

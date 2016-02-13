@@ -1,0 +1,24 @@
+{  
+   "name":"SchemeLinkSet2",
+   "targetTypes":[  
+      "verb",
+      "passage"
+   ],
+   "labelSets":[
+   ],
+   "linkSets":[  
+      {  
+         "startType":"verb",
+         "endType":"verb",
+         "allowUnlabeledLinks":false,
+         "linkLabels":[  
+            "label1",
+            "label2",
+            "label3",
+            "before",
+            "after",
+            "overlap"
+         ]
+      }
+   ]
+}

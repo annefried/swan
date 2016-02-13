@@ -1,0 +1,221 @@
+
+<link href="css/explorer.css" rel="stylesheet">
+<div class="container-fluid">
+    <script type="text/ng-template" id="alert.html">
+        <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+        <div ng-transclude></div>
+        </div>
+    </script>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main">
+
+            <h2 class="sub-header">Projects</h2>
+            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
+            <div class="table-responsive">
+                <table class="table">
+
+                    <thead>
+                        <tr class="headDark">
+                            <th class="col-md-1 vert-align"></th>
+                            <th class="col-md-2 vert-align">Name</th>
+                            <th class="col-md-2 vert-align">Progress</th>
+                            <th class="col-md-2 vert-align">
+                                <span ng-hide="isuser === 'true'">Users</span>
+                            </th>
+                            <th class="col-md-2 vert-align">Project Manager</th>
+                            <th class="col-md-1 vert-align">Scheme</th>
+                            <th class="col-md-1 vert-align">
+                                <span ng-hide="isuser === 'true'">Add User</span>
+                            </th>
+                            <th class="col-md-1 vert-align">
+                                <span ng-hide="isuser === 'true'">Delete</span>
+                            </th>
+                            <th class="col-md-2 vert-align">
+                                <span ng-hide="isuser === 'true'">Export</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-hide="loaded">
+                        <tr>
+                            <td>
+                             <span class="glyphicon glyphicon-refresh spinning "></span> 
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                                          
+                        </tr>
+                    </tbody>
+
+                    <tbody ng-repeat="x in this.tableProjects">
+                        <tr >
+                            <td class="col-md-1 vert-align" >
+                                <a>
+                                    <span  class="glyphicon "  ng-class="{ 'glyphicon-plus': !toggeled[x.id] ,'glyphicon-minus': toggeled[x.id]}"
+                                           ng-click="projectToggeled(x.id)">
+                                        <!--                                          data-toggle="collapse" data-target=".relateTo{{x.id}}"-->
+
+                                    </span>
+                                </a>
+                            </td>
+                            <td class="col-md-2 vert-align">{{x.name}}</td>
+                            <td class="col-md-2 vert-align"> 
+                                <!-- progress bar visible for ADMIN & PM -->
+                                <div ng-hide="isuser === 'true'"
+                                     ng-repeat="cur in x.users" class="userprogress progress">
+                                    <div class="progress-bar  progress-bar-success"
+                                         role="progressbar" aria-valuenow="{{x.completed}}"
+                                         aria-valuemin="0" aria-valuemax="{{x.numberOfDocuments}}"
+                                         style="width: {{100 * x.completed[$index] / x.numberOfDocuments}}%;">
+                                        <span> {{x.completed[$index]}}/{{x.numberOfDocuments}}</span>
+                                    </div>
+                                </div>
+                                <!-- progress bar visible for USER -->
+                                <div ng-hide="isuser === 'false'" class="userprogress progress">
+                                    <div class="progress-bar  progress-bar-success"
+                                         role="progressbar" aria-valuenow="{{x.completed}}"
+                                         aria-valuemin="0" aria-valuemax="{{x.numberOfDocuments}}"
+                                         style="width: {{100 * x.completed / x.numberOfDocuments}}%;">
+                                        <span> {{x.completed}}/{{x.numberOfDocuments}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-md-2 vert-align">
+                                <p ng-hide="isuser === 'true'" class="userprogress"
+                                   ng-repeat="cur in x.users">
+                                    {{cur.email}}
+                                </p>
+                            </td>
+                            <td class="col-md-2 vert-align">
+                                <p ng-repeat="cur in x.pms">
+                                       {{cur.email}}
+                                </p>
+                            </td>
+                            <td class="col-md-1 vert-align">
+                                <a class="glyphicon glyphicon-file"
+                                   ng-click="openProjectSchemeModal(x.id)">
+                                </a>
+                            </td>
+                            <td class="col-md-1 vert-align">
+                                <a>
+                                    <span class="glyphicon glyphicon-user"
+                                        ng-hide="isuser === 'true'"
+                                        ng-click="editProject(x.id, x.name)">
+                                    </span>
+                                </a>
+                            </td>
+                            <td class="col-md-1 vert-align">
+                                <span class="glyphicon glyphicon-remove"
+                                        ng-hide="isuser === 'true'" style="color:red"
+                                        ng-click="openProjectDeleteModal(x.id)">
+                                </span>
+                            </td>
+                            <td class="col-md-2 vert-align">
+                                <a class="glyphicon glyphicon-share"
+                                   ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
+                                   ng-href="{{ exportProject(x.id) }}"
+                                   ng-hide="isuser === 'true'">
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="collapse relateTo{{x.id}} headLight topBorder" ng-class="{'in': toggeled[x.id]}">
+                            <td class="col-md-1 vert-align"><b>Documents</b></td>
+                            <td class="col-md-2 vert-align"><b>Name</b></td>
+                            <td class="col-md-2 vert-align"><b>Completed</b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
+                            <td class="col-md-1 vert-align"></td>
+                            <td class="col-md-1 vert-align"><b>View</b></td>
+                            <td class="col-md-1 vert-align"><b ng-hide="isuser === 'true'">Delete</b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
+                        </tr>
+                        <tr class="collapse  relateTo{{x.id}}" 
+                            ng-class="{'in': toggeled[x.id]}" 
+                            ng-repeat="doc in x.documents">
+                            <td class="col-md-1 vert-align"></td>
+                            <td class="col-md-2 vert-align">{{doc.name}}</td>
+                            <td class="col-md-2 vert-align">
+                                <span ng-hide="isuser === 'false'" ng-bind="doc.completed"></span>
+                                <div ng-hide="isuser === 'true'" class="userprogress progress">
+                                    <!-- TODO: adjust progress bar -->
+                                    <div class="progress-bar  progress-bar-success"
+                                         role="progressbar" aria-valuenow="{{doc.completed}}"
+                                         aria-valuemin="0" aria-valuemax="x.users.length"
+                                         style="width: {{100 * doc.completed / x.users.length}}%;">
+                                        <span> {{doc.completed}}/{{x.users.length}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-md-2 vert-align"></td>
+                            <td class="col-md-2 vert-align"></td>
+                            <td class="col-md-1 vert-align"></td>
+                            <td class="col-md-1 vert-align">
+                                <a>
+                                    <span class="glyphicon glyphicon-eye-open"
+                                          ng-click="openAnnoTool(doc.id, doc.name, x.name, doc.completed)">
+                                    </span>
+                                </a>
+                            </td>
+                            <td class="col-md-1 vert-align">
+                                <a>
+                                    <span class="glyphicon glyphicon-remove"
+                                          style="color:red" ng-hide="isuser === 'true'"
+                                          ng-click="deleteDocument(doc.id, x.id)">
+                                    </span>
+                                </a>
+                            </td>
+                            <td class="col-md-2 vert-align"></td>
+                        </tr>
+                        <tr class="headLight collapse relateTo{{x.id}} bottomBorder"
+                            ng-hide="isuser === 'true'"
+                            ng-class="{'in': toggeled[x.id]}" >
+                            <td class="col-md-1 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align"></td>
+                            <td class="col-md-2 vert-align"></td>
+                            <td class="col-md-1 vert-align"></td>
+                            <td class="col-md-1 vert-align"></td>
+                            <td class="col-md-1 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align">
+                                <button class="btn btn-primary tableButton"
+                                        ng-click="openDocumentAddModal(x.id)"
+                                        ng-hide="isuser === 'true'">
+                                    + Document
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody>
+                        <tr class="headLight" ng-hide="isuser === 'true'">
+                            <td class="col-md-1 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
+                            <td class="col-md-1 vert-align"></td>
+                            <td class="col-md-1 vert-align"><b></b></td>
+                            <td class="col-md-1 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align">
+                                <button class="btn btn-primary tableButton" 
+                                        type="button" ng-hide="isuser === 'true'"
+                                        ng-click="openProjectAddModal()">
+                                    + Project
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody> 
+
+                </table>
+            </div>
+
+
+</div>
+
+

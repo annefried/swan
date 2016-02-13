@@ -1,0 +1,10 @@
+/target/
+/bin/
+/.idea/
+/.classpath
+/.settings/
+/nbactions.xml
+/Project1_Politics1_John_Locke.xml
+/export.zip
+/jacoco-report/
+.DS_Store

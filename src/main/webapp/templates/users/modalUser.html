@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="modal-header">
+            <h3 class="modal-title">Add User...</h3>
+        </div>
+        <div class="modal-body">
+            <form name="form" ng-submit="vm.addUser()" role="form">
+                <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
+                    <label for="fname">First Name:</label> 
+                    <input type="text" name="fname" id="fname" class="form-control" ng-model="vm.fname" required />
+                    <span ng-show="form.fname.$dirty && form.fname.$error.required" class="help-block">First Name is required.</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
+                    <label for="lname">Last Name:</label>
+                    <input type="text" name="lname" id="lname" class="form-control" ng-model="vm.lname" required />
+                    <span ng-show="form.lname.$dirty && form.lname.$error.required" class="help-block">Last Name is required.</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
+                    <label for="pw">Password: (Min. 5 characters)</label>
+                    <input type="password" name="pw" pattern=".{5,}" title="5 characters minimum" id="pw" class="form-control" ng-model="vm.pw" required />
+                    <span ng-show="form.pw.$dirty && form.pw.$error.required" class="help-block">Password is required.</span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
+                    <label for="email">E-Mail:</label>
+                    <input type="email" name="email" id="email" class="form-control" ng-model="vm.email" required />
+                    <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">E-Mail is required.</span>
+                </div>
+                <!--
+                <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
+                    <label for="role">Role:</label>
+                    <input type="text" name="role" id="role" class="form-control" ng-model="vm.role" required />
+                    <span ng-show="form.role.$dirty && form.role.$error.required" class="help-block">Role is required.</span>
+                </div>
+                -->
+                <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
+                    <label for="role">Role:</label>
+                    <select name="role" id="role" class="form-control" ng-model="vm.role" required />
+                      <option value="admin">Admin</option>
+                      <option value="user">User</option>
+                      <option value="projectmanager">Project Manager</option>
+                    </select>
+                    <span ng-show="form.role.$dirty && form.role.$error.required" class="help-block">Role is required.</span>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary" ng-click="createUser(vm.fname, vm.lname, vm.pw, vm.email, vm.role)">Add User</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,4 @@
+ich bin ein kurzes document
+ich bin ein kurzes document
+height = textHeight * 1.8;
+height = textHeight * 1.8;

@@ -1,0 +1,19 @@
+{
+	"targets":[
+		{
+			"type" : "passage",
+			"begin": 198,
+			"end"  : 217
+		},
+		{
+			"type" : "passage",
+			"begin": 278,
+			"end"  : 558
+		},
+		{
+			"type" : "passage",
+			"begin": 600,
+			"end"  : 770
+		}
+	]
+}

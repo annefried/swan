@@ -1,0 +1,4 @@
+As this document shows, sometimes they contain weird whitespace. Not sure how this would be displayed in the tool, but the final offsets should relate to the original text. For the first prototype, you can ignore that -- just display the text including whitespace or remove it. In general, I think a map of "displayed offsets" vs. "original offsets" could solve this problem.
+
+The file 20000410_nyt-NEW.txt.xml contains the predefined targets of the annotations. In general, annotators should also be able to create such targes themselves and assign a type.
+Here, all the targets are of type "verb". We will have to add different target types, which in the annotation scheme definition can then be linked to the possible tags/features/links that can be assigned to them. (But don't worry about this for the first prototype.)

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/explorer.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Project Modal -->
+        <form role="form">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="cancel()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Create New Documents</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead class="headDark">
+                    <th>File Name</th>
+                    <th>Target</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(fileName, fileContent) in this.textFileMap">
+                            <td><span title="{{fileContent}}">{{fileName}}</span></td>
+                        <td ng-if="this.targetFileMap[fileName] !== undefined">
+                            <span class="glyphicon glyphicon-ok" style="color:green" title="{{this.targetFileMap[fileName]}}">
+                                    </span>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <i>*: Hover over a file, to see the content.</i>
+                <div class="form-group">
+                    <label for="text">Upload Text:</label>
+                    <input type="file"
+                           accept=".txt"
+                           name="text"
+                           id="text"
+                           ng-model="doc"
+                           on-read-file="this.sendText($fileContent,$fileName)"
+                           ng-click="clearFileMap()"
+                           multiple/>
+                    <label for="targets">Upload Targets:</label>
+                    <input type="file"
+                           accept=".xml,.json"
+                           name="targets"
+                           id="targets"
+                           ng-model="target"
+                           on-read-file="this.sendTargets($fileContent,$fileName)"
+                           ng-click="clearTargetFileMap()"
+                           multiple/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"
+                       
+                        ng-click="submit()">
+                    Submit
+                </button>
+            </div>
+        </form>
+
+    </body>
+</html>

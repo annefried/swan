@@ -1,0 +1,14 @@
+{
+   "targets":[
+      {
+         "type":"verb",
+         "begin":"5",
+         "end":"11"
+      },
+      {
+         "type":"verb",
+         "begin":"12",
+         "end":"17"
+      }
+   ]
+}

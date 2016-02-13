@@ -1,0 +1,99 @@
+
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<link href="css/explorer.css" rel="stylesheet">
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12  main">
+
+            <h2 class="sub-header">Users</h2>
+            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="headDark">
+                        <tr>
+                            <th class="col-md-2">Forename</th>
+                            <th class="col-md-2">Name</th>
+                            <th class="col-md-2">Role</th>
+                            <th class="col-md-2">E-Mail</th>
+                            <th class="col-md-2">Incomplete Documents</th>
+                            <th class="col-md-2">Logged Time</th>
+                            <th class="col-md-2" ng-hide="role == 'projectmanager'">
+                                Delete
+                            </th>
+                            <th class="col-md-2" ng-hide="role == 'projectmanager'">
+                                Edit
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-hide="loaded">
+                        <tr>
+                            <td>
+                             <span class="glyphicon glyphicon-refresh spinning "></span> 
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                                          
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr ng-repeat="x in this.users | filter: this.isVisible">
+                            <td class="col-md-2 vert-align">{{x.prename}}</td>
+                            <td class="col-md-2 vert-align">{{x.lastname}}</td>
+                            <td class="col-md-2 vert-align">{{x.role}}</td>
+                            <td class="col-md-2 vert-align">{{x.email}}</td>
+                            <td class="col-md-2 vert-align">{{x.undone}}</td>
+                            <td class="col-md-2 vert-align">{{x.loggedtime}}</td>
+                            <td class="col-md-2 vert-align" ng-hide="role == 'projectmanager'">
+                                <span class="glyphicon glyphicon-remove"
+                                      style="color:red"
+                                      ng-click="openUserDeleteModal(x.id)">
+                                </span>
+                            </td>
+                            <td class="col-md-2 vert-align" ng-hide="role == 'projectmanager'">
+                                <a>
+                                    <span class="glyphicon glyphicon-pencil"
+                                        ng-click="openUserEditModal(x.id)">
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr class="headLight" ng-hide="isuser === 'true'">
+                            <td class="col-md-2"><b></b></td>
+                            <td class="col-md-2"><b></b></td>
+                            <td class="col-md-2"><b></b></td>
+                            <td class="col-md-2"><b></b></td>
+                            <td class="col-md-2" ng-hide="role == 'projectmanager'"><b></b></td>
+                            <td class="col-md-2" ng-hide="role == 'projectmanager'"><b></b></td>
+                            <td class="col-md-2">
+                                <td class="col-md-2">
+                                <button class="btn btn-primary tableButton"
+                                        type="button"
+                                        ng-hide="isuser === 'true'"
+                                        ng-click="open()">
+                                    + User
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody> 
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

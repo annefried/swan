@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<targets>
+  <target type="verb" begin="14" end="20"/>
+  <target type="verb" begin="21" end="26"/>
+  <target type="verb" begin="106" end="112"/>
+  <target type="verb" begin="116" end="119"/>
+  <target type="verb" begin="140" end="145"/>
+  <target type="verb" begin="175" end="181"/>
+  <target type="verb" begin="213" end="221"/>
+  <target type="verb" begin="268" end="272"/>
+  <target type="verb" begin="313" end="321"/>
+  <target type="verb" begin="345" end="354"/>
+  <target type="verb" begin="394" end="399"/>
+  <target type="verb" begin="411" end="419"/>
+  <target type="verb" begin="458" end="462"/>
+  <target type="verb" begin="489" end="493"/>
+  <target type="verb" begin="513" end="521"/>
+  <target type="verb" begin="577" end="581"/>
+  <target type="verb" begin="621" end="626"/>
+  <target type="verb" begin="643" end="646"/>
+  <target type="verb" begin="652" end="660"/>
+  <target type="verb" begin="686" end="693"/>
+  <target type="verb" begin="768" end="777"/>
+  <target type="verb" begin="828" end="837"/>
+  <target type="verb" begin="904" end="909"/>
+  <target type="verb" begin="938" end="945"/>
+  <target type="verb" begin="998" end="1000"/>
+  <target type="verb" begin="1039" end="1045"/>
+  <target type="verb" begin="1073" end="1082"/>
+  <target type="verb" begin="1118" end="1121"/>
+  <target type="verb" begin="1176" end="1180"/>
+  <target type="verb" begin="1184" end="1188"/>
+  <target type="verb" begin="1246" end="1251"/>
+  <target type="verb" begin="1293" end="1298"/>
+  <target type="verb" begin="1320" end="1327"/>
+  <target type="verb" begin="1353" end="1362"/>
+  <target type="verb" begin="1379" end="1381"/>
+  <target type="verb" begin="1389" end="1395"/>
+</targets>

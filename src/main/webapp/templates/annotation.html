@@ -1,0 +1,127 @@
+<link href="css/annotation.css" rel="stylesheet">
+<link href="css/graph.css" rel="stylesheet">
+<link href="css/annotationoptions.css" rel="stylesheet">
+    
+<div>
+    <script type="text/ng-template" id="alert.html">
+        <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+            <div ng-transclude></div>
+        </div>
+    </script>
+    <div>
+        <div>
+            
+            <div class="col-md-7" ng-controller="d3AnnotationController as d3Anno" ng-mouseup="d3Anno.UpdateSelectionText()">
+                    
+                <div class="annotationtitle filename" >{{d3Anno.project}} > <i>{{d3Anno.title}}</i>
+                    <div class="checkbox" ng-controller="annotationController as annoCon"
+                         ng-hide="isuser=='false'">
+                        <label><input type="checkbox" value=""
+                                      ng-model="completed"
+                                      ng-click="annoCon.setDocCompleted()">Completed</label>
+                    </div>
+                </div>
+                    
+                
+                <hr class="featurette-divider">
+
+                <div class="annotationfield" >
+                    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
+                    <uib-accordion close-others="false">
+
+                        <uib-accordion-group is-disabled="true" is-open="true">
+                            <uib-accordion-heading>
+                                <div class="unselectable">Text</div>
+                            </uib-accordion-heading>
+                            
+                            <div>
+                                <d3-annotation class="d3Anno"
+                                               data="annotation.annotationText"
+                                               annotations="annotation.annotationData"
+                                               targets="annotation.targets"
+                                               links="annotation.annotationLinks"
+                                               selection="annotation.selectedNode"
+                                               temp-anno="annotation.tempAnno"
+                                               start-selection="d3Anno.startSelection"
+                                               end-selection="d3Anno.endSelection"
+                                               last-added="annotation.lastAdded"
+                                               last-removed="annotation.lastRemoved"
+                                               last-set="annotation.lastSet"
+                                               removed-target="annotation.lastRemovedTarget"
+                                               set-selection="annotation.setSelected(item)"
+                                               add-annotation="annotation.addAnnotation(item, words)"
+                                               set-temp="annotation.setTemporaryAnnotation(item)" 
+                                               get-annotation="annotation.getAnnotation(item)"
+                                               add-link="annotation.addLink(source, target)"
+                                               linkable="annotation.linkable(source, target)"
+                                               clear-selection="d3Anno.clearSelection()">
+                                </d3-annotation>
+                            </div>
+
+                        </uib-accordion-group>
+                    </uib-accordion>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 rightwindow">
+            <div ng-class="GraphAccordion">
+                <div>
+                    <uib-accordion close-others="false">
+                        
+                         <uib-accordion-group heading="Visualization" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable">
+                            <div>
+                                <div ng-controller="d3GraphController as graph">
+                                    <d3-graph annotations="annotation.annotationData"
+                                              annotation-links="annotation.annotationLinks"
+                                              selection="annotation.selectedNode"
+                                              added-annotation="annotation.lastAdded"
+                                              removed-annotation="annotation.lastRemoved"
+                                              removed-link="annotation.lastRemovedLink"
+                                              added-link="annotation.lastAddedLink"
+                                              last-set="annotation.lastSet"
+                                              last-targeted="annotation.lastTargeted"
+                                              set-selection="annotation.setSelected(item)"></d3-graph>
+                                </div>
+
+                            </div>
+                        </uib-accordion-group>
+                        
+                         <uib-accordion-group heading="Options" is-disabled="false" is-open="true" class="unselectable">
+                            <div ng-controller="d3OptionsController as options">
+                                <d3-options data="annotation.annotationText"
+                                            selection="annotation.selectedNode"
+                                            labels="annotation.labelTable"
+                                            target-types="annotation.targetTypes"
+                                            temp-anno="annotation.tempAnno"
+                                            set-selection="annotation.setSelected(item)"
+                                            set-label="annotation.setSelectedLabel(label, set)"
+                                            remove-annotation="annotation.removeAnnotation(item)"
+                                            remove-target="annotation.removeTarget(item)"
+                                            remove-link="annotation.removeLink(item)"
+                                            set-type="annotation.setSelectedTargetType(item)"
+                                            set-type-and-add="annotation.setSelectedTargetTypeAndAdd(item)"
+                                            set-annotation-not-sure="annotation.setAnnotationNotSure(item,bool)">
+                                </d3-options>
+                            </div>
+                        </uib-accordion-group>
+                       
+                       
+                       <uib-accordion-group heading="Shortcuts" is-disabled="false" is-open="true" class="unselectable">
+              
+                            <table class="table">
+                              <tr>
+                                <td><kbd><kbd>?</kbd></kbd></td>
+                                <td>Show all Shortcuts</td>
+                              </tr>                                                         
+                            </table>
+                        </uib-accordion-group>
+                    </uib-accordion>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

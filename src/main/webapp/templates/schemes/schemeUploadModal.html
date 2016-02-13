@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="css/explorer.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Project Modal -->
+        <form role="form">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Upload a new Scheme</h4>
+            </div>
+            <div class="modal-body">
+                <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}"
+                           close="closeAlert($index)" 
+                           dismiss-on-timeout="5000">
+                    {{alert.msg}}
+                </uib-alert>
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <div class="form-group col-lg-6">
+                            <label for="sel1">Upload Scheme:</label>
+                            <input type="file"
+                                   ng-model="file"  
+                                   name="scheme"
+                                   accept=".xml,.json"
+                                   on-read-file="this.saveScheme($fileContent)"/>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="sel1">Create from previous Scheme:</label>
+                            <select class="form-control input-sm col-xs-3"
+                                    ng-model="preloadedScheme" 
+                                    ng-options="scheme as scheme.name for scheme in this.loadedSchemes">           
+                            </select>
+                            <div class="form-group">
+                                <button class="btn btn-success btn-sm" 
+                                        type="button" 
+                                        ng-click="loadPreloadedScheme(preloadedScheme);"
+                                        ng-disabled="preloadedScheme === undefined">
+                                    Load Scheme
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!--upper-->
+                <div class="row">
+                    <!--left Panel-->
+                    <div class="form-group col-lg-6">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" placeholder="Enter name...." 
+                                   class="form-control" ng-model="name"/>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Target Types:
+                            </label>
+                            <table class="listingTable">
+                                <tbody>
+                                    <tr ng-repeat="target in this.targets">
+                                        <td class="tableRowWithGlyph">
+                                            {{target}}
+                                        </td>
+                                        <td>
+                                            <span class="glyphicon glyphicon-remove"
+                                                  style="color:red;" 
+                                                  ng-click="removeTargeType(target)">
+                                            </span>
+                                        </td>
+                                    </tr>  
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="input-group col-lg-6">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-sm" 
+                                        type="button" 
+                                        ng-disabled="targetTypeToAdd === undefined"
+                                        ng-click="addTargetType(targetTypeToAdd)">
+                                    Add
+                                </button>
+                            </span>
+                            <input type="text" ng-model="targetTypeToAdd" 
+                                   class="form-control input-sm" 
+                                   placeholder="Enter Target Type...">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>
+                            Label Sets
+                        </label>
+                        <table class="form-group labelLinkSetTable table">
+                            <thead class="headDark">
+                            <th class="col-md-2">
+                                Name
+                            </th>
+                            <th class="col-md-1">
+                                Exclusive
+                            </th>
+                            <th class="col-md-2">
+                                Target Types
+                            </th>
+                            <th class="col-md-1">
+                                Labels
+                            </th>
+                            <th class="col-md-1">
+                                Delete
+                            </th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="labelSet in labelSets">
+                                    <td>
+                                        {{labelSet.name}}
+                                    </td>
+                                    <td>
+                                        {{labelSet.exclusive}}
+                                    </td>
+                                    <td>
+                                        <p ng-repeat="target in labelSet.appliesToTargetTypes">
+                                            {{target}}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p ng-repeat="label in labelSet.labels">
+                                            {{label}}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <span class="glyphicon glyphicon-remove"
+                                              style="color:red;"
+                                              ng-click="removeLabelSet(labelSet.name)">
+                                        </span>
+                                    </td>
+                                </tr>  
+                            </tbody>
+                        </table>
+                        <label>
+                            Link Sets
+                        </label>
+                        <table class="form-group labelLinkSetTable table">
+                            <thead class="headDark">
+
+                            <th class="col-md-2">
+                                Start Type
+                            </th>
+                            <th class="col-md-2">
+                                End Type
+                            </th>
+                            <th class="col-md-1">
+                                Labels
+                            </th>
+                            <th class="col-md-1">
+                                Delete
+                            </th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="linkSet in linkSets">
+                                    <td>
+                                        {{linkSet.startType}}
+                                    </td>
+                                    <td>
+                                        {{linkSet.endType}}
+                                    </td>
+                                    <td> 
+                                        <p ng-repeat="label in linkSet.linkLabels">
+                                            {{label}}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <span class="glyphicon glyphicon-remove" 
+                                              style="color:red;"
+                                              ng-click="removeLinkSet(linkSet)">
+                                        </span>
+                                    </td>
+                                </tr>  
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <hr>
+                <!--lower-->
+                <div class="row">
+                    <!--LABEL SET-->
+                    <div class="form-group col-lg-6">
+                        <label>
+                            Label Sets:
+                        </label>
+                        <div class="form-group">
+                            <label>
+                                Name:
+                            </label>
+                            <input type="text" placeholder="Enter name...." 
+                                   class="form-control input-sm" 
+                                   ng-model="nameLabelSet"/>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"
+                                           ng-init="exclusiveLabelSet = false"
+                                           ng-model="exclusiveLabelSet">
+                                    Exclusive
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Applies to Target Types:
+                            </label>
+                            <table class="listingTable form-group">
+                                <tbody>
+                                    <tr ng-repeat="target in this.selectedTargetsLabel">
+                                        <td class="tableRowWithGlyph">
+                                            {{target}}
+                                        </td>
+                                        <td>
+                                            <span class="glyphicon glyphicon-remove"
+                                                  style="color:red;"
+                                                  ng-click="removeTargetTypeLabel(target)">
+                                            </span>
+                                        </td>
+                                    </tr>  
+                                </tbody>
+                            </table>
+                            <div class = "btn-group">
+                                <button type = "button" class="btn btn-default dropdown-toggle btn-sm"
+                                        data-toggle = "dropdown">
+                                    Add Target Type
+                                    <span class = "caret">
+                                    </span>
+                                </button>
+                                <ul class = "dropdown-menu" role = "menu">
+                                    <li  ng-repeat="target in this.targets| filter:selectedTargetsLabelFilter">
+                                        <a ng-click="addTargetTypeLabel(target);">
+                                            {{target}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Labels:
+                            </label>
+                            <table class="listingTable form-group">
+                                <tbody>
+                                    <tr ng-repeat="label in this.currentLabelSet">
+                                        <td class="tableRowWithGlyph">
+                                            {{label.name}}
+                                        </td>
+                                        <td>
+                                            <span class="glyphicon glyphicon-remove"
+                                                  style="color:red;"
+                                                  ng-click="removeLabelLabelSet(label.id)">
+                                            </span>
+                                        </td>
+                                    </tr>  
+                                </tbody>
+                            </table>
+                            <div class="input-group col-lg-6">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-sm" type="button"
+                                            ng-disabled="labelToAddLabelSet === undefined"
+                                            ng-click="addLabelLabelSet(labelToAddLabelSet)">
+                                        Add
+                                    </button>
+                                </span>
+                                <input type="text" ng-model="labelToAddLabelSet"
+                                       class="form-control input-sm"
+                                       placeholder="Enter Label...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success"
+                                    ng-disabled="nameLabelSet === undefined || nameLabelSet === '' || selectedTargetsLabel.length < 1 || currentLabelSet.length < 1"
+                                    ng-click="addLabelSet()">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                    <!--LINK SET-->
+                    <div class="form-group col-lg-6">
+                        <div class="form-group">
+                            <label>
+                                Link Sets:
+                            </label>
+                        </div>
+                        <!--                        <div class="form-group">
+                                                    <label>
+                                                        Name:
+                                                    </label>
+                                                    <input type="text" placeholder="Enter name...."
+                                                           class="form-control input-sm"
+                                                           ng-model="nameLinkSet"/>
+                                                </div>-->
+                        <div class="form-group col-lg-6 noMarginLeft">
+                            <label>
+                                Start Type:
+                            </label>
+                            <div class = "btn-group">
+                                <select class="form-control input-sm col-xs-3"
+                                        ng-options="target for target in this.targets"
+                                        ng-model="startType">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6 noMarginLeft">
+                            <label>
+                                End Type:
+                            </label>
+                            <div class = "btn-group">
+                                <select class="form-control input-sm col-xs-3"
+                                        ng-options="target for target in this.targets"
+                                        ng-model="endType">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Labels:
+                            </label>
+                            <table class="form-group listingTable">
+                                <tbody>
+                                    <tr ng-repeat="label in this.currentLinkSet">
+                                        <td class="tableRowWithGlyph">
+                                            {{label.name}}
+                                        </td>
+                                        <td>
+                                            <span class="glyphicon glyphicon-remove" 
+                                                  style="color:red;"
+                                                  ng-click="removeLabelLinkSet(label.id)">
+                                            </span>
+                                        </td>
+                                    </tr>  
+                                </tbody>
+                            </table>
+                            <div class="input-group col-lg-6">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-sm" 
+                                            type="button" ng-disabled="labelToAddLinkSet === undefined" 
+                                            ng-click="addLabelLinkSet(labelToAddLinkSet)">
+                                        Add
+                                    </button>
+                                </span>
+                                <input type="text" ng-model="labelToAddLinkSet"
+                                       class="form-control input-sm"
+                                       placeholder="Enter Label...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success"
+                                    ng-disabled="startType === undefined || endType === undefined"
+                                    ng-click="addLinkSet()">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="submit()">Submit</button>
+            </div>
+        </form>
+
+    </body>
+</html>

@@ -1,0 +1,75 @@
+
+<link href="css/explorer.css" rel="stylesheet">
+<div class="container-fluid">
+    <script type="text/ng-template" id="alert.html">
+        <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+            <div ng-transclude></div>
+        </div>
+    </script>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main">
+
+            <h2 class="sub-header">Schemes</h2>
+            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr class="headDark">
+                            <th class="col-md-10">Name</th>
+                            <th class="col-md-10">Used In</th>
+                            <th class="col-md-1">View</th>
+                            <th class="col-md-1">Delete</th>
+                        </tr>
+                    </thead>
+                       <tbody ng-hide="loaded">
+                        <tr>
+                            <td>
+                             <span class="glyphicon glyphicon-refresh spinning "></span> 
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                                          
+                        </tr>
+                    </tbody>
+                    <tbody ng-repeat="x in this.tableSchemes">
+                        <tr >
+                            <td class="col-md-10 vert-align">{{x.name}}</td>
+                            <td class="col-md-10 vert-align"><p ng-repeat="project in x.projects">{{project.name}}</p></td>
+                            <td class="col-md-1 vert-align">
+                                <a class="glyphicon glyphicon-file"
+                                   ng-click="openSchemeViewModal(x.name)">
+                                </a>
+                            </td>
+                            <td class="col-md-1 vert-align">
+                                <span class="glyphicon glyphicon-remove"
+                                        ng-hide="isuser === 'true'" style="color:red"
+                                         ng-class="(x.projects.length < 1) ? 'enabled' : 'disabled'"
+                                        ng-click="openSchemeDeleteModal(x.id)">
+                                </span>
+                            </td>
+                        </tr>
+                    <tbody>
+                        <tr class="headLight" ng-hide="isuser === 'true'">
+                            <td class="col-md-10"><b></b></td>
+                            <td class="col-md-1"><b></b></td>
+                             <td class="col-md-1"><b></b></td>
+                            <td class="col-md-1">
+                                <button class="btn btn-primary tableButton" 
+                                        type="button"
+                                        ng-click="openUploadSchemeModal()">
+                                    + Scheme
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody> 
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+

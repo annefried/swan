@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Signin</title>
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="signin.js"></script>
+
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/signin.css" rel="stylesheet">
+
+    </head>
+
+    <body ng-app="app">
+        <div>
+            <div class="container">
+                <form method="post" class="form-signin" ng-controller="LoginController as log">
+                    <script type="text/javascript">
+                        wrong = true;
+                    </script>
+                    <div class="alert alert-danger" ng-hide="!wrong">
+                        <strong>Oh snap!</strong> Email or password was wrong.
+                    </div>
+                    <h2 class="form-signin-heading">{{projectName}} Login</h2>
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" ng-model="credentials.username" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="credentials.password" required>
+                    <button class="btn btn-default" ng-click="login(credentials)">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+{  
+   "name":"SchemeLabelSet2",
+   "targetTypes":[  
+      "verb",
+      "passage"
+   ],
+   "labelSets":[
+      {  
+         "name":"Modality",
+         "exclusive":true,
+         "appliesToTargetTypes":[  
+            "verb"
+         ],
+         "labels":[  
+            "Actual",
+            "Modalized",
+            "Negated",
+            "OTHER"
+         ]
+      }
+   ],
+   "linkSets":[ ]
+}

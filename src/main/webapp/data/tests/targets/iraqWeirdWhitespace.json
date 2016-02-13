@@ -1,0 +1,9 @@
+{
+	"targets" : [
+		{
+			"type" : "verb",
+			"begin": 14,
+			"end": 20
+		}
+	]
+}

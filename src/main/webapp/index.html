@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>DiscAnno</title>
+     
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+        <script type="text/javascript" src="d3/d3.v3.js"></script>
+        <script src="bower_components/jsog/lib/JSOG.js"></script>
+        <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
+        <script src="other/annotationStructures.js"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <script src="modules/app.js"></script>
+        <script src="modules/d3module.js"></script>
+
+        <script src="services/d3.js"></script>
+        <script src="services/dataServices.js"></script>
+
+        <script src="directives/onReadFile.js"></script>
+        <script src="directives/d3Annotation.js"></script>
+        <script src="directives/d3Options.js"></script>
+        <script src="directives/d3Graph.js"></script>
+
+        <!--Angular Controllers-->
+        <script src="controllers/projects/projectsController.js"></script>
+        <script src="controllers/schemes/schemeViewModalController.js"></script>
+        <script src="controllers/schemes/schemeDeleteModalController.js"></script>
+        <script src="controllers/schemes/schemeUploadModalController.js"></script>
+        <script src="controllers/schemes/schemesController.js"></script>
+        <script src="controllers/profileController.js"></script>
+        <script src="controllers/d3AnnotationController.js"></script>
+        <script src="controllers/d3GraphController.js"></script>
+        <script src="controllers/d3OptionsController.js"></script>
+        <script src="controllers/dashboardController.js"></script>
+        <script src="controllers/annotationController.js"></script>
+        <script src="controllers/users/annotatorsController.js"></script>
+        <script src="controllers/projects/projectEditModalController.js"></script>
+        <script src="controllers/projects/projectDeleteModalController.js"></script>
+        <script src="controllers/projects/projectAddModalController.js"></script>
+        <script src="controllers/projects/documentAddModalController.js"></script>
+        
+        <script src="other/xml2json.js"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/app.css" rel="stylesheet">
+        <link href="bower_components/angular-hotkeys/build/hotkeys.min.css" rel="stylesheet">
+        
+    </head>
+
+    <body ng-controller="dashboardController">
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#dashboard">{{projectName}}</a>
+                    <ul class="nav navbar-nav navbar-right navbar-collapse collapse">
+                        <li><a href="#projects">Project Explorer</a></li>
+                        <li><a href="#schemes" ng-hide="isuser === 'true'">Schemes</a></li>
+                        <li><a href="#annotators" ng-hide="isuser === 'true'">Users</a></li>
+                    </ul>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#profile">Profile</a></li>                     
+                        <li><a href="/discanno/signin.html" ng-click="logout()">Logout</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+
+        <div id="main">
+            <div class="trans" ng-view></div>
+        </div>
+
+    </body>
+</html>
