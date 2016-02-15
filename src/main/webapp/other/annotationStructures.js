@@ -213,7 +213,7 @@ function Annotation(color, id, tType) {
         if (this.words.length > 0)
             return this.words[this.words.length - 1].end;
     };
-
+    
     this.toString = function (maxSize) {
         if (this.text.length > maxSize)
             return "'" + this.text.substring(0, maxSize - 1) + " ...'";
@@ -345,6 +345,28 @@ function formAnnotation(annotation, isTarget) {
     this.clearAnnotationGrids = function () {
         for (var i = 0; i < this.annotationBoxes.length; i++)
             this.annotationBoxes[i].clearAnnotationGrids();
+    };
+    
+    this.startLine = function() {
+        if (this.annotationBoxes.length > 0) {
+            var annotationBox = this.annotationBoxes[0];
+            
+            if(annotationBox.formWords.length > 0) {
+                var formWord = annotationBox.formWords[0];
+                return formWord.lY;
+            }
+        }
+    };
+    
+    this.endLine = function() {
+        if (this.annotationBoxes.length > 0) {
+            var annotationBox = this.annotationBoxes[this.annotationBoxes.length - 1];
+            
+            if(annotationBox.formWords.length > 0) {
+                var formWord = annotationBox.formWords[0];
+                return formWord.lY;
+            }
+        }
     };
 }
 

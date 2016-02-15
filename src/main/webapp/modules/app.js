@@ -33,7 +33,7 @@ function Config($routeProvider) {
                 controllerAs: 'projects'
             })
             .when('/annotators', {
-                templateUrl: 'templates/users/annotators.html',
+                templateUrl: 'templates/users/users.html',
                 controller: 'annotatorsController',
                 controllerAs: 'annotators'
             })

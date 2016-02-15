@@ -120,12 +120,12 @@ angular
                             });
 
                     // Function to open modal
-                    $scope.open = function (size) {
+                    $scope.openUserAddModal = function (size) {
 
                         var modalInstance = $uibModal.open({
                             animation: $scope.animationsEnabled,
-                            templateUrl: 'templates/users/modalUser.html',
-                            controller: 'ModalInstanceCtrl',
+                            templateUrl: 'templates/users/userAddModal.html',
+                            controller: 'userAddModalController',
                             size: size
                         });
                         // Callback on Submit
@@ -141,15 +141,14 @@ angular
                         $rootScope.userDeleteId = userDeleteId;
                         var modalInstance = $uibModal.open({
                             animation: $scope.animationsEnabled,
-                            templateUrl: 'templates/users/annotatorsUserDeleteModal.html',
-                            controller: 'ModalInstanceCtrl'
+                            templateUrl: 'templates/users/userDeleteModal.html',
+                            controller: 'userDeleteModalController'
                         });
 
                         modalInstance.result.then(function (response) {
                             for (var i = 0; i < $scope.users.length; i++) {
                                 if ($scope.users[i].id === response) {
                                     $scope.users.splice(i, 1);
-
                                 }
                             }
                         });
@@ -162,8 +161,8 @@ angular
                         $rootScope.toEdit = userID;
                         var modalInstance = $uibModal.open({
                             animation: $scope.animationsEnabled,
-                            templateUrl: 'templates/users/annotatorsUserEditModal.html',
-                            controller: 'ModalInstanceEditCtrl'
+                            templateUrl: 'templates/users/userEditModal.html',
+                            controller: 'userEditModalController'
                         });
 
                         $scope.toggleAnimation = function () {
@@ -177,61 +176,3 @@ angular
                 }
             }]);
 
-// Controller for Modal
-angular.module('app').controller('ModalInstanceCtrl', function ($scope, $rootScope, $http, $uibModalInstance) {
-
-    // Called on submit
-    $scope.createUser = function (prename, lastname, password, email, role) {
-
-        var jsonTemplate = {
-            "id": null,
-            "prename": prename,
-            "lastname": lastname,
-            "password": password,
-            "createdate": null,
-            "email": email,
-            "role": role
-        };
-
-        var user = {
-            'prename': prename,
-            'lastname': lastname,
-            'role': role,
-            'email': email,
-            'loggedtime': 0,
-            'undone': 0
-        };
-
-        $http.post('tempannot/user', JSON.stringify(jsonTemplate))
-                .then(function (response) {
-                    user.id = response.data;
-                    $uibModalInstance.close(user);
-                });
-    };
-
-    $scope.deleteUser = function (userId) {
-        $http.delete('tempannot/user/' + userId).success(function () {
-            $uibModalInstance.close(userId);
-        }).error(function (response) {
-            $rootScope.addAlert({type: 'danger', msg: 'No server connection'});
-        });
-    };
-
-    $scope.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
-    };
-
-});
-
-angular.module('app').controller('ModalInstanceEditCtrl', function ($rootScope, $scope, $http, $window, $uibModalInstance) {
-
-    $scope.editPassword = function (pw) {
-        $http.put('tempannot/user/' + $rootScope.toEdit, pw).success(function (response) {
-            $rootScope.addAlert({type: 'success', msg: 'Password changed succesfully.'});
-        }).error(function (response) {
-            $rootScope.addAlert({type: 'danger', msg: 'Sorry something went wrong:('});
-        });
-
-        $uibModalInstance.close();
-    };
-});

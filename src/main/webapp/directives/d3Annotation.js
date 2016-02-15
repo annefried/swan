@@ -89,7 +89,7 @@ angular.module('app')
 
                                 $scope.drawText(minJ, maxJ);
                                 $scope.drawLineNumbers(minJ, maxJ);
-                                $scope.drawAnnotations();
+                                $scope.drawAnnotations(minJ, maxJ);
                                 $scope.drawLinks();
                                 $scope.highlightSelected();
 
@@ -111,6 +111,7 @@ angular.module('app')
                             $scope.formatTargets();
                             $scope.formatAnnotations();
                             $scope.drawText(0, $scope.maxLines());
+                            $scope.drawAnnotations(0, $scope.maxLines());
                             return $scope.render(true);
                         }
                         );
@@ -473,7 +474,7 @@ angular.module('app')
                                 //words is annotated more than any other word in their
                                 //respective lines
                                 if (maxDiff) {
-                                    $scope.drawAnnotations();
+                                    $scope.drawAnnotations(minJ, maxJ);
                                     $scope.highlightSelected();
                                     $scope.clearSelection();
                                     
@@ -488,7 +489,7 @@ angular.module('app')
                             if (newVals !== undefined) {
                                 $scope.setLineHeights();
                                 $scope.addFormAnnotation(newVals, false);
-                                $scope.drawAnnotations();
+                                $scope.drawAnnotations(minJ, maxJ);
                                 $scope.highlightSelected();
                             }
                         });
@@ -528,7 +529,7 @@ angular.module('app')
                                 //occupied space that is no longer needed after the
                                 //deletion
                                 if (maxDiff) {
-                                    $scope.drawAnnotations();
+                                    $scope.drawAnnotations(minJ, maxJ);
                                     $scope.highlightSelected();
                                 } else
                                     $scope.render();
@@ -538,7 +539,7 @@ angular.module('app')
                         //Listens to changes to the last changed object
                         $scope.$watch('lastSet', function (newVals) {
                             if (newVals !== undefined) {
-                                $scope.drawAnnotations();
+                                $scope.drawAnnotations(minJ, maxJ);
                                 $scope.highlightSelected();
                             }
                         }, true);
@@ -548,7 +549,7 @@ angular.module('app')
                             if (newVals !== undefined) {
                                 $scope.removeFormAnnotation(newVals);
                                 $scope.setLineHeights();
-                                $scope.drawAnnotations();
+                                $scope.drawAnnotations(minJ, maxJ);
                             }
                         });
 
@@ -919,40 +920,7 @@ angular.module('app')
                             }
 
                             $scope.drawText(minJ, maxJ);
-                            $scope.drawAnnotations();
-                            $scope.drawLinks();
-                            $scope.highlightSelected();
-                            $scope.drawLineNumbers(minJ, maxJ);
-                        };
-
-                        //Draw (invisible) background of text that can react to click events
-                        $scope.drawBackground = function () {
-                            svg.append("rect")
-                                    .attr("width", width * 10)
-                                    .attr("height", height)
-                                    .style("fill", "white")
-                                    .on("mouseup", function () {
-                                        if (linkStart !== null) {
-                                            linkStart = null;
-                                            $scope.drawEverything();
-                                        }
-
-                                        $scope.textMarkable(true);
-                                        $scope.$apply(function () {
-                                            $scope.setSelection({item: null});
-                                        });
-                                    });
-                        };
-
-                        //Main rendering function of the annotation field
-                        $scope.render = function (resize) {
-                            if (resize) {
-                                svg.selectAll("*").remove();
-                                $scope.drawBackground();
-                            }
-
-                            $scope.drawText(minJ, maxJ);
-                            $scope.drawAnnotations();
+                            $scope.drawAnnotations(minJ, maxJ);
                             $scope.drawLinks();
                             $scope.highlightSelected();
                             $scope.drawLineNumbers(minJ, maxJ);
@@ -1107,14 +1075,20 @@ angular.module('app')
                                         });
                             }
                         };
-
+                        
                         //Draw annotations above corresponding words in the text
-                        $scope.drawAnnotations = function () {
+                        $scope.drawAnnotations = function (minLine, maxLine) {
                             svg.selectAll(".annotationbox").remove();
                             svg.selectAll(".annotationboxtext").remove();
-
+                            
                             for (var annoID in formAnnotations) {
-                                var annotationBoxes = formAnnotations[annoID].annotationBoxes;
+                                var annotation = formAnnotations[annoID];
+                                
+                                //If the annotation isn't visible, we don't need to draw it
+                                if(!$scope.isVisible(annotation, minLine, maxLine))
+                                    continue;
+
+                                var annotationBoxes = annotation.annotationBoxes;
 
                                 //Draw the background boxes
                                 svg.selectAll("annotationboxes")
@@ -1295,7 +1269,7 @@ angular.module('app')
 
                         //Draw the links as lines between the corresponding annotation boxes
                         $scope.drawLinks = function () {
-
+                            
                             var lineFunction = d3.svg.line()
                                     .x(function (d) {
                                         return d.x;
@@ -1309,12 +1283,22 @@ angular.module('app')
                             svg.selectAll(".annotationlinktext").remove();
                             svg.selectAll("linkmarker").remove();
 
+                            var minLine = minJ;
+                            var maxLine = maxJ;
+
                             for (var outerLinkID in $scope.links) {
                                 var outerLinks = $scope.links[outerLinkID];
-
+                                
                                 //Path of the link
                                 svg.selectAll("annotationlinks")
-                                        .data(d3.entries(outerLinks))
+                                        .data(d3.entries(outerLinks).filter(function(d) {
+                                            var link = d.value;
+                                            var source = formAnnotations[link.source.id]; 
+                                            var target = formAnnotations[link.target.id]; 
+                                            
+                                            //Only draw link when at least one of the annotations are visible
+                                            return $scope.isVisible(source, minLine, maxLine) || $scope.isVisible(target, minLine, maxLine);
+                                        }))
                                         .enter()
                                         .append("path")
                                         .attr("d", function (d) {
@@ -1324,14 +1308,14 @@ angular.module('app')
                                             var formTarget = formAnnotations[target.id];
                                             var sourceBox = formSource.annotationBoxes[formSource.annotationBoxes.length - 1];
                                             var targetBox = formTarget.annotationBoxes[0];
-
+                                            
                                             //Determine the edges of the path of the link
                                             var lineData = [{"x": sourceBox.x + sourceBox.width, "y": sourceBox.y + 0.5 * wordHeight / 3},
                                                 {"x": ((sourceBox.x + sourceBox.width * 1.3)), "y": sourceBox.y + 0.5 * wordHeight / 3},
                                                 {"x": ((sourceBox.x + sourceBox.width * 1.3)), "y": targetBox.y - 1.5 * wordHeight / 3},
                                                 {"x": targetBox.x + 0.5 * targetBox.width, "y": targetBox.y - 1.5 * wordHeight / 3},
                                                 {"x": targetBox.x + 0.5 * targetBox.width, "y": targetBox.y}];
-
+                                            
                                             return lineFunction(lineData);
                                         })
                                         .attr("fill", "none")
@@ -1370,7 +1354,6 @@ angular.module('app')
                                         .data(d3.entries(outerLinks))
                                         .enter()
                                         .append("text")
-
                                         .attr("height", wordHeight / 3)
                                         .attr("fill", "black")
                                         .attr("font-weight", "bold")
@@ -1633,7 +1616,7 @@ angular.module('app')
                                                     var target = link.target;
                                                     var formTarget = formAnnotations[target.id];
                                                     var targetBox = formTarget.annotationBoxes[0];
-
+                                                    
                                                     return targetBox.x + targetBox.width * 0.5;
                                                 default:
                                                     var source = link.source;
@@ -1797,6 +1780,18 @@ angular.module('app')
                             maxi.push(max);
                             return maxi;
                         };
+                        
+                        $scope.isVisible = function(formAnnotation, minLine, maxLine) {
+                            if(minLine !== undefined && maxLine !== undefined) {
+                                var min = formAnnotation.startLine();
+                                var max = formAnnotation.endLine();
+                                    
+                                if(max < minLine || min > maxLine)
+                                    return false;    
+                            }
+                                
+                            return true;
+                        }
                     }
                 };
             }]);
