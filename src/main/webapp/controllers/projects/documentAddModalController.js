@@ -11,7 +11,7 @@ angular.module('app').controller('documentAddModalController', function ($scope,
     };
 
     $scope.clearTargetFileMap = function () {
-        $scope.textFileMap = {};
+        $scope.targetFileMap = {};
     };
 
     $scope.sendText = function ($fileContent, $fileName) {
@@ -33,6 +33,7 @@ angular.module('app').controller('documentAddModalController', function ($scope,
             }
             var defaultAnnotations = [];
             // Build Annotations
+
             for (var i = 0; i < targets.targets.length; i++) {
                 var annot = {
                     'id': null,
@@ -42,7 +43,8 @@ angular.module('app').controller('documentAddModalController', function ($scope,
                         'targetType': targets.targets[i].type
                     },
                     'user': null,
-                    'document': null
+                    'document': null,
+                    'text': $scope.textFileMap[curFileName].substring(targets.targets[i].begin, targets.targets[i].end)
                 };
                 defaultAnnotations.push(annot);
             }
@@ -60,7 +62,6 @@ angular.module('app').controller('documentAddModalController', function ($scope,
 
             $http.post("tempannot/document/adddoctoproject", JSON.stringify(documentTemplate)).then((function (curFileName) {
                 return function (response) {
-                    console.log(response);
                     var docTemplate = {
                         'completed': 0,
                         'id': response.data,

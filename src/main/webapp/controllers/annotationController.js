@@ -4,38 +4,39 @@
 angular
         .module('app')
         .controller('annotationController', ['$scope', '$window', '$rootScope',
-            '$http', 'getAnnotationService', 'textService', 'targetService', 'linkService', 'schemeService', 'hotkeys',
-            function ($scope, $window, $rootScope, $http, getAnnotationService, textService, targetService, linkService, schemeService, hotkeys) {
-                if ($window.sessionStorage.docId === undefined) {
-                    $window.sessionStorage.docId = 3;
-                }
-                if ($window.sessionStorage.uId === undefined) {
-                    $window.sessionStorage.uId = 10;
-                }
+            '$http', '$q', 'getAnnotationService', 'textService', 'targetService', 'linkService', 'schemeService', 'hotkeys',
+            function ($scope, $window, $rootScope, $http, $q, getAnnotationService, textService, targetService, linkService, schemeService, hotkeys) {
 
                 //Reads the committed files and builds them into the used data structures
                 this.init = function () {
-                    this.readData();
-                    this.readSchemes();
-
-                    this.buildText();
-                    this.buildAnnotations();
-                    this.buildLinks();
-
-                    //yes this is correct, because f*ck js, that's why.
-                    $scope.completed = $window.sessionStorage.completed === 'true';
+                    var callbacks = this.readData();
+                    $q.all(callbacks).then(function (object) {
+//                        this = object;
+                        object.readSchemes();
+                        object.buildText();
+                        object.buildAnnotations();
+                        object.buildLinks();
+                        //yes this is correct, because f*ck js, that's why.
+                        $scope.completed = $window.sessionStorage.completed === 'true';
+                    }(this));
                 };
-
                 //Backend communication
                 this.readData = function () {
-                    this.annotationDatabase = getAnnotationService.getAnnotations($window.sessionStorage.uId, $window.sessionStorage.docId);
+                    var serviceCallbacks = [];
+                    // Annotations
+                    var annoCallback = getAnnotationService.getAnnotations($window.sessionStorage.uId, $window.sessionStorage.docId);
+                    $scope.this = this;
+                    annoCallback.then(function (response) {
+                        $scope.this.annotationDatabase = JSOG.parse(JSON.stringify(response.data)).annotations;
+                    });
+                    serviceCallbacks.push(annoCallback);
+                    // Schemes
                     this.scheme = schemeService.getScheme($window.sessionStorage.docId);
                     this.plainText = textService.getText($window.sessionStorage.docId);
-
                     this.targetData = targetService.getTargets($window.sessionStorage.uId, $window.sessionStorage.docId);
                     this.linkData = linkService.getLinks($window.sessionStorage.uId, $window.sessionStorage.docId);
+                    return serviceCallbacks;
                 };
-
                 //Split words of the text in data structure
                 this.buildText = function () {
 
@@ -44,7 +45,6 @@ angular
                     this.annotationText = [];
                     var start = 0;
                     var end = -1;
-
                     //Split the text lines into separate words
                     for (var i = 0; i < this.annotationLines.length; i++) {
                         var line = this.annotationLines[i];
@@ -52,7 +52,6 @@ angular
                         end = start + line.length;
                         var annoLine = new TextLine(start, end);
                         var split = 0;
-
                         for (var j = 0; j < line.length; j++) {
                             if (line[j] === ' ' || line[j] === '\t' || this.isPunctuation(line[j])) {
                                 var word = new TextWord(line.substring(split, j), split + start, j + start);
@@ -75,13 +74,10 @@ angular
                         this.annotationText.push(annoLine);
                     }
                 };
-
-
                 this.buildAnnotations = function () {
                     //Annotations are indexed by their id
                     //annotationData[id] gives the annotation with id 'id'
                     this.annotationData = {};
-
                     //Assign actual word(tokens) to the annotations
                     var annotations = this.annotationDatabase;
                     for (var a = 0; a < annotations.length; a++) {
@@ -89,11 +85,9 @@ angular
                         var end = annotations[a].end;
                         var tType = this.getTargetType(annotations[a].targetType.targetType);
                         var color = this.getColor(tType);
-
                         var anno = new Annotation(color, annotations[a].id, tType);
                         anno.notSure = annotations[a].notSure;
                         this.findWords(start, end, anno);
-
                         //Add labels
                         for (var l = 0; l < annotations[a].labelMap.length; l++) {
                             var label = annotations[a].labelMap[l];
@@ -108,16 +102,12 @@ angular
                         this.annotationData[anno.id] = anno;
                     }
                 };
-
                 this.buildLinks = function () {
                     this.annotationLinks = {};
-
                     for (var i = 0; i < this.linkData.length; i++) {
                         var link = this.linkData[i];
-
                         var source = this.annotationData[link.annotation1.id];
                         var target = this.annotationData[link.annotation2.id];
-
                         if (source !== undefined && target !== undefined) {
 
                             var annotationLink = new AnnotationLink(link.id, source, target);
@@ -140,24 +130,19 @@ angular
 
                             if (this.annotationLinks[source.id] === undefined)
                                 this.annotationLinks[source.id] = {};
-
                             this.annotationLinks[source.id][target.id] = annotationLink;
                         }
                     }
                 };
-
                 //Set the currently selected/active annotation
                 this.setSelected = function (item) {
                     if (item === null && this.tempAnno !== undefined && this.tempAnno !== null)
                         this.removeAnnotation(this.tempAnno);
-
                     if (item === this.selectedNode)
                         this.selectedNode = null;
                     else
                         this.selectedNode = item;
-
                 };
-
                 //Change the label of the currently selected annotation
                 this.setSelectedLabel = function (label, labelSet) {
                     if (this.selectedNode !== null && this.selectedNode !== undefined && label !== undefined) {
@@ -174,7 +159,6 @@ angular
 
                         this.selectedNode.setLabel(labelSet, label);
                         var labeled = this.selectedNode.isLabeled(labelSet, label);
-
                         if (this.selectedNode.type === AnnoType.Annotation) {
                             var labelTemplate = {
                                 labelId: label.tag,
@@ -182,7 +166,6 @@ angular
                                         id: labelSet.id
                                     }]
                             };
-
                             if (labeled) {
                                 $http.post('tempannot/annotations/addlabel/' + this.selectedNode.id, labelTemplate);
                             } else {
@@ -199,7 +182,6 @@ angular
                             };
                             if (labeled) {
                                 $http.post('tempannot/links/addlabel/' + this.selectedNode.id, labelTemplate);
-
                             } else {
                                 $http.post('tempannot/links/removelabel/' + this.selectedNode.id, labelTemplate);
                             }
@@ -208,7 +190,6 @@ angular
                         this.lastSet = this.selectedNode;
                     }
                 };
-
                 //Set target type of the currently selected object
                 this.setSelectedTargetType = function (targetType) {
 
@@ -218,7 +199,6 @@ angular
                         this.selectedNode.color = this.getColor(targetType);
                         this.lastSet = this.selectedNode;
                         this.lastTargeted = this.selectedNode;
-
                         //Check if the selected note is temporary; in this case a new annotation will be added
                         if (this.selectedNode === this.tempAnno) {
                             this.addAnnotation(this.tempAnno);
@@ -228,8 +208,6 @@ angular
                         this.removeConnectedLinks(this.selectedNode);
                     }
                 };
-
-
                 this.setSelectedTargetTypeAndAdd = function (targetType) {
                     if (this.selectedNode !== null && this.selectedNode !== undefined && targetType !== undefined
                             && this.selectedNode.type === "Annotation") {
@@ -239,15 +217,11 @@ angular
                             }, function (error) {
                                 $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
                             });
-
                         }
                         this.selectedNode.setTargetType(targetType);
                         this.selectedNode.color = this.getColor(targetType);
                         this.lastSet = this.selectedNode;
                         this.lastTargeted = this.selectedNode;
-
-
-
                         //Check if the selected note is temporary; in this case a new annotation will be added
                         if (this.selectedNode === this.tempAnno) {
                             this.addAnnotation(this.tempAnno);
@@ -257,7 +231,6 @@ angular
                         this.removeConnectedLinks(this.selectedNode);
                     }
                 };
-
                 //Set target type of the temporal annotations
                 this.setTemporaryTargetType = function (targetType) {
                     this.tempAnno.setTargetType(targetType);
@@ -265,7 +238,6 @@ angular
                     this.addAnnotation(this.tempAnno);
                     this.tempAnno = null;
                 };
-
                 //Set the temporary annotation.
                 //This annotation is temporary and will not be sent to the database.
                 //It can be used to create new annotations
@@ -281,18 +253,14 @@ angular
                         }
 
                         this.tempAnno = new Annotation(this.emptyColor, 0);
-
                         for (var v = 0; v < words.length; v++)
                             this.tempAnno.addWord(words[v]);
-
                         this.selectedNode = this.tempAnno;
-
                         var tType = this.getOnlyTargetType();
                         if (tType !== undefined && $rootScope.ishotkeys !== 'true')
                             this.setTemporaryTargetType(tType);
                     }
                 };
-
                 //Adds a new annotation and makes a callback to the backend
                 this.addAnnotation = function (annotation) {
 
@@ -312,24 +280,18 @@ angular
                         "text": annotation.words[0].text,
                         "notSure": false
                     };
-
                     // add to db
-                    var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("POST", "tempannot/annotations", false); // false for synchronous request
-                    xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-                    xmlHttp.send(JSON.stringify(jsonTemplate));
-
-                    // Expect new ID
-                    var newId = xmlHttp.responseText;
-
-                    this.lastAdded = annotation;
-                    this.lastAdded.id = newId;
-                    this.annotationData[newId] = this.lastAdded;
-
-                    this.checkResponseStatusCode(xmlHttp.status);
-
+                    $http.post("tempannot/annotations", JSON.stringify(jsonTemplate)).then(function (object) {
+                        return function (response) {
+                            var newId = response.data;
+                            object.lastAdded = annotation;
+                            object.lastAdded.id = newId;
+                            object.annotationData[newId] = object.lastAdded;
+                        };
+                    }(this), function (err) {
+                        $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                    });
                 };
-
                 //Deletes an annotatioan and makes a callback to the backend
                 this.removeAnnotation = function (annotation) {
 
@@ -338,18 +300,17 @@ angular
                         this.tempAnno.onDelete();
                         this.tempAnno = null;
                     } else {
-                        var xmlHttp = new XMLHttpRequest();
-                        xmlHttp.open("DELETE", "tempannot/annotations/" + annotation.id, false); // false for synchronous request
-                        xmlHttp.send(null);
-
-                        this.checkResponseStatusCode(xmlHttp.status);
-
-                        annotation.onDelete();
-                        delete this.annotationData[annotation.id];
-                        this.removeConnectedLinks(annotation);
+                        $http.delete("tempannot/annotations/" + annotation.id).then(function (object) {
+                            return function (response) {
+                                annotation.onDelete();
+                                delete object.annotationData[annotation.id];
+                                object.removeConnectedLinks(annotation);
+                            };
+                        }(this), function (err) {
+                            $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                        });
                     }
                 };
-
                 //Add a new link and make a corresponding callback to the backend
                 this.addLink = function (source, target) {
                     if (source !== undefined && target !== undefined &&
@@ -397,38 +358,32 @@ angular
                             },
                             "labelMap": []
                         };
-                        var xmlHttp = new XMLHttpRequest();
-                        xmlHttp.open("POST", "tempannot/links", false); // false for synchronous request
-                        xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-                        xmlHttp.send(JSON.stringify(jsonTemplate));
+                        // Might lead to links not being directly selected
+                        $http.post("tempannot/links", JSON.stringify(jsonTemplate)).then(function (object) {
+                            return function (response) {
+                                var newId = response.data;
+                                var link = new AnnotationLink(newId, source, target);
+                                //Add label sets
+                                for (var id in object.linkLabels[source.tType.tag][target.tType.tag]) {
+                                    var linkSet = object.linkLabels[source.tType.tag][target.tType.tag][id];
+                                    link.addSelectableLabel(linkSet);
+                                }
 
-                        this.checkResponseStatusCode(xmlHttp.status);
-
-                        var newId = xmlHttp.responseText;
-
-                        var link = new AnnotationLink(newId, source, target);
-
-                        //Add label sets
-                        for (var id in this.linkLabels[source.tType.tag][target.tType.tag]) {
-                            var linkSet = this.linkLabels[source.tType.tag][target.tType.tag][id];
-                            link.addSelectableLabel(linkSet);
-                        }
-
-                        if (this.annotationLinks[source.id] === undefined)
-                            this.annotationLinks[source.id] = {};
-
-                        this.annotationLinks[source.id][target.id] = link;
-                        this.lastAddedLink = link;
-                        return link;
+                                if (object.annotationLinks[source.id] === undefined)
+                                    object.annotationLinks[source.id] = {};
+                                object.annotationLinks[source.id][target.id] = link;
+                                object.lastAddedLink = link;
+                            };
+                        }(this), function (err) {
+                            $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                        });
                     }
                 };
-
                 //Checks if two annotations are linkable depending on their target type
                 this.linkable = function (source, target) {
                     return this.linkLabels[source.tType.tag] !== undefined
                             && this.linkLabels[source.tType.tag][target.tType.tag] !== undefined;
                 };
-
                 //Remove a link and make a corresponding callback to the backend
                 this.removeLink = function (link) {
 
@@ -442,14 +397,12 @@ angular
                         }
                     }
                 };
-
                 //Remove each link that is connected to the object
                 this.removeConnectedLinks = function (object) {
 
                     //Remove all links that have the annotation as the source
                     if (this.annotationLinks[object.id] !== undefined)
                         delete this.annotationLinks[object.id];
-
                     //Remove all links that have the annotation as the target
                     for (var sourceID in this.annotationLinks) {
                         var source = this.annotationLinks[sourceID];
@@ -460,7 +413,6 @@ angular
                         }
                     }
                 };
-
                 //Read all data from the commited scheme
                 this.readSchemes = function () {
                     this.buildTargetTypes();
@@ -468,23 +420,19 @@ angular
                     this.buildLinkLabels();
                     this.setAnnotationMode();
                 };
-
                 this.buildTargetTypes = function () {
                     this.targetTypes = {};
                     for (var i = 0; i < this.scheme.targetTypes.length; i++) {
                         var type = this.scheme.targetTypes[i];
                         var targetType = new TargetType(i, type.targetType);
-
                         this.targetTypes[targetType.tag] = targetType;
                     }
                 };
-
                 //Return as specific target type when there only this one is
                 //assignable in the whole document
                 this.getOnlyTargetType = function () {
                     var counter = 0;
                     var targetType;
-
                     for (var id in this.targetTypes) {
                         targetType = this.targetTypes[id];
                         counter++;
@@ -493,13 +441,11 @@ angular
                     if (counter === 1)
                         return targetType;
                 };
-
                 this.buildLabels = function () {
                     this.labelTable = {};
                     for (var i = 0; i < this.scheme.labelSets.length; i++) {
                         var labSet = this.scheme.labelSets[i];
                         var labelSet = new LabelSet(labSet.id, labSet.name, labSet.exclusive);
-
                         //Add labels to set
                         var listLabel = labSet.labels;
                         for (var j = 0; j < listLabel.length; j++) {
@@ -520,24 +466,18 @@ angular
                         this.labelTable[labelSet.id] = labelSet;
                     }
                 };
-
                 this.buildLinkLabels = function () {
                     this.linkLabels = {};
-
                     for (var i = 0; i < this.scheme.linkSets.length; i++) {
                         var linkSet = this.scheme.linkSets[i];
                         var startType = linkSet.startType.targetType;
                         var endType = linkSet.endType.targetType;
-
                         if (this.linkLabels[startType] === undefined)
                             this.linkLabels[startType] = {};
-
                         if (this.linkLabels[startType][endType] === undefined)
                             this.linkLabels[startType][endType] = {};
-
                         var linkLabelSet = new LabelSet(linkSet.id, "LinkSet " + (i + 1), true);
                         this.linkLabels[startType][endType][linkSet.id] = linkLabelSet;
-
                         //Add labels to set
                         for (var j = 0; j < linkSet.linkLabels.length; j++) {
                             var tag = linkSet.linkLabels[j].linkLabel;
@@ -548,37 +488,30 @@ angular
                         }
                     }
                 };
-
                 //Get annotation by id
                 this.getAnnotation = function (id) {
                     return this.annotationData[id];
                 };
-
                 //Sets wheter every word is annotatable or only preselected targets
                 this.setAnnotationMode = function () {
                     //TODO: read this from scheme
                     this.annotationMode = AnnotationMode.Everything;
                 };
-
                 //Get target type by its tag
                 this.getTargetType = function (tag) {
                     return this.targetTypes[tag];
                 };
-
                 //Checks if a character can be characterized as punctuation
                 this.isPunctuation = function (string) {
                     return string !== undefined &&
                             (string.length === 1 && (string === "," || string === "." || string === "!" || string === "?"));
                 };
-
                 //Returns a color for a specific label zype
                 this.getColor = function (type) {
                     if (type === undefined || type.id === undefined)
                         return this.emptyColor;
-
                     return this.annotationColors[type.id % this.annotationColors.length];
                 };
-
                 //Helper method for finding corresponding words in the text
                 //that are indexed by star and end
                 this.findWords = function (start, end, object) {
@@ -587,33 +520,25 @@ angular
                     var lineStart = 0;
                     while (this.annotationText[lineStart].end < start)
                         lineStart++;
-
                     //Search for last corresponding line
                     var lineEnd = lineStart;
                     while (this.annotationText[lineEnd].end < end)
                         lineEnd++;
-
                     var firstLine = this.annotationText[lineStart];
                     var lastLine = this.annotationText[lineEnd];
-
-
                     //Search for corresponding text(s) in line
                     var rowStart = 0;
                     while (firstLine.words[rowStart].start < start)
                         rowStart++;
-
                     var rowEnd = 0;
                     while (lastLine.words[rowEnd].end < end)
                         rowEnd++;
-
                     var currentLine = lineStart;
                     var currentRow = rowStart;
-
                     while (currentLine < lineEnd) {
                         for (var w = currentRow; w < this.annotationText[currentLine].words.length; w++) {
 
                             var textWord = this.annotationText[currentLine].words[w];
-
                             if (textWord !== undefined) {
                                 textWord.setIndices(currentLine, w);
                                 object.addWord(textWord);
@@ -632,11 +557,9 @@ angular
                         }
                     }
                 };
-
                 this.initCompletedCheckbox = function () {
                     //!$window.sessionStorage.complete;
                 };
-
                 this.setDocCompleted = function () {
 
                     var payload = {
@@ -645,7 +568,6 @@ angular
                     $window.sessionStorage.completed = $scope.completed;
                     var payloadJson = JSON.stringify(payload);
                     var docUser = $window.sessionStorage.docId + '/' + $window.sessionStorage.uId;
-
                     $http.post("tempannot/document/" + docUser, payloadJson).then(function (response) {
                         if (response.status === 200) {
                             if ($scope.completed) {
@@ -657,9 +579,7 @@ angular
                             $rootScope.addAlert({type: 'danger', msg: 'No server connection'});
                         }
                     });
-
                 };
-
                 // TODO change here, should be called with a second parameter "true"/ "false"
                 // and change the hardcoded payload
                 this.setAnnotationNotSure = function (anno) {
@@ -677,9 +597,7 @@ angular
                     }).error(function (response) {
                         $rootScope.addAlert({type: 'danger', msg: response.status + ': No server connection.'});
                     });
-
                 };
-
                 this.checkResponseStatusCode = function (status) {
                     if (status >= 400 && status < 500) {
                         $rootScope.addAlert({type: 'danger', msg: 'This action is not allowed.'});
@@ -687,11 +605,9 @@ angular
                         $rootScope.addAlert({type: 'danger', msg: 'No server connection.'});
                     }
                 };
-
                 this.targetColor = new AnnotationColor("Target", "#F2EFE7", "#000000", "#646362");
                 this.emptyColor = new AnnotationColor("Empty", "#F2EFE7", "#716C67", "#999791");
                 this.emptyLabel = new AnnotationLabel("");
-
                 this.annotationColors = [new AnnotationColor("Red", "#D92929", "#8C1F1F"),
                     new AnnotationColor("Blue", "#2675A6", "#072540"),
                     new AnnotationColor("Violet", "#A770B0", "#795A8F"),
@@ -702,7 +618,6 @@ angular
                     new AnnotationColor("Orange", "#F98248", "#AA3935"),
                     new AnnotationColor("Gray", "#7E796D", "#716458")
                 ];
-
                 this.init();
             }]);
 
