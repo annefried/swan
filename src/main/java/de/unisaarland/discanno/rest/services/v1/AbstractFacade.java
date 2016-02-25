@@ -7,7 +7,6 @@ package de.unisaarland.discanno.rest.services.v1;
 
 import de.unisaarland.discanno.entities.BaseEntity;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.Context;
 
 /**

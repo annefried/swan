@@ -8,6 +8,7 @@ package de.unisaarland.discanno.entities;
 import com.fasterxml.jackson.annotation.JsonView;
 import de.unisaarland.discanno.rest.view.View;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -42,9 +43,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(
             name = Annotation.QUERY_FIND_BY_USER,
             query = "SELECT a FROM Annotation a WHERE a.user = :" + Annotation.PARAM_USER),
-    @NamedQuery( // TODO targets
+    @NamedQuery(
             name = Annotation.QUERY_FIND_BY_USER_AND_DOC,
-            query = "SELECT a FROM Annotation a WHERE a.user.id = :" + Annotation.PARAM_USER + " AND a.document.id = :" + Annotation.PARAM_DOCUMENT)
+            query = "SELECT a1 " +
+                    "FROM Annotation a1 " +
+                    "WHERE a1.user.id = :" + Annotation.PARAM_USER + " AND a1.document.id = :" + Annotation.PARAM_DOCUMENT)
 })
 public class Annotation extends BaseEntity {
     
@@ -204,6 +207,17 @@ public class Annotation extends BaseEntity {
     }
     
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.user);
+        hash = 29 * hash + Objects.hashCode(this.document);
+        hash = 29 * hash + Objects.hashCode(this.targetType);
+        hash = 29 * hash + this.start;
+        hash = 29 * hash + this.end;
+        return hash;
+    }
+    
+    @Override
     public boolean equals(Object o){
         if(!(o instanceof Annotation) ){
             return false;
@@ -214,6 +228,27 @@ public class Annotation extends BaseEntity {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Returns a clone of an annotation without id and empty labelMap.
+     * 
+     * @return
+     * @throws CloneNotSupportedException 
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Annotation newAnno = new Annotation();
+        newAnno.setStart(this.start);
+        newAnno.setEnd(this.end);
+        newAnno.setText(this.text);
+        newAnno.setNotSure(this.notSure);
+        newAnno.setTargetType(this.targetType);
+        newAnno.setUser(this.user);
+        newAnno.setDocument(this.document);
+        newAnno.setLabelMap(new HashSet<LabelLabelSetMap>());
+        
+        return newAnno;
     }
 
 }

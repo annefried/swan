@@ -96,7 +96,7 @@ public class Service {
             }
         }
     }
-    
+
     
     ///////////////////////////////////////////////
     //  PROCESS
@@ -360,10 +360,17 @@ public class Service {
     //  instance to be merged.
     ///////////////////////////////////////////////
     
-    public void addUserToProject(Long projId, Long userId) {
+    /**
+     * Adds a user to a project and creates the targets/ default annotations
+     * for this specific user.
+     * 
+     * @param projId
+     * @param userId
+     * @throws CloneNotSupportedException 
+     */
+    public void addUserToProject(Long projId, Long userId) throws CloneNotSupportedException {
         
         Project proj = (Project) projectDAO.find(projId, false);
-
         Users user =  (Users) usersDAO.find(userId, false);
         
         user.getProjects().add(proj);
@@ -374,6 +381,8 @@ public class Service {
         }
         
         projectDAO.merge(proj);
+        
+        generateTargets(proj, user);
     }
     
     public void addProjectManagerToProject(Long projId, Long userId) {
@@ -392,11 +401,13 @@ public class Service {
      * TODO: There is no real control mechanism that there is not a wrong
      * Label added to the annotation.
      * 
+     * @param user
      * @param annoId
      * @param label
      * @return  
+     * @throws java.lang.CloneNotSupportedException
      */
-    public Annotation addLabelToAnnotation(Long annoId, Label label) {
+    public Annotation addLabelToAnnotation(Long annoId, Label label) throws CloneNotSupportedException {
 
         Annotation anno = (Annotation) annotationDAO.find(annoId, false);
         updateDocument(anno.getDocument(), anno.getUser());
@@ -546,7 +557,16 @@ public class Service {
         link.addLabelMap(map);
     }
     
-    public Document addDocumentToProject(Document entity) throws IllegalArgumentException {
+    /**
+     * Adds a document to a project and creates the new targets/ default annotations
+     * for the existing users.
+     * 
+     * @param entity
+     * @return
+     * @throws IllegalArgumentException
+     * @throws CloneNotSupportedException 
+     */
+    public Document addDocumentToProject(Document entity) throws IllegalArgumentException, CloneNotSupportedException {
         
         Project project = (Project) projectDAO.find(entity.getProject().getId(), false);
         entity.setProject(project);
@@ -576,9 +596,52 @@ public class Service {
             entity.addStates(state);
         }
         
+        generateTargets(project, entity);
+        
         project.addDocuments(entity);
 
         return entity;
+    }
+    
+    /**
+     * Generates the default annotations for every user and document. Wrapper method.
+     * 
+     * @param proj
+     * @param doc
+     * @throws CloneNotSupportedException 
+     */
+    private void generateTargets(Project proj, Document doc) throws CloneNotSupportedException {
+        for (Users u : proj.getUsers()) {
+            generateTargets(doc, u);
+        }
+    }
+    
+    /**
+     * Generates the default annotations for every user and document. Wrapper method.
+     * 
+     * @param proj
+     * @param user
+     * @throws CloneNotSupportedException 
+     */
+    private void generateTargets(Project proj, Users user) throws CloneNotSupportedException {
+        for (Document doc : proj.getDocuments()) {
+            generateTargets(doc, user);
+        }
+    }
+    
+    /**
+     * Generates the default annotations for one user and one document.
+     * 
+     * @param proj
+     * @param doc
+     * @throws CloneNotSupportedException 
+     */
+    private void generateTargets(Document doc, Users user) throws CloneNotSupportedException {
+        for (Annotation a : doc.getDefaultAnnotations()) {
+            Annotation newAnno = (Annotation) a.clone();
+            newAnno.setUser(user);
+            annotationDAO.create(newAnno);
+        }
     }
     
     public Annotation changeTargetType(Long annoId, TargetType targetType) {

@@ -14,7 +14,9 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -53,8 +55,11 @@ public class Document extends BaseEntity {
      * These are the default annotations/ targets, given by the uploader.
      * They do not have an user id.
      */
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
-                mappedBy = "document")
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE }, fetch = FetchType.EAGER)
+    @JoinTable(
+        name="DOCUMENT_DEFAULTANNOTATIONS",
+        joinColumns={@JoinColumn(name="DOC_ID", referencedColumnName="id")},
+        inverseJoinColumns={@JoinColumn(name="DEFANNOTATION_ID", referencedColumnName="id")})
     private Set<Annotation> defaultAnnotations = new HashSet<>();
 
     

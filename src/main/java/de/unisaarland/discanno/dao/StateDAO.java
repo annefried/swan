@@ -16,7 +16,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
 /**
- * This DAO (Data Accress Object) provides all CRUD operations for states.
+ * This DAO (Data Access Object) provides all CRUD operations for states.
  *
  * @author Timo Guehring
  */
