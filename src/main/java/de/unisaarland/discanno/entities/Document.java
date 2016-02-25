@@ -106,5 +106,9 @@ public class Document extends BaseEntity {
     public void setDefaultAnnotations(Set<Annotation> defaultAnnotations) {
         this.defaultAnnotations = defaultAnnotations;
     }
-   
+    
+    public void removeDefaultAnnotations() {
+        this.defaultAnnotations = new HashSet<>();
+    }
+    
 }

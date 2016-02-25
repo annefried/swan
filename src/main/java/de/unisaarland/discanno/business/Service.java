@@ -716,6 +716,9 @@ public class Service {
     
     public void removeDocument(Document entity) {
         
+        entity.removeDefaultAnnotations();
+        documentDAO.merge(entity);
+        
         List<Annotation> annos = annotationDAO.getAllAnnotationsByDocId(entity);
         
         for (Annotation a : annos) {
