@@ -14,7 +14,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
 /**
- * This DAO (Data Accress Object) provides all CRUD operations for users.
+ * This DAO (Data Access Object) provides all CRUD operations for users.
  *
  * @author Timo Guehring
  */

@@ -42,7 +42,7 @@ public class ProjectsTest extends BaseTest {
     }
     
     @Test
-    public void testScenario1() {
+    public void testScenario1() throws CloneNotSupportedException {
         
         // Create scheme
         Scheme scheme = TestDataProvider.getScheme1();
@@ -108,7 +108,7 @@ public class ProjectsTest extends BaseTest {
                                 scheme.getLinkSets().get(0));
     }
     
-    public void testAnnotationsAndLinks(Document doc, Users user, LabelSet labelSet, LinkSet linkSet) {
+    public void testAnnotationsAndLinks(Document doc, Users user, LabelSet labelSet, LinkSet linkSet) throws CloneNotSupportedException {
         
         Annotation anno1 = testAddAnnotation1(doc, user, labelSet);
         Annotation anno2 = testAddAnnotation2(doc, user, labelSet);
@@ -116,7 +116,7 @@ public class ProjectsTest extends BaseTest {
         testAddLink(doc, user, linkSet, anno1, anno2);
     }
     
-    public Annotation testAddAnnotation1(Document doc, Users user, LabelSet labelSet) {
+    public Annotation testAddAnnotation1(Document doc, Users user, LabelSet labelSet) throws CloneNotSupportedException {
         
         Annotation anno = TestDataProvider.getAnnotation1();
         anno.setUser(user);
@@ -161,7 +161,7 @@ public class ProjectsTest extends BaseTest {
         return anno;
     }
     
-    public Annotation testAddAnnotation2(Document doc, Users user, LabelSet labelSet) {
+    public Annotation testAddAnnotation2(Document doc, Users user, LabelSet labelSet) throws CloneNotSupportedException {
         
         Annotation anno = TestDataProvider.getAnnotation2();
         anno.setUser(user);

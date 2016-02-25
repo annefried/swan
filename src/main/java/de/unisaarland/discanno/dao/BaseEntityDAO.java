@@ -12,7 +12,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 /**
- * This DAO provides extended CRUD operations for the specified entity type.
+ * This DAO (Data Access Object) provides extended CRUD operations for the specified entity type.
  *
  * @author Timo Guehring
  * @param <Entity>

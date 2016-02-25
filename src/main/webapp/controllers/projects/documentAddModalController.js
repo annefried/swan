@@ -11,7 +11,7 @@ angular.module('app').controller('documentAddModalController', function ($scope,
     };
 
     $scope.clearTargetFileMap = function () {
-        $scope.textFileMap = {};
+        $scope.targetFileMap = {};
     };
 
     $scope.sendText = function ($fileContent, $fileName) {

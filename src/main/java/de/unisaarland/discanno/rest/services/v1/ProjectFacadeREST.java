@@ -104,6 +104,8 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             return Response.ok().build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (NoResultException | CloneNotSupportedException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }

@@ -90,7 +90,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
             return documentDAO.create(doc);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException | IllegalArgumentException e) {
+        } catch (NoResultException | IllegalArgumentException | CloneNotSupportedException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         

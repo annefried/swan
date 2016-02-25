@@ -24,3 +24,4 @@ DROP TABLE users_projects CASCADE;
 DROP TABLE link_labelmap CASCADE;
 DROP TABLE linklabellinksetmap CASCADE;
 DROP TABLE linklabellinksetmap_linkset CASCADE;
+DROP TABLE projects_manager CASCADE;

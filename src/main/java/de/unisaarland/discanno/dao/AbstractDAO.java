@@ -14,7 +14,7 @@ import javax.persistence.TypedQuery;
 import javax.ws.rs.core.Response;
 
 /**
- * This abstract DAO provides CRUD operations for all kinds of entities.
+ * This abstract DAO (Data Access Object) provides CRUD operations for all kinds of entities.
  *
  * @author Timo Guehring
  */
