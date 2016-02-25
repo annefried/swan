@@ -4,38 +4,26 @@
 angular
         .module('app')
         .controller('annotationController', ['$scope', '$window', '$rootScope',
-            '$http', '$q', 'getAnnotationService', 'textService', 'targetService', 'linkService', 'schemeService', 'hotkeys',
-            function ($scope, $window, $rootScope, $http, $q, getAnnotationService, textService, targetService, linkService, schemeService, hotkeys) {
+            '$http', 'getAnnotationService', 'textService', 'targetService', 'linkService', 'schemeService', 'hotkeys',
+            function ($scope, $window, $rootScope, $http, getAnnotationService, textService, targetService, linkService, schemeService, hotkeys) {
 
                 //Reads the committed files and builds them into the used data structures
                 this.init = function () {
-                    var callbacks = this.readData();
-                    $q.all(callbacks).then(function (object) {
-//                        this = object;
-                        object.readSchemes();
-                        object.buildText();
-                        object.buildAnnotations();
-                        object.buildLinks();
-                        //yes this is correct, because f*ck js, that's why.
-                        $scope.completed = $window.sessionStorage.completed === 'true';
-                    }(this));
+                    this.readData();
+                    this.readSchemes();
+                    this.buildText();
+                    this.buildAnnotations();
+                    this.buildLinks();
+                    //yes this is correct, because f*ck js, that's why.
+                    $scope.completed = $window.sessionStorage.completed === 'true';
                 };
                 //Backend communication
                 this.readData = function () {
-                    var serviceCallbacks = [];
-                    // Annotations
-                    var annoCallback = getAnnotationService.getAnnotations($window.sessionStorage.uId, $window.sessionStorage.docId);
-                    $scope.this = this;
-                    annoCallback.then(function (response) {
-                        $scope.this.annotationDatabase = JSOG.parse(JSON.stringify(response.data)).annotations;
-                    });
-                    serviceCallbacks.push(annoCallback);
-                    // Schemes
+                    this.annotationDatabase = getAnnotationService.getAnnotations($window.sessionStorage.uId, $window.sessionStorage.docId);
                     this.scheme = schemeService.getScheme($window.sessionStorage.docId);
                     this.plainText = textService.getText($window.sessionStorage.docId);
                     this.targetData = targetService.getTargets($window.sessionStorage.uId, $window.sessionStorage.docId);
                     this.linkData = linkService.getLinks($window.sessionStorage.uId, $window.sessionStorage.docId);
-                    return serviceCallbacks;
                 };
                 //Split words of the text in data structure
                 this.buildText = function () {
@@ -358,7 +346,6 @@ angular
                             },
                             "labelMap": []
                         };
-                        // Might lead to links not being directly selected
                         $http.post("tempannot/links", JSON.stringify(jsonTemplate)).then(function (object) {
                             return function (response) {
                                 var newId = response.data;
@@ -373,10 +360,34 @@ angular
                                     object.annotationLinks[source.id] = {};
                                 object.annotationLinks[source.id][target.id] = link;
                                 object.lastAddedLink = link;
+                                return link;
                             };
                         }(this), function (err) {
                             $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
                         });
+//                        var xmlHttp = new XMLHttpRequest();
+//                        xmlHttp.open("POST", "tempannot/links", false); // false for synchronous request
+//                        xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+//                        xmlHttp.send(JSON.stringify(jsonTemplate));
+
+//                        this.checkResponseStatusCode(xmlHttp.status);
+
+//                        var newId = xmlHttp.responseText;
+//
+//                        var link = new AnnotationLink(newId, source, target);
+//
+//                        //Add label sets
+//                        for (var id in this.linkLabels[source.tType.tag][target.tType.tag]) {
+//                            var linkSet = this.linkLabels[source.tType.tag][target.tType.tag][id];
+//                            link.addSelectableLabel(linkSet);
+//                        }
+//
+//                        if (this.annotationLinks[source.id] === undefined)
+//                            this.annotationLinks[source.id] = {};
+//
+//                        this.annotationLinks[source.id][target.id] = link;
+//                        this.lastAddedLink = link;
+//                        return link;
                     }
                 };
                 //Checks if two annotations are linkable depending on their target type

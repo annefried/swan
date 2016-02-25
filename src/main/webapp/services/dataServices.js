@@ -4,10 +4,18 @@ angular.module('app')
         .factory("getAnnotationService", function ($http) {
             return  {
                 getAnnotations: function (uId, docId) {
+
                     // IDEA: Return http without then. Controller handeles then. http://stackoverflow.com/questions/16227644/angularjs-factory-http-service
                     // Async
-                    var httpCallback = $http.get("tempannot/annotations/" + uId + "/" + docId);
-                    return httpCallback;
+//                    var httpCallback = $http.get("tempannot/annotations/" + uId + "/" + docId);
+//                    return httpCallback;
+
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("GET", "tempannot/annotations/" + uId + "/" + docId, false); // false for synchronous request
+                    xmlHttp.send(null);
+                    var annotations = JSOG.parse(xmlHttp.responseText);
+                    return annotations.annotations;
+
                 }
             }
         })
