@@ -82,6 +82,38 @@ angular.module('app').controller('projectEditModalController', function ($scope,
 
         });
     };
+    
+    /**
+     * Returns a complement of a main list and sublist of users. Used for
+     * dropdown menus.
+     *
+     * @param {Array<User>} userList The main list.
+     * @param {Array<User>} subList The sublist whose elements are not in the
+     *                      comeplementList.
+     * @return {Array<User>} complementList Contains all elements from userList
+     *                      except all elements from subList.
+     */
+    $scope.getUserComplement = function (userList, subList) {
+        if (userList == undefined) {
+            return subList;
+        }
+        var complementList = [];
+        for (var i = 0; i < userList.length; i++) {
+            if (!$scope.containsUser(subList, userList[i])) {
+                complementList.push(userList[i]);
+            }
+        }
+        return complementList;
+    };
+    
+    $scope.containsUser = function (userList, user) {
+        for (var i = 0; i < userList.length; i++) {
+            if (userList[i].id == user.id) {
+                return true;
+            }
+        }
+        return false;
+    };
 
     $scope.submit = function (name) {
         $uibModalInstance.close(name);

@@ -32,16 +32,16 @@ and open the template in the editor.
                                     <td><a>
                                             <span class="glyphicon glyphicon-remove" style="color: red;"
                                                   ng-click="deletePM(pm.id)"></span>
-                                        </a></td>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="form-group">
-
                         <label>Add Project Manager:</label>
                         <select ng-model="newPM"
-                                ng-options="pm.id as pm.email for pm in this.pms | orderBy: '-email'">
+                                ng-options="pm.id as pm.email for pm in (getUserComplement(this.pms, this.projPms) | orderBy: '-email')">
                         </select>
                         <button class="btn btn-primary" ng-click="addSelectedPM()">
                             Add
@@ -60,16 +60,16 @@ and open the template in the editor.
                                     <td><a>
                                             <span class="glyphicon glyphicon-remove" style="color: red;"
                                                   ng-click="deleteUser(user.id)"></span>
-                                        </a></td>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="form-group">
-
                         <label>Add User:</label>
                         <select ng-model="newUser"
-                                ng-options="user.id as user.email for user in (this.users | orderBy: '-email')">
+                                ng-options="user.id as user.email for user in (getUserComplement(this.users, this.projUsers) | orderBy: '-email')">
                         </select>
                         <button class="btn btn-primary" ng-click="addSelectedUser()">
                             Add
