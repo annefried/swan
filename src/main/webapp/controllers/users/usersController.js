@@ -60,7 +60,7 @@ angular
                             }
                             var loggedTime = 0;
                             for (var jt = 0; jt < $scope.tilog.length; jt++) {
-                                loggedTime = loggedTime + 0 + $scope.tilog [jt].loggedtime;
+                                loggedTime = loggedTime + $scope.tilog [jt].loggedtime;
                             }
                             var user = {
                                 'id': u.id,

@@ -28,8 +28,6 @@ import javax.crypto.spec.PBEKeySpec;
  */
 public class Utility {
     
-    private static Calendar calendar = Calendar.getInstance();
-    
     private static final int KEY_LENGTH = 192; // bits
     private static final int PBKDF2_ITERATIONS = 1000;
     private static final String SALT = "django";
@@ -81,6 +79,7 @@ public class Utility {
     }
     
     public static Timestamp getCurrentTime() {
+        Calendar calendar = Calendar.getInstance();
         Date now = calendar.getTime();
         return new Timestamp(now.getTime());
     }

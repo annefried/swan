@@ -92,6 +92,7 @@ public class Service {
         for (State s : d.getStates()) {
             if (s.getUser().getId().equals(u.getId())) {
                 s.setLastEdit(Utility.getCurrentTime());
+                stateDAO.merge(s);
                 return;
             }
         }

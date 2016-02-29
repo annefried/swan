@@ -180,6 +180,8 @@ angular
                                     }
 
                                     var docCompl;
+                                    var lastEdit = -1;
+                                    
                                     //role: Annotater
                                     if ($scope.isuser === 'true') {
                                         var usrPos = -1;
@@ -192,11 +194,12 @@ angular
                                         if (usrPos === -1 || states.length !== proj.users.length) {
                                             console.log("Error");
                                         }
-
+                                        
                                         if (states[usrPos].completed) {
                                             projComplUser++;
                                         }
                                         docCompl = states[usrPos].completed;
+                                        lastEdit = states[usrPos].lastEdit;
                                     }
                                     //role: Admin
                                     else {
@@ -206,16 +209,22 @@ angular
                                                 projComplAdmin[t]++;
                                                 docComplAdmin++;
                                             }
+                                            if (states[t].lastEdit > lastEdit) {
+                                                lastEdit = states[t].lastEdit;
+                                            }
                                         }
                                         docCompl = docComplAdmin;
                                     }
                                     var docTemplate = {
-                                        'completed': docCompl,
                                         'id': doc.id,
-                                        'name': doc.name
+                                        'name': doc.name,
+                                        'completed': docCompl,
+                                        'lastEdit': lastEdit
                                     };
                                     documents.push(docTemplate);
                                 }
+                                documents.sort($scope.compareDocumentsByLastEdit);
+                                
                                 var projCompl;
                                 if ($scope.isuser === 'true') {
                                     projCompl = projComplUser;
@@ -238,14 +247,30 @@ angular
 
                         $rootScope.tableProjects = $scope.tableProjects;
                     };
+                    
                     /**
-                     * Get the Adress to export a project.
+                     * Compares two documents by their lastEdit value. Used to
+                     * sort the documents in a project.
+                     * 
+                     * @param {Document} doc1
+                     * @param {Document} doc2
+                     * @returns {Integer} return negative val, 0 or positive val
+                     *                  if doc2.lastEdit is less, equal or higher
+                     *                  than doc1.lastEdit
+                     */
+                    $scope.compareDocumentsByLastEdit = function (doc1, doc2) {
+                        return doc2.lastEdit - doc1.lastEdit;
+                    };
+                    
+                    /**
+                     * Get the address to export a project.
                      * @param {type} projId the Projects id
                      * @returns {String} the adress for export
                      */
                     $scope.exportProject = function (projId) {
                         return "tempannot/project/export/" + projId;
                     };
+                    
                     /**
                      * Called upon clicking the 'x'-Button in a documents row.
                      * @param {type} documentId the documents id

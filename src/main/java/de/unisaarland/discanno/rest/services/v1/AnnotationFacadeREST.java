@@ -14,7 +14,6 @@ import de.unisaarland.discanno.entities.Annotation;
 import de.unisaarland.discanno.entities.BooleanHelper;
 import de.unisaarland.discanno.entities.Label;
 import de.unisaarland.discanno.entities.TargetType;
-import de.unisaarland.discanno.entities.Users;
 import de.unisaarland.discanno.rest.view.View;
 import java.util.List;
 import java.util.logging.Level;
@@ -57,6 +56,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     public Response create(Annotation entity) {
+        
         try {
             usersDAO.checkLogin(getSessionID());
             service.process(entity);
@@ -66,6 +66,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
         } catch (NullPointerException | NoResultException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
+        
     }
 
     @DELETE
