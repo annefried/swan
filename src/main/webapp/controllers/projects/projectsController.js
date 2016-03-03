@@ -22,12 +22,12 @@ angular
                         $scope.loaded = false;
                         // Used to determine which projects are currently toggled
                         $rootScope.collapsed = {};
-                        var httpProjects = $scope.loadProjects();
+                        var httpProjects = $rootScope.loadProjects();
                         var httpSchemes = $scope.loadSchemes();
                         // Wait for both http requests to be answered
                         $q.all([httpProjects, httpSchemes]).then(function () {
                             $scope.loaded = true;
-                            $scope.buildTableProjects(httpSchemes, httpProjects);
+                            $rootScope.buildTableProjects();
                         });
                     };
 
@@ -114,153 +114,6 @@ angular
                         });
                         return httpSchemes;
                     };
-                    /**
-                     * Load Projects from Database
-                     */
-                    $scope.loadProjects = function () {
-                        // If User show only assigned projects
-                        if ($window.sessionStorage.role !== 'user') {
-                            var httpProjects = $http.get("tempannot/project").then(function (response) {
-                                $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
-                            }, function (err) {
-                                $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
-                            });
-                        } else {
-                            var httpProjects = $http.get("tempannot/project/byuser/" + $window.sessionStorage.uId).then(function (response) {
-                                $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
-                            }, function (err) {
-                                $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
-                            });
-                        }
-                        return httpProjects;
-                    };
-                    /**
-                     * Construct the table of all projects that were loaded.
-                     */
-                    $scope.buildTableProjects = function () {
-                        $scope.tableProjects = [];
-                        for (var i = 0; i < $scope.projects.length; i++) {
-                            var proj = $scope.projects[i];
-                            var projComplUser = 0;
-                            var projComplAdmin = [];
-                            var documents = [];
-                            var myProject = $window.sessionStorage.role === 'admin';
-                            var projComplAdmin = [];
-                            for (var j = 0; j < proj.users.length; j++) {
-                                var u = proj.users[j];
-                                if (u.id == $window.sessionStorage.uId) {
-                                    myProject = true;
-                                }
-                                if (u.role == 'user') {
-                                    projComplAdmin.push(0);
-                                } else {
-                                    console.log("This should never happen.\nBut it will.");
-                                }
-                            }
-                            for (var j = 0; j < proj.projectManager.length; j++) {
-                                var p = proj.projectManager[j];
-                                if (p.id == $window.sessionStorage.uId) {
-                                    myProject = true;
-                                }
-                            }
-
-                            if (myProject) {
-                                var projComplUser = 0;
-                                var documents = [];
-
-                                for (var j = 0; j < proj.documents.length; j++) {
-                                    var doc = proj.documents[j];
-                                    var states = [];
-
-                                    for (var yi = 0; yi < doc.states.length; yi++) {
-                                        var st = doc.states[yi];
-                                        if (st.user.role == 'user') {
-                                            states.push(st);
-                                        }
-                                    }
-
-                                    var docCompl;
-                                    var lastEdit = -1;
-                                    
-                                    //role: Annotater
-                                    if ($scope.isuser === 'true') {
-                                        var usrPos = -1;
-                                        for (var t = 0; t < proj.users.length; t++) {
-                                            if ($window.sessionStorage.uId == states[t].user.id) {
-                                                usrPos = t;
-                                            }
-                                        }
-
-                                        if (usrPos === -1 || states.length !== proj.users.length) {
-                                            console.log("Error");
-                                        }
-                                        
-                                        if (states[usrPos].completed) {
-                                            projComplUser++;
-                                        }
-                                        docCompl = states[usrPos].completed;
-                                        lastEdit = states[usrPos].lastEdit;
-                                    }
-                                    //role: Admin
-                                    else {
-                                        var docComplAdmin = 0;
-                                        for (var t = 0; t < states.length; t++) {
-                                            if (states[t].completed) {
-                                                projComplAdmin[t]++;
-                                                docComplAdmin++;
-                                            }
-                                            if (states[t].lastEdit > lastEdit) {
-                                                lastEdit = states[t].lastEdit;
-                                            }
-                                        }
-                                        docCompl = docComplAdmin;
-                                    }
-                                    var docTemplate = {
-                                        'id': doc.id,
-                                        'name': doc.name,
-                                        'completed': docCompl,
-                                        'lastEdit': lastEdit
-                                    };
-                                    documents.push(docTemplate);
-                                }
-                                documents.sort($scope.compareDocumentsByLastEdit);
-                                
-                                var projCompl;
-                                if ($scope.isuser === 'true') {
-                                    projCompl = projComplUser;
-                                } else {
-                                    projCompl = projComplAdmin;
-                                }
-
-                                var template = {
-                                    'id': proj.id,
-                                    'name': proj.name,
-                                    'users': proj.users,
-                                    'completed': projCompl,
-                                    'numberOfDocuments': proj.documents.length,
-                                    'documents': documents,
-                                    'pms': proj.projectManager
-                                };
-                                $scope.tableProjects.push(template);
-                            }
-                        }
-
-                        $rootScope.tableProjects = $scope.tableProjects;
-                    };
-                    
-                    /**
-                     * Compares two documents by their lastEdit value. Used to
-                     * sort the documents in a project.
-                     * 
-                     * @param {Document} doc1
-                     * @param {Document} doc2
-                     * @returns {Integer} return negative val, 0 or positive val
-                     *                  if doc2.lastEdit is less, equal or higher
-                     *                  than doc1.lastEdit
-                     */
-                    $scope.compareDocumentsByLastEdit = function (doc1, doc2) {
-                        return doc2.lastEdit - doc1.lastEdit;
-                    };
                     
                     /**
                      * Get the address to export a project.
@@ -295,16 +148,14 @@ angular
 
                     /**
                      * Redirects to the AnnotationTool
-                     * @param {type} docId The document to annotate
-                     * @param {type} title its title
-                     * @param {type} projectName the Projects name
-                     * @param {type} completed if it is completed
+                     * 
+                     * @param {String} docId The document id to annotate
+                     * @param {String} document name
+                     * @param {String} projectName the Projects name
+                     * @param {Boolean} completed state of the document
                      */
-                    $scope.openAnnoTool = function (docId, title, projectName, completed) {
-                        $window.sessionStorage.docId = docId;
-                        $window.sessionStorage.title = title;
-                        $window.sessionStorage.project = projectName;
-                        $window.sessionStorage.completed = completed;
+                    $scope.openAnnoTool = function (docId, docName, projectName, completed) {
+                        $rootScope.initAnnoTool(docId, docName, projectName, completed);
                         $location.path('/annotation');
                     };
 

@@ -4,8 +4,8 @@
 angular
         .module('app')
         .controller('annotationController', ['$scope', '$window', '$rootScope',
-            '$http', 'getAnnotationService', 'textService', 'targetService', 'linkService', 'schemeService', 'hotkeys',
-            function ($scope, $window, $rootScope, $http, getAnnotationService, textService, targetService, linkService, schemeService, hotkeys) {
+            '$http', 'getAnnotationService', 'textService', 'targetService', 'linkService', 'schemeService', '$q', 'hotkeys',
+            function ($scope, $window, $rootScope, $http, getAnnotationService, textService, targetService, linkService, schemeService, $q, hotkeys) {
 
                 //Reads the committed files and builds them into the used data structures
                 this.init = function () {
@@ -14,7 +14,7 @@ angular
                     this.buildText();
                     this.buildAnnotations();
                     this.buildLinks();
-                    //yes this is correct, because f*ck js, that's why.
+
                     $scope.completed = $window.sessionStorage.completed === 'true';
                 };
                 //Backend communication
@@ -24,7 +24,29 @@ angular
                     this.plainText = textService.getText($window.sessionStorage.docId);
                     this.targetData = targetService.getTargets($window.sessionStorage.uId, $window.sessionStorage.docId);
                     this.linkData = linkService.getLinks($window.sessionStorage.uId, $window.sessionStorage.docId);
+                    
+                    // Retrieve projects and process projects
+                    var httpProjects = $rootScope.loadProjects();
+                    // Wait for both http requests to be answered
+                    $q.all([httpProjects]).then(function () {
+                        $rootScope.buildTableProjects();
+                    });
+                    
                 };
+                
+                /**
+                 * Opens the annotation tool again with the passed document
+                 * 
+                 * @param {String} docId The document id to annotate
+                 * @param {String} document name
+                 * @param {String} projectName the Projects name
+                 * @param {Boolean} completed state of the document
+                 */
+                $scope.openAnnoTool = function (docId, docName, projectName, completed) {
+                    $rootScope.initAnnoTool(docId, docName, projectName, completed);
+                    $window.location.reload();
+                };
+                
                 //Split words of the text in data structure
                 this.buildText = function () {
 

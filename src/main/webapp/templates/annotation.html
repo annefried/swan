@@ -76,7 +76,8 @@
                 <div>
                     <uib-accordion close-others="false">
                         
-                         <uib-accordion-group heading="Visualization" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable">
+                        <!-- Graph -->
+                        <uib-accordion-group heading="Visualization" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable">
                             <div>
                                 <div ng-controller="d3GraphController as graph">
                                     <d3-graph annotations="annotation.annotationData"
@@ -88,13 +89,15 @@
                                               added-link="annotation.lastAddedLink"
                                               last-set="annotation.lastSet"
                                               last-targeted="annotation.lastTargeted"
-                                              set-selection="annotation.setSelected(item)"></d3-graph>
+                                              set-selection="annotation.setSelected(item)">
+                                    </d3-graph>
                                 </div>
 
                             </div>
                         </uib-accordion-group>
                         
-                         <uib-accordion-group heading="Options" is-disabled="false" is-open="true" class="unselectable">
+                        <!-- Annotation options -->
+                        <uib-accordion-group heading="Options" is-disabled="false" is-open="true" class="unselectable">
                             <div ng-controller="d3OptionsController as options">
                                 <d3-options data="annotation.annotationText"
                                             selection="annotation.selectedNode"
@@ -113,16 +116,33 @@
                             </div>
                         </uib-accordion-group>
                        
-                       
-                       <uib-accordion-group heading="Shortcuts" is-disabled="false" is-open="true" class="unselectable">
-              
+                        <!-- Navigation to other documents -->
+                        <uib-accordion-group heading="Navigation" is-disabled="false" is-open="false" class="unselectable">
+                            <div ng-repeat="proj in this.tableProjects">
+                                <label>{{proj.name}}</label>
+                                <table class="table">
+                                    <tr ng-repeat="doc in proj.documents">
+                                        <td>
+                                            <a ng-href ng-click="openAnnoTool(doc.id, doc.name, proj.name, doc.completed)">{{doc.name}}</a>
+                                        </td>
+                                        <td>
+                                            <span ng-hide="doc.completed === false" class="glyphicon glyphicon-ok"></span>
+                                        </td>
+                                    </tr>                                                         
+                                </table>
+                            </div>
+                        </uib-accordion-group>
+                        
+                        <!-- Shortcuts -->
+                        <uib-accordion-group heading="Shortcuts" is-disabled="false" is-open="true" class="unselectable">
                             <table class="table">
-                              <tr>
-                                <td><kbd><kbd>?</kbd></kbd></td>
-                                <td>Show all Shortcuts</td>
-                              </tr>                                                         
+                                <tr>
+                                    <td><kbd><kbd>?</kbd></kbd></td>
+                                    <td>Show all shortcuts</td>
+                                </tr>                                                         
                             </table>
                         </uib-accordion-group>
+                        
                     </uib-accordion>
                 </div>
             </div>
