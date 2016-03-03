@@ -25,7 +25,7 @@
                             <th class="col-md-2 vert-align">Project Manager</th>
                             <th class="col-md-1 vert-align">Scheme</th>
                             <th class="col-md-1 vert-align">
-                                <span ng-hide="isuser === 'true'">Add User</span>
+                                <span ng-hide="isuser === 'true'">Edit Project</span>
                             </th>
                             <th class="col-md-1 vert-align">
                                 <span ng-hide="isuser === 'true'">Delete</span>
@@ -103,7 +103,7 @@
                             </td>
                             <td class="col-md-1 vert-align">
                                 <a>
-                                    <span class="glyphicon glyphicon-user"
+                                    <span class="glyphicon glyphicon-list"
                                         ng-hide="isuser === 'true'"
                                         ng-click="editProject(x.id, x.name)">
                                     </span>
@@ -130,7 +130,11 @@
                             <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-1 vert-align"></td>
-                            <td class="col-md-1 vert-align"><b>View</b></td>
+                            <td class="col-md-1 vert-align">
+                                <!-- Show 'View' for admin/ project manager and 'Edit' for user -->
+                                <b ng-hide="isuser === 'true'">View</b>
+                                <b ng-hide="isuser === 'false'">Edit</b>
+                            </td>
                             <td class="col-md-1 vert-align"><b ng-hide="isuser === 'true'">Delete</b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
                         </tr>
@@ -140,7 +144,11 @@
                             <td class="col-md-1 vert-align"></td>
                             <td class="col-md-2 vert-align">{{doc.name}}</td>
                             <td class="col-md-2 vert-align">
-                                <span ng-hide="isuser === 'false'" ng-bind="doc.completed"></span>
+                                <!-- Show check mark if the user role is user and the document is completed
+                                     and show nothing if the document is not completed and show the
+                                     progress bar if the user is admin/ project manager -->
+                                <span class="glyphicon glyphicon-ok"
+                                      ng-if="isuser === 'true' && doc.completed === true"></span>
                                 <div ng-hide="isuser === 'true'" class="userprogress progress">
                                     <!-- TODO: adjust progress bar -->
                                     <div class="progress-bar  progress-bar-success"
@@ -156,7 +164,13 @@
                             <td class="col-md-1 vert-align"></td>
                             <td class="col-md-1 vert-align">
                                 <a>
+                                    <!-- Show open eye for admin/ project manager and pencil for user -->
                                     <span class="glyphicon glyphicon-eye-open"
+                                          ng-hide="isuser === 'true'"
+                                          ng-click="openAnnoTool(doc.id, doc.name, x.name, doc.completed)">
+                                    </span>
+                                    <span class="glyphicon glyphicon-pencil"
+                                          ng-hide="isuser === 'false'"
                                           ng-click="openAnnoTool(doc.id, doc.name, x.name, doc.completed)">
                                     </span>
                                 </a>

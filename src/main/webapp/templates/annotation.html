@@ -9,19 +9,25 @@
         </div>
     </script>
     <div>
+        
         <div>
             
             <div class="col-md-7" ng-controller="d3AnnotationController as d3Anno" ng-mouseup="d3Anno.UpdateSelectionText()">
                     
-                <div class="annotationtitle filename" >{{d3Anno.project}} > <i>{{d3Anno.title}}</i>
-                    <div class="checkbox" ng-controller="annotationController as annoCon"
-                         ng-hide="isuser=='false'">
-                        <label><input type="checkbox" value=""
+                <div class="annotationtitle filename">
+                    {{d3Anno.project}} > <i>{{d3Anno.title}}</i>
+                    <label ng-hide="isuser == 'false'">&nbsp;&nbsp;(</label>
+                    <div class="checkbox"
+                         style="display: inline-block;"
+                         ng-controller="annotationController as annoCon"
+                         ng-hide="isuser == 'false'">
+                        <input type="checkbox" value=""
                                       ng-model="completed"
-                                      ng-click="annoCon.setDocCompleted()">Completed</label>
+                                      ng-click="annoCon.setDocCompleted()">
+                        <label>Completed</label>
                     </div>
+                    <label ng-hide="isuser == 'false'">)</label>
                 </div>
-                    
                 
                 <hr class="featurette-divider">
 
@@ -121,7 +127,7 @@
                 </div>
             </div>
         </div>
-
+        
     </div>
 
 </div>
