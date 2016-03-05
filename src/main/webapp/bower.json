@@ -1,8 +1,8 @@
 {
   "name": "DiscAnno",
   "description": "An annotation tool for discourse annotations and temporal structures",
-  "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
+  "version": "0.8.0",
+  "homepage": "https://github.com/annefried/discanno",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -12,6 +12,7 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "jsog": "1.0.7",
-    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.6.0"
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.6.0",
+    "d3": "~3.5"
   }
 }

@@ -4,11 +4,10 @@ angular
             'ngAnimate',
             'ui.bootstrap',
             'ui.bootstrap.tpls',
-            'd3',
+            'd3Module',
             'cfp.hotkeys'
         ])
         .config(Config);
-
 
 function Config($routeProvider) {
     $routeProvider
