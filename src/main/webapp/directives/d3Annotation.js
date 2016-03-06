@@ -47,7 +47,7 @@ angular.module('app')
                         var prefixes = [];
 
                         var currJ = 0;
-                        var jDistance = 50; //Amount of lines after which text should be redrawn
+                        var jDistance = 20; //Amount of lines after which text should be redrawn
 
                         var oldJ = currJ;
                         var minJ = 0;
@@ -1281,11 +1281,11 @@ angular.module('app')
 
                             svg.selectAll(".annotationlink").remove();
                             svg.selectAll(".annotationlinktext").remove();
-                            svg.selectAll("linkmarker").remove();
+                            svg.selectAll("defs").remove();
 
                             var minLine = minJ;
                             var maxLine = maxJ;
-
+                            console.log($scope.links);
                             for (var outerLinkID in $scope.links) {
                                 var outerLinks = $scope.links[outerLinkID];
 
@@ -1333,7 +1333,6 @@ angular.module('app')
                                                 $scope.drawEverything();
                                             }
                                         });
-
                                 //Draw arrow at the end of the path
                                 svg.append("svg:defs").selectAll("linkmarker")
                                         .data(["bolt"])
@@ -1348,7 +1347,6 @@ angular.module('app')
                                         .attr("orient", "auto")
                                         .append("svg:path")
                                         .attr("d", "M0,-5L10,0L0,5");
-
                                 //Link text
                                 svg.selectAll("annotationlinktexts")
                                         .data(d3.entries(outerLinks))
