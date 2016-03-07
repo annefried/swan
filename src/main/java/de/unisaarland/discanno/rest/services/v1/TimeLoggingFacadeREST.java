@@ -7,6 +7,7 @@ package de.unisaarland.discanno.rest.services.v1;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.TimeLoggingDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
@@ -53,7 +54,7 @@ public class TimeLoggingFacadeREST extends AbstractFacade<TimeLogging> {
     public Response create(TimeLogging entity) {
 
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             service.process(entity);
             return usersDAO.create(entity);
         } catch (SecurityException e) {
@@ -68,7 +69,7 @@ public class TimeLoggingFacadeREST extends AbstractFacade<TimeLogging> {
     public Response getTimeLoggingByUserId(@PathParam("id") Long id) throws URISyntaxException {
 
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
 
             List<TimeLogging> list = timeLoggingDAO.getAllTimeLoggingByUserId(id);
 

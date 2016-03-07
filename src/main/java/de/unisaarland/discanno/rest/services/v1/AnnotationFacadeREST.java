@@ -7,6 +7,7 @@ package de.unisaarland.discanno.rest.services.v1;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.AnnotationDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
@@ -58,7 +59,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     public Response create(Annotation entity) {
         
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             service.process(entity);
             return annotationDAO.create(entity);
         } catch (SecurityException e) {
@@ -74,7 +75,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     public Response remove(@PathParam("id") Long id) {
         
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             service.removeAnnotation(annotationDAO.find(id));
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
@@ -100,7 +101,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     public Response removeLabelFromAnnotationREST(@PathParam("annoId") Long annoId, Label label) {
         
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             service.removeLabelFromAnnotation(annotationDAO.find(annoId), label);
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
@@ -125,7 +126,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     public Response addLabelToAnnotationREST(@PathParam("annoId") Long annoId, Label label) {
         
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             Annotation anno = service.addLabelToAnnotation(annoId, label);
             annotationDAO.merge(anno);
             return Response.ok().build();
@@ -143,7 +144,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     public Response changeTargetTypeREST(@PathParam("annoId") Long annoId, TargetType targetType) {
         
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             Annotation anno = service.changeTargetType(annoId, targetType);
             annotationDAO.merge(anno);
             return Response.ok().build();
@@ -161,7 +162,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     public Response setNotSureREST(@PathParam("annoId") Long annoId, BooleanHelper boolVal) {
         
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             Annotation anno = annotationDAO.setNotSure(annoId, boolVal.isValue());
             annotationDAO.merge(anno);
             return Response.ok().build();
@@ -179,7 +180,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     public Response getAnnotationsByUserIdDocId(@PathParam("userId") Long userId, @PathParam("docId") Long docId) {
 
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
 
             List<Annotation> list = annotationDAO.getAllAnnotationsByUserIdDocId(userId, docId);
 
