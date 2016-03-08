@@ -13,6 +13,10 @@
     "html5-boilerplate": "~5.2.0",
     "jsog": "1.0.7",
     "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.6.0",
-    "d3": "~3.5"
+    "d3": "~3.5",
+    "bootstrap": "~3.3.6",
+    "bootstrap-tour": "~0.10.2",
+    "angular-bootstrap": "angular-ui-bootstrap-bower#~0.14.3",
+    "angular-animate": "git://github.com/angular/bower-angular-animate.git#~1.5.0"
   }
 }

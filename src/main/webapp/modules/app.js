@@ -55,5 +55,10 @@ function Config($routeProvider) {
                 templateUrl: 'templates/schemes/schemes.html',
                 controller: 'schemesController',
                 controllerAs: 'schemes',
+            })
+            .when('/tutorial', {
+                templateUrl: 'templates/tutorial.html',
+                controller: 'tutorialController',
+                controllerAs: 'tutorial',
             });
 }

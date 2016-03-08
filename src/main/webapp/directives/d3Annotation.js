@@ -1285,7 +1285,7 @@ angular.module('app')
 
                             var minLine = minJ;
                             var maxLine = maxJ;
-                            console.log($scope.links);
+
                             for (var outerLinkID in $scope.links) {
                                 var outerLinks = $scope.links[outerLinkID];
 
