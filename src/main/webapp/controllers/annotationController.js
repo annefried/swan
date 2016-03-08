@@ -9,6 +9,12 @@ angular
 
                 //Reads the committed files and builds them into the used data structures
                 this.init = function () {
+                    $scope.role = $window.sessionStorage.role;
+                    if ($window.sessionStorage.role == 'user') {
+                        $window.sessionStorage.shownUser = $window.sessionStorage.uId;
+                    } else {
+                        this.setUpAnnoView();
+                    }
                     this.readData();
                     this.readSchemes();
                     this.buildText();
@@ -17,26 +23,28 @@ angular
 
                     $scope.completed = $window.sessionStorage.completed === 'true';
                 };
+
+
                 //Backend communication
                 this.readData = function () {
-                    this.annotationDatabase = getAnnotationService.getAnnotations($window.sessionStorage.uId, $window.sessionStorage.docId);
+                    this.annotationDatabase = getAnnotationService.getAnnotations($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                     this.scheme = schemeService.getScheme($window.sessionStorage.docId);
                     this.plainText = textService.getText($window.sessionStorage.docId);
-                    this.targetData = targetService.getTargets($window.sessionStorage.uId, $window.sessionStorage.docId);
-                    this.linkData = linkService.getLinks($window.sessionStorage.uId, $window.sessionStorage.docId);
-                    
+                    this.targetData = targetService.getTargets($window.sessionStorage.shownUser, $window.sessionStorage.docId);
+                    this.linkData = linkService.getLinks($window.sessionStorage.shownUser, $window.sessionStorage.docId);
+
                     // Retrieve projects and process projects
                     var httpProjects = $rootScope.loadProjects();
                     // Wait for both http requests to be answered
                     $q.all([httpProjects]).then(function () {
                         $rootScope.buildTableProjects();
                     });
-                    
+
                 };
-                
+
                 /**
                  * Opens the annotation tool again with the passed document
-                 * 
+                 *
                  * @param {String} docId The document id to annotate
                  * @param {String} document name
                  * @param {String} projectName the Projects name
@@ -46,7 +54,37 @@ angular
                     $rootScope.initAnnoTool(docId, docName, projectName, completed);
                     $window.location.reload();
                 };
-                
+
+                this.setUpAnnoView = function () {
+                    if ($window.sessionStorage.shownUser == undefined) {
+                        $window.sessionStorage.shownUser = $window.sessionStorage.uId;
+                    }
+                    if ($scope.shownUserList === undefined) {
+                        $scope.shownUserList = {};
+                    }
+                    $scope.shownUserList[$window.sessionStorage.shownUser] = $window.sessionStorage.shownUser;
+                    $http.get("tempannot/document/" + $window.sessionStorage.docId)
+                            .then(function (response) {
+                                $scope.users = JSOG.parse(JSON.stringify(response.data)).project.users;
+                            }, function (response) {
+
+                            });
+                }
+
+                this.onUserChange = function () {
+                    var form = document.getElementById("users");
+                    $window.sessionStorage.shownUser = form.elements["users"].value;
+                    $scope.openAnnoTool($window.sessionStorage.docId, "", "", "");
+                    // For TODO: dynamic AnnoLoading
+//                    this.readData();//FIXME: does not work for some reason
+//                    this.buildText();
+//                    this.buildAnnotations();
+//                    this.buildLinks();
+                }
+                $scope.changeCallbackCont = function () {
+                    $rootScope.changeCallback();
+                }
+
                 //Split words of the text in data structure
                 this.buildText = function () {
 

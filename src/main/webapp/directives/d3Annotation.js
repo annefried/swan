@@ -7,6 +7,7 @@ angular.module('app')
                 return {
                     restrict: 'EA',
                     scope: {
+                        onUserChange: "&",
                         data: "=",
                         annotations: "=",
                         targets: "=",
@@ -536,6 +537,7 @@ angular.module('app')
                             }
                         });
 
+
                         //Listens to changes to the last changed object
                         $scope.$watch('lastSet', function (newVals) {
                             if (newVals !== undefined) {
@@ -551,6 +553,16 @@ angular.module('app')
                                 $scope.setLineHeights();
                                 $scope.drawAnnotations(minJ, maxJ);
                             }
+                        });
+                        // ADDED for AnnoView
+                        $rootScope.changeCallback = function () {
+                            $scope.onUserChange();
+                        };
+                        $scope.$watch('annotations', function (newVals, oldVals) {
+                            $scope.formatTargets();
+                            $scope.formatAnnotations();
+                            $scope.render(true);
+                            $scope.setLineHeights();
                         });
 
                         //Determines what text passage the cursor is currently highlighting
@@ -1285,7 +1297,6 @@ angular.module('app')
 
                             var minLine = minJ;
                             var maxLine = maxJ;
-                            console.log($scope.links);
                             for (var outerLinkID in $scope.links) {
                                 var outerLinks = $scope.links[outerLinkID];
 
