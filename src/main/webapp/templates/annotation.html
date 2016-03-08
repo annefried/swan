@@ -42,6 +42,7 @@
                             
                             <div>
                                 <d3-annotation class="d3Anno"
+                                               on-user-change="annotation.onUserChange()"
                                                data="annotation.annotationText"
                                                annotations="annotation.annotationData"
                                                targets="annotation.targets"
@@ -75,7 +76,19 @@
             <div ng-class="GraphAccordion">
                 <div>
                     <uib-accordion close-others="false">
-                        
+                        <uib-accordion-group heading="Users" is-open="true" is-disabled="status.isFirstDisabled" class="unselectable" ng-hide="role == 'user'">
+                        <div ng-controller="annotationController as annoCon" >
+                            <form id="users">
+                                <div ng-repeat="u in users">
+                                    <label ng-show="u.role == 'user'">
+                                        <input type="radio" name="users" value="{{u.id}}" ng-model="shownUserList[u.id]"
+                                               ng-click="changeCallbackCont()">
+                                        {{u.prename + u.lastname}}
+                                    </label><br>
+                                </div>
+                            </form>
+                        </div>
+                        </uib-accordion-group>
                         <!-- Graph -->
                         <uib-accordion-group heading="Visualization" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable">
                             <div>
