@@ -26,15 +26,15 @@ public class UsersDAO extends BaseEntityDAO<Users> {
         super(Users.class);
     }
     
-    public Users checkLogin(String session, Users.RoleType role) throws SecurityException {
+    public Users checkLogin(String session, Users.RoleType role) {
 
         Users user = getUserBySession(session);
-
+        
         if (user == null
                 || user.getRole() == null
                 || (!role.equals(user.getRole()) && !( user.getRole().equals(Users.RoleType.admin)|| user.getRole().equals(Users.RoleType.projectmanager)))
                 || role.equals(Users.RoleType.projectmanager) && !(user.getRole().equals(Users.RoleType.admin)|| user.getRole().equals(Users.RoleType.projectmanager))) {
-            throw new SecurityException("User is unauthorized.");
+            return null;
         }
 
         return user;

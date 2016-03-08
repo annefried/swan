@@ -7,6 +7,7 @@ package de.unisaarland.discanno.rest.services.v1;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.Users;
@@ -81,11 +82,11 @@ public class LoginFacadeREST extends AbstractFacade<Users> {
     public Response logout() {
         try {
             Users user = usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(user);
             user.setSession(null);
             usersDAO.merge(user);
             return Response.ok("Logout successful.").build();
         } catch(SecurityException e){
-            
             return Response.status(Response.Status.CONFLICT).build();
         }
     }

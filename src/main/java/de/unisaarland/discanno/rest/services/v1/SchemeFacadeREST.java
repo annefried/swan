@@ -7,6 +7,7 @@ package de.unisaarland.discanno.rest.services.v1;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.SchemeDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
@@ -57,10 +58,8 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
     public Response create(Scheme entity) {
 
         try {
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
-
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.process(entity);
-
             return usersDAO.create(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
@@ -73,7 +72,7 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
     public Response remove(@PathParam("id") Long id) {
 
         try {
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.removeScheme(id);
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
@@ -90,7 +89,7 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
     public Response getSchemeByDocId(@PathParam("docId") Long docId) {
 
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
 
             Scheme scheme = schemeDAO.getSchemeByDocId(docId);
 
@@ -98,7 +97,6 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
                                         .withRootName("scheme")
                                         .writeValueAsString(scheme))
                             .build();
-            
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
         } catch (JsonProcessingException ex) {
@@ -113,7 +111,7 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
     public Response getSchemes() throws URISyntaxException {
 
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
 
             List<Scheme> list = schemeDAO.findAll();
 

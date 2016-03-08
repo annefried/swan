@@ -5,13 +5,19 @@
  */
 package de.unisaarland.discanno.rest.services.v1;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.DocumentDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.BooleanHelper;
 import de.unisaarland.discanno.entities.Document;
 import de.unisaarland.discanno.entities.Users;
+import de.unisaarland.discanno.rest.view.View;
 import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -34,6 +40,9 @@ import javax.ws.rs.core.Response;
 @Path("/document")
 public class DocumentFacadeREST extends AbstractFacade<Document> {
 
+    // Needed to write JSON with specific properties e.g. views
+    private static final ObjectMapper mapper = new ObjectMapper();
+    
     @EJB
     Service service;
     
@@ -49,7 +58,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     public Response create(Document entity) {
         
         try {   
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.process(entity);
             return documentDAO.create(entity);
         } catch (SecurityException e){
@@ -67,7 +76,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
                         BooleanHelper boolVal) throws URISyntaxException {
         
         try {
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.user);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.user));
             Document doc = service.markDocumentAsCompletedByDocIdUserId(docId, userId, boolVal.isValue());
             documentDAO.merge(doc);
             return Response.ok().build();
@@ -85,7 +94,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     public Response addDocumentToProjectREST(Document entity) {
         
         try {
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             Document doc = service.addDocumentToProject(entity);
             return documentDAO.create(doc);
         } catch (SecurityException e) {
@@ -101,7 +110,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     public Response remove(@PathParam("id") Long id) {
         
         try {
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.removeDocument(documentDAO.find(id));
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e){
@@ -118,10 +127,10 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     public Document find(@PathParam("id") Long id) throws URISyntaxException {
         
         try {
-            usersDAO.checkLogin(getSessionID());
-            return documentDAO.find(id);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+            Document doc = documentDAO.find(id);
+            return doc;
         } catch (SecurityException e){
-           Response.status(Response.Status.FORBIDDEN).build(); 
            return null;
         }
         
