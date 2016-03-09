@@ -74,7 +74,7 @@ angular
                 this.onUserChange = function () {
                     var form = document.getElementById("users");
                     $window.sessionStorage.shownUser = form.elements["users"].value;
-                    $scope.openAnnoTool($window.sessionStorage.docId, "", "", "");
+                    $scope.openAnnoTool($window.sessionStorage.docId, $window.sessionStorage.title, $window.sessionStorage.project, $window.sessionStorage.completed);
                     // For TODO: dynamic AnnoLoading
 //                    this.readData();//FIXME: does not work for some reason
 //                    this.buildText();
