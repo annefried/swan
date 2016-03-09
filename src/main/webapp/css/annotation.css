@@ -2,6 +2,11 @@
     margin-left: 0.5em;
 }
 
+.scroll-pane
+{
+	overflow: scroll !important;
+}
+
 .annotationtitle {
     margin-left: 0.5em;
     margin-top: 4.5em;

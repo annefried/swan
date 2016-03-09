@@ -74,7 +74,7 @@
 
         <div class="col-md-5 rightwindow">
             <div ng-class="GraphAccordion">
-                <div>
+                <div class="scroll-pane " style="max-height: 800px;">
                     <uib-accordion close-others="false">
                         <uib-accordion-group heading="Users" is-open="true" is-disabled="status.isFirstDisabled" class="unselectable" ng-hide="role == 'user'">
                         <div ng-controller="annotationController as annoCon" >

@@ -9,6 +9,10 @@ angular
 
                 //Reads the committed files and builds them into the used data structures
                 this.init = function () {
+                    $(function ()
+                    {
+                        $('.scroll-pane').jScrollPane();
+                    });
                     $scope.role = $window.sessionStorage.role;
                     if ($window.sessionStorage.role == 'user') {
                         $window.sessionStorage.shownUser = $window.sessionStorage.uId;
