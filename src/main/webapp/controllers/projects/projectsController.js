@@ -29,7 +29,7 @@ angular
                             $scope.loaded = true;
                             $rootScope.buildTableProjects();
                         });
-                        
+
                         if ($rootScope.tour !== undefined) {
                             $rootScope.tour.resume();
                         }
@@ -118,7 +118,7 @@ angular
                         });
                         return httpSchemes;
                     };
-                    
+
                     /**
                      * Get the address to export a project.
                      * @param {type} projId the Projects id
@@ -127,7 +127,7 @@ angular
                     $scope.exportProject = function (projId) {
                         return "tempannot/project/export/" + projId;
                     };
-                    
+
                     /**
                      * Called upon clicking the 'x'-Button in a documents row.
                      * @param {type} documentId the documents id
@@ -152,7 +152,7 @@ angular
 
                     /**
                      * Redirects to the AnnotationTool
-                     * 
+                     *
                      * @param {String} docId The document id to annotate
                      * @param {String} document name
                      * @param {String} projectName the Projects name
@@ -201,9 +201,9 @@ angular
                      * @param {type} projectId the projects id
                      */
                     $scope.openProjectSchemeModal = function (projectId) {
-                        for (var i = 0; i < $scope.projects.length; i++) {
-                            if ($scope.projects[i].id === projectId) {
-                                $rootScope.currentScheme = $scope.projects[i].scheme;
+                        for (var i = 0; i < $rootScope.projects.length; i++) {
+                            if ($rootScope.projects[i].id === projectId) {
+                                $rootScope.currentScheme = $rootScope.projects[i].scheme;
                             }
                         }
                         var modalInstance = $uibModal.open({
