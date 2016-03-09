@@ -16,30 +16,20 @@ angular
                      */
                     $scope.init = function () {
                         $scope.loaded = false;
-                        var httpProjects = $scope.loadProjects();
+                        var httpProjects = $scope.loadProjects2();
                         var httpSchemes = $scope.loadSchemes();
                         $q.all([httpSchemes, httpProjects]).then(function () {
                             $scope.loaded = true;
                             $scope.buildTableSchemes();
                         });
+                        
+                        if ($rootScope.tour !== undefined) {
+                            $rootScope.tour.resume();
+                        }
                     };
-
+                    
                     /**
-                     * Request list of all Projects.
-                     * @returns http-Object of query
-                     */
-                    $scope.loadProjects = function () {
-                        var httpProjects = $http.get("tempannot/project").then(function (response) {
-                            $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
-                        }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
-                        });
-                        return httpProjects;
-                    };
-
-
-                    /**
-                     * Request list of all Schemes.
+                     * Request list of all schemes.
                      * @returns http-Object of query
                      */
                     $scope.loadSchemes = function () {
@@ -49,6 +39,19 @@ angular
                             $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
                         });
                         return httpSchemes;
+                    };
+
+                    /**
+                     * Request list of all Projects.
+                     * @returns http-Object of query
+                     */
+                    $scope.loadProjects2 = function () {
+                        var httpProjects = $http.get("tempannot/project").then(function (response) {
+                            $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
+                        }, function (err) {
+                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
+                        });
+                        return httpProjects;
                     };
 
                     /**

@@ -11,7 +11,7 @@ and open the template in the editor.
     <div class="row">
         <div class="col-sm-12 col-md-12  main">
 
-            <h2 class="sub-header">Users</h2>
+            <h2 class="sub-header" id="1-users-header" style="display: inline-block">Users</h2>
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
             <div class="table-responsive">
                 <table class="table">
@@ -19,7 +19,7 @@ and open the template in the editor.
                         <tr>
                             <th class="col-md-2">Forename</th>
                             <th class="col-md-2">Name</th>
-                            <th class="col-md-2">Role</th>
+                            <th class="col-md-2" id="users-role">Role</th>
                             <th class="col-md-2">E-Mail</th>
                             <th class="col-md-2">Incomplete Documents</th>
                             <th class="col-md-2">Logged Time</th>

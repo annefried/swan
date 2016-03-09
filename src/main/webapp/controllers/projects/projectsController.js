@@ -29,6 +29,10 @@ angular
                             $scope.loaded = true;
                             $rootScope.buildTableProjects();
                         });
+                        
+                        if ($rootScope.tour !== undefined) {
+                            $rootScope.tour.resume();
+                        }
                     };
 
                     /**

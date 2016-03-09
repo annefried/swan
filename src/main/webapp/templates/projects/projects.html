@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
 
-            <h2 class="sub-header">Projects</h2>
+            <h2 class="sub-header" id="1-projects-header" style="display: inline-block">Projects</h2>
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
             <div class="table-responsive">
                 <table class="table">
@@ -38,7 +38,7 @@
                     <tbody ng-hide="loaded">
                         <tr>
                             <td>
-                             <span class="glyphicon glyphicon-refresh spinning "></span> 
+                                <span class="glyphicon glyphicon-refresh spinning "></span> 
                             </td>
                             <td></td>
                             <td></td>
@@ -48,7 +48,6 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                                          
                         </tr>
                     </tbody>
 
@@ -63,7 +62,7 @@
                                     </span>
                                 </a>
                             </td>
-                            <td class="col-md-2 vert-align">{{x.name}}</td>
+                            <td class="col-md-2 vert-align" id="project-name">{{x.name}}</td>
                             <td class="col-md-2 vert-align"> 
                                 <!-- progress bar visible for ADMIN & PM -->
                                 <div ng-hide="isuser === 'true'"
@@ -98,12 +97,14 @@
                             </td>
                             <td class="col-md-1 vert-align">
                                 <a class="glyphicon glyphicon-file"
+                                   id="project-scheme-view"
                                    ng-click="openProjectSchemeModal(x.id)">
                                 </a>
                             </td>
                             <td class="col-md-1 vert-align">
                                 <a>
                                     <span class="glyphicon glyphicon-list"
+                                        id="project-edit"
                                         ng-hide="isuser === 'true'"
                                         ng-click="editProject(x.id, x.name)">
                                     </span>
@@ -115,7 +116,7 @@
                                         ng-click="openProjectDeleteModal(x.id)">
                                 </span>
                             </td>
-                            <td class="col-md-2 vert-align">
+                            <td class="col-md-2 vert-align" id="project-export">
                                 <a class="glyphicon glyphicon-share"
                                    ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
                                    ng-href="{{ exportProject(x.id) }}"

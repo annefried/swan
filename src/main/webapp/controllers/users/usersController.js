@@ -16,6 +16,10 @@ angular
                         //Pop Up
                         $scope.animationsEnabled = true;
                         $scope.getUsers();
+                        
+                        if ($rootScope.tour !== undefined) {
+                            $rootScope.tour.resume();
+                        }
                     };
 
                     // Request list of users from backend

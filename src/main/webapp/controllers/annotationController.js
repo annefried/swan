@@ -80,10 +80,10 @@ angular
 //                    this.buildText();
 //                    this.buildAnnotations();
 //                    this.buildLinks();
-                }
+                };
                 $scope.changeCallbackCont = function () {
                     $rootScope.changeCallback();
-                }
+                };
 
                 //Split words of the text in data structure
                 this.buildText = function () {

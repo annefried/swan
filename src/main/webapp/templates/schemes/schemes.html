@@ -1,4 +1,8 @@
-
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <link href="css/explorer.css" rel="stylesheet">
 <div class="container-fluid">
     <script type="text/ng-template" id="alert.html">
@@ -9,7 +13,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
 
-            <h2 class="sub-header">Schemes</h2>
+            <h2 class="sub-header" id="1-schemes-header" style="display: inline-block">Schemes</h2>
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
             <div class="table-responsive">
                 <table class="table">
@@ -34,7 +38,7 @@
                     </tbody>
                     <tbody ng-repeat="x in this.tableSchemes">
                         <tr >
-                            <td class="col-md-10 vert-align">{{x.name}}</td>
+                            <td class="col-md-10 vert-align" id="scheme-name">{{x.name}}</td>
                             <td class="col-md-10 vert-align"><p ng-repeat="project in x.projects">{{project.name}}</p></td>
                             <td class="col-md-1 vert-align">
                                 <a class="glyphicon glyphicon-file"

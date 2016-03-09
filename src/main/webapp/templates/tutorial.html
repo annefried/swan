@@ -5,21 +5,24 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <link href="css/explorer.css" rel="stylesheet">
-<link href="bootstrap-tour-standalone.min.css" rel="stylesheet">
 <div class="container-fluid">
-    <h3>DiscAnno Features</h3>
+    <h3 id="1-features" style="display: inline-block">DiscAnno Features</h3>
     <ul>
         <li>Temporal structures</li>
         <li>Discourse mode</li>
-        <li>Visualization by graph and or timeline</li>
+        <li>Visualization by graph and or timeline <span class="label label-default">New</span></li>
         <li>Customization via scheme</li>
         <li>Project administration</li>
         <li>Different user roles: Admin, project manager, annotater</li>
     </ul>
-    <h3>Tips and Hints</h3>
+    <h3 id="2-tips" style="display: inline-block">Tips and Hints</h3>
     <ul>
         <li>To deselect click in the area where no text is</li>
-        <li>Use the shortcuts to improve the annotation process</li>
+        <li>Use the shortcuts to improve the annotation process <span class="label label-default">New</span></li>
         <li>To annotate a word or passage start marking in the middle of the word</li>
     </ul>
+    <br/><br/>
+    <button class="btn btn-lg btn-primary" id="start-tour" ng-click="startTour()">
+      Start Tour
+    </button><br/><br/>
 </div>
