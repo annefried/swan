@@ -11,6 +11,10 @@ angular
                     $scope.init = function () {
                         $scope.getUser();
                         $scope.getTime();
+                        
+                        if ($rootScope.tour !== undefined) {
+                            $rootScope.tour.resume();
+                        }
                     };
 
                     $scope.getUser = function () {

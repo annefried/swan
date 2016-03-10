@@ -241,9 +241,8 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
 
         try {
             $scope.uploadedScheme = content;
-            console.log(content);
             var scheme = JSON.parse(content);
-            console.log(scheme);
+
             if (scheme.targetTypes[0].length == 1) {
                 var targetType = [scheme.targetTypes];
                 scheme.targetTypes = targetType;
@@ -367,6 +366,11 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                         'linkSetCount': template.linkSets.length
                     };
                     $rootScope.tableSchemes.push(schemePreview);
+                    
+                    // Check if the guided tour can continue
+                    if ($rootScope.tour !== undefined) {
+                        $("#tour-next-button").prop("disabled", false);
+                    }
                 }, function () {
                     $rootScope.addAlert({type: 'danger', msg: 'A Scheme with this name already exists.'});
                 });

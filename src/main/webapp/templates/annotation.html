@@ -14,7 +14,7 @@
             
             <div class="col-md-7" ng-controller="d3AnnotationController as d3Anno" ng-mouseup="d3Anno.UpdateSelectionText()">
                     
-                <div class="annotationtitle filename">
+                <div class="annotationtitle filename" id="1-anno-tool">
                     {{d3Anno.project}} > <i>{{d3Anno.title}}</i>
                     <label ng-hide="isuser == 'false'">&nbsp;&nbsp;(</label>
                     <div class="checkbox"
@@ -37,7 +37,7 @@
 
                         <uib-accordion-group is-disabled="true" is-open="true">
                             <uib-accordion-heading>
-                                <div class="unselectable">Text</div>
+                                <div class="unselectable" id="anno-text">Text</div>
                             </uib-accordion-heading>
                             
                             <div>
@@ -90,7 +90,7 @@
                         </div>
                         </uib-accordion-group>
                         <!-- Graph -->
-                        <uib-accordion-group heading="Visualization" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable">
+                        <uib-accordion-group heading="Visualization" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable" id="anno-graph">
                             <div>
                                 <div ng-controller="d3GraphController as graph">
                                     <d3-graph annotations="annotation.annotationData"
@@ -110,7 +110,7 @@
                         </uib-accordion-group>
                         
                         <!-- Annotation options -->
-                        <uib-accordion-group heading="Options" is-disabled="false" is-open="true" class="unselectable">
+                        <uib-accordion-group heading="Options" is-disabled="false" is-open="true" class="unselectable" id="anno-options">
                             <div ng-controller="d3OptionsController as options">
                                 <d3-options data="annotation.annotationText"
                                             selection="annotation.selectedNode"
@@ -130,7 +130,7 @@
                         </uib-accordion-group>
                        
                         <!-- Navigation to other documents -->
-                        <uib-accordion-group heading="Navigation" is-disabled="false" is-open="false" class="unselectable">
+                        <uib-accordion-group heading="Navigation" is-disabled="false" is-open="false" class="unselectable" id="anno-navigation">
                             <div ng-repeat="proj in this.tableProjects">
                                 <label>{{proj.name}}</label>
                                 <table class="table">
@@ -147,7 +147,7 @@
                         </uib-accordion-group>
                         
                         <!-- Shortcuts -->
-                        <uib-accordion-group heading="Shortcuts" is-disabled="false" is-open="true" class="unselectable">
+                        <uib-accordion-group heading="Shortcuts" is-disabled="false" is-open="true" class="unselectable" id="anno-shortcuts">
                             <table class="table">
                                 <tr>
                                     <td><kbd><kbd>?</kbd></kbd></td>

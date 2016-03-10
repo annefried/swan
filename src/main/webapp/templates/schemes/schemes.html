@@ -48,7 +48,7 @@ and open the template in the editor.
                             <td class="col-md-1 vert-align">
                                 <span class="glyphicon glyphicon-remove"
                                         ng-hide="isuser === 'true'" style="color:red"
-                                         ng-class="(x.projects.length < 1) ? 'enabled' : 'disabled'"
+                                        ng-class="(x.projects.length < 1) ? 'enabled' : 'disabled'"
                                         ng-click="openSchemeDeleteModal(x.id)">
                                 </span>
                             </td>
@@ -58,7 +58,7 @@ and open the template in the editor.
                             <td class="col-md-10"><b></b></td>
                             <td class="col-md-1"><b></b></td>
                              <td class="col-md-1"><b></b></td>
-                            <td class="col-md-1">
+                            <td class="col-md-1" id="schemes-add-button">
                                 <button class="btn btn-primary tableButton" 
                                         type="button"
                                         ng-click="openUploadSchemeModal()">

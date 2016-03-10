@@ -19,7 +19,7 @@ and open the template in the editor.
                         <tr>
                             <th class="col-md-2">Forename</th>
                             <th class="col-md-2">Name</th>
-                            <th class="col-md-2" id="users-role">Role</th>
+                            <th class="col-md-2">Role</th>
                             <th class="col-md-2">E-Mail</th>
                             <th class="col-md-2">Incomplete Documents</th>
                             <th class="col-md-2">Logged Time</th>
@@ -34,7 +34,7 @@ and open the template in the editor.
                     <tbody ng-hide="loaded">
                         <tr>
                             <td>
-                             <span class="glyphicon glyphicon-refresh spinning "></span> 
+                                <span class="glyphicon glyphicon-refresh spinning "></span> 
                             </td>
                             <td></td>
                             <td></td>
@@ -43,14 +43,13 @@ and open the template in the editor.
                             <td></td>
                             <td></td>
                             <td></td>
-                                          
                         </tr>
                     </tbody>
                     <tbody>
                         <tr ng-repeat="x in this.users | filter: this.isVisible">
                             <td class="col-md-2 vert-align">{{x.prename}}</td>
                             <td class="col-md-2 vert-align">{{x.lastname}}</td>
-                            <td class="col-md-2 vert-align">{{x.role}}</td>
+                            <td class="col-md-2 vert-align" id="user-role">{{x.role}}</td>
                             <td class="col-md-2 vert-align">{{x.email}}</td>
                             <td class="col-md-2 vert-align">{{x.undone}}</td>
                             <td class="col-md-2 vert-align">{{x.loggedtime}}</td>
@@ -77,7 +76,7 @@ and open the template in the editor.
                             <td class="col-md-2"><b></b></td>
                             <td class="col-md-2" ng-hide="role == 'projectmanager'"><b></b></td>
                             <td class="col-md-2" ng-hide="role == 'projectmanager'"><b></b></td>
-                            <td class="col-md-2">
+                            <td class="col-md-2" id="users-add-button">
                                 <td class="col-md-2">
                                 <button class="btn btn-primary tableButton"
                                         type="button"

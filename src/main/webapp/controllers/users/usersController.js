@@ -135,6 +135,13 @@ angular
                         // Callback on Submit
                         modalInstance.result.then(function (response) {
                             $scope.users.push(response);
+                            
+                            // Check if the guided tour can continue
+                            if ($rootScope.tour !== undefined) {
+                                if (response.role === 'user') {
+                                    $("#tour-next-button").prop("disabled", false);
+                                }
+                            }
                         });
                         $scope.toggleAnimation = function () {
                             $scope.animationsEnabled = !$scope.animationsEnabled;

@@ -304,6 +304,9 @@ angular
                                         $rootScope.addAlert({type: 'danger', msg: 'A Project with this name already exists.'});
                                     });
 
+                                    if ($rootScope.tour !== undefined) {
+                                        $("#tour-next-button").prop("disabled", false);
+                                    }
                         }, function () {
 
                         });
