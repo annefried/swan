@@ -2,7 +2,7 @@
 
 angular
         .module('app')
-        .controller('annotatorsController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys', function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys) {
+        .controller('usersController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys', function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys) {
                 $scope.isuser = $window.sessionStorage.isUser;
                 // Redirect non Admins
                 if (($window.sessionStorage.role !== 'admin') && ($window.sessionStorage.role !== 'user') && ($window.sessionStorage.role != 'projectmanager')) {
@@ -36,7 +36,7 @@ angular
                     };
 
                     $scope.isVisible = function (user) {
-                        return user.id != $window.sessionStorage.uId;
+                        return user.id == $window.sessionStorage.uId;
                     };
 
                     $scope.enhanceUserData = function (u, i) {

@@ -46,7 +46,7 @@ and open the template in the editor.
                         </tr>
                     </tbody>
                     <tbody>
-                        <tr ng-repeat="x in this.users | filter: this.isVisible">
+                        <tr ng-repeat="x in this.users" ng-hide="isVisible(x)">
                             <td class="col-md-2 vert-align">{{x.prename}}</td>
                             <td class="col-md-2 vert-align">{{x.lastname}}</td>
                             <td class="col-md-2 vert-align" id="user-role">{{x.role}}</td>

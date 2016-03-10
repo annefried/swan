@@ -80,7 +80,7 @@ angular
                     // in the $rootScope and resume if specified
                     var tour = new Tour({
                         storage: $window.localStorage, // localStorage is needed for multipage tour
-                        debug:true, // uncomment for debugging
+//                        debug:true, // uncomment for debugging
                         template: style,
                         steps: [
                         {
@@ -154,7 +154,7 @@ angular
 
                             // Dummy entry
                             tour.addStep({
-                                path: "/discanno/#/annotators",
+                                path: "/discanno/#/users",
                                 element: "#1-users-header",
                                 duration: 1,
                                 title: "Users",
@@ -162,7 +162,7 @@ angular
                             });
 
                             tour.addStep({
-                                path: "/discanno/#/annotators",
+                                path: "/discanno/#/users",
                                 element: "#1-users-header",
                                 title: "Users",
                                 content: "In the users section you can manage all your users."
@@ -170,15 +170,15 @@ angular
 
                             if ($scope.existsAnnotater($scope.users)) {
                                 tour.addStep({
-                                    path: "/discanno/#/annotators",
-                                    element: "#user-role",
+                                    path: "/discanno/#/users",
+                                    element: "#1-users-header",
                                     title: "Users",
                                     content: "Great you already added an annotater!",
                                     placement: "right"
                                 });
                             } else {
                                 tour.addStep({
-                                    path: "/discanno/#/annotators",
+                                    path: "/discanno/#/users",
                                     element: "#users-add-button",
                                     title: "Users",
                                     content: "Add a user with the user role 'annotator' to continue.",
@@ -188,7 +188,7 @@ angular
                                     }
                                 });
                                 tour.addStep({
-                                    path: "/discanno/#/annotators",
+                                    path: "/discanno/#/users",
                                     element: "#user-role",
                                     title: "Users",
                                     content: "Great you added an annotator! Then let's move on with your projects.",

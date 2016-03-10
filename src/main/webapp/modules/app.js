@@ -31,10 +31,10 @@ function Config($routeProvider) {
                 controller: 'projectsController',
                 controllerAs: 'projects'
             })
-            .when('/annotators', {
+            .when('/users', {
                 templateUrl: 'templates/users/users.html',
-                controller: 'annotatorsController',
-                controllerAs: 'annotators'
+                controller: 'usersController',
+                controllerAs: 'users'
             })
             .when('/annotation', {
                 templateUrl: 'templates/annotation.html',
@@ -44,21 +44,21 @@ function Config($routeProvider) {
             .when('/profile', {
                 templateUrl: 'templates/profile.html',
                 controller: 'profileController',
-                controllerAs: 'profile',
+                controllerAs: 'profile'
             })
             .when('/signin', {
                 templateUrl: '/signin.html',
                 controller: 'LoginController',
-                controllerAs: 'signin',
+                controllerAs: 'signin'
             })
             .when('/schemes', {
                 templateUrl: 'templates/schemes/schemes.html',
                 controller: 'schemesController',
-                controllerAs: 'schemes',
+                controllerAs: 'schemes'
             })
             .when('/tutorial', {
                 templateUrl: 'templates/tutorial.html',
                 controller: 'tutorialController',
-                controllerAs: 'tutorial',
+                controllerAs: 'tutorial'
             });
 }
