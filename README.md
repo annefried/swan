@@ -5,6 +5,7 @@ DiscAnno web-based annotation tool
 * **Frontend**:
   * Bootstrap, HTML, CSS
   * AngularJS, JavaScript
+  * D3 for data visualization
   * Jackson JSOG (Voodoodyne) for circular JSON objects
 * **Backend**:
   * JavaEE (Java Enterprise Edititon)
