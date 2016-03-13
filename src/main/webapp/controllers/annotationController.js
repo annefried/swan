@@ -14,7 +14,7 @@ angular
                         $('.scroll-pane').jScrollPane();
                     });
                     $scope.role = $window.sessionStorage.role;
-                    if ($window.sessionStorage.role == 'user') {
+                    if ($window.sessionStorage.role == 'annotator') {
                         $window.sessionStorage.shownUser = $window.sessionStorage.uId;
                     } else {
                         this.setUpAnnoView();

@@ -47,14 +47,14 @@ and open the template in the editor.
                             </td>
                             <td class="col-md-1 vert-align">
                                 <span class="glyphicon glyphicon-remove"
-                                        ng-hide="isuser === 'true'" style="color:red"
+                                        ng-hide="isUnprivileged === 'true'" style="color:red"
                                         ng-class="(x.projects.length < 1) ? 'enabled' : 'disabled'"
                                         ng-click="openSchemeDeleteModal(x.id)">
                                 </span>
                             </td>
                         </tr>
                     <tbody>
-                        <tr class="headLight" ng-hide="isuser === 'true'">
+                        <tr class="headLight" ng-hide="isUnprivileged === 'true'">
                             <td class="col-md-10"><b></b></td>
                             <td class="col-md-1"><b></b></td>
                              <td class="col-md-1"><b></b></td>

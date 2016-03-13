@@ -41,7 +41,7 @@ public class UsersDAO extends BaseEntityDAO<Users> {
     }
     
     public Users checkLogin(String session) throws SecurityException {
-        return checkLogin(session, Users.RoleType.user);
+        return checkLogin(session, Users.RoleType.annotator);
     }
     
     public Users getUserByEmailPwd(String email, String password) {

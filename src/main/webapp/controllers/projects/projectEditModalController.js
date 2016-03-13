@@ -16,7 +16,7 @@ angular.module('app').controller('projectEditModalController', function ($scope,
             $scope.pms = [];
             for (var i = 0; i < usersPms.length; i++) {
                 var u = usersPms[i];
-                if (u.role == 'user') {
+                if (u.role == 'annotator') {
                     $scope.users.push(u);
                 } else {
                     if (u.role == 'projectmanager') {

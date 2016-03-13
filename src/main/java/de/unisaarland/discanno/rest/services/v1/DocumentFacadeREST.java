@@ -5,7 +5,6 @@
  */
 package de.unisaarland.discanno.rest.services.v1;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.business.Service;
@@ -14,10 +13,7 @@ import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.BooleanHelper;
 import de.unisaarland.discanno.entities.Document;
 import de.unisaarland.discanno.entities.Users;
-import de.unisaarland.discanno.rest.view.View;
 import java.net.URISyntaxException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -76,7 +72,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
                         BooleanHelper boolVal) throws URISyntaxException {
         
         try {
-            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.user));
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.annotator));
             Document doc = service.markDocumentAsCompletedByDocIdUserId(docId, userId, boolVal.isValue());
             documentDAO.merge(doc);
             return Response.ok().build();

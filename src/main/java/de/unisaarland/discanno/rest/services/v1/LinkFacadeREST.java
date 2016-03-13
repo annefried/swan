@@ -58,7 +58,7 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
     public Response create(Link entity) {
 
         try {
-            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.user));
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.annotator));
             service.process(entity);
             return usersDAO.create(entity);
         } catch (SecurityException e) {
@@ -72,7 +72,7 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
     public Response remove(@PathParam("id") Long id) {
 
         try {
-            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.user));
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.annotator));
             usersDAO.remove(usersDAO.find(id));
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {

@@ -2,15 +2,15 @@ angular
         .module('app')
         .controller('dashboardController', ['$rootScope', '$scope', '$window', '$http', '$timeout', function ($rootScope, $scope, $window, $http, $timeout) {
 
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'user') && ($window.sessionStorage.role != 'projectmanager')) {
+                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     window.location = "/discanno/signin.html";
                 } else {
                     $timeout(function () {
                         $scope.visible = 'true'
                     }, 4000);
 
-                    $rootScope.projectName = "DiscAnno";
-                    $rootScope.isuser = ($window.sessionStorage.isUser);
+                    $rootScope.projectName = "DiscAnno"; // TODO why?
+                    $rootScope.isUnprivileged = $window.sessionStorage.isAnnotator;
 
                     $scope.prename = $window.sessionStorage.prename;
                     $scope.lastname = $window.sessionStorage.lastname;
@@ -33,7 +33,7 @@ angular
                  */
                 $rootScope.loadProjects = function () {
                     // If User show only assigned projects
-                    if ($window.sessionStorage.role !== 'user') {
+                    if ($window.sessionStorage.role !== 'annotator') {
                         var httpProjects = $http.get("tempannot/project").then(function (response) {
                             $rootScope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
                         }, function (err) {
@@ -66,7 +66,7 @@ angular
                             if (u.id == $window.sessionStorage.uId) {
                                 myProject = true;
                             }
-                            if (u.role == 'user') {
+                            if (u.role == 'annotator') {
                                 projComplAdmin.push(0);
                             } else {
                                 console.log("This should never happen.\nBut it will.");
@@ -89,7 +89,7 @@ angular
 
                                 for (var yi = 0; yi < doc.states.length; yi++) {
                                     var st = doc.states[yi];
-                                    if (st.user.role == 'user') {
+                                    if (st.user.role == 'annotator') {
                                         states.push(st);
                                     }
                                 }
@@ -97,8 +97,8 @@ angular
                                 var docCompl;
                                 var lastEdit = -1;
 
-                                //role: Annotater
-                                if ($scope.isuser === 'true') {
+                                //role: annotator
+                                if ($scope.isUnprivileged === 'true') {
                                     var usrPos = -1;
                                     for (var t = 0; t < proj.users.length; t++) {
                                         if ($window.sessionStorage.uId == states[t].user.id) {
@@ -116,7 +116,7 @@ angular
                                     docCompl = states[usrPos].completed;
                                     lastEdit = states[usrPos].lastEdit;
                                 }
-                                //role: Admin
+                                //role: admin
                                 else {
                                     var docComplAdmin = 0;
                                     for (var t = 0; t < states.length; t++) {
@@ -141,7 +141,7 @@ angular
                             documents.sort($rootScope.compareDocumentsByLastEdit);
 
                             var projCompl;
-                            if ($scope.isuser === 'true') {
+                            if ($scope.isUnprivileged === 'true') {
                                 projCompl = projComplUser;
                             } else {
                                 projCompl = projComplAdmin;

@@ -8,11 +8,11 @@ angular
             function ($scope, $rootScope, $window, $http, $uibModal, $location, hotkeys, $q) {
 
                 // Redirect if client is not logged in
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'user') && ($window.sessionStorage.role != 'projectmanager')) {
+                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     window.location = "/discanno/signin.html";
                 } else {
 
-                    $scope.isuser = ($window.sessionStorage.isUser);
+                    $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
 
                     /**
                      * Called at the end of Controller construction.

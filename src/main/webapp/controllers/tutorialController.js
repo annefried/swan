@@ -7,7 +7,7 @@ angular
         .module('app')
         .controller('tutorialController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', '$q', function ($scope, $rootScope, $window, $http, $uibModal, $q) {
 
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'user') && ($window.sessionStorage.role != 'projectmanager')) {
+                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     window.location = "/discanno/signin.html";
                 } else {
                     
@@ -22,10 +22,10 @@ angular
                         return httpUsers;
                     };
                     
-                    $scope.existsAnnotater = function (users) {
+                    $scope.existsAnnotator = function (users) {
                         for (var i = 0; i < users.length; i++) {
                             var u = users[i];
-                            if (u.role === 'user') {
+                            if (u.role === 'annotator') {
                                 return true;
                             }
                         }
@@ -168,12 +168,12 @@ angular
                                 content: "In the users section you can manage all your users."
                             });
 
-                            if ($scope.existsAnnotater($scope.users)) {
+                            if ($scope.existsAnnotator($scope.users)) {
                                 tour.addStep({
                                     path: "/discanno/#/users",
                                     element: "#1-users-header",
                                     title: "Users",
-                                    content: "Great you already added an annotater!",
+                                    content: "Great you already added an annotator!",
                                     placement: "right"
                                 });
                             } else {
@@ -205,14 +205,14 @@ angular
                                 element: "#1-projects-header",
                                 duration: 1,
                                 title: "Projects",
-                                content: "In the projects section you can manage all your projects. You can follow the progress, add documents, annotaters to the projects"
+                                content: "In the projects section you can manage all your projects. You can follow the progress, add documents, annotators to the projects"
                             });
 
                             tour.addStep({
                                 path: "/discanno/#/projects",
                                 element: "#1-projects-header",
                                 title: "Projects",
-                                content: "In the projects section you can manage all your projects. You can follow the progress, add documents, annotaters to the projects"
+                                content: "In the projects section you can manage all your projects. You can follow the progress, add documents, annotators to the projects"
                             });
 
                             if ($rootScope.projects.length > 0) {
@@ -254,14 +254,14 @@ angular
                                 path: "/discanno/#/projects",
                                 element: "#project-edit",
                                 title: "Projects",
-                                content: "Add or remove annotater and project manager."
+                                content: "Add or remove annotator and project manager."
                             });
 
                             tour.addStep({
                                 path: "/discanno/#/projects",
                                 element: "#project-export",
                                 title: "Projects",
-                                content: "Export the project in the UIMA format. To take a tour through the annotation tool, logg in as an annotater.",
+                                content: "Export the project in the UIMA format. To take a tour through the annotation tool, logg in as an annotator.",
                                 placement: "left"
                             });
 
@@ -304,7 +304,7 @@ angular
                                 element: "#1-projects-header",
                                 duration: 1,
                                 title: "Projects",
-                                content: "In the projects section you can manage all your projects. You can follow the progress, add documents, annotaters to the projects"
+                                content: "In the projects section you can manage all your projects. You can follow the progress, add documents, annotators to the projects"
                             });
                             tour.addStep({
                                 path: "/discanno/#/projects",

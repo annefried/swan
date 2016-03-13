@@ -16,17 +16,17 @@
                     
                 <div class="annotationtitle filename" id="1-anno-tool">
                     {{d3Anno.project}} > <i>{{d3Anno.title}}</i>
-                    <label ng-hide="isuser == 'false'">&nbsp;&nbsp;(</label>
+                    <label ng-hide="isUnprivileged == 'false'">&nbsp;&nbsp;(</label>
                     <div class="checkbox"
                          style="display: inline-block;"
                          ng-controller="annotationController as annoCon"
-                         ng-hide="isuser == 'false'">
+                         ng-hide="isUnprivileged == 'false'">
                         <input type="checkbox" value=""
                                       ng-model="completed"
                                       ng-click="annoCon.setDocCompleted()">
                         <label>Completed</label>
                     </div>
-                    <label ng-hide="isuser == 'false'">)</label>
+                    <label ng-hide="isUnprivileged == 'false'">)</label>
                 </div>
                 
                 <hr class="featurette-divider">
@@ -76,11 +76,11 @@
             <div ng-class="GraphAccordion">
                 <div class="scroll-pane " style="max-height: 800px;">
                     <uib-accordion close-others="false">
-                        <uib-accordion-group heading="Users" is-open="true" is-disabled="status.isFirstDisabled" class="unselectable" ng-hide="role == 'user'">
+                        <uib-accordion-group heading="Users" is-open="true" is-disabled="status.isFirstDisabled" class="unselectable" ng-hide="role == 'annotator'">
                         <div ng-controller="annotationController as annoCon" >
                             <form id="users">
                                 <div ng-repeat="u in users">
-                                    <label ng-show="u.role == 'user'">
+                                    <label ng-show="u.role == 'annotator'">
                                         <input type="radio" name="users" value="{{u.id}}" ng-model="shownUserList[u.id]"
                                                ng-click="changeCallbackCont()">
                                         {{u.prename + u.lastname}}

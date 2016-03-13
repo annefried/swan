@@ -2,7 +2,7 @@ angular
         .module('app')
         .controller('profileController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', function ($scope, $rootScope, $window, $http, $uibModal) {
 
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'user') && ($window.sessionStorage.role != 'projectmanager')) {
+                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     window.location = "/discanno/signin.html";
                 } else {
 

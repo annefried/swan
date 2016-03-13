@@ -5,7 +5,7 @@ angular
         .controller('schemesController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', '$location', '$q', function ($scope, $rootScope, $window, $http, $uibModal, $location, $q) {
 
                 // Redirect if client is not logged in
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'user') && ($window.sessionStorage.role != 'projectmanager')) {
+                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     window.location = "/discanno/signin.html";
                 } else {
 

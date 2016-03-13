@@ -3,9 +3,9 @@
 angular
         .module('app')
         .controller('usersController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys', function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys) {
-                $scope.isuser = $window.sessionStorage.isUser;
-                // Redirect non Admins
-                if (($window.sessionStorage.role !== 'admin') && ($window.sessionStorage.role !== 'user') && ($window.sessionStorage.role != 'projectmanager')) {
+                $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
+
+                if (($window.sessionStorage.role !== 'admin') && ($window.sessionStorage.role !== 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     // redirect to Login
                     window.location = "/discanno/signin.html";
                 } else {
@@ -138,7 +138,7 @@ angular
                             
                             // Check if the guided tour can continue
                             if ($rootScope.tour !== undefined) {
-                                if (response.role === 'user') {
+                                if (response.role === 'annotator') {
                                     $("#tour-next-button").prop("disabled", false);
                                 }
                             }

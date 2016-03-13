@@ -15,12 +15,11 @@ angular
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                     }).success(function (response) {
                         $window.sessionStorage.uId = response.user.id;
-                        console.log($window.sessionStorage.uId);
                         $window.sessionStorage.prename = response.user.prename;
                         $window.sessionStorage.lastname = response.user.lastname;
                         $window.sessionStorage.email = response.user.email;
                         $window.sessionStorage.role = response.user.role;
-                        $window.sessionStorage.isUser = (response.user.role == 'user');
+                        $window.sessionStorage.isAnnotator = (response.user.role === 'annotator');
                         $window.sessionStorage.h = 'false';
 
                         window.location = "/discanno/#/dashboard";

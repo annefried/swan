@@ -69,7 +69,7 @@ and open the template in the editor.
                         </tr>
                     </tbody>
                     <tbody>
-                        <tr class="headLight" ng-hide="isuser === 'true'">
+                        <tr class="headLight" ng-hide="isUnprivileged === 'true'">
                             <td class="col-md-2"><b></b></td>
                             <td class="col-md-2"><b></b></td>
                             <td class="col-md-2"><b></b></td>
@@ -80,7 +80,7 @@ and open the template in the editor.
                                 <td class="col-md-2">
                                 <button class="btn btn-primary tableButton"
                                         type="button"
-                                        ng-hide="isuser === 'true'"
+                                        ng-hide="isUnprivileged === 'true'"
                                         ng-click="openUserAddModal()">
                                     + User
                                 </button>
