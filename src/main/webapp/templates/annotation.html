@@ -139,7 +139,7 @@
                                             <a ng-href ng-click="openAnnoTool(doc.id, doc.name, proj.name, doc.completed)">{{doc.name}}</a>
                                         </td>
                                         <td>
-                                            <span ng-hide="doc.completed === false" class="glyphicon glyphicon-ok"></span>
+                                            <span ng-hide="doc.completed === false || isUnprivileged == 'false'" class="glyphicon glyphicon-ok"></span>
                                         </td>
                                     </tr>                                                         
                                 </table>
