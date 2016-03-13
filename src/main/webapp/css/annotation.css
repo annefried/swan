@@ -95,3 +95,9 @@
 ::-moz-selection {
     background: #dbdbdb; /* Gecko Browsers */
 }
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{
+   float:left;  
+   position: initial;
+   margin: 3px 0.5ex;
+}

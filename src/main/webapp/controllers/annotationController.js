@@ -26,7 +26,7 @@ angular
                     this.buildLinks();
 
                     $scope.completed = $window.sessionStorage.completed === 'true';
-                    
+
                     if ($rootScope.tour !== undefined) {
                         $rootScope.tour.resume();
                     }

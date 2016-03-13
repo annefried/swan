@@ -24,31 +24,32 @@ angular.module('app')
                         var width;
                         var options = d3.select(iElement[0])
                                 .attr("width", "100%");
-                        
+
                         //Re-render on window resize
                         window.onresize = function () {
                             return $scope.$apply();
                         };
-                        
+
                         $scope.$watch(function () {
                             return angular.element(window)[0].innerWidth;
                         }, function () {
                             return $scope.render();
                         }
                         );
-                
+
                         //Watch for data changes and re-render
                         $scope.$watch('selection', function () {
                             return $scope.render();
                         }, true);
-                        
+
                         //Main rendering function. Generates all necessary options
                         //depending on the currently selected object
                         $scope.render = function () {
                             options.selectAll("*").remove();
 
                             var ele = d3.select(iElement[0].offsetParent)[0][0];
-                            if(ele !== null) width = ele.offsetWidth;
+                            if (ele !== null)
+                                width = ele.offsetWidth;
 
                             //Window is split in three columns
                             var left = options.append("div")
@@ -57,12 +58,12 @@ angular.module('app')
                                     .classed("col-md-4", true);
                             var right = options.append("div")
                                     .classed("col-md-4", true);
-                            
+
                             if ($scope.selection !== null && $scope.selection !== undefined) {
 
                                 if ($scope.selection.type === "Annotation")
                                     $scope.addTargetTypes(left);
-                                
+
                                 $scope.setNotSureOption(left);
                                 //Add right title
                                 left.append("p")
@@ -88,7 +89,7 @@ angular.module('app')
                                 $scope.addLabelSets(middle, right);
                             }
                         };
-                        
+
                         $scope.delete = function () {
                             if ($scope.selection !== null) {
                                 switch ($scope.selection.type) {
@@ -108,7 +109,7 @@ angular.module('app')
                                 }
                             }
                         };
-                        
+
                         $scope.setTypeHotkeys = function (e) {
                             var a = [];
                             var i = 0;
@@ -128,7 +129,7 @@ angular.module('app')
                                 $scope.setType({item: type});
                             }
                         };
-                        
+
                         $scope.setLabelHotkeys = function (e) {
                             var a = [];
                             for (var id in $scope.selection.selectableLabels) {
@@ -147,7 +148,7 @@ angular.module('app')
                                 $scope.setLabel({label: type});
                             }
                         };
-                        
+
                         hotkeys.bindTo($scope)
                                 .add({
                                     combo: 'alt+t',
@@ -173,10 +174,10 @@ angular.module('app')
                                         $scope.setSelection({item: null});
                                     }
                                 });
-                                
+
                         $scope.index = -1;
                         $scope.indexLabels = -1;
-                        
+
                         $scope.addTargetTypes = function (parent) {
                             parent.append("div")
                                     .text("TargetTypes")
@@ -205,7 +206,7 @@ angular.module('app')
                                         });
                                     });
                         };
-                        
+
                         $scope.addLabelSets = function (parent1, parent2) {
                             var par1Count = 0;
                             var par2Count = 0;
@@ -259,14 +260,14 @@ angular.module('app')
                                                 return "radio";
                                             return "checkbox";
                                         })
-                                        .on("click", function (d) {        
+                                        .on("click", function (d) {
                                             $scope.$apply(function () {
                                                 $scope.setLabel({label: d});
                                             });
                                         });
                             }
                         };
-                        
+
                         $scope.setNotSureOption = function (parent) {
                             if ($scope.selection.type === AnnoType.Annotation) {
                                 parent.append("div")
