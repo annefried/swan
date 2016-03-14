@@ -139,11 +139,11 @@ angular
                     for (var a = 0; a < annotations.length; a++) {
                         var start = annotations[a].start;
                         var end = annotations[a].end;
-                        var tType = this.getTargetType(annotations[a].targetType.targetType);
-                        var color = this.getColor(tType);
-                        var anno = new Annotation(color, annotations[a].id, tType);
+                        var targetType = this.getTargetType(annotations[a].targetType.targetType);
+                        var anno = new Annotation(color, annotations[a].id, targetType);
                         anno.notSure = annotations[a].notSure;
                         this.findWords(start, end, anno);
+                        
                         //Add labels
                         for (var l = 0; l < annotations[a].labelMap.length; l++) {
                             var label = annotations[a].labelMap[l];
@@ -154,7 +154,9 @@ angular
                                 anno.setLabel(labelSet, annotationLabel);
                             }
                         }
-
+                        
+                        var color = this.getColor(targetType, anno);
+                        anno.color = color;
                         this.annotationData[anno.id] = anno;
                     }
                 };
@@ -243,6 +245,7 @@ angular
                             }
                         }
 
+                        this.selectedNode.color = this.getColor(this.selectedNode.tType, this.selectedNode);
                         this.lastSet = this.selectedNode;
                     }
                 };
@@ -252,7 +255,7 @@ angular
                     if (this.selectedNode !== null && this.selectedNode !== undefined && targetType !== undefined
                             && this.selectedNode.type === "Annotation") {
                         this.selectedNode.setTargetType(targetType);
-                        this.selectedNode.color = this.getColor(targetType);
+                        this.selectedNode.color = this.getColor(targetType, undefined);
                         this.lastSet = this.selectedNode;
                         this.lastTargeted = this.selectedNode;
                         //Check if the selected note is temporary; in this case a new annotation will be added
@@ -275,7 +278,7 @@ angular
                             });
                         }
                         this.selectedNode.setTargetType(targetType);
-                        this.selectedNode.color = this.getColor(targetType);
+                        this.selectedNode.color = this.getColor(targetType, undefined);
                         this.lastSet = this.selectedNode;
                         this.lastTargeted = this.selectedNode;
                         //Check if the selected note is temporary; in this case a new annotation will be added
@@ -290,7 +293,7 @@ angular
                 //Set target type of the temporal annotations
                 this.setTemporaryTargetType = function (targetType) {
                     this.tempAnno.setTargetType(targetType);
-                    this.tempAnno.color = this.getColor(targetType);
+                    this.tempAnno.color = this.getColor(targetType, undefined);
                     this.addAnnotation(this.tempAnno);
                     this.tempAnno = null;
                 };
@@ -571,7 +574,7 @@ angular
                 this.getAnnotation = function (id) {
                     return this.annotationData[id];
                 };
-                //Sets wheter every word is annotatable or only preselected targets
+                //Sets whether every word is annotatable or only preselected targets
                 this.setAnnotationMode = function () {
                     //TODO: read this from scheme
                     this.annotationMode = AnnotationMode.Everything;
@@ -585,14 +588,31 @@ angular
                     return string !== undefined &&
                             (string.length === 1 && (string === "," || string === "." || string === "!" || string === "?"));
                 };
-                //Returns a color for a specific label zype
-                this.getColor = function (type) {
+                this.getCharacterSum = function (str) {
+                    var sum = 0;
+                    for (var i = 0; i < str.length; i++) {
+                        sum += str.charCodeAt(i); 
+                    }
+                    return sum;
+                };
+                //Returns a color for a specific label type
+                this.getColor = function (type, anno) {
                     if (type === undefined || type.id === undefined)
                         return this.emptyColor;
-                    return this.annotationColors[type.id % this.annotationColors.length];
+                    var col = this.annotationColors[type.id % this.annotationColors.length];
+                    if (anno !== undefined && anno.activeLabels !== undefined) {
+                        var labelMapId = Object.keys(anno.activeLabels)[0];
+                        if (labelMapId !== undefined) {
+                            var labelSet = anno.activeLabels[labelMapId];
+                            var num = this.getCharacterSum(labelSet[0].tag);
+                            return this.cloneAnnotationColor(num, col);
+                        }
+                    }
+                    
+                    return col;
                 };
-                //Helper method for finding corresponding words in the text
-                //that are indexed by star and end
+                //Helper function for finding corresponding words in the text
+                //that are indexed by start and end
                 this.findWords = function (start, end, object) {
 
                     //Search for first corresponding line
@@ -684,18 +704,29 @@ angular
                         $rootScope.addAlert({type: 'danger', msg: 'No server connection.'});
                     }
                 };
-                this.targetColor = new AnnotationColor("Target", "#F2EFE7", "#000000", "#646362");
-                this.emptyColor = new AnnotationColor("Empty", "#F2EFE7", "#716C67", "#999791");
+                this.cloneAnnotationColor = function (num, color) {
+                    return new AnnotationColor(color.name, num, color.shades, color.back, color.line);
+                };
+                
+                this.targetColor = new AnnotationColor("Target", 0, ["#F2EFE7"], "#000000", "#646362");
+                this.emptyColor = new AnnotationColor("Empty", 0, ["#F2EFE7"], "#716C67", "#999791");
                 this.emptyLabel = new AnnotationLabel("");
-                this.annotationColors = [new AnnotationColor("Red", "#D92929", "#8C1F1F"),
-                    new AnnotationColor("Blue", "#2675A6", "#072540"),
-                    new AnnotationColor("Violet", "#A770B0", "#795A8F"),
-                    new AnnotationColor("Cyan", "#0B8B8C", "#154747"),
-                    new AnnotationColor("Green", "#bbff5a", "#67a754"),
-                    new AnnotationColor("Yellow", "#F0B849", "#BE3803"),
-                    new AnnotationColor("Brown", "#C59070", "#533631"),
-                    new AnnotationColor("Orange", "#F98248", "#AA3935"),
-                    new AnnotationColor("Gray", "#7E796D", "#716458")
+                
+                var redShades = ["#591010", "#9a1b1b", "#dd3f3f", "#e56a6a", "#f0abab", "#fcecec"];
+                var blueShades = ["#0e2c3f", "#1c587e", "#2575a8", "#449dd6", "#83bee4", "#c2dff2"];
+                var violetShades = ["#911491", "#d41dd4", "#eb6ceb", "#f199f1", "#fadcfa"];
+                var greenShades = ["#004e00", "#008100", "#00ce00", "#1cff1c", "#9cff9c", "#e9ffe9"];
+                
+                this.annotationColors = [ // AnnotationColor(name, num, shades, back, line)
+                    new AnnotationColor("Red", 0, redShades, "#8C1F1F", undefined),
+                    new AnnotationColor("Blue", 0, blueShades, "#072540", undefined),
+                    new AnnotationColor("Violet", 0, violetShades, "#795A8F", undefined),
+                    new AnnotationColor("Green", 0, greenShades, "#67a754", undefined)
+//                    new AnnotationColor("Cyan", 0, undefined, "#154747", undefined), // TODO needed?
+//                    new AnnotationColor("Yellow", 0, undefined, "#BE3803", undefined),
+//                    new AnnotationColor("Brown", 0, undefined, "#533631", undefined),
+//                    new AnnotationColor("Orange", 0, undefined, "#AA3935", undefined),
+//                    new AnnotationColor("Grey", 0, undefined, "#716458", undefined)
                 ];
                 this.init();
             }]);

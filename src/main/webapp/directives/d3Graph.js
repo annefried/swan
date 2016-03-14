@@ -277,7 +277,7 @@ angular.module('app')
                         })
                         .attr("y", -10)
                         .style("fill", function (d) {
-                            return d.color.fill;
+                            return d.color.fill();
                         })
                         .attr("stroke", function(d) {
                             return d.color.back;
@@ -304,7 +304,7 @@ angular.module('app')
                 $scope.updateNodes = function() {
                     node.select("rect")
                         .style("fill", function (d) {
-                            return d.color.fill;
+                            return d.color.fill();
                         })
                         .attr("stroke", function(d) {
                             return d.color.back;

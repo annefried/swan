@@ -1108,7 +1108,7 @@ angular.module('app')
                                         .enter()
                                         .append("rect")
                                         .attr("fill", function (d) {
-                                            return d.annotation.color.fill;
+                                            return d.annotation.color.fill();
                                         })
                                         .attr("stroke", function (d) {
                                             return d.annotation.color.back;

@@ -262,9 +262,19 @@ function AnnotationGraph() {
 
 //Represents a color that is associated with a
 //specific annotation type
-function AnnotationColor(name, fill, back, line) {
+function AnnotationColor(name, num, shades, back, line) {
     this.name = name;
-    this.fill = fill;
+    this.num = num;
+    this.fill = function () {
+        var mod = num % shades.length;
+        if (num !== 0 && mod === 0) {
+            mod = (num + 1) % shades.length; // TODO better solution needed
+        }
+        console.log("AnnoStruct: " + mod);
+        console.log("AnnoStruct: " + shades[mod]);
+        return shades[mod];
+    },
+    this.shades = shades;
     this.back = back;
     this.line = (line === undefined) ? back : line;
 }
