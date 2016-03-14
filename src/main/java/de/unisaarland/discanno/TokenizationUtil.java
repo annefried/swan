@@ -37,11 +37,13 @@ public class TokenizationUtil {
         
         List<Line> lines = new ArrayList<>();
         lines.add(line);
-        Token lastToken = createToken(0, 0, "");
+        Token lastToken = createToken(0, 0, 0, "");
+        
+        int pos = 0;
         
         while (ptbt.hasNext()) {
             CoreLabel label = ptbt.next();
-            Token token = createToken(label.beginPosition(), label.endPosition(), label.word());
+            Token token = createToken(pos, label.beginPosition(), label.endPosition(), label.word());
             
             int newLineCount = lineAppeared(token, lastToken, str);
             while (newLineCount > 0) {
@@ -50,18 +52,21 @@ public class TokenizationUtil {
                 line.setDocument(doc);
                 lines.add(line);
                 newLineCount--;
+                pos = 0;
             }
             
             token.setLine(line);
             lastToken = token;
             line.addTokens(token);
+            pos++;
         }
         
         return lines;
     }
     
-    private static Token createToken(int start, int end, String text) {
+    private static Token createToken(int pos, int start, int end, String text) {
         Token token = new Token();
+        token.setPos(pos);
         token.setStart(start);
         token.setEnd(end);
         token.setText(text);

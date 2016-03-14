@@ -27,6 +27,9 @@ import javax.persistence.UniqueConstraint;
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = { "line_fk", "startS", "endS" })})
 public class Token extends BaseEntity {
     
+    @JsonIgnore
+    private int pos;
+    
     private int startS;
     
     private int endS;
@@ -39,6 +42,14 @@ public class Token extends BaseEntity {
     @JoinColumn(name="line_fk")
     private Line line;
 
+    
+    public int getPos() {
+        return pos;
+    }
+
+    public void setPos(int pos) {
+        this.pos = pos;
+    }
     
     public int getStart() {
         return startS;
