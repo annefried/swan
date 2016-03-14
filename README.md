@@ -1,5 +1,15 @@
 # Welcome to DiscAnno
-DiscAnno web-based annotation tool
+DiscAnno web-based annotation tool.
+![AnnoTool1](https://cloud.githubusercontent.com/assets/7132775/13761225/943137e0-ea37-11e5-832e-e129b086f7fa.jpg)
+![AnnoTool2](https://cloud.githubusercontent.com/assets/7132775/13761479/2c65b9cc-ea39-11e5-94e1-b401535a552e.png)
+
+Manage your projects:
+![ProjectsExplorer](https://cloud.githubusercontent.com/assets/7132775/13761517/6ae1a760-ea39-11e5-87b2-142d678464c8.png)
+
+Manage your schemes:
+![Schemes1](https://cloud.githubusercontent.com/assets/7132775/13761592/dcfb44e6-ea39-11e5-8942-80c7c599d8b5.png)
+or easily create a new one:
+![Schemes2](https://cloud.githubusercontent.com/assets/7132775/13761593/dd23bc0a-ea39-11e5-95e1-fe99c3943630.png)
 
 ## Technologies
 * **Frontend**:
