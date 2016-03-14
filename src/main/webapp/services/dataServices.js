@@ -40,6 +40,25 @@ angular.module('app')
                 }
             }
         })
+        .factory('tokenService', function ($http) {
+            return  {
+                getTokens: function (docId) {
+                    //Async
+//                    $http.get("tempannot/document/" + docId).then(function (response) {
+//                        var result = JSOG.parse(JSON.stringify(response.data)).text;
+//                    }, function (err) {
+//
+//                    });
+                    // Sync
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("GET", "tempannot/document/tokens/" + docId, false); // false for synchronous request
+                    xmlHttp.send(null);
+                    var text = xmlHttp.responseText;
+                    var textJSON = JSOG.parse(text);
+                    return textJSON.tokens;
+                }
+            }
+        })
         .factory('targetService', function ($http) {
             return  {
                 getTargets: function (uId, docId) {

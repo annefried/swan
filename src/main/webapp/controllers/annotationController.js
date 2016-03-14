@@ -4,8 +4,8 @@
 angular
         .module('app')
         .controller('annotationController', ['$scope', '$window', '$rootScope',
-            '$http', 'getAnnotationService', 'textService', 'targetService', 'linkService', 'schemeService', '$q', 'hotkeys',
-            function ($scope, $window, $rootScope, $http, getAnnotationService, textService, targetService, linkService, schemeService, $q, hotkeys) {
+            '$http', 'tokenService', 'getAnnotationService', 'textService', 'targetService', 'linkService', 'schemeService', '$q', 'hotkeys',
+            function ($scope, $window, $rootScope, $http, tokenService, getAnnotationService, textService, targetService, linkService, schemeService, $q, hotkeys) {
 
                 //Reads the committed files and builds them into the used data structures
                 this.init = function () {
@@ -40,7 +40,7 @@ angular
                     this.plainText = textService.getText($window.sessionStorage.docId);
                     this.targetData = targetService.getTargets($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                     this.linkData = linkService.getLinks($window.sessionStorage.shownUser, $window.sessionStorage.docId);
-
+                    this.tokenData = tokenService.getTokens($window.sessionStorage.docId);
                     // Retrieve projects and process projects
                     var httpProjects = $rootScope.loadProjects();
                     // Wait for both http requests to be answered
@@ -96,39 +96,58 @@ angular
                 //Split words of the text in data structure
                 this.buildText = function () {
 
-                    //Split text into lines
                     this.annotationLines = this.plainText.split(/\r?\n/);
                     this.annotationText = [];
                     var start = 0;
                     var end = -1;
-                    //Split the text lines into separate words
-                    for (var i = 0; i < this.annotationLines.length; i++) {
+                    for (var i = 0; i < this.tokenData.length; i++) {
                         var line = this.annotationLines[i];
                         start = end + 1;
                         end = start + line.length;
                         var annoLine = new TextLine(start, end);
-                        var split = 0;
-                        for (var j = 0; j < line.length; j++) {
-                            if (line[j] === ' ' || line[j] === '\t' || this.isPunctuation(line[j])) {
-                                var word = new TextWord(line.substring(split, j), split + start, j + start);
-                                var punctuation = new TextWord((line[j]), j + start, j + 1 + start);
-                                word.lineIndex = i;
-                                word.wordIndex = annoLine.length;
-                                punctuation.lineIndex = i;
-                                punctuation.wordIndex = annoLine.length + 1;
-                                annoLine.words.push(word);
-                                annoLine.words.push(punctuation);
-                                split = j + 1;
-                            }
-                        }
-
-                        if (split < line.length) {
-                            var word = new TextWord(line.substring(split, line.length), split + start, line.length + start);
+                        var currentLine = this.tokenData[i].tokens;
+                        for (var j = 0; j < currentLine.length; j++) {
+                            var word = new TextWord(currentLine[j].text, currentLine[j].start, currentLine[j].stop);
                             annoLine.words.push(word);
                         }
-
                         this.annotationText.push(annoLine);
                     }
+
+// Legacy code from untokinized version
+// 
+//                    //Split text into lines
+//                    this.annotationLines = this.plainText.split(/\r?\n/);
+//                    this.annotationText = [];
+//                    var start = 0;
+//                    var end = -1;
+//                    //Split the text lines into separate words
+//                    for (var i = 0; i < this.annotationLines.length; i++) {
+//                        var line = this.annotationLines[i];
+//                        start = end + 1;
+//                        end = start + line.length;
+//                        var annoLine = new TextLine(start, end);
+//                        var split = 0;
+//                        for (var j = 0; j < line.length; j++) {
+//                            if (line[j] === ' ' || line[j] === '\t' || this.isPunctuation(line[j])) {
+//                                var word = new TextWord(line.substring(split, j), split + start, j + start);
+//                                var punctuation = new TextWord((line[j]), j + start, j + 1 + start);
+//                                word.lineIndex = i;
+//                                word.wordIndex = annoLine.length;
+//                                punctuation.lineIndex = i;
+//                                punctuation.wordIndex = annoLine.length + 1;
+//                                annoLine.words.push(word);
+//                                annoLine.words.push(punctuation);
+//                                split = j + 1;
+//                            }
+//                        }
+//
+//                        if (split < line.length) {
+//                            var word = new TextWord(line.substring(split, line.length), split + start, line.length + start);
+//                            annoLine.words.push(word);
+//                        }
+//
+//                        this.annotationText.push(annoLine);
+//                    }
                 };
                 this.buildAnnotations = function () {
                     //Annotations are indexed by their id
