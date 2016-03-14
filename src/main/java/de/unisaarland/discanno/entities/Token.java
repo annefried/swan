@@ -34,7 +34,7 @@ public class Token extends BaseEntity {
     private String text;
     
     @JsonIgnore
-    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.EAGER)
     @JoinColumn(name="line_fk")
     private Line line;
