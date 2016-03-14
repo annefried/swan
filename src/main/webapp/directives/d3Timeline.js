@@ -1,8 +1,13 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 'use strict';
 
 //Responsible directive for drawing the graph
 angular.module('app')
-    .directive('d3Graph', ['d3', function(d3) {
+    .directive('d3Timeline', ['d3', function(d3) {
         return {
             restrict: 'EA',
             scope: {
@@ -21,10 +26,22 @@ angular.module('app')
                 
                 // constants
                 var MARGIN = {top: -5, right: -5, bottom: -5, left: -5};
+                
+                // upper case for comparison
+                var BEFORE_STR = "BEFORE";
+                var AFTER_STR = "AFTER";
+                var OVERLAP_STR = "OVERLAP";
+                
+                var BEFORE_INT = 0;
+                var OVERLAP_INT = 1;
+                var AFTER_INT = 2;
+                
                 var NOT_LINKED = 0;
                 
-                var force;
-                var drag; // dragging behavior for nodes
+                var EDGE_ROUNDING = 4;
+                var BOX_HEIGHT = 20;
+                var BOX_PADDING = BOX_HEIGHT + 5; // Distance between boxes in y dimension
+                
                 var node;
                 var link;
                 var linkText;
@@ -33,7 +50,7 @@ angular.module('app')
                 var width = 0;
                 var height = 0;
                 
-                //Set current zoom of graph view
+                // Set current zoom of graph view
                 function zoomed() {    
                     $scope.$apply(function() {
                         zoomTranslate = d3.event.translate;
@@ -50,6 +67,54 @@ angular.module('app')
                 var zoomScale = 1;
                 var graph = new AnnotationGraph();
                 
+                
+                $scope.getLinkLabel = function (link) {
+                    for (var id in link.activeLabels) {
+                        var label = link.activeLabels[id];
+                        if (label.length > 0) {
+                            var tag = label[0].tag.toUpperCase();
+                            if (tag === BEFORE_STR) {
+                                return BEFORE_INT;
+                            } else if (tag === AFTER_STR) {
+                                return AFTER_INT;
+                            } else if (tag === OVERLAP_STR) {
+                                return OVERLAP_INT;
+                            } else {
+                                return undefined;
+                            }
+                        } else {
+                            return undefined;
+                        }
+                    }
+                    return undefined;
+                };
+                
+                /**
+                 * Returns all links which are connections between annotations
+                 * 
+                 * @returns {Array<Links>} all existing links
+                 */
+                $scope.getAllLinks = function () {
+                    var graphLinks = [];
+                    for (var outerID in $scope.annotationLinks) {
+                       var outer = $scope.annotationLinks[outerID];
+                       
+                       for (var innerID in outer) {
+                           var link = outer[innerID];
+                           var label = $scope.getLinkLabel(link);
+                           link.label = label;
+                           graphLinks.push({"source":link.source.id,
+                                            "target":link.target.id,
+                                            "id": link.id,
+                                            "label": label});
+                       }
+                   }
+                   return graphLinks;
+                };
+                
+                graph.links = $scope.getAllLinks();
+                
+                
                 /**
                  * Returns all annotations which are nodes in the graph
                  * 
@@ -65,28 +130,304 @@ angular.module('app')
                 };
                 
                 graph.nodes = $scope.getAllNodes();
-                     
-                     
-                /**
-                 * Returns all links which are connections between annotations
-                 * 
-                 * @returns {Array<Links>} all existing links
-                 */
-                $scope.getAllLinks = function() {
-                    var graphLinks = [];
-                    for (var outerID in $scope.annotationLinks) {
-                       var outer = $scope.annotationLinks[outerID];
-                       
-                       for (var innerID in outer) {
-                           var link = outer[innerID];
-                           graphLinks.push({"source":link.source.id, "target":link.target.id, "id": link.id});
-                       }
-                   }
-                   return graphLinks;
+                    
+                
+                $scope.putNodesInCluster = function (cluster, nodes) {
+                    for (var i = 0; i < nodes.length; i++) {
+                        var node = nodes[i];
+                        cluster[node.id] = node;
+                    }
                 };
                 
-                graph.links = $scope.getAllLinks();
+                $scope.mergeClusters = function (targetCluster, srcCluster) {
+                    for (var id in srcCluster) {
+                        var node = srcCluster[id];
+                        targetCluster[id] = node;
+                    }
+                };
                 
+                $scope.nodeContainedInClusterList = function (clusterList, node) {
+                    for (var i = 0; i < clusterList.length; i++) {
+                        var cluster = clusterList[i];
+                        if (cluster[node.id] !== undefined) {
+                            return cluster;
+                        }
+                    }
+                    
+                    return undefined;
+                };
+                
+                $scope.removeClusterFromClusterList = function (clusterList, cluster) {
+                    var index = clusterList.indexOf(cluster);
+                    if (index > -1) {
+                        clusterList.splice(index, 1);
+                    }
+                };
+                
+                /**
+                 * Adds the reversed structure to nodes, which node is visited by
+                 * some nodes. This makes it easier later 
+                 * 
+                 * @param {type} targetNode
+                 * @param {type} node
+                 * @returns {undefined}
+                 */
+                $scope.addNodeStructure = function (targetNode, node) {
+                    var isTargetOf = targetNode.isTargetOf;
+                    if (isTargetOf === undefined) {
+                        targetNode.isTargetOf = [];
+                        isTargetOf = targetNode.isTargetOf;
+                    }
+                    if (node !== undefined) {
+                        isTargetOf.push(node);
+                    }
+                };
+                
+                /**
+                 * Return a list of nodes which were visited
+                 * 
+                 * @param {type} targetCluster
+                 * @param {type} node
+                 * @returns {$scope@arr;annotationLinks}
+                 */
+                $scope.visit = function (clusterList, targetCluster, node) {
+                    var links = $scope.annotationLinks[node.id];
+                    var visitedNodes = [];
+                    
+                    if (links !== undefined) {
+                        for (var linkId in links) {
+                            var link = links[linkId];
+                            var targetNode = link.target;
+                            
+                            $scope.addNodeStructure(targetNode, node);
+                            
+                            if (targetCluster[targetNode.id] === undefined) {
+                                var cluster = $scope.nodeContainedInClusterList(clusterList, targetNode);
+                                if (cluster !== undefined) {
+                                    $scope.mergeClusters(targetCluster, cluster);
+                                    $scope.removeClusterFromClusterList(clusterList, cluster);
+                                }
+                                
+                                var nodeList = $scope.visit(clusterList, targetCluster, targetNode);
+                                
+                                visitedNodes.push(targetNode);
+                                visitedNodes.concat(nodeList);
+                            }
+                            
+                        }
+                        
+                        return visitedNodes;
+                    } else {
+                        return [];
+                    }
+                    
+                };
+                
+                /**
+                 * TODO single nodes have an own cluster
+                 * 
+                 * Cluster the graph into subgraphs, so all nodes which have a
+                 * link contain in one cluster.
+                 * 
+                 * @returns {Array}
+                 */
+                $scope.clustering = function () {
+                    var clusterList = [];
+                    
+                    graph.nodes.forEach(function (node) {
+                        
+                        $scope.addNodeStructure(node, undefined);
+                        
+                        var targetCluster;
+                        for (var i = 0; i < clusterList.length; i++) {
+                            var cluster = clusterList[i];
+                            if (cluster[node.id] !== undefined) {
+                                targetCluster = cluster;
+                            }
+                        }
+                        
+                        if (targetCluster === undefined) {
+                            targetCluster = {};
+                            targetCluster[node.id] = node;
+                            
+                            var visitedNodes = $scope.visit(clusterList, targetCluster, node);
+                            
+                            $scope.putNodesInCluster(targetCluster, visitedNodes);
+                            clusterList.push(targetCluster);
+                        } else {
+                            // Do nothing
+                        }
+                        
+                    });
+                    
+                    return clusterList;
+                };
+                
+                /**
+                 * Merges all clusters, which only contain 1 element.
+                 * 
+                 * @param {type} clusterList
+                 * @returns {undefined}
+                 */
+                $scope.checkSingleNodes = function (clusterList) {
+                    
+                    var newCluster = {};
+                    
+                    for (var i = 0; i < clusterList.length; i++) {
+                        var cluster = clusterList[i];
+                        var count = Object.keys(cluster).length;
+                        if (count === 1) {
+                            $scope.mergeClusters(newCluster, cluster);
+                            $scope.removeClusterFromClusterList(clusterList, cluster);
+                            i--;
+                        }
+                    }
+                    
+                    return newCluster;
+                };
+                
+                $scope.visitInner = function (tarNode, isTarget, label, currPos, visitedMap) {
+
+                    if (visitedMap[tarNode.id] === undefined) {
+                        visitedMap[tarNode.id] = tarNode;
+
+                        if (label === BEFORE_INT) {
+                            if (isTarget) {
+                                tarNode.bucketPos = ++currPos;
+                            } else {
+                                tarNode.bucketPos = --currPos;
+                            }
+                        } else if (label === AFTER_INT) {
+                            if (isTarget) {
+                                tarNode.bucketPos = --currPos;
+                            } else {
+                                tarNode.bucketPos = ++currPos;
+                            }
+                        } else if (label === OVERLAP_INT) {
+                            tarNode.bucketPos = currPos;
+                        } else {
+                            tarNode.bucketPos = currPos; // TODO evaluate
+                        }
+
+                        $scope.visitC(tarNode, currPos, visitedMap);
+                    }
+                };
+                
+                $scope.visitC = function (node, currPos, visitedMap) {
+                    var outGoingLinks = $scope.annotationLinks[node.id];
+                    
+                    if (outGoingLinks !== undefined) {
+                        for (var linkId in outGoingLinks) {
+                            var link = outGoingLinks[linkId];
+                            var tarNode = link.target;
+                            $scope.visitInner(tarNode, true, link.label, currPos, visitedMap);
+                        }
+                    }
+                    
+                    for (var i = 0; i < node.isTargetOf.length; i++) {
+                        var srcNode = node.isTargetOf[i];
+                        var link = $scope.annotationLinks[srcNode.id][node.id];
+                        $scope.visitInner(srcNode, false, link.label, currPos, visitedMap);
+                    }
+                    
+                };
+                
+                $scope.calcClusterStat = function (cluster) {
+                    
+                    var max = 0;
+                    var min = 0;
+                    
+                    for (var nodeId in cluster) {
+                        var node = cluster[nodeId];
+                        var pos = node.bucketPos;
+                        
+                        if (pos < 0) {
+                            min = Math.min(min, pos);
+                        } else if (pos > 0) {
+                            max = Math.max(max, pos);
+                        }
+                    }
+                    
+                    var total = Math.abs(min) + max;
+                    var stat = {"min": min,
+                                "max": max,
+                                "total": total};
+                    cluster.stat = stat;
+                    
+                    return stat;
+                };
+                
+                $scope.processOffsets = function (clusterList) {
+                    
+                    var maxOfAll = 0;
+                    
+                    for (var i = 0; i < clusterList.length; i++) {
+                        
+                        var curr = 0;
+                        var visitedMap = {};
+                        var cluster = clusterList[i];
+                        
+                        if (cluster.length < 1) {
+                            throw "Cluster length was not expected to be < 1";
+                        }
+                        
+                        var nodeId = Object.keys(cluster)[0];
+                        var node = cluster[nodeId];
+                        node.bucketPos = curr;
+                        $scope.visitC(node, curr, visitedMap);
+                        
+                        var stat = $scope.calcClusterStat(cluster);
+                        maxOfAll = Math.max(maxOfAll, stat.total);
+                    }
+                    
+                    return maxOfAll;
+                };
+                
+                $scope.initArray = function (size) {
+                    var arr = [];
+                    for (var i = 0; i < size; i++) {
+                        arr[i] = 0;
+                    }
+                    return arr;
+                };
+                     
+                $scope.calcNodePosition = function () {
+                    var clusterList = $scope.clustering();
+                    var singleNodeBucket = $scope.checkSingleNodes(clusterList);
+                    var clusterMaxLinkLength = $scope.processOffsets(clusterList);
+                    
+                    var x = 0;
+                    var y = 0;
+                    
+                    // Set at first the coordinates of all nodes which have no links
+                    for (var nodeId in singleNodeBucket) {
+                        var node = singleNodeBucket[nodeId];
+                        node.x = x * 20;
+                        node.y = y * BOX_PADDING;
+                        y++;
+                    }
+                    
+                    var offset = 150; // calc dynamically longest width
+                    var map = $scope.initArray(clusterMaxLinkLength + 1);
+                    
+                    // Then set the properties of all nodes with links
+                    for (var i = 0; i < clusterList.length; i++) {
+                        var cluster = clusterList[i];
+                        var absMin = Math.abs(cluster.stat.min); // absolute value of the min pos
+                        
+                        for (var nodeId in cluster) {
+                            var node = cluster[nodeId];
+                            if (nodeId !== "stat") {
+                                var x = node.bucketPos + absMin + 1;
+                                node.x = x === 1 ? offset : x * 160;
+                                node.y = map[x - 1] * BOX_PADDING;
+
+                                map[x - 1] = map[x - 1] + 1;
+                            }
+                        }
+                    }
+                    
+                };
                 
                 var rendered = false;
                 // Re-render when graph is changed
@@ -116,25 +457,27 @@ angular.module('app')
                 $scope.$watch("selection", function(newVals) {
                     if(newVals !== undefined && newVals !== null) {
                         $scope.updateNodes();
+                        if (newVals.activeLabels !== undefined) {
+                            $scope.render(false);
+                        }
                     }
                     
-                    $scope.updateLinkTexts();
+//                    $scope.updateLinkTexts();
                     $scope.connectedNodes(newVals);
                 }, true);
                 
                 // Listens to changes to the last added annotation
                 $scope.$watch("addedAnnotation", function(newVals) {
                     if(newVals !== undefined && newVals !== null) {
-                        force.stop();
                         $scope.addGraphNode(newVals);
-                        $scope.render(false, true);
+                        $scope.render(false);
                     }
                 });
                 
                 // Listens to changes to the last removed annotation
                 $scope.$watch("removedAnnotation", function(newVals) {
                     if(newVals !== undefined && newVals !== null) {
-                        force.stop();
+//                        force.stop();
                         $scope.removeGraphNode(newVals);
                         $scope.removeGraphLinks(newVals);
                         $scope.render(false);
@@ -144,7 +487,6 @@ angular.module('app')
                 // Listens to changes to the last object whose target type has been set
                 $scope.$watch("lastTargeted", function(newVals) {
                     if(newVals !== undefined && newVals !== null) {
-                        force.stop();
                         $scope.removeGraphLinks(newVals);
                         $scope.render(false);
                     }
@@ -153,7 +495,6 @@ angular.module('app')
                 // Listens to changes to the last added link
                 $scope.$watch("addedLink", function(newVals) {
                     if(newVals !== undefined && newVals !== null) {
-                        force.stop();
                         graph.links.push(newVals);
                         $scope.render(false);
                     }
@@ -179,14 +520,6 @@ angular.module('app')
                     if (resize) {
                         width = d3.select(iElement[0])[0][0].offsetWidth * 2.2;
                         height = d3.select(iElement[0])[0][0].offsetHeight * 25;
-                        
-                        force = d3.layout.force()
-                            .charge(-1000)
-                            .linkDistance(110)
-                            .size([width + MARGIN.left + MARGIN.right, height + MARGIN.top + MARGIN.bottom]);
-                    
-                        drag = force.drag()
-                            .on("dragstart", dragstart);
                     }
                     
                     $scope.renderSVG(MARGIN, resize);
@@ -195,8 +528,8 @@ angular.module('app')
                 
                 // Render links and nodes of the graph
                 $scope.renderGraph = function() {
-                    $scope.renderLinks(); 
                     $scope.renderNodes();
+                    $scope.renderLinks(); 
                     $scope.setGraphBehaviour();
                 };
                 
@@ -218,23 +551,83 @@ angular.module('app')
                     container.attr("transform", "translate(" + zoomTranslate + ")scale(" + zoomScale + ")"); 
                 };
                 
+                $scope.renderNodes = function() {
+                    
+                    $scope.calcNodePosition();
+                    
+                    node = container.selectAll(".node")
+                        .data(graph.nodes)
+                        .enter().append("g")
+                        .attr("class", "node");
+
+                    node.append("rect")
+                        .attr("width", function(d) { // d is an annotation
+                            var labels = d.shortenLabels(maxTextSize / 2);
+                            var text = d.toString(maxTextSize);
+                            d.width = 9 * (labels.length + text.length + 2);
+                            return d.width;
+                        })
+                        .attr("opacity", 0.7)
+                        .attr("height", BOX_HEIGHT)
+                        .attr("rx", EDGE_ROUNDING)
+                        .attr("ry", EDGE_ROUNDING)
+                        .attr("x", function(d) {
+                            return d.x;
+                        })
+                        .attr("y", function (d) {
+                            return d.y;
+                        })
+                        .style("fill", function (d) {
+                            return d.color.fill();
+                        })
+                        .attr("stroke", function(d) {
+                            return d.color.back;
+                        });
+
+                    node.append("text")
+                        .attr("x", function(d) {
+                            return d.x;
+                        })
+                        .attr("y", function (d) {
+                            return d.y;
+                        })
+                        .attr("dx", 5)
+                        .attr("dy", 15)
+                        .text(function(d) {
+                            var labels = d.shortenLabels(maxTextSize / 2);
+                            var text = "'" + d.toString(maxTextSize) + "'";
+                            
+                            return (labels === "") ? text : labels + " | " + text;
+                        })
+                        .attr("opacity", 0.7)
+                        .style("stroke", "black");
+                };
+                
                 $scope.renderLinks = function() {
-                    force
-                        .nodes(graph.nodes)
-                        .links(graph.links)
-                        .start();
     
                     link = container.append("g")
                         .attr("class", "links")
                         .selectAll(".link")
-                        .data(force.links())
+                        .data(graph.links) // TODO
                         .enter().append("line")
                         .attr("class", "link arrow")
                         .style("stroke-width", 2)
+                        .attr("x1", function(d) {
+                            return d.source.x;
+                        })
+                        .attr("y1", function(d) {
+                            return d.source.y + BOX_HEIGHT / 2;
+                        })
+                        .attr("x2", function(d) {
+                            return d.target.x;
+                        })
+                        .attr("y2", function(d) {
+                            return d.target.y + BOX_HEIGHT / 2;
+                        })
                         .attr("marker-end", "url(#arrow)");
                 
                     linkText = container.selectAll("linkTexts")
-                        .data(force.links())
+                        .data(graph.links)
                         .enter()
                         .append("text")
                         .classed("linkText", true)
@@ -242,7 +635,7 @@ angular.module('app')
                             return (d.target.x + d.source.x) / 2;
                         })
                         .attr("y", function(d) {
-                            return (d.target.y + d.source.y) / 2;
+                            return (d.target.y + d.source.y) / 2 + BOX_HEIGHT / 2;
                         })
                         .attr("fill", "black")
                         .style("font-weight", "bold")
@@ -272,52 +665,7 @@ angular.module('app')
                         .style("opacity", 0.3);
                 };
                 
-                $scope.renderNodes = function() {
-                    
-                    node = container.selectAll(".node")
-                        .data(graph.nodes)
-                        .enter().append("g")
-                        .attr("class", "node")
-                        .call(drag);
-
-                    node.append("rect")
-                        .attr("width", function(d) {
-                            var labels = d.shortenLabels(maxTextSize / 2);
-                            var text = d.toString(maxTextSize);
-                            d.width = 9 * (labels.length + text.length + 2);
-                            return d.width;
-                        })
-                        .attr("opacity", 0.7)
-                        .attr("height", 20)
-                        .attr("rx", 4)
-                        .attr("ry", 4)
-                        .attr("x", function(d) {
-                            return - d.width / 2;
-                        })
-                        .attr("y", -10)
-                        .style("fill", function (d) {
-                            return d.color.fill();
-                        })
-                        .attr("stroke", function(d) {
-                            return d.color.back;
-                        });
-
-                    node.append("text")
-                        .attr("x", function(d) {
-                            return - d.width / 2;
-                        })
-                        .attr("y", -10)
-                        .attr("dx", 5)
-                        .attr("dy", 15)
-                        .text(function(d) {
-                            var labels = d.shortenLabels(maxTextSize / 2);
-                            var text = "'" + d.toString(maxTextSize) + "'";
-                            
-                            return (labels === "") ? text : labels + " | " + text;
-                        })
-                        .attr("opacity", 0.7)
-                        .style("stroke", "black");
-                };
+                
                 
                 // Update node appearance depending on current node information
                 $scope.updateNodes = function() {
@@ -372,28 +720,6 @@ angular.module('app')
 
                 // Sets behaviour for positioning of nodes and links on the screen
                 $scope.setGraphBehaviour = function() {
-                    force.on("tick", function () {
-                        link.attr("x1", function (d) {
-                                return isNaN(d.source.x) ? 0 : d.source.x;
-                            })
-                            .attr("y1", function (d) {
-                                return isNaN(d.source.y) ? 0 : d.source.y;
-                            })
-                            .attr("x2", function (d) {
-                                return isNaN(d.target.x) ? 0 : d.target.x;
-                            })
-                            .attr("y2", function (d) {
-                                return isNaN(d.target.y) ? 0 :  d.target.y;
-                            });
-
-                        $scope.updateLinkTexts();
-
-                        node.attr("transform", function (d) {
-                            var dx = isNaN(d.x) ? 0 : d.x;
-                            var dy = isNaN(d.y) ? 0 : d.y;
-                            return "translate(" + dx + "," + dy + ")";
-                        });
-                    });
 
                     node.on("mouseover", function (d) {
                         node.classed("node-active", function (o) {
@@ -599,11 +925,11 @@ angular.module('app')
                     }
                 };
                 
-                function dragstart(d) {
-                    d3.select(this).classed("fixed", d.fixed = true);
-                }
-                
+//                $scope.render(false);
             }
+            
         };
     }]);
+
+
 

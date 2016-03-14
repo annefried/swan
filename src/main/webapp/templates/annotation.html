@@ -76,23 +76,29 @@
             <div ng-class="GraphAccordion">
                 <div class="scroll-pane " style="max-height: 800px;">
                     <uib-accordion close-others="false">
-                        <!-- ng-show or ng-hide does not work on uib-accordion-group
-                            therefore create a div containing the uib-accordion-group -->
-                        <div ng-hide="isUnprivileged == 'true'">
-                            <uib-accordion-group heading="Users" is-open="true" is-disabled="status.isFirstDisabled" class="unselectable" >
-                            <div ng-controller="annotationController as annoCon">
-                                <form id="users">
-                                    <div ng-repeat="u in users">
-                                        <label ng-show="u.role == 'annotator'">
-                                            <input type="radio" name="users" value="{{u.id}}" ng-model="shownUserList[u.id]"
-                                                   ng-click="changeCallbackCont()">
-                                            {{u.prename +" "+ u.lastname}}
-                                        </label><br>
-                                    </div>
-                                </form>
+                        
+                        <!-- Timeline -->
+                        <!-- currently not activated because it is not ready and tested
+                        <uib-accordion-group heading="Timeline" is-open="true" is-disabled="false" class="unselectable">
+                            <div>
+                                <div ng-controller="d3TimelineController as timeline">
+                                    <d3-timeline annotations="annotation.annotationData"
+                                              annotation-links="annotation.annotationLinks"
+                                              selection="annotation.selectedNode"
+                                              added-annotation="annotation.lastAdded"
+                                              removed-annotation="annotation.lastRemoved"
+                                              removed-link="annotation.lastRemovedLink"
+                                              added-link="annotation.lastAddedLink"
+                                              last-set="annotation.lastSet"
+                                              last-targeted="annotation.lastTargeted"
+                                              set-selection="annotation.setSelected(item)">
+                                    </d3-timeline>
+                                </div>
+
                             </div>
-                        </div>
                         </uib-accordion-group>
+                        -->
+                        
                         <!-- Graph -->
                         <uib-accordion-group heading="Visualization" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable" id="anno-graph">
                             <div>
