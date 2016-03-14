@@ -5,15 +5,22 @@
  */
 package de.unisaarland.discanno.rest.services.v1;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.DocumentDAO;
+import de.unisaarland.discanno.dao.LineDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.BooleanHelper;
 import de.unisaarland.discanno.entities.Document;
+import de.unisaarland.discanno.entities.Line;
 import de.unisaarland.discanno.entities.Users;
+import de.unisaarland.discanno.rest.view.View;
 import java.net.URISyntaxException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -48,20 +55,9 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     @EJB
     DocumentDAO documentDAO;
     
+    @EJB
+    LineDAO lineDAO;
     
-    @POST
-    @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(Document entity) {
-        
-        try {   
-            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
-            service.process(entity);
-            return documentDAO.create(entity);
-        } catch (SecurityException e){
-            return Response.status(Response.Status.FORBIDDEN).build();
-        }
-        
-    }
     
     @POST
     @Path("/{docId}/{userId}")
@@ -69,7 +65,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     public Response markDocumentAsCompleted(
                         @PathParam("docId") Long docId,
                         @PathParam("userId") Long userId,
-                        BooleanHelper boolVal) throws URISyntaxException {
+                        BooleanHelper boolVal) {
         
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.annotator));
@@ -128,6 +124,30 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
             return doc;
         } catch (SecurityException e){
            return null;
+        }
+        
+    }
+    
+    @GET
+    @Path("/tokens/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getTokensByDocId(@PathParam("id") Long docId) {
+        
+        try {
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+            
+            List<Line> list = lineDAO.getAllLinesByDocId(docId);
+            return Response.ok(mapper.writerWithView(View.Tokens.class)
+                                        .withRootName("tokens")
+                                        .writeValueAsString(list))
+                            .build();
+        } catch (SecurityException e){
+            return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (NoResultException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(DocumentFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
         
     }
