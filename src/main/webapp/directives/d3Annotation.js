@@ -37,6 +37,7 @@ angular.module('app')
                         var lineHeight = 40;
                         var wordHeight = 40;
                         var margin = 25;
+                        var sliderSize = 3.5;
 
                         var annotationHeight = wordHeight / 2.4;
                         var scale = 1.2;
@@ -1092,7 +1093,7 @@ angular.module('app')
                         $scope.drawAnnotations = function (minLine, maxLine) {
                             svg.selectAll(".annotationbox").remove();
                             svg.selectAll(".annotationboxtext").remove();
-
+                            svg.selectAll(".annotationslider").remove();
                             for (var annoID in formAnnotations) {
                                 var annotation = formAnnotations[annoID];
 
@@ -1101,6 +1102,7 @@ angular.module('app')
                                     continue;
 
                                 var annotationBoxes = annotation.annotationBoxes;
+
 
                                 //Draw the background boxes
                                 svg.selectAll("annotationboxes")
@@ -1185,6 +1187,91 @@ angular.module('app')
                                                     $scope.setSelection({item: d.annotation});
                                             });
                                         });
+
+                                var lastAnnotation = [annotationBoxes[annotationBoxes.length - 1]];
+
+                                var dragSlider = d3.behavior.drag()
+                                        .on("dragstart", function (d) {
+
+                                        })
+                                        .on("drag", function (d) {
+                                            d3.select(this).attr("x", d.x = d3.event.x);
+                                        })
+                                        .on("dragend", function (d) {
+
+                                        });
+
+                                //Draw the last sliders
+                                svg.selectAll("annotationslider")
+                                        .data(lastAnnotation)
+                                        .enter()
+                                        .append("rect")
+                                        .attr("fill", function (d) {
+                                            return "black";
+                                        })
+                                        .attr("height", wordHeight / 3)
+                                        .attr("width", function (d) {
+                                            return sliderSize;
+                                        })
+                                        .attr("x", function (d) {
+                                            var width = 0;
+                                            for (var i = 0; i < d.formWords.length; i++) {
+                                                var formWord = d.formWords[i];
+
+                                                if (formWord.element === undefined)
+                                                    width += wordSpacing;
+                                                else
+                                                    width += formWord.element.getComputedTextLength();
+                                            }
+
+                                            var word = d.formWords[0];
+                                            return (word.x + width - sliderSize);
+                                        })
+                                        .attr("y", function (d) {
+                                            return d.y;
+                                        })
+                                        .attr("z", function (d) {
+                                            return 100;
+                                        })
+                                        .classed("annotationslider", true)
+                                        .call(dragSlider);
+
+                                var firstAnnotation = [annotationBoxes[0]];
+
+                                //Draw the first sliders
+                                svg.selectAll("annotationslider")
+                                        .data(firstAnnotation)
+                                        .enter()
+                                        .append("rect")
+                                        .attr("fill", function (d) {
+                                            return "black";
+                                        })
+                                        .attr("height", wordHeight / 3)
+                                        .attr("width", function (d) {
+                                            return sliderSize;
+                                        })
+                                        .attr("x", function (d) {
+                                            var width = 0;
+                                            for (var i = 0; i < d.formWords.length; i++) {
+                                                var formWord = d.formWords[i];
+
+                                                if (formWord.element === undefined)
+                                                    width += wordSpacing;
+                                                else
+                                                    width += formWord.element.getComputedTextLength();
+                                            }
+
+                                            var word = d.formWords[0];
+                                            return word.x;
+                                        })
+                                        .attr("y", function (d) {
+                                            return d.y;
+                                        })
+                                        .attr("z", function (d) {
+                                            return 100;
+                                        })
+                                        .classed("annotationslider", true)
+                                        .call(dragSlider);
 
                                 //Draw the actual annotation text
                                 svg.selectAll("annotations")
@@ -1429,6 +1516,8 @@ angular.module('app')
 
                         //Draw everything with regular opacity
                         $scope.drawEverything = function () {
+                            svg.selectAll(".annotationslider")
+                                    .style("opacity", 1);
                             svg.selectAll(".annotationtext")
                                     .style("opacity", 1);
                             svg.selectAll(".annotationbox")
@@ -1445,6 +1534,10 @@ angular.module('app')
                         //Hightlight all annotations and their corresponding text
                         $scope.highlightAllAnnotations = function () {
                             var opa = 0.15;
+                            svg.selectAll(".annotationslider")
+                                    .style("opacity", function (d) {
+                                        return 1;
+                                    });
                             svg.selectAll(".annotationbox")
                                     .style("opacity", function (d) {
                                         return 1;
@@ -1468,6 +1561,13 @@ angular.module('app')
                         //if they are linkable with the source annotation
                         $scope.highlightLinkableAnnotations = function (source) {
                             var opa = 0.15;
+
+                            svg.selectAll(".annotationslider")
+                                    .style("opacity", function (d) {
+                                        var linkable = $scope.linkable({source: source, target: d.annotation});
+                                        return linkable ? 1 : opa;
+                                    });
+
 
                             svg.selectAll(".annotationbox")
                                     .style("opacity", function (d) {
@@ -1532,6 +1632,31 @@ angular.module('app')
                                         });
 
                                 svg.selectAll(".annotationbox")
+                                        .style("stroke-width", function (d) {
+                                            return (d.annotation === $scope.selection) ? 1.65 : 1;
+                                        })
+                                        .style("opacity", function (d) {
+                                            var linked = 0;
+                                            switch ($scope.selection.type) {
+                                                case "Annotation":
+                                                case "Target":
+                                                    linked = $scope.areLinked(d.annotation, $scope.selection);
+                                                    break;
+                                                case "Link":
+                                                    linked = $scope.partOfLink(d.annotation, $scope.selection);
+                                                    break;
+                                            }
+
+                                            switch (linked) {
+                                                case 0:
+                                                    return opa;
+                                                case 3:
+                                                    return 1;
+                                                default:
+                                                    return oma;
+                                            }
+                                        });
+                                svg.selectAll(".annotationslider")
                                         .style("stroke-width", function (d) {
                                             return (d.annotation === $scope.selection) ? 1.65 : 1;
                                         })
