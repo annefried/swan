@@ -270,8 +270,6 @@ function AnnotationColor(name, num, shades, back, line) {
         if (num !== 0 && mod === 0) {
             mod = (num + 1) % shades.length; // TODO better solution needed
         }
-        console.log("AnnoStruct: " + mod);
-        console.log("AnnoStruct: " + shades[mod]);
         return shades[mod];
     },
     this.shades = shades;

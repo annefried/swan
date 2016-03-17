@@ -9,9 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -52,10 +50,6 @@ public class Document extends BaseEntity {
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 mappedBy = "document")
     private Set<State> states = new HashSet<>();
-    
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
-                mappedBy = "document")
-    private List<Line> lines = new ArrayList<>();
     
     /**
      * These are the default annotations/ targets, given by the uploader.
@@ -115,14 +109,6 @@ public class Document extends BaseEntity {
     
     public void removeDefaultAnnotations() {
         this.defaultAnnotations = new HashSet<>();
-    }
-
-    public List<Line> getLines() {
-        return lines;
-    }
-
-    public void setLines(List<Line> lines) {
-        this.lines = lines;
     }
     
 }

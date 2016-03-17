@@ -5,7 +5,8 @@
  */
 package de.unisaarland.discanno.business;
 
-import de.unisaarland.discanno.TokenizationUtil;
+import de.unisaarland.discanno.tokenization.model.Line;
+import de.unisaarland.discanno.tokenization.TokenizationUtil;
 import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.dao.*;
 import de.unisaarland.discanno.entities.*;
@@ -99,6 +100,19 @@ public class Service {
         }
     }
 
+    /**
+     * Tokenizes the given document and returns them.
+     * 
+     * @param docId
+     * @return 
+     */
+    public List<Line> getTokensByDocId(Long docId) {
+        
+        Document doc = (Document) documentDAO.find(docId, true);
+        List<Line> lines = TokenizationUtil.tokenize(doc.getText());
+        
+        return lines;
+    }
     
     ///////////////////////////////////////////////
     //  PROCESS
@@ -300,8 +314,6 @@ public class Service {
     }
     
     public void process(Document entity) {
-        List<Line> lines = TokenizationUtil.tokenize(entity);
-        entity.setLines(lines);
         Project project = (Project) projectDAO.find(entity.getProject().getId(), false);
         entity.setProject(project);
         process(entity.getDefaultAnnotations());
@@ -601,8 +613,6 @@ public class Service {
         }
         
         generateTargets(project, entity);
-        List<Line> lines = TokenizationUtil.tokenize(entity);
-        entity.setLines(lines);
         
         project.addDocuments(entity);
 

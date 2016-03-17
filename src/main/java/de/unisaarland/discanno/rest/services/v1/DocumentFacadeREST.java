@@ -10,11 +10,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.DocumentDAO;
-import de.unisaarland.discanno.dao.LineDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.BooleanHelper;
 import de.unisaarland.discanno.entities.Document;
-import de.unisaarland.discanno.entities.Line;
+import de.unisaarland.discanno.tokenization.model.Line;
 import de.unisaarland.discanno.entities.Users;
 import de.unisaarland.discanno.rest.view.View;
 import java.net.URISyntaxException;
@@ -54,9 +53,6 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     
     @EJB
     DocumentDAO documentDAO;
-    
-    @EJB
-    LineDAO lineDAO;
     
     
     @POST
@@ -128,6 +124,18 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
         
     }
     
+    /**
+     * Returns the tokenized text of the document.
+     * 
+     * The document will be tokenized with every call of getTokensByDocId. Tests
+     * showed that the tokenization with the creation of the document and storing
+     * the data in the database carries big performance disadvantages. Tokenize
+     * the document with every request is faster than retrieving them out of
+     * the database and sorting the values per token position and line.
+     * 
+     * @param docId
+     * @return 
+     */
     @GET
     @Path("/tokens/{id}")
     @Produces({MediaType.APPLICATION_JSON})
@@ -136,7 +144,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             
-            List<Line> list = lineDAO.getAllLinesByDocId(docId);
+            List<Line> list = service.getTokensByDocId(docId);
             return Response.ok(mapper.writerWithView(View.Tokens.class)
                                         .withRootName("tokens")
                                         .writeValueAsString(list))
