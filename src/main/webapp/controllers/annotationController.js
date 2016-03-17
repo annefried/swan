@@ -219,8 +219,9 @@ angular
                         this.removeAnnotation(this.tempAnno);
                     if (item === this.selectedNode)
                         this.selectedNode = null;
-                    else
+                    else {
                         this.selectedNode = item;
+                    }
                 };
                 //Change the label of the currently selected annotation
                 this.setSelectedLabel = function (label, labelSet) {

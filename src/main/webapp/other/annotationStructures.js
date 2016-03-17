@@ -123,7 +123,7 @@ function AnnotationObject(id, type, labels, text) {
 
         return false;
     };
-    
+
     //Shorten the text representation of all the labels depending of the text length
     this.shortenLabels = function (textLength) {
         var t = "";
@@ -213,7 +213,7 @@ function Annotation(color, id, tType) {
         if (this.words.length > 0)
             return this.words[this.words.length - 1].end;
     };
-    
+
     this.toString = function (maxSize) {
         if (this.text.length > maxSize)
             return "'" + this.text.substring(0, maxSize - 1) + " ...'";
@@ -221,7 +221,7 @@ function Annotation(color, id, tType) {
         return this.text;
     };
 
-    //Split the text represantion in several lines. The size of each line is 
+    //Split the text represantion in several lines. The size of each line is
     //capped by maxSize
     this.toStringLines = function (maxSize) {
         return [this.toString(maxSize)];
@@ -272,7 +272,7 @@ function AnnotationColor(name, num, shades, back, line) {
         }
         return shades[mod];
     },
-    this.shades = shades;
+            this.shades = shades;
     this.back = back;
     this.line = (line === undefined) ? back : line;
 }
@@ -354,23 +354,23 @@ function formAnnotation(annotation, isTarget) {
         for (var i = 0; i < this.annotationBoxes.length; i++)
             this.annotationBoxes[i].clearAnnotationGrids();
     };
-    
-    this.startLine = function() {
+
+    this.startLine = function () {
         if (this.annotationBoxes.length > 0) {
             var annotationBox = this.annotationBoxes[0];
-            
-            if(annotationBox.formWords.length > 0) {
+
+            if (annotationBox.formWords.length > 0) {
                 var formWord = annotationBox.formWords[0];
                 return formWord.lY;
             }
         }
     };
-    
-    this.endLine = function() {
+
+    this.endLine = function () {
         if (this.annotationBoxes.length > 0) {
             var annotationBox = this.annotationBoxes[this.annotationBoxes.length - 1];
-            
-            if(annotationBox.formWords.length > 0) {
+
+            if (annotationBox.formWords.length > 0) {
                 var formWord = annotationBox.formWords[0];
                 return formWord.lY;
             }
