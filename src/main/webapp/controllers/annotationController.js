@@ -143,7 +143,7 @@ angular
                         var anno = new Annotation(color, annotations[a].id, targetType);
                         anno.notSure = annotations[a].notSure;
                         this.findWords(start, end, anno);
-                        
+
                         //Add labels
                         for (var l = 0; l < annotations[a].labelMap.length; l++) {
                             var label = annotations[a].labelMap[l];
@@ -154,7 +154,7 @@ angular
                                 anno.setLabel(labelSet, annotationLabel);
                             }
                         }
-                        
+
                         var color = this.getColor(targetType, anno);
                         anno.color = color;
                         this.annotationData[anno.id] = anno;
@@ -198,8 +198,9 @@ angular
                         this.removeAnnotation(this.tempAnno);
                     if (item === this.selectedNode)
                         this.selectedNode = null;
-                    else
+                    else {
                         this.selectedNode = item;
+                    }
                 };
                 //Change the label of the currently selected annotation
                 this.setSelectedLabel = function (label, labelSet) {
@@ -591,7 +592,7 @@ angular
                 this.getCharacterSum = function (str) {
                     var sum = 0;
                     for (var i = 0; i < str.length; i++) {
-                        sum += str.charCodeAt(i); 
+                        sum += str.charCodeAt(i);
                     }
                     return sum;
                 };
@@ -608,7 +609,7 @@ angular
                             return this.cloneAnnotationColor(num, col);
                         }
                     }
-                    
+
                     return col;
                 };
                 //Helper function for finding corresponding words in the text
@@ -707,17 +708,17 @@ angular
                 this.cloneAnnotationColor = function (num, color) {
                     return new AnnotationColor(color.name, num, color.shades, color.back, color.line);
                 };
-                
+
                 this.targetColor = new AnnotationColor("Target", 0, ["#F2EFE7"], "#000000", "#646362");
                 this.emptyColor = new AnnotationColor("Empty", 0, ["#F2EFE7"], "#716C67", "#999791");
                 this.emptyLabel = new AnnotationLabel("");
-                
+
                 var redShades = ["#591010", "#9a1b1b", "#dd3f3f", "#e56a6a", "#f0abab", "#fcecec"];
                 var blueShades = ["#0e2c3f", "#1c587e", "#2575a8", "#449dd6", "#83bee4", "#c2dff2"];
                 var violetShades = ["#911491", "#d41dd4", "#eb6ceb", "#f199f1", "#fadcfa"];
                 var greenShades = ["#004e00", "#008100", "#00ce00", "#1cff1c", "#9cff9c", "#e9ffe9"];
-                
-                this.annotationColors = [ // AnnotationColor(name, num, shades, back, line)
+
+                this.annotationColors = [// AnnotationColor(name, num, shades, back, line)
                     new AnnotationColor("Red", 0, redShades, "#8C1F1F", undefined),
                     new AnnotationColor("Blue", 0, blueShades, "#072540", undefined),
                     new AnnotationColor("Violet", 0, violetShades, "#795A8F", undefined),

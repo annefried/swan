@@ -47,7 +47,6 @@ angular.module('app')
                         var currJ = 0;
                         var jDistance = 20; //Amount of lines after which text should be redrawn
                         var defaultLinkOpacity = 0.1;
-
                         var oldJ = currJ;
                         var minJ = 0;
                         var maxJ = minJ + jDistance;
@@ -1400,6 +1399,18 @@ angular.module('app')
                             if ($scope.selection === null || $scope.selection === undefined)
                                 $scope.drawEverything();
                             else {
+                                if ($scope.selection !== null && $scope.selection !== undefined && $scope.selection.selectedInGraph === true) {
+                                    // If clicked in the graph, find annotation
+                                    for (var annoID in formAnnotations) {
+                                        var annotation = formAnnotations[annoID];
+                                        if (annotation.annotation === $scope.selection) {
+                                            // Move scrollbar to position of first word in Anno, since first box might not have a coordinate
+                                            var firstWord = annotation.annotationBoxes[0].formWords[0];
+                                            window.scrollTo(firstWord.x, firstWord.y);
+                                        }
+                                    }
+                                    $scope.selection.selectedInGraph = false;
+                                }
                                 svg.selectAll(".annotationtext")
                                         .style("opacity", function (d) {
                                             for (var id in d.annoGrid) {
