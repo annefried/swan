@@ -1525,7 +1525,7 @@ angular.module('app')
                                                     return 0.8;
                                             }
                                         })
-                                        .style("x", function (d) {
+                                        .attr("x", function (d) {
                                             var link = d.value;
                                             //Set selection to lastSelection when selecting a link to prevent jumping text
                                             var sel = (lastSelection !== undefined && lastSelection !== null && $scope.selection.type === "Link")
@@ -1546,7 +1546,7 @@ angular.module('app')
                                                     return sourceBox.x + sourceBox.width + 10;
                                             }
                                         })
-                                        .style("y", function (d) {
+                                        .attr("y", function (d) {
                                             var link = d.value;
                                             //Set selection to lastSelection when selecting a link to prevent jumping text
                                             var sel = (lastSelection !== undefined && lastSelection !== null && $scope.selection.type === "Link")
