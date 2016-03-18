@@ -462,6 +462,7 @@ angular.module('app')
                                 $scope.setLineHeights();
                                 $scope.addFormAnnotation(newVals, false);
                                 $scope.drawText(minJ, maxJ);
+                                $scope.drawLineNumbers(minJ, maxJ);
                                 $scope.drawAnnotations(minJ, maxJ);
                                 $scope.highlightSelected();
                             }
@@ -1524,7 +1525,7 @@ angular.module('app')
                                                     return 0.8;
                                             }
                                         })
-                                        .attr("x", function (d) {
+                                        .style("x", function (d) {
                                             var link = d.value;
                                             //Set selection to lastSelection when selecting a link to prevent jumping text
                                             var sel = (lastSelection !== undefined && lastSelection !== null && $scope.selection.type === "Link")
@@ -1545,7 +1546,7 @@ angular.module('app')
                                                     return sourceBox.x + sourceBox.width + 10;
                                             }
                                         })
-                                        .attr("y", function (d) {
+                                        .style("y", function (d) {
                                             var link = d.value;
                                             //Set selection to lastSelection when selecting a link to prevent jumping text
                                             var sel = (lastSelection !== undefined && lastSelection !== null && $scope.selection.type === "Link")
