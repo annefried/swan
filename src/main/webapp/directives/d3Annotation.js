@@ -968,7 +968,7 @@ angular.module('app')
                                         .data(dat.filter(function (d) {
                                             var guard = true;
                                             for (var k = 0; k < dat.length; k++) {
-                                                guard = guard & $scope.$parent.isSpace(dat[k]);
+                                                guard = guard & $scope.$parent.isSpace(dat[k].word.text);
                                             }
                                             if (guard) {
                                                 return true;
