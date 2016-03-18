@@ -663,7 +663,8 @@ angular.module('app')
                                         var word = nextWord;
                                         iX = 0;
                                         while ((currLength * (wordSpacing / 4.25) + nextWordLength < textWidth)
-                                                || $scope.$parent.isSpace(word) || $scope.$parent.isPunctuation(word)) {
+                                                || $scope.$parent.isSpace(word)
+                                                || $scope.$parent.isPunctuation(word)) {
 
                                             currLength += word.length + 1;
                                             newLine.push(new formTextWord(line[index], undefined, 0, 0, iX, iY));
@@ -1030,7 +1031,15 @@ angular.module('app')
                                 //corresponding lines on the screen
                                 svg.selectAll("text.content")
                                         .data(dat.filter(function (d) {
-                                            return !$scope.$parent.isSpace(d.word.text);
+                                            var guard = true;
+                                            for (var k = 0; k < dat.length; k++) {
+                                                guard = guard & $scope.$parent.isSpace(dat[k]);
+                                            }
+                                            if (guard) {
+                                                return true;
+                                            } else {
+                                                return !$scope.$parent.isSpace(d.word.text);
+                                            }
                                         }))
                                         .enter()
                                         .append(function (d) {
