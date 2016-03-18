@@ -461,6 +461,7 @@ angular.module('app')
                             if (newVals !== undefined) {
                                 $scope.setLineHeights();
                                 $scope.addFormAnnotation(newVals, false);
+                                $scope.drawText(minJ, maxJ);
                                 $scope.drawAnnotations(minJ, maxJ);
                                 $scope.highlightSelected();
                             }
@@ -524,8 +525,8 @@ angular.module('app')
                         $scope.$watch('annotations', function (newVals, oldVals) {
                             $scope.formatTargets();
                             $scope.formatAnnotations();
-                            $scope.render(true);
                             $scope.setLineHeights();
+                            $scope.render(true);
                         });
                         //Determines what text passage the cursor is currently highlighting
                         //and tries to create a new temporary annotation for that section
