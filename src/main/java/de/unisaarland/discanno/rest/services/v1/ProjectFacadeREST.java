@@ -16,6 +16,7 @@ import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.export.ExportUtil;
 import de.unisaarland.discanno.entities.Project;
 import de.unisaarland.discanno.entities.Users;
+import de.unisaarland.discanno.rest.view.View;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -165,7 +166,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
 
             List<Project> list = projectDAO.findAll();
 
-            return Response.ok(mapper.writer()
+            return Response.ok(mapper.writerWithView(View.Projects.class)
                                         .withRootName("projects")
                                         .writeValueAsString(list))
                             .build();
@@ -188,7 +189,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
 
             List<Project> list = projectDAO.getAllProjectsByUserId(userId);
 
-            return Response.ok(mapper.writer()
+            return Response.ok(mapper.writerWithView(View.Projects.class)
                                         .withRootName("projects")
                                         .writeValueAsString(list))
                             .build();

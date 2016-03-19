@@ -25,7 +25,8 @@ public class BaseEntity implements Serializable {
     @JsonView({ View.Annotations.class,
                 View.Schemes.class ,
                 View.Users.class,
-                View.Links.class })
+                View.Links.class,
+                View.Projects.class })
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
