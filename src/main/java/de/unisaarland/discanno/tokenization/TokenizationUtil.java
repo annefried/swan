@@ -27,7 +27,13 @@ public class TokenizationUtil {
     public static List<Line> tokenize(final String str) {
         
         StringReader reader = new StringReader(str);
-        PTBTokenizer<CoreLabel> ptbt = new PTBTokenizer<>(reader, new CoreLabelTokenFactory(), "");
+        
+        // The passed options prevent tokenizing '(' into '-LRB-' etc.
+        // http://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/process/PTBTokenizer.html
+        PTBTokenizer<CoreLabel> ptbt = new PTBTokenizer<>(
+                                        reader,
+                                        new CoreLabelTokenFactory(),
+                                        "ptb3Escaping=false,normalizeParentheses=false,normalizeOtherBrackets=false");
 
         Line line = new Line();
         

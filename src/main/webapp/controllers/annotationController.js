@@ -37,7 +37,7 @@ angular
                 this.readData = function () {
                     this.annotationDatabase = getAnnotationService.getAnnotations($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                     this.scheme = schemeService.getScheme($window.sessionStorage.docId);
-                    this.plainText = textService.getText($window.sessionStorage.docId);
+//                    this.plainText = textService.getText($window.sessionStorage.docId);
                     this.targetData = targetService.getTargets($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                     this.linkData = linkService.getLinks($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                     this.tokenData = tokenService.getTokens($window.sessionStorage.docId);
@@ -96,15 +96,14 @@ angular
                 //Split words of the text in data structure
                 this.buildText = function () {
 
-                    this.annotationLines = this.plainText.split(/\r?\n/);
                     this.annotationText = [];
                     var start = 0;
                     var end = -1;
                     for (var i = 0; i < this.tokenData.length; i++) {
-                        var line = this.annotationLines[i];
-                        start = end + 1;
-                        end = start + line.length;
                         var currentLine = this.tokenData[i].tokens;
+                        start = end + 1;
+                        end = start + this.tokenData[i].lineLength;
+                        
                         var annoLine = new TextLine(start, end);
                         for (var j = 0; j < currentLine.length; j++) {
                             var word = new TextWord(currentLine[j].text, currentLine[j].start, currentLine[j].end);
@@ -639,8 +638,12 @@ angular
 
                     //Search for first corresponding line
                     var lineStart = 0;
-                    while (this.annotationText[lineStart].end < start)
+                    var endL = this.annotationText[lineStart].end;
+                    while (endL < start) {
                         lineStart++;
+                        endL = this.annotationText[lineStart].end;
+                    }
+                        
                     //Search for last corresponding line
                     var lineEnd = lineStart;
                     while (this.annotationText[lineEnd].end < end)
@@ -649,8 +652,10 @@ angular
                     var lastLine = this.annotationText[lineEnd];
                     //Search for corresponding text(s) in line
                     var rowStart = 0;
-                    while (firstLine.words[rowStart].start < start)
+                    while (firstLine.words[rowStart] !== undefined
+                            && firstLine.words[rowStart].start < start) {
                         rowStart++;
+                    }
                     var rowEnd = 0;
                     while (lastLine.words[rowEnd].end < end)
                         rowEnd++;

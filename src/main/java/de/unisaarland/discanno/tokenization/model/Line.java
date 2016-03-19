@@ -5,6 +5,8 @@
  */
 package de.unisaarland.discanno.tokenization.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +16,20 @@ import java.util.List;
  */
 public class Line {
     
+    @JsonIgnore
+    private int lineLength;
+    
     private List<Token> tokens = new ArrayList<>();
 
+    @JsonProperty
+    public int getLineLength() {
+        int length = 0;
+        for (Token t : tokens) {
+            length += t.getText().length();
+        }
+        
+        return length;
+    }
 
     public List<Token> getTokens() {
         return tokens;
