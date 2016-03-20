@@ -53,7 +53,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             $scope.currentLabelSet = [];
             $scope.selectedTargetsLabel = [];
         } else {
-            $rootScope.addAlert({type: 'danger', msg: 'A LabelSetr with this name is already part of this Scheme.'});
+            $rootScope.addAlert({type: 'danger', msg: 'A LabelSet with this name is already part of this scheme.'});
         }
     };
     /**
@@ -76,6 +76,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             labels.push($scope.currentLinkSet[i].name);
         }
         var newLinkSet = {
+            name: $scope.nameLinkSet,
             startType: $scope.startType,
             endType: $scope.endType,
             linkLabels: labels
@@ -233,7 +234,11 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             var xmlDoc = $.parseXML($fileContent);
             var xml = xmlDoc.responseXML;
             var content = xml2json(xmlDoc, "");
+            
             content = content.replace("[{[{", "[{");
+            content = content.replace("[{[{", "[{");
+
+            content = content.replace("}]}]", "}]");
             content = content.replace("}]}]", "}]");
         } catch (e) {
             content = $fileContent;
@@ -337,13 +342,14 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                         linkLabels.push(label);
                     }
                     ;
-                    var link = {
+                    var linkSet = {
+                        "name": file.linkSets[i].name,
                         "startType": startType,
                         "endType": endType,
                         "allowUnlabeledLinks": file.linkSets[i].allowUnlabeledLinks,
                         "linkLabels": linkLabels
                     };
-                    linkSets.push(link);
+                    linkSets.push(linkSet);
                 }
                 var template =
                         {

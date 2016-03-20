@@ -32,7 +32,7 @@
          ]
       },
       {  
-         "name":"SituationEntityType2",
+         "name":"SituationEntityType3",
          "exclusive":false,
          "appliesToTargetTypes":[  
             "passage"
@@ -54,16 +54,6 @@
             "before",
             "after",
             "overlap"
-         ]
-      },
-      {  
-         "startType":"verb",
-         "endType":"verb",
-         "allowUnlabeledLinks":false,
-         "linkLabels":[  
-            "brown",
-            "yellow",
-            "red"
          ]
       },
       {  

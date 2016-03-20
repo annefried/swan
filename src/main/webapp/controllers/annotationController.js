@@ -579,7 +579,7 @@ angular
                             this.linkLabels[startType] = {};
                         if (this.linkLabels[startType][endType] === undefined)
                             this.linkLabels[startType][endType] = {};
-                        var linkLabelSet = new LabelSet(linkSet.id, "LinkSet " + (i + 1), true);
+                        var linkLabelSet = new LabelSet(linkSet.id, linkSet.name, true);
                         this.linkLabels[startType][endType][linkSet.id] = linkLabelSet;
                         //Add labels to set
                         for (var j = 0; j < linkSet.linkLabels.length; j++) {
