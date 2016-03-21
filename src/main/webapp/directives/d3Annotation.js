@@ -36,7 +36,7 @@ angular.module('app')
                         var textHeight = 0;
                         var lineHeight = 40;
                         var wordHeight = 40;
-                        var margin = 25;
+                        var margin = 0;
                         var annotationHeight = wordHeight / 2.4;
                         var scale = 1.2;
                         var arity = 1;
