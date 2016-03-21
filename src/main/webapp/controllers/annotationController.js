@@ -103,7 +103,7 @@ angular
                         var currentLine = this.tokenData[i].tokens;
                         start = end + 1;
                         end = start + this.tokenData[i].lineLength;
-                        
+
                         var annoLine = new TextLine(start, end);
                         for (var j = 0; j < currentLine.length; j++) {
                             var word = new TextWord(currentLine[j].text, currentLine[j].start, currentLine[j].end);
@@ -643,7 +643,7 @@ angular
                         lineStart++;
                         endL = this.annotationText[lineStart].end;
                     }
-                        
+
                     //Search for last corresponding line
                     var lineEnd = lineStart;
                     while (this.annotationText[lineEnd].end < end)

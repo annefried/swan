@@ -592,7 +592,8 @@ angular.module('app')
                         $scope.formatText = function () {
                             formText = [];
                             prefixes = [];
-                            width = d3.select(iElement[0])[0][0].offsetWidth / 10;
+                            var charSizeApproximation = 8.5;
+                            width = d3.select(iElement[0])[0][0].offsetWidth / charSizeApproximation;
                             textWidth = width;
                             var maxLines = $scope.data.length;
                             arity = Math.max(Math.floor(Math.log10(Math.abs(maxLines))), 0) + 1;
