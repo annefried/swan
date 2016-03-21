@@ -5,11 +5,8 @@
  */
 package de.unisaarland.discanno.export.model;
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -20,16 +17,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder={ "targetTypes", "annotations", "links" })
+@XmlType(propOrder={ "annotations", "links" })
 public class Document {
 
-    @XmlElement(name = "targetType")
-    private Set<String> targetTypes = new HashSet<>();
-    
     private AnnotationSet annotations;
     
     private LinkSet links;
-    
     
     public AnnotationSet getAnnotations() {
         return annotations;
@@ -47,12 +40,5 @@ public class Document {
         this.links = links;
     }
 
-    public Set<String> getTargetTypes() {
-        return targetTypes;
-    }
-
-    public void setTargetTypes(Set<String> targetTypes) {
-        this.targetTypes = targetTypes;
-    }
 
 }
