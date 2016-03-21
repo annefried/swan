@@ -225,7 +225,44 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             
             return Response
                         .ok(FileUtils.readFileToByteArray(file))
-                        .header("Content-Disposition", "attachment; filename=\"Export_" + proj.getName() + ".zip\"")
+                        .header("Content-Disposition", "attachment; filename=\"export_" + proj.getName() + ".zip\"")
+                        .build();
+            
+        } catch (SecurityException e) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (IOException ex) {
+            Logger.getLogger(ProjectFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        } catch (NoResultException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        
+    }
+    
+     /**
+     * This method returns a zip archive containing all Users annotations project
+     * related. For each document and user pair will be a single .xml file
+     * created in the de.unisaarland.disacnno.export.model format.
+     * 
+     * @param projId
+     * @return 
+     */
+    @GET
+    @Path("/exportXmi/{projId}")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response exportProjectByProjIdAsXmiZip(@PathParam("projId") Long projId) {
+
+        try {
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+
+            Project proj = (Project) projectDAO.find(projId, false);
+            
+            ExportUtil exportUtil = new ExportUtil(annotationDAO, linkDAO);
+            File file = exportUtil.getExportDataXmi(proj);
+            
+            return Response
+                        .ok(FileUtils.readFileToByteArray(file))
+                        .header("Content-Disposition", "attachment; filename=\"exportXmi_" + proj.getName() + ".zip\"")
                         .build();
             
         } catch (SecurityException e) {
