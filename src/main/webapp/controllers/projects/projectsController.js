@@ -127,6 +127,15 @@ angular
                     $scope.exportProject = function (projId) {
                         return "tempannot/project/export/" + projId;
                     };
+                    
+                    /**
+                     * Get the address to export a project.
+                     * @param {type} projId the Projects id
+                     * @returns {String} the adress for export
+                     */
+                    $scope.exportProjectXmi = function (projId) {
+                        return "tempannot/project/exportXmi/" + projId;
+                    };
 
                     /**
                      * Called upon clicking the 'x'-Button in a documents row.

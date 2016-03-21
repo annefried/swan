@@ -119,7 +119,12 @@
                                 <a class="glyphicon glyphicon-share"
                                    ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
                                    ng-href="{{ exportProject(x.id) }}"
-                                   ng-hide="isUnprivileged === 'true'">
+                                   ng-hide="isUnprivileged === 'true'">(xml)
+                                </a>
+                                 <a class="glyphicon glyphicon-share"
+                                   ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
+                                   ng-href="{{ exportProjectXmi(x.id) }}"
+                                   ng-hide="isUnprivileged === 'true'">(UIMA xmi)
                                 </a>
                             </td>
                         </tr>
