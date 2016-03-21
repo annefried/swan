@@ -45,7 +45,7 @@ angular.module('app')
                         var formAnnotations = {};
                         var prefixes = [];
                         var currJ = 0;
-                        var jDistance = 20; //Amount of lines after which text should be redrawn
+                        var jDistance = 30; //Amount of lines after which text should be redrawn
                         var defaultLinkOpacity = 0.1;
                         var oldJ = currJ;
                         var minJ = 0;
