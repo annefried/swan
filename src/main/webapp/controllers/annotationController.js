@@ -113,42 +113,6 @@ angular
                         }
                         this.annotationText.push(annoLine);
                     }
-
-// Legacy code from untokinized version
-//
-//                    //Split text into lines
-//                    this.annotationLines = this.plainText.split(/\r?\n/);
-//                    this.annotationText = [];
-//                    var start = 0;
-//                    var end = -1;
-//                    //Split the text lines into separate words
-//                    for (var i = 0; i < this.annotationLines.length; i++) {
-//                        var line = this.annotationLines[i];
-//                        start = end + 1;
-//                        end = start + line.length;
-//                        var annoLine = new TextLine(start, end);
-//                        var split = 0;
-//                        for (var j = 0; j < line.length; j++) {
-//                            if (line[j] === ' ' || line[j] === '\t' || this.isPunctuation(line[j])) {
-//                                var word = new TextWord(line.substring(split, j), split + start, j + start);
-//                                var punctuation = new TextWord((line[j]), j + start, j + 1 + start);
-//                                word.lineIndex = i;
-//                                word.wordIndex = annoLine.length;
-//                                punctuation.lineIndex = i;
-//                                punctuation.wordIndex = annoLine.length + 1;
-//                                annoLine.words.push(word);
-//                                annoLine.words.push(punctuation);
-//                                split = j + 1;
-//                            }
-//                        }
-//
-//                        if (split < line.length) {
-//                            var word = new TextWord(line.substring(split, line.length), split + start, line.length + start);
-//                            annoLine.words.push(word);
-//                        }
-//
-//                        this.annotationText.push(annoLine);
-//                    }
                 };
                 this.buildAnnotations = function () {
                     //Annotations are indexed by their id
@@ -457,29 +421,6 @@ angular
                         }(this), function (err) {
                             $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
                         });
-//                        var xmlHttp = new XMLHttpRequest();
-//                        xmlHttp.open("POST", "tempannot/links", false); // false for synchronous request
-//                        xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-//                        xmlHttp.send(JSON.stringify(jsonTemplate));
-
-//                        this.checkResponseStatusCode(xmlHttp.status);
-
-//                        var newId = xmlHttp.responseText;
-//
-//                        var link = new AnnotationLink(newId, source, target);
-//
-//                        //Add label sets
-//                        for (var id in this.linkLabels[source.tType.tag][target.tType.tag]) {
-//                            var linkSet = this.linkLabels[source.tType.tag][target.tType.tag][id];
-//                            link.addSelectableLabel(linkSet);
-//                        }
-//
-//                        if (this.annotationLinks[source.id] === undefined)
-//                            this.annotationLinks[source.id] = {};
-//
-//                        this.annotationLinks[source.id][target.id] = link;
-//                        this.lastAddedLink = link;
-//                        return link;
                     }
                 };
                 //Checks if two annotations are linkable depending on their target type
@@ -492,12 +433,18 @@ angular
 
                     //TODO: db callback;
                     if (link !== undefined) {
-                        var source = link.source;
-                        var target = link.target;
-                        if (source !== undefined && target !== undefined) {
-                            this.lastRemovedLink = link;
-                            delete this.annotationLinks[source.id][target.id];
-                        }
+                        $http.delete("tempannot/links/" + link.id).then(function (object) {
+                            return function (response) {
+                                var source = link.source;
+                                var target = link.target;
+                                if (source !== undefined && target !== undefined) {
+                                    object.lastRemovedLink = link;
+                                    delete object.annotationLinks[source.id][target.id];
+                                }
+                            };
+                        }(this), function (err) {
+                            $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                        });
                     }
                 };
                 //Remove each link that is connected to the object
