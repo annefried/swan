@@ -69,7 +69,7 @@ angular
                         $scope.shownUserList = {};
                     }
                     $scope.shownUserList[$window.sessionStorage.shownUser] = $window.sessionStorage.shownUser;
-                    $http.get("tempannot/document/" + $window.sessionStorage.docId)
+                    $http.get("discanno/document/" + $window.sessionStorage.docId)
                             .then(function (response) {
                                 $scope.users = JSOG.parse(JSON.stringify(response.data)).project.users;
                             }, function (response) {
@@ -209,11 +209,11 @@ angular
                                     }]
                             };
                             if (labeled) {
-                                $http.post('tempannot/annotations/addlabel/' + this.selectedNode.id, labelTemplate);
+                                $http.post('discanno/annotations/addlabel/' + this.selectedNode.id, labelTemplate);
                             } else {
                                 // This is a post request and not delete because of a bug with Jersey or AngularJS
                                 // It could not put arguments in the body
-                                $http.post('tempannot/annotations/removelabel/' + this.selectedNode.id, labelTemplate);
+                                $http.post('discanno/annotations/removelabel/' + this.selectedNode.id, labelTemplate);
                             }
                         } else {
                             var labelTemplate = {
@@ -223,9 +223,9 @@ angular
                                     }]
                             };
                             if (labeled) {
-                                $http.post('tempannot/links/addlabel/' + this.selectedNode.id, labelTemplate);
+                                $http.post('discanno/links/addlabel/' + this.selectedNode.id, labelTemplate);
                             } else {
-                                $http.post('tempannot/links/removelabel/' + this.selectedNode.id, labelTemplate);
+                                $http.post('discanno/links/removelabel/' + this.selectedNode.id, labelTemplate);
                             }
                         }
 
@@ -267,7 +267,7 @@ angular
                     if (this.selectedNode !== null && this.selectedNode !== undefined && targetType !== undefined
                             && this.selectedNode.type === "Annotation") {
                         if (this.selectedNode.tType !== undefined) {
-                            $http.post("tempannot/annotations/changett/" + this.selectedNode.id, {'targetType': targetType.tag}).then(function (response) {
+                            $http.post("discanno/annotations/changett/" + this.selectedNode.id, {'targetType': targetType.tag}).then(function (response) {
 
                             }, function (error) {
                                 $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
@@ -336,7 +336,7 @@ angular
                         "notSure": false
                     };
                     // add to db
-                    $http.post("tempannot/annotations", JSON.stringify(jsonTemplate)).then(function (object) {
+                    $http.post("discanno/annotations", JSON.stringify(jsonTemplate)).then(function (object) {
                         return function (response) {
                             var newId = response.data;
                             object.lastAdded = annotation;
@@ -355,7 +355,7 @@ angular
                         this.tempAnno.onDelete();
                         this.tempAnno = null;
                     } else {
-                        $http.delete("tempannot/annotations/" + annotation.id).then(function (object) {
+                        $http.delete("discanno/annotations/" + annotation.id).then(function (object) {
                             return function (response) {
                                 annotation.onDelete();
                                 delete object.annotationData[annotation.id];
@@ -413,7 +413,7 @@ angular
                             },
                             "labelMap": []
                         };
-                        $http.post("tempannot/links", JSON.stringify(jsonTemplate)).then(function (object) {
+                        $http.post("discanno/links", JSON.stringify(jsonTemplate)).then(function (object) {
                             return function (response) {
                                 var newId = response.data;
                                 var link = new AnnotationLink(newId, source, target);
@@ -444,7 +444,7 @@ angular
 
                     //TODO: db callback;
                     if (link !== undefined) {
-                        $http.delete("tempannot/links/" + link.id).then(function (object) {
+                        $http.delete("discanno/links/" + link.id).then(function (object) {
                             return function (response) {
                                 var source = link.source;
                                 var target = link.target;
@@ -676,7 +676,7 @@ angular
                     $window.sessionStorage.completed = $scope.completed;
                     var payloadJson = JSON.stringify(payload);
                     var docUser = $window.sessionStorage.docId + '/' + $window.sessionStorage.uId;
-                    $http.post("tempannot/document/" + docUser, payloadJson).then(function (response) {
+                    $http.post("discanno/document/" + docUser, payloadJson).then(function (response) {
                         if (response.status === 200) {
                             if ($scope.completed) {
                                 $rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
@@ -697,7 +697,7 @@ angular
                     };
                     $http({
                         method: 'POST',
-                        url: 'tempannot/annotations/notsure/' + anno.id,
+                        url: 'discanno/annotations/notsure/' + anno.id,
                         data: JSON.stringify(payload),
                         headers: {'Content-Type': 'application/json'}
                     }).success(function (response) {

@@ -360,7 +360,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                             "linkSets": linkSets,
                             "projects": []
                         };
-                $http.post("tempannot/scheme", JSON.stringify(template)
+                $http.post("discanno/scheme", JSON.stringify(template)
                         ).then(function (response) {
                     $rootScope.schemesTable[template.name] = template;
                     var schemePreview = {
@@ -389,7 +389,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
 
     };
     $scope.loadSchemes = function () {
-        $http.get('tempannot/scheme/schemes').then(function (response) {
+        $http.get('discanno/scheme/schemes').then(function (response) {
             var schemes = JSOG.parse(JSON.stringify(response.data.schemes));
             $scope.loadedSchemes = [];
             for (var i = 0; i < schemes.length; i++) {

@@ -14,7 +14,7 @@ angular
                     // TODO refactor
                     // Request list of users from backend
                     $scope.getUsers = function () {
-                        var httpUsers = $http.get("tempannot/user").success(function (response) {
+                        var httpUsers = $http.get("discanno/user").success(function (response) {
                             $scope.users = JSOG.parse(JSON.stringify(response)).users;
                         }).error(function (response) {
                             $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
@@ -54,7 +54,7 @@ angular
                      * @returns http-Object of query
                      */
                     $scope.loadSchemes = function () {
-                        var httpSchemes = $http.get("tempannot/scheme/schemes").success(function (response) {
+                        var httpSchemes = $http.get("discanno/scheme/schemes").success(function (response) {
                             $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
                         }).error(function (response) {
                             $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});

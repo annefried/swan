@@ -130,7 +130,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RunManager" selected="JavaScript Debug.#">
-    <configuration default="false" name="#" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/TempAnnot/#/">
+    <configuration default="false" name="#" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/discanno/#/">
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">

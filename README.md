@@ -52,7 +52,7 @@ Please check out the [contributing](https://github.com/annefried/discanno/blob/m
     * Port: 5432
     * Create a database named "discanno"
     * If your postgres admin user is different from postgres, grant permission to postgres user on discanno database:
-    ````grant all privileges on database tempannot to postgres;````
+    ````grant all privileges on database discanno to postgres;````
 
 
 >**Important**: If you choose another version than 9.3, then put the corresponding JDBC driver in the glassfish4/glassfish/lib folder: https://jdbc.postgresql.org/download.html. Before you deploy the application. If GlassFish is not able to create a connection to the database before you deploy the WebApp you will probably cause a bug in GlassFish named "invalid resource: cannot find jdbc/DiscAnno__pm"!

@@ -33,8 +33,8 @@ import de.unisaarland.discanno.integrationtest.BaseITTest;
  */
 public class RESTTest extends BaseITTest {
     
-    private static final String PROJECT_PATH = "/discanno/tempannot/project";
-    private static final String LOGIN_PATH = "discanno/tempannot/usermanagment/login";
+    private static final String PROJECT_PATH = "/discanno/discanno/project";
+    private static final String LOGIN_PATH = "discanno/discanno/usermanagment/login";
     
 //    @Override
 //    protected AppDescriptor configure() {

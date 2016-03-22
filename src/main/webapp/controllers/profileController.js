@@ -26,7 +26,7 @@ angular
 
                     $scope.getTime = function () {
                         $scope.tilog = [];
-                        $http.get("tempannot/timelogging/" + $scope.userId).then(function (response) {
+                        $http.get("discanno/timelogging/" + $scope.userId).then(function (response) {
                             $scope.tilog = JSOG.parse(JSON.stringify(response.data)).timelogging;
                             $scope.calcTotalTime();
                         });
@@ -65,7 +65,7 @@ angular
                             };
                             var jsonStr = JSON.stringify(json);
 
-                            $http.post("tempannot/timelogging", jsonStr).then(function (response) {
+                            $http.post("discanno/timelogging", jsonStr).then(function (response) {
                                 if (response.status == 200) {
                                     $scope.tilog.push(jsonForTable);
                                     $rootScope.addAlert({type: 'success', msg: 'Time logged!'});
@@ -125,7 +125,7 @@ angular.module('app').controller('profileEditModalController', function ($scope,
     
     $scope.changePassword = function (password) {
 
-        $http.put('tempannot/user/' + $window.sessionStorage.uId, password).success(function (response) {
+        $http.put('discanno/user/' + $window.sessionStorage.uId, password).success(function (response) {
             $rootScope.addAlert({type: 'success', msg: 'Password changed succesfully.'});
         }).error(function (response) {
             $rootScope.addAlert({type: 'danger', msg: 'Sorry something went wrong:('});

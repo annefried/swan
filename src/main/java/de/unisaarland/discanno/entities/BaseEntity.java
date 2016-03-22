@@ -61,7 +61,7 @@ public class BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "de.unisaarland.tempannot.entities.BaseEntity[ id=" + id + " ]";
+        return "de.unisaarland.discanno.entities.BaseEntity[ id=" + id + " ]";
     }
     
 }

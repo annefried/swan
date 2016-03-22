@@ -20,7 +20,7 @@ angular.module('app').controller('documentDeleteModalController', function ($sco
      * @param {type} projId the projects id
      */
     $scope.deleteDocument = function (documentId, projId) {
-        $http.delete("tempannot/document/" + documentId).then(function (response) {
+        $http.delete("discanno/document/" + documentId).then(function (response) {
             for (var j = 0; j < $rootScope.tableProjects.length; j++) {
                 if ($rootScope.tableProjects[j].id === projId) {
                     var project = $rootScope.tableProjects[j];

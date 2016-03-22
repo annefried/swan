@@ -95,7 +95,7 @@ public class LinkLabel implements Serializable {
 
     @Override
     public String toString() {
-        return "de.unisaarland.tempannot.entities.LinkLabel[ id=" + linkLabel + " ]";
+        return "de.unisaarland.discanno.entities.LinkLabel[ id=" + linkLabel + " ]";
     }
     
 }

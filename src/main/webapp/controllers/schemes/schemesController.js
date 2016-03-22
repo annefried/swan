@@ -32,7 +32,7 @@ angular
                      * @returns http-Object of query
                      */
                     $scope.loadSchemes = function () {
-                        var httpSchemes = $http.get("tempannot/scheme/schemes").success(function (response) {
+                        var httpSchemes = $http.get("discanno/scheme/schemes").success(function (response) {
                             $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
                         }).error(function (response) {
                             $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
@@ -45,7 +45,7 @@ angular
                      * @returns http-Object of query
                      */
                     $scope.loadProjects2 = function () {
-                        var httpProjects = $http.get("tempannot/project").then(function (response) {
+                        var httpProjects = $http.get("discanno/project").then(function (response) {
                             $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
                         }, function (err) {
                             $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});

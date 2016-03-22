@@ -15,7 +15,7 @@ angular.module('app').controller('projectDeleteModalController', function ($scop
     };
 
     $scope.deleteProject = function (projId) {
-        $http.delete("tempannot/project/" + projId).success(function (response) {
+        $http.delete("discanno/project/" + projId).success(function (response) {
             for (var i = 0; i < $rootScope.tableProjects.length; i++) {
                 if ($rootScope.tableProjects[i].id === projId) {
                     $rootScope.tableProjects.splice(i, 1);

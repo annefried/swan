@@ -111,7 +111,7 @@ angular
                      * Load Schemes from Database
                      */
                     $scope.loadSchemes = function () {
-                        var httpSchemes = $http.get("tempannot/scheme/schemes").then(function (response) {
+                        var httpSchemes = $http.get("discanno/scheme/schemes").then(function (response) {
                             $scope.schemes = JSOG.parse(JSON.stringify(response.data)).schemes;
                         }, function (err) {
                             $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
@@ -125,7 +125,7 @@ angular
                      * @returns {String} the adress for export
                      */
                     $scope.exportProject = function (projId) {
-                        return "tempannot/project/export/" + projId;
+                        return "/project/export/" + projId;
                     };
                     
                     /**
@@ -134,7 +134,7 @@ angular
                      * @returns {String} the adress for export
                      */
                     $scope.exportProjectXmi = function (projId) {
-                        return "tempannot/project/exportXmi/" + projId;
+                        return "/project/exportXmi/" + projId;
                     };
 
                     /**
@@ -273,7 +273,7 @@ angular
                                 }
 
                             };
-                            $http.post('tempannot/project', JSON.stringify(projectTemplate))
+                            $http.post('discanno/project', JSON.stringify(projectTemplate))
                                     .then(function (response) {
                                         var template = {
                                             'id': response.data,
@@ -291,7 +291,7 @@ angular
                                             $rootScope.tableProjects.push(template);
                                         } else {
                                             //get the current user (there is not REST interface for getUser by ID)
-                                            $http.get("tempannot/user/").then(function (response) {
+                                            $http.get("discanno/user/").then(function (response) {
                                                 var users = JSOG.parse(JSON.stringify(response.data)).users;
                                                 for (var i = 0; i < users.length; i++) {
                                                     var u = users[i];
@@ -302,7 +302,7 @@ angular
                                                 $rootScope.tableProjects.push(template);
                                             }, function () {});
 
-                                            $http.post("tempannot/project/addManager/"
+                                            $http.post("discanno/project/addManager/"
                                                     + template.id
                                                     + "/"
                                                     + $window.sessionStorage.uId);

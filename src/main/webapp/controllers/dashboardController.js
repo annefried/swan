@@ -20,7 +20,7 @@ angular
                 }
 
                 $scope.logout = function () {
-                    $http.post('tempannot/usermanagment/logout');
+                    $http.post('discanno/usermanagment/logout');
                     $window.sessionStorage.uId = null;
                     $window.sessionStorage.prename = null;
                     $window.sessionStorage.lastname = null;
@@ -34,13 +34,13 @@ angular
                 $rootScope.loadProjects = function () {
                     // If User show only assigned projects
                     if ($window.sessionStorage.role !== 'annotator') {
-                        var httpProjects = $http.get("tempannot/project").then(function (response) {
+                        var httpProjects = $http.get("discanno/project").then(function (response) {
                             $rootScope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
                         }, function (err) {
                             $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
                         });
                     } else {
-                        var httpProjects = $http.get("tempannot/project/byuser/" + $window.sessionStorage.uId).then(function (response) {
+                        var httpProjects = $http.get("discanno/project/byuser/" + $window.sessionStorage.uId).then(function (response) {
                             $rootScope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
                         }, function (err) {
                             $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});

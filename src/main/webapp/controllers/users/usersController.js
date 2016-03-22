@@ -24,7 +24,7 @@ angular
 
                     // Request list of users from backend
                     $scope.getUsers = function () {
-                        $http.get("tempannot/user").then(function (response) {
+                        $http.get("discanno/user").then(function (response) {
                             var res = JSOG.parse(JSON.stringify(response.data));
                             $scope.users = res.users;
                             for (var i = 0; i < $scope.users.length; i++) {
@@ -40,10 +40,10 @@ angular
                     };
 
                     $scope.enhanceUserData = function (u, i) {
-                        var projReq = $http.get("tempannot/project/byuser/" + u.id).then(function (response) {
+                        var projReq = $http.get("discanno/project/byuser/" + u.id).then(function (response) {
                             $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
                         });
-                        var timeReq = $http.get("tempannot/timelogging/" + u.id).then(function (response) {
+                        var timeReq = $http.get("discanno/timelogging/" + u.id).then(function (response) {
                             $scope.tilog = JSOG.parse(JSON.stringify(response.data)).timelogging;
                         });
 

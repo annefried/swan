@@ -7,7 +7,7 @@ angular.module('app').controller('projectAddModalController', function ($scope, 
     };
 
     $scope.loadSchemes = function () {
-        $http.get("tempannot/scheme/schemes").then(function (response) {
+        $http.get("discanno/scheme/schemes").then(function (response) {
             $scope.schemes = JSOG.parse(JSON.stringify(response.data)).schemes;
         }, function (err) {
             $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});

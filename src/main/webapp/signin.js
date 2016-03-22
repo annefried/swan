@@ -10,7 +10,7 @@ angular
                 $scope.login = function (credentials) {
                     $http({
                         method: 'POST',
-                        url: 'tempannot/usermanagment/login',
+                        url: 'discanno/usermanagment/login',
                         data: $.param({email: credentials.username, password: credentials.password}),
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                     }).success(function (response) {

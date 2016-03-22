@@ -26,6 +26,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Jersey Web Application</servlet-name>
-        <url-pattern>/tempannot/*</url-pattern>
+        <url-pattern>/discanno/*</url-pattern>
     </servlet-mapping>
 </web-app>

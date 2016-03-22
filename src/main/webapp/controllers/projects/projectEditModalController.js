@@ -10,7 +10,7 @@ angular.module('app').controller('projectEditModalController', function ($scope,
     };
 
     $scope.loadUsers = function () {
-        $http.get("tempannot/user").then(function (response) {
+        $http.get("discanno/user").then(function (response) {
             var usersPms = JSOG.parse(JSON.stringify(response.data)).users;
             $scope.users = [];
             $scope.pms = [];
@@ -30,7 +30,7 @@ angular.module('app').controller('projectEditModalController', function ($scope,
     };
 
     $scope.addSelectedUser = function () {
-        $http.post("tempannot/project/add/" + $rootScope.currentProjectId + "/" + $scope.newUser).success(function (response) {
+        $http.post("discanno/project/add/" + $rootScope.currentProjectId + "/" + $scope.newUser).success(function (response) {
             var emptyTemplate = ['0'];
             for (var i = 0; i < $scope.users.length; i++) {
                 var u = $scope.users[i];
@@ -48,7 +48,7 @@ angular.module('app').controller('projectEditModalController', function ($scope,
     };
 
     $scope.addSelectedPM = function () {
-        $http.post("tempannot/project/addManager/" + $rootScope.currentProjectId + "/" + $scope.newPM).success(function (response) {
+        $http.post("discanno/project/addManager/" + $rootScope.currentProjectId + "/" + $scope.newPM).success(function (response) {
             var emptyTemplate = ['0'];
             for (var i = 0; i < $scope.pms.length; i++) {
                 if ($scope.pms[i].id === $scope.newPM) {
@@ -64,7 +64,7 @@ angular.module('app').controller('projectEditModalController', function ($scope,
     };
 
     $scope.deleteUser = function (uId) {
-        $http.post("tempannot/project/del/" + $rootScope.currentProjectId + "/" + uId).then(function (response) {
+        $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).then(function (response) {
             for (var i = 0; i < $rootScope.tableProjects[$rootScope.currentProjectIndex].users.length; i++) {
                 if ($rootScope.tableProjects[$rootScope.currentProjectIndex].users[i].id == uId)
                     $rootScope.tableProjects[$rootScope.currentProjectIndex].users.splice(i, 1);
@@ -74,7 +74,7 @@ angular.module('app').controller('projectEditModalController', function ($scope,
     };
 
     $scope.deletePM = function (uId) {
-        $http.post("tempannot/project/del/" + $rootScope.currentProjectId + "/" + uId).then(function (response) {
+        $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).then(function (response) {
             for (var i = 0; i < $rootScope.tableProjects[$rootScope.currentProjectIndex].pms.length; i++) {
                 if ($rootScope.tableProjects[$rootScope.currentProjectIndex].pms[i].id == uId)
                     $rootScope.tableProjects[$rootScope.currentProjectIndex].pms.splice(i, 1);
