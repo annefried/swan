@@ -123,7 +123,6 @@ angular.module('app')
                             {
                                 var textWord = $scope.data[i].words[j];
                                 if (textWord !== undefined) {
-                                    // console.log(textWord);
                                     if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
                                         j++;
                                         $scope.hot('true');
@@ -164,8 +163,6 @@ angular.module('app')
                                     } else if ($scope.data[i].words[j - 1] !== undefined) {
                                         j--;
                                         $scope.hot('false');
-                                    } else {
-                                        console.log("End of first line");
                                     }
                                 }
                             }
@@ -194,13 +191,10 @@ angular.module('app')
                                         i++;
                                         j = 0;
                                         $scope.hotShift(true, words);
-                                    } else {
-                                        console.log("End of last line");
                                     }
                                 }
                             } else {
                                 var textWord = $scope.data[i].words[j];
-                                //console.log(textWord);
                                 if ((words.indexOf(textWord) !== '-1') && (textWord !== undefined)) {
                                     if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
                                         words.pop(textWord);
@@ -535,7 +529,11 @@ angular.module('app')
                         //Size increased
                         $scope.$watch('sizeIncreased', function (newVals) {
                             if (newVals !== undefined) {
+                                $scope.addFormAnnotation(newVals, false)
+                                $scope.drawText(minJ, maxJ);
+                                $scope.drawLineNumbers(minJ, maxJ);
                                 $scope.drawAnnotations(minJ, maxJ);
+                                $scope.setLineHeights();
                                 $scope.highlightSelected();
                             }
                         }, true);

@@ -24,12 +24,12 @@ angular
                     this.buildText();
                     this.buildAnnotations();
                     this.buildLinks();
-
                     $scope.completed = $window.sessionStorage.completed === 'true';
 
                     if ($rootScope.tour !== undefined) {
                         $rootScope.tour.resume();
                     }
+                    $rootScope.initialized = 'true';
                 };
 
 
@@ -37,8 +37,6 @@ angular
                 this.readData = function () {
                     this.annotationDatabase = getAnnotationService.getAnnotations($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                     this.scheme = schemeService.getScheme($window.sessionStorage.docId);
-//                    this.plainText = textService.getText($window.sessionStorage.docId);
-                    this.targetData = targetService.getTargets($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                     this.linkData = linkService.getLinks($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                     this.tokenData = tokenService.getTokens($window.sessionStorage.docId);
                     // Retrieve projects and process projects
@@ -108,47 +106,12 @@ angular
                         for (var j = 0; j < currentLine.length; j++) {
                             var word = new TextWord(currentLine[j].text, currentLine[j].start, currentLine[j].end);
                             word.lineIndex = i;
-                            word.wordIndex = annoLine.length;
+                            word.wordIndex = annoLine.words.length;
                             annoLine.words.push(word);
                         }
                         this.annotationText.push(annoLine);
                     }
 
-// Legacy code from untokinized version
-//
-//                    //Split text into lines
-//                    this.annotationLines = this.plainText.split(/\r?\n/);
-//                    this.annotationText = [];
-//                    var start = 0;
-//                    var end = -1;
-//                    //Split the text lines into separate words
-//                    for (var i = 0; i < this.annotationLines.length; i++) {
-//                        var line = this.annotationLines[i];
-//                        start = end + 1;
-//                        end = start + line.length;
-//                        var annoLine = new TextLine(start, end);
-//                        var split = 0;
-//                        for (var j = 0; j < line.length; j++) {
-//                            if (line[j] === ' ' || line[j] === '\t' || this.isPunctuation(line[j])) {
-//                                var word = new TextWord(line.substring(split, j), split + start, j + start);
-//                                var punctuation = new TextWord((line[j]), j + start, j + 1 + start);
-//                                word.lineIndex = i;
-//                                word.wordIndex = annoLine.length;
-//                                punctuation.lineIndex = i;
-//                                punctuation.wordIndex = annoLine.length + 1;
-//                                annoLine.words.push(word);
-//                                annoLine.words.push(punctuation);
-//                                split = j + 1;
-//                            }
-//                        }
-//
-//                        if (split < line.length) {
-//                            var word = new TextWord(line.substring(split, line.length), split + start, line.length + start);
-//                            annoLine.words.push(word);
-//                        }
-//
-//                        this.annotationText.push(annoLine);
-//                    }
                 };
                 this.buildAnnotations = function () {
                     //Annotations are indexed by their id
@@ -630,13 +593,13 @@ angular
                         var line = this.tokenData[i].tokens;
                         start = ending + 1;
                         ending = start + this.tokenData[i].lineLength;
-
                         var annoLine = new TextLine(start, ending);
                         for (var j = 0; j < line.length; j++) {
+                            var word = new TextWord(line[j].text, line[j].start, line[j].end);
+                            word.lineIndex = i;
+                            word.wordIndex = annoLine.words.length;
+                            annoLine.words.push(word);
                             if (found) {
-                                var word = new TextWord(line[j].text, line[j].start, line[j].end);
-                                word.lineIndex = i;
-                                word.wordIndex = annoLine.length;
                                 return word;
                             }
                             if (line[j].end === end) {
@@ -768,6 +731,7 @@ angular
 //                    new AnnotationColor("Orange", 0, undefined, "#AA3935", undefined),
 //                    new AnnotationColor("Grey", 0, undefined, "#716458", undefined)
                 ];
-                this.init();
+                if ($rootScope.initialized !== 'true')
+                    this.init();
             }]);
 
