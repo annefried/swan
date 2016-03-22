@@ -270,6 +270,18 @@ angular
                         this.lastSet = this.selectedNode;
                     }
                 };
+                this.increaseSelectedAnnoSize = function () {
+                    if (this.selectedNode !== null && this.selectedNode !== undefined
+                            && this.selectedNode.type === "Annotation") {
+                        var word = this.nextWord(this.selectedNode.endIndex());
+                        this.selectedNode.addWord(word);
+                        if (word.text === " ") {
+                            this.increaseSelectedAnnoSize();
+                        }
+                        this.sizeIncreased = this.selectedNode;
+                    }
+                };
+
                 //Set target type of the currently selected object
                 this.setSelectedTargetType = function (targetType) {
 
@@ -457,29 +469,6 @@ angular
                         }(this), function (err) {
                             $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
                         });
-//                        var xmlHttp = new XMLHttpRequest();
-//                        xmlHttp.open("POST", "tempannot/links", false); // false for synchronous request
-//                        xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-//                        xmlHttp.send(JSON.stringify(jsonTemplate));
-
-//                        this.checkResponseStatusCode(xmlHttp.status);
-
-//                        var newId = xmlHttp.responseText;
-//
-//                        var link = new AnnotationLink(newId, source, target);
-//
-//                        //Add label sets
-//                        for (var id in this.linkLabels[source.tType.tag][target.tType.tag]) {
-//                            var linkSet = this.linkLabels[source.tType.tag][target.tType.tag][id];
-//                            link.addSelectableLabel(linkSet);
-//                        }
-//
-//                        if (this.annotationLinks[source.id] === undefined)
-//                            this.annotationLinks[source.id] = {};
-//
-//                        this.annotationLinks[source.id][target.id] = link;
-//                        this.lastAddedLink = link;
-//                        return link;
                     }
                 };
                 //Checks if two annotations are linkable depending on their target type
@@ -632,6 +621,30 @@ angular
 
                     return col;
                 };
+                //Helper function to find next word
+                this.nextWord = function (end) {
+                    var found = false;
+                    var start = 0;
+                    var ending = -1;
+                    for (var i = 0; i < this.tokenData.length; i++) {
+                        var line = this.tokenData[i].tokens;
+                        start = ending + 1;
+                        ending = start + this.tokenData[i].lineLength;
+
+                        var annoLine = new TextLine(start, ending);
+                        for (var j = 0; j < line.length; j++) {
+                            if (found) {
+                                var word = new TextWord(line[j].text, line[j].start, line[j].end);
+                                word.lineIndex = i;
+                                word.wordIndex = annoLine.length;
+                                return word;
+                            }
+                            if (line[j].end === end) {
+                                found = true;
+                            }
+                        }
+                    }
+                }
                 //Helper function for finding corresponding words in the text
                 //that are indexed by start and end
                 this.findWords = function (start, end, object) {

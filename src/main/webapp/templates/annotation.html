@@ -43,6 +43,7 @@
                             <div>
                                 <d3-annotation class="d3Anno"
                                                on-user-change="annotation.onUserChange()"
+                                               size-increased="annotation.sizeIncreased"
                                                data="annotation.annotationText"
                                                annotations="annotation.annotationData"
                                                targets="annotation.targets"
@@ -61,7 +62,8 @@
                                                get-annotation="annotation.getAnnotation(item)"
                                                add-link="annotation.addLink(source, target)"
                                                linkable="annotation.linkable(source, target)"
-                                               clear-selection="d3Anno.clearSelection()">
+                                               clear-selection="d3Anno.clearSelection()"
+                                               increase-selected-anno-size="annotation.increaseSelectedAnnoSize()">
                                 </d3-annotation>
                             </div>
 

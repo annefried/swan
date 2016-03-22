@@ -8,6 +8,7 @@ angular.module('app')
                     restrict: 'EA',
                     scope: {
                         onUserChange: "&",
+                        sizeIncreased: "=",
                         data: "=",
                         annotations: "=",
                         targets: "=",
@@ -25,7 +26,8 @@ angular.module('app')
                         getAnnotation: "&",
                         addLink: "&",
                         linkable: "&",
-                        clearSelection: "&"
+                        clearSelection: "&",
+                        increaseSelectedAnnoSize: "&"
                     },
                     link: function ($scope, iElement) {
 
@@ -313,22 +315,22 @@ angular.module('app')
                                         $scope.hotShift(false, $scope.words);
                                     }
                                 })
-                                .add({
-                                    combo: 'right',
-                                    description: 'Jump word by word',
-                                    callback: function () {
-                                        j++;
-                                        $scope.hot('true');
-                                    }
-                                })
-                                .add({
-                                    combo: 'left',
-                                    description: 'Jump back to first word in current line',
-                                    callback: function () {
-                                        j--;
-                                        $scope.hot('false');
-                                    }
-                                })
+//                                .add({
+//                                    combo: 'right',
+//                                    description: 'Jump word by word',
+//                                    callback: function () {
+//                                        j++;
+//                                        $scope.hot('true');
+//                                    }
+//                                })
+//                                .add({
+//                                    combo: 'left',
+//                                    description: 'Jump back to first word in current line',
+//                                    callback: function () {
+//                                        j--;
+//                                        $scope.hot('false');
+//                                    }
+//                                })
                                 .add({
                                     combo: 'up',
                                     description: 'Jump to first word in upper line',
@@ -360,7 +362,7 @@ angular.module('app')
                                     }
                                 })
                                 .add({
-                                    combo: 'alt+right',
+                                    combo: 'right',
                                     description: 'Jump from annotation to annotation',
                                     callback: function () {
                                         $scope.index++;
@@ -369,14 +371,33 @@ angular.module('app')
                                     }
                                 })
                                 .add({
-                                    combo: 'alt+left',
+                                    combo: 'left',
                                     description: 'Jump from annotation to annotation',
                                     callback: function () {
                                         $scope.index--;
                                         var anno = $scope.getAllAnnos($scope.index, true);
                                         $scope.setSelection({item: anno});
                                     }
+                                })
+                                .add({
+                                    combo: 'alt+right',
+                                    description: 'Jump from annotation to annotation',
+                                    callback: function () {
+                                        $scope.increaseAnno();
+                                    }
+                                })
+                                .add({
+                                    combo: 'alt+left',
+                                    description: 'Jump from annotation to annotation',
+                                    callback: function () {
+                                        $scope.increaseAnno();
+                                    }
                                 });
+
+                        $scope.increaseAnno = function () {
+                            $scope.increaseSelectedAnnoSize();
+                        };
+
                         $scope.sort = function (array) {
                             return array.sort(function (a, b) {
                                 var x = a.words[0].start;
@@ -506,6 +527,13 @@ angular.module('app')
                         });
                         //Listens to changes to the last changed object
                         $scope.$watch('lastSet', function (newVals) {
+                            if (newVals !== undefined) {
+                                $scope.drawAnnotations(minJ, maxJ);
+                                $scope.highlightSelected();
+                            }
+                        }, true);
+                        //Size increased
+                        $scope.$watch('sizeIncreased', function (newVals) {
                             if (newVals !== undefined) {
                                 $scope.drawAnnotations(minJ, maxJ);
                                 $scope.highlightSelected();
