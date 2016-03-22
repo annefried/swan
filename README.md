@@ -61,7 +61,8 @@ Please check out the [contributing](https://github.com/annefried/discanno/blob/m
 * If you set up everything properly, just right click on the project and press "run".
 * The database will be automatically created. To gain access execute the following statement via psql shell or pgAdmin:
 ````
-		INSERT INTO users (id, createdate, email, lastname, prename, password, role) VALUES (0, localtimestamp, 'admin@discanno.de', 					  'DiscAnno', 'Admin', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'admin');
+INSERT INTO users (id, createdate, email, lastname, prename, password, role) VALUES (0, localtimestamp, 'admin@discanno.de',
+'DiscAnno', 'Admin', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'admin');
 ````
 * Now you can login with the email "admin@discanno.de" and "secret" as the password. With the access you can create new users and change your password. The password is hashed, so just inserting the original password would have not worked.
 * pgAdmin 3 can be useful: http://www.pgadmin.org/download/
