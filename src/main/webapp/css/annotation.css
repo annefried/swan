@@ -17,8 +17,8 @@
 }
 
 .annotationoptions {
-    margin-left:  2em;
-    margin-right: 2em;
+    margin-left:  1em;
+    margin-right: 1em;
 }
 
 .graph {
@@ -53,7 +53,7 @@
 
 .rightwindow {
     position: fixed;
-    padding: 2em;
+    padding: 1em;
     left: 79%;
     top: 7.7em;
     transform: translateX(-50%);
@@ -69,6 +69,7 @@
 
 .optiontitle {
     font-weight: bold;
+    margin:0px;
 }
 
 .optiontext {
@@ -100,4 +101,17 @@
    float:left;  
    position: initial;
    margin: 3px 0.5ex;
+}
+
+.col-md-4 {
+    padding:0;
+    padding-right: 10px;
+}
+
+.panel-body {
+    padding:5px;
+}
+
+.col-md-7 {
+    padding:5px;
 }

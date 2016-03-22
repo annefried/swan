@@ -245,7 +245,7 @@ function AnnotationLink(id, source, target, labels) {
                 text += label[0].tag + " ";
         }
 
-        return (text === "") ? "Empty Link" : text;
+        return (text === "") ? "click here to add label" : text;
     };
 
     this.toStringLines = function (maxSize) {

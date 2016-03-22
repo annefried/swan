@@ -1,34 +1,34 @@
 <link href="css/annotation.css" rel="stylesheet">
 <link href="css/graph.css" rel="stylesheet">
 <link href="css/annotationoptions.css" rel="stylesheet">
-    
+
 <div>
     <script type="text/ng-template" id="alert.html">
         <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
-            <div ng-transclude></div>
+        <div ng-transclude></div>
         </div>
     </script>
     <div>
-        
+
         <div>
-            
+
             <div class="col-md-7" ng-controller="d3AnnotationController as d3Anno" ng-mouseup="d3Anno.UpdateSelectionText()">
-                    
+
                 <div class="annotationtitle filename" id="1-anno-tool">
                     {{d3Anno.project}} > <i>{{d3Anno.title}}</i>
                     <label ng-hide="isUnprivileged == 'false'">&nbsp;&nbsp;(</label>
                     <div 
-                         style="display: inline-block;"
-                         ng-controller="annotationController as annoCon"
-                         ng-hide="isUnprivileged == 'false'">
+                        style="display: inline-block;"
+                        ng-controller="annotationController as annoCon"
+                        ng-hide="isUnprivileged == 'false'">
                         <input type="checkbox" value=""
-                                      ng-model="completed"
-                                      ng-click="annoCon.setDocCompleted()">
+                               ng-model="completed"
+                               ng-click="annoCon.setDocCompleted()">
                         <label>Completed</label>
                     </div>
                     <label ng-hide="isUnprivileged == 'false'">)</label>
                 </div>
-                
+
                 <hr class="featurette-divider">
 
                 <div class="annotationfield" >
@@ -39,7 +39,7 @@
                             <uib-accordion-heading>
                                 <div class="unselectable" id="anno-text">Text</div>
                             </uib-accordion-heading>
-                            
+
                             <div>
                                 <d3-annotation class="d3Anno"
                                                on-user-change="annotation.onUserChange()"
@@ -82,22 +82,22 @@
                             therefore create a div containing the uib-accordion-group -->
                         <div ng-hide="isUnprivileged == 'true'">
                             <uib-accordion-group heading="Users" is-open="true" is-disabled="status.isFirstDisabled" class="unselectable">
-                            <div ng-controller="annotationController as annoCon">
-                                <form id="users">
-                                    <div ng-repeat="u in users">
-                                        <label ng-show="u.role == 'annotator'">
-                                            <input type="radio" name="users" value="{{u.id}}" ng-model="shownUserList[u.id]"
-                                                   ng-click="changeCallbackCont()">
-                                            {{u.prename +" "+ u.lastname}}
-                                        </label><br>
-                                    </div>
-                                </form>
-                            </div>
+                                <div ng-controller="annotationController as annoCon">
+                                    <form id="users">
+                                        <div ng-repeat="u in users">
+                                            <label ng-show="u.role == 'annotator'">
+                                                <input type="radio" name="users" value="{{u.id}}" ng-model="shownUserList[u.id]"
+                                                       ng-click="changeCallbackCont()">
+                                                {{u.prename + " " + u.lastname}}
+                                            </label><br>
+                                        </div>
+                                    </form>
+                                </div>
                             </uib-accordion-group>
                         </div>
-                        
 
-			<!-- Timeline -->
+
+                        <!-- Timeline -->
                         <!-- currently not activated because it is not ready and tested
                         <uib-accordion-group heading="Timeline" is-open="true" is-disabled="false" class="unselectable">
                             <div>
@@ -118,9 +118,9 @@
                             </div>
                         </uib-accordion-group>
                         -->
-                        
+
                         <!-- Graph -->
-                        <uib-accordion-group heading="Visualization" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable" id="anno-graph">
+                        <uib-accordion-group heading="Graph visualization" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable" id="anno-graph">
                             <div>
                                 <div ng-controller="d3GraphController as graph">
                                     <d3-graph annotations="annotation.annotationData"
@@ -138,9 +138,9 @@
 
                             </div>
                         </uib-accordion-group>
-                        
+
                         <!-- Annotation options -->
-                        <uib-accordion-group heading="Options" is-disabled="false" is-open="true" class="unselectable" id="anno-options">
+                        <uib-accordion-group heading="Annotations" is-disabled="false" is-open="true" class="unselectable" id="anno-options">
                             <div ng-controller="d3OptionsController as options">
                                 <d3-options data="annotation.annotationText"
                                             selection="annotation.selectedNode"
@@ -158,9 +158,9 @@
                                 </d3-options>
                             </div>
                         </uib-accordion-group>
-                       
+
                         <!-- Navigation to other documents -->
-                        <uib-accordion-group heading="Navigation" is-disabled="false" is-open="false" class="unselectable" id="anno-navigation">
+                        <uib-accordion-group heading="Project navigation" is-disabled="false" is-open="false" class="unselectable" id="anno-navigation">
                             <div ng-repeat="proj in this.tableProjects">
                                 <label>{{proj.name}}</label>
                                 <table class="table">
@@ -175,22 +175,43 @@
                                 </table>
                             </div>
                         </uib-accordion-group>
-                        
+
                         <!-- Shortcuts -->
-                        <uib-accordion-group heading="Shortcuts" is-disabled="false" is-open="true" class="unselectable" id="anno-shortcuts">
+                        <uib-accordion-group heading="Help" is-disabled="false" is-open="false" class="unselectable" id="anno-shortcuts">
+
+
+                            <p><strong>Create annotations:</strong> select a span
+                                of text or double-click on a word. Then select a Type for the annotation.
+                            </p>
+                            <p><strong>Adding labels:</strong> when you select an annotation,
+                                appropriate label sets will be displayed in the 'Annotations' box.</p>
+                            <p><strong>Adding links:</strong> select the annotation at which your link will
+                                start, and drag your mouse away from the annotation. All possible
+                                end notes (according to the scheme) will be highlighted. Drop your mouse
+                                at one of them and release the mouse button.</p>
+                            <p><strong>Viewing links:</strong>Click on an annotation to view the links
+                                that start or end at this annotation.</strong>
+                            <p><strong>Selections:</strong> click anywhere on an empty space in the Text box
+                                to unselect the currently selected annotation or link.</p>
+                            <p><strong>Navigation:</strong> you can use the Graph visualization to navigate
+                                through your text document by clicking on the nodes in the graph.
+                                You can also go to another document by using the Project navigation box.</p>
+
+                            <p><strong>Shortcuts:</strong> There are many cool shortcuts using
+                                keys that will make your life much easier. Check them out:
                             <table class="table">
                                 <tr>
                                     <td><kbd><kbd>?</kbd></kbd></td>
-                                    <td>Show all shortcuts</td>
-                                </tr>                                                         
+                                    <td>Show all shortcuts (shift + ?)</td>
+                                </tr>                                      
                             </table>
                         </uib-accordion-group>
-                        
+
                     </uib-accordion>
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 </div>

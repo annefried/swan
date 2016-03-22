@@ -1539,7 +1539,7 @@ angular.module('app')
                                 svg.selectAll(".annotationlinktext")
                                         .text(function (d) {
                                             var t = d.value.shortenLabels(10);
-                                            return (t === "") ? "Empty Link" : t;
+                                            return (t === "") ? "click here to add label" : t;
                                         })
                                         .style("opacity", function (d) {
                                             var linked = $scope.getConnection(d.value, $scope.selection);
