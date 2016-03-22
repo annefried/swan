@@ -73,7 +73,7 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
 
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.annotator));
-            usersDAO.remove(usersDAO.find(id));
+            linkDAO.remove(linkDAO.find(id));
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();

@@ -5,8 +5,11 @@
  */
 package de.unisaarland.discanno.export.model;
 
+import java.util.Set;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -15,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  * @author Timo Guehring
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder={ "id", "start", "end", "text", "targetType", "labels" })
+@XmlType(propOrder={ "id", "start", "end", "text", "targetType", "labels"})
 public class Annotation {
     
     private Long id;
@@ -28,7 +31,7 @@ public class Annotation {
     
     private String targetType;
     
-    private LabelSet labels;
+    private Set<Label> labels;
 
     
     public Long getId() {
@@ -63,11 +66,11 @@ public class Annotation {
         this.text = text;
     }
 
-    public LabelSet getLabels() {
+    public Set<Label> getLabels() {
         return labels;
     }
 
-    public void setLabels(LabelSet labels) {
+    public void setLabels(Set<Label> labels) {
         this.labels = labels;
     }
 

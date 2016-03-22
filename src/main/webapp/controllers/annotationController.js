@@ -444,12 +444,18 @@ angular
 
                     //TODO: db callback;
                     if (link !== undefined) {
-                        var source = link.source;
-                        var target = link.target;
-                        if (source !== undefined && target !== undefined) {
-                            this.lastRemovedLink = link;
-                            delete this.annotationLinks[source.id][target.id];
-                        }
+                        $http.delete("tempannot/links/" + link.id).then(function (object) {
+                            return function (response) {
+                                var source = link.source;
+                                var target = link.target;
+                                if (source !== undefined && target !== undefined) {
+                                    object.lastRemovedLink = link;
+                                    delete object.annotationLinks[source.id][target.id];
+                                }
+                            };
+                        }(this), function (err) {
+                            $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                        });
                     }
                 };
                 //Remove each link that is connected to the object
