@@ -183,8 +183,9 @@
                             <td class="col-md-1 vert-align">
                                 <a>
                                     <span class="glyphicon glyphicon-remove"
-                                          style="color:red" ng-hide="isUnprivileged === 'true'"
-                                          ng-click="deleteDocument(doc.id, x.id)">
+                                          style="color:red"
+                                          ng-hide="isUnprivileged === 'true'"
+                                          ng-click="openDocumentDeleteModal(doc.id, x.id)">
                                     </span>
                                 </a>
                             </td>

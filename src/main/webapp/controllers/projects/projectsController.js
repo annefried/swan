@@ -138,28 +138,6 @@ angular
                     };
 
                     /**
-                     * Called upon clicking the 'x'-Button in a documents row.
-                     * @param {type} documentId the documents id
-                     * @param {type} projId the projects id
-                     */
-                    $scope.deleteDocument = function (documentId, projId) {
-                        $http.delete("tempannot/document/" + documentId).then(function (response) {
-                            for (var j = 0; j < $rootScope.tableProjects.length; j++) {
-                                if ($rootScope.tableProjects[j].id === projId) {
-                                    var project = $rootScope.tableProjects[j];
-                                    for (var i = 0; i < project.documents.length; i++) {
-                                        if (project.documents[i].id === documentId) {
-                                            project.documents.splice(i, 1);
-                                        }
-                                    }
-                                }
-                            }
-                        }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
-                        });
-                    };
-
-                    /**
                      * Redirects to the AnnotationTool
                      *
                      * @param {String} docId The document id to annotate
@@ -241,6 +219,28 @@ angular
                             animation: $scope.animationsEnabled,
                             templateUrl: 'templates/projects/projectDeleteModal.html',
                             controller: 'projectDeleteModalController'
+                        });
+
+                        modalInstance.result.then(function (response) {
+
+                        });
+                        $scope.toggleAnimation = function () {
+                            $scope.animationsEnabled = !$scope.animationsEnabled;
+                        };
+                    };
+                    
+                    /**
+                     * Called upon clicking the 'x'-Button
+                     * Opens the DocumenttDeleteModal
+                     * @param {type} projectId the projects id
+                     */
+                    $scope.openDocumentDeleteModal = function (documentId, projId) {
+                        $rootScope.documentId = documentId;
+                        $rootScope.projId = projId;
+                        var modalInstance = $uibModal.open({
+                            animation: $scope.animationsEnabled,
+                            templateUrl: 'templates/projects/documentDeleteModal.html',
+                            controller: 'documentDeleteModalController'
                         });
 
                         modalInstance.result.then(function (response) {
