@@ -59,7 +59,7 @@ Please check out the [contributing](https://github.com/annefried/discanno/blob/m
 
 * Restart the server (Window → Services → Servers → right click on GlassFish 4.1 → restart)
 * If you set up everything properly, just right click on the project and press "run".
-* The database will be automatically created. To gain access execute the following statement via psql shell or pgAdmin:
+* The tables will be automatically created. To gain access execute the following statement via psql shell or pgAdmin:
 ````
 INSERT INTO users (id, createdate, email, lastname, prename, password, role) VALUES (0, localtimestamp, 'admin@discanno.de',
 'DiscAnno', 'Admin', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'admin');
