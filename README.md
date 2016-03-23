@@ -50,18 +50,29 @@ Please check out the [contributing](https://github.com/annefried/discanno/blob/m
     * User: postgres
     * Password: postgres (This is just for mutual development settings)
     * Port: 5432
-    * Create a database named "discanno"
-    * If your postgres admin user is different from postgres, grant permission to postgres user on discanno database:
-    ````grant all privileges on database discanno to postgres;````
-
+    * Create a database named "discanno" (e.g., start psql and type):
+      ````
+      create database discanno;
+      ````
+    * If your postgres admin user is different from postgres, create a user named "postgres"
+      ````
+      create user postgres with password 'postgres';
+      ````
+    * and grant permission to postgres user on discanno database:
+      ````
+      grant all privileges on database discanno to post
+      ALTER USER postgres WITH PASSWORD 'postgres';E
+      ````
+    * When you deploy the web application for the first time (see below), the database tables will be created automatically.
 
 >**Important**: If you choose another version than 9.3, then put the corresponding JDBC driver in the glassfish4/glassfish/lib folder: https://jdbc.postgresql.org/download.html. Before you deploy the application. If GlassFish is not able to create a connection to the database before you deploy the WebApp you will probably cause a bug in GlassFish named "invalid resource: cannot find jdbc/DiscAnno__pm"!
 
 * Restart the server (Window → Services → Servers → right click on GlassFish 4.1 → restart)
-* If you set up everything properly, just right click on the project and press "run".
-* The tables will be automatically created. To gain access execute the following statement via psql shell or pgAdmin:
+* If you set up everything properly, just right click on the project and press "run". Now, the tables will be created. (TODO: does this also work when simply deploying the WAR?)
+* To gain access create the first user (admin) by executing the following statement via psql shell or pgAdmin:
 ````
-INSERT INTO users (id, createdate, email, lastname, prename, password, role) VALUES (0, localtimestamp, 'admin@discanno.de',
+\connect discanno;
+insert into users (id, createdate, email, lastname, prename, password, role) values (0, localtimestamp, 'admin@discanno.de',
 'DiscAnno', 'Admin', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'admin');
 ````
 * Now you can login with the email "admin@discanno.de" and "secret" as the password. With the access you can create new users and change your password. The password is hashed, so just inserting the original password would have not worked.
