@@ -7,7 +7,7 @@ angular.module('app').controller('userEditModalController', function ($rootScope
         $http.put('discanno/user/' + $rootScope.toEdit, pw).success(function (response) {
             $rootScope.addAlert({type: 'success', msg: 'Password changed succesfully.'});
         }).error(function (response) {
-            $rootScope.addAlert({type: 'danger', msg: 'Sorry something went wrong:('});
+            $rootScope.checkResponseStatusCode(response.status);
         });
 
         $uibModalInstance.close();

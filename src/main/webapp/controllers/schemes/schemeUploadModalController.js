@@ -449,7 +449,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                 $scope.loadedSchemes.push(template);
             }
         }, function (err) {
-            $rootScope.addAlert({type: 'danger', msg: 'No connection to Server!'});
+            $rootScope.checkResponseStatusCode(err.status);
         });
     };
     $scope.loadPreloadedScheme = function (preloadedScheme) {

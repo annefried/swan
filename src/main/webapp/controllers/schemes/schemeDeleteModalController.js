@@ -15,8 +15,8 @@ angular.module('app').controller('schemeDeleteModalController', function ($scope
                 }
             }
             $uibModalInstance.close();
-        }, function (error) {
-            $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
+        }, function (err) {
+            $rootScope.checkResponseStatusCode(err.status);
         });
     };
 

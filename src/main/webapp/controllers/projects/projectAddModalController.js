@@ -10,7 +10,7 @@ angular.module('app').controller('projectAddModalController', function ($scope, 
         $http.get("discanno/scheme/schemes").then(function (response) {
             $scope.schemes = JSOG.parse(JSON.stringify(response.data)).schemes;
         }, function (err) {
-            $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
+            $rootScope.checkResponseStatusCode(err.status);
         });
     };
     //if someone misses the "sendScheme" code that was commented here, checkout commit 5c189c3f8652aac

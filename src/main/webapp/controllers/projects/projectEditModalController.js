@@ -25,7 +25,7 @@ angular.module('app').controller('projectEditModalController', function ($scope,
                 }
             }
         }, function (err) {
-            $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
+            $rootScope.checkResponseStatusCode(err.status);
         });
     };
 

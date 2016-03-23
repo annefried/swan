@@ -6,7 +6,7 @@ angular.module('app').controller('userDeleteModalController', function ($scope, 
         $http.delete('discanno/user/' + userId).success(function () {
             $uibModalInstance.close(userId);
         }).error(function (response) {
-            $rootScope.addAlert({type: 'danger', msg: 'No server connection'});
+            $rootScope.checkResponseStatusCode(response.status);
         });
     };
 

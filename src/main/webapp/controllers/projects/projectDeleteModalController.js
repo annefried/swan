@@ -22,7 +22,7 @@ angular.module('app').controller('projectDeleteModalController', function ($scop
                 }
             }
         }).error(function (response) {
-            $rootScope.addAlert({type: 'danger', msg: 'No server connection'});
+            $rootScope.checkResponseStatusCode(response.status);
         });
 
         $uibModalInstance.close();

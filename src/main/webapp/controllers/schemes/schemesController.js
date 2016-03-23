@@ -35,7 +35,7 @@ angular
                         var httpSchemes = $http.get("discanno/scheme/schemes").success(function (response) {
                             $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
                         }).error(function (response) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
+                            $rootScope.checkResponseStatusCode(response.status);
                         });
                         return httpSchemes;
                     };
@@ -48,7 +48,7 @@ angular
                         var httpProjects = $http.get("discanno/project").then(function (response) {
                             $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
                         }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
+                            $rootScope.checkResponseStatusCode(err.status);
                         });
                         return httpProjects;
                     };

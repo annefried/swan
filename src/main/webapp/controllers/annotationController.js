@@ -73,7 +73,7 @@ angular
                             .then(function (response) {
                                 $scope.users = JSOG.parse(JSON.stringify(response.data)).project.users;
                             }, function (response) {
-
+                                $rootScope.checkResponseStatusCode(response.status);
                             });
                 }
 
@@ -269,8 +269,8 @@ angular
                         if (this.selectedNode.tType !== undefined) {
                             $http.post("discanno/annotations/changett/" + this.selectedNode.id, {'targetType': targetType.tag}).then(function (response) {
 
-                            }, function (error) {
-                                $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                            }, function (err) {
+                                $rootScope.checkResponseStatusCode(err.status);
                             });
                         }
                         this.selectedNode.setTargetType(targetType);
@@ -344,7 +344,7 @@ angular
                             object.annotationData[newId] = object.lastAdded;
                         };
                     }(this), function (err) {
-                        $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                        $rootScope.checkResponseStatusCode(err.status);
                     });
                 };
                 //Deletes an annotatioan and makes a callback to the backend
@@ -362,7 +362,7 @@ angular
                                 object.removeConnectedLinks(annotation);
                             };
                         }(this), function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                            $rootScope.checkResponseStatusCode(err.status);
                         });
                     }
                 };
@@ -430,7 +430,7 @@ angular
                                 return link;
                             };
                         }(this), function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                            $rootScope.checkResponseStatusCode(err.status);
                         });
                     }
                 };
@@ -454,7 +454,7 @@ angular
                                 }
                             };
                         }(this), function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                            $rootScope.checkResponseStatusCode(err.status);
                         });
                     }
                 };
@@ -684,7 +684,7 @@ angular
                                 $rootScope.addAlert({type: 'success', msg: 'Document marked as uncomplete!'});
                             }
                         } else {
-                            $rootScope.addAlert({type: 'danger', msg: 'No server connection'});
+                            $rootScope.checkResponseStatusCode(response.status);
                         }
                     });
                 };
@@ -703,16 +703,10 @@ angular
                     }).success(function (response) {
                         anno.notSure = boolVal;
                     }).error(function (response) {
-                        $rootScope.addAlert({type: 'danger', msg: response.status + ': No server connection.'});
+                        $rootScope.checkResponseStatusCode(response.status);
                     });
                 };
-                this.checkResponseStatusCode = function (status) {
-                    if (status >= 400 && status < 500) {
-                        $rootScope.addAlert({type: 'danger', msg: 'This action is not allowed.'});
-                    } else if (status >= 500 && status < 600) {
-                        $rootScope.addAlert({type: 'danger', msg: 'No server connection.'});
-                    }
-                };
+                
                 this.cloneAnnotationColor = function (num, color) {
                     return new AnnotationColor(color.name, num, color.shades, color.back, color.line);
                 };

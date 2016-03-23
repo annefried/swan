@@ -32,7 +32,7 @@ angular.module('app').controller('documentDeleteModalController', function ($sco
                 }
             }
         }, function (err) {
-            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
+            $rootScope.checkResponseStatusCode(err.status);
         });
         
         $uibModalInstance.close();

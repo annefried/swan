@@ -114,7 +114,7 @@ angular
                         var httpSchemes = $http.get("discanno/scheme/schemes").then(function (response) {
                             $scope.schemes = JSOG.parse(JSON.stringify(response.data)).schemes;
                         }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
+                            $rootScope.checkResponseStatusCode(err.status);
                         });
                         return httpSchemes;
                     };

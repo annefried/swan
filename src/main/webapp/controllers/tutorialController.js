@@ -17,7 +17,7 @@ angular
                         var httpUsers = $http.get("discanno/user").success(function (response) {
                             $scope.users = JSOG.parse(JSON.stringify(response)).users;
                         }).error(function (response) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
+                            $rootScope.checkResponseStatusCode(response.status);
                         });
                         return httpUsers;
                     };
@@ -57,7 +57,7 @@ angular
                         var httpSchemes = $http.get("discanno/scheme/schemes").success(function (response) {
                             $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
                         }).error(function (response) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
+                            $rootScope.checkResponseStatusCode(response.status);
                         });
                         return httpSchemes;
                     };

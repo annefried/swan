@@ -43,7 +43,7 @@ angular
                         var httpProjects = $http.get("discanno/project/byuser/" + $window.sessionStorage.uId).then(function (response) {
                             $rootScope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
                         }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
+                            $rootScope.checkResponseStatusCode(err.status);
                         });
                     }
                     return httpProjects;
@@ -200,6 +200,16 @@ angular
 
                 $rootScope.closeAlert = function (index) {
                     $rootScope.alerts.splice(index, 1);
+                };
+                
+                $rootScope.checkResponseStatusCode = function (status) {
+                    if (status === 403) { // Forbidden
+                        window.location = "/discanno/signin.html";
+                    } else if (status >= 400 && status < 500) {
+                        $rootScope.addAlert({type: 'danger', msg: 'This action is not allowed.'});
+                    } else if (status >= 500 && status < 600) {
+                        $rootScope.addAlert({type: 'danger', msg: 'No server connection.'});
+                    }
                 };
 
             }]);
