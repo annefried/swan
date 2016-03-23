@@ -706,7 +706,7 @@ angular
                         $rootScope.checkResponseStatusCode(response.status);
                     });
                 };
-                
+
                 this.cloneAnnotationColor = function (num, color) {
                     return new AnnotationColor(color.name, num, color.shades, color.back, color.line);
                 };
@@ -731,6 +731,11 @@ angular
 //                    new AnnotationColor("Orange", 0, undefined, "#AA3935", undefined),
 //                    new AnnotationColor("Grey", 0, undefined, "#716458", undefined)
                 ];
+
+                $scope.$on("$destroy", function () {
+                    console.log('Destroyed');
+                    $rootScope.initialized = 'false';
+                });
                 if ($rootScope.initialized !== 'true')
                     this.init();
             }]);
