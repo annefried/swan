@@ -56,6 +56,34 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             $rootScope.addAlert({type: 'danger', msg: 'A LabelSet with this name is already part of this scheme.'});
         }
     };
+
+    /**
+     * Called when clikcing the edit button in scheme table on label set.
+     * @param {type} name : name of label set to be edited
+     */
+    $scope.editLabelSet = function (name) {
+        // find label set to be edited
+        var selectedSet = undefined;
+        for (var i = 0; i < $scope.labelSets.length; i++) {
+            if ($scope.labelSets[i].name === name) {
+                selectedSet = $scope.labelSets[i];
+                for (var j = 0; j < $scope.labelSets[i].labels.length; j++) {
+                    $scope.addLabelLabelSet($scope.labelSets[i].labels[j]);
+                }
+                break;
+            }
+        }
+        // reset editing fields
+        $scope.nameLabelSet = name;
+        $scope.exclusiveLabelSet = $scope.labelSets[i].exclusive;
+        $scope.selectedTargetsLabel = selectedSet.appliesToTargetTypes;
+        
+        // remove from table
+        $scope.removeLabelSet(name);       
+        
+    };
+
+
     /**
      * Called when clicking 'x'-Button in SchemeTable on a LabelSet.
      * @param {type} name : Name of the LabelSet to remove
@@ -91,6 +119,34 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
         $scope.selectedTargetsLink = [];
 
     };
+
+    /**
+     * Called when clicking editing button in scheme table
+     * @param {type} name : name of the link set to be edited
+     */
+    $scope.editLinkSet = function (set) {
+        // find the link set to be edited
+        var selectedSet = undefined;
+        for (var i = 0; i < $scope.linkSets.length; i++) {
+            if ($scope.linkSets[i] === set) {
+                $scope.currentLinkSet = [];
+                for (var j = 0; j < $scope.linkSets[i].linkLabels.length; j++) {
+                    $scope.addLabelLinkSet($scope.linkSets[i].linkLabels[j]);
+                }
+                selectedSet = $scope.linkSets[i];
+                break;
+            }
+        }
+        // set fields
+        $scope.nameLinkSet = selectedSet.name;
+        $scope.startType = selectedSet.startType;
+        $scope.endType = selectedSet.endType;
+
+        // remove from table while editing
+        $scope.removeLinkSet(set);
+
+    };
+
     /**
      * Called when clicking 'x'-Button in SchemeTable on a LinkSet.
      * @param {type} set : LinkSet to remove
@@ -101,7 +157,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                 $scope.linkSets.splice(i, 1);
             }
         }
-    }
+    };
 
 
     $scope.addTargetTypeLabel = function (target) {
@@ -234,7 +290,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             var xmlDoc = $.parseXML($fileContent);
             var xml = xmlDoc.responseXML;
             var content = xml2json(xmlDoc, "");
-            
+
             content = content.replace("[{[{", "[{");
             content = content.replace("[{[{", "[{");
 
@@ -372,7 +428,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                         'linkSetCount': template.linkSets.length
                     };
                     $rootScope.tableSchemes.push(schemePreview);
-                    
+
                     // Check if the guided tour can continue
                     if ($rootScope.tour !== undefined) {
                         $("#tour-next-button").prop("disabled", false);
@@ -453,11 +509,11 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
         });
     };
     $scope.loadPreloadedScheme = function (preloadedScheme) {
-        $scope.name = preloadedScheme.name;
+        $scope.name = "Copy of " + preloadedScheme.name;
         $scope.targets = preloadedScheme.targetTypes;
         $scope.labelSets = preloadedScheme.labelSets;
         $scope.linkSets = preloadedScheme.linkSets;
-    }
+    };
 
     $scope.submit = function () {
         $scope.sendScheme();

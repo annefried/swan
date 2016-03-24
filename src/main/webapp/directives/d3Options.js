@@ -282,7 +282,7 @@ angular.module('app')
                                             return false;
                                         })
                                         .text(function (d) {
-                                            return d.toString(width);
+                                            return d.toString(width/30);
                                         })
                                         .on("click", function (d) {
                                             $scope.$apply(function () {
