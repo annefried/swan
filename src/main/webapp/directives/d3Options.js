@@ -34,8 +34,7 @@ angular.module('app')
                             return angular.element(window)[0].innerWidth;
                         }, function () {
                             return $scope.render();
-                        }
-                        );
+                        });
 
                         //Watch for data changes and re-render
                         $scope.$watch('selection', function () {
@@ -60,7 +59,6 @@ angular.module('app')
                                     .classed("col-md-4", true);
 
                             if ($scope.selection !== null && $scope.selection !== undefined) {
-
 
                                 // add target types if options for annotation
                                 if ($scope.selection.type === "Annotation")
@@ -91,7 +89,6 @@ angular.module('app')
                                         });
 
                                 $scope.addLabelSets(middle, right);
-
 
                             }
                         };
@@ -227,8 +224,6 @@ angular.module('app')
                                 var br = document.createElement("br");
                                 this.parentNode.insertBefore(br, this.nextSibling);
                             });
-
-                            ;
                         };
 
                         $scope.addLabelSets = function (parent1, parent2) {
@@ -301,7 +296,7 @@ angular.module('app')
                         $scope.setNotSureOption = function (parent) {
                             if ($scope.selection.type === AnnoType.Annotation) {
                                 parent.append("br");
-                                parent.append("br")
+                                parent.append("br");
 
                                 parent.append("input")
                                         .attr("type", "checkbox")
@@ -333,7 +328,6 @@ angular.module('app')
                                             if (tType === undefined) {
                                                 return true;
                                             }
-
                                         });
 
                             }

@@ -2,7 +2,7 @@
 
 //Responsible directive for drawing the text field
 angular.module('app')
-        .directive('d3Annotation', ['$rootScope', '$timeout', '$window', 'd3', 'hotkeys', function ($rootScope, $timeout, $window, d3, hotkeys) {
+        .directive('d3Annotation', ['$rootScope', '$timeout', '$window', 'd3', 'hotkeys', '$q', function ($rootScope, $timeout, $window, d3, hotkeys, $q) {
 
                 return {
                     restrict: 'EA',
@@ -118,12 +118,14 @@ angular.module('app')
                             $scope.words = [];
                             var words = $scope.words;
                             $rootScope.ishotkeys = 'true';
-                            if (right === 'true')
-
-                            {
+                            if (right === 'true') {
                                 var textWord = $scope.data[i].words[j];
                                 if (textWord !== undefined) {
-                                    if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
+                                    if (textWord.text === " "
+                                            || textWord.text === "."
+                                            || textWord.text === ","
+                                            || textWord.start === textWord.end
+                                            || textWord.text === "	") {
                                         j++;
                                         $scope.hot('true');
                                         return;
@@ -146,7 +148,11 @@ angular.module('app')
                             } else {
                                 var textWord = $scope.data[i].words[j];
                                 if (textWord !== undefined) {
-                                    if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
+                                    if (textWord.text === " "
+                                            || textWord.text === "."
+                                            || textWord.text === ","
+                                            || textWord.start === textWord.end
+                                            || textWord.text === "	") {
                                         j--;
                                         $scope.hot('false');
                                         return;
@@ -172,7 +178,11 @@ angular.module('app')
                             if (right) {
                                 var textWord = $scope.data[i].words[j];
                                 if (textWord !== undefined) {
-                                    if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
+                                    if (textWord.text === " "
+                                            || textWord.text === "."
+                                            || textWord.text === ","
+                                            || textWord.start === textWord.end
+                                            || textWord.text === "	") {
                                         textWord.setIndices(i, j);
                                         words.push(textWord);
                                         j++;
@@ -196,7 +206,11 @@ angular.module('app')
                             } else {
                                 var textWord = $scope.data[i].words[j];
                                 if ((words.indexOf(textWord) !== '-1') && (textWord !== undefined)) {
-                                    if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
+                                    if (textWord.text === " "
+                                            || textWord.text === "."
+                                            || textWord.text === ","
+                                            || textWord.start === textWord.end
+                                            || textWord.text === "	") {
                                         words.pop(textWord);
                                         if (j === 0) {
                                             i--;
@@ -581,8 +595,10 @@ angular.module('app')
                             }
 
                             //Do nothing when no indicies for the words are found
-                            if (startLine === undefined || startRow === undefined
-                                    || endLine === undefined || endRow === undefined)
+                            if (startLine === undefined
+                                    || startRow === undefined
+                                    || endLine === undefined
+                                    || endRow === undefined)
                                 return;
                             //Add every word between first and last selected word
                             var words = [];
@@ -1136,8 +1152,14 @@ angular.module('app')
                                             $scope.$apply(function () {
                                                 var link;
                                                 if ($scope.linking()) {
-                                                    if (linkStart.id !== d.annotation.id)
-                                                        link = $scope.addLink({source: linkStart, target: d.annotation});
+                                                    if (linkStart.id !== d.annotation.id) {
+                                                        var promise = $scope.addLink({source: linkStart, target: d.annotation});
+                                                        promise.then(function(link) {
+                                                            if (link !== undefined) {
+                                                                $scope.setSelection({item: link});
+                                                            }
+                                                        });
+                                                    }
                                                     linkStart = null;
                                                 }
 
@@ -1471,7 +1493,6 @@ angular.module('app')
                                                     case 3:
                                                         return 1;
                                                 }
-
 
                                             }
 

@@ -368,10 +368,14 @@ angular
                 };
                 //Add a new link and make a corresponding callback to the backend
                 this.addLink = function (source, target) {
-                    if (source !== undefined && target !== undefined &&
-                            source.type === "Annotation" && target.type === "Annotation" &&
-                            source !== this.tempAnno && target !== this.tempAnno &&
-                            this.linkable(source, target)) {
+                    var deferred = $q.defer();
+                    if (source !== undefined
+                            && target !== undefined
+                            && source.type === "Annotation"
+                            && target.type === "Annotation"
+                            && source !== this.tempAnno
+                            && target !== this.tempAnno
+                            && this.linkable(source, target)) {
 
                         var jsonTemplate = {
                             "id": null,
@@ -427,11 +431,14 @@ angular
                                     object.annotationLinks[source.id] = {};
                                 object.annotationLinks[source.id][target.id] = link;
                                 object.lastAddedLink = link;
-                                return link;
+                                deferred.resolve(link);
                             };
                         }(this), function (err) {
                             $rootScope.checkResponseStatusCode(err.status);
+                            deferred.reject(undefined);
                         });
+                        
+                        return deferred.promise;
                     }
                 };
                 //Checks if two annotations are linkable depending on their target type
