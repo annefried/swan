@@ -190,7 +190,16 @@ angular
                     $scope.openProjectSchemeModal = function (projectId) {
                         for (var i = 0; i < $rootScope.projects.length; i++) {
                             if ($rootScope.projects[i].id === projectId) {
-                                $rootScope.currentScheme = $rootScope.projects[i].scheme;
+                                for (var i = 0; i < $scope.schemes.length; i++) {
+                                    var scheme = $scope.schemes[i];
+                                    for (var j = 0; j < scheme.projects.length; j++) {
+                                        var proj = scheme.projects[j];
+                                        if (proj.id === projectId) {
+                                            $rootScope.currentScheme = scheme;
+                                            break;
+                                        }
+                                    }
+                                }
                             }
                         }
                         var modalInstance = $uibModal.open({
