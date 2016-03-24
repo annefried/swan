@@ -219,7 +219,6 @@ angular.module('app')
                                     })
                                     .on("click", function (d) {
                                         $scope.$apply(function () {
-                                            console.log("clicked on: " + d.value.tag)
                                             $scope.setTypeAndAdd({item: d.value});
 
                                         });
@@ -233,7 +232,6 @@ angular.module('app')
                         };
 
                         $scope.addLabelSets = function (parent1, parent2) {
-                            console.log("called add label sets");
                             var par1Count = 0;
                             var par2Count = 0;
                             for (var id in $scope.selection.selectableLabels) {
@@ -255,6 +253,10 @@ angular.module('app')
                                         .style("font-size", "110%");
                                 if (!labelSet.exclusive) {
                                     parent.append("p").text("(multiple allowed)")
+                                            .style("margin", "0")
+                                            .style("font-size", "90%");
+                                } else {
+                                    parent.append("p").text("(select one)")
                                             .style("margin", "0")
                                             .style("font-size", "90%");
                                 }
@@ -298,10 +300,6 @@ angular.module('app')
 
                         $scope.setNotSureOption = function (parent) {
                             if ($scope.selection.type === AnnoType.Annotation) {
-//                                parent.append("div")
-//                                        .text("I'm not sure about this annotation")
-//                                        .classed("optiontitle", "true")
-//                                        .attr("font-size", "140%");
                                 parent.append("br");
                                 parent.append("br")
 
@@ -313,6 +311,13 @@ angular.module('app')
                                                 return 'true';
                                             }
                                         })
+                                        .attr("disabled", function () {
+                                            var tType = $scope.selection.tType;
+                                            if (tType === undefined) {
+                                                return true;
+                                            }
+
+                                        })
                                         .on("click", function () {
                                             $scope.$apply(function () {
                                                 $scope.setAnnotationNotSure({item: $scope.selection});
@@ -322,7 +327,14 @@ angular.module('app')
                                 parent.append("label")
                                         .attr("for", "notSureCheckBox")
                                         .text("not sure")
-                                        .classed("checkboxLabel", true);
+                                        .classed("checkboxLabel", true)
+                                        .classed("checkboxLabelDisabled", function () {
+                                            var tType = $scope.selection.tType;
+                                            if (tType === undefined) {
+                                                return true;
+                                            }
+
+                                        });
 
                             }
                         };

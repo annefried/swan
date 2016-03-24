@@ -115,3 +115,9 @@
 .col-md-7 {
     padding:5px;
 }
+
+.btn {
+    width: 90%;
+    margin: 1px;
+    padding: 1px;
+}
