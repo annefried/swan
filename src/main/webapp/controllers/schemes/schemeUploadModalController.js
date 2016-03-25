@@ -77,10 +77,10 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
         $scope.nameLabelSet = name;
         $scope.exclusiveLabelSet = $scope.labelSets[i].exclusive;
         $scope.selectedTargetsLabel = selectedSet.appliesToTargetTypes;
-        
+
         // remove from table
-        $scope.removeLabelSet(name);       
-        
+        $scope.removeLabelSet(name);
+
     };
 
 
@@ -516,9 +516,31 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
     };
 
     $scope.submit = function () {
-        $scope.sendScheme();
-        $uibModalInstance.close();
+        if ($scope.name === undefined || $scope.name.trim() === "") {
+            $scope.alerts.push({type: "warning", msg: "Please define a name for your scheme!"});
+        } else {
+            // check if scheme with this name exists
+            for (var i = 0; i < $scope.loadedSchemes.length; i++) {
+                if ($scope.loadedSchemes[i].name === $scope.name) {
+                    $scope.alerts.push({type: "warning", msg: "A scheme with this name already exists."});
+                    return;
+                }
+            }
+            // valid scheme name given
+            // are some annotation types defined?
+            if ($scope.targets.length === 0) {
+                $scope.alerts.push({type: "warning", msg: "You need to define at least one Annotation Type."});
+                return;
+            }
+
+            // valid, create scheme.
+            $scope.sendScheme();
+            $uibModalInstance.close();
+
+        }
+
     };
+
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
