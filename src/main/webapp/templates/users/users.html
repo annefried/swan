@@ -8,13 +8,15 @@ and open the template in the editor.
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-sm-12 col-md-12  main">
-
+        <div > 
+<!--class="col-sm-12 col-md-12  main"-->
             <h2 class="sub-header" id="1-users-header" style="display: inline-block">Users</h2>
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
-            <div class="table-responsive">
+            <!--<div >-->
+                <!--class="table-responsive"-->
                 <!--class="table"-->
-                <table datatable="" class="row-border hover">
+                <table datatable="ng" class="row-border hover">
+                <!--<table datatable="" class="row-border hover">-->
                 <!--<table id="foobar" datatable dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance">-->
                     <thead class="headDark">
                         <tr>
@@ -32,7 +34,7 @@ and open the template in the editor.
                             </th>
                         </tr>
                     </thead>
-                    <tbody ng-hide="loaded">
+<!--                    <tbody ng-hide="loaded">
                         <tr>
                             <td>
                                 <span class="glyphicon glyphicon-refresh spinning "></span> 
@@ -45,7 +47,7 @@ and open the template in the editor.
                             <td></td>
                             <td></td>
                         </tr>
-                    </tbody>
+                    </tbody>-->
                     <tbody>
                         <tr ng-repeat="x in this.users" ng-hide="isVisible(x)">
                             <td class="col-md-2 vert-align">{{x.prename}}</td>
@@ -69,7 +71,7 @@ and open the template in the editor.
                             </td>
                         </tr>
                     </tbody>
-                    <tbody>
+<!--                    <tbody>
                         <tr class="headLight" ng-hide="isUnprivileged === 'true'">
                             <td class="col-md-2"><b></b></td>
                             <td class="col-md-2"><b></b></td>
@@ -87,10 +89,10 @@ and open the template in the editor.
                                 </button>
                             </td>
                         </tr>
-                    </tbody> 
+                    </tbody> -->
 
                 </table>
-            </div>
+            <!--</div>-->
         </div>
     </div>
 
