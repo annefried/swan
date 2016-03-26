@@ -5,7 +5,8 @@ angular
             'ui.bootstrap',
             'ui.bootstrap.tpls',
             'd3Module',
-            'cfp.hotkeys'
+            'cfp.hotkeys',
+            'datatables'
         ])
         .config(Config);
 

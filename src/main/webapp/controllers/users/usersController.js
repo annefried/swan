@@ -2,8 +2,9 @@
 
 angular
         .module('app')
-        .controller('usersController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys', function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys) {
-                $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
+        .controller('usersController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys', function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys) { // , 'datatables'
+//        .controller('usersController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys', 'datatables', function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys, $datatables) {
+                        $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
 
                 if (($window.sessionStorage.role !== 'admin') && ($window.sessionStorage.role !== 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     // redirect to Login

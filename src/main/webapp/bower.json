@@ -17,6 +17,8 @@
     "bootstrap": "~3.3.6",
     "bootstrap-tour": "~0.10.2",
     "angular-bootstrap": "angular-ui-bootstrap-bower#~0.14.3",
-    "angular-animate": "git://github.com/angular/bower-angular-animate.git#~1.5.0"
+    "angular-animate": "git://github.com/angular/bower-angular-animate.git#~1.5.0",
+    "angular-datatables": "~0.5.3",
+    "datatables": "~1.10.11"
   }
 }
