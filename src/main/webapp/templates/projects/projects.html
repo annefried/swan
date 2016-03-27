@@ -22,7 +22,9 @@
                                 <span ng-hide="isUnprivileged === 'true'">Users</span>
                             </th>
                             <th class="col-md-2 vert-align">Project Manager</th>
-                            <th class="col-md-1 vert-align">Scheme</th>
+                            <th class="col-md-1 vert-align">
+                                <span ng-hide="isUnprivileged === 'true'">Scheme</span>
+                            </th>
                             <th class="col-md-1 vert-align">
                                 <span ng-hide="isUnprivileged === 'true'">Edit Project</span>
                             </th>
@@ -84,7 +86,8 @@
                                 </div>
                             </td>
                             <td class="col-md-2 vert-align">
-                                <p ng-hide="isUnprivileged === 'true'" class="userprogress"
+                                <p ng-hide="isUnprivileged === 'true'"
+                                   class="userprogress"
                                    ng-repeat="cur in x.users">
                                     {{cur.email}}
                                 </p>
@@ -95,7 +98,8 @@
                                 </p>
                             </td>
                             <td class="col-md-1 vert-align">
-                                <a class="glyphicon glyphicon-file"
+                                <a ng-hide="isUnprivileged === 'true'"
+                                   class="glyphicon glyphicon-file"
                                    id="project-scheme-view"
                                    ng-click="openProjectSchemeModal(x.id)">
                                 </a>
