@@ -11,6 +11,7 @@ angular
 
                     $rootScope.projectName = "DiscAnno"; // TODO why?
                     $rootScope.isUnprivileged = $window.sessionStorage.isAnnotator;
+                    $rootScope.role = $window.sessionStorage.role;
 
                     $scope.prename = $window.sessionStorage.prename;
                     $scope.lastname = $window.sessionStorage.lastname;
@@ -54,6 +55,7 @@ angular
                  */
                 $rootScope.buildTableProjects = function () {
                     $rootScope.tableProjects = [];
+                    var currUser = {'id': parseInt($window.sessionStorage.uId)};
                     for (var i = 0; i < $rootScope.projects.length; i++) {
                         var proj = $rootScope.projects[i];
                         var projComplUser = 0;
@@ -97,7 +99,7 @@ angular
                                 var docCompl;
                                 var lastEdit = -1;
 
-                                //role: annotator
+                                // role: annotator
                                 if ($scope.isUnprivileged === 'true') {
                                     var usrPos = -1;
                                     for (var t = 0; t < proj.users.length; t++) {
@@ -116,7 +118,7 @@ angular
                                     docCompl = states[usrPos].completed;
                                     lastEdit = states[usrPos].lastEdit;
                                 }
-                                //role: admin
+                                // role: admin/ project manager
                                 else {
                                     var docComplAdmin = 0;
                                     for (var t = 0; t < states.length; t++) {
@@ -154,12 +156,25 @@ angular
                                 'completed': projCompl,
                                 'numberOfDocuments': proj.documents.length,
                                 'documents': documents,
-                                'pms': proj.projectManager
+                                'pms': proj.projectManager,
+                                'watchingUsers': proj.watchingUsers,
+                                'isWatching': $rootScope.containsUser(proj.watchingUsers, currUser)
                             };
                             $rootScope.tableProjects.push(template);
                         }
                     }
 
+                };
+                
+                $rootScope.containsUser = function (userList, user) {
+                    if (userList !== undefined) {
+                        for (var i = 0; i < userList.length; i++) {
+                            if (userList[i].id == user.id) {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
                 };
                 
                 /**

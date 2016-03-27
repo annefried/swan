@@ -121,6 +121,15 @@ public class Users extends BaseEntity {
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     private Set<Project> managingProjects = new HashSet<>();
+    
+    /**
+     * All projects which are watched by project manager i.e. E-Mail notification.
+     */
+    @JsonView({ View.Users.class })
+    @ManyToMany(mappedBy = "projectManager",
+                cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                fetch = FetchType.EAGER)
+    private Set<Project> watchingProjects = new HashSet<>();
 
     
     public String getPrename() {
@@ -205,6 +214,18 @@ public class Users extends BaseEntity {
     
     public void addManagingProjects(Project project) {
         this.managingProjects.add(project);
+    }
+
+    public Set<Project> getWatchingProjects() {
+        return watchingProjects;
+    }
+
+    public void setWatchingProjects(Set<Project> watchingProjects) {
+        this.watchingProjects = watchingProjects;
+    }
+    
+    public void addWatchingProjects(Project project) {
+        this.watchingProjects.add(project);
     }
     
 }

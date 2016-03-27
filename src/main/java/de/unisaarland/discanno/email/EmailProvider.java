@@ -6,12 +6,14 @@
 package de.unisaarland.discanno.email;
 
 import de.unisaarland.discanno.dao.ProjectDAO;
+import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.Document;
 import de.unisaarland.discanno.entities.Project;
 import de.unisaarland.discanno.entities.State;
 import de.unisaarland.discanno.entities.Users;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -42,29 +44,39 @@ import javax.mail.internet.MimeMessage;
 @Stateless(name = "ejbs/EmailServiceEJB")
 public class EmailProvider {
     
-    // TODO change this
-    private static final String TARGET_EMAIL_ADRESS = "timo.guehring@googlemail.com";
-    
     @Resource(name = "mail/JavaMail")
     private Session mailSession;
     
     @EJB
-    private ProjectDAO projectDAO;
+    private UsersDAO usersDAO;
+    
     
     /**
-     * Sends a progress email to the TARGET_EMAIL_ADRESS on Sunday at 00:00.
+     * Sends a progress email to all admings/ project manager on Sunday at 00:00
+     * which are watching projects. Only users which are watching projects are
+     * receiving notification.
      */
     @Schedule(dayOfWeek="Sun", hour="0")
     public void sendProgressNotification() {
+        List<Users> users = usersDAO.findAll();
 
+        for (Users u : users) {
+            if (!u.getWatchingProjects().isEmpty()) {
+                sendProgressNotification(u);
+            }
+        }
+    }
+    
+    public void sendProgressNotification(Users u) {
+        
         try {
-            InternetAddress emailAddr = new InternetAddress(TARGET_EMAIL_ADRESS);
+            InternetAddress emailAddr = new InternetAddress(u.getEmail());
             
             Message message = new MimeMessage(mailSession);
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(emailAddr.toString(), false));
             message.setSubject("DiscAnno: Weekly Progress");
-            message.setText(getEmailReport());
+            message.setText(getEmailReport(u.getWatchingProjects()));
             message.setHeader("X-Mailer", "My Mailer");
             
             Date timeStamp = new Date();
@@ -83,10 +95,9 @@ public class EmailProvider {
      * 
      * @return String containing the text for the email
      */
-    private String getEmailReport() {
+    private String getEmailReport(Set<Project> projects) {
         
         String text = "";
-        List<Project> projects = projectDAO.findAll();
         
         for (Project p : projects) {
             text += "Project " + p.getName() + ":\n";
