@@ -303,22 +303,22 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             $scope.uploadedScheme = content;
             var scheme = JSON.parse(content);
 
-            if (scheme.targetTypes[0].length == 1) {
+            if (typeof scheme.targetTypes === 'string') {
                 var targetType = [scheme.targetTypes];
                 scheme.targetTypes = targetType;
             }
             for (var i = 0; i < scheme.labelSets.length; i++) {
-                if (scheme.labelSets[i].appliesToTargetTypes[0].length == 1) {
+                if (typeof scheme.labelSets[i].appliesToTargetTypes === 'string') {
                     var targetType = [scheme.labelSets[i].appliesToTargetTypes];
                     scheme.labelSets[i].appliesToTargetTypes = targetType;
                 }
-                if (scheme.labelSets[i].labels[0].length == 1) {
+                if (typeof scheme.labelSets[i].labels === 'string') {
                     var labels = [scheme.labelSets[i].labels];
                     scheme.labelSets[i].labels = labels;
                 }
             }
             for (var i = 0; i < scheme.linkSets.length; i++) {
-                if (scheme.linkSets[i].linkLabels[0].length == 1) {
+                if (typeof scheme.linkSets[i].linkLabels === 'string') {
                     var targetType = [scheme.linkSets[i].linkLabels];
                     scheme.linkSets[i].linkLabels = targetType;
                 }
