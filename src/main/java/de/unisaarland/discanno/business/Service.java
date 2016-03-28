@@ -9,6 +9,7 @@ import de.unisaarland.discanno.tokenization.model.Line;
 import de.unisaarland.discanno.tokenization.TokenizationUtil;
 import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.dao.*;
+import de.unisaarland.discanno.email.EmailProvider;
 import de.unisaarland.discanno.entities.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ws.rs.core.Response;
 
 /**
  * This service provides all business logic.
@@ -67,6 +69,9 @@ public class Service {
     
     @EJB
     TargetTypeDAO targetTypeDAO;
+    
+    @EJB
+    EmailProvider emailProvider;
     
     /**
      * Creates a new state object and sets given user and document.
@@ -712,6 +717,17 @@ public class Service {
         state.setLastEdit(Utility.getCurrentTime());
         
         return state.getDocument();
+    }
+    
+    public Response resetUserPassword(Users entity) {
+        Users user = usersDAO.find(entity.getId(), false);
+        String newPwd = Utility.getRandomString(14);
+        String hashedPwd = Utility.hashPassword(newPwd);
+
+        emailProvider.sendPasswordResetNotification(user, newPwd);
+        
+        user.setPassword(hashedPwd);
+        return usersDAO.merge(user);
     }
     
     

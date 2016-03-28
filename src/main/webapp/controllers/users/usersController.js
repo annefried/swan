@@ -62,17 +62,13 @@ angular
                                     }
                                 }
                             }
-                            var loggedTime = 0;
-                            for (var jt = 0; jt < $scope.tilog.length; jt++) {
-                                loggedTime = loggedTime + $scope.tilog [jt].loggedtime;
-                            }
                             var user = {
                                 'id': u.id,
                                 'prename': u.prename,
                                 'lastname': u.lastname,
                                 'role': u.role,
                                 'email': u.email,
-                                'loggedtime': loggedTime,
+                                'loggedtime': $rootScope.calcTotalTime($scope.tilog),
                                 'undone': dUndone
                             };
                             $scope.users[i] = user;

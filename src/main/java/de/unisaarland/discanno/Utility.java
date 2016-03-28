@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.logging.Level;
@@ -104,6 +105,19 @@ public class Utility {
         }
         
         throw new IllegalArgumentException("Utility: No object with id " + id + " in set was found");
+    }
+    
+    public static String getRandomString(int length) {
+        Random r = new Random();
+        char min = 48;
+        char max = 122;
+        String ranStr = "";
+        for (int i = 0; i < length; i++) {
+            char c = (char)(r.nextInt(max - min + 1) + min);
+            ranStr += c;
+        }
+        
+        return ranStr;
     }
     
 }
