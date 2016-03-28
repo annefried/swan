@@ -1,12 +1,16 @@
 
 'use strict';
 
-angular.module('app').controller('projectEditModalController', function ($scope, $rootScope, $http, $uibModalInstance) {
+angular.module('app').controller('projectEditModalController', function ($scope, $rootScope, $http, $uibModalInstance, $window) {
 
     $scope.init = function () {
         $scope.loadUsers();
         $scope.projUsers = $rootScope.tableProjects[$rootScope.currentProjectIndex].users;
         $scope.projPms = $rootScope.tableProjects[$rootScope.currentProjectIndex].pms;
+        $scope.watchingUsers = $rootScope.tableProjects[$rootScope.currentProjectIndex].watchingUsers;
+        $rootScope.role = $window.sessionStorage.role;
+        $scope.currUser = {'id': parseInt($window.sessionStorage.uId)};
+        $scope.isWatching = $rootScope.tableProjects[$rootScope.currentProjectIndex].isWatching;
     };
 
     $scope.loadUsers = function () {
@@ -99,20 +103,38 @@ angular.module('app').controller('projectEditModalController', function ($scope,
         }
         var complementList = [];
         for (var i = 0; i < userList.length; i++) {
-            if (!$scope.containsUser(subList, userList[i])) {
+            if (!$rootScope.containsUser(subList, userList[i])) {
                 complementList.push(userList[i]);
             }
         }
         return complementList;
     };
     
-    $scope.containsUser = function (userList, user) {
-        for (var i = 0; i < userList.length; i++) {
-            if (userList[i].id == user.id) {
-                return true;
-            }
+    $scope.watchProject = function (bool) {
+        var proj = $rootScope.tableProjects[$rootScope.currentProjectIndex];
+        if (bool) {
+            // Add project manager to watching list
+            $http.post("discanno/project/addWatchingUser/" + proj.id + "/" + $window.sessionStorage.uId).success(function (response) {
+                if ($scope.watchingUsers === undefined) {
+                    $scope.watchingUsers = [];
+                }
+                $scope.watchingUsers.push($scope.currUser);
+                $scope.isWatching = true;
+                $rootScope.tableProjects[$rootScope.currentProjectIndex].isWatching = true;
+            });
+        } else {
+            // Remove project manager from watching list
+            $http.post("discanno/project/delWatchingUser/" + proj.id + "/" + $window.sessionStorage.uId).success(function (response) {
+                for (var i = 0; i < $scope.watchingUsers.length; i++) {
+                    if ($scope.watchingUsers[i].id === $scope.currUser.id) {
+                        $scope.watchingUsers.splice(i, 1);
+                        $scope.isWatching = false;
+                        $rootScope.tableProjects[$rootScope.currentProjectIndex].isWatching = false;
+                    }
+                }
+            });
         }
-        return false;
+        $rootScope.tableProjects[$rootScope.currentProjectIndex].watchingUsers = $scope.watchingUsers;
     };
 
     $scope.submit = function (name) {

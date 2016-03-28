@@ -61,7 +61,15 @@
                                     </span>
                                 </a>
                             </td>
-                            <td class="col-md-2 vert-align" id="project-name">{{x.name}}</td>
+                            <td class="col-md-2 vert-align" id="project-name">
+                                {{x.name}}
+                                <a ng-show="x.isWatching && this.role == 'projectmanager'">
+                                    <span class="glyphicon glyphicon-send" title="Receive weekly E-Mail notification"></span>
+                                </a>
+                                <a ng-show="!x.isWatching && this.role == 'projectmanager'">
+                                    <span class="glyphicon glyphicon-send" style="color:gray" title="Receive weekly E-Mail notification"></span>
+                                </a>
+                            </td>
                             <td class="col-md-2 vert-align"> 
                                 <!-- progress bar visible for ADMIN & PM -->
                                 <div ng-hide="isUnprivileged === 'true'"

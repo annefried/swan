@@ -282,49 +282,48 @@ angular
                                 }
 
                             };
-                            $http.post('discanno/project', JSON.stringify(projectTemplate))
-                                    .then(function (response) {
-                                        var template = {
-                                            'id': response.data,
-                                            'name': full.name,
-                                            'users': [],
-                                            'pms': [],
-                                            'completed': [],
-                                            'numberOfDocuments': 0,
-                                            'documents': []
-                                        };
+                            $http.post('discanno/project', JSON.stringify(projectTemplate)).then(function (response) {
+                                var template = {
+                                    'id': response.data,
+                                    'name': full.name,
+                                    'users': [],
+                                    'pms': [],
+                                    'completed': [],
+                                    'numberOfDocuments': 0,
+                                    'documents': []
+                                };
 
-
-                                        if ($window.sessionStorage.role != 'projectmanager') {
-
-                                            $rootScope.tableProjects.push(template);
-                                        } else {
-                                            //get the current user (there is not REST interface for getUser by ID)
-                                            $http.get("discanno/user/").then(function (response) {
-                                                var users = JSOG.parse(JSON.stringify(response.data)).users;
-                                                for (var i = 0; i < users.length; i++) {
-                                                    var u = users[i];
-                                                    if ($window.sessionStorage.uId == u.id) {
-                                                        template.pms = [u];
-                                                    }
-                                                }
-                                                $rootScope.tableProjects.push(template);
-                                            }, function () {});
-
-                                            $http.post("discanno/project/addManager/"
-                                                    + template.id
-                                                    + "/"
-                                                    + $window.sessionStorage.uId);
+                                if ($window.sessionStorage.role != 'projectmanager') {
+                                    $rootScope.tableProjects.push(template);
+                                } else {
+                                    // TODO necessary?
+                                    //get the current user (there is not REST interface for getUser by ID)
+                                    $http.get("discanno/user/").then(function (response) {
+                                        var users = JSOG.parse(JSON.stringify(response.data)).users;
+                                        for (var i = 0; i < users.length; i++) {
+                                            var u = users[i];
+                                            if ($window.sessionStorage.uId == u.id) {
+                                                template.pms = [u];
+                                            }
                                         }
-                                        $scope.projectToggeled(response.data);
+                                        $rootScope.tableProjects.push(template);
+                                    }, function () {});
 
-                                    }, function () {
-                                        $rootScope.addAlert({type: 'danger', msg: 'A Project with this name already exists.'});
-                                    });
+                                    // Add project manager to the corresponding proj manager list
+                                    $http.post("discanno/project/addManager/"
+                                            + template.id
+                                            + "/"
+                                            + $window.sessionStorage.uId);
+                                }
+                                $scope.projectToggeled(response.data);
 
-                                    if ($rootScope.tour !== undefined) {
-                                        $("#tour-next-button").prop("disabled", false);
-                                    }
+                            }, function () {
+                                $rootScope.addAlert({type: 'danger', msg: 'A Project with this name already exists.'});
+                            });
+
+                            if ($rootScope.tour !== undefined) {
+                                $("#tour-next-button").prop("disabled", false);
+                            }
                         }, function () {
 
                         });

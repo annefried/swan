@@ -24,7 +24,7 @@ import javax.persistence.OneToMany;
 /**
  * The Entity Project represents a set of documents and has a unique name.
  * 
- * @author Janna Herrmann
+ * @author Timo Guehring
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
@@ -47,6 +47,14 @@ public class Project extends BaseEntity {
         joinColumns={@JoinColumn(name="PROJECT_ID", referencedColumnName="id")},
         inverseJoinColumns={@JoinColumn(name="MANAGER_ID", referencedColumnName="id")})
     private Set<Users> projectManager = new HashSet<>();
+    
+    @JsonView({ View.Projects.class })
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(
+        name="PROJECTS_WATCHINGUSERS",
+        joinColumns={@JoinColumn(name="PROJECT_ID", referencedColumnName="id")},
+        inverseJoinColumns={@JoinColumn(name="WATCHINGUSER_ID", referencedColumnName="id")})
+    private Set<Users> watchingUsers = new HashSet<>();
     
     @JsonView({ View.Projects.class })
     @ManyToMany(mappedBy = "projects",
@@ -111,6 +119,22 @@ public class Project extends BaseEntity {
     
     public void removeProjectManager(Users users) {
         this.projectManager.remove(users);
+    }
+
+    public Set<Users> getWatchingUsers() {
+        return watchingUsers;
+    }
+
+    public void setWatchingUsers(Set<Users> watchingUsers) {
+        this.watchingUsers = watchingUsers;
+    }
+    
+    public void addWatchingUsers(Users user) {
+        this.watchingUsers.add(user);
+    }
+    
+    public void removeWatchingUser(Users user) {
+        this.watchingUsers.remove(user);
     }
 
     public Scheme getScheme() {

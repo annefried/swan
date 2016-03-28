@@ -10,27 +10,35 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <!-- Project Modal -->
+        <!-- Project Edit Modal -->
         <form role="form">
             <div class="modal-header">
                 <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Edit Project</h4>
             </div>
             <div class="modal-body">
-                <!-- add Project Managers -->
                 <div>
                     <div class="form-group">
                         <label for="name">Name:</label> {{this.currentProjectName}}
                     </div>
+                    
+                    <div class="form-group" ng-show="this.role == 'projectmanager'">
+                        <label for="notification">Receive weekly E-Mail notification:</label>
+                        <input type="checkbox"
+                               ng-model="isWatching"
+                               ng-click="watchProject(isWatching)">
+                    </div>
+                    
                     <div class="form-group">
-
                         <label>Project Managers:</label>
                         <table id="listingTable">
                             <tbody>
                                 <tr ng-repeat="pm in this.projPms">
                                     <td class="tableRowWithGlyph">{{pm.email}}</td>
-                                    <td><a>
-                                            <span class="glyphicon glyphicon-remove" style="color: red;"
+                                    <td>
+                                        <a>
+                                            <span class="glyphicon glyphicon-remove"
+                                                  style="color: red;"
                                                   ng-click="deletePM(pm.id)"></span>
                                         </a>
                                     </td>

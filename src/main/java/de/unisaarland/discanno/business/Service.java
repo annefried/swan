@@ -404,12 +404,22 @@ public class Service {
     public void addProjectManagerToProject(Long projId, Long userId) {
         
         Project proj = (Project) projectDAO.find(projId, false);
-
         Users manager =  (Users) usersDAO.find(userId, false);
         
         manager.getManagingProjects().add(proj);
         proj.addProjectManager(manager);
         
+        projectDAO.merge(proj);
+    }
+    
+    public void addWatchingUserToProject(Long projId, Long userId) {
+
+        Project proj = (Project) projectDAO.find(projId, false);
+        Users watchingUser =  (Users) usersDAO.find(userId, false);
+        
+        watchingUser.getWatchingProjects().add(proj);
+        proj.addWatchingUsers(watchingUser);
+
         projectDAO.merge(proj);
     }
     
@@ -726,8 +736,20 @@ public class Service {
     
     public void removeProjectManagerFromProject(Long projId, Long userId) {
         Project proj = (Project) projectDAO.find(projId, false);
+        Users user = (Users) usersDAO.find(userId, false);
         Utility.removeObjectFromSet(proj.getProjectManager(), userId);
+        Utility.removeObjectFromSet(user.getManagingProjects(), projId);
         projectDAO.merge(proj);
+        usersDAO.merge(user);
+    }
+    
+    public void removeWatchingUserFromProject(Long projId, Long userId) {
+        Project proj = (Project) projectDAO.find(projId, false);
+        Users user = (Users) usersDAO.find(userId, false);
+        Utility.removeObjectFromSet(proj.getWatchingUsers(), userId);
+        Utility.removeObjectFromSet(user.getWatchingProjects(), projId);
+        projectDAO.merge(proj);
+        usersDAO.merge(user);
     }
     
     public void removeDocument(Document entity) {
