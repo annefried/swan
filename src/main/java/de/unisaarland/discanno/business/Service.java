@@ -185,6 +185,12 @@ public class Service {
     }
 
     public void process(Scheme entity) {
+        
+        if (entity.getCreator() != null
+                && entity.getCreator().getId() != null) {
+            Users user = usersDAO.find(entity.getCreator().getId(), true);
+            entity.setCreator(user);
+        }
 
         Set<Project> projects = new HashSet<>();
         for (Project p : entity.getProjects()) {
@@ -714,8 +720,11 @@ public class Service {
             removeDocument(d);
         }
         
+        Scheme scheme = entity.getScheme();
+        scheme.getProjects().remove(entity);
+        
+        schemeDAO.merge(scheme);
         projectDAO.remove(entity);
-
     }
     
     public void removeUserFromProject(Long projId, Long userId) {
@@ -810,28 +819,34 @@ public class Service {
     public void removeUser(Users user) {
         
         List<TimeLogging> list = timeLoggingDAO.getAllTimeLoggingByUserId(user.getId());
-        
         for (TimeLogging t : list) {
             timeLoggingDAO.remove(t);
         }
         
         List<Annotation> listAnno = annotationDAO.getAllAnnotationsByUserId(user);
-        
         for (Annotation a : listAnno) {
             removeAnnotation(a);
         }
         
         List<State> listStates = stateDAO.getAllStatesByUserId(user);
-        
         for (State s : listStates) {
             stateDAO.remove(s);
         }
         
         Set<Project> listManagingProjects = user.getManagingProjects();
-        
         for (Project p : listManagingProjects) {
             p.removeProjectManager(user);
             projectDAO.merge(p);
+        }
+        
+        if (user.getRole().equals(Users.RoleType.projectmanager)
+                || user.getRole().equals(Users.RoleType.admin)) {
+            List<Scheme> schemes = schemeDAO.findAll();
+            for (Scheme s : schemes) {
+                if (s.getCreator() != null && s.getCreator().equals(user)) {
+                    s.setCreator(null);
+                }
+            }
         }
         
         usersDAO.merge(user);

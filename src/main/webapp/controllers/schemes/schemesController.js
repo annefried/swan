@@ -72,9 +72,10 @@ angular
                             }
                             var schemePreview = {
                                 'id': scheme.id,
+                                'name': scheme.name,
+                                'creator': scheme.creator,
                                 'projects': newProjects,
                                 'tableIndex': $scope.schemeCounter,
-                                'name': scheme.name,
                                 'labelSetCount': scheme.labelSets.length,
                                 'linkSetCount': scheme.linkSets.length
                             };
@@ -83,6 +84,14 @@ angular
                         }
 
                         $rootScope.tableSchemes = this.tableSchemes;
+                    };
+                    
+                    $scope.isDeletingPossible = function (scheme) {
+                        return scheme.projects.length < 1
+                            && ($window.sessionStorage.role == 'admin'
+                                    || ($window.sessionStorage.role == 'projectmanager'
+                                            && scheme.creator != null
+                                            && scheme.creator.id == $window.sessionStorage.uId));
                     };
 
                     /******************

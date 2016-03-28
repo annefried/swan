@@ -48,7 +48,7 @@ and open the template in the editor.
                             <td class="col-md-1 vert-align">
                                 <span class="glyphicon glyphicon-remove"
                                         ng-hide="isUnprivileged === 'true'" style="color:red"
-                                        ng-class="(x.projects.length < 1) ? 'enabled' : 'disabled'"
+                                        ng-class="(isDeletingPossible(x)==true) ? 'enabled' : 'disabled'"
                                         ng-click="openSchemeDeleteModal(x.id)">
                                 </span>
                             </td>
