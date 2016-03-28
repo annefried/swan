@@ -1,7 +1,7 @@
 
 'use strict';
 
-angular.module('app').controller('schemeUploadModalController', function ($scope, $rootScope, $http, $sce, $uibModalInstance) {
+angular.module('app').controller('schemeUploadModalController', function ($scope, $rootScope, $http, $sce, $uibModalInstance, $window) {
 
     /**
      * Called at the end of Controller construction.
@@ -117,7 +117,6 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
         $scope.endType = undefined;
         $scope.currentLinkSet = [];
         $scope.selectedTargetsLink = [];
-
     };
 
     /**
@@ -338,9 +337,11 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
     };
     $scope.sendScheme = function () {
         try {
+            var currUser = {"id": parseInt($window.sessionStorage.uId)}; // TODO maybe global
             var fileTemplate = {
                 "id": null,
                 "name": $scope.name,
+                "creator": currUser,
                 "targetTypes": $scope.targets,
                 "labelSets": $scope.labelSets,
                 "linkSets": $scope.linkSets,
@@ -407,22 +408,22 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                     };
                     linkSets.push(linkSet);
                 }
-                var template =
-                        {
-                            "id": null,
-                            "name": file.name,
-                            "targetTypes": targetTypes,
-                            "labelSets": labelSets,
-                            "linkSets": linkSets,
-                            "projects": []
-                        };
-                $http.post("discanno/scheme", JSON.stringify(template)
-                        ).then(function (response) {
+                var template = {
+                    "id": null,
+                    "creator": currUser,
+                    "name": file.name,
+                    "targetTypes": targetTypes,
+                    "labelSets": labelSets,
+                    "linkSets": linkSets,
+                    "projects": []
+                };
+                $http.post("discanno/scheme", JSON.stringify(template)).then(function (response) {
                     $rootScope.schemesTable[template.name] = template;
                     var schemePreview = {
                         'id': response.data,
-                        'tableIndex': $scope.schemeCounter++,
                         'name': template.name,
+                        "creator": currUser,
+                        'tableIndex': $scope.schemeCounter++,
                         'projects': [],
                         'labelSetCount': template.labelSets.length,
                         'linkSetCount': template.linkSets.length
