@@ -1,5 +1,10 @@
 # Welcome to DiscAnno
-TODO: general overview
+DiscAnno is a web-based system for natural language anntotation.
+Its key features are:
+* support of discourse annotation (i.e., annotation of complete texts) by allowing to scroll through the entire document
+* focus on usability for limited tag sets (quick selection)
+* a graph visualization box showing the discourse structure of the document
+
 
 ## Technologies
 * **Frontend**:
