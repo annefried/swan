@@ -1,14 +1,16 @@
 
 'use strict';
 
-angular.module('app').controller('schemeViewModalController', function ($scope, $rootScope, $http, $sce, $uibModalInstance) {
+angular.module('app').controller('schemeViewModalController', function ($scope, $rootScope, $uibModalInstance) {
 
     $scope.init = function () {
         $scope.loadScheme();
     };
 
     $scope.loadScheme = function () {
-        var scheme = $rootScope.currentScheme;
+        // This is a little hack to make a deep copy of the scheme to set the
+        // projects undefined
+        var scheme = JSON.parse(JSON.stringify($rootScope.currentScheme));
         scheme.projects = undefined;
         for (var j = 0; j < scheme.labelSets.length; j++) {
             var curLabelSet = scheme.labelSets[j];
@@ -24,10 +26,8 @@ angular.module('app').controller('schemeViewModalController', function ($scope, 
                 curLabel.linkSet = undefined;
             }
         }
+        
         $scope.currentScheme = JSON.stringify(scheme, null, "\t");
-
-
-
     };
 
     $scope.submit = function () {

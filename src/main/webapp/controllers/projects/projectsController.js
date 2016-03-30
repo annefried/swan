@@ -188,20 +188,20 @@ angular
                      * @param {type} projectId the projects id
                      */
                     $scope.openProjectSchemeModal = function (projectId) {
-                        for (var i = 0; i < $rootScope.projects.length; i++) {
-                            if ($rootScope.projects[i].id === projectId) {
-                                for (var i = 0; i < $scope.schemes.length; i++) {
-                                    var scheme = $scope.schemes[i];
-                                    for (var j = 0; j < scheme.projects.length; j++) {
-                                        var proj = scheme.projects[j];
-                                        if (proj.id === projectId) {
-                                            $rootScope.currentScheme = scheme;
-                                            break;
-                                        }
-                                    }
+                        
+                        var isSearching = true;
+                        for (var i = 0; i < $scope.schemes.length && isSearching; i++) {
+                            var scheme = $scope.schemes[i];
+                            for (var j = 0; j < scheme.projects.length; j++) {
+                                var proj = scheme.projects[j];
+                                if (proj.id === projectId) {
+                                    $rootScope.currentScheme = scheme;
+                                    isSearching = false;
+                                    break;
                                 }
                             }
                         }
+                        
                         var modalInstance = $uibModal.open({
                             animation: $scope.animationsEnabled,
                             templateUrl: 'templates/schemes/schemeViewModal.html',
