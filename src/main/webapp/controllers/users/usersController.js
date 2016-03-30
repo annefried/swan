@@ -16,7 +16,7 @@ angular
                         //Pop Up
                         $scope.animationsEnabled = true;
                         $scope.getUsers();
-                        
+
                         if ($rootScope.tour !== undefined) {
                             $rootScope.tour.resume();
                         }
@@ -135,7 +135,7 @@ angular
                         // Callback on Submit
                         modalInstance.result.then(function (response) {
                             $scope.users.push(response);
-                            
+
                             // Check if the guided tour can continue
                             if ($rootScope.tour !== undefined) {
                                 if (response.role === 'annotator') {
@@ -180,6 +180,9 @@ angular
                             $scope.animationsEnabled = !$scope.animationsEnabled;
                         };
                     };
+
+                   
+
 
                     // Initialise View
                     $scope.init();

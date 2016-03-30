@@ -23,10 +23,10 @@ and open the template in the editor.
                             <th class="col-md-2">E-Mail</th>
                             <th class="col-md-2">Incomplete Documents</th>
                             <th class="col-md-2">Logged Time</th>
-                            <th class="col-md-2" ng-hide="role == 'projectmanager'">
+                            <th class="col-md-2">
                                 Delete
                             </th>
-                            <th class="col-md-2" ng-hide="role == 'projectmanager'">
+                            <th class="col-md-2">
                                 Edit
                             </th>
                         </tr>
@@ -53,16 +53,16 @@ and open the template in the editor.
                             <td class="col-md-2 vert-align">{{x.email}}</td>
                             <td class="col-md-2 vert-align">{{x.undone}}</td>
                             <td class="col-md-2 vert-align">{{x.loggedtime}}</td>
-                            <td class="col-md-2 vert-align" ng-hide="role == 'projectmanager'">
+                            <td class="col-md-2 vert-align">
                                 <span class="glyphicon glyphicon-remove"
                                       style="color:red"
-                                      ng-click="openUserDeleteModal(x.id)">
+                                      ng-click="openUserDeleteModal(x.id)" ng-hide="role === 'projectmanager' && x.role !== 'annotator'">
                                 </span>
                             </td>
-                            <td class="col-md-2 vert-align" ng-hide="role == 'projectmanager'">
+                            <td class="col-md-2 vert-align">
                                 <a>
                                     <span class="glyphicon glyphicon-pencil"
-                                        ng-click="openUserEditModal(x.id)">
+                                          ng-click="openUserEditModal(x.id)" ng-hide="role === 'projectmanager' && x.role !== 'annotator'">
                                     </span>
                                 </a>
                             </td>
@@ -74,10 +74,10 @@ and open the template in the editor.
                             <td class="col-md-2"><b></b></td>
                             <td class="col-md-2"><b></b></td>
                             <td class="col-md-2"><b></b></td>
-                            <td class="col-md-2" ng-hide="role == 'projectmanager'"><b></b></td>
-                            <td class="col-md-2" ng-hide="role == 'projectmanager'"><b></b></td>
+                            <td class="col-md-2" ><b></b></td>
+                            <td class="col-md-2"><b></b></td>
                             <td class="col-md-2" id="users-add-button">
-                                <td class="col-md-2">
+                            <td class="col-md-2">
                                 <button class="btn btn-primary tableButton"
                                         type="button"
                                         ng-hide="isUnprivileged === 'true'"
