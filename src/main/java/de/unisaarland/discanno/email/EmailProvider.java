@@ -5,7 +5,6 @@
  */
 package de.unisaarland.discanno.email;
 
-import de.unisaarland.discanno.dao.ProjectDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.Document;
 import de.unisaarland.discanno.entities.Project;
@@ -36,7 +35,7 @@ import javax.mail.internet.MimeMessage;
  * 
  * create-javamail-resource --mailhost smtp.gmail.com --mailuser colisaarland@gmail.com
  * --fromaddress colisaarland@gmail.com 
- * --property mail-smtp-auth=true:mail-smtp-starttls-enable=true:mail-smtp-port=587:mail-smtp-password=Coli1234 
+ * --property mail-smtp-auth=true:mail-smtp-starttls-enable=true:mail-smtp-port=587:mail-smtp-password=<password> 
  * mail/JavaMail
  *
  * @author Timo Guehring
