@@ -5,7 +5,7 @@ Its key features are:
 * focus on usability for limited tag sets (quick selection)
 * a graph visualization box showing the discourse structure of the document
 
-Check out the [Github Wiki]((/annefried/discanno/wiki/Home)) for more information on functionality and setup!
+Check out the [Github Wiki](https://github.com/annefried/discanno/wiki) for more information on functionality and setup!
 
 
 ## Technologies
