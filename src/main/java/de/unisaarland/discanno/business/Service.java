@@ -11,6 +11,8 @@ import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.dao.*;
 import de.unisaarland.discanno.entities.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -28,6 +30,17 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class Service {
+    
+    // Determines which kind of user can create another user with the allowed role
+    private static EnumMap<Users.RoleType, List<Users.RoleType>>
+            userPermissionMap = new EnumMap<>(Users.RoleType.class);
+    
+    static {
+        userPermissionMap.put(Users.RoleType.admin,
+                Arrays.asList(Users.RoleType.admin, Users.RoleType.projectmanager, Users.RoleType.annotator));
+        userPermissionMap.put(Users.RoleType.projectmanager,
+                Arrays.asList(Users.RoleType.annotator));
+    }
     
     @EJB
     ProjectDAO projectDAO;
@@ -366,6 +379,26 @@ public class Service {
             m.setLinkSets(linkSets);
         }
 
+    }
+    
+    public void process(Users currUser, Users newUser) {
+        
+        // Check user roles
+        List<Users.RoleType> allowedRoles = userPermissionMap.get(currUser.getRole());
+        if (!allowedRoles.contains(newUser.getRole())) {
+            throw new IllegalArgumentException("Service: The requested user role is not allowed.");
+        }
+        
+        Set<Project> proSet = new HashSet<>();
+        for (Project p : newUser.getProjects()) {
+            Project proj = (Project) projectDAO.find(p.getId(), false);
+            proSet.add(proj);
+        }
+        newUser.setProjects(proSet);
+        newUser.setCreateDate(Utility.getCurrentTime());
+        newUser.setPassword(
+                Utility.hashPassword(
+                        newUser.getPassword()));
     }
     
     public void process(TimeLogging entity) {

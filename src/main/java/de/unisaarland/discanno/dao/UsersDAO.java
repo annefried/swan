@@ -52,7 +52,7 @@ public class UsersDAO extends BaseEntityDAO<Users> {
                     executeQuery(Users.QUERY_FIND_BY_EMAIL_AND_PASSWORD, params));
     }
     
-    private Users getUserBySession(String session) {
+    public Users getUserBySession(String session) {
         return firstResult(
                     executeQuery(
                         Users.QUERY_FIND_BY_SESSION,

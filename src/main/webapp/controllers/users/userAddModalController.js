@@ -1,5 +1,9 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 'use strict';
-
 angular.module('app').controller('userAddModalController', function ($scope, $rootScope, $http, $uibModalInstance) {
 
     // Initialise User View
@@ -11,7 +15,6 @@ angular.module('app').controller('userAddModalController', function ($scope, $ro
         }
 
     };
-
 
     // Called on submit
     $scope.createUser = function (prename, lastname, password, email, role) {
@@ -30,7 +33,6 @@ angular.module('app').controller('userAddModalController', function ($scope, $ro
                     return;
                 }
             }
-
 
             // create new user
             var jsonTemplate = {
@@ -52,18 +54,14 @@ angular.module('app').controller('userAddModalController', function ($scope, $ro
                 'undone': 0
             };
 
-            $http.post('discanno/user', JSON.stringify(jsonTemplate))
-                    .then(function (response) {
-                        user.id = response.data;
-                        $uibModalInstance.close(user);
-                    }, function () {
-                        $rootScope.addAlert({type: 'danger', msg: 'A user with this email address exists already.'});
-                    });
+            $http.post('discanno/user', JSON.stringify(jsonTemplate)).then(function (response) {
+                user.id = response.data;
+                $uibModalInstance.close(user);
+            }, function () {
+                $rootScope.addAlert({type: 'danger', msg: 'A user with this email address exists already.'});
+            });
 
         });
-
-
-
     };
 
     $scope.cancel = function () {
@@ -72,7 +70,4 @@ angular.module('app').controller('userAddModalController', function ($scope, $ro
 
     // Initialise View
     $scope.init();
-
-
-
 });
