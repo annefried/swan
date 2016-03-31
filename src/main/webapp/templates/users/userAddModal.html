@@ -52,7 +52,7 @@ and open the template in the editor.
                     <span ng-show="form.role.$dirty && form.role.$error.required" class="help-block">Role is required.</span>
                 </div>
                 <div class="form-actions">
-                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary" ng-click="createUser(vm.fname, vm.lname, vm.pw, vm.email, vm.role)">Add User</button>
+                    <button id="submit_add_user_button" type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary" ng-click="createUser(vm.fname, vm.lname, vm.pw, vm.email, vm.role)">Add User</button>
                 </div>
             </form>
         </div>

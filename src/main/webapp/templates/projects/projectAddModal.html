@@ -17,10 +17,11 @@ and open the template in the editor.
                 <h4 class="modal-title" id="myModalLabel">Create New Project</h4>
             </div>
             <div class="modal-body">
-                 <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
+                <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name" ng-model="vm.name" required>
+                    The name of your project needs to be unique. You cannot use project names used by other project managers, as annotators may work for more than one project manager.
                 </div>
 
                 <div class="form-group">
@@ -30,7 +31,7 @@ and open the template in the editor.
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" ng-disabled="!vm.name|| !selectedOption" ng-click="submit(vm.name,selectedOption)">Submit</button>
+                <button type="button" id="pe_createProjectButton" class="btn btn-primary" ng-disabled="!vm.name || !selectedOption" ng-click="submit(vm.name, selectedOption)">Submit</button>
             </div>
         </form>
 
