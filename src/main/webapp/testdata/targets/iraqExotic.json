@@ -1,0 +1,19 @@
+{
+   "targets":[
+      {
+         "type":"verb",
+         "begin":"5",
+         "end":"11"
+      },
+      {
+         "type":"exotic2",
+         "begin":"12",
+         "end":"17"
+      },
+      {
+         "type":"exotic3",
+         "begin":"26",
+         "end":"37"
+      }
+   ]
+}
