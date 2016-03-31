@@ -61,7 +61,7 @@ and open the template in the editor.
                     <div class="form-group col-lg-9">
                         <div class="form-group">
                             <label>Scheme name:</label>
-                            <input type="text"
+                            <input type="text" id="scheme-name-input"
                                    placeholder="Enter name..." 
                                    class="form-control sb_inputName"
                                    ng-model="name"/>
@@ -73,7 +73,7 @@ and open the template in the editor.
                 <div class="row">
                     <!-- Target Types -->
                     <div class="form-group col-lg-7">
-                        <div class="form-group">
+                        <div class="form-group" >
                             <label>
                                 Annotation types:
                             </label>
@@ -99,7 +99,7 @@ and open the template in the editor.
                                    placeholder="Enter type name...">
                             <span class="input-group-btn">
                                 <button class="btn btn-default btn-sm" 
-                                        type="button" 
+                                        type="button"  id="annotation-types-input"
                                         ng-disabled="targetTypeToAdd === undefined"
                                         ng-click="addTargetType(targetTypeToAdd)">
                                     Add
@@ -110,7 +110,7 @@ and open the template in the editor.
                 </div>
                 <hr/>
                 <div class="row">
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-lg-12" >
                         <label>
                             Label sets
                         </label>
@@ -214,7 +214,7 @@ and open the template in the editor.
                 <!-- 4. row -->
                 <div class="row">
                     <!-- Label Sets -->
-                    <div class="form-group col-xs-6 sb_left vr_right">
+                    <div class="form-group col-xs-6 sb_left vr_right" id="addLabelSetsDiv">
                         <label>
                             Add or modify label sets:
                         </label>
@@ -305,6 +305,7 @@ and open the template in the editor.
                         </div>
                         <div class="form-group sb_right">
                             <button type="button" class="btn btn-success"
+                                    id ="sb_addLabelSetButton"
                                     ng-disabled="nameLabelSet === undefined || nameLabelSet === '' || selectedTargetsLabel.length < 1 || currentLabelSet.length < 1"
                                     ng-click="addLabelSet()">
                                 Add label set
@@ -312,7 +313,7 @@ and open the template in the editor.
                         </div>
                     </div>
                     <!-- Link Sets -->
-                    <div class="form-group col-xs-6 sb_right">
+                    <div class="form-group col-xs-6 sb_right" id="scheme_add_links_div">
                         <label>
                             Add or modify link types:
                         </label>
@@ -380,7 +381,7 @@ and open the template in the editor.
                             </div>
                         </div>
                         <div class="form-group sb_right">
-                            <button type="button" class="btn btn-success"
+                            <button type="button" class="btn btn-success" id ="sb_addLinkSetButton"
                                     ng-disabled="startType === undefined || endType === undefined"
                                     ng-click="addLinkSet()">
                                 Add link set
@@ -398,7 +399,7 @@ and open the template in the editor.
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" ng-click="submit()">Create and save scheme</button>
+                <button id="sb_submitSchemeButton" type="button" class="btn btn-primary" ng-click="submit()">Create and save scheme</button>
             </div>
         </form>
 

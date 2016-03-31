@@ -15,7 +15,7 @@
 
                     <thead>
                         <tr class="headDark">
-                            <th class="col-md-1 vert-align"></th>
+                            <th class="col-md-1 vert-align" id="pe_expand_documents"></th>
                             <th class="col-md-2 vert-align">Name</th>
                             <th class="col-md-2 vert-align">Progress</th>
                             <th class="col-md-2 vert-align">
@@ -26,13 +26,13 @@
                                 <span ng-hide="isUnprivileged === 'true'">Scheme</span>
                             </th>
                             <th class="col-md-1 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'">Edit Project</span>
+                                <span ng-hide="isUnprivileged === 'true'" id="pe_edit_project">Edit Project</span>
                             </th>
                             <th class="col-md-1 vert-align">
                                 <span ng-hide="isUnprivileged === 'true'">Delete</span>
                             </th>
                             <th class="col-md-2 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'">Export</span>
+                                <span ng-hide="isUnprivileged === 'true'" id="pe_export">Export</span>
                             </th>
                         </tr>
                     </thead>
@@ -216,6 +216,7 @@
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align">
                                 <button class="btn btn-primary tableButton"
+                                        id ="pe_addDocumentsButton"
                                         ng-click="openDocumentAddModal(x.id)"
                                         ng-hide="isUnprivileged === 'true'">
                                     + Document
@@ -235,7 +236,7 @@
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align" id="projects-add-button">
-                                <button class="btn btn-primary tableButton" 
+                                <button class="btn btn-primary tableButton"  id="pe_addProject_button"
                                         type="button" ng-hide="isUnprivileged === 'true'"
                                         ng-click="openProjectAddModal()">
                                     + Project
