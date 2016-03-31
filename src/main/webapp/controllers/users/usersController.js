@@ -1,5 +1,9 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 'use strict';
-
 angular
         .module('app')
         .controller('usersController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys', function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys) {
@@ -16,7 +20,7 @@ angular
                         //Pop Up
                         $scope.animationsEnabled = true;
                         $scope.getUsers();
-                        
+
                         if ($rootScope.tour !== undefined) {
                             $rootScope.tour.resume();
                         }
@@ -135,7 +139,7 @@ angular
                         // Callback on Submit
                         modalInstance.result.then(function (response) {
                             $scope.users.push(response);
-                            
+
                             // Check if the guided tour can continue
                             if ($rootScope.tour !== undefined) {
                                 if (response.role === 'annotator') {
@@ -183,7 +187,7 @@ angular
 
                     // Initialise View
                     $scope.init();
-
                 }
+                
             }]);
 

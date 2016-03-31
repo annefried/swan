@@ -58,8 +58,6 @@ public class UserFacadeREST extends AbstractFacade<Users> {
     
     
     /**
-     * TODO contains business logic
-     * 
      * Inserts an user and hashes the password before.
      * 
      * @param entity
@@ -70,23 +68,12 @@ public class UserFacadeREST extends AbstractFacade<Users> {
     @Consumes({MediaType.APPLICATION_JSON})
     public Response create(Users entity) {
         
-        try {   
-            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
-        
-            Set<Project> proSet = new HashSet<>();
-            for (Project p : entity.getProjects()) {
-                Project proj = (Project) projectDAO.find(p.getId(), false);
-                proSet.add(proj);
-            }
-            entity.setProjects(proSet);
-            entity.setCreateDate(Utility.getCurrentTime());
-            entity.setPassword(
-                    Utility.hashPassword(
-                            entity.getPassword()));
-
+        try {
+            String session = getSessionID();
+            LoginUtil.check(usersDAO.checkLogin(session, Users.RoleType.projectmanager));
+            service.process(usersDAO.getUserBySession(session), entity);
             return usersDAO.create(entity);
-            
-        } catch (SecurityException e) {
+        } catch (SecurityException | IllegalArgumentException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
     }
