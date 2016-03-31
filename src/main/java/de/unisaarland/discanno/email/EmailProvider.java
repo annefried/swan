@@ -67,16 +67,22 @@ public class EmailProvider {
         }
     }
     
-    public void sendProgressNotification(Users u) {
+    private void sendProgressNotification(Users u) {
+        sendEmail(u.getEmail(),
+                    getEmailReport(u.getWatchingProjects()),
+                    "DiscAnno: Weekly Progress");
+    }
+    
+    private void sendEmail(String email, String text, String subject) {
         
         try {
-            InternetAddress emailAddr = new InternetAddress(u.getEmail());
+            InternetAddress emailAddr = new InternetAddress(email);
             
             Message message = new MimeMessage(mailSession);
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(emailAddr.toString(), false));
-            message.setSubject("DiscAnno: Weekly Progress");
-            message.setText(getEmailReport(u.getWatchingProjects()));
+            message.setSubject(subject);
+            message.setText(text);
             message.setHeader("X-Mailer", "My Mailer");
             
             Date timeStamp = new Date();
@@ -127,6 +133,14 @@ public class EmailProvider {
         }
         
         return text;
+    }
+    
+    public void sendPasswordResetNotification(Users user, String pwd) {
+        String text = "Your password was reset. Your new password is:\n"
+                + "User name: " + user.getPrename() + " " + user.getLastname() + "\n"
+                + "New Password: " + pwd + "\n\n"
+                + "Please change your password.";
+        sendEmail(user.getEmail(), text, "DiscAnno: Password reset");
     }
     
 }

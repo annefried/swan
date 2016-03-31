@@ -50,7 +50,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
             query = "SELECT u FROM Users u WHERE u.email = :" + Users.PARAM_EMAIL + " AND u.password = :" + Users.PARAM_PASSWORD),
     @NamedQuery(
             name = Users.QUERY_FIND_BY_SESSION,
-            query = "SELECT u FROM Users u WHERE u.session = :" + Users.PARAM_SESSION)
+            query = "SELECT u FROM Users u WHERE u.session = :" + Users.PARAM_SESSION),
+    @NamedQuery(
+            name = Users.QUERY_GET_ALL_USERS_ASC,
+            query = "SELECT u FROM Users u ORDER BY u.email ASC")
 })
 public class Users extends BaseEntity {
 
@@ -63,6 +66,11 @@ public class Users extends BaseEntity {
      * Named query identifier for "find by session".
      */
     public static final String QUERY_FIND_BY_SESSION = "Users.QUERY_FIND_BY_SESSION";
+    
+    /**
+     * Named query identifier for "get all users ascending by email".
+     */
+    public static final String QUERY_GET_ALL_USERS_ASC = "Users.QUERY_GET_ALL_USERS_ASC";
     
     /**
      * Query parameter constant for the attribute "uuid".

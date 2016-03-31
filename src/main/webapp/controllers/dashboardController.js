@@ -178,6 +178,21 @@ angular
                 };
                 
                 /**
+                 * 
+                 * @param {type} timeLogArr
+                 * @returns {String} String representation of the total logged time
+                 */
+                $rootScope.calcTotalTime = function (timeLogArr) {
+                    var totalTime = 0;
+                    for (var i = 0; i < timeLogArr.length; i++) {
+                        totalTime += parseInt(timeLogArr[i].loggedtime);
+                    }
+                    var hours = Math.floor(totalTime / 60);
+                    var minutes = totalTime % 60;
+                    return "" + hours + "h " + minutes + "min";
+                };
+                
+                /**
                  * Compares two documents by their lastEdit value. Used to
                  * sort the documents in a project.
                  * 

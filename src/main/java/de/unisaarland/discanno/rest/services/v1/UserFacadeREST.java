@@ -78,6 +78,19 @@ public class UserFacadeREST extends AbstractFacade<Users> {
         }
     }
     
+    @POST
+    @Path("/reset")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response resetUserPassword(Users entity) {
+        
+        try {   
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.admin));
+            return service.resetUserPassword(entity);
+        } catch (SecurityException e) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+    }
+    
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_JSON})
@@ -116,7 +129,7 @@ public class UserFacadeREST extends AbstractFacade<Users> {
         try {   
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             
-            List<Users> list = usersDAO.findAll();
+            List<Users> list = usersDAO.getAllUsersAscending();
             
             return Response.ok(mapper.writerWithView(View.Users.class)
                                         .withRootName("users")
