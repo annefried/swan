@@ -1,7 +1,7 @@
 'use strict';
 //Responsible directive for drawing the options field
 angular.module('app')
-        .directive('d3Options', ['$rootScope', 'd3', 'hotkeys', function ($rootScope, d3, hotkeys) {
+        .directive('d3Options', ['$rootScope', 'd3', 'hotkeys', '$window', function ($rootScope, d3, hotkeys, $window) {
                 return {
                     restrict: 'EA',
                     scope: {
@@ -24,7 +24,8 @@ angular.module('app')
                         var width;
                         var options = d3.select(iElement[0])
                                 .attr("width", "100%");
-
+                        $scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
+                        
                         //Re-render on window resize
                         window.onresize = function () {
                             return $scope.$apply();
@@ -72,8 +73,12 @@ angular.module('app')
                                         .attr("type", "button")
                                         .classed("btn btn-danger btn-xs", true)
                                         .attr("disabled", function () {
-                                            if ($scope.selection === $scope.tempAnno)
+                                            if ($scope.selection === $scope.tempAnno) {
                                                 return "true";
+                                            }
+                                            if (!$scope.isAnnotator) {
+                                                return "true";
+                                            }
                                         })
                                         .text(function () {
                                             if ($scope.selection.type === "Annotation") {
@@ -211,13 +216,17 @@ angular.module('app')
                                         }
                                         return false;
                                     })
+                                    .attr("disabled", function () {
+                                        if (!$scope.isAnnotator) {
+                                            return "true";
+                                        }
+                                    })
                                     .text(function (d) {
                                         return d.value.tag;
                                     })
                                     .on("click", function (d) {
                                         $scope.$apply(function () {
                                             $scope.setTypeAndAdd({item: d.value});
-
                                         });
                                     });
                             parent.selectAll("button").each(function () {
@@ -276,8 +285,13 @@ angular.module('app')
                                             }
                                             return false;
                                         })
+                                        .attr("disabled", function () {
+                                            if (!$scope.isAnnotator) {
+                                                return "true";
+                                            }
+                                        })
                                         .text(function (d) {
-                                            return d.toString(width/30);
+                                            return d.toString(width / 30);
                                         })
                                         .on("click", function (d) {
                                             $scope.$apply(function () {
@@ -309,9 +323,11 @@ angular.module('app')
                                         .attr("disabled", function () {
                                             var tType = $scope.selection.tType;
                                             if (tType === undefined) {
-                                                return true;
+                                                return "true";
                                             }
-
+                                            if (!$scope.isAnnotator) {
+                                                return "true";
+                                            }
                                         })
                                         .on("click", function () {
                                             $scope.$apply(function () {
