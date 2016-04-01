@@ -271,8 +271,8 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
     
      /**
      * This method returns a zip archive containing all Users annotations project
-     * related. For each document and user pair will be a single .xml file
-     * created in the de.unisaarland.disacnno.export.model format.
+     * related. For each document and user pair will be a single .xmi file
+     * created in the UIMA format.
      * 
      * @param projId
      * @return 

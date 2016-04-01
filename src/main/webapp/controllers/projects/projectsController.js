@@ -125,7 +125,7 @@ angular
                      * @returns {String} the adress for export
                      */
                     $scope.exportProject = function (projId) {
-                        return "/project/export/" + projId;
+                        return "discanno/project/export/" + projId;
                     };
                     
                     /**
@@ -134,7 +134,7 @@ angular
                      * @returns {String} the adress for export
                      */
                     $scope.exportProjectXmi = function (projId) {
-                        return "/project/exportXmi/" + projId;
+                        return "discanno/project/exportXmi/" + projId;
                     };
 
                     /**
