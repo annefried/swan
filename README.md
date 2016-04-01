@@ -7,6 +7,9 @@ Its key features are:
 
 Check out the [Github Wiki](https://github.com/annefried/discanno/wiki) for more information on functionality and setup!
 
+Want to try it out?
+Find our web demo [here](http://discanno.coli.uni-saarland.de).
+
 
 ## Technologies
 * **Frontend**:
