@@ -154,6 +154,7 @@ angular
                                 'name': proj.name,
                                 'users': proj.users,
                                 'completed': projCompl,
+								'scheme': proj.scheme,
                                 'numberOfDocuments': proj.documents.length,
                                 'documents': documents,
                                 'pms': proj.projectManager,

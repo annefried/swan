@@ -33,10 +33,10 @@ angular.module('app').controller('documentAddModalController', function ($scope,
 	 */
     $scope.validateTargets = function (targets, projectId, currFileName) {
         var scheme = null;
-		for (var i = 0; i < $rootScope.projects.length; i++) {
-			var curProj = $rootScope.projects[i];
+		for (var i = 0; i < $rootScope.tableProjects.length; i++) {
+			var curProj = $rootScope.tableProjects[i];
 			if (curProj.id === projectId) {
-			    scheme = $rootScope.projects[i].scheme;
+			    scheme = curProj.scheme;
 			    break;
 			}
         }		    
