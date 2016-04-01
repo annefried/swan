@@ -359,10 +359,10 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                 $scope.linkSets = scheme.linkSets;
                 $scope.targets = scheme.targetTypes;
             } catch (ex) {
-                $rootScope.addAlert({type: 'danger', msg: 'The selected file is not a valid Scheme. Reason: ' + ex});
+                $rootScope.addAlert({type: 'danger', msg: 'The selected file does not contain a valid annotation scheme. Reason: ' + ex});
             }
         } catch (ex) {
-            $rootScope.addAlert({type: 'danger', msg: 'Selected file is not valid JSON. Reason: ' + ex});
+            $rootScope.addAlert({type: 'danger', msg: 'Selected file does not contain a valid annotation scheme. Reason: ' + ex});
         }
     };
     
@@ -466,10 +466,10 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                         $("#tour-next-button").prop("disabled", false);
                     }
                 }, function () {
-                    $rootScope.addAlert({type: 'danger', msg: 'A Scheme with this name already exists.'});
+                    $rootScope.addAlert({type: 'danger', msg: 'A scheme with this name already exists.'});
                 });
             } catch (ex) {
-                $rootScope.addAlert({type: 'danger', msg: 'The selected file is not a valid Scheme.'});
+                $rootScope.addAlert({type: 'danger', msg: 'The selected file does not contain a valid annotation scheme.'});
             }
         } catch (ex) {
             $rootScope.addAlert({type: 'danger', msg: 'Selected file is not valid JSON.'});
