@@ -469,10 +469,10 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                     $rootScope.addAlert({type: 'danger', msg: 'A scheme with this name already exists.'});
                 });
             } catch (ex) {
-                $rootScope.addAlert({type: 'danger', msg: 'The selected file does not contain a valid annotation scheme.'});
+                $rootScope.addAlert({type: 'danger', msg: 'The selected file does not contain a valid annotation scheme. Reason: ' + ex});
             }
         } catch (ex) {
-            $rootScope.addAlert({type: 'danger', msg: 'Selected file is not valid JSON.'});
+            $rootScope.addAlert({type: 'danger', msg: 'The selected file does not contain a valid annotation scheme.'});
         }
 
     };
