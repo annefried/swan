@@ -31,6 +31,8 @@ angular.module('app')
                     },
                     link: function ($scope, iElement) {
 
+						$scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
+
                         var width, height;
                         var lineCount;
                         var textWidth;
@@ -572,7 +574,8 @@ angular.module('app')
                         //Determines what text passage the cursor is currently highlighting
                         //and tries to create a new temporary annotation for that section
                         $scope.$watch('startSelection', function (newVals) {
-                            if (newVals === undefined)
+                            if (newVals === undefined
+									|| !$scope.isAnnotator)
                                 return;
                             var startLine;
                             var startRow;

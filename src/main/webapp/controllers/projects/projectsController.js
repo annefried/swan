@@ -280,12 +280,13 @@ angular
                                 'scheme': {
                                     'id': full.scheme.id
                                 }
-
                             };
+							
                             $http.post('discanno/project', JSON.stringify(projectTemplate)).then(function (response) {
                                 var template = {
                                     'id': response.data,
                                     'name': full.name,
+									'scheme': projectTemplate.scheme,
                                     'users': [],
                                     'pms': [],
                                     'completed': [],
@@ -295,6 +296,7 @@ angular
 
                                 if ($window.sessionStorage.role != 'projectmanager') {
                                     $rootScope.tableProjects.push(template);
+									$rootScope.projects.push(template);
                                 } else {
                                     // TODO necessary?
                                     //get the current user (there is not REST interface for getUser by ID)
@@ -307,6 +309,7 @@ angular
                                             }
                                         }
                                         $rootScope.tableProjects.push(template);
+										$rootScope.projects.push(template);
                                     }, function () {});
 
                                     // Add project manager to the corresponding proj manager list
