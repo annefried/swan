@@ -20,7 +20,8 @@ and open the template in the editor.
             <div class="col-lg-6">
                 <uib-alert ng-repeat="alert in alerts"
                            type="{{alert.type}}"
-                           close="closeAlert($index)" >
+                           dismiss-on-timeout="10000"
+                           close="closeAlert($index)">
                     {{alert.msg}}
                 </uib-alert>
             </div>
@@ -400,13 +401,16 @@ and open the template in the editor.
             <div class="col-lg-6">
                 <uib-alert ng-repeat="alert in alerts"
                            type="{{alert.type}}"
-                           close="closeAlert($index)" >
+                           dismiss-on-timeout="10000"
+                           close="closeAlert($index)">
                     {{alert.msg}}
                 </uib-alert>
             </div>
-
             <div class="modal-footer">
-                <button id="sb_submitSchemeButton" type="button" class="btn btn-primary" ng-click="submit()">Create and save scheme</button>
+                <button id="sb_submitSchemeButton"
+                        type="button"
+                        class="btn btn-primary"
+                        ng-click="submit()">Create and save scheme</button>
             </div>
         </form>
 

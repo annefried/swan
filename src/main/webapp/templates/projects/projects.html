@@ -9,7 +9,12 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
             <h2 class="sub-header" id="1-projects-header" style="display: inline-block">Projects</h2>
-            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
+            <uib-alert ng-repeat="alert in alerts"
+                       type="{{alert.type}}" 
+                       close="closeAlert($index)"
+                       dismiss-on-timeout="5000">
+                {{alert.msg}}
+            </uib-alert>
             <div class="table-responsive">
                 <table class="table">
 

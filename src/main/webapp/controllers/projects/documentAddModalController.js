@@ -6,6 +6,7 @@ angular.module('app').controller('documentAddModalController', function ($scope,
         $scope.textFileMap = {};
         $scope.targetFileMap = {};
     };
+	
     $scope.clearFileMap = function () {
         $scope.textFileMap = {};
     };
