@@ -112,7 +112,7 @@ angular
                      */
                     $scope.loadSchemes = function () {
                         var httpSchemes = $http.get("discanno/scheme/schemes").then(function (response) {
-                            $scope.schemes = JSOG.parse(JSON.stringify(response.data)).schemes;
+                            $rootScope.schemes = JSOG.parse(JSON.stringify(response.data)).schemes;
                         }, function (err) {
                             $rootScope.checkResponseStatusCode(err.status);
                         });
@@ -190,8 +190,8 @@ angular
                     $scope.openProjectSchemeModal = function (projectId) {
                         
                         var isSearching = true;
-                        for (var i = 0; i < $scope.schemes.length && isSearching; i++) {
-                            var scheme = $scope.schemes[i];
+                        for (var i = 0; i < $rootScope.schemes.length && isSearching; i++) {
+                            var scheme = $rootScope.schemes[i];
                             for (var j = 0; j < scheme.projects.length; j++) {
                                 var proj = scheme.projects[j];
                                 if (proj.id === projectId) {

@@ -17,6 +17,13 @@ and open the template in the editor.
             <div class="modal-header">
                 <h3 class="modal-title" id="myModalLabel">Scheme builder</h3>
             </div>
+            <div class="col-lg-6">
+                <uib-alert ng-repeat="alert in alerts"
+                           type="{{alert.type}}"
+                           close="closeAlert($index)" >
+                    {{alert.msg}}
+                </uib-alert>
+            </div>
             <div class="modal-body">
                 <!-- 1. row -->
                 <div class="row">

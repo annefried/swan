@@ -19,6 +19,13 @@ and open the template in the editor.
                 </button>
                 <h4 class="modal-title" id="myModalLabel">Create New Documents</h4>
             </div>
+            <div class="col-lg-6">
+                <uib-alert ng-repeat="alert in alerts"
+                           type="{{alert.type}}"
+                           close="closeAlert($index)" >
+                    {{alert.msg}}
+                </uib-alert>
+            </div>
             <div class="modal-body">
                 <table class="table">
                     <thead class="headDark">
@@ -58,8 +65,8 @@ and open the template in the editor.
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary"
-                       
+                <button type="button"
+                        class="btn btn-primary"
                         ng-click="submit()">
                     Submit
                 </button>

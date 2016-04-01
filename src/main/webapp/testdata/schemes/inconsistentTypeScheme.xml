@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  <name>Simple</name>
+  <name>InconsistentTypeScheme</name>
   <targetTypes>
     <item>verb</item>
     <item>passage</item>
@@ -48,7 +48,7 @@
     <item>
       <name>LinkSet2</name>
       <startType>verb</startType>
-      <endType>verb</endType>
+      <endType>verb2</endType>
       <allowUnlabeledLinks></allowUnlabeledLinks>
       <linkLabels>
         <item>brown</item>

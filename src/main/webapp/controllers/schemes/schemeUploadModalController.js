@@ -80,9 +80,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
 
         // remove from table
         $scope.removeLabelSet(name);
-
     };
-
 
     /**
      * Called when clicking 'x'-Button in SchemeTable on a LabelSet.
@@ -95,6 +93,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             }
         }
     };
+    
     /**
      * Called when clicking add Button for LinkSet.
      */
@@ -143,7 +142,6 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
 
         // remove from table while editing
         $scope.removeLinkSet(set);
-
     };
 
     /**
@@ -158,7 +156,6 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
         }
     };
 
-
     $scope.addTargetTypeLabel = function (target) {
         var guard = true;
         for (var i = 0; i < $scope.selectedTargetsLabel.length; i++) {
@@ -172,6 +169,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             $rootScope.addAlert({type: 'danger', msg: 'A target type can only be added once!'});
         }
     };
+    
     $scope.removeTargetTypeLabel = function (name) {
         for (var i = 0; i < $scope.selectedTargetsLabel.length; i++) {
             if ($scope.selectedTargetsLabel[i] === name) {
@@ -194,6 +192,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             $rootScope.addAlert({type: 'danger', msg: 'A target type with this name already exists!'});
         }
     };
+    
     $scope.removeTargeType = function (name) {
         for (var i = 0; i < $scope.targets.length; i++) {
             if ($scope.targets[i] === name) {
@@ -201,7 +200,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                 $scope.targets.splice(i, 1);
             }
         }
-        // Remove potentiell tTypes in LinkAndLabel Sets
+        // Remove potential tTypes in Link and Label Sets
         for (var i = 0; i < $scope.selectedTargetsLabel.length; i++) {
             if ($scope.selectedTargetsLabel[i] === name) {
                 $scope.selectedTargetsLabel.splice(i, 1);
@@ -225,8 +224,8 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             }
 
         }
-
     };
+    
     $scope.selectedTargetsLabelFilter = function (value, index, array) {
         var ret = true;
         for (var i = 0; i < $scope.selectedTargetsLabel.length; i++) {
@@ -251,6 +250,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             $rootScope.addAlert({type: 'danger', msg: 'A label with this name already exists!'});
         }
     };
+    
     $scope.removeLabelLabelSet = function (id) {
         var i = $scope.currentLabelSet.length;
         while (i--) {
@@ -260,6 +260,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
 
         }
     };
+    
     $scope.addLabelLinkSet = function (labelName) {
         var guard = true;
         for (var i = 0; i < $scope.currentLinkSet.length; i++) {
@@ -274,6 +275,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             $rootScope.addAlert({type: 'danger', msg: 'A label with this name already exists!'});
         }
     };
+    
     $scope.removeLabelLinkSet = function (id) {
         var i = $scope.currentLinkSet.length;
         while (i--) {
@@ -303,6 +305,34 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             $scope.uploadedScheme = content;
             var scheme = JSON.parse(content);
 
+            // Validate scheme
+            var tTypeMap = {}; // for linear access
+            for (var i = 0; i < scheme.targetTypes.length; i++) {
+                var tType = scheme.targetTypes[i];
+                tTypeMap[tType.toString()] = tType;
+            }
+            for (var i = 0; i < scheme.labelSets.length; i++) {
+                var labelSet = scheme.labelSets[i];
+                for (var j = 0; j < labelSet.appliesToTargetTypes.length
+                                    && j < labelSet.appliesToTargetTypes[j].length; j++) {
+                    if (labelSet.appliesToTargetTypes[j].length === 1) {
+                        var tType = labelSet.appliesToTargetTypes;
+                    } else {
+                        var tType = labelSet.appliesToTargetTypes[j];
+                    }
+                    if (tTypeMap[tType.toString()] === undefined) {
+                        throw "Annotation type not defined";
+                    }
+                }
+            }
+            for (var i = 0; i < scheme.linkSets.length; i++) {
+                var linkSet = scheme.linkSets[i];
+                if (tTypeMap[linkSet.startType] === undefined
+                        || tTypeMap[linkSet.endType] === undefined) {
+                    throw "Annotation type not defined";
+                }
+            }
+
             if (typeof scheme.targetTypes === 'string') {
                 var targetType = [scheme.targetTypes];
                 scheme.targetTypes = targetType;
@@ -329,12 +359,13 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                 $scope.linkSets = scheme.linkSets;
                 $scope.targets = scheme.targetTypes;
             } catch (ex) {
-                $rootScope.addAlert({type: 'danger', msg: 'The selected file is not a valid Scheme.'});
+                $rootScope.addAlert({type: 'danger', msg: 'The selected file does not contain a valid annotation scheme. Reason: ' + ex});
             }
         } catch (ex) {
-            $rootScope.addAlert({type: 'danger', msg: 'Selected file is not valid JSON.'});
+            $rootScope.addAlert({type: 'danger', msg: 'Selected file does not contain a valid annotation scheme. Reason: ' + ex});
         }
     };
+    
     $scope.sendScheme = function () {
         try {
             var currUser = {"id": parseInt($window.sessionStorage.uId)}; // TODO maybe global
@@ -398,7 +429,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                         };
                         linkLabels.push(label);
                     }
-                    ;
+                    
                     var linkSet = {
                         "name": file.linkSets[i].name,
                         "startType": startType,
@@ -435,16 +466,17 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                         $("#tour-next-button").prop("disabled", false);
                     }
                 }, function () {
-                    $rootScope.addAlert({type: 'danger', msg: 'A Scheme with this name already exists.'});
+                    $rootScope.addAlert({type: 'danger', msg: 'A scheme with this name already exists.'});
                 });
             } catch (ex) {
-                $rootScope.addAlert({type: 'danger', msg: 'The selected file is not a valid Scheme.'});
+                $rootScope.addAlert({type: 'danger', msg: 'The selected file does not contain a valid annotation scheme.'});
             }
         } catch (ex) {
             $rootScope.addAlert({type: 'danger', msg: 'Selected file is not valid JSON.'});
         }
 
     };
+    
     $scope.loadSchemes = function () {
         $http.get('discanno/scheme/schemes').then(function (response) {
             var schemes = JSOG.parse(JSON.stringify(response.data.schemes));
@@ -509,6 +541,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             $rootScope.checkResponseStatusCode(err.status);
         });
     };
+    
     $scope.loadPreloadedScheme = function (preloadedScheme) {
         $scope.name = "Copy of " + preloadedScheme.name;
         $scope.targets = preloadedScheme.targetTypes;
