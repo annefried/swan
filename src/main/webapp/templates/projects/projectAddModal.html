@@ -21,9 +21,9 @@ and open the template in the editor.
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name" ng-model="vm.name" required>
+                    <span ng-show="hasError(vm.name)" class="help-block">Project name already taken.</span>
                     The name of your project needs to be unique. You cannot use project names used by other project managers, as annotators may work for more than one project manager.
                 </div>
-
                 <div class="form-group">
                     <label for="sel1">Scheme:</label>
                     <select data-ng-model="selectedOption" ng-options="scheme as scheme.name for scheme in this.schemes">
@@ -31,7 +31,13 @@ and open the template in the editor.
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="pe_createProjectButton" class="btn btn-primary" ng-disabled="!vm.name || !selectedOption" ng-click="submit(vm.name, selectedOption)">Submit</button>
+                <button type="button"
+                        id="pe_createProjectButton"
+                        class="btn btn-primary"
+                        ng-disabled="!vm.name || !selectedOption || $scope.hasError(vm.name)"
+                        ng-click="submit(vm.name, selectedOption)">
+                    Submit
+                </button>
             </div>
         </form>
 
