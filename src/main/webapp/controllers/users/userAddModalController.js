@@ -20,10 +20,10 @@ angular.module('app').controller('userAddModalController', function ($scope, $ro
     $scope.createUser = function (prename, lastname, password, email, role) {
 
         // TODO: use ui-validate before allowing to add user?
-        $http.get("discanno/user").then(function (response) {
+        $http.get("discanno/user").success(function (response) {
 
             // update the list of users
-            var res = JSOG.parse(JSON.stringify(response.data));
+            var res = JSOG.parse(JSON.stringify(response));
             $scope.users = res.users;
 
             for (var i = 0; i < $scope.users.length; i++) {
@@ -61,6 +61,8 @@ angular.module('app').controller('userAddModalController', function ($scope, $ro
                 $rootScope.addAlert({type: 'danger', msg: 'A user with this email address exists already.'});
             });
 
+        }).error(function (response) {
+            $rootScope.checkResponseStatusCode(response.status);
         });
     };
 

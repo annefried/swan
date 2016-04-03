@@ -1,3 +1,8 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 'use strict';
 
 /**
@@ -8,15 +13,15 @@ angular.module('app').controller('schemeDeleteModalController', function ($scope
 
 
     $scope.submit = function () {
-        $http.delete("discanno/scheme/" + $rootScope.currentSchemeId).then(function (response) {
+        $http.delete("discanno/scheme/" + $rootScope.currentSchemeId).success(function (response) {
             for (var k = 0; k < $rootScope.tableSchemes.length; k++) {
                 if ($rootScope.tableSchemes[k].id === $rootScope.currentSchemeId) {
                     $rootScope.tableSchemes.splice(k, 1);
                 }
             }
             $uibModalInstance.close();
-        }, function (err) {
-            $rootScope.checkResponseStatusCode(err.status);
+        }).error(function (response) {
+            $rootScope.checkResponseStatusCode(response.status);
         });
     };
 

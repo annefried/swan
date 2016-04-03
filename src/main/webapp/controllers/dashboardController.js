@@ -1,9 +1,40 @@
-angular
-        .module('app')
-        .controller('dashboardController', ['$rootScope', '$scope', '$window', '$http', '$timeout', function ($rootScope, $scope, $window, $http, $timeout) {
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+angular.module('app').controller('dashboardController', ['$rootScope', '$scope', '$window', '$http', '$timeout',
+	function ($rootScope, $scope, $window, $http, $timeout) {
 
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
-                    window.location = "/discanno/signin.html";
+				$rootScope.alerts = [
+                ];
+
+                $rootScope.addAlert = function (alert) {
+                    $rootScope.alerts.push(alert);
+                };
+
+                $rootScope.closeAlert = function (index) {
+                    $rootScope.alerts.splice(index, 1);
+                };
+                
+                $rootScope.checkResponseStatusCode = function (status) {
+                    if (status === 403) { // Forbidden
+                        $rootScope.redirectToLogin();
+                    } else if (status >= 400 && status < 500) {
+                        $rootScope.addAlert({type: 'danger', msg: 'This action is not allowed.'});
+                    } else if (status >= 500 && status < 600) {
+                        $rootScope.addAlert({type: 'danger', msg: 'No server connection.'});
+                    }
+                };
+				
+				$rootScope.redirectToLogin = function () {
+					window.location = "/discanno/signin.html";
+				};
+
+                if (($window.sessionStorage.role != 'admin')
+						&& ($window.sessionStorage.role != 'annotator')
+						&& ($window.sessionStorage.role != 'projectmanager')) {
+                    $rootScope.redirectToLogin();
                 } else {
                     $timeout(function () {
                         $scope.visible = 'true'
@@ -35,17 +66,17 @@ angular
                 $rootScope.loadProjects = function () {
                     // If User show only assigned projects
                     if ($window.sessionStorage.role !== 'annotator') {
-                        var httpProjects = $http.get("discanno/project").then(function (response) {
-                            $rootScope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
-                        }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
-                        });
+                        var httpProjects = $http.get("discanno/project").success(function (response) {
+                            $rootScope.projects = JSOG.parse(JSON.stringify(response)).projects;
+                        }).error(function (response) {
+							$rootScope.checkResponseStatusCode(response.status);
+						});
                     } else {
-                        var httpProjects = $http.get("discanno/project/byuser/" + $window.sessionStorage.uId).then(function (response) {
-                            $rootScope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
-                        }, function (err) {
-                            $rootScope.checkResponseStatusCode(err.status);
-                        });
+                        var httpProjects = $http.get("discanno/project/byuser/" + $window.sessionStorage.uId).success(function (response) {
+                            $rootScope.projects = JSOG.parse(JSON.stringify(response)).projects;
+                        }).error(function (response) {
+							$rootScope.checkResponseStatusCode(response.status);
+						});
                     }
                     return httpProjects;
                 };
@@ -220,27 +251,6 @@ angular
                     $window.sessionStorage.title = docName;
                     $window.sessionStorage.project = projectName;
                     $window.sessionStorage.completed = completed;
-                };
-
-                $rootScope.alerts = [
-                ];
-
-                $rootScope.addAlert = function (alert) {
-                    $rootScope.alerts.push(alert);
-                };
-
-                $rootScope.closeAlert = function (index) {
-                    $rootScope.alerts.splice(index, 1);
-                };
-                
-                $rootScope.checkResponseStatusCode = function (status) {
-                    if (status === 403) { // Forbidden
-                        window.location = "/discanno/signin.html";
-                    } else if (status >= 400 && status < 500) {
-                        $rootScope.addAlert({type: 'danger', msg: 'This action is not allowed.'});
-                    } else if (status >= 500 && status < 600) {
-                        $rootScope.addAlert({type: 'danger', msg: 'No server connection.'});
-                    }
                 };
 
             }]);

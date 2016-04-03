@@ -14,7 +14,6 @@ angular
                 // in the $rootScope and resume if specified.
                 // For modals, the first step must have a delay of 1.
 
-
                 $scope.existsDocumentsInProjects = function (projects) {
                     for (var i = 0; i < projects.length; i++) {
                         var proj = projects[i];
@@ -28,8 +27,11 @@ angular
                     }
                     return undefined;
                 };
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
-                    window.location = "/discanno/signin.html";
+				
+                if (($window.sessionStorage.role != 'admin')
+						&& ($window.sessionStorage.role != 'annotator')
+						&& ($window.sessionStorage.role != 'projectmanager')) {
+                    $rootScope.redirectToLogin();
                 } else {
 
                     var httpProjects = $rootScope.loadProjects();
