@@ -1,7 +1,7 @@
 <link href="css/annotation.css" rel="stylesheet">
 <link href="css/graph.css" rel="stylesheet">
 <link href="css/annotationoptions.css" rel="stylesheet">
-
+    
 <div>
     <script type="text/ng-template" id="alert.html">
         <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
@@ -96,31 +96,30 @@
                             </uib-accordion-group>
                         </div>
 
-
                         <!-- Timeline -->
-                        <!-- currently not activated because it is not ready and tested
                         <uib-accordion-group heading="Timeline" is-open="true" is-disabled="false" class="unselectable">
                             <div>
                                 <div ng-controller="d3TimelineController as timeline">
-                                    <d3-timeline annotations="annotation.annotationData"
-                                              annotation-links="annotation.annotationLinks"
-                                              selection="annotation.selectedNode"
-                                              added-annotation="annotation.lastAdded"
-                                              removed-annotation="annotation.lastRemoved"
-                                              removed-link="annotation.lastRemovedLink"
-                                              added-link="annotation.lastAddedLink"
-                                              last-set="annotation.lastSet"
-                                              last-targeted="annotation.lastTargeted"
-                                              set-selection="annotation.setSelected(item)">
+                                    <d3-timeline
+                                        annotations="annotation.annotationData"
+                                        annotation-links="annotation.annotationLinks"
+                                        selection="annotation.selectedNode"
+                                        added-annotation="annotation.lastAdded"
+                                        removed-annotation="annotation.lastRemoved"
+                                        added-link="annotation.lastAddedLink"
+                                        removed-link="annotation.lastRemovedLink"
+                                        last-set="annotation.lastSet"
+                                        change-link-label="annotation.changeLinkLabel"
+                                        last-targeted="annotation.lastTargeted"
+                                        set-selection="annotation.setSelected(item)">
                                     </d3-timeline>
                                 </div>
 
                             </div>
                         </uib-accordion-group>
-                        -->
-
+                        
                         <!-- Graph -->
-                        <uib-accordion-group heading="Graph visualization" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable" id="anno-graph">
+                        <uib-accordion-group heading="Graph" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable" id="anno-graph">
                             <div>
                                 <div ng-controller="d3GraphController as graph">
                                     <d3-graph annotations="annotation.annotationData"
@@ -135,10 +134,9 @@
                                               set-selection="annotation.setSelected(item)">
                                     </d3-graph>
                                 </div>
-
                             </div>
                         </uib-accordion-group>
-
+                        
                         <!-- Annotation options -->
                         <uib-accordion-group heading="Annotations" is-disabled="false" is-open="true" class="unselectable" id="anno-options">
                             <div ng-controller="d3OptionsController as options">

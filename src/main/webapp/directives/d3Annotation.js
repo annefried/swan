@@ -599,9 +599,9 @@ angular.module('app')
 
                             //Do nothing when no indicies for the words are found
                             if (startLine === undefined
-                                    || startRow === undefined
+									|| startRow === undefined
                                     || endLine === undefined
-                                    || endRow === undefined)
+									|| endRow === undefined)
                                 return;
                             //Add every word between first and last selected word
                             var words = [];
