@@ -20,6 +20,7 @@ angular
                         this.setUpAnnoView();
                     }
                     this.readData();
+                    this.checkDocumentSize();
                     this.readSchemes();
                     this.buildText();
                     this.buildAnnotations();
@@ -31,7 +32,6 @@ angular
                     }
                     $rootScope.initialized = 'true';
                 };
-
 
                 //Backend communication
                 this.readData = function () {
@@ -45,7 +45,17 @@ angular
                     $q.all([httpProjects]).then(function () {
                         $rootScope.buildTableProjects();
                     });
-
+                };
+                
+                this.checkDocumentSize = function () {
+                    var DOCUMENT_LIMIT = 4000;
+                    var size = 0;
+                    for (var i = 0; i < this.tokenData.length; i++) {
+                        size += this.tokenData[i].lineLength;
+                    }
+                    if (size >= DOCUMENT_LIMIT) {
+                        $rootScope.addAlert({type: 'success', msg: 'The document seems to be big. Loading may take a while.'});
+                    }
                 };
 
                 /**
@@ -692,14 +702,14 @@ angular
                     var payloadJson = JSON.stringify(payload);
                     var docUser = $window.sessionStorage.docId + '/' + $window.sessionStorage.uId;
                     $http.post("discanno/document/" + docUser, payloadJson).success(function (response) {
-						if ($scope.completed) {
-							$rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
-						} else {
-							$rootScope.addAlert({type: 'success', msg: 'Document marked as uncomplete!'});
-						}
+                        if ($scope.completed) {
+                            $rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
+                        } else {
+                            $rootScope.addAlert({type: 'success', msg: 'Document marked as uncomplete!'});
+                        }
                     }).error(function (response) {
-						$rootScope.checkResponseStatusCode(response.status);
-					});
+                        $rootScope.checkResponseStatusCode(response.status);
+                    });
                 };
                 // TODO change here, should be called with a second parameter "true"/ "false"
                 // and change the hardcoded payload
@@ -746,7 +756,6 @@ angular
                 ];
 
                 $scope.$on("$destroy", function () {
-                    console.log('Destroyed');
                     $rootScope.initialized = 'false';
                 });
                 if ($rootScope.initialized !== 'true')
