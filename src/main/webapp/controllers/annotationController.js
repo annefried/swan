@@ -186,12 +186,13 @@ angular
                 };
                 //Change the label of the currently selected annotation
                 this.setSelectedLabel = function (label, labelSet) {
-                    if (this.selectedNode !== null && this.selectedNode !== undefined && label !== undefined) {
+                    if (this.selectedNode !== null
+                            && this.selectedNode !== undefined
+                            && label !== undefined) {
                         if (labelSet === undefined) {
                             if (this.selectedNode.type === AnnoType.Annotation)
                                 labelSet = this.labelTable[label.setID];
                             else {
-
                                 var source = this.selectedNode.source.tType.tag;
                                 var target = this.selectedNode.target.tType.tag;
                                 labelSet = this.linkLabels[source][target][label.setID];
@@ -200,6 +201,8 @@ angular
 
                         this.selectedNode.setLabel(labelSet, label);
                         var labeled = this.selectedNode.isLabeled(labelSet, label);
+                        
+                        // Annotation
                         if (this.selectedNode.type === AnnoType.Annotation) {
                             var labelTemplate = {
                                 labelId: label.tag,
@@ -214,7 +217,7 @@ angular
                                 // It could not put arguments in the body
                                 $http.post('discanno/annotations/removelabel/' + this.selectedNode.id, labelTemplate);
                             }
-                        } else {
+                        } else { // Link
                             var labelTemplate = {
                                 linkLabel: label.tag,
                                 linkSet: [{
@@ -230,6 +233,7 @@ angular
 
                         this.selectedNode.color = this.getColor(this.selectedNode.tType, this.selectedNode);
                         this.lastSet = this.selectedNode;
+                        this.changeLinkLabel = { "link": this.selectedNode, "label": label };
                     }
                 };
                 this.increaseSelectedAnnoSize = function () {
@@ -458,6 +462,10 @@ angular
                                 if (source !== undefined && target !== undefined) {
                                     object.lastRemovedLink = link;
                                     delete object.annotationLinks[source.id][target.id];
+									var entry = object.annotationLinks[source.id];
+									if (Object.keys(entry).length <= 0) {
+										delete object.annotationLinks[source.id];
+									}
                                 }
                             };
                         }(this), function (err) {

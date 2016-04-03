@@ -5,7 +5,15 @@
  */
 'use strict';
 
-//Responsible directive for drawing the graph
+/* Responsible directive for drawing the timeline
+ * 
+ * Noteworthy: Avoid circular dependencies in the node and link objects.
+ * There are some watch functions declared which "watch" the objects. The used
+ * compare function will evoke a "Maximum call stack size" and "range error" if
+ * there are some circular dependencies between nodes. Therefore the array
+ * "isTargetOf" belonging to nodes consists only of node ids and not node
+ * objects.
+ */
 angular.module('app')
     .directive('d3Timeline', ['d3', function(d3) {
         return {
@@ -19,6 +27,7 @@ angular.module('app')
                 addedLink: "=",
                 removedLink: "=",
                 lastSet: "=",
+                changeLinkLabel: "=",
                 lastTargeted: "=",
                 setSelection: "&"
             },
@@ -40,7 +49,7 @@ angular.module('app')
                 
                 var EDGE_ROUNDING = 4;
                 var BOX_HEIGHT = 20;
-                var BOX_PADDING = BOX_HEIGHT + 5; // Distance between boxes in y dimension
+                var BOX_PADDING = BOX_HEIGHT + 25; // Distance between boxes in y dimension
                 
                 var node;
                 var link;
@@ -67,7 +76,17 @@ angular.module('app')
                 var zoomScale = 1;
                 var graph = new AnnotationGraph();
                 
-                
+                /**
+                 * Takes the first LinkLabel and returns the corresponding
+                 * integer value:
+                 * BEFORE_STR -> BEFORE_INT
+                 * AFTER_STR -> AFTER_INT
+                 * OVERLAP_STR -> OVERLAP_INT
+                 * else -> undefined
+                 * 
+                 * @param {type} link
+                 * @returns {Number|undefined}
+                 */
                 $scope.getLinkLabel = function (link) {
                     for (var id in link.activeLabels) {
                         var label = link.activeLabels[id];
@@ -88,9 +107,14 @@ angular.module('app')
                     }
                     return undefined;
                 };
+				
+				$scope.addLabelToLink = function (link) {
+					var label = $scope.getLinkLabel(link);
+					link.label = label;
+				};
                 
                 /**
-                 * Returns all links which are connections between annotations
+                 * Returns all links.
                  * 
                  * @returns {Array<Links>} all existing links
                  */
@@ -101,12 +125,10 @@ angular.module('app')
                        
                        for (var innerID in outer) {
                            var link = outer[innerID];
-                           var label = $scope.getLinkLabel(link);
-                           link.label = label;
+                           $scope.addLabelToLink(link);
                            graphLinks.push({"source":link.source.id,
                                             "target":link.target.id,
-                                            "id": link.id,
-                                            "label": label});
+                                            "id": link.id});
                        }
                    }
                    return graphLinks;
@@ -116,7 +138,7 @@ angular.module('app')
                 
                 
                 /**
-                 * Returns all annotations which are nodes in the graph
+                 * Returns all annotations
                  * 
                  * @returns {Array<Annotations>} all existing nodes
                  */
@@ -139,6 +161,13 @@ angular.module('app')
                     }
                 };
                 
+                /**
+                 * Puts all nodes from srcCluster in targetCluster.
+                 * 
+                 * @param {type} targetCluster
+                 * @param {type} srcCluster
+                 * @returns {undefined}
+                 */
                 $scope.mergeClusters = function (targetCluster, srcCluster) {
                     for (var id in srcCluster) {
                         var node = srcCluster[id];
@@ -146,6 +175,14 @@ angular.module('app')
                     }
                 };
                 
+                /**
+                 * Returns the corresponding cluster of the node from the
+                 * clusterList.
+                 * 
+                 * @param {type} clusterList
+                 * @param {type} node
+                 * @returns {undefined|cluster}
+                 */
                 $scope.nodeContainedInClusterList = function (clusterList, node) {
                     for (var i = 0; i < clusterList.length; i++) {
                         var cluster = clusterList[i];
@@ -157,6 +194,13 @@ angular.module('app')
                     return undefined;
                 };
                 
+                /**
+                 * Removes a given cluster from the clusterList.
+                 * 
+                 * @param {type} clusterList
+                 * @param {type} cluster
+                 * @returns {undefined}
+                 */
                 $scope.removeClusterFromClusterList = function (clusterList, cluster) {
                     var index = clusterList.indexOf(cluster);
                     if (index > -1) {
@@ -166,31 +210,32 @@ angular.module('app')
                 
                 /**
                  * Adds the reversed structure to nodes, which node is visited by
-                 * some nodes. This makes it easier later 
+                 * some nodes. This makes it easier later.
                  * 
                  * @param {type} targetNode
                  * @param {type} node
                  * @returns {undefined}
                  */
                 $scope.addNodeStructure = function (targetNode, node) {
-                    var isTargetOf = targetNode.isTargetOf;
-                    if (isTargetOf === undefined) {
-                        targetNode.isTargetOf = [];
-                        isTargetOf = targetNode.isTargetOf;
-                    }
                     if (node !== undefined) {
-                        isTargetOf.push(node);
+                        targetNode.isTargetOf.push(node.id);
                     }
                 };
+				
+				$scope.initializeIsTargetOfProp = function (targetNode) {
+					targetNode.isTargetOf = [];
+				};
                 
                 /**
-                 * Return a list of nodes which were visited
+                 * Returns a list of nodes which were visited.
                  * 
                  * @param {type} targetCluster
                  * @param {type} node
                  * @returns {$scope@arr;annotationLinks}
                  */
                 $scope.visit = function (clusterList, targetCluster, node) {
+//                    console.log("$scope.visit");
+                    
                     var links = $scope.annotationLinks[node.id];
                     var visitedNodes = [];
                     
@@ -207,6 +252,7 @@ angular.module('app')
                                     $scope.mergeClusters(targetCluster, cluster);
                                     $scope.removeClusterFromClusterList(clusterList, cluster);
                                 }
+                                targetCluster[targetNode.id] = targetNode;
                                 
                                 var nodeList = $scope.visit(clusterList, targetCluster, targetNode);
                                 
@@ -234,9 +280,17 @@ angular.module('app')
                 $scope.clustering = function () {
                     var clusterList = [];
                     
+					// TODO find better solution
+					// problem is that the property isTargetOf remains if one
+					// link or node is deleted. One solution could be to realize
+					// it with the watch functions but it has also linear rumtime
+					// but the chance is higher to find the desired node before
+					// iterating over all nodes but we don't expect too many nodes
+					graph.nodes.forEach(function(node) {
+						$scope.initializeIsTargetOfProp(node);
+					});
+					
                     graph.nodes.forEach(function (node) {
-                        
-                        $scope.addNodeStructure(node, undefined);
                         
                         var targetCluster;
                         for (var i = 0; i < clusterList.length; i++) {
@@ -264,7 +318,9 @@ angular.module('app')
                 };
                 
                 /**
-                 * Merges all clusters, which only contain 1 element.
+                 * Merges all clusters, which only contain 1 element. Clusters
+                 * containing only 1 node are not linked to other nodes and can
+                 * be therefore put in one cluster.
                  * 
                  * @param {type} clusterList
                  * @returns {undefined}
@@ -287,6 +343,7 @@ angular.module('app')
                 };
                 
                 $scope.visitInner = function (tarNode, isTarget, label, currPos, visitedMap) {
+//                    console.log("$scope.visitInner");
 
                     if (visitedMap[tarNode.id] === undefined) {
                         visitedMap[tarNode.id] = tarNode;
@@ -314,24 +371,39 @@ angular.module('app')
                 };
                 
                 $scope.visitC = function (node, currPos, visitedMap) {
+//                    console.log("$scope.visitC");
+                    
                     var outGoingLinks = $scope.annotationLinks[node.id];
                     
                     if (outGoingLinks !== undefined) {
                         for (var linkId in outGoingLinks) {
                             var link = outGoingLinks[linkId];
                             var tarNode = link.target;
-                            $scope.visitInner(tarNode, true, link.label, currPos, visitedMap);
+                            if (visitedMap[tarNode.id] === undefined) {
+                                $scope.visitInner(tarNode, true, link.label, currPos, visitedMap);
+                            }
                         }
                     }
                     
                     for (var i = 0; i < node.isTargetOf.length; i++) {
-                        var srcNode = node.isTargetOf[i];
-                        var link = $scope.annotationLinks[srcNode.id][node.id];
-                        $scope.visitInner(srcNode, false, link.label, currPos, visitedMap);
+                        var srcNodeId = node.isTargetOf[i];
+						var srcNode = nodeById.get(srcNodeId);
+                        if (visitedMap[srcNode.id] === undefined) {
+							var link = $scope.annotationLinks[srcNode.id][node.id];
+                            $scope.visitInner(srcNode, false, link.label, currPos, visitedMap);
+                        }
                     }
                     
                 };
                 
+                /**
+                 * Calculate the min, max and total value of all pos values of
+                 * the nodes contained in the cluster. The total value is the
+                 * absolute value of min and max aggregated.
+                 * 
+                 * @param {type} cluster
+                 * @returns {stat}
+                 */
                 $scope.calcClusterStat = function (cluster) {
                     
                     var max = 0;
@@ -392,6 +464,8 @@ angular.module('app')
                 };
                      
                 $scope.calcNodePosition = function () {
+//                    console.log("d3Timeline calcNodePosition");
+                    
                     var clusterList = $scope.clustering();
                     var singleNodeBucket = $scope.checkSingleNodes(clusterList);
                     var clusterMaxLinkLength = $scope.processOffsets(clusterList);
@@ -431,20 +505,23 @@ angular.module('app')
                 
                 var rendered = false;
                 // Re-render when graph is changed
-                $scope.$watch(function() {
-                    return graph;
-                    }, function(newVals) {
+                $scope.$watch(
+					// This function returns the value being watched. It is called for each turn of the $digest loop
+					function() { return graph; },
+					// This is the change listener, called when the value returned from the above function changes
+					function(newVals) {
                         if (newVals !== undefined && !rendered) {
                             $scope.render(true);
                             rendered = true;
                         }
-                }, true);
+                }, false);
                 
                 // Set linking by id
                 var nodeById = d3.map();
                 graph.nodes.forEach(function(node) {
-                  nodeById.set(node.id, node);
+					nodeById.set(node.id, node);
                 });
+//				$scope.render(true);
 
                 graph.links.forEach(function(link) {
                     link.source = nodeById.get(link.source);
@@ -458,7 +535,7 @@ angular.module('app')
                     if(newVals !== undefined && newVals !== null) {
                         $scope.updateNodes();
                         if (newVals.activeLabels !== undefined) {
-                            $scope.render(false);
+//                            $scope.render(false);
                         }
                     }
                     
@@ -477,7 +554,6 @@ angular.module('app')
                 // Listens to changes to the last removed annotation
                 $scope.$watch("removedAnnotation", function(newVals) {
                     if(newVals !== undefined && newVals !== null) {
-//                        force.stop();
                         $scope.removeGraphNode(newVals);
                         $scope.removeGraphLinks(newVals);
                         $scope.render(false);
@@ -496,7 +572,8 @@ angular.module('app')
                 $scope.$watch("addedLink", function(newVals) {
                     if(newVals !== undefined && newVals !== null) {
                         graph.links.push(newVals);
-                        $scope.render(false);
+						$scope.addLabelToLink(newVals);
+						$scope.render(false);
                     }
                 });
                 
@@ -506,6 +583,23 @@ angular.module('app')
                         if($scope.removeGraphLink(newVals)) {
                             $scope.render(false);
                         }
+                    }
+                });
+                
+                /**
+                 * Listens to changes LinkLabels change
+                 * 
+                 * Object contains link, label. Therefore watch will be fired
+                 * if one label is changed of the same link. Otherwise the
+                 * function would be just called once.
+                 */
+                $scope.$watch("changeLinkLabel", function(object) {
+                    if(object !== undefined
+                            && object !== null) {
+                        var link = object.link;
+                        var label = $scope.getLinkLabel(link);
+                        link.label = label;
+                        $scope.render(false);
                     }
                 });
                 
@@ -529,13 +623,12 @@ angular.module('app')
                 // Render links and nodes of the graph
                 $scope.renderGraph = function() {
                     $scope.renderNodes();
-                    $scope.renderLinks(); 
+                    $scope.renderLinks();
                     $scope.setGraphBehaviour();
                 };
                 
                 // Render the background of the graph as well as zoom
                 $scope.renderSVG = function(margin, resize) {
-                    
                     if (resize) {
                         svg = svg.attr("width", "100%")
                             .attr("height", height + margin.top + margin.bottom)
@@ -554,7 +647,6 @@ angular.module('app')
                 $scope.renderNodes = function() {
                     
                     $scope.calcNodePosition();
-                    
                     node = container.selectAll(".node")
                         .data(graph.nodes)
                         .enter().append("g")
@@ -749,7 +841,7 @@ angular.module('app')
                                 $scope.$apply(function () {
                                     $scope.setSelection({item: d});
                                 });
-                            });
+					});
 
                     link.on('click', function (d) {
                             $scope.$apply(function () {
@@ -876,6 +968,7 @@ angular.module('app')
                 // Add new node to graph
                 $scope.addGraphNode = function (node) {
                     graph.nodes.push(node);
+					nodeById.set(node.id, node);
                 };
 
                 // Remove node from graph
@@ -885,6 +978,7 @@ angular.module('app')
 
                         if (graphNode.id === node.id) {
                             graph.nodes.splice(i, 1);
+							nodeById.remove(node.id);
                             return true;
                         }
                     }
@@ -925,7 +1019,7 @@ angular.module('app')
                     }
                 };
                 
-//                $scope.render(false);
+//                $scope.render(true);
             }
             
         };
