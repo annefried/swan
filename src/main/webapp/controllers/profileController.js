@@ -2,8 +2,10 @@ angular
         .module('app')
         .controller('profileController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', function ($scope, $rootScope, $window, $http, $uibModal) {
 
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
-                    window.location = "/discanno/signin.html";
+                if (($window.sessionStorage.role != 'admin')
+					&& ($window.sessionStorage.role != 'annotator')
+					&& ($window.sessionStorage.role != 'projectmanager')) {
+                    $rootScope.redirectToLogin();
                 } else {
                     
                     var monthMapNumName = {};
@@ -228,8 +230,8 @@ angular.module('app').controller('profileEditModalController', function ($scope,
         $http.put('discanno/user/' + $window.sessionStorage.uId, password).success(function (response) {
             $rootScope.addAlert({type: 'success', msg: 'Password changed succesfully.'});
         }).error(function (response) {
-            $rootScope.addAlert({type: 'danger', msg: 'Sorry something went wrong:('});
-        });
+			$rootScope.checkResponseStatusCode(response.status);
+		});
         
         $uibModalInstance.close();
     };

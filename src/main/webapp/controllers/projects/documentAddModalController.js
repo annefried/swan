@@ -105,11 +105,11 @@ angular.module('app').controller('documentAddModalController', function ($scope,
 					'defaultAnnotations': defaultAnnotations
 			    };
 
-			    $http.post("discanno/document/adddoctoproject", JSON.stringify(documentTemplate)).then((function (curFileName) {
+			    $http.post("discanno/document/adddoctoproject", JSON.stringify(documentTemplate)).success((function (curFileName) {
 					return function (response) {
 					    var docTemplate = {
 						'completed': 0,
-						'id': response.data,
+						'id': response,
 						'name': curFileName
 					    };
 					    for (var i = 0; i < $rootScope.tableProjects.length; i++) {
@@ -119,8 +119,12 @@ angular.module('app').controller('documentAddModalController', function ($scope,
 							    $rootScope.tableProjects[i].documents.push(docTemplate);
 							}
 					    }
+					};
+			    })(curFileName)).error(function (response) {
+					if (response === "") { // TODO really weird why no proper response is passed
+						$rootScope.redirectToLogin();
 					}
-			    })(curFileName));
+				});
 			}
 			
 			$uibModalInstance.close();

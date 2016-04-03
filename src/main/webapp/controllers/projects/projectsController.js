@@ -1,5 +1,8 @@
-/* global JSOG */
-
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 'use strict';
 
 angular
@@ -8,8 +11,10 @@ angular
             function ($scope, $rootScope, $window, $http, $uibModal, $location, hotkeys, $q) {
 
                 // Redirect if client is not logged in
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
-                    window.location = "/discanno/signin.html";
+                if (($window.sessionStorage.role != 'admin')
+						&& ($window.sessionStorage.role != 'annotator')
+						&& ($window.sessionStorage.role != 'projectmanager')) {
+                    $rootScope.redirectToLogin();
                 } else {
 
                     $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
@@ -111,11 +116,11 @@ angular
                      * Load Schemes from Database
                      */
                     $scope.loadSchemes = function () {
-                        var httpSchemes = $http.get("discanno/scheme/schemes").then(function (response) {
-                            $rootScope.schemes = JSOG.parse(JSON.stringify(response.data)).schemes;
-                        }, function (err) {
-                            $rootScope.checkResponseStatusCode(err.status);
-                        });
+                        var httpSchemes = $http.get("discanno/scheme/schemes").success(function (response) {
+                            $rootScope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
+                        }).error(function (response) {
+							$rootScope.checkResponseStatusCode(response.status);
+						});
                         return httpSchemes;
                     };
 

@@ -1,3 +1,8 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 'use strict';
 
 angular.module('app').controller('projectAddModalController', function ($scope, $rootScope, $http, $uibModalInstance, hotkeys) {
@@ -7,10 +12,10 @@ angular.module('app').controller('projectAddModalController', function ($scope, 
     };
 
     $scope.loadSchemes = function () {
-        $http.get("discanno/scheme/schemes").then(function (response) {
-            $scope.schemes = JSOG.parse(JSON.stringify(response.data)).schemes;
-        }, function (err) {
-            $rootScope.checkResponseStatusCode(err.status);
+        $http.get("discanno/scheme/schemes").success(function (response) {
+            $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
+        }).error(function (response) {
+            $rootScope.checkResponseStatusCode(response.status);
         });
     };
     //if someone misses the "sendScheme" code that was commented here, checkout commit 5c189c3f8652aac

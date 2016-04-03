@@ -69,13 +69,12 @@ angular
                         $scope.shownUserList = {};
                     }
                     $scope.shownUserList[$window.sessionStorage.shownUser] = $window.sessionStorage.shownUser;
-                    $http.get("discanno/document/" + $window.sessionStorage.docId)
-                            .then(function (response) {
-                                $scope.users = JSOG.parse(JSON.stringify(response.data)).project.users;
-                            }, function (response) {
-                                $rootScope.checkResponseStatusCode(response.status);
-                            });
-                }
+                    $http.get("discanno/document/" + $window.sessionStorage.docId).success(function (response) {
+						$scope.users = JSOG.parse(JSON.stringify(response)).project.users;
+					}).error(function (response) {
+						$rootScope.checkResponseStatusCode(response.status);
+					});
+                };
 
                 this.onUserChange = function () {
                     var form = document.getElementById("users");
@@ -267,11 +266,12 @@ angular
                     if (this.selectedNode !== null && this.selectedNode !== undefined && targetType !== undefined
                             && this.selectedNode.type === "Annotation") {
                         if (this.selectedNode.tType !== undefined) {
-                            $http.post("discanno/annotations/changett/" + this.selectedNode.id, {'targetType': targetType.tag}).then(function (response) {
+                            $http.post("discanno/annotations/changett/" + this.selectedNode.id, {'targetType': targetType.tag})
+									.success(function (response) {
 
-                            }, function (err) {
-                                $rootScope.checkResponseStatusCode(err.status);
-                            });
+                            }).error(function (response) {
+								$rootScope.checkResponseStatusCode(response.status);
+							});
                         }
                         this.selectedNode.setTargetType(targetType);
                         this.selectedNode.color = this.getColor(targetType, undefined);
@@ -683,17 +683,15 @@ angular
                     $window.sessionStorage.completed = $scope.completed;
                     var payloadJson = JSON.stringify(payload);
                     var docUser = $window.sessionStorage.docId + '/' + $window.sessionStorage.uId;
-                    $http.post("discanno/document/" + docUser, payloadJson).then(function (response) {
-                        if (response.status === 200) {
-                            if ($scope.completed) {
-                                $rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
-                            } else {
-                                $rootScope.addAlert({type: 'success', msg: 'Document marked as uncomplete!'});
-                            }
-                        } else {
-                            $rootScope.checkResponseStatusCode(response.status);
-                        }
-                    });
+                    $http.post("discanno/document/" + docUser, payloadJson).success(function (response) {
+						if ($scope.completed) {
+							$rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
+						} else {
+							$rootScope.addAlert({type: 'success', msg: 'Document marked as uncomplete!'});
+						}
+                    }).error(function (response) {
+						$rootScope.checkResponseStatusCode(response.status);
+					});
                 };
                 // TODO change here, should be called with a second parameter "true"/ "false"
                 // and change the hardcoded payload

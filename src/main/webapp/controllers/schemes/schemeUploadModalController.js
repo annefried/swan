@@ -1,4 +1,8 @@
-
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 'use strict';
 
 angular.module('app').controller('schemeUploadModalController', function ($scope, $rootScope, $http, $sce, $uibModalInstance, $window) {
@@ -257,7 +261,6 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             if ($scope.currentLabelSet[i].id === id) {
                 $scope.currentLabelSet.splice(i, 1);
             }
-
         }
     };
     
@@ -448,10 +451,10 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                     "linkSets": linkSets,
                     "projects": []
                 };
-                $http.post("discanno/scheme", JSON.stringify(template)).then(function (response) {
+                $http.post("discanno/scheme", JSON.stringify(template)).success(function (response) {
                     $rootScope.schemesTable[template.name] = template;
                     var schemePreview = {
-                        'id': response.data,
+                        'id': response,
                         'name': template.name,
                         "creator": currUser,
                         'tableIndex': $scope.schemeCounter++,
@@ -465,7 +468,8 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                     if ($rootScope.tour !== undefined) {
                         $("#tour-next-button").prop("disabled", false);
                     }
-                }, function () {
+                }).error(function (response) {
+					$rootScope.checkResponseStatusCode(response.status);
                     $rootScope.addAlert({type: 'danger', msg: 'A scheme with this name already exists.'});
                 });
             } catch (ex) {
@@ -478,8 +482,8 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
     };
     
     $scope.loadSchemes = function () {
-        $http.get('discanno/scheme/schemes').then(function (response) {
-            var schemes = JSOG.parse(JSON.stringify(response.data.schemes));
+        $http.get('discanno/scheme/schemes').success(function (response) {
+            var schemes = JSOG.parse(JSON.stringify(response.schemes));
             $scope.loadedSchemes = [];
             for (var i = 0; i < schemes.length; i++) {
                 var currentScheme = schemes[i];
@@ -537,8 +541,8 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                 };
                 $scope.loadedSchemes.push(template);
             }
-        }, function (err) {
-            $rootScope.checkResponseStatusCode(err.status);
+        }).error(function (response) {
+            $rootScope.checkResponseStatusCode(response.status);
         });
     };
     
@@ -570,7 +574,6 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             // valid, create scheme.
             $scope.sendScheme();
             $uibModalInstance.close();
-
         }
 
     };

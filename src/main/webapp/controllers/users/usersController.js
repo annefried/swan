@@ -9,9 +9,10 @@ angular
         .controller('usersController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys', function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys) {
                 $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
 
-                if (($window.sessionStorage.role !== 'admin') && ($window.sessionStorage.role !== 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
-                    // redirect to Login
-                    window.location = "/discanno/signin.html";
+                if (($window.sessionStorage.role !== 'admin')
+						&& ($window.sessionStorage.role !== 'annotator')
+						&& ($window.sessionStorage.role != 'projectmanager')) {
+                    $rootScope.redirectToLogin();
                 } else {
 
                     // Initialise User View
@@ -28,15 +29,16 @@ angular
 
                     // Request list of users from backend
                     $scope.getUsers = function () {
-                        $http.get("discanno/user").then(function (response) {
-                            var res = JSOG.parse(JSON.stringify(response.data));
+                        $http.get("discanno/user").success(function (response) {
+                            var res = JSOG.parse(JSON.stringify(response));
                             $scope.users = res.users;
                             for (var i = 0; i < $scope.users.length; i++) {
                                 $scope.enhanceUserData($scope.users[i], i);
                             }
                             $scope.loaded = true;
-                        });
-
+                        }).error(function (response) {
+							$rootScope.checkResponseStatusCode(response.status);
+						});
                     };
 
                     $scope.isVisible = function (user) {
@@ -44,12 +46,16 @@ angular
                     };
 
                     $scope.enhanceUserData = function (u, i) {
-                        var projReq = $http.get("discanno/project/byuser/" + u.id).then(function (response) {
-                            $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
-                        });
-                        var timeReq = $http.get("discanno/timelogging/" + u.id).then(function (response) {
-                            $scope.tilog = JSOG.parse(JSON.stringify(response.data)).timelogging;
-                        });
+                        var projReq = $http.get("discanno/project/byuser/" + u.id).success(function (response) {
+                            $scope.projects = JSOG.parse(JSON.stringify(response)).projects;
+                        }).error(function (response) {
+							$rootScope.checkResponseStatusCode(response.status);
+						});
+                        var timeReq = $http.get("discanno/timelogging/" + u.id).success(function (response) {
+                            $scope.tilog = JSOG.parse(JSON.stringify(response)).timelogging;
+                        }).error(function (response) {
+							$rootScope.checkResponseStatusCode(response.status);
+						});
 
                         $q.all([projReq, timeReq]).then(function (ret, ret2) {
                             var dUndone = 0;
