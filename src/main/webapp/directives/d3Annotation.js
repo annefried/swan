@@ -31,7 +31,7 @@ angular.module('app')
                     },
                     link: function ($scope, iElement) {
 
-						$scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
+                        $scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
 
                         var width, height;
                         var lineCount;
@@ -50,7 +50,7 @@ angular.module('app')
                         var prefixes = [];
                         var currJ = 0;
                         var jDistance = 30; //Amount of lines after which text should be redrawn
-                        var defaultLinkOpacity = 0.1;
+                        var defaultLinkOpacity = 0.3;
                         var oldJ = currJ;
                         var minJ = 0;
                         var maxJ = minJ + jDistance;
@@ -575,7 +575,7 @@ angular.module('app')
                         //and tries to create a new temporary annotation for that section
                         $scope.$watch('startSelection', function (newVals) {
                             if (newVals === undefined
-									|| !$scope.isAnnotator)
+                                    || !$scope.isAnnotator)
                                 return;
                             var startLine;
                             var startRow;
@@ -599,9 +599,9 @@ angular.module('app')
 
                             //Do nothing when no indicies for the words are found
                             if (startLine === undefined
-									|| startRow === undefined
+                                    || startRow === undefined
                                     || endLine === undefined
-									|| endRow === undefined)
+                                    || endRow === undefined)
                                 return;
                             //Add every word between first and last selected word
                             var words = [];
@@ -1157,7 +1157,7 @@ angular.module('app')
                                                 if ($scope.linking()) {
                                                     if (linkStart.id !== d.annotation.id) {
                                                         var promise = $scope.addLink({source: linkStart, target: d.annotation});
-                                                        promise.then(function(link) {
+                                                        promise.then(function (link) {
                                                             if (link !== undefined) {
                                                                 $scope.setSelection({item: link});
                                                             }
@@ -1555,9 +1555,9 @@ angular.module('app')
                                                 case 0:
                                                     return defaultLinkOpacity;
                                                 case 3:
-                                                    return 0.6;
+                                                    return 1;
                                                 default:
-                                                    return 0.39;
+                                                    return 0.5;
                                             }
                                         });
                                 svg.selectAll(".annotationlinktext")

@@ -70,10 +70,10 @@ angular
                     }
                     $scope.shownUserList[$window.sessionStorage.shownUser] = $window.sessionStorage.shownUser;
                     $http.get("discanno/document/" + $window.sessionStorage.docId).success(function (response) {
-						$scope.users = JSOG.parse(JSON.stringify(response)).project.users;
-					}).error(function (response) {
-						$rootScope.checkResponseStatusCode(response.status);
-					});
+                        $scope.users = JSOG.parse(JSON.stringify(response)).project.users;
+                    }).error(function (response) {
+                        $rootScope.checkResponseStatusCode(response.status);
+                    });
                 };
 
                 this.onUserChange = function () {
@@ -201,7 +201,7 @@ angular
 
                         this.selectedNode.setLabel(labelSet, label);
                         var labeled = this.selectedNode.isLabeled(labelSet, label);
-                        
+
                         // Annotation
                         if (this.selectedNode.type === AnnoType.Annotation) {
                             var labelTemplate = {
@@ -233,7 +233,7 @@ angular
 
                         this.selectedNode.color = this.getColor(this.selectedNode.tType, this.selectedNode);
                         this.lastSet = this.selectedNode;
-                        this.changeLinkLabel = { "link": this.selectedNode, "label": label };
+                        this.changeLinkLabel = { "link": this.selectedNode, "label": label};
                     }
                 };
                 this.increaseSelectedAnnoSize = function () {
@@ -271,11 +271,11 @@ angular
                             && this.selectedNode.type === "Annotation") {
                         if (this.selectedNode.tType !== undefined) {
                             $http.post("discanno/annotations/changett/" + this.selectedNode.id, {'targetType': targetType.tag})
-									.success(function (response) {
+                                    .success(function (response) {
 
-                            }).error(function (response) {
-								$rootScope.checkResponseStatusCode(response.status);
-							});
+                                    }).error(function (response) {
+                                $rootScope.checkResponseStatusCode(response.status);
+                            });
                         }
                         this.selectedNode.setTargetType(targetType);
                         this.selectedNode.color = this.getColor(targetType, undefined);
@@ -441,19 +441,23 @@ angular
                             $rootScope.checkResponseStatusCode(err.status);
                             deferred.reject(undefined);
                         });
-                        
+
                         return deferred.promise;
                     }
                 };
                 //Checks if two annotations are linkable depending on their target type
                 this.linkable = function (source, target) {
+                    if (this.annotationLinks !== undefined && this.annotationLinks[source.id] !== undefined) {
+                        var alreadyExists = (this.annotationLinks[source.id][target.id] !== undefined)
+                    } else {
+                        var alreadyExists = false;
+                    }
                     return this.linkLabels[source.tType.tag] !== undefined
-                            && this.linkLabels[source.tType.tag][target.tType.tag] !== undefined;
+                            && this.linkLabels[source.tType.tag][target.tType.tag] !== undefined && !alreadyExists;
                 };
                 //Remove a link and make a corresponding callback to the backend
                 this.removeLink = function (link) {
 
-                    //TODO: db callback;
                     if (link !== undefined) {
                         $http.delete("discanno/links/" + link.id).then(function (object) {
                             return function (response) {
@@ -462,10 +466,10 @@ angular
                                 if (source !== undefined && target !== undefined) {
                                     object.lastRemovedLink = link;
                                     delete object.annotationLinks[source.id][target.id];
-									var entry = object.annotationLinks[source.id];
-									if (Object.keys(entry).length <= 0) {
-										delete object.annotationLinks[source.id];
-									}
+                                    var entry = object.annotationLinks[source.id];
+                                    if (Object.keys(entry).length <= 0) {
+                                        delete object.annotationLinks[source.id];
+                                    }
                                 }
                             };
                         }(this), function (err) {
@@ -692,14 +696,14 @@ angular
                     var payloadJson = JSON.stringify(payload);
                     var docUser = $window.sessionStorage.docId + '/' + $window.sessionStorage.uId;
                     $http.post("discanno/document/" + docUser, payloadJson).success(function (response) {
-						if ($scope.completed) {
-							$rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
-						} else {
-							$rootScope.addAlert({type: 'success', msg: 'Document marked as uncomplete!'});
-						}
+                        if ($scope.completed) {
+                            $rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
+                        } else {
+                            $rootScope.addAlert({type: 'success', msg: 'Document marked as uncomplete!'});
+                        }
                     }).error(function (response) {
-						$rootScope.checkResponseStatusCode(response.status);
-					});
+                        $rootScope.checkResponseStatusCode(response.status);
+                    });
                 };
                 // TODO change here, should be called with a second parameter "true"/ "false"
                 // and change the hardcoded payload
