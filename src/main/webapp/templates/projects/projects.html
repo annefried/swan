@@ -24,14 +24,14 @@
                             <th class="col-md-2 vert-align">Name</th>
                             <th class="col-md-2 vert-align">Progress</th>
                             <th class="col-md-2 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'">Users</span>
+                                <span ng-hide="isUnprivileged === 'true'">Annotators</span>
                             </th>
-                            <th class="col-md-2 vert-align">Project Manager</th>
+                            <th class="col-md-2 vert-align">Project manager</th>
                             <th class="col-md-1 vert-align">
                                 <span ng-hide="isUnprivileged === 'true'">Scheme</span>
                             </th>
                             <th class="col-md-1 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'" id="pe_edit_project">Edit Project</span>
+                                <span ng-hide="isUnprivileged === 'true'" id="pe_edit_project">Edit</span>
                             </th>
                             <th class="col-md-1 vert-align">
                                 <span ng-hide="isUnprivileged === 'true'">Delete</span>
@@ -136,18 +136,19 @@
                                 <a class="glyphicon glyphicon-share"
                                    ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
                                    ng-href="{{ exportProject(x.id) }}"
-                                   ng-hide="isUnprivileged === 'true'">(xml)
+                                   ng-hide="isUnprivileged === 'true'">(XML)
                                 </a>
+                                <br/>
                                  <a class="glyphicon glyphicon-share"
                                    ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
                                    ng-href="{{ exportProjectXmi(x.id) }}"
-                                   ng-hide="isUnprivileged === 'true'">(UIMA xmi)
+                                   ng-hide="isUnprivileged === 'true'">(XMI)
                                 </a>
                             </td>
                         </tr>
                         <tr class="collapse relateTo{{x.id}} headLight topBorder" ng-class="{'in': toggeled[x.id]}">
                             <td class="col-md-1 vert-align"><b>Documents</b></td>
-                            <td class="col-md-2 vert-align"><b>Name</b></td>
+                            <td class="col-md-2 vert-align"><b>Filename</b></td>
                             <td class="col-md-2 vert-align"><b>Completed</b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"><b></b></td>

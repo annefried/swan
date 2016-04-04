@@ -14,7 +14,7 @@ angular
                         $('.scroll-pane').jScrollPane();
                     });
                     $scope.role = $window.sessionStorage.role;
-                    if ($window.sessionStorage.role == 'annotator') {
+                    if ($window.sessionStorage.role === 'annotator') {
                         $window.sessionStorage.shownUser = $window.sessionStorage.uId;
                     } else {
                         this.setUpAnnoView();
@@ -62,18 +62,25 @@ angular
                 };
 
                 this.setUpAnnoView = function () {
-                    if ($window.sessionStorage.shownUser == undefined) {
-                        $window.sessionStorage.shownUser = $window.sessionStorage.uId;
-                    }
                     if ($scope.shownUserList === undefined) {
                         $scope.shownUserList = {};
                     }
+
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("GET", "discanno/document/" + $window.sessionStorage.docId, false); // false for synchronous request
+                    xmlHttp.send(null);
+                    var resp = xmlHttp.responseText;
+                    $scope.users = JSOG.parse(resp).project.users;
+                    if ($window.sessionStorage.shownUser === "undefined" || $window.sessionStorage.shownUser === undefined || $window.sessionStorage.shownUser == $window.sessionStorage.uId) {
+                        if ($scope.users.length > 0) {
+                            var firstUserId = $scope.users[0].id;
+                            $window.sessionStorage.shownUser = firstUserId;
+                        } else {
+                            $window.sessionStorage.shownUser = $window.sessionStorage.uId;
+                        }
+
+                    }
                     $scope.shownUserList[$window.sessionStorage.shownUser] = $window.sessionStorage.shownUser;
-                    $http.get("discanno/document/" + $window.sessionStorage.docId).success(function (response) {
-                        $scope.users = JSOG.parse(JSON.stringify(response)).project.users;
-                    }).error(function (response) {
-                        $rootScope.checkResponseStatusCode(response.status);
-                    });
                 };
 
                 this.onUserChange = function () {
@@ -750,7 +757,7 @@ angular
                 ];
 
                 $scope.$on("$destroy", function () {
-                    console.log('Destroyed');
+                    delete $window.sessionStorage.shownUser;
                     $rootScope.initialized = 'false';
                 });
                 if ($rootScope.initialized !== 'true')
