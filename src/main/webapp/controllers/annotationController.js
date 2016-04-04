@@ -14,7 +14,7 @@ angular
                         $('.scroll-pane').jScrollPane();
                     });
                     $scope.role = $window.sessionStorage.role;
-                    if ($window.sessionStorage.role == 'annotator') {
+                    if ($window.sessionStorage.role === 'annotator') {
                         $window.sessionStorage.shownUser = $window.sessionStorage.uId;
                     } else {
                         this.setUpAnnoView();
@@ -62,18 +62,31 @@ angular
                 };
 
                 this.setUpAnnoView = function () {
-                    if ($window.sessionStorage.shownUser == undefined) {
-                        $window.sessionStorage.shownUser = $window.sessionStorage.uId;
-                    }
                     if ($scope.shownUserList === undefined) {
                         $scope.shownUserList = {};
                     }
+
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("GET", "discanno/document/" + $window.sessionStorage.docId, false); // false for synchronous request
+                    xmlHttp.send(null);
+                    var resp = xmlHttp.responseText;
+                    $scope.users = JSOG.parse(resp).project.users;
+                    var containsShownUser = false;
+                    for (var i = 0; i < $scope.users.length; i++) {
+                        if ($scope.users[i].id === $window.sessionStorage.shownUser) {
+                            containsShownUser = true;
+                        }
+                    }
+                    if ($window.sessionStorage.shownUser === undefined || $window.sessionStorage.shownUser === $window.sessionStorage.uId || !containsShownUser) {
+                        if ($scope.users.length > 0) {
+                            var firstUserId = $scope.users[0].id;
+                            $window.sessionStorage.shownUser = firstUserId;
+                        } else {
+                            $window.sessionStorage.shownUser = $window.sessionStorage.uId;
+                        }
+
+                    }
                     $scope.shownUserList[$window.sessionStorage.shownUser] = $window.sessionStorage.shownUser;
-                    $http.get("discanno/document/" + $window.sessionStorage.docId).success(function (response) {
-						$scope.users = JSOG.parse(JSON.stringify(response)).project.users;
-					}).error(function (response) {
-						$rootScope.checkResponseStatusCode(response.status);
-					});
                 };
 
                 this.onUserChange = function () {
@@ -201,7 +214,7 @@ angular
 
                         this.selectedNode.setLabel(labelSet, label);
                         var labeled = this.selectedNode.isLabeled(labelSet, label);
-                        
+
                         // Annotation
                         if (this.selectedNode.type === AnnoType.Annotation) {
                             var labelTemplate = {
@@ -233,7 +246,7 @@ angular
 
                         this.selectedNode.color = this.getColor(this.selectedNode.tType, this.selectedNode);
                         this.lastSet = this.selectedNode;
-                        this.changeLinkLabel = { "link": this.selectedNode, "label": label };
+                        this.changeLinkLabel = { "link": this.selectedNode, "label": label};
                     }
                 };
                 this.increaseSelectedAnnoSize = function () {
@@ -271,11 +284,11 @@ angular
                             && this.selectedNode.type === "Annotation") {
                         if (this.selectedNode.tType !== undefined) {
                             $http.post("discanno/annotations/changett/" + this.selectedNode.id, {'targetType': targetType.tag})
-									.success(function (response) {
+                                    .success(function (response) {
 
-                            }).error(function (response) {
-								$rootScope.checkResponseStatusCode(response.status);
-							});
+                                    }).error(function (response) {
+                                $rootScope.checkResponseStatusCode(response.status);
+                            });
                         }
                         this.selectedNode.setTargetType(targetType);
                         this.selectedNode.color = this.getColor(targetType, undefined);
@@ -441,7 +454,7 @@ angular
                             $rootScope.checkResponseStatusCode(err.status);
                             deferred.reject(undefined);
                         });
-                        
+
                         return deferred.promise;
                     }
                 };
@@ -462,10 +475,10 @@ angular
                                 if (source !== undefined && target !== undefined) {
                                     object.lastRemovedLink = link;
                                     delete object.annotationLinks[source.id][target.id];
-									var entry = object.annotationLinks[source.id];
-									if (Object.keys(entry).length <= 0) {
-										delete object.annotationLinks[source.id];
-									}
+                                    var entry = object.annotationLinks[source.id];
+                                    if (Object.keys(entry).length <= 0) {
+                                        delete object.annotationLinks[source.id];
+                                    }
                                 }
                             };
                         }(this), function (err) {
@@ -692,14 +705,14 @@ angular
                     var payloadJson = JSON.stringify(payload);
                     var docUser = $window.sessionStorage.docId + '/' + $window.sessionStorage.uId;
                     $http.post("discanno/document/" + docUser, payloadJson).success(function (response) {
-						if ($scope.completed) {
-							$rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
-						} else {
-							$rootScope.addAlert({type: 'success', msg: 'Document marked as uncomplete!'});
-						}
+                        if ($scope.completed) {
+                            $rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
+                        } else {
+                            $rootScope.addAlert({type: 'success', msg: 'Document marked as uncomplete!'});
+                        }
                     }).error(function (response) {
-						$rootScope.checkResponseStatusCode(response.status);
-					});
+                        $rootScope.checkResponseStatusCode(response.status);
+                    });
                 };
                 // TODO change here, should be called with a second parameter "true"/ "false"
                 // and change the hardcoded payload
@@ -746,7 +759,6 @@ angular
                 ];
 
                 $scope.$on("$destroy", function () {
-                    console.log('Destroyed');
                     $rootScope.initialized = 'false';
                 });
                 if ($rootScope.initialized !== 'true')
