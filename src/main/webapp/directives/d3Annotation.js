@@ -288,121 +288,108 @@ angular.module('app')
                             }
                         };
                         $scope.words = [];
-                        hotkeys.bindTo($scope)
-                                .add({
-                                    combo: 'shift+up',
-                                    description: 'Delete temporal selection in current line',
-                                    callback: function () {
-                                        $scope.hotShiftDown('true', $scope.words);
-                                    }
-                                })
-                                .add({
-                                    combo: 'shift+down',
-                                    description: 'Select whole line',
-                                    callback: function () {
-                                        $scope.hotShiftDown(false, $scope.words);
-                                    }
-                                })
-                                .add({
-                                    combo: 'shift+right',
-                                    description: 'Long selection',
-                                    callback: function () {
-                                        $scope.hotShift(true, $scope.words);
-                                    }
-                                })
-                                .add({
-                                    combo: 'shift+left',
-                                    description: 'Delete words from long selection',
-                                    callback: function () {
+                        // Only enable hotkeys for annotators
+                        if ($scope.isAnnotator) {
+                            hotkeys.bindTo($scope)
+                                    .add({
+                                        combo: 'shift+up',
+                                        description: 'Delete temporal selection in current line',
+                                        callback: function () {
+                                            $scope.hotShiftDown('true', $scope.words);
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'shift+down',
+                                        description: 'Select whole line',
+                                        callback: function () {
+                                            $scope.hotShiftDown(false, $scope.words);
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'shift+right',
+                                        description: 'Long selection',
+                                        callback: function () {
+                                            $scope.hotShift(true, $scope.words);
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'shift+left',
+                                        description: 'Delete words from long selection',
+                                        callback: function () {
 
-                                        $scope.hotShift(false, $scope.words);
-                                    }
-                                })
-                                .add({
-                                    combo: 'shift+left',
-                                    description: 'Delete words from long selection',
-                                    callback: function () {
-                                        $scope.hotShift(false, $scope.words);
-                                    }
-                                })
-//                                .add({
-//                                    combo: 'right',
-//                                    description: 'Jump word by word',
-//                                    callback: function () {
-//                                        j++;
-//                                        $scope.hot('true');
-//                                    }
-//                                })
-//                                .add({
-//                                    combo: 'left',
-//                                    description: 'Jump back to first word in current line',
-//                                    callback: function () {
-//                                        j--;
-//                                        $scope.hot('false');
-//                                    }
-//                                })
-                                .add({
-                                    combo: 'up',
-                                    description: 'Jump to first word in upper line',
-                                    callback: function () {
-                                        if (i > 0) {
-                                            j = 0;
-                                            i--;
-                                            $scope.hot('true');
-                                        } else {
-                                            j = 0;
-                                            i = (maxLines - 1);
-                                            $scope.hot('true');
+                                            $scope.hotShift(false, $scope.words);
                                         }
-                                    }
-                                })
-                                .add({
-                                    combo: 'down',
-                                    description: 'Jump to first word in lower line',
-                                    callback: function () {
-                                        if (i < (maxLines - 1)) {
-                                            j = 0;
-                                            i++;
-                                            $scope.hot('true');
-                                        } else {
-                                            j = 0;
-                                            i = 0;
-                                            $scope.hot('true');
+                                    })
+                                    .add({
+                                        combo: 'shift+left',
+                                        description: 'Delete words from long selection',
+                                        callback: function () {
+                                            $scope.hotShift(false, $scope.words);
                                         }
-                                    }
-                                })
-                                .add({
-                                    combo: 'right',
-                                    description: 'Jump from annotation to annotation',
-                                    callback: function () {
-                                        $scope.index++;
-                                        var anno = $scope.getAllAnnos($scope.index, false);
-                                        $scope.setSelection({item: anno});
-                                    }
-                                })
-                                .add({
-                                    combo: 'left',
-                                    description: 'Jump from annotation to annotation',
-                                    callback: function () {
-                                        $scope.index--;
-                                        var anno = $scope.getAllAnnos($scope.index, true);
-                                        $scope.setSelection({item: anno});
-                                    }
-                                })
-                                .add({
-                                    combo: 'alt+right',
-                                    description: 'Jump from annotation to annotation',
-                                    callback: function () {
-                                        $scope.increaseAnno();
-                                    }
-                                })
-                                .add({
-                                    combo: 'alt+left',
-                                    description: 'Jump from annotation to annotation',
-                                    callback: function () {
-                                        $scope.increaseAnno();
-                                    }
-                                });
+                                    })
+                                    .add({
+                                        combo: 'up',
+                                        description: 'Jump to first word in upper line',
+                                        callback: function () {
+                                            if (i > 0) {
+                                                j = 0;
+                                                i--;
+                                                $scope.hot('true');
+                                            } else {
+                                                j = 0;
+                                                i = (maxLines - 1);
+                                                $scope.hot('true');
+                                            }
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'down',
+                                        description: 'Jump to first word in lower line',
+                                        callback: function () {
+                                            if (i < (maxLines - 1)) {
+                                                j = 0;
+                                                i++;
+                                                $scope.hot('true');
+                                            } else {
+                                                j = 0;
+                                                i = 0;
+                                                $scope.hot('true');
+                                            }
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'right',
+                                        description: 'Jump from annotation to annotation',
+                                        callback: function () {
+                                            $scope.index++;
+                                            var anno = $scope.getAllAnnos($scope.index, false);
+                                            $scope.setSelection({item: anno});
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'left',
+                                        description: 'Jump from annotation to annotation',
+                                        callback: function () {
+                                            $scope.index--;
+                                            var anno = $scope.getAllAnnos($scope.index, true);
+                                            $scope.setSelection({item: anno});
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'alt+right',
+                                        description: 'Jump from annotation to annotation',
+                                        callback: function () {
+                                            $scope.increaseAnno();
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'alt+left',
+                                        description: 'Jump from annotation to annotation',
+                                        callback: function () {
+                                            $scope.increaseAnno();
+                                        }
+                                    });
+                        }
 
                         $scope.increaseAnno = function () {
                             $scope.increaseSelectedAnnoSize();

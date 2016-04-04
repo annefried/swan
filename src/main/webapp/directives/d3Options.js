@@ -161,32 +161,34 @@ angular.module('app')
                                 $scope.setLabel({label: type});
                             }
                         };
-
-                        hotkeys.bindTo($scope)
-                                .add({
-                                    combo: 'alt+t',
-                                    description: 'Select next TargetType',
-                                    callback: function () {
-                                        $scope.index++;
-                                        $scope.setTypeHotkeys($scope.index);
-                                    }
-                                })
-                                .add({
-                                    combo: 'alt+l',
-                                    description: 'Select next Label',
-                                    callback: function () {
-                                        $scope.indexLabels++;
-                                        $scope.setLabelHotkeys($scope.indexLabels);
-                                    }
-                                })
-                                .add({
-                                    combo: 'alt+backspace',
-                                    description: 'Deleting current Selection',
-                                    callback: function () {
-                                        $scope.delete();
-                                        $scope.setSelection({item: null});
-                                    }
-                                });
+                        // Only enable hotkeys for annotators
+                        if ($scope.isAnnotator) {
+                            hotkeys.bindTo($scope)
+                                    .add({
+                                        combo: 'alt+t',
+                                        description: 'Select next TargetType',
+                                        callback: function () {
+                                            $scope.index++;
+                                            $scope.setTypeHotkeys($scope.index);
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'alt+l',
+                                        description: 'Select next Label',
+                                        callback: function () {
+                                            $scope.indexLabels++;
+                                            $scope.setLabelHotkeys($scope.indexLabels);
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'alt+backspace',
+                                        description: 'Deleting current Selection',
+                                        callback: function () {
+                                            $scope.delete();
+                                            $scope.setSelection({item: null});
+                                        }
+                                    });
+                        }
 
                         $scope.index = -1;
                         $scope.indexLabels = -1;
