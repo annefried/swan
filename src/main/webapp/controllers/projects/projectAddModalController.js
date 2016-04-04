@@ -20,6 +20,26 @@ angular.module('app').controller('projectAddModalController', function ($scope, 
     };
     //if someone misses the "sendScheme" code that was commented here, checkout commit 5c189c3f8652aac
 
+	/**
+	 * Checks whether the project name is already taken.
+	 * 
+	 * @param {type} name
+	 * @returns {Boolean}
+	 */
+	$scope.hasError = function(name) {
+		if (name) {
+			for (var i = 0; i < $rootScope.tableProjects.length; i++) {
+				var proj = $rootScope.tableProjects[i];
+				if (proj.name === name) {
+					return true;
+				}
+			}
+			return false;
+		} else {
+			return false;
+		}
+	};
+
     $scope.submit = function (name, scheme) {
         var combine = {
             'name': name,
@@ -35,5 +55,3 @@ angular.module('app').controller('projectAddModalController', function ($scope, 
     $scope.init();
 
 });
-
-
