@@ -38,7 +38,7 @@ If you find some bugs or if you have suggestions for improvements, please open a
 
 DiscAnno was developed by:
 * Timo Gühring (Saarland University, Department of Computer Science)
-* Nicklas Linz (DFKI Saarbrücken)
+* Nicklas Linz (German Research Center for Artificial Intelligence (DFKI GmbH), Saarbrücken)
 * Rafael Theis (Saarland University, Department of Computer Science)
 * Annemarie Friedrich (Saarland University, Department of Computational Linguistics, afried@coli.uni-saarland.de)
 * Janna Herrmann (Saarland University, Department of Computer Science)
