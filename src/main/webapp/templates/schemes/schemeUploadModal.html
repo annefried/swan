@@ -390,7 +390,7 @@ and open the template in the editor.
                         </div>
                         <div class="form-group sb_right">
                             <button type="button" class="btn btn-success" id ="sb_addLinkSetButton"
-                                    ng-disabled="startType === undefined || endType === undefined"
+                                    ng-disabled="startType === undefined || endType === undefined || currentLinkSet.length < 1"
                                     ng-click="addLinkSet()">
                                 Add link set
                             </button>

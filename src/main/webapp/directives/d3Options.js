@@ -25,7 +25,7 @@ angular.module('app')
                         var options = d3.select(iElement[0])
                                 .attr("width", "100%");
                         $scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
-                        
+
                         //Re-render on window resize
                         window.onresize = function () {
                             return $scope.$apply();
@@ -55,15 +55,20 @@ angular.module('app')
                             var left = options.append("div")
                                     .classed("col-md-4", true);
                             var middle = options.append("div")
-                                    .classed("col-md-4", true);
+                                    .classed("col-md-4", true)
                             var right = options.append("div")
-                                    .classed("col-md-4", true);
+                                    .classed("col-md-4", true)
+
+                            // add divs inside middle/right for correct spacing
+                            middle = middle.append("div");
+                            right = right.append("div");
 
                             if ($scope.selection !== null && $scope.selection !== undefined) {
 
                                 // add target types if options for annotation
-                                if ($scope.selection.type === "Annotation")
+                                if ($scope.selection.type === "Annotation") {
                                     $scope.addTargetTypes(left);
+                                }
 
                                 $scope.setNotSureOption(left);
 
@@ -190,7 +195,7 @@ angular.module('app')
                             var newParent = parent.append("div");
                             newParent.classed("targetTypesDiv", true)
                             newParent.append("div")
-                                    .text("Type")
+                                    .text("SPAN TYPE")
                                     .classed("optiontitle", true)
                                     .style("font-size", "120%");
                             var targetTypes = newParent.selectAll()
@@ -236,6 +241,7 @@ angular.module('app')
                         };
 
                         $scope.addLabelSets = function (parent1, parent2) {
+
                             var par1Count = 0;
                             var par2Count = 0;
                             for (var id in $scope.selection.selectableLabels) {
@@ -249,20 +255,29 @@ angular.module('app')
                                     par2Count++;
                                 }
 
+                                // fix for displaying link label sets as if they are types
+                                if ($scope.selection.type === "Link") {
+                                    parent.append("p").text("LINK TYPE")
+                                            .classed("optiontitle", true)
+                                            .style("font-size", "110%");
+                                    parent.classed("targetTypesDiv", true);
+                                }
                                 parent.append("p")
                                         .text(function () {
                                             return labelSet.name;
                                         })
                                         .classed("optiontitle", true)
                                         .style("font-size", "110%");
-                                if (!labelSet.exclusive) {
+                                if (!labelSet.exclusive && labelSet.labels.length > 1) {
                                     parent.append("p").text("(multiple allowed)")
                                             .style("margin", "0")
                                             .style("font-size", "90%");
                                 } else {
-                                    parent.append("p").text("(select one)")
-                                            .style("margin", "0")
-                                            .style("font-size", "90%");
+                                    if (labelSet.labels.length > 1) {
+                                        parent.append("p").text("(select one)")
+                                                .style("margin", "0")
+                                                .style("font-size", "90%");
+                                    }
                                 }
 
                                 var labels = parent.selectAll()
