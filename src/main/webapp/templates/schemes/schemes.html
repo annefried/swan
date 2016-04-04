@@ -13,7 +13,7 @@ and open the template in the editor.
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
 
-            <h2 class="sub-header" id="1-schemes-header" style="display: inline-block">Schemes</h2>
+            <h2 class="sub-header" id="1-schemes-header" style="display: inline-block">Annotation schemes</h2>
             <uib-alert ng-repeat="alert in alerts"
                        type="{{alert.type}}"
                        close="closeAlert($index)"
@@ -25,8 +25,8 @@ and open the template in the editor.
                     <thead>
                         <tr class="headDark">
                             <th class="col-md-10">Name</th>
-                            <th class="col-md-10">Used In</th>
-                            <th class="col-md-1">View</th>
+                            <th class="col-md-10">Used in</th>
+                            <th class="col-md-1">View JSON</th>
                             <th class="col-md-1">Delete</th>
                         </tr>
                     </thead>
