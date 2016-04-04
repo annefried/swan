@@ -8,11 +8,11 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add user</title>
+        <title>Add user account</title>
     </head>
     <body>
         <div class="modal-header">
-            <h3 class="modal-title">Add User...</h3>
+            <h3 class="modal-title">Add user account</h3>
         </div>
         <div class="modal-body">
             <form name="form" ng-submit="vm.addUser()" role="form" novalidate>
@@ -27,7 +27,7 @@ and open the template in the editor.
                     <span ng-show="form.lname.$dirty && form.lname.$error.required" class="help-block">Last Name is required.</span>
                 </div>
                 <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
-                    <label for="pw">Password: (Min. 5 characters)</label>
+                    <label for="pw">Password (min. 5 characters):</label>
                     <input type="password" name="pw" pattern=".{5,}" title="5 characters minimum" id="pw" class="form-control" ng-model="vm.pw" required />
                     <span ng-show="form.pw.$dirty && form.pw.$error.required" class="help-block">Password is required.</span>
                 </div>
