@@ -71,13 +71,7 @@ angular
                     xmlHttp.send(null);
                     var resp = xmlHttp.responseText;
                     $scope.users = JSOG.parse(resp).project.users;
-                    var containsShownUser = false;
-                    for (var i = 0; i < $scope.users.length; i++) {
-                        if ($scope.users[i].id === $window.sessionStorage.shownUser) {
-                            containsShownUser = true;
-                        }
-                    }
-                    if ($window.sessionStorage.shownUser === undefined || $window.sessionStorage.shownUser === $window.sessionStorage.uId || !containsShownUser) {
+                    if ($window.sessionStorage.shownUser === "undefined" || $window.sessionStorage.shownUser === undefined || $window.sessionStorage.shownUser == $window.sessionStorage.uId) {
                         if ($scope.users.length > 0) {
                             var firstUserId = $scope.users[0].id;
                             $window.sessionStorage.shownUser = firstUserId;
@@ -759,6 +753,7 @@ angular
                 ];
 
                 $scope.$on("$destroy", function () {
+                    delete $window.sessionStorage.shownUser;
                     $rootScope.initialized = 'false';
                 });
                 if ($rootScope.initialized !== 'true')
