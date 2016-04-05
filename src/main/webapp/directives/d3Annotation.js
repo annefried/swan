@@ -27,7 +27,11 @@ angular.module('app')
                         addLink: "&",
                         linkable: "&",
                         clearSelection: "&",
-                        increaseSelectedAnnoSize: "&"
+                        increaseSelectedAnnoSizeRight: "&",
+                        increaseSelectedAnnoSizeLeft: "&",
+                        decreaseSelectedAnnoSizeRight: "&",
+                        decreaseSelectedAnnoSizeLeft: "&",
+                        resetSizeIncreased: "&"
                     },
                     link: function ($scope, iElement) {
 
@@ -376,24 +380,35 @@ angular.module('app')
                                         }
                                     })
                                     .add({
-                                        combo: 'alt+right',
-                                        description: 'Jump from annotation to annotation',
+                                        combo: 'f',
+                                        description: 'Add the word to the right to the current annotation',
                                         callback: function () {
-                                            $scope.increaseAnno();
+                                            $scope.increaseSelectedAnnoSizeRight();
                                         }
                                     })
                                     .add({
-                                        combo: 'alt+left',
-                                        description: 'Jump from annotation to annotation',
+                                        combo: 'd',
+                                        description: 'Remove the word to the right from the current annotation',
                                         callback: function () {
-                                            $scope.increaseAnno();
+                                            $scope.decreaseSelectedAnnoSizeRight();
+                                        }
+                                    })
+                                    .add({
+                                        combo: 's',
+                                        description: 'Remove the word to the left from the current annotation',
+                                        callback: function () {
+                                            $scope.decreaseSelectedAnnoSizeLeft();
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'a',
+                                        description: 'Add the word to the left to the current annotation',
+                                        callback: function () {
+                                            $scope.increaseSelectedAnnoSizeLeft();
                                         }
                                     });
                         }
 
-                        $scope.increaseAnno = function () {
-                            $scope.increaseSelectedAnnoSize();
-                        };
 
                         $scope.sort = function (array) {
                             return array.sort(function (a, b) {
@@ -529,17 +544,6 @@ angular.module('app')
                                 $scope.highlightSelected();
                             }
                         }, true);
-                        //Size increased
-                        $scope.$watch('sizeIncreased', function (newVals) {
-                            if (newVals !== undefined) {
-                                $scope.addFormAnnotation(newVals, false)
-                                $scope.drawText(minJ, maxJ);
-                                $scope.drawLineNumbers(minJ, maxJ);
-                                $scope.drawAnnotations(minJ, maxJ);
-                                $scope.setLineHeights();
-                                $scope.highlightSelected();
-                            }
-                        }, true);
                         //Listens to changes to the last removed target
                         $scope.$watch('removedTarget', function (newVals) {
                             if (newVals !== undefined) {
@@ -558,6 +562,38 @@ angular.module('app')
                             $scope.setLineHeights();
                             $scope.render(true);
                         });
+                        //Size increased
+                        $scope.$watch('sizeIncreased', function (newVals) {
+                            if (newVals !== undefined) {
+                                // Update Text words to increase annotatedBy Value
+                                for (var a = 0; a < newVals.words.length; a++) {
+                                    var word = newVals.words[a];
+                                    formText[word.lineIndex][word.wordIndex].word = word;
+                                }
+                                if (newVals.updatedWords !== undefined) {
+                                    for (var b = 0; b < newVals.updatedWords.length; b++) {
+                                        var word = newVals.updatedWords[b];
+                                        formText[word.lineIndex][word.wordIndex].word.annotatedBy++;
+                                    }
+                                }
+                                if (newVals.removedWord !== undefined) {
+                                    formText[newVals.removedWord.lineIndex][newVals.removedWord.wordIndex].word = newVals.removedWord;
+                                    for (var key in formText[newVals.removedWord.lineIndex][newVals.removedWord.wordIndex].annoGrid) {
+                                        if (formText[newVals.removedWord.lineIndex][newVals.removedWord.wordIndex].annoGrid[key] === newVals) {
+                                            formText[newVals.removedWord.lineIndex][newVals.removedWord.wordIndex].annoGrid[key] = undefined;
+                                        }
+                                    }
+                                }
+                                $scope.removeFormAnnotation(newVals);
+                                $scope.addFormAnnotation(newVals, false);
+                                $scope.setLineHeights();
+                                $scope.drawText(minJ, maxJ);
+                                $scope.drawLineNumbers(minJ, maxJ);
+                                $scope.drawAnnotations(minJ, maxJ);
+                                $scope.highlightSelected();
+                                $scope.resetSizeIncreased();
+                            }
+                        }, true);
                         //Determines what text passage the cursor is currently highlighting
                         //and tries to create a new temporary annotation for that section
                         $scope.$watch('startSelection', function (newVals) {

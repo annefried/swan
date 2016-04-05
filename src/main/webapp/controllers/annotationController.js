@@ -243,15 +243,105 @@ angular
                         this.changeLinkLabel = { "link": this.selectedNode, "label": label};
                     }
                 };
-                this.increaseSelectedAnnoSize = function () {
+                // Update an existing Anno in the db
+                this.updateAnno = function (newAnno) {
+                    var jsonTemplate = {
+                        "id": newAnno.id,
+                        "user": {
+                            "id": $window.sessionStorage.uId
+                        },
+                        "targetType": {
+                            "targetType": newAnno.tType.tag
+                        },
+                        "document": {
+                            "id": $window.sessionStorage.docId
+                        },
+                        "start": newAnno.words[0].start,
+                        "end": newAnno.words[newAnno.words.length - 1].end,
+                        "text": newAnno.text,
+                        "notSure": newAnno.notSure
+                    };
+                    // add to db
+                    $http.put("discanno/annotations", JSON.stringify(jsonTemplate)).then(function (object) {
+                        return function (response) {
+                            object.sizeIncreased = newAnno;
+                        };
+                    }(this), function (err) {
+                        $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                    });
+                };
+                //Reset sizeIncreased variable to prevent changes from happening twice
+                this.resetSizeIncreased = function () {
+                    this.sizeIncreased = undefined;
+                    this.selectedNode.updatedWords = [];
+                    this.selectedNode.removedWord = undefined;
+
+                };
+                // Increase size of currently selected Node by one word
+                this.increaseSelectedAnnoSizeRight = function () {
                     if (this.selectedNode !== null && this.selectedNode !== undefined
                             && this.selectedNode.type === "Annotation") {
                         var word = this.nextWord(this.selectedNode.endIndex());
-                        this.selectedNode.addWord(word);
-                        if (word.text === " ") {
-                            this.increaseSelectedAnnoSize();
+                        if (word !== undefined) {
+                            this.selectedNode.addWord(word);
+                            if (this.selectedNode.updatedWords === undefined) {
+                                this.selectedNode.updatedWords = [];
+                            }
+                            this.selectedNode.updatedWords.push(word);
                         }
-                        this.sizeIncreased = this.selectedNode;
+                        if (word !== undefined && word.text === " ") {
+                            this.increaseSelectedAnnoSizeRight();
+                        }
+                        if (this.tempAnno !== this.selectedNode) {
+                            this.updateAnno(this.selectedNode);
+                        }
+                    }
+                };
+                this.increaseSelectedAnnoSizeLeft = function () {
+                    if (this.selectedNode !== null && this.selectedNode !== undefined
+                            && this.selectedNode.type === "Annotation") {
+                        var word = this.previousWord(this.selectedNode.words[0].end);
+                        if (word !== undefined) {
+                            this.selectedNode.addWordBefore(word);
+                            if (this.selectedNode.updatedWords === undefined) {
+                                this.selectedNode.updatedWords = [];
+                            }
+                            this.selectedNode.updatedWords.push(word);
+                        }
+                        if (word !== undefined && word.text === " ") {
+                            this.increaseSelectedAnnoSizeLeft();
+                        }
+                        if (this.tempAnno !== this.selectedNode) {
+                            this.updateAnno(this.selectedNode);
+                        }
+                    }
+
+                };
+                // Decrease size of currently selected Node by one word
+                this.decreaseSelectedAnnoSizeRight = function () {
+                    if (this.selectedNode !== null && this.selectedNode !== undefined
+                            && this.selectedNode.type === "Annotation") {
+                        var word = this.selectedNode.removeLastWord();
+                        this.selectedNode.removedWord = word;
+                        if (word !== undefined && this.previousWord(word.end).text === " ") {
+                            word = this.selectedNode.removeLastWord();
+                        }
+                        if (this.tempAnno !== this.selectedNode) {
+                            this.updateAnno(this.selectedNode);
+                        }
+                    }
+                };
+                this.decreaseSelectedAnnoSizeLeft = function () {
+                    if (this.selectedNode !== null && this.selectedNode !== undefined
+                            && this.selectedNode.type === "Annotation") {
+                        var word = this.selectedNode.removeFirstWord();
+                        this.selectedNode.removedWord = word;
+                        if (word !== undefined && this.nextWord(word.end).text === " ") {
+                            word = this.selectedNode.removeFirstWord();
+                        }
+                        if (this.tempAnno !== this.selectedNode) {
+                            this.updateAnno(this.selectedNode);
+                        }
                     }
                 };
 
@@ -640,6 +730,29 @@ angular
                         }
                     }
                 }
+
+                //Helper function to find previous word
+                this.previousWord = function (end) {
+                    var start = 0;
+                    var ending = -1;
+                    var previousWord;
+                    for (var i = 0; i < this.tokenData.length; i++) {
+                        var line = this.tokenData[i].tokens;
+                        start = ending + 1;
+                        ending = start + this.tokenData[i].lineLength;
+                        var annoLine = new TextLine(start, ending);
+                        for (var j = 0; j < line.length; j++) {
+                            var word = new TextWord(line[j].text, line[j].start, line[j].end);
+                            word.lineIndex = i;
+                            word.wordIndex = annoLine.words.length;
+                            annoLine.words.push(word);
+                            if (line[j].end === end) {
+                                return previousWord;
+                            }
+                            previousWord = word;
+                        }
+                    }
+                };
                 //Helper function for finding corresponding words in the text
                 //that are indexed by start and end
                 this.findWords = function (start, end, object) {

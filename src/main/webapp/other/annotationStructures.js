@@ -180,10 +180,49 @@ function Annotation(color, id, tType) {
         this.text += word.text;
     };
 
+    this.addWordBefore = function (word) {
+        word.annotatedBy++;
+        var words = [];
+        this.text = "";
+        words.push(word);
+        this.text += word.text;
+        for (var i = 0; i < this.words.length; i++) {
+            words.push(this.words[i]);
+            this.text += this.words[i].text;
+        }
+        this.words = words;
+    };
+
+
     //Should be called when the annotation is being removed
     this.onDelete = function () {
         for (var i = 0; i < this.words.length; i++)
             this.words[i].annotatedBy--;
+    };
+
+    // Removes the last word
+    this.removeLastWord = function () {
+        if (this.words.length > 1) {
+            var word = this.words.pop();
+            word.annotatedBy--;
+            var start = this.text.lastIndexOf(word.text);
+            this.text = this.text.substring(0, start);
+        }
+        return word;
+    };
+
+    this.removeFirstWord = function () {
+        if (this.words.length > 1) {
+            var word = this.words[0];
+            var words = [];
+            for (var i = 1; i < this.words.length; i++) {
+                words.push(this.words[i]);
+            }
+            this.words = words;
+            this.text = this.text.substring(word.text.length, this.text.length);
+        }
+        console.log(this)
+        return word;
     };
 
     //Remove all words from this annotation
