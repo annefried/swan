@@ -323,7 +323,7 @@ public class TestDataProvider {
         user.setPrename("Naruto");
         user.setLastname("Uzumaki");
         user.setPassword(Utility.hashPassword("secret"));
-        user.setRole(Users.RoleType.user);
+        user.setRole(Users.RoleType.annotator);
         user.setEmail("naruto.uzumaki@webanne.de");
         user.setCreateDate(Timestamp.valueOf("2015-01-28 23:10:10"));
         return user;

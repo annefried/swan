@@ -6,7 +6,9 @@
 package de.unisaarland.discanno.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
+import de.unisaarland.discanno.rest.view.View;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -28,14 +30,17 @@ import javax.persistence.OneToMany;
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 public class Project extends BaseEntity {
     
+    @JsonView({ View.Projects.class })
     @Column(name = "Name", unique = true)
     private String name;
     
+    @JsonView({ View.Projects.class })
     @OneToMany(mappedBy = "project",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.EAGER)
     private Set<Document> documents = new HashSet<>();
     
+    @JsonView({ View.Projects.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(
         name="PROJECTS_MANAGER",
@@ -43,11 +48,13 @@ public class Project extends BaseEntity {
         inverseJoinColumns={@JoinColumn(name="MANAGER_ID", referencedColumnName="id")})
     private Set<Users> projectManager = new HashSet<>();
     
+    @JsonView({ View.Projects.class })
     @ManyToMany(mappedBy = "projects",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     private Set<Users> users = new HashSet<>();
     
+    @JsonView({ View.Projects.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     @JoinColumn(name="Scheme", nullable = false)

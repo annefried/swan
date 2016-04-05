@@ -1,4 +1,3 @@
-
 'use strict';
 
 angular
@@ -6,7 +5,7 @@ angular
         .controller('schemesController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', '$location', '$q', function ($scope, $rootScope, $window, $http, $uibModal, $location, $q) {
 
                 // Redirect if client is not logged in
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'user') && ($window.sessionStorage.role != 'projectmanager')) {
+                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     window.location = "/discanno/signin.html";
                 } else {
 
@@ -16,39 +15,42 @@ angular
                      */
                     $scope.init = function () {
                         $scope.loaded = false;
-                        var httpProjects = $scope.loadProjects();
+                        var httpProjects = $scope.loadProjects2();
                         var httpSchemes = $scope.loadSchemes();
                         $q.all([httpSchemes, httpProjects]).then(function () {
                             $scope.loaded = true;
                             $scope.buildTableSchemes();
                         });
+                        
+                        if ($rootScope.tour !== undefined) {
+                            $rootScope.tour.resume();
+                        }
+                    };
+                    
+                    /**
+                     * Request list of all schemes.
+                     * @returns http-Object of query
+                     */
+                    $scope.loadSchemes = function () {
+                        var httpSchemes = $http.get("discanno/scheme/schemes").success(function (response) {
+                            $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
+                        }).error(function (response) {
+                            $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
+                        });
+                        return httpSchemes;
                     };
 
                     /**
                      * Request list of all Projects.
                      * @returns http-Object of query
                      */
-                    $scope.loadProjects = function () {
-                        var httpProjects = $http.get("tempannot/project").then(function (response) {
+                    $scope.loadProjects2 = function () {
+                        var httpProjects = $http.get("discanno/project").then(function (response) {
                             $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
                         }, function (err) {
                             $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
                         });
                         return httpProjects;
-                    };
-
-
-                    /**
-                     * Request list of all Schemes.
-                     * @returns http-Object of query
-                     */
-                    $scope.loadSchemes = function () {
-                        var httpSchemes = $http.get("tempannot/scheme/schemes").success(function (response) {
-                            $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
-                        }).error(function (response) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
-                        });
-                        return httpSchemes;
                     };
 
                     /**

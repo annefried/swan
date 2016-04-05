@@ -64,9 +64,8 @@ td p{
 }
 
 .headDark {
-    
     color:  #999;
-background-color: #222222;
+    background-color: #222222;
 }
 
 /*
@@ -74,8 +73,8 @@ background-color: #222222;
  */
 
 .sub-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
 }
 
 /*
@@ -83,7 +82,7 @@ background-color: #222222;
  * Hide default border to remove 1px line.
  */
 .navbar-fixed-top {
-  border: 0;
+    border: 0;
 }
 
 .progress span {

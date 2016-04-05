@@ -5,6 +5,8 @@
  */
 package de.unisaarland.discanno.business;
 
+import de.unisaarland.discanno.tokenization.model.Line;
+import de.unisaarland.discanno.tokenization.TokenizationUtil;
 import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.dao.*;
 import de.unisaarland.discanno.entities.*;
@@ -18,6 +20,7 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ws.rs.core.Response;
 
 /**
  * This service provides all business logic.
@@ -98,6 +101,27 @@ public class Service {
         }
     }
 
+    /**
+     * Tokenizes the given document and returns them.
+     * 
+     * @param docId
+     * @return 
+     */
+    public List<Line> getTokensByDocId(Long docId) {
+        
+        Document doc = (Document) documentDAO.find(docId, true);
+        List<Line> lines = TokenizationUtil.tokenize(doc.getText());
+        
+        return lines;
+    }
+    
+    public Response edit(Annotation entity) {
+        Annotation annoOrig = annotationDAO.find(entity.getId(), false);
+        annoOrig.setStart(entity.getStart());
+        annoOrig.setEnd(entity.getEnd());
+        annoOrig.setText(entity.getText());
+        return annotationDAO.merge(annoOrig);
+    }
     
     ///////////////////////////////////////////////
     //  PROCESS

@@ -29,6 +29,10 @@ import javax.persistence.ManyToOne;
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 public class LinkSet extends BaseEntity {
     
+    @JsonView({ View.Schemes.class })
+    @Column(name = "Name")
+    private String name;
+    
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     @JoinColumn(name = "startType_fk", nullable = false)
@@ -48,6 +52,14 @@ public class LinkSet extends BaseEntity {
                 fetch = FetchType.EAGER)
     private Set<LinkLabel> linkLabels = new HashSet<>();
 
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
     public TargetType getStartType() {
         return startType;

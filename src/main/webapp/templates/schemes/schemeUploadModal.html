@@ -28,7 +28,7 @@ and open the template in the editor.
                 <div class="row">
                     <!-- Upload scheme or select from existing schemes -->
                     <div class="form-group col-lg-6">
-                        <label>Upload scheme</label>
+                        <label>Upload scheme (JSON/ XML)</label>
                         <input class="btn btn-default btn-file"
                                type="file"
                                ng-model="file"  
@@ -58,21 +58,21 @@ and open the template in the editor.
                         </label>
                         <table class="form-group labelLinkSetTable table">
                             <thead class="headDark">
-                            <th class="col-md-2">
-                                Name
-                            </th>
-                            <th class="col-md-1">
-                                Exclusive
-                            </th>
-                            <th class="col-md-2">
-                                Target Types
-                            </th>
-                            <th class="col-md-1">
-                                Labels
-                            </th>
-                            <th class="col-md-1">
-                                Delete
-                            </th>
+                                <th class="col-md-2">
+                                    Name
+                                </th>
+                                <th class="col-md-1">
+                                    Exclusive
+                                </th>
+                                <th class="col-md-2">
+                                    Target Types
+                                </th>
+                                <th class="col-md-1">
+                                    Labels
+                                </th>
+                                <th class="col-md-1">
+                                    Delete
+                                </th>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="labelSet in labelSets">
@@ -106,22 +106,27 @@ and open the template in the editor.
                         </label>
                         <table class="form-group labelLinkSetTable table">
                             <thead class="headDark">
-
-                            <th class="col-md-2">
-                                Start Type
-                            </th>
-                            <th class="col-md-2">
-                                End Type
-                            </th>
-                            <th class="col-md-1">
-                                Labels
-                            </th>
-                            <th class="col-md-1">
-                                Delete
-                            </th>
+                                <th class="col-md-2">
+                                    Name
+                                </th>
+                                <th class="col-md-2">
+                                    Start Type
+                                </th>
+                                <th class="col-md-2">
+                                    End Type
+                                </th>
+                                <th class="col-md-1">
+                                    Labels
+                                </th>
+                                <th class="col-md-1">
+                                    Delete
+                                </th>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="linkSet in linkSets">
+                                    <td>
+                                        {{linkSet.name}}
+                                    </td>
                                     <td>
                                         {{linkSet.startType}}
                                     </td>
@@ -310,14 +315,14 @@ and open the template in the editor.
                                 Link Sets:
                             </label>
                         </div>
-                        <!--                        <div class="form-group">
-                                                    <label>
-                                                        Name:
-                                                    </label>
-                                                    <input type="text" placeholder="Enter name...."
-                                                           class="form-control input-sm"
-                                                           ng-model="nameLinkSet"/>
-                                                </div>-->
+                        <div class="form-group">
+                            <label>
+                                Name:
+                            </label>
+                            <input type="text" placeholder="Enter name...." 
+                                   class="form-control input-sm" 
+                                   ng-model="nameLinkSet"/>
+                        </div>
                         <div class="form-group col-lg-6 noMarginLeft">
                             <label>
                                 Start Type:

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<root>
+  <name>OneCharScheme</name>
+  <targetTypes>
+    <item>verb</item>
+    <item>passage</item>
+  </targetTypes>
+  <labelSets>
+    <item>
+      <name>SituationEntityType</name>
+      <exclusive>true</exclusive>
+      <appliesToTargetTypes>
+        <item>verb</item>
+        <item>passage</item>
+      </appliesToTargetTypes>
+      <labels>
+        <item>STATE</item>
+      </labels>
+    </item>
+    <item>
+      <name>DiscourseMode</name>
+      <exclusive>false</exclusive>
+      <appliesToTargetTypes>
+        <item>passage</item>
+      </appliesToTargetTypes>
+      <labels>
+        <item>N</item>
+      	<item>A</item>
+      	<item>R</item>
+      </labels>
+    </item>
+  </labelSets>
+  <linkSets>
+    <item>
+      <startType>verb</startType>
+      <endType>verb</endType>
+      <allowUnlabeledLinks>
+      </allowUnlabeledLinks>
+      <linkLabels>
+        <item>before</item>
+        <item>after</item>
+        <item>overlap</item>
+      </linkLabels>
+    </item>
+  </linkSets>
+</root>
+

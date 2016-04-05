@@ -5,13 +5,21 @@
  */
 package de.unisaarland.discanno.rest.services.v1;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.DocumentDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.BooleanHelper;
 import de.unisaarland.discanno.entities.Document;
+import de.unisaarland.discanno.tokenization.model.Line;
 import de.unisaarland.discanno.entities.Users;
+import de.unisaarland.discanno.rest.view.View;
 import java.net.URISyntaxException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -34,6 +42,9 @@ import javax.ws.rs.core.Response;
 @Path("/document")
 public class DocumentFacadeREST extends AbstractFacade<Document> {
 
+    // Needed to write JSON with specific properties e.g. views
+    private static final ObjectMapper mapper = new ObjectMapper();
+    
     @EJB
     Service service;
     
@@ -45,29 +56,15 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     
     
     @POST
-    @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(Document entity) {
-        
-        try {   
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
-            service.process(entity);
-            return documentDAO.create(entity);
-        } catch (SecurityException e){
-            return Response.status(Response.Status.FORBIDDEN).build();
-        }
-        
-    }
-    
-    @POST
     @Path("/{docId}/{userId}")
     @Consumes({MediaType.APPLICATION_JSON})
     public Response markDocumentAsCompleted(
                         @PathParam("docId") Long docId,
                         @PathParam("userId") Long userId,
-                        BooleanHelper boolVal) throws URISyntaxException {
+                        BooleanHelper boolVal) {
         
         try {
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.user);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.annotator));
             Document doc = service.markDocumentAsCompletedByDocIdUserId(docId, userId, boolVal.isValue());
             documentDAO.merge(doc);
             return Response.ok().build();
@@ -85,7 +82,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     public Response addDocumentToProjectREST(Document entity) {
         
         try {
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             Document doc = service.addDocumentToProject(entity);
             return documentDAO.create(doc);
         } catch (SecurityException e) {
@@ -101,7 +98,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     public Response remove(@PathParam("id") Long id) {
         
         try {
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.removeDocument(documentDAO.find(id));
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e){
@@ -118,11 +115,47 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     public Document find(@PathParam("id") Long id) throws URISyntaxException {
         
         try {
-            usersDAO.checkLogin(getSessionID());
-            return documentDAO.find(id);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+            Document doc = documentDAO.find(id);
+            return doc;
         } catch (SecurityException e){
-           Response.status(Response.Status.FORBIDDEN).build(); 
            return null;
+        }
+        
+    }
+    
+    /**
+     * Returns the tokenized text of the document.
+     * 
+     * The document will be tokenized with every call of getTokensByDocId. Tests
+     * showed that the tokenization with the creation of the document and storing
+     * the data in the database carries big performance disadvantages. Tokenize
+     * the document with every request is faster than retrieving them out of
+     * the database and sorting the values per token position and line.
+     * 
+     * @param docId
+     * @return 
+     */
+    @GET
+    @Path("/tokens/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getTokensByDocId(@PathParam("id") Long docId) {
+        
+        try {
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+            
+            List<Line> list = service.getTokensByDocId(docId);
+            return Response.ok(mapper.writerWithView(View.Tokens.class)
+                                        .withRootName("tokens")
+                                        .writeValueAsString(list))
+                            .build();
+        } catch (SecurityException e){
+            return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (NoResultException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(DocumentFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
         
     }

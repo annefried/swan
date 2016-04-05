@@ -7,12 +7,9 @@
     </div>
 </script>
 <div class="container-fluid">
-
     <div class="row">
-
         <div class="col-sm-12 col-md-12 main">
-            <h2 class="sub-header">Profile</h2>
-
+            <h2 class="sub-header" id="1-profile-header" style="display: inline-block">Profile</h2>
             <table class="table">
                 <thead class="headDark">
                     <tr>
@@ -44,6 +41,7 @@
                 <input type="text" ng-model="this.val" numbers-only/>
                 <b>Minutes</b>
                 <button class="btn btn-primary confirmButton"
+                        id="profile-add-timelogging"
                         type="button" 
                         ng-click="addTimeLogging()">Add Logged Time
                 </button>

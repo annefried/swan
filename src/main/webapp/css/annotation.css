@@ -2,6 +2,11 @@
     margin-left: 0.5em;
 }
 
+.scroll-pane
+{
+	overflow: scroll !important;
+}
+
 .annotationtitle {
     margin-left: 0.5em;
     margin-top: 4.5em;
@@ -12,8 +17,8 @@
 }
 
 .annotationoptions {
-    margin-left:  2em;
-    margin-right: 2em;
+    margin-left:  1em;
+    margin-right: 1em;
 }
 
 .graph {
@@ -48,7 +53,7 @@
 
 .rightwindow {
     position: fixed;
-    padding: 2em;
+    padding: 1em;
     left: 79%;
     top: 7.7em;
     transform: translateX(-50%);
@@ -64,6 +69,7 @@
 
 .optiontitle {
     font-weight: bold;
+    margin:0px;
 }
 
 .optiontext {
@@ -89,4 +95,23 @@
 }
 ::-moz-selection {
     background: #dbdbdb; /* Gecko Browsers */
+}
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{
+   float:left;  
+   position: initial;
+   margin: 3px 0.5ex;
+}
+
+.col-md-4 {
+    padding:0;
+    padding-right: 10px;
+}
+
+.panel-body {
+    padding:5px;
+}
+
+.col-md-7 {
+    padding:5px;
 }

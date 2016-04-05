@@ -7,6 +7,8 @@ angular.module('app')
                 return {
                     restrict: 'EA',
                     scope: {
+                        onUserChange: "&",
+                        sizeIncreased: "=",
                         data: "=",
                         annotations: "=",
                         targets: "=",
@@ -24,7 +26,12 @@ angular.module('app')
                         getAnnotation: "&",
                         addLink: "&",
                         linkable: "&",
-                        clearSelection: "&"
+                        clearSelection: "&",
+                        increaseSelectedAnnoSizeRight: "&",
+                        increaseSelectedAnnoSizeLeft: "&",
+                        decreaseSelectedAnnoSizeRight: "&",
+                        decreaseSelectedAnnoSizeLeft: "&",
+                        resetSizeIncreased: "&"
                     },
                     link: function ($scope, iElement) {
 
@@ -35,50 +42,41 @@ angular.module('app')
                         var textHeight = 0;
                         var lineHeight = 40;
                         var wordHeight = 40;
-                        var margin = 25;
-
+                        var margin = 0;
                         var annotationHeight = wordHeight / 2.4;
                         var scale = 1.2;
                         var arity = 1;
-
                         var linkStart;
                         var formText = [];
                         var formAnnotations = {};
                         var prefixes = [];
-
                         var currJ = 0;
-                        var jDistance = 50; //Amount of lines after which text should be redrawn
-
+                        var jDistance = 30; //Amount of lines after which text should be redrawn
+                        var defaultLinkOpacity = 0.1;
                         var oldJ = currJ;
                         var minJ = 0;
                         var maxJ = minJ + jDistance;
-
                         var svg = d3.select(iElement[0])
                                 .append("svg")
                                 .attr("width", "100%")
                                 .on("mouseup", function () {
                                     $scope.textMarkable(true);
                                 });
-
                         //Re-render on window resize
                         window.onresize = function () {
                             return $scope.$apply();
                         };
-
                         //Watch scroll behaviour of user to only render important
                         //text segments
                         angular.element($window).bind("scroll", function () {
                             var minDraw = window.pageYOffset;
                             currJ = Math.floor(minDraw / 40);
-
                             //If the user scrolled more than a specific threshold
                             //since the last re-rendering, a new text segment will
                             //be rendered
                             if (currJ >= (oldJ + jDistance / 1.7) || currJ <= (oldJ - jDistance / 1.55)) {
                                 oldJ = currJ;
-
                                 var minDist = oldJ - jDistance;
-
                                 if (minDist <= 0) {
                                     minJ = 0;
                                     maxJ = oldJ + jDistance - minDist;
@@ -92,7 +90,6 @@ angular.module('app')
                                 $scope.drawAnnotations(minJ, maxJ);
                                 $scope.drawLinks();
                                 $scope.highlightSelected();
-
                                 //Restores linking process.
                                 //This is called when the user tries to link two
                                 //annotations while a new text segment is loaded
@@ -102,7 +99,6 @@ angular.module('app')
                                 }
                             }
                         });
-
                         $scope.$watch(function () {
                             return angular.element(window)[0].innerWidth;
                         }, function () {
@@ -115,16 +111,13 @@ angular.module('app')
                             return $scope.render(true);
                         }
                         );
-
                         var maxLines = $scope.data.length;
                         var i = 0;
                         var j = 0;
-
                         $scope.setIJ = function (ii, jj) {
                             i = ii;
                             j = jj;
                         };
-
                         $scope.hot = function (right) {
                             $scope.words = [];
                             var words = $scope.words;
@@ -134,7 +127,6 @@ angular.module('app')
                             {
                                 var textWord = $scope.data[i].words[j];
                                 if (textWord !== undefined) {
-                                    // console.log(textWord);
                                     if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
                                         j++;
                                         $scope.hot('true');
@@ -175,13 +167,10 @@ angular.module('app')
                                     } else if ($scope.data[i].words[j - 1] !== undefined) {
                                         j--;
                                         $scope.hot('false');
-                                    } else {
-                                        console.log("End of first line");
                                     }
                                 }
                             }
                         };
-
                         $scope.hotShift = function (right, words) {
                             $rootScope.ishotkeys = 'true';
                             if (right) {
@@ -206,13 +195,10 @@ angular.module('app')
                                         i++;
                                         j = 0;
                                         $scope.hotShift(true, words);
-                                    } else {
-                                        console.log("End of last line");
                                     }
                                 }
                             } else {
                                 var textWord = $scope.data[i].words[j];
-                                //console.log(textWord);
                                 if ((words.indexOf(textWord) !== '-1') && (textWord !== undefined)) {
                                     if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
                                         words.pop(textWord);
@@ -247,7 +233,6 @@ angular.module('app')
                                 }
                             }
                         };
-
                         $scope.hotShiftDown = function (up, words) {
                             $rootScope.ishotkeys = 'true';
                             if (up === 'true') {
@@ -290,7 +275,6 @@ angular.module('app')
                                 $scope.setTemp({item: words});
                             }
                         };
-
                         $scope.words = [];
                         hotkeys.bindTo($scope)
                                 .add({
@@ -329,22 +313,22 @@ angular.module('app')
                                         $scope.hotShift(false, $scope.words);
                                     }
                                 })
-                                .add({
-                                    combo: 'right',
-                                    description: 'Jump word by word',
-                                    callback: function () {
-                                        j++;
-                                        $scope.hot('true');
-                                    }
-                                })
-                                .add({
-                                    combo: 'left',
-                                    description: 'Jump back to first word in current line',
-                                    callback: function () {
-                                        j--;
-                                        $scope.hot('false');
-                                    }
-                                })
+//                                .add({
+//                                    combo: 'right',
+//                                    description: 'Jump word by word',
+//                                    callback: function () {
+//                                        j++;
+//                                        $scope.hot('true');
+//                                    }
+//                                })
+//                                .add({
+//                                    combo: 'left',
+//                                    description: 'Jump back to first word in current line',
+//                                    callback: function () {
+//                                        j--;
+//                                        $scope.hot('false');
+//                                    }
+//                                })
                                 .add({
                                     combo: 'up',
                                     description: 'Jump to first word in upper line',
@@ -376,7 +360,7 @@ angular.module('app')
                                     }
                                 })
                                 .add({
-                                    combo: 'alt+right',
+                                    combo: 'right',
                                     description: 'Jump from annotation to annotation',
                                     callback: function () {
                                         $scope.index++;
@@ -385,14 +369,43 @@ angular.module('app')
                                     }
                                 })
                                 .add({
-                                    combo: 'alt+left',
+                                    combo: 'left',
                                     description: 'Jump from annotation to annotation',
                                     callback: function () {
                                         $scope.index--;
                                         var anno = $scope.getAllAnnos($scope.index, true);
                                         $scope.setSelection({item: anno});
                                     }
+                                })
+                                .add({
+                                    combo: 'f',
+                                    description: 'Add the word to the right to the current annotation',
+                                    callback: function () {
+                                        $scope.increaseSelectedAnnoSizeRight();
+                                    }
+                                })
+                                .add({
+                                    combo: 'd',
+                                    description: 'Remove the word to the right from the current annotation',
+                                    callback: function () {
+                                        $scope.decreaseSelectedAnnoSizeRight();
+                                    }
+                                })
+                                .add({
+                                    combo: 's',
+                                    description: 'Remove the word to the left from the current annotation',
+                                    callback: function () {
+                                        $scope.decreaseSelectedAnnoSizeLeft();
+                                    }
+                                })
+                                .add({
+                                    combo: 'a',
+                                    description: 'Add the word to the left to the current annotation',
+                                    callback: function () {
+                                        $scope.increaseSelectedAnnoSizeLeft();
+                                    }
                                 });
+
 
                         $scope.sort = function (array) {
                             return array.sort(function (a, b) {
@@ -401,7 +414,6 @@ angular.module('app')
                                 return ((x < y) ? -1 : ((x > y) ? 1 : 0));
                             });
                         };
-
                         $scope.index = -1;
                         $scope.getAllAnnos = function (index, back) {
                             var a = [];
@@ -424,17 +436,14 @@ angular.module('app')
                                 }
                             }
                         };
-
                         //Listens to selection changes and redraws correlating sections
                         $scope.$watch('selection', function (newVals, oldVals) {
                             $scope.highlightSelected(oldVals);
                         }, true);
-
                         $scope.$watch('links', function () {
                             $scope.drawLinks();
                             $scope.highlightSelected();
                         }, true);
-
                         //Listens to changes to the currently temporary annotation
                         //and redraws correlating sections
                         $scope.$watch('tempAnno', function (newVals, oldVals) {
@@ -452,17 +461,13 @@ angular.module('app')
                                 }
 
                                 var maxBefore = $scope.maxAnnotationInLine(formWords);
-
                                 $scope.setLineHeights();
                                 $scope.addFormAnnotation(newVals, false);
-
                                 var maxAfter = $scope.maxAnnotationInLine(formWords);
-
                                 var maxDiff = true;
                                 for (var b = 0; b < maxBefore.length; b++) {
                                     var maxB = maxBefore[b];
                                     var maxA = maxAfter[b];
-
                                     if (maxA !== maxB && maxA > 0 && maxB > 0) {
                                         maxDiff = false;
                                         break;
@@ -477,27 +482,24 @@ angular.module('app')
                                     $scope.drawAnnotations(minJ, maxJ);
                                     $scope.highlightSelected();
                                     $scope.clearSelection();
-
                                 } else
                                     $scope.render();
-
                             }
                         }, true);
-
                         //Listens to changes to the last added object
                         $scope.$watch('lastAdded', function (newVals) {
                             if (newVals !== undefined) {
                                 $scope.setLineHeights();
                                 $scope.addFormAnnotation(newVals, false);
+                                $scope.drawText(minJ, maxJ);
+                                $scope.drawLineNumbers(minJ, maxJ);
                                 $scope.drawAnnotations(minJ, maxJ);
                                 $scope.highlightSelected();
                             }
                         });
-
                         //Listens to changes to the last removed object
                         $scope.$watch('lastRemoved', function (newVals) {
                             if (newVals !== undefined) {
-
                                 //Gather all the formatted words that correspond
                                 //to the annotated words fo this annotation
                                 var formWords = [];
@@ -507,18 +509,14 @@ angular.module('app')
                                 }
 
                                 var maxBefore = $scope.maxAnnotationInLine(formWords);
-
                                 formAnnotations[newVals.id];
                                 $scope.removeFormAnnotation(newVals);
                                 $scope.setLineHeights();
-
                                 var maxAfter = $scope.maxAnnotationInLine(formWords);
-
                                 var maxDiff = true;
                                 for (var b = 0; b < maxBefore.length; b++) {
                                     var maxB = maxBefore[b];
                                     var maxA = maxAfter[b];
-
                                     if (maxA !== maxB && maxA > 0 && maxB > 0) {
                                         maxDiff = false;
                                         break;
@@ -535,7 +533,6 @@ angular.module('app')
                                     $scope.render();
                             }
                         });
-
                         //Listens to changes to the last changed object
                         $scope.$watch('lastSet', function (newVals) {
                             if (newVals !== undefined) {
@@ -543,7 +540,38 @@ angular.module('app')
                                 $scope.highlightSelected();
                             }
                         }, true);
-
+                        //Size increased
+                        $scope.$watch('sizeIncreased', function (newVals) {
+                            if (newVals !== undefined) {
+                                // Update Text words to increase annotatedBy Value
+                                for (var a = 0; a < newVals.words.length; a++) {
+                                    var word = newVals.words[a];
+                                    formText[word.lineIndex][word.wordIndex].word = word;
+                                }
+                                if (newVals.updatedWords !== undefined) {
+                                    for (var b = 0; b < newVals.updatedWords.length; b++) {
+                                        var word = newVals.updatedWords[b];
+                                        formText[word.lineIndex][word.wordIndex].word.annotatedBy++;
+                                    }
+                                }
+                                if (newVals.removedWord !== undefined) {
+                                    formText[newVals.removedWord.lineIndex][newVals.removedWord.wordIndex].word = newVals.removedWord;
+                                    for (var key in formText[newVals.removedWord.lineIndex][newVals.removedWord.wordIndex].annoGrid) {
+                                        if (formText[newVals.removedWord.lineIndex][newVals.removedWord.wordIndex].annoGrid[key] === newVals) {
+                                            formText[newVals.removedWord.lineIndex][newVals.removedWord.wordIndex].annoGrid[key] = undefined;
+                                        }
+                                    }
+                                }
+                                $scope.removeFormAnnotation(newVals);
+                                $scope.addFormAnnotation(newVals, false);
+                                $scope.setLineHeights();
+                                $scope.drawText(minJ, maxJ);
+                                $scope.drawLineNumbers(minJ, maxJ);
+                                $scope.drawAnnotations(minJ, maxJ);
+                                $scope.highlightSelected();
+                                $scope.resetSizeIncreased();
+                            }
+                        }, true);
                         //Listens to changes to the last removed target
                         $scope.$watch('removedTarget', function (newVals) {
                             if (newVals !== undefined) {
@@ -552,7 +580,16 @@ angular.module('app')
                                 $scope.drawAnnotations(minJ, maxJ);
                             }
                         });
-
+                        // ADDED for AnnoView
+                        $rootScope.changeCallback = function () {
+                            $scope.onUserChange();
+                        };
+                        $scope.$watch('annotations', function (newVals, oldVals) {
+                            $scope.formatTargets();
+                            $scope.formatAnnotations();
+                            $scope.setLineHeights();
+                            $scope.render(true);
+                        });
                         //Determines what text passage the cursor is currently highlighting
                         //and tries to create a new temporary annotation for that section
                         $scope.$watch('startSelection', function (newVals) {
@@ -582,7 +619,6 @@ angular.module('app')
                             if (startLine === undefined || startRow === undefined
                                     || endLine === undefined || endRow === undefined)
                                 return;
-
                             //Add every word between first and last selected word
                             var words = [];
                             var currentLine = startLine;
@@ -609,17 +645,16 @@ angular.module('app')
                                 $scope.setIJ(currentLine, w);
                             }
                             $scope.words = words;
-
                             $rootScope.ishotkeys = 'false';
                             $scope.setTemp({item: words});
                         });
-
                         //Computes and splits the lines displayed in the annotation field. This is necessary because it is
                         //possible that the lines of the text don't fit into one line of the actual field.
                         $scope.formatText = function () {
                             formText = [];
                             prefixes = [];
-                            width = d3.select(iElement[0])[0][0].offsetWidth / 10;
+                            var charSizeApproximation = 8.5;
+                            width = d3.select(iElement[0])[0][0].offsetWidth / charSizeApproximation;
                             textWidth = width;
                             var maxLines = $scope.data.length;
                             arity = Math.max(Math.floor(Math.log10(Math.abs(maxLines))), 0) + 1;
@@ -651,12 +686,12 @@ angular.module('app')
                                         var word = nextWord;
                                         iX = 0;
                                         while ((currLength * (wordSpacing / 4.25) + nextWordLength < textWidth)
-                                                || $scope.$parent.isSpace(word) || $scope.$parent.isPunctuation(word)) {
+                                                || $scope.$parent.isSpace(word)
+                                                || $scope.$parent.isPunctuation(word)) {
 
                                             currLength += word.length + 1;
                                             newLine.push(new formTextWord(line[index], undefined, 0, 0, iX, iY));
                                             iX++;
-
                                             index++;
                                             if (line[index] !== undefined)
                                                 word = line[index].text;
@@ -684,7 +719,6 @@ angular.module('app')
 
                             lineCount = iY;
                         };
-
                         //Set the height of the lines according to the amount
                         //of annotations that the most annotated word in this line has.
                         $scope.setLineHeights = function () {
@@ -692,7 +726,6 @@ angular.module('app')
                             //Reset heights of the prefixes
                             for (var g = 0; g < prefixes.length; g++)
                                 prefixes[g].height = 0;
-
                             var currentLine = 0;
                             for (var i = 0; i < formText.length; i++) {
                                 var index = 0;
@@ -745,7 +778,6 @@ angular.module('app')
                             height = textHeight;
                             svg.attr('height', height);
                         };
-
                         //For every target add a formatted version to the text field
                         $scope.formatTargets = function () {
                             formAnnotations = [];
@@ -757,7 +789,6 @@ angular.module('app')
                                 }
                             }
                         };
-
                         //For every annotation add a formatted version to the text field
                         $scope.formatAnnotations = function () {
                             for (var id in $scope.annotations) {
@@ -765,17 +796,14 @@ angular.module('app')
                                 $scope.addFormAnnotation(anno, false);
                             }
                         };
-
                         //Add a new formatted annotation to the text
                         $scope.addFormAnnotation = function (annotation, isTarget) {
                             var formAnno = new formAnnotation(annotation, isTarget);
                             var add = $scope.buildAnnotationBoxes(formAnno);
                             if (add)
                                 formAnnotations[annotation.id] = formAnno;
-
                             return formAnno;
                         };
-
                         $scope.buildAnnotationBoxes = function (formAnnotation) {
 
                             var annotation = formAnnotation.annotation;
@@ -842,11 +870,9 @@ angular.module('app')
 
                             return true;
                         };
-
                         //Iterate over annotation grid to find a position for the annotations
                         //that don't overlap with existing annotations
                         $scope.findBoxPosition = function (annotationBox) {
-
                             for (var k = 0; k < annotationBox.formWords[0].maxAnnotations; k++) {
                                 var foundPosition = false;
                                 for (var l = 0; l < annotationBox.formWords.length; l++) {
@@ -865,15 +891,15 @@ angular.module('app')
                                     annotationBox.height = k;
                                     for (var h = 0; h < annotationBox.formWords.length; h++) {
                                         var formWord = annotationBox.formWords[h];
-                                        if (!isTempAnno)
+                                        if (!isTempAnno) {
                                             formWord.annoGrid[k] = annotationBox.annotation;
+                                        }
                                     }
 
                                     break;
                                 }
                             }
                         };
-
                         //Remove a formatted annotation to the text and rearrange those
                         //annotations that annotate the same words in the text
                         $scope.removeFormAnnotation = function (annotation) {
@@ -910,8 +936,6 @@ angular.module('app')
 
                             delete formAnnotations[annotation.id];
                         };
-
-
                         //Main rendering function of the annotation field
                         $scope.render = function (resize) {
                             if (resize) {
@@ -925,7 +949,6 @@ angular.module('app')
                             $scope.highlightSelected();
                             $scope.drawLineNumbers(minJ, maxJ);
                         };
-
                         //Draw (invisible) background of text that can react to click events
                         $scope.drawBackground = function () {
                             svg.append("rect")
@@ -944,15 +967,12 @@ angular.module('app')
                                         });
                                     });
                         };
-
                         //Draw the the basic text
                         $scope.drawText = function (minLine, maxLine) {
                             svg.selectAll(".annotationtext").remove();
-
                             var pre = 30 + 20 * arity;
                             var currentLine = 0;
                             var currentHeight = margin;
-
                             //Estimate which lines actually need to be drawn.
                             //This is necessary because one text line can occupy
                             //several actual lines on the screen.
@@ -963,13 +983,10 @@ angular.module('app')
                             var lastLine = maxLine;
                             for (var a = 0; a < formText.length; a++) {
                                 var currLine = formText[a];
-
                                 if (currLine.length > 0) {
                                     var firstWord = currLine[0];
-
                                     if (firstWord.lY >= minLine && firstLine === 0 && minLine > 0)
                                         firstLine = a - 2;
-
                                     if (firstWord.lY >= maxLine) {
                                         lastLine = a;
                                         break;
@@ -980,15 +997,12 @@ angular.module('app')
                             //Estimate the position of those lines on the screen
                             for (var c = 0; c < firstLine; c++) {
                                 var currLine = formText[c];
-
                                 if (currLine.length === 0)
                                     currentHeight += lineHeight;
                                 else {
                                     var lY = 0;
                                     for (var b = 0; b < currLine.length; b++) {
                                         var currWord = currLine[b];
-
-
                                         if (currWord.lY > lY) {
                                             lY = currWord.lY;
                                             currentHeight += currWord.height;
@@ -1003,12 +1017,10 @@ angular.module('app')
                             for (var j = firstLine; j <= lastLine; j++) {
                                 var dat = formText[j];
                                 var pos = pre;
-
                                 //Safety measure:
                                 //Stop drawing if a non-existing line is reached
                                 if (dat === undefined)
                                     break;
-
                                 if (dat.length === 0) {
                                     currentHeight += lineHeight;
                                     continue;
@@ -1018,14 +1030,21 @@ angular.module('app')
                                 //corresponding lines on the screen
                                 svg.selectAll("text.content")
                                         .data(dat.filter(function (d) {
-                                            return !$scope.$parent.isSpace(d.word.text);
+                                            var guard = true;
+                                            for (var k = 0; k < dat.length; k++) {
+                                                guard = guard & $scope.$parent.isSpace(dat[k].word.text);
+                                            }
+                                            if (guard) {
+                                                return true;
+                                            } else {
+                                                return !$scope.$parent.isSpace(d.word.text);
+                                            }
                                         }))
                                         .enter()
                                         .append(function (d) {
                                             var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
                                             text.innerHTML = d.word.text;
                                             d.element = text;
-
                                             return text;
                                         })
 
@@ -1036,14 +1055,11 @@ angular.module('app')
                                         .attr("x", function (d) {
                                             if (d.lX === 0)
                                                 pos = pre;
-
                                             var spacing = ($scope.$parent.isPunctuation(d.word.text)) ? 0 : wordSpacing;
                                             pos += spacing;
-
                                             d.x = pos;
                                             d.width = d.element.getComputedTextLength();
                                             pos += d.width;
-
                                             return d.x;
                                         })
                                         .attr("y", function (d, i) {
@@ -1075,28 +1091,23 @@ angular.module('app')
                                         });
                             }
                         };
-
                         //Draw annotations above corresponding words in the text
                         $scope.drawAnnotations = function (minLine, maxLine) {
                             svg.selectAll(".annotationbox").remove();
                             svg.selectAll(".annotationboxtext").remove();
-
                             for (var annoID in formAnnotations) {
                                 var annotation = formAnnotations[annoID];
-
                                 //If the annotation isn't visible, we don't need to draw it
                                 if (!$scope.isVisible(annotation, minLine, maxLine))
                                     continue;
-
                                 var annotationBoxes = annotation.annotationBoxes;
-
                                 //Draw the background boxes
                                 svg.selectAll("annotationboxes")
                                         .data(annotationBoxes)
                                         .enter()
                                         .append("rect")
                                         .attr("fill", function (d) {
-                                            return d.annotation.color.fill;
+                                            return d.annotation.color.fill();
                                         })
                                         .attr("stroke", function (d) {
                                             return d.annotation.color.back;
@@ -1111,7 +1122,6 @@ angular.module('app')
                                             var width = 0;
                                             for (var i = 0; i < d.formWords.length; i++) {
                                                 var formWord = d.formWords[i];
-
                                                 if (formWord.element === undefined)
                                                     width += wordSpacing;
                                                 else
@@ -1142,7 +1152,6 @@ angular.module('app')
                                                 for (var j = 0; j < formAnno.annotationBoxes[i].formWords.length; j++) {
                                                     var formWord = formAnno.annotationBoxes[i].formWords[j];
                                                     var element = formWord.element;
-
                                                     if (element !== undefined)
                                                         element.setAttribute("fill", "black");
                                                 }
@@ -1173,7 +1182,6 @@ angular.module('app')
                                                     $scope.setSelection({item: d.annotation});
                                             });
                                         });
-
                                 //Draw the actual annotation text
                                 svg.selectAll("annotations")
                                         .data(annotationBoxes)
@@ -1185,11 +1193,9 @@ angular.module('app')
                                         })
                                         .attr("x", function (d) {
                                             var firstWord = d.formWords[0];
-
                                             var width = 0;
                                             for (var i = 0; i < d.formWords.length; i++) {
                                                 var formWord = d.formWords[i];
-
                                                 if (formWord.element === undefined)
                                                     width += wordSpacing;
                                                 else
@@ -1214,7 +1220,6 @@ angular.module('app')
                                                 textLength += text.length;
                                             }
                                             textLength = Math.floor(textLength * 0.7);
-
                                             return d.annotation.shortenLabels(textLength);
                                         })
                                         .attr("class", "annotationboxtext unselectable")
@@ -1224,7 +1229,6 @@ angular.module('app')
                                                 for (var j = 0; j < formAnno.annotationBoxes[i].formWords.length; j++) {
                                                     var formWord = formAnno.annotationBoxes[i].formWords[j];
                                                     var element = formWord.element;
-
                                                     if (element !== undefined)
                                                         element.setAttribute("fill", d.annotation.color.fill);
                                                 }
@@ -1236,7 +1240,6 @@ angular.module('app')
                                                 for (var j = 0; j < formAnno.annotationBoxes[i].formWords.length; j++) {
                                                     var formWord = formAnno.annotationBoxes[i].formWords[j];
                                                     var element = formWord.element;
-
                                                     if (element !== undefined)
                                                         element.setAttribute("fill", "black");
                                                 }
@@ -1266,7 +1269,6 @@ angular.module('app')
                                         });
                             }
                         };
-
                         //Draw the links as lines between the corresponding annotation boxes
                         $scope.drawLinks = function () {
 
@@ -1278,24 +1280,19 @@ angular.module('app')
                                         return d.y;
                                     })
                                     .interpolate("linear");
-
                             svg.selectAll(".annotationlink").remove();
                             svg.selectAll(".annotationlinktext").remove();
-                            svg.selectAll("linkmarker").remove();
-
+                            svg.selectAll("defs").remove();
                             var minLine = minJ;
                             var maxLine = maxJ;
-
                             for (var outerLinkID in $scope.links) {
                                 var outerLinks = $scope.links[outerLinkID];
-
                                 //Path of the link
                                 svg.selectAll("annotationlinks")
                                         .data(d3.entries(outerLinks).filter(function (d) {
                                             var link = d.value;
                                             var source = formAnnotations[link.source.id];
                                             var target = formAnnotations[link.target.id];
-
                                             //Only draw link when at least one of the annotations are visible
                                             return $scope.isVisible(source, minLine, maxLine) || $scope.isVisible(target, minLine, maxLine);
                                         }))
@@ -1308,14 +1305,12 @@ angular.module('app')
                                             var formTarget = formAnnotations[target.id];
                                             var sourceBox = formSource.annotationBoxes[formSource.annotationBoxes.length - 1];
                                             var targetBox = formTarget.annotationBoxes[0];
-
                                             //Determine the edges of the path of the link
                                             var lineData = [{"x": sourceBox.x + sourceBox.width, "y": sourceBox.y + 0.5 * wordHeight / 3},
                                                 {"x": ((sourceBox.x + sourceBox.width * 1.3)), "y": sourceBox.y + 0.5 * wordHeight / 3},
                                                 {"x": ((sourceBox.x + sourceBox.width * 1.3)), "y": targetBox.y - 1.5 * wordHeight / 3},
                                                 {"x": targetBox.x + 0.5 * targetBox.width, "y": targetBox.y - 1.5 * wordHeight / 3},
                                                 {"x": targetBox.x + 0.5 * targetBox.width, "y": targetBox.y}];
-
                                             return lineFunction(lineData);
                                         })
                                         .attr("fill", "none")
@@ -1333,7 +1328,6 @@ angular.module('app')
                                                 $scope.drawEverything();
                                             }
                                         });
-
                                 //Draw arrow at the end of the path
                                 svg.append("svg:defs").selectAll("linkmarker")
                                         .data(["bolt"])
@@ -1348,7 +1342,6 @@ angular.module('app')
                                         .attr("orient", "auto")
                                         .append("svg:path")
                                         .attr("d", "M0,-5L10,0L0,5");
-
                                 //Link text
                                 svg.selectAll("annotationlinktexts")
                                         .data(d3.entries(outerLinks))
@@ -1377,11 +1370,9 @@ angular.module('app')
                                         });
                             }
                         };
-
                         //Draw the line numbers
                         $scope.drawLineNumbers = function (minLine, maxLine) {
                             svg.selectAll("text.linenumber").remove();
-
                             //Estimate the position of the first line number on
                             //the screen
                             var currentHeight = margin;
@@ -1416,7 +1407,6 @@ angular.module('app')
                                     })
                                     .classed("linenumber", true);
                         };
-
                         //Draw everything with regular opacity
                         $scope.drawEverything = function () {
                             svg.selectAll(".annotationtext")
@@ -1426,12 +1416,11 @@ angular.module('app')
                             svg.selectAll(".annotationboxtext")
                                     .style("opacity", 1);
                             svg.selectAll(".annotationlink")
-                                    .style("opacity", 0);
+                                    .style("opacity", defaultLinkOpacity);
                             svg.selectAll(".annotationlinktext")
                                     .text("")
-                                    .style("opacity", 0);
+                                    .style("opacity", defaultLinkOpacity);
                         };
-
                         //Hightlight all annotations and their corresponding text
                         $scope.highlightAllAnnotations = function () {
                             var opa = 0.15;
@@ -1439,38 +1428,31 @@ angular.module('app')
                                     .style("opacity", function (d) {
                                         return 1;
                                     });
-
                             svg.selectAll(".annotationboxtext")
                                     .style("opacity", function (d) {
                                         return 1;
                                     });
-
                             svg.selectAll(".annotationtext")
                                     .style("opacity", function (d) {
                                         for (var id in d.annoGrid)
                                             return 1;
-
                                         return opa;
                                     });
                         };
-
                         //Hightlight all annotations and their corresponding text
                         //if they are linkable with the source annotation
                         $scope.highlightLinkableAnnotations = function (source) {
                             var opa = 0.15;
-
                             svg.selectAll(".annotationbox")
                                     .style("opacity", function (d) {
                                         var linkable = $scope.linkable({source: source, target: d.annotation});
                                         return linkable ? 1 : opa;
                                     });
-
                             svg.selectAll(".annotationboxtext")
                                     .style("opacity", function (d) {
                                         var linkable = $scope.linkable({source: source, target: d.annotation});
                                         return linkable ? 1 : opa;
                                     });
-
                             svg.selectAll(".annotationtext")
                                     .style("opacity", function (d) {
                                         for (var id in d.annoGrid) {
@@ -1482,16 +1464,26 @@ angular.module('app')
                                         return opa;
                                     });
                         };
-
                         //Highlights the currently selected object and all
                         //related objects
                         $scope.highlightSelected = function (lastSelection) {
                             var opa = 0.15;
                             var oma = 0.55;
-
                             if ($scope.selection === null || $scope.selection === undefined)
                                 $scope.drawEverything();
                             else {
+                                if ($scope.selection !== null && $scope.selection !== undefined && $scope.selection.selectedInGraph === true) {
+                                    // If clicked in the graph, find annotation
+                                    for (var annoID in formAnnotations) {
+                                        var annotation = formAnnotations[annoID];
+                                        if (annotation.annotation === $scope.selection) {
+                                            // Move scrollbar to position of first word in Anno, since first box might not have a coordinate
+                                            var firstWord = annotation.annotationBoxes[0].formWords[0];
+                                            window.scrollTo(firstWord.x, firstWord.y);
+                                        }
+                                    }
+                                    $scope.selection.selectedInGraph = false;
+                                }
                                 svg.selectAll(".annotationtext")
                                         .style("opacity", function (d) {
                                             for (var id in d.annoGrid) {
@@ -1520,7 +1512,6 @@ angular.module('app')
 
                                             return opa;
                                         });
-
                                 svg.selectAll(".annotationbox")
                                         .style("stroke-width", function (d) {
                                             return (d.annotation === $scope.selection) ? 1.65 : 1;
@@ -1546,7 +1537,6 @@ angular.module('app')
                                                     return oma;
                                             }
                                         });
-
                                 svg.selectAll(".annotationboxtext")
                                         .style("opacity", function (d) {
                                             var linked = 0;
@@ -1565,37 +1555,32 @@ angular.module('app')
                                                     return opa;
                                                 case 1:
                                                     return oma;
-
                                                 default:
                                                     return 1;
                                             }
                                         });
-
                                 svg.selectAll(".annotationlink")
                                         .style("opacity", function (d) {
                                             var linked = $scope.getConnection(d.value, $scope.selection);
-
                                             switch (linked) {
                                                 case 0:
-                                                    return 0;
+                                                    return defaultLinkOpacity;
                                                 case 3:
                                                     return 0.6;
                                                 default:
                                                     return 0.39;
                                             }
                                         });
-
                                 svg.selectAll(".annotationlinktext")
                                         .text(function (d) {
                                             var t = d.value.shortenLabels(10);
-                                            return (t === "") ? "Empty Link" : t;
+                                            return (t === "") ? "click here to add label" : t;
                                         })
                                         .style("opacity", function (d) {
                                             var linked = $scope.getConnection(d.value, $scope.selection);
-
                                             switch (linked) {
                                                 case 0:
-                                                    return 0;
+                                                    return defaultLinkOpacity;
                                                 case 3:
                                                     return 1;
                                                 default:
@@ -1604,11 +1589,9 @@ angular.module('app')
                                         })
                                         .attr("x", function (d) {
                                             var link = d.value;
-
                                             //Set selection to lastSelection when selecting a link to prevent jumping text
                                             var sel = (lastSelection !== undefined && lastSelection !== null && $scope.selection.type === "Link")
                                                     ? lastSelection : $scope.selection;
-
                                             var linked = $scope.getConnection(link, sel);
                                             switch (linked) {
                                                 case 1:
@@ -1616,24 +1599,20 @@ angular.module('app')
                                                     var target = link.target;
                                                     var formTarget = formAnnotations[target.id];
                                                     var targetBox = formTarget.annotationBoxes[0];
-
                                                     return targetBox.x + targetBox.width * 0.5;
                                                 default:
                                                     var source = link.source;
                                                     var formTarget = formAnnotations[source.id];
                                                     var boxCount = formTarget.annotationBoxes.length;
                                                     var sourceBox = formTarget.annotationBoxes[boxCount - 1];
-
                                                     return sourceBox.x + sourceBox.width + 10;
                                             }
                                         })
                                         .attr("y", function (d) {
                                             var link = d.value;
-
                                             //Set selection to lastSelection when selecting a link to prevent jumping text
                                             var sel = (lastSelection !== undefined && lastSelection !== null && $scope.selection.type === "Link")
                                                     ? lastSelection : $scope.selection;
-
                                             var linked = $scope.getConnection(link, sel);
                                             switch (linked) {
                                                 case 1:
@@ -1641,24 +1620,20 @@ angular.module('app')
                                                     var target = link.target;
                                                     var formTarget = formAnnotations[target.id];
                                                     var targetBox = formTarget.annotationBoxes[0];
-
                                                     //Set heightScale depending on the relation of source and target
                                                     var heightScale = ($scope.links[target.id] !== undefined
                                                             && $scope.links[target.id][link.source.id] !== undefined && $scope.selection.type !== "Link") ? 0.7 : 0.6;
-
                                                     return targetBox.y - wordHeight * heightScale;
                                                 default:
                                                     var source = link.source;
                                                     var formTarget = formAnnotations[source.id];
                                                     var boxCount = formTarget.annotationBoxes.length;
                                                     var sourceBox = formTarget.annotationBoxes[boxCount - 1];
-
                                                     return sourceBox.y;
                                             }
                                         });
                             }
                         };
-
                         //Determine relation between the object and the current selection
                         $scope.getConnection = function (object, selection) {
                             switch (selection.type) {
@@ -1669,7 +1644,6 @@ angular.module('app')
                                     return (object === selection) ? 3 : 0;
                             }
                         };
-
                         //Checks if a and b are linked
                         //Returns 0 when a and b are not linked
                         //Returns 1 when a -> b
@@ -1680,20 +1654,16 @@ angular.module('app')
                                 return 0;
                             if (a === b)
                                 return 3;
-
                             var ab = ($scope.links[a.id] !== undefined) && ($scope.links[a.id][b.id] !== undefined);
                             var ba = ($scope.links[b.id] !== undefined) && ($scope.links[b.id][a.id] !== undefined);
-
                             if (ab && ba)
                                 return 3;
                             if (ab)
                                 return 1;
                             if (ba)
                                 return 2;
-
                             return 0;
                         };
-
                         //Checks if the annotation is part of the link
                         //Returns 0 when that's not the case
                         //Returns 1 when the annotation is the source
@@ -1703,16 +1673,13 @@ angular.module('app')
                                 return 1;
                             if (link.target.id === annotation.id)
                                 return 2;
-
                             return 0;
                         };
-
                         //Makes the whole text field markable or not
                         $scope.textMarkable = function (markable) {
                             svg.selectAll(".annotationtext")
                                     .classed("unselectable", !markable);
                         };
-
                         //Determine the actual amount of lines displayed on the screen
                         $scope.maxLines = function () {
                             //Iterate over each line starting from the end of the text until a non-empty
@@ -1720,7 +1687,6 @@ angular.module('app')
                             var count = 0;
                             for (var k = formText.length - 1; k >= 0; k--) {
                                 var line = formText[k];
-
                                 if (line.length === 0)
                                     count++;
                                 else {
@@ -1733,24 +1699,19 @@ angular.module('app')
 
                             return count;
                         };
-
                         //Determines if the user tries to link annotations at the moment
                         $scope.linking = function () {
                             return linkStart !== undefined && linkStart !== null;
                         };
-
                         //Checks if none of the annotated words of the formatted
                         //words is annotated more than the threshold
                         $scope.maxAnnotated = function (formAnno, thresh) {
                             if (formAnno === undefined)
                                 return false;
-
                             for (var i = 0; i < formAnno.annotationBoxes.length; i++) {
                                 var annoBox = formAnno.annotationBoxes[i];
-
                                 for (var j = 0; j < annoBox.formWords.length; j++) {
                                     var formWord = annoBox.formWords[j];
-
                                     if (formWord.maxAnnotations > thresh) {
                                         return false;
                                     }
@@ -1759,15 +1720,12 @@ angular.module('app')
 
                             return true;
                         };
-
                         $scope.maxAnnotationInLine = function (words) {
                             var max = 0;
                             var line = words[0].lY;
                             var maxi = [];
-
                             for (var i = 0; i < words.length; i++) {
                                 var word = words[i];
-
                                 if (line < word.lY) {
                                     maxi.push(max);
                                     max = word.maxAnnotations;
@@ -1779,12 +1737,10 @@ angular.module('app')
                             maxi.push(max);
                             return maxi;
                         };
-
                         $scope.isVisible = function (formAnnotation, minLine, maxLine) {
                             if (minLine !== undefined && maxLine !== undefined) {
                                 var min = formAnnotation.startLine();
                                 var max = formAnnotation.endLine();
-
                                 if (max < minLine || min > maxLine)
                                     return false;
                             }

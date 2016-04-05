@@ -18,5 +18,7 @@ public class View {
     public static class Documents {}
     public static class Links {}
     public static class Users {}
+    public static class Tokens {}
+    public static class Projects {}
     
 }

@@ -24,7 +24,7 @@ angular.module('app').controller('userAddModalController', function ($scope, $ro
             'undone': 0
         };
 
-        $http.post('tempannot/user', JSON.stringify(jsonTemplate))
+        $http.post('discanno/user', JSON.stringify(jsonTemplate))
                 .then(function (response) {
                     user.id = response.data;
                     $uibModalInstance.close(user);

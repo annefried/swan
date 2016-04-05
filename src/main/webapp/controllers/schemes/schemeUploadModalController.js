@@ -53,7 +53,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             $scope.currentLabelSet = [];
             $scope.selectedTargetsLabel = [];
         } else {
-            $rootScope.addAlert({type: 'danger', msg: 'A LabelSetr with this name is already part of this Scheme.'});
+            $rootScope.addAlert({type: 'danger', msg: 'A LabelSet with this name is already part of this scheme.'});
         }
     };
     /**
@@ -76,6 +76,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             labels.push($scope.currentLinkSet[i].name);
         }
         var newLinkSet = {
+            name: $scope.nameLinkSet,
             startType: $scope.startType,
             endType: $scope.endType,
             linkLabels: labels
@@ -233,7 +234,11 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             var xmlDoc = $.parseXML($fileContent);
             var xml = xmlDoc.responseXML;
             var content = xml2json(xmlDoc, "");
+            
             content = content.replace("[{[{", "[{");
+            content = content.replace("[{[{", "[{");
+
+            content = content.replace("}]}]", "}]");
             content = content.replace("}]}]", "}]");
         } catch (e) {
             content = $fileContent;
@@ -241,9 +246,8 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
 
         try {
             $scope.uploadedScheme = content;
-            console.log(content);
             var scheme = JSON.parse(content);
-            console.log(scheme);
+
             if (scheme.targetTypes[0].length == 1) {
                 var targetType = [scheme.targetTypes];
                 scheme.targetTypes = targetType;
@@ -338,13 +342,14 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                         linkLabels.push(label);
                     }
                     ;
-                    var link = {
+                    var linkSet = {
+                        "name": file.linkSets[i].name,
                         "startType": startType,
                         "endType": endType,
                         "allowUnlabeledLinks": file.linkSets[i].allowUnlabeledLinks,
                         "linkLabels": linkLabels
                     };
-                    linkSets.push(link);
+                    linkSets.push(linkSet);
                 }
                 var template =
                         {
@@ -355,7 +360,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                             "linkSets": linkSets,
                             "projects": []
                         };
-                $http.post("tempannot/scheme", JSON.stringify(template)
+                $http.post("discanno/scheme", JSON.stringify(template)
                         ).then(function (response) {
                     $rootScope.schemesTable[template.name] = template;
                     var schemePreview = {
@@ -367,6 +372,11 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                         'linkSetCount': template.linkSets.length
                     };
                     $rootScope.tableSchemes.push(schemePreview);
+                    
+                    // Check if the guided tour can continue
+                    if ($rootScope.tour !== undefined) {
+                        $("#tour-next-button").prop("disabled", false);
+                    }
                 }, function () {
                     $rootScope.addAlert({type: 'danger', msg: 'A Scheme with this name already exists.'});
                 });
@@ -379,7 +389,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
 
     };
     $scope.loadSchemes = function () {
-        $http.get('tempannot/scheme/schemes').then(function (response) {
+        $http.get('discanno/scheme/schemes').then(function (response) {
             var schemes = JSOG.parse(JSON.stringify(response.data.schemes));
             $scope.loadedSchemes = [];
             for (var i = 0; i < schemes.length; i++) {

@@ -7,6 +7,7 @@ package de.unisaarland.discanno.rest.services.v1;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.LinkDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
@@ -57,14 +58,11 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
     public Response create(Link entity) {
 
         try {
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.user);
-
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.annotator));
             service.process(entity);
-
             return usersDAO.create(entity);
         } catch (SecurityException e) {
-            Response.status(Response.Status.FORBIDDEN).build();
-            return null;
+            return Response.status(Response.Status.FORBIDDEN).build();
         }
 
     }
@@ -74,8 +72,8 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
     public Response remove(@PathParam("id") Long id) {
 
         try {
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.user);
-            usersDAO.remove(usersDAO.find(id));
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.annotator));
+            linkDAO.remove(linkDAO.find(id));
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
@@ -91,7 +89,7 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
     public Response getLinksByUserIdDocId(@PathParam("userId") Long userId, @PathParam("docId") Long docId) {
 
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
 
             List<Link> list = linkDAO.getAllLinksByUserIdDocId(userId, docId);
 
@@ -123,7 +121,7 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
     public Response removeLabelFromLinkREST(@PathParam("linkId") Long linkId, LinkLabel label) {
         
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             service.removeLabelFromLink(linkDAO.find(linkId), label);
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
@@ -140,7 +138,7 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
     public Response addLinkLabelToLinkREST(@PathParam("linkId") Long linkId, LinkLabel label) {
         
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             Link link = service.addLinkLabelToLink(linkId, label);
             linkDAO.merge(link);
             return Response.ok().build();

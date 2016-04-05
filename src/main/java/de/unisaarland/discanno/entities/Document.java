@@ -6,6 +6,9 @@
 package de.unisaarland.discanno.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
@@ -30,7 +33,7 @@ import javax.persistence.OneToMany;
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 public class Document extends BaseEntity {
     
-    @JsonView({ View.Documents.class })
+    @JsonView({ View.Documents.class, View.Projects.class })
     @Column(name = "Name")
     private String name;
     
@@ -38,15 +41,17 @@ public class Document extends BaseEntity {
      * The column definiton "TEXT" determines the database type.
      * From character varying(255) to "text"
      */
-    @JsonView({ View.Documents.class })
+    @JsonProperty(access = Access.WRITE_ONLY)
     @Column(name = "Text", columnDefinition = "TEXT")
     private String text;
     
+    @JsonView({ View.Documents.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 optional = false)
     @JoinColumn(name = "project_fk")
     private Project project;
     
+    @JsonView({ View.Documents.class, View.Projects.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 mappedBy = "document")
     private Set<State> states = new HashSet<>();
@@ -55,6 +60,7 @@ public class Document extends BaseEntity {
      * These are the default annotations/ targets, given by the uploader.
      * They do not have an user id.
      */
+    @JsonView({ View.Documents.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE }, fetch = FetchType.EAGER)
     @JoinTable(
         name="DOCUMENT_DEFAULTANNOTATIONS",

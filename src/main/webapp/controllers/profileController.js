@@ -2,7 +2,7 @@ angular
         .module('app')
         .controller('profileController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', function ($scope, $rootScope, $window, $http, $uibModal) {
 
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'user') && ($window.sessionStorage.role != 'projectmanager')) {
+                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     window.location = "/discanno/signin.html";
                 } else {
 
@@ -11,6 +11,10 @@ angular
                     $scope.init = function () {
                         $scope.getUser();
                         $scope.getTime();
+                        
+                        if ($rootScope.tour !== undefined) {
+                            $rootScope.tour.resume();
+                        }
                     };
 
                     $scope.getUser = function () {
@@ -22,7 +26,7 @@ angular
 
                     $scope.getTime = function () {
                         $scope.tilog = [];
-                        $http.get("tempannot/timelogging/" + $scope.userId).then(function (response) {
+                        $http.get("discanno/timelogging/" + $scope.userId).then(function (response) {
                             $scope.tilog = JSOG.parse(JSON.stringify(response.data)).timelogging;
                             $scope.calcTotalTime();
                         });
@@ -61,7 +65,7 @@ angular
                             };
                             var jsonStr = JSON.stringify(json);
 
-                            $http.post("tempannot/timelogging", jsonStr).then(function (response) {
+                            $http.post("discanno/timelogging", jsonStr).then(function (response) {
                                 if (response.status == 200) {
                                     $scope.tilog.push(jsonForTable);
                                     $rootScope.addAlert({type: 'success', msg: 'Time logged!'});
@@ -121,7 +125,7 @@ angular.module('app').controller('profileEditModalController', function ($scope,
     
     $scope.changePassword = function (password) {
 
-        $http.put('tempannot/user/' + $window.sessionStorage.uId, password).success(function (response) {
+        $http.put('discanno/user/' + $window.sessionStorage.uId, password).success(function (response) {
             $rootScope.addAlert({type: 'success', msg: 'Password changed succesfully.'});
         }).error(function (response) {
             $rootScope.addAlert({type: 'danger', msg: 'Sorry something went wrong:('});

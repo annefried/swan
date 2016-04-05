@@ -24,31 +24,32 @@ angular.module('app')
                         var width;
                         var options = d3.select(iElement[0])
                                 .attr("width", "100%");
-                        
+
                         //Re-render on window resize
                         window.onresize = function () {
                             return $scope.$apply();
                         };
-                        
+
                         $scope.$watch(function () {
                             return angular.element(window)[0].innerWidth;
                         }, function () {
                             return $scope.render();
                         }
                         );
-                
+
                         //Watch for data changes and re-render
                         $scope.$watch('selection', function () {
                             return $scope.render();
                         }, true);
-                        
+
                         //Main rendering function. Generates all necessary options
                         //depending on the currently selected object
                         $scope.render = function () {
                             options.selectAll("*").remove();
 
                             var ele = d3.select(iElement[0].offsetParent)[0][0];
-                            if(ele !== null) width = ele.offsetWidth;
+                            if (ele !== null)
+                                width = ele.offsetWidth;
 
                             //Window is split in three columns
                             var left = options.append("div")
@@ -57,38 +58,44 @@ angular.module('app')
                                     .classed("col-md-4", true);
                             var right = options.append("div")
                                     .classed("col-md-4", true);
-                            
+
                             if ($scope.selection !== null && $scope.selection !== undefined) {
 
+
+                                // add target types if options for annotation
                                 if ($scope.selection.type === "Annotation")
                                     $scope.addTargetTypes(left);
-                                
+
                                 $scope.setNotSureOption(left);
-                                //Add right title
-                                left.append("p")
-                                        .text("Actions")
-                                        .classed("optiontitle", "true")
-                                        .style("text-decoration", "underline")
-                                        .attr("font-size", "140%");
+
+                                left.append("br")
                                 //Add delete button
                                 left.append("button")
                                         .attr("type", "button")
-                                        .classed("btn btn-warning btn-sm", true)
+                                        .classed("btn btn-danger btn-xs", true)
                                         .attr("disabled", function () {
                                             if ($scope.selection === $scope.tempAnno)
                                                 return "true";
                                         })
-                                        .text("Delete")
+                                        .text(function () {
+                                            if ($scope.selection.type === "Annotation") {
+                                                return "Remove annotation";
+                                            }
+                                            return "Remove link";
+                                        })
                                         .on("click", function () {
                                             $scope.$apply(function () {
                                                 $scope.delete();
                                                 $scope.setSelection({item: null});
                                             });
                                         });
+
                                 $scope.addLabelSets(middle, right);
+
+
                             }
                         };
-                        
+
                         $scope.delete = function () {
                             if ($scope.selection !== null) {
                                 switch ($scope.selection.type) {
@@ -108,7 +115,7 @@ angular.module('app')
                                 }
                             }
                         };
-                        
+
                         $scope.setTypeHotkeys = function (e) {
                             var a = [];
                             var i = 0;
@@ -128,7 +135,7 @@ angular.module('app')
                                 $scope.setType({item: type});
                             }
                         };
-                        
+
                         $scope.setLabelHotkeys = function (e) {
                             var a = [];
                             for (var id in $scope.selection.selectableLabels) {
@@ -147,7 +154,7 @@ angular.module('app')
                                 $scope.setLabel({label: type});
                             }
                         };
-                        
+
                         hotkeys.bindTo($scope)
                                 .add({
                                     combo: 'alt+t',
@@ -173,39 +180,58 @@ angular.module('app')
                                         $scope.setSelection({item: null});
                                     }
                                 });
-                                
+
                         $scope.index = -1;
                         $scope.indexLabels = -1;
-                        
+
                         $scope.addTargetTypes = function (parent) {
-                            parent.append("div")
-                                    .text("TargetTypes")
-                                    .classed("optiontitle", "true")
-                                    .style("text-decoration", "underline")
-                                    .attr("font-size", "140%");
-                            var targetTypes = parent.selectAll("TargetTypes")
+                            var newParent = parent.append("div");
+                            newParent.classed("targetTypesDiv", true)
+                            newParent.append("div")
+                                    .text("Type")
+                                    .classed("optiontitle", true)
+                                    .style("font-size", "120%");
+                            var targetTypes = newParent.selectAll()
                                     .data(d3.entries($scope.targetTypes))
                                     .enter()
-                                    .append("label")
-                                    .classed("radio", true)
+                                    .append("button")
+                                    .attr("id", function (d) {
+                                        return "tt_" + d.value.tag;
+                                    })
+                                    .classed("btn btn-default btn-xs", true)
+                                    // TODO: create utility function for the two functions below
+                                    .classed("btn-default", function (d) {
+                                        var tType = $scope.selection.tType;
+                                        if (tType !== undefined && tType === d.value) {
+                                            return false;
+                                        }
+                                        return true;
+                                    })
+                                    .classed("btn-primary", function (d) {
+                                        var tType = $scope.selection.tType;
+                                        if (tType !== undefined && tType === d.value) {
+                                            return true;
+                                        }
+                                        return false;
+                                    })
                                     .text(function (d) {
                                         return d.value.tag;
-                                    });
-                            //Add checkboxes to target types
-                            targetTypes.append("input")
-                                    .attr("checked", function (d) {
-                                        var tType = $scope.selection.tType;
-                                        if (tType !== undefined && tType === d.value)
-                                            return "true";
                                     })
-                                    .attr("type", "radio")
                                     .on("click", function (d) {
                                         $scope.$apply(function () {
+                                            console.log("clicked on: " + d.value.tag)
                                             $scope.setTypeAndAdd({item: d.value});
+
                                         });
                                     });
+                            parent.selectAll("button").each(function () {
+                                var br = document.createElement("br");
+                                this.parentNode.insertBefore(br, this.nextSibling);
+                            });
+
+                            ;
                         };
-                        
+
                         $scope.addLabelSets = function (parent1, parent2) {
                             var par1Count = 0;
                             var par2Count = 0;
@@ -224,61 +250,63 @@ angular.module('app')
                                         .text(function () {
                                             return labelSet.name;
                                         })
-                                        .classed("optiontitle", "true")
-                                        .style("text-decoration", "underline")
-                                        .attr("font-size", "140%");
-                                var labels = parent.selectAll("Labels")
+                                        .classed("optiontitle", true)
+                                        .style("font-size", "110%");
+                                if (!labelSet.exclusive) {
+                                    parent.append("p").text("(multiple allowed)")
+                                            .style("margin", "0")
+                                            .style("font-size", "90%");
+                                }
+
+                                var labels = parent.selectAll()
                                         .data(labelSet.labels)
                                         .enter()
                                         .append(function (d, i) {
-                                            if (i > 0) {
-                                                var br = document.createElement("br");
-                                                iElement[0].appendChild(br);
-                                            }
-
-                                            var label = document.createElement("label");
+                                            var label = document.createElement("button");
                                             return label;
                                         })
-                                        .classed("checkbox", true)
-                                        .classed("radio", true)
+                                        .classed("btn btn-default btn-xs", true)
+                                        .classed("btn-default", function (d) {
+                                            if ($scope.selection.isLabeled(labelSet, d)) {
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        .classed("btn-primary", function (d) {
+                                            if ($scope.selection.isLabeled(labelSet, d)) {
+                                                return true;
+                                            }
+                                            return false;
+                                        })
                                         .text(function (d) {
-                                            return d.toString(width / 50);
-                                        });
-                                //Add checkboxes to labels
-                                labels.append("input")
-                                        .attr("checked", function (d) {
-                                            if ($scope.selection.isLabeled(labelSet, d))
-                                                return "true";
+                                            return d.toString(width);
                                         })
-                                        .attr("disabled", function () {
-                                            if ($scope.selection.type === "Annotation" && $scope.selection.tType === undefined)
-                                                return "true";
-                                        })
-                                        .attr("type", function (d) {
-                                            if (labelSet.exclusive)
-                                                return "radio";
-                                            return "checkbox";
-                                        })
-                                        .on("click", function (d) {        
+                                        .on("click", function (d) {
                                             $scope.$apply(function () {
                                                 $scope.setLabel({label: d});
                                             });
                                         });
+                                // insert line breaks between the labels
+                                parent.selectAll("button").each(function () {
+                                    var br = document.createElement("br");
+                                    this.parentNode.insertBefore(br, this.nextSibling);
+                                });
+
                             }
                         };
-                        
+
                         $scope.setNotSureOption = function (parent) {
                             if ($scope.selection.type === AnnoType.Annotation) {
-                                parent.append("div")
-                                        .text("Not Sure")
-                                        .classed("optiontitle", "true")
-                                        .style("text-decoration", "underline")
-                                        .attr("font-size", "140%");
-                                var checkbox = parent.append("label")
-                                        .classed("checkbox-inline", true);
-                                checkbox.append("input")
+//                                parent.append("div")
+//                                        .text("I'm not sure about this annotation")
+//                                        .classed("optiontitle", "true")
+//                                        .attr("font-size", "140%");
+                                parent.append("br");
+                                parent.append("br")
+
+                                parent.append("input")
                                         .attr("type", "checkbox")
-                                        .text("Not sure")
+                                        .attr("id", "notSureCheckBox")
                                         .attr("checked", function () {
                                             if ($scope.selection.notSure) {
                                                 return 'true';
@@ -289,6 +317,12 @@ angular.module('app')
                                                 $scope.setAnnotationNotSure({item: $scope.selection});
                                             });
                                         });
+
+                                parent.append("label")
+                                        .attr("for", "notSureCheckBox")
+                                        .text("not sure")
+                                        .classed("checkboxLabel", true);
+
                             }
                         };
                     }

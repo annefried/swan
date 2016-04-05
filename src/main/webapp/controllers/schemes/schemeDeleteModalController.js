@@ -8,7 +8,7 @@ angular.module('app').controller('schemeDeleteModalController', function ($scope
 
 
     $scope.submit = function () {
-        $http.delete("tempannot/scheme/" + $rootScope.currentSchemeId).then(function (response) {
+        $http.delete("discanno/scheme/" + $rootScope.currentSchemeId).then(function (response) {
             for (var k = 0; k < $rootScope.tableSchemes.length; k++) {
                 if ($rootScope.tableSchemes[k].id === $rootScope.currentSchemeId) {
                     $rootScope.tableSchemes.splice(k, 1);

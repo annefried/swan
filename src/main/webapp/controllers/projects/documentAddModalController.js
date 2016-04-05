@@ -60,7 +60,7 @@ angular.module('app').controller('documentAddModalController', function ($scope,
 
             };
 
-            $http.post("tempannot/document/adddoctoproject", JSON.stringify(documentTemplate)).then((function (curFileName) {
+            $http.post("discanno/document/adddoctoproject", JSON.stringify(documentTemplate)).then((function (curFileName) {
                 return function (response) {
                     var docTemplate = {
                         'completed': 0,

@@ -2,10 +2,10 @@
 
 angular
         .module('app')
-        .controller('annotatorsController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys', function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys) {
-                $scope.isuser = $window.sessionStorage.isUser;
-                // Redirect non Admins
-                if (($window.sessionStorage.role !== 'admin') && ($window.sessionStorage.role !== 'user') && ($window.sessionStorage.role != 'projectmanager')) {
+        .controller('usersController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys', function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys) {
+                $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
+
+                if (($window.sessionStorage.role !== 'admin') && ($window.sessionStorage.role !== 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     // redirect to Login
                     window.location = "/discanno/signin.html";
                 } else {
@@ -16,11 +16,15 @@ angular
                         //Pop Up
                         $scope.animationsEnabled = true;
                         $scope.getUsers();
+                        
+                        if ($rootScope.tour !== undefined) {
+                            $rootScope.tour.resume();
+                        }
                     };
 
                     // Request list of users from backend
                     $scope.getUsers = function () {
-                        $http.get("tempannot/user").then(function (response) {
+                        $http.get("discanno/user").then(function (response) {
                             var res = JSOG.parse(JSON.stringify(response.data));
                             $scope.users = res.users;
                             for (var i = 0; i < $scope.users.length; i++) {
@@ -32,14 +36,14 @@ angular
                     };
 
                     $scope.isVisible = function (user) {
-                        return user.id != $window.sessionStorage.uId;
+                        return user.id == $window.sessionStorage.uId;
                     };
 
                     $scope.enhanceUserData = function (u, i) {
-                        var projReq = $http.get("tempannot/project/byuser/" + u.id).then(function (response) {
+                        var projReq = $http.get("discanno/project/byuser/" + u.id).then(function (response) {
                             $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
                         });
-                        var timeReq = $http.get("tempannot/timelogging/" + u.id).then(function (response) {
+                        var timeReq = $http.get("discanno/timelogging/" + u.id).then(function (response) {
                             $scope.tilog = JSOG.parse(JSON.stringify(response.data)).timelogging;
                         });
 
@@ -131,6 +135,13 @@ angular
                         // Callback on Submit
                         modalInstance.result.then(function (response) {
                             $scope.users.push(response);
+                            
+                            // Check if the guided tour can continue
+                            if ($rootScope.tour !== undefined) {
+                                if (response.role === 'annotator') {
+                                    $("#tour-next-button").prop("disabled", false);
+                                }
+                            }
                         });
                         $scope.toggleAnimation = function () {
                             $scope.animationsEnabled = !$scope.animationsEnabled;

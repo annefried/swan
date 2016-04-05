@@ -8,11 +8,11 @@ angular
             function ($scope, $rootScope, $window, $http, $uibModal, $location, hotkeys, $q) {
 
                 // Redirect if client is not logged in
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'user') && ($window.sessionStorage.role != 'projectmanager')) {
+                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
                     window.location = "/discanno/signin.html";
                 } else {
 
-                    $scope.isuser = ($window.sessionStorage.isUser);
+                    $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
 
                     /**
                      * Called at the end of Controller construction.
@@ -29,6 +29,10 @@ angular
                             $scope.loaded = true;
                             $rootScope.buildTableProjects();
                         });
+
+                        if ($rootScope.tour !== undefined) {
+                            $rootScope.tour.resume();
+                        }
                     };
 
                     /**
@@ -107,12 +111,21 @@ angular
                      * Load Schemes from Database
                      */
                     $scope.loadSchemes = function () {
-                        var httpSchemes = $http.get("tempannot/scheme/schemes").then(function (response) {
+                        var httpSchemes = $http.get("discanno/scheme/schemes").then(function (response) {
                             $scope.schemes = JSOG.parse(JSON.stringify(response.data)).schemes;
                         }, function (err) {
                             $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
                         });
                         return httpSchemes;
+                    };
+
+                    /**
+                     * Get the address to export a project.
+                     * @param {type} projId the Projects id
+                     * @returns {String} the adress for export
+                     */
+                    $scope.exportProject = function (projId) {
+                        return "/project/export/" + projId;
                     };
                     
                     /**
@@ -120,35 +133,13 @@ angular
                      * @param {type} projId the Projects id
                      * @returns {String} the adress for export
                      */
-                    $scope.exportProject = function (projId) {
-                        return "tempannot/project/export/" + projId;
-                    };
-                    
-                    /**
-                     * Called upon clicking the 'x'-Button in a documents row.
-                     * @param {type} documentId the documents id
-                     * @param {type} projId the projects id
-                     */
-                    $scope.deleteDocument = function (documentId, projId) {
-                        $http.delete("tempannot/document/" + documentId).then(function (response) {
-                            for (var j = 0; j < $rootScope.tableProjects.length; j++) {
-                                if ($rootScope.tableProjects[j].id === projId) {
-                                    var project = $rootScope.tableProjects[j];
-                                    for (var i = 0; i < project.documents.length; i++) {
-                                        if (project.documents[i].id === documentId) {
-                                            project.documents.splice(i, 1);
-                                        }
-                                    }
-                                }
-                            }
-                        }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
-                        });
+                    $scope.exportProjectXmi = function (projId) {
+                        return "/project/exportXmi/" + projId;
                     };
 
                     /**
                      * Redirects to the AnnotationTool
-                     * 
+                     *
                      * @param {String} docId The document id to annotate
                      * @param {String} document name
                      * @param {String} projectName the Projects name
@@ -197,9 +188,9 @@ angular
                      * @param {type} projectId the projects id
                      */
                     $scope.openProjectSchemeModal = function (projectId) {
-                        for (var i = 0; i < $scope.projects.length; i++) {
-                            if ($scope.projects[i].id === projectId) {
-                                $rootScope.currentScheme = $scope.projects[i].scheme;
+                        for (var i = 0; i < $rootScope.projects.length; i++) {
+                            if ($rootScope.projects[i].id === projectId) {
+                                $rootScope.currentScheme = $rootScope.projects[i].scheme;
                             }
                         }
                         var modalInstance = $uibModal.open({
@@ -237,6 +228,28 @@ angular
                             $scope.animationsEnabled = !$scope.animationsEnabled;
                         };
                     };
+                    
+                    /**
+                     * Called upon clicking the 'x'-Button
+                     * Opens the DocumenttDeleteModal
+                     * @param {type} projectId the projects id
+                     */
+                    $scope.openDocumentDeleteModal = function (documentId, projId) {
+                        $rootScope.documentId = documentId;
+                        $rootScope.projId = projId;
+                        var modalInstance = $uibModal.open({
+                            animation: $scope.animationsEnabled,
+                            templateUrl: 'templates/projects/documentDeleteModal.html',
+                            controller: 'documentDeleteModalController'
+                        });
+
+                        modalInstance.result.then(function (response) {
+
+                        });
+                        $scope.toggleAnimation = function () {
+                            $scope.animationsEnabled = !$scope.animationsEnabled;
+                        };
+                    };
 
                     /**
                      * Called upon clicking the '+ Project'-Button
@@ -260,7 +273,7 @@ angular
                                 }
 
                             };
-                            $http.post('tempannot/project', JSON.stringify(projectTemplate))
+                            $http.post('discanno/project', JSON.stringify(projectTemplate))
                                     .then(function (response) {
                                         var template = {
                                             'id': response.data,
@@ -278,7 +291,7 @@ angular
                                             $rootScope.tableProjects.push(template);
                                         } else {
                                             //get the current user (there is not REST interface for getUser by ID)
-                                            $http.get("tempannot/user/").then(function (response) {
+                                            $http.get("discanno/user/").then(function (response) {
                                                 var users = JSOG.parse(JSON.stringify(response.data)).users;
                                                 for (var i = 0; i < users.length; i++) {
                                                     var u = users[i];
@@ -289,7 +302,7 @@ angular
                                                 $rootScope.tableProjects.push(template);
                                             }, function () {});
 
-                                            $http.post("tempannot/project/addManager/"
+                                            $http.post("discanno/project/addManager/"
                                                     + template.id
                                                     + "/"
                                                     + $window.sessionStorage.uId);
@@ -300,6 +313,9 @@ angular
                                         $rootScope.addAlert({type: 'danger', msg: 'A Project with this name already exists.'});
                                     });
 
+                                    if ($rootScope.tour !== undefined) {
+                                        $("#tour-next-button").prop("disabled", false);
+                                    }
                         }, function () {
 
                         });

@@ -1,10 +1,21 @@
 # Welcome to DiscAnno
-DiscAnno web-based annotation tool
+DiscAnno web-based annotation tool.
+![AnnoTool1](https://cloud.githubusercontent.com/assets/7132775/13761225/943137e0-ea37-11e5-832e-e129b086f7fa.jpg)
+![AnnoTool2](https://cloud.githubusercontent.com/assets/7132775/13761479/2c65b9cc-ea39-11e5-94e1-b401535a552e.png)
+
+Manage your projects:
+![ProjectsExplorer](https://cloud.githubusercontent.com/assets/7132775/13761517/6ae1a760-ea39-11e5-87b2-142d678464c8.png)
+
+Manage your schemes:
+![Schemes1](https://cloud.githubusercontent.com/assets/7132775/13761592/dcfb44e6-ea39-11e5-8942-80c7c599d8b5.png)
+or easily create a new one:
+![Schemes2](https://cloud.githubusercontent.com/assets/7132775/13761593/dd23bc0a-ea39-11e5-95e1-fe99c3943630.png)
 
 ## Technologies
 * **Frontend**:
   * Bootstrap, HTML, CSS
   * AngularJS, JavaScript
+  * D3 for data visualization
   * Jackson JSOG (Voodoodyne) for circular JSON objects
 * **Backend**:
   * JavaEE (Java Enterprise Edititon)
@@ -39,18 +50,21 @@ Please check out the [contributing](https://github.com/annefried/discanno/blob/m
     * User: postgres
     * Password: postgres (This is just for mutual development settings)
     * Port: 5432
-    * Create a database named "DiscAnno"
+    * Create a database named "discanno"
+    * If your postgres admin user is different from postgres, grant permission to postgres user on discanno database:
+    ````grant all privileges on database discanno to postgres;````
+
 
 >**Important**: If you choose another version than 9.3, then put the corresponding JDBC driver in the glassfish4/glassfish/lib folder: https://jdbc.postgresql.org/download.html. Before you deploy the application. If GlassFish is not able to create a connection to the database before you deploy the WebApp you will probably cause a bug in GlassFish named "invalid resource: cannot find jdbc/DiscAnno__pm"!
 
 * Restart the server (Window → Services → Servers → right click on GlassFish 4.1 → restart)
 * If you set up everything properly, just right click on the project and press "run".
-* The database will be automatically created. To gain access execute the following statement via psql shell or pgAdmin:
+* The tables will be automatically created. To gain access execute the following statement via psql shell or pgAdmin:
 ````
-    INSERT INTO users (id, createdate, email, lastname, password, prename, role)
-    VALUES (1, 2016-01-22 22:23:08.25, admin@web.de, Doe, -2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71, John, admin);
+INSERT INTO users (id, createdate, email, lastname, prename, password, role) VALUES (0, localtimestamp, 'admin@discanno.de',
+'DiscAnno', 'Admin', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'admin');
 ````
-* Now you can login with the email "admin@web.de" and "secret" as the password. With the access you can create new users and change your password. The password is hashed, so just inserting the original password would have not worked.
+* Now you can login with the email "admin@discanno.de" and "secret" as the password. With the access you can create new users and change your password. The password is hashed, so just inserting the original password would have not worked.
 * pgAdmin 3 can be useful: http://www.pgadmin.org/download/
 * JSONView Add-Ons for your browser:
   * Can be very handy to have well formatted JSON

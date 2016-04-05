@@ -45,9 +45,9 @@ and open the template in the editor.
                 <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
                     <label for="role">Role:</label>
                     <select name="role" id="role" class="form-control" ng-model="vm.role" required />
-                      <option value="admin">Admin</option>
-                      <option value="user">User</option>
-                      <option value="projectmanager">Project Manager</option>
+                        <option value="admin">Admin</option>
+                        <option value="annotator">Annotator</option>
+                        <option value="projectmanager">Project Manager</option>
                     </select>
                     <span ng-show="form.role.$dirty && form.role.$error.required" class="help-block">Role is required.</span>
                 </div>

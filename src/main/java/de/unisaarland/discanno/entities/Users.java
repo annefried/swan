@@ -81,7 +81,7 @@ public class Users extends BaseEntity {
     
     
     public static enum RoleType {
-        admin, user, projectmanager;
+        admin, annotator, projectmanager;
     }
     
     @Column(name = "Prename")

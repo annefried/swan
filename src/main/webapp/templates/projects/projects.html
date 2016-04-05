@@ -8,8 +8,7 @@
     </script>
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
-
-            <h2 class="sub-header">Projects</h2>
+            <h2 class="sub-header" id="1-projects-header" style="display: inline-block">Projects</h2>
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
             <div class="table-responsive">
                 <table class="table">
@@ -20,25 +19,25 @@
                             <th class="col-md-2 vert-align">Name</th>
                             <th class="col-md-2 vert-align">Progress</th>
                             <th class="col-md-2 vert-align">
-                                <span ng-hide="isuser === 'true'">Users</span>
+                                <span ng-hide="isUnprivileged === 'true'">Users</span>
                             </th>
                             <th class="col-md-2 vert-align">Project Manager</th>
                             <th class="col-md-1 vert-align">Scheme</th>
                             <th class="col-md-1 vert-align">
-                                <span ng-hide="isuser === 'true'">Edit Project</span>
+                                <span ng-hide="isUnprivileged === 'true'">Edit Project</span>
                             </th>
                             <th class="col-md-1 vert-align">
-                                <span ng-hide="isuser === 'true'">Delete</span>
+                                <span ng-hide="isUnprivileged === 'true'">Delete</span>
                             </th>
                             <th class="col-md-2 vert-align">
-                                <span ng-hide="isuser === 'true'">Export</span>
+                                <span ng-hide="isUnprivileged === 'true'">Export</span>
                             </th>
                         </tr>
                     </thead>
                     <tbody ng-hide="loaded">
                         <tr>
                             <td>
-                             <span class="glyphicon glyphicon-refresh spinning "></span> 
+                                <span class="glyphicon glyphicon-refresh spinning "></span> 
                             </td>
                             <td></td>
                             <td></td>
@@ -48,7 +47,6 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                                          
                         </tr>
                     </tbody>
 
@@ -63,10 +61,10 @@
                                     </span>
                                 </a>
                             </td>
-                            <td class="col-md-2 vert-align">{{x.name}}</td>
+                            <td class="col-md-2 vert-align" id="project-name">{{x.name}}</td>
                             <td class="col-md-2 vert-align"> 
                                 <!-- progress bar visible for ADMIN & PM -->
-                                <div ng-hide="isuser === 'true'"
+                                <div ng-hide="isUnprivileged === 'true'"
                                      ng-repeat="cur in x.users" class="userprogress progress">
                                     <div class="progress-bar  progress-bar-success"
                                          role="progressbar" aria-valuenow="{{x.completed}}"
@@ -75,8 +73,8 @@
                                         <span> {{x.completed[$index]}}/{{x.numberOfDocuments}}</span>
                                     </div>
                                 </div>
-                                <!-- progress bar visible for USER -->
-                                <div ng-hide="isuser === 'false'" class="userprogress progress">
+                                <!-- progress bar visible for ANNOTATOR -->
+                                <div ng-hide="isUnprivileged === 'false'" class="userprogress progress">
                                     <div class="progress-bar  progress-bar-success"
                                          role="progressbar" aria-valuenow="{{x.completed}}"
                                          aria-valuemin="0" aria-valuemax="{{x.numberOfDocuments}}"
@@ -86,7 +84,7 @@
                                 </div>
                             </td>
                             <td class="col-md-2 vert-align">
-                                <p ng-hide="isuser === 'true'" class="userprogress"
+                                <p ng-hide="isUnprivileged === 'true'" class="userprogress"
                                    ng-repeat="cur in x.users">
                                     {{cur.email}}
                                 </p>
@@ -98,28 +96,35 @@
                             </td>
                             <td class="col-md-1 vert-align">
                                 <a class="glyphicon glyphicon-file"
+                                   id="project-scheme-view"
                                    ng-click="openProjectSchemeModal(x.id)">
                                 </a>
                             </td>
                             <td class="col-md-1 vert-align">
                                 <a>
                                     <span class="glyphicon glyphicon-list"
-                                        ng-hide="isuser === 'true'"
+                                        id="project-edit"
+                                        ng-hide="isUnprivileged === 'true'"
                                         ng-click="editProject(x.id, x.name)">
                                     </span>
                                 </a>
                             </td>
                             <td class="col-md-1 vert-align">
                                 <span class="glyphicon glyphicon-remove"
-                                        ng-hide="isuser === 'true'" style="color:red"
+                                        ng-hide="isUnprivileged === 'true'" style="color:red"
                                         ng-click="openProjectDeleteModal(x.id)">
                                 </span>
                             </td>
-                            <td class="col-md-2 vert-align">
+                            <td class="col-md-2 vert-align" id="project-export">
                                 <a class="glyphicon glyphicon-share"
                                    ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
                                    ng-href="{{ exportProject(x.id) }}"
-                                   ng-hide="isuser === 'true'">
+                                   ng-hide="isUnprivileged === 'true'">(xml)
+                                </a>
+                                 <a class="glyphicon glyphicon-share"
+                                   ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
+                                   ng-href="{{ exportProjectXmi(x.id) }}"
+                                   ng-hide="isUnprivileged === 'true'">(UIMA xmi)
                                 </a>
                             </td>
                         </tr>
@@ -132,10 +137,10 @@
                             <td class="col-md-1 vert-align"></td>
                             <td class="col-md-1 vert-align">
                                 <!-- Show 'View' for admin/ project manager and 'Edit' for user -->
-                                <b ng-hide="isuser === 'true'">View</b>
-                                <b ng-hide="isuser === 'false'">Edit</b>
+                                <b ng-hide="isUnprivileged === 'true'">View</b>
+                                <b ng-hide="isUnprivileged === 'false'">Edit</b>
                             </td>
-                            <td class="col-md-1 vert-align"><b ng-hide="isuser === 'true'">Delete</b></td>
+                            <td class="col-md-1 vert-align"><b ng-hide="isUnprivileged === 'true'">Delete</b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
                         </tr>
                         <tr class="collapse  relateTo{{x.id}}" 
@@ -148,8 +153,8 @@
                                      and show nothing if the document is not completed and show the
                                      progress bar if the user is admin/ project manager -->
                                 <span class="glyphicon glyphicon-ok"
-                                      ng-if="isuser === 'true' && doc.completed === true"></span>
-                                <div ng-hide="isuser === 'true'" class="userprogress progress">
+                                      ng-if="isUnprivileged === 'true' && doc.completed === true"></span>
+                                <div ng-hide="isUnprivileged === 'true'" class="userprogress progress">
                                     <!-- TODO: adjust progress bar -->
                                     <div class="progress-bar  progress-bar-success"
                                          role="progressbar" aria-valuenow="{{doc.completed}}"
@@ -166,11 +171,11 @@
                                 <a>
                                     <!-- Show open eye for admin/ project manager and pencil for user -->
                                     <span class="glyphicon glyphicon-eye-open"
-                                          ng-hide="isuser === 'true'"
+                                          ng-hide="isUnprivileged === 'true'"
                                           ng-click="openAnnoTool(doc.id, doc.name, x.name, doc.completed)">
                                     </span>
                                     <span class="glyphicon glyphicon-pencil"
-                                          ng-hide="isuser === 'false'"
+                                          ng-hide="isUnprivileged === 'false'"
                                           ng-click="openAnnoTool(doc.id, doc.name, x.name, doc.completed)">
                                     </span>
                                 </a>
@@ -178,15 +183,16 @@
                             <td class="col-md-1 vert-align">
                                 <a>
                                     <span class="glyphicon glyphicon-remove"
-                                          style="color:red" ng-hide="isuser === 'true'"
-                                          ng-click="deleteDocument(doc.id, x.id)">
+                                          style="color:red"
+                                          ng-hide="isUnprivileged === 'true'"
+                                          ng-click="openDocumentDeleteModal(doc.id, x.id)">
                                     </span>
                                 </a>
                             </td>
                             <td class="col-md-2 vert-align"></td>
                         </tr>
                         <tr class="headLight collapse relateTo{{x.id}} bottomBorder"
-                            ng-hide="isuser === 'true'"
+                            ng-hide="isUnprivileged === 'true'"
                             ng-class="{'in': toggeled[x.id]}" >
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
@@ -199,7 +205,7 @@
                             <td class="col-md-2 vert-align">
                                 <button class="btn btn-primary tableButton"
                                         ng-click="openDocumentAddModal(x.id)"
-                                        ng-hide="isuser === 'true'">
+                                        ng-hide="isUnprivileged === 'true'">
                                     + Document
                                 </button>
                             </td>
@@ -207,7 +213,7 @@
                     </tbody>
 
                     <tbody>
-                        <tr class="headLight" ng-hide="isuser === 'true'">
+                        <tr class="headLight" ng-hide="isUnprivileged === 'true'">
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
@@ -216,9 +222,9 @@
                             <td class="col-md-1 vert-align"></td>
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-1 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align">
+                            <td class="col-md-2 vert-align" id="projects-add-button">
                                 <button class="btn btn-primary tableButton" 
-                                        type="button" ng-hide="isuser === 'true'"
+                                        type="button" ng-hide="isUnprivileged === 'true'"
                                         ng-click="openProjectAddModal()">
                                     + Project
                                 </button>

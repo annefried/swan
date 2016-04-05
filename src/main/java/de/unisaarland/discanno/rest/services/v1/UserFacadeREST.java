@@ -7,6 +7,7 @@ package de.unisaarland.discanno.rest.services.v1;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.ProjectDAO;
@@ -70,7 +71,7 @@ public class UserFacadeREST extends AbstractFacade<Users> {
     public Response create(Users entity) {
         
         try {   
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
         
             Set<Project> proSet = new HashSet<>();
             for (Project p : entity.getProjects()) {
@@ -96,7 +97,7 @@ public class UserFacadeREST extends AbstractFacade<Users> {
     public void editPassword(@PathParam("id") Long id, String p) {
 
         try {
-            usersDAO.checkLogin(getSessionID());
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             Users u = usersDAO.find(id);
             u.setPassword(Utility.hashPassword(p));
         } catch (SecurityException e) {
@@ -110,7 +111,7 @@ public class UserFacadeREST extends AbstractFacade<Users> {
     public Response remove(@PathParam("id") Long id) {
         
         try {   
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.removeUser(usersDAO.find(id));
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
@@ -126,7 +127,7 @@ public class UserFacadeREST extends AbstractFacade<Users> {
     public Response getUsers() throws URISyntaxException {
         
         try {   
-            usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager);
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             
             List<Users> list = usersDAO.findAll();
             
