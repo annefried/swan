@@ -24,6 +24,7 @@ import de.unisaarland.discanno.entities.Users;
 
 import java.util.List;
 import java.util.Set;
+import javax.ejb.CreateException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -42,7 +43,7 @@ public class ProjectsTest extends BaseTest {
     }
     
     @Test
-    public void testScenario1() throws CloneNotSupportedException {
+    public void testScenario1() throws CloneNotSupportedException, CreateException {
         
         // Create scheme
         Scheme scheme = TestDataProvider.getScheme1();

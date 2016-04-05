@@ -20,6 +20,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.CreateException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -87,7 +88,8 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
             return documentDAO.create(doc);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException | IllegalArgumentException | CloneNotSupportedException e) {
+        } catch (NoResultException | IllegalArgumentException
+                    | CloneNotSupportedException | CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
