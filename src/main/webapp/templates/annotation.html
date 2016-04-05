@@ -32,7 +32,12 @@
                 <hr class="featurette-divider">
 
                 <div class="annotationfield" >
-                    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
+                    <uib-alert ng-repeat="alert in alerts"
+                               type="{{alert.type}}"
+                               close="closeAlert($index)"
+                               dismiss-on-timeout="10000">
+                        {{alert.msg}}
+                    </uib-alert>
                     <uib-accordion close-others="false">
 
                         <uib-accordion-group is-disabled="true" is-open="true">

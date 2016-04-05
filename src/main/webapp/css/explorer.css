@@ -238,3 +238,23 @@ hr {
 .sb_margin {
     margin-bottom: 3px;
 }
+
+.waitAlert{
+ position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+    width: 300px;
+    height: 80px;
+    z-index: 100;
+}
+
+   #blackout {
+      width:100%;
+      background-color: grey;
+      opacity: 0.5;
+      height:100%; /* make sure you have set parents to a height of 100% too*/
+      position: absolute;
+      left:0; top:0;
+      z-index:99 /*just to make sure its on top*/}

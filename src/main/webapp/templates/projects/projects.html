@@ -1,5 +1,10 @@
 
 <link href="css/explorer.css" rel="stylesheet">
+  <div id="blackout" ng-hide="alertVisible === undefined"></div>
+<div class="alert alert-danger waitAlert" ng-hide="alertVisible === undefined">
+    <p><b>Loading...</b></p>
+    <p>This may take a while!</p>
+</div>
 <div class="container-fluid">
     <script type="text/ng-template" id="alert.html">
         <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
