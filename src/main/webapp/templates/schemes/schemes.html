@@ -13,15 +13,20 @@ and open the template in the editor.
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
 
-            <h2 class="sub-header" id="1-schemes-header" style="display: inline-block">Schemes</h2>
-            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
+            <h2 class="sub-header" id="1-schemes-header" style="display: inline-block">Annotation schemes</h2>
+            <uib-alert ng-repeat="alert in alerts"
+                       type="{{alert.type}}"
+                       close="closeAlert($index)"
+                       dismiss-on-timeout="5000">
+                {{alert.msg}}
+            </uib-alert>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr class="headDark">
                             <th class="col-md-10">Name</th>
-                            <th class="col-md-10">Used In</th>
-                            <th class="col-md-1">View</th>
+                            <th class="col-md-10">Used in</th>
+                            <th class="col-md-1">View JSON</th>
                             <th class="col-md-1">Delete</th>
                         </tr>
                     </thead>
@@ -48,7 +53,7 @@ and open the template in the editor.
                             <td class="col-md-1 vert-align">
                                 <span class="glyphicon glyphicon-remove"
                                         ng-hide="isUnprivileged === 'true'" style="color:red"
-                                        ng-class="(x.projects.length < 1) ? 'enabled' : 'disabled'"
+                                        ng-class="(isDeletingPossible(x)==true) ? 'enabled' : 'disabled'"
                                         ng-click="openSchemeDeleteModal(x.id)">
                                 </span>
                             </td>

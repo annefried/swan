@@ -1,17 +1,25 @@
-
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 'use strict';
 
-angular.module('app').controller('projectEditModalController', function ($scope, $rootScope, $http, $uibModalInstance) {
+angular.module('app').controller('projectEditModalController', function ($scope, $rootScope, $http, $uibModalInstance, $window) {
 
     $scope.init = function () {
         $scope.loadUsers();
         $scope.projUsers = $rootScope.tableProjects[$rootScope.currentProjectIndex].users;
         $scope.projPms = $rootScope.tableProjects[$rootScope.currentProjectIndex].pms;
+        $scope.watchingUsers = $rootScope.tableProjects[$rootScope.currentProjectIndex].watchingUsers;
+        $rootScope.role = $window.sessionStorage.role;
+        $scope.currUser = {'id': parseInt($window.sessionStorage.uId)};
+        $scope.isWatching = $rootScope.tableProjects[$rootScope.currentProjectIndex].isWatching;
     };
 
     $scope.loadUsers = function () {
-        $http.get("discanno/user").then(function (response) {
-            var usersPms = JSOG.parse(JSON.stringify(response.data)).users;
+        $http.get("discanno/user").success(function (response) {
+            var usersPms = JSOG.parse(JSON.stringify(response)).users;
             $scope.users = [];
             $scope.pms = [];
             for (var i = 0; i < usersPms.length; i++) {
@@ -24,8 +32,8 @@ angular.module('app').controller('projectEditModalController', function ($scope,
                     }
                 }
             }
-        }, function (err) {
-            $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
+        }).error(function (response) {
+            $rootScope.checkResponseStatusCode(response.status);
         });
     };
 
@@ -44,6 +52,8 @@ angular.module('app').controller('projectEditModalController', function ($scope,
                     }
                 }
             }
+        }).error(function (response) {
+            $rootScope.checkResponseStatusCode(response.status);
         });
     };
 
@@ -60,26 +70,34 @@ angular.module('app').controller('projectEditModalController', function ($scope,
                     }
                 }
             }
+        }).error(function (response) {
+            $rootScope.checkResponseStatusCode(response.status);
         });
     };
 
     $scope.deleteUser = function (uId) {
-        $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).then(function (response) {
+        $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
             for (var i = 0; i < $rootScope.tableProjects[$rootScope.currentProjectIndex].users.length; i++) {
-                if ($rootScope.tableProjects[$rootScope.currentProjectIndex].users[i].id == uId)
+                if ($rootScope.tableProjects[$rootScope.currentProjectIndex].users[i].id == uId) {
                     $rootScope.tableProjects[$rootScope.currentProjectIndex].users.splice(i, 1);
+					break;
+				}
             }
-
+        }).error(function (response) {
+            $rootScope.checkResponseStatusCode(response.status);
         });
     };
 
     $scope.deletePM = function (uId) {
-        $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).then(function (response) {
+        $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
             for (var i = 0; i < $rootScope.tableProjects[$rootScope.currentProjectIndex].pms.length; i++) {
-                if ($rootScope.tableProjects[$rootScope.currentProjectIndex].pms[i].id == uId)
+                if ($rootScope.tableProjects[$rootScope.currentProjectIndex].pms[i].id == uId) {
                     $rootScope.tableProjects[$rootScope.currentProjectIndex].pms.splice(i, 1);
+					break;
+				}
             }
-
+        }).error(function (response) {
+            $rootScope.checkResponseStatusCode(response.status);
         });
     };
     
@@ -99,20 +117,42 @@ angular.module('app').controller('projectEditModalController', function ($scope,
         }
         var complementList = [];
         for (var i = 0; i < userList.length; i++) {
-            if (!$scope.containsUser(subList, userList[i])) {
+            if (!$rootScope.containsUser(subList, userList[i])) {
                 complementList.push(userList[i]);
             }
         }
         return complementList;
     };
     
-    $scope.containsUser = function (userList, user) {
-        for (var i = 0; i < userList.length; i++) {
-            if (userList[i].id == user.id) {
-                return true;
-            }
+    $scope.watchProject = function (bool) {
+        var proj = $rootScope.tableProjects[$rootScope.currentProjectIndex];
+        if (bool) {
+            // Add project manager to watching list
+            $http.post("discanno/project/addWatchingUser/" + proj.id + "/" + $window.sessionStorage.uId).success(function (response) {
+                if ($scope.watchingUsers === undefined) {
+                    $scope.watchingUsers = [];
+                }
+                $scope.watchingUsers.push($scope.currUser);
+                $scope.isWatching = true;
+                $rootScope.tableProjects[$rootScope.currentProjectIndex].isWatching = true;
+            }).error(function (response) {
+				$rootScope.checkResponseStatusCode(response.status);
+			});
+        } else {
+            // Remove project manager from watching list
+            $http.post("discanno/project/delWatchingUser/" + proj.id + "/" + $window.sessionStorage.uId).success(function (response) {
+                for (var i = 0; i < $scope.watchingUsers.length; i++) {
+                    if ($scope.watchingUsers[i].id === $scope.currUser.id) {
+                        $scope.watchingUsers.splice(i, 1);
+                        $scope.isWatching = false;
+                        $rootScope.tableProjects[$rootScope.currentProjectIndex].isWatching = false;
+                    }
+                }
+            }).error(function (response) {
+				$rootScope.checkResponseStatusCode(response.status);
+			});
         }
-        return false;
+        $rootScope.tableProjects[$rootScope.currentProjectIndex].watchingUsers = $scope.watchingUsers;
     };
 
     $scope.submit = function (name) {

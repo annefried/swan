@@ -8,13 +8,14 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add user account</title>
     </head>
     <body>
         <div class="modal-header">
-            <h3 class="modal-title">Add User...</h3>
+            <h3 class="modal-title">Add user account</h3>
         </div>
         <div class="modal-body">
-            <form name="form" ng-submit="vm.addUser()" role="form">
+            <form name="form" ng-submit="vm.addUser()" role="form" novalidate>
                 <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
                     <label for="fname">First Name:</label> 
                     <input type="text" name="fname" id="fname" class="form-control" ng-model="vm.fname" required />
@@ -26,7 +27,7 @@ and open the template in the editor.
                     <span ng-show="form.lname.$dirty && form.lname.$error.required" class="help-block">Last Name is required.</span>
                 </div>
                 <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
-                    <label for="pw">Password: (Min. 5 characters)</label>
+                    <label for="pw">Password (min. 5 characters):</label>
                     <input type="password" name="pw" pattern=".{5,}" title="5 characters minimum" id="pw" class="form-control" ng-model="vm.pw" required />
                     <span ng-show="form.pw.$dirty && form.pw.$error.required" class="help-block">Password is required.</span>
                 </div>
@@ -44,15 +45,19 @@ and open the template in the editor.
                 -->
                 <div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
                     <label for="role">Role:</label>
-                    <select name="role" id="role" class="form-control" ng-model="vm.role" required />
-                        <option value="admin">Admin</option>
-                        <option value="annotator">Annotator</option>
-                        <option value="projectmanager">Project Manager</option>
+                    <select name="role" id="role" class="form-control" ng-model="vm.role" required ng-options="item.value as item.name for item in availableRoles">
                     </select>
                     <span ng-show="form.role.$dirty && form.role.$error.required" class="help-block">Role is required.</span>
                 </div>
+                <div class="col-lg-6">
+                    <uib-alert ng-repeat="alert in alerts"
+                               type="{{alert.type}}"
+                               close="closeAlert($index)" >
+                        {{alert.msg}}
+                    </uib-alert>
+                </div>
                 <div class="form-actions">
-                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary" ng-click="createUser(vm.fname, vm.lname, vm.pw, vm.email, vm.role)">Add User</button>
+                    <button id="submit_add_user_button" type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary" ng-click="createUser(vm.fname, vm.lname, vm.pw, vm.email, vm.role)">Add User</button>
                 </div>
             </form>
         </div>

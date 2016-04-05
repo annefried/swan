@@ -15,64 +15,128 @@ and open the template in the editor.
         <!-- Project Modal -->
         <form role="form">
             <div class="modal-header">
-                <h3 class="modal-title" id="myModalLabel">Create a new scheme</h3>
+                <h3 class="modal-title" id="myModalLabel">Scheme builder</h3>
             </div>
-            <div class="modal-body">
+            <div class="col-lg-6">
                 <uib-alert ng-repeat="alert in alerts"
                            type="{{alert.type}}"
-                           close="closeAlert($index)" 
-                           dismiss-on-timeout="5000">
+                           dismiss-on-timeout="10000"
+                           close="closeAlert($index)">
                     {{alert.msg}}
                 </uib-alert>
+            </div>
+            <div class="modal-body">
                 <!-- 1. row -->
                 <div class="row">
-                    <!-- Upload scheme or select from existing schemes -->
                     <div class="form-group col-lg-6">
-                        <label>Upload scheme (JSON/ XML)</label>
-                        <input class="btn btn-default btn-file"
-                               type="file"
-                               ng-model="file"  
-                               name="scheme"
-                               accept=".xml,.json"
-                               on-read-file="this.saveScheme($fileContent)"/>
-                        <br></br>
-                        <label>or create from previous scheme:</label>
-                        <select class="form-control input-sm col-xs-3"
-                                ng-model="preloadedScheme" 
-                                ng-options="scheme as scheme.name for scheme in this.loadedSchemes">           
-                        </select>
-                        <div class="form-group">
+                        <input ng-model=collapse type="checkbox" id="sb_createFromExisting">
+                        <label for="sb_createFromExisting">Create from existing scheme</label>
+                    </div>
+
+                    <!-- Upload scheme or select from existing schemes -->
+                    <div class="form-group col-lg-12" ng-show=collapse>
+                        <div class="sb_left">
+                            <label>Load existing scheme from database...</label>
+                            <div class="sb_inputText">
+                                <select class="form-control input-sm"
+                                        ng-model="preloadedScheme" 
+                                        ng-options="scheme as scheme.name for scheme in this.loadedSchemes">           
+                                </select>
+                            </div>
                             <button class="btn btn-success btn-sm" 
                                     type="button"
                                     ng-click="loadPreloadedScheme(preloadedScheme);"
-                                    ng-disabled="preloadedScheme === undefined">
+                                    ng-disabled="preloadedScheme === undefined"
+                                    id="sb_loadbutton">
                                 Load scheme
                             </button>
                         </div>
+                        <div class="sb_right">
+                            <label>... or upload scheme (json/xml):</label>
+                            <input class="btn btn-default btn-file"
+                                   type="file"
+                                   ng-model="file"  
+                                   name="scheme"
+                                   accept=".xml,.json"
+                                   on-read-file="this.saveScheme($fileContent)"/>
+                        </div>
+
                     </div>
-                    <!-- Result scheme -->
-                    <div class="form-group col-lg-6">
-                        <h4>Result scheme</h4>
+                </div>
+                <hr/>
+                <div class="row">
+                    <!-- Scheme name -->
+                    <div class="form-group col-lg-9">
+                        <div class="form-group">
+                            <label>Scheme name:</label>
+                            <input type="text" id="scheme-name-input"
+                                   placeholder="Enter name..." 
+                                   class="form-control sb_inputName"
+                                   ng-model="name"/>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 3. row -->
+                <div class="row">
+                    <!-- Target Types -->
+                    <div class="form-group col-lg-7">
+                        <div class="form-group" >
+                            <label>
+                                Annotation types:
+                            </label>
+                            <table class="listingTable">
+                                <tbody>
+                                    <tr ng-repeat="target in this.targets">
+                                        <td class="tableRowWithGlyph">
+                                            {{target}}
+                                        </td>
+                                        <td>
+                                            <span class="glyphicon glyphicon-remove"
+                                                  style="color:red;" 
+                                                  ng-click="removeTargeType(target)">
+                                            </span>
+                                        </td>
+                                    </tr>  
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="input-group col-lg-6 sb_inputName">
+                            <input type="text" ng-model="targetTypeToAdd" 
+                                   class="form-control input-sm" 
+                                   placeholder="Enter type name...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-sm" 
+                                        type="button"  id="annotation-types-input"
+                                        ng-disabled="targetTypeToAdd === undefined"
+                                        ng-click="addTargetType(targetTypeToAdd)">
+                                    Add
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="form-group col-lg-12" >
                         <label>
-                            Label Sets
+                            Label sets
                         </label>
                         <table class="form-group labelLinkSetTable table">
                             <thead class="headDark">
-                                <th class="col-md-2">
-                                    Name
-                                </th>
-                                <th class="col-md-1">
-                                    Exclusive
-                                </th>
-                                <th class="col-md-2">
-                                    Target Types
-                                </th>
-                                <th class="col-md-1">
-                                    Labels
-                                </th>
-                                <th class="col-md-1">
-                                    Delete
-                                </th>
+                            <th class="col-md-2">
+                                name
+                            </th>
+                            <th class="col-md-1">
+                                exclusive?
+                            </th>
+                            <th class="col-md-2">
+                                types
+                            </th>
+                            <th class="col-md-1">
+                                labels
+                            </th>
+                            <th class="col-md-1"/>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="labelSet in labelSets">
@@ -93,6 +157,9 @@ and open the template in the editor.
                                         </p>
                                     </td>
                                     <td>
+                                        <span class="glyphicon glyphicon-edit"
+                                              ng-click="editLabelSet(labelSet.name)">
+                                        </span>
                                         <span class="glyphicon glyphicon-remove"
                                               style="color:red;"
                                               ng-click="removeLabelSet(labelSet.name)">
@@ -101,26 +168,25 @@ and open the template in the editor.
                                 </tr>  
                             </tbody>
                         </table>
+                        <hr/>
                         <label>
-                            Link Sets
+                            Link sets
                         </label>
                         <table class="form-group labelLinkSetTable table">
                             <thead class="headDark">
-                                <th class="col-md-2">
-                                    Name
-                                </th>
-                                <th class="col-md-2">
-                                    Start Type
-                                </th>
-                                <th class="col-md-2">
-                                    End Type
-                                </th>
-                                <th class="col-md-1">
-                                    Labels
-                                </th>
-                                <th class="col-md-1">
-                                    Delete
-                                </th>
+                            <th class="col-md-2">
+                                name
+                            </th>
+                            <th class="col-md-1">
+                                start type
+                            </th>
+                            <th class="col-md-1">
+                                end type
+                            </th>
+                            <th class="col-md-2">
+                                labels
+                            </th>
+                            <th class="col-md-1" />
                             </thead>
                             <tbody>
                                 <tr ng-repeat="linkSet in linkSets">
@@ -139,77 +205,26 @@ and open the template in the editor.
                                         </p>
                                     </td>
                                     <td>
+                                        <span class="glyphicon glyphicon-edit" 
+                                              ng-click="editLinkSet(linkSet)">
+                                        </span>
                                         <span class="glyphicon glyphicon-remove" 
                                               style="color:red;"
                                               ng-click="removeLinkSet(linkSet)">
                                         </span>
                                     </td>
-                                </tr>  
+                                </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-                <hr>
-                <!-- 2. row -->
-                <div class="row">
-                    <!-- Scheme name -->
-                    <div class="form-group col-lg-6">
-                        <div class="form-group">
-                            <label>Scheme name:</label>
-                            <input type="text"
-                                   placeholder="Enter name..." 
-                                   class="form-control"
-                                   ng-model="name"/>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <!-- 3. row -->
-                <div class="row">
-                    <!-- Target Types -->
-                    <div class="form-group col-lg-6">
-                        <div class="form-group">
-                            <label>
-                                Target Types:
-                            </label>
-                            <table class="listingTable">
-                                <tbody>
-                                    <tr ng-repeat="target in this.targets">
-                                        <td class="tableRowWithGlyph">
-                                            {{target}}
-                                        </td>
-                                        <td>
-                                            <span class="glyphicon glyphicon-remove"
-                                                  style="color:red;" 
-                                                  ng-click="removeTargeType(target)">
-                                            </span>
-                                        </td>
-                                    </tr>  
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="input-group col-lg-6">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default btn-sm" 
-                                        type="button" 
-                                        ng-disabled="targetTypeToAdd === undefined"
-                                        ng-click="addTargetType(targetTypeToAdd)">
-                                    Add
-                                </button>
-                            </span>
-                            <input type="text" ng-model="targetTypeToAdd" 
-                                   class="form-control input-sm" 
-                                   placeholder="Enter Target Type...">
-                        </div>
                     </div>
                 </div>
                 <hr>
                 <!-- 4. row -->
                 <div class="row">
                     <!-- Label Sets -->
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-xs-6 sb_left vr_right" id="addLabelSetsDiv">
                         <label>
-                            Label Sets:
+                            Add or modify label sets:
                         </label>
                         <div class="form-group">
                             <label>
@@ -225,13 +240,13 @@ and open the template in the editor.
                                     <input type="checkbox"
                                            ng-init="exclusiveLabelSet = false"
                                            ng-model="exclusiveLabelSet">
-                                    Exclusive
+                                    exclusive
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>
-                                Applies to Target Types:
+                                Applies to annotation types:
                             </label>
                             <table class="listingTable form-group">
                                 <tbody>
@@ -251,7 +266,7 @@ and open the template in the editor.
                             <div class = "btn-group">
                                 <button type = "button" class="btn btn-default dropdown-toggle btn-sm"
                                         data-toggle = "dropdown">
-                                    Add Target Type
+                                    Add annotation type
                                     <span class = "caret">
                                     </span>
                                 </button>
@@ -284,6 +299,9 @@ and open the template in the editor.
                                 </tbody>
                             </table>
                             <div class="input-group col-lg-6">
+                                <input type="text" ng-model="labelToAddLabelSet"
+                                       class="form-control input-sm col-md-1"
+                                       placeholder="Enter name...">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default btn-sm" type="button"
                                             ng-disabled="labelToAddLabelSet === undefined"
@@ -291,30 +309,22 @@ and open the template in the editor.
                                         Add
                                     </button>
                                 </span>
-                                <input type="text" ng-model="labelToAddLabelSet"
-                                       class="form-control input-sm"
-                                       placeholder="Enter Label...">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group sb_right">
                             <button type="button" class="btn btn-success"
+                                    id ="sb_addLabelSetButton"
                                     ng-disabled="nameLabelSet === undefined || nameLabelSet === '' || selectedTargetsLabel.length < 1 || currentLabelSet.length < 1"
                                     ng-click="addLabelSet()">
-                                Add
+                                Add label set
                             </button>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <!-- 5. row -->
-                <div class="row">
                     <!-- Link Sets -->
-                    <div class="form-group col-lg-6">
-                        <div class="form-group">
-                            <label>
-                                Link Sets:
-                            </label>
-                        </div>
+                    <div class="form-group col-xs-6 sb_right" id="scheme_add_links_div">
+                        <label>
+                            Add or modify link types:
+                        </label>
                         <div class="form-group">
                             <label>
                                 Name:
@@ -323,23 +333,22 @@ and open the template in the editor.
                                    class="form-control input-sm" 
                                    ng-model="nameLinkSet"/>
                         </div>
-                        <div class="form-group col-lg-6 noMarginLeft">
-                            <label>
-                                Start Type:
+                        <div class="form-group">
+                            <label class="col-xs-4">
+                                Start type:
                             </label>
-                            <div class = "btn-group">
-                                <select class="form-control input-sm col-xs-3"
+                            <div class = "btn-group sb_margin">
+                                <select class="form-control input-sm"
                                         ng-options="target for target in this.targets"
                                         ng-model="startType">
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-group col-lg-6 noMarginLeft">
-                            <label>
-                                End Type:
+                            <br/>
+                            <label class="col-xs-4">
+                                End type:
                             </label>
                             <div class = "btn-group">
-                                <select class="form-control input-sm col-xs-3"
+                                <select class="form-control input-sm col-xs-1"
                                         ng-options="target for target in this.targets"
                                         ng-model="endType">
                                 </select>
@@ -364,7 +373,11 @@ and open the template in the editor.
                                     </tr>  
                                 </tbody>
                             </table>
-                            <div class="input-group col-lg-6">
+                            <div class="input-group">
+                                <input type="text"
+                                       ng-model="labelToAddLinkSet"
+                                       class="form-control input-sm"
+                                       placeholder="Enter name...">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default btn-sm" 
                                             type="button"
@@ -373,24 +386,31 @@ and open the template in the editor.
                                         Add
                                     </button>
                                 </span>
-                                <input type="text"
-                                       ng-model="labelToAddLinkSet"
-                                       class="form-control input-sm"
-                                       placeholder="Enter Label...">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-success"
-                                    ng-disabled="startType === undefined || endType === undefined"
+                        <div class="form-group sb_right">
+                            <button type="button" class="btn btn-success" id ="sb_addLinkSetButton"
+                                    ng-disabled="startType === undefined || endType === undefined || currentLinkSet.length < 1"
                                     ng-click="addLinkSet()">
-                                Add
+                                Add link set
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-6">
+                <uib-alert ng-repeat="alert in alerts"
+                           type="{{alert.type}}"
+                           dismiss-on-timeout="10000"
+                           close="closeAlert($index)">
+                    {{alert.msg}}
+                </uib-alert>
+            </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" ng-click="submit()">Submit</button>
+                <button id="sb_submitSchemeButton"
+                        type="button"
+                        class="btn btn-primary"
+                        ng-click="submit()">Create and save scheme</button>
             </div>
         </form>
 

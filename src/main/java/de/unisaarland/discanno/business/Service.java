@@ -9,8 +9,11 @@ import de.unisaarland.discanno.tokenization.model.Line;
 import de.unisaarland.discanno.tokenization.TokenizationUtil;
 import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.dao.*;
+import de.unisaarland.discanno.email.EmailProvider;
 import de.unisaarland.discanno.entities.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -29,6 +32,17 @@ import javax.ws.rs.core.Response;
  */
 @Stateless
 public class Service {
+    
+    // Determines which kind of user can create another user with the allowed role
+    private static EnumMap<Users.RoleType, List<Users.RoleType>>
+            userPermissionMap = new EnumMap<>(Users.RoleType.class);
+    
+    static {
+        userPermissionMap.put(Users.RoleType.admin,
+                Arrays.asList(Users.RoleType.admin, Users.RoleType.projectmanager, Users.RoleType.annotator));
+        userPermissionMap.put(Users.RoleType.projectmanager,
+                Arrays.asList(Users.RoleType.annotator));
+    }
     
     @EJB
     ProjectDAO projectDAO;
@@ -68,6 +82,9 @@ public class Service {
     
     @EJB
     TargetTypeDAO targetTypeDAO;
+    
+    @EJB
+    EmailProvider emailProvider;
     
     /**
      * Creates a new state object and sets given user and document.
@@ -194,6 +211,12 @@ public class Service {
     }
 
     public void process(Scheme entity) {
+        
+        if (entity.getCreator() != null
+                && entity.getCreator().getId() != null) {
+            Users user = usersDAO.find(entity.getCreator().getId(), true);
+            entity.setCreator(user);
+        }
 
         Set<Project> projects = new HashSet<>();
         for (Project p : entity.getProjects()) {
@@ -371,6 +394,26 @@ public class Service {
 
     }
     
+    public void process(Users currUser, Users newUser) {
+        
+        // Check user roles
+        List<Users.RoleType> allowedRoles = userPermissionMap.get(currUser.getRole());
+        if (!allowedRoles.contains(newUser.getRole())) {
+            throw new IllegalArgumentException("Service: The requested user role is not allowed.");
+        }
+        
+        Set<Project> proSet = new HashSet<>();
+        for (Project p : newUser.getProjects()) {
+            Project proj = (Project) projectDAO.find(p.getId(), false);
+            proSet.add(proj);
+        }
+        newUser.setProjects(proSet);
+        newUser.setCreateDate(Utility.getCurrentTime());
+        newUser.setPassword(
+                Utility.hashPassword(
+                        newUser.getPassword()));
+    }
+    
     public void process(TimeLogging entity) {
         Users user = (Users) usersDAO.find(entity.getUsers().getId(), false);
         entity.setUsers(user);
@@ -413,12 +456,22 @@ public class Service {
     public void addProjectManagerToProject(Long projId, Long userId) {
         
         Project proj = (Project) projectDAO.find(projId, false);
-
         Users manager =  (Users) usersDAO.find(userId, false);
         
         manager.getManagingProjects().add(proj);
         proj.addProjectManager(manager);
         
+        projectDAO.merge(proj);
+    }
+    
+    public void addWatchingUserToProject(Long projId, Long userId) {
+
+        Project proj = (Project) projectDAO.find(projId, false);
+        Users watchingUser =  (Users) usersDAO.find(userId, false);
+        
+        watchingUser.getWatchingProjects().add(proj);
+        proj.addWatchingUsers(watchingUser);
+
         projectDAO.merge(proj);
     }
     
@@ -707,6 +760,17 @@ public class Service {
         return state.getDocument();
     }
     
+    public Response resetUserPassword(Users entity) {
+        Users user = usersDAO.find(entity.getId(), false);
+        String newPwd = Utility.getRandomString(14);
+        String hashedPwd = Utility.hashPassword(newPwd);
+
+        emailProvider.sendPasswordResetNotification(user, newPwd);
+        
+        user.setPassword(hashedPwd);
+        return usersDAO.merge(user);
+    }
+    
     
     ///////////////////////////////////////////////
     //  REMOVE
@@ -723,8 +787,11 @@ public class Service {
             removeDocument(d);
         }
         
+        Scheme scheme = entity.getScheme();
+        scheme.getProjects().remove(entity);
+        
+        schemeDAO.merge(scheme);
         projectDAO.remove(entity);
-
     }
     
     public void removeUserFromProject(Long projId, Long userId) {
@@ -735,8 +802,20 @@ public class Service {
     
     public void removeProjectManagerFromProject(Long projId, Long userId) {
         Project proj = (Project) projectDAO.find(projId, false);
+        Users user = (Users) usersDAO.find(userId, false);
         Utility.removeObjectFromSet(proj.getProjectManager(), userId);
+        Utility.removeObjectFromSet(user.getManagingProjects(), projId);
         projectDAO.merge(proj);
+        usersDAO.merge(user);
+    }
+    
+    public void removeWatchingUserFromProject(Long projId, Long userId) {
+        Project proj = (Project) projectDAO.find(projId, false);
+        Users user = (Users) usersDAO.find(userId, false);
+        Utility.removeObjectFromSet(proj.getWatchingUsers(), userId);
+        Utility.removeObjectFromSet(user.getWatchingProjects(), projId);
+        projectDAO.merge(proj);
+        usersDAO.merge(user);
     }
     
     public void removeDocument(Document entity) {
@@ -819,28 +898,34 @@ public class Service {
     public void removeUser(Users user) {
         
         List<TimeLogging> list = timeLoggingDAO.getAllTimeLoggingByUserId(user.getId());
-        
         for (TimeLogging t : list) {
             timeLoggingDAO.remove(t);
         }
         
         List<Annotation> listAnno = annotationDAO.getAllAnnotationsByUserId(user);
-        
         for (Annotation a : listAnno) {
             removeAnnotation(a);
         }
         
         List<State> listStates = stateDAO.getAllStatesByUserId(user);
-        
         for (State s : listStates) {
             stateDAO.remove(s);
         }
         
         Set<Project> listManagingProjects = user.getManagingProjects();
-        
         for (Project p : listManagingProjects) {
             p.removeProjectManager(user);
             projectDAO.merge(p);
+        }
+        
+        if (user.getRole().equals(Users.RoleType.projectmanager)
+                || user.getRole().equals(Users.RoleType.admin)) {
+            List<Scheme> schemes = schemeDAO.findAll();
+            for (Scheme s : schemes) {
+                if (s.getCreator() != null && s.getCreator().equals(user)) {
+                    s.setCreator(null);
+                }
+            }
         }
         
         usersDAO.merge(user);

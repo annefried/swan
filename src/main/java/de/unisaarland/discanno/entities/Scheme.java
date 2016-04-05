@@ -19,6 +19,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -35,6 +36,11 @@ public class Scheme extends BaseEntity {
 
     @Column(name = "Name", unique = true)
     private String name;
+    
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+            fetch = FetchType.EAGER,
+            optional = true)
+    private Users creator;
     
     @JsonView({View.Schemes.class})
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
@@ -72,6 +78,14 @@ public class Scheme extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Users getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Users creator) {
+        this.creator = creator;
     }
 
     public Set<TargetType> getTargetTypes() {

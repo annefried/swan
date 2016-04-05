@@ -10,7 +10,7 @@ angular.module('app')
                     return string !== undefined
                             && (string.length === 1 && (string === "," || string === "." || string === "!" || string === "?"));
                 };
-                
+
                 $scope.isSpace = function (string) {
                     return string !== undefined
                             && (string === " " || string === "");
@@ -23,17 +23,18 @@ angular.module('app')
                         this.endSelection = window.getSelection().getRangeAt(0).endContainer.parentNode;
                     }
                 };
-                
-                this.clearSelection = function() {
+
+                this.clearSelection = function () {
                     if (window.getSelection) {
                         if (window.getSelection().empty)  // Chrome
-                          window.getSelection().empty();
-                        
+                            window.getSelection().empty();
+
                         else if (window.getSelection().removeAllRanges)  // Firefox
-                          window.getSelection().removeAllRanges();
-                        
-                      } 
-                      else if (document.selection)  // IE
+                            window.getSelection().removeAllRanges();
+
+                    } else if (document.selection)  // IE
                         document.selection.empty();
+                    this.startSelection = null;
+                    this.endSelection = null;
                 };
             }]);

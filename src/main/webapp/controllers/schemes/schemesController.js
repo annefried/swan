@@ -5,8 +5,10 @@ angular
         .controller('schemesController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', '$location', '$q', function ($scope, $rootScope, $window, $http, $uibModal, $location, $q) {
 
                 // Redirect if client is not logged in
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
-                    window.location = "/discanno/signin.html";
+                if (($window.sessionStorage.role != 'admin')
+						&& ($window.sessionStorage.role != 'annotator')
+						&& ($window.sessionStorage.role != 'projectmanager')) {
+                    $rootScope.redirectToLogin();
                 } else {
 
                     /**
@@ -35,7 +37,9 @@ angular
                         var httpSchemes = $http.get("discanno/scheme/schemes").success(function (response) {
                             $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
                         }).error(function (response) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No connection to server'});
+                            if (response == "") {
+								$rootScope.redirectToLogin();
+							}
                         });
                         return httpSchemes;
                     };
@@ -45,11 +49,13 @@ angular
                      * @returns http-Object of query
                      */
                     $scope.loadProjects2 = function () {
-                        var httpProjects = $http.get("discanno/project").then(function (response) {
-                            $scope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
-                        }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
-                        });
+                        var httpProjects = $http.get("discanno/project").success(function (response) {
+                            $scope.projects = JSOG.parse(JSON.stringify(response)).projects;
+                        }).error(function (response) {
+							if (response == "") {
+								$rootScope.redirectToLogin();
+							}
+						});
                         return httpProjects;
                     };
 
@@ -72,9 +78,10 @@ angular
                             }
                             var schemePreview = {
                                 'id': scheme.id,
+                                'name': scheme.name,
+                                'creator': scheme.creator,
                                 'projects': newProjects,
                                 'tableIndex': $scope.schemeCounter,
-                                'name': scheme.name,
                                 'labelSetCount': scheme.labelSets.length,
                                 'linkSetCount': scheme.linkSets.length
                             };
@@ -83,6 +90,14 @@ angular
                         }
 
                         $rootScope.tableSchemes = this.tableSchemes;
+                    };
+                    
+                    $scope.isDeletingPossible = function (scheme) {
+                        return scheme.projects.length < 1
+                            && ($window.sessionStorage.role == 'admin'
+                                    || ($window.sessionStorage.role == 'projectmanager'
+                                            && scheme.creator != null
+                                            && scheme.creator.id == $window.sessionStorage.uId));
                     };
 
                     /******************

@@ -58,8 +58,6 @@ public class UserFacadeREST extends AbstractFacade<Users> {
     
     
     /**
-     * TODO contains business logic
-     * 
      * Inserts an user and hashes the password before.
      * 
      * @param entity
@@ -70,22 +68,24 @@ public class UserFacadeREST extends AbstractFacade<Users> {
     @Consumes({MediaType.APPLICATION_JSON})
     public Response create(Users entity) {
         
-        try {   
-            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
-        
-            Set<Project> proSet = new HashSet<>();
-            for (Project p : entity.getProjects()) {
-                Project proj = (Project) projectDAO.find(p.getId(), false);
-                proSet.add(proj);
-            }
-            entity.setProjects(proSet);
-            entity.setCreateDate(Utility.getCurrentTime());
-            entity.setPassword(
-                    Utility.hashPassword(
-                            entity.getPassword()));
-
+        try {
+            String session = getSessionID();
+            LoginUtil.check(usersDAO.checkLogin(session, Users.RoleType.projectmanager));
+            service.process(usersDAO.getUserBySession(session), entity);
             return usersDAO.create(entity);
-            
+        } catch (SecurityException | IllegalArgumentException e) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+    }
+    
+    @POST
+    @Path("/reset")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response resetUserPassword(Users entity) {
+        
+        try {   
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.admin));
+            return service.resetUserPassword(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
@@ -129,7 +129,7 @@ public class UserFacadeREST extends AbstractFacade<Users> {
         try {   
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             
-            List<Users> list = usersDAO.findAll();
+            List<Users> list = usersDAO.getAllUsersAscending();
             
             return Response.ok(mapper.writerWithView(View.Users.class)
                                         .withRootName("users")

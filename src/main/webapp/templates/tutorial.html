@@ -6,23 +6,49 @@ and open the template in the editor.
 -->
 <link href="css/explorer.css" rel="stylesheet">
 <div class="container-fluid">
-    <h3 id="1-features" style="display: inline-block">DiscAnno Features</h3>
-    <ul>
-        <li>Temporal structures</li>
-        <li>Discourse mode</li>
-        <li>Visualization by graph and or timeline <span class="label label-default">New</span></li>
-        <li>Customization via scheme</li>
-        <li>Project administration</li>
-        <li>Different user roles: Admin, project manager, annotator</li>
-    </ul>
-    <h3 id="2-tips" style="display: inline-block">Tips and Hints</h3>
-    <ul>
-        <li>To deselect click in the area where no text is</li>
-        <li>Use the shortcuts to improve the annotation process <span class="label label-default">New</span></li>
-        <li>To annotate a word or passage start marking in the middle of the word</li>
-    </ul>
-    <br/><br/>
-    <button class="btn btn-lg btn-primary" id="start-tour" ng-click="startTour()">
-      Start Tour
-    </button><br/><br/>
+
+    <div class="col-md7">
+        <h2 id="1-features" style="display: inline-block">Welcome to a quick tour of DiscAnno!</h2>
+        <br/>
+
+        <p>DiscAnno is designed such that most things should be self-explanatory.
+            You can click around and try out things for yourself, or follow the tours below!
+        <p>
+
+        <p ng-hide="isUnprivileged === 'true'">
+            DiscAnno provides two different user roles.
+            DiscAnno users are either <strong>project managers</strong> or
+            <strong>annotators</strong>. Depending on whether you are logged in as a project manager
+            or as an annotator, you will see the project manager or the annotator tours. If you are
+            trying out DiscAnno for the first time, start with the project manager tour and then
+            log in as an annotator (you will create an account during the tour).<br/>
+        </p>
+
+
+        <button ng-hide="isUnprivileged === 'true'" class="btn btn-md btn-primary" id="start-tour" ng-click="startTourUserMgmt()">
+            Start tour 1: user management
+        </button>
+        <div ng-hide="isUnprivileged === 'true'"> <br/></div>
+
+        <button ng-hide="isUnprivileged === 'true'" class="btn btn-md btn-primary" id="start-tour2" ng-click="startTourSchemes()">
+            Start tour 2: annotation scheme configuration
+        </button>
+
+        <div ng-hide="isUnprivileged === 'true'"> <br/></div>
+
+        <button ng-hide="isUnprivileged === 'true'" class="btn btn-md btn-primary" id="start-tour3" ng-click="startTourProjectExpl()">
+            Start tour 3: project explorer
+        </button>
+
+        <!-- tours for annotators -->
+        <p ng-hide="isUnprivileged === 'false'">
+            Before starting the tour, go to the Project Explorer and check whether some document is waiting for you.
+            Otherwise, ask your project manager to add some documents for you.
+            <br/><br/></p>
+
+        <button ng-hide="isUnprivileged === 'false'" class="btn btn-md btn-primary" id="start-tourAnnot" ng-click="startTourAnnotator()">
+            Start tour
+        </button>
+        <br/><br/>
+    </div>
 </div>

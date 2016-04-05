@@ -9,28 +9,35 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
             <h2 class="sub-header" id="1-projects-header" style="display: inline-block">Projects</h2>
-            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</uib-alert>
+            <uib-alert ng-repeat="alert in alerts"
+                       type="{{alert.type}}" 
+                       close="closeAlert($index)"
+                       dismiss-on-timeout="5000">
+                {{alert.msg}}
+            </uib-alert>
             <div class="table-responsive">
                 <table class="table">
 
                     <thead>
                         <tr class="headDark">
-                            <th class="col-md-1 vert-align"></th>
+                            <th class="col-md-1 vert-align" id="pe_expand_documents"></th>
                             <th class="col-md-2 vert-align">Name</th>
                             <th class="col-md-2 vert-align">Progress</th>
                             <th class="col-md-2 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'">Users</span>
+                                <span ng-hide="isUnprivileged === 'true'">Annotators</span>
                             </th>
-                            <th class="col-md-2 vert-align">Project Manager</th>
-                            <th class="col-md-1 vert-align">Scheme</th>
+                            <th class="col-md-2 vert-align">Project manager</th>
                             <th class="col-md-1 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'">Edit Project</span>
+                                <span ng-hide="isUnprivileged === 'true'">Scheme</span>
+                            </th>
+                            <th class="col-md-1 vert-align">
+                                <span ng-hide="isUnprivileged === 'true'" id="pe_edit_project">Edit</span>
                             </th>
                             <th class="col-md-1 vert-align">
                                 <span ng-hide="isUnprivileged === 'true'">Delete</span>
                             </th>
                             <th class="col-md-2 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'">Export</span>
+                                <span ng-hide="isUnprivileged === 'true'" id="pe_export">Export</span>
                             </th>
                         </tr>
                     </thead>
@@ -61,7 +68,15 @@
                                     </span>
                                 </a>
                             </td>
-                            <td class="col-md-2 vert-align" id="project-name">{{x.name}}</td>
+                            <td class="col-md-2 vert-align" id="project-name">
+                                {{x.name}}
+                                <a ng-show="x.isWatching && this.role == 'projectmanager'">
+                                    <span class="glyphicon glyphicon-send" title="Receive weekly E-Mail notification"></span>
+                                </a>
+                                <a ng-show="!x.isWatching && this.role == 'projectmanager'">
+                                    <span class="glyphicon glyphicon-send" style="color:gray" title="Receive weekly E-Mail notification"></span>
+                                </a>
+                            </td>
                             <td class="col-md-2 vert-align"> 
                                 <!-- progress bar visible for ADMIN & PM -->
                                 <div ng-hide="isUnprivileged === 'true'"
@@ -84,7 +99,8 @@
                                 </div>
                             </td>
                             <td class="col-md-2 vert-align">
-                                <p ng-hide="isUnprivileged === 'true'" class="userprogress"
+                                <p ng-hide="isUnprivileged === 'true'"
+                                   class="userprogress"
                                    ng-repeat="cur in x.users">
                                     {{cur.email}}
                                 </p>
@@ -95,7 +111,8 @@
                                 </p>
                             </td>
                             <td class="col-md-1 vert-align">
-                                <a class="glyphicon glyphicon-file"
+                                <a ng-hide="isUnprivileged === 'true'"
+                                   class="glyphicon glyphicon-file"
                                    id="project-scheme-view"
                                    ng-click="openProjectSchemeModal(x.id)">
                                 </a>
@@ -119,18 +136,19 @@
                                 <a class="glyphicon glyphicon-share"
                                    ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
                                    ng-href="{{ exportProject(x.id) }}"
-                                   ng-hide="isUnprivileged === 'true'">(xml)
+                                   ng-hide="isUnprivileged === 'true'">(XML)
                                 </a>
+                                <br/>
                                  <a class="glyphicon glyphicon-share"
                                    ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
                                    ng-href="{{ exportProjectXmi(x.id) }}"
-                                   ng-hide="isUnprivileged === 'true'">(UIMA xmi)
+                                   ng-hide="isUnprivileged === 'true'">(XMI)
                                 </a>
                             </td>
                         </tr>
                         <tr class="collapse relateTo{{x.id}} headLight topBorder" ng-class="{'in': toggeled[x.id]}">
                             <td class="col-md-1 vert-align"><b>Documents</b></td>
-                            <td class="col-md-2 vert-align"><b>Name</b></td>
+                            <td class="col-md-2 vert-align"><b>Filename</b></td>
                             <td class="col-md-2 vert-align"><b>Completed</b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
@@ -204,6 +222,7 @@
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align">
                                 <button class="btn btn-primary tableButton"
+                                        id ="pe_addDocumentsButton"
                                         ng-click="openDocumentAddModal(x.id)"
                                         ng-hide="isUnprivileged === 'true'">
                                     + Document
@@ -223,7 +242,7 @@
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align" id="projects-add-button">
-                                <button class="btn btn-primary tableButton" 
+                                <button class="btn btn-primary tableButton"  id="pe_addProject_button"
                                         type="button" ng-hide="isUnprivileged === 'true'"
                                         ng-click="openProjectAddModal()">
                                     + Project

@@ -1,11 +1,5 @@
-
 <link href="css/explorer.css" rel="stylesheet">
 
-<script type="text/ng-template" id="alert.html">
-    <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
-    <div ng-transclude></div>
-    </div>
-</script>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
@@ -13,10 +7,11 @@
             <table class="table">
                 <thead class="headDark">
                     <tr>
-                        <th>Prename</th>
-                        <th>Name</th>
+                        <th>First name</th>
+                        <th>Last name</th>
                         <th>Role</th>
                         <th>E-Mail</th>
+                        <th>Logged time</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
@@ -26,6 +21,7 @@
                         <td>{{lastname}}</td>
                         <td>{{role}}</td>
                         <td>{{email}}</td>
+                        <td>{{totalTime}}</td>
                         <td>
                             <a>
                                 <span class="glyphicon glyphicon-pencil"
@@ -37,37 +33,61 @@
                 </tbody>
             </table>
 
-            <span>
-                <input type="text" ng-model="this.val" numbers-only/>
-                <b>Minutes</b>
-                <button class="btn btn-primary confirmButton"
-                        id="profile-add-timelogging"
-                        type="button" 
-                        ng-click="addTimeLogging()">Add Logged Time
-                </button>
-            </span>
-
-            <span>
-                <b>Total amount:</b>
-                <label>{{this.totalTime}}</label>
-            </span>
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Add time</strong></div>
+                <div class="panel-body">
+                    <span>
+                        <input type="text" style="width: 70px;" ng-model="this.loggedHours" numbers-only/>
+                        <b>hours</b>
+                        <input type="text" style="width: 70px;" ng-model="this.loggedMinutes" numbers-only/>
+                        <b>minutes</b>
+                        <button class="btn btn-primary confirmButton"
+                                id="profile-add-timelogging"
+                                type="button" 
+                                ng-click="addTimeLogging()">Submit
+                        </button>
+                    </span>
+                </div>
+            </div>
 
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
 
+            <div>
+                <label>Show time logging since:</label>
+                <div style="display: inline-block" class="dropdown">
+                    <button class="btn btn-default dropdown-toggle"
+                            type="button" id="dropdownMenu1"
+                            data-toggle="dropdown"
+                            aria-haspopup="true">
+                      {{this.dropDownSelection}}
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li ng-repeat="x in this.timeSteps"><a ng-click="onDropDownTimeStepChange(x)">{{x}}</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ng-click="onDropDownTimeStepChange('No filter')">No Filter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="col-sm-6 col-md-6">Timestamp</th>
-                        <th class="col-sm-6 col-md-6">Amount</th>
+                        <th class="col-sm-6 col-md-5">Timestamp</th>
+                        <th class="col-sm-6 col-md-5">Amount</th>
+                        <th class="col-sm-6 col-md-2">Total amount: {{this.totalTimeSinceTimeStep}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="x in this.tilog| orderBy: '-loggedat'">
-                        <td class="col-sm-6 col-md-6">{{x.loggedat| date:'dd.MM.yyyy - HH:mm:ss'}}</td>
-                        <td class="col-sm-6 col-md-6">{{x.loggedtime}} Minutes</td>
+                     <!--track by $index-->
+                    <tr ng-repeat="x in this.tilog | orderBy: '-loggedat'">
+                        <td class="col-sm-6 col-md-5" align="left">{{x.loggedat| date:'dd.MM.yyyy - HH:mm:ss'}}</td>
+                        <td class="col-sm-6 col-md-5" align="left">{{x.loggedtime}} Minutes</td>
+                        <td class="col-sm-6 col-md-2" align="left"></td>
                     </tr>
                 </tbody>
             </table>
+            
         </div>
     </div>
 </div>

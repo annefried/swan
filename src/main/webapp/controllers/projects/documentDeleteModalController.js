@@ -20,7 +20,7 @@ angular.module('app').controller('documentDeleteModalController', function ($sco
      * @param {type} projId the projects id
      */
     $scope.deleteDocument = function (documentId, projId) {
-        $http.delete("discanno/document/" + documentId).then(function (response) {
+        $http.delete("discanno/document/" + documentId).success(function (response) {
             for (var j = 0; j < $rootScope.tableProjects.length; j++) {
                 if ($rootScope.tableProjects[j].id === projId) {
                     var project = $rootScope.tableProjects[j];
@@ -31,8 +31,8 @@ angular.module('app').controller('documentDeleteModalController', function ($sco
                     }
                 }
             }
-        }, function (err) {
-            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
+        }).error(function (response) {
+            $rootScope.checkResponseStatusCode(response.status);
         });
         
         $uibModalInstance.close();

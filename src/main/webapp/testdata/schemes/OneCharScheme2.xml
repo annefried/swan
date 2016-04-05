@@ -2,7 +2,7 @@
 <root>
   <name>OneCharScheme</name>
   <targetTypes>
-    <item>v</item>
+    <item>verb</item>
     <item>passage</item>
   </targetTypes>
   <labelSets>
@@ -10,11 +10,13 @@
       <name>SituationEntityType</name>
       <exclusive>true</exclusive>
       <appliesToTargetTypes>
-        <item>v</item>
+        <item>verb</item>
         <item>passage</item>
       </appliesToTargetTypes>
       <labels>
-        <item>STATE</item>
+        <item>F</item>
+        <item>AB</item>
+        <item>CD</item>
       </labels>
     </item>
     <item>
@@ -24,20 +26,18 @@
         <item>passage</item>
       </appliesToTargetTypes>
       <labels>
-        <item>N</item>
-      	<item>A</item>
-      	<item>R</item>
+        <item>NA</item>
       </labels>
     </item>
   </labelSets>
   <linkSets>
     <item>
-      <startType>v</startType>
-      <endType>v</endType>
+      <startType>verb</startType>
+      <endType>verb</endType>
       <allowUnlabeledLinks>
       </allowUnlabeledLinks>
       <linkLabels>
-        <item>b</item>
+        <item>before</item>
         <item>after</item>
         <item>overlap</item>
       </linkLabels>

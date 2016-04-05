@@ -11,28 +11,33 @@ and open the template in the editor.
     </head>
     <body>
         <div class="modal-header">
-            <h3 class="modal-title">Edit User...</h3>
+            <h3 class="modal-title">Reset password</h3>
         </div>
         <div class="modal-body">
+            <!-- removed this functionality for demo, as we don't have real e-mail addresses -->
+            <!--form name="form" role="form">
+                <label>Do you want to reset this user's password?</label>
+                <br></br>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-danger" ng-click="resetUserPassword()">Reset user password</button>
+                </div>
+            </form-->
             <form name="form" ng-submit="vm.addUser()" role="form">
-                <div class="form-group" 
+                <div class="form-group"
                      ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
                     <label for="pw">Password (Min. 5 characters):</label>
-                    <input type="password" name="pw" pattern=".{5,}"
-                           title="5 characters minimum" id="pw"
-                           class="form-control" ng-model="vm.pw" required />
-                    <label for="rpw">Repeat password:</label>
-                    <input type="password" name="rpw" pattern=".{5,}"
-                           title="5 characters minimum" id="rpw"
-                           class="form-control" ng-model="vm.rpw" required />
-                    <span ng-show="form.pw.$dirty && form.pw.$error.required" class="help-block">
-                        Password must be at least 5 characters long.
-                    </span>
+                    <input type="password" pattern=".{5,}" title="5 characters minimum"
+                           name="pw" id="pw" class="form-control" ng-model="vm.pw"
+                           ng-init="vm.fname = password" required />
+                    <label for="rpw">repeat password:</label>
+                    <input type="password" pattern=".{5,}" title="5 characters minimum"
+                           name="pw" id="rpw" class="form-control" ng-model="vm.rpw"
+                           ng-init="vm.fname = password" required />
                 </div>
                 <div class="form-actions">
                     <button type="submit" ng-disabled="form.$invalid || vm.dataLoading || vm.pw != vm.rpw"
-                            class="btn btn-primary" ng-click="editPassword(vm.pw)">
-                        Change Password
+                            class="btn btn-primary" ng-click="changePassword(vm.pw)">
+                        Change password
                     </button>
                 </div>
             </form>

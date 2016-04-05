@@ -1,9 +1,40 @@
-angular
-        .module('app')
-        .controller('dashboardController', ['$rootScope', '$scope', '$window', '$http', '$timeout', function ($rootScope, $scope, $window, $http, $timeout) {
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+angular.module('app').controller('dashboardController', ['$rootScope', '$scope', '$window', '$http', '$timeout',
+	function ($rootScope, $scope, $window, $http, $timeout) {
 
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
-                    window.location = "/discanno/signin.html";
+				$rootScope.alerts = [
+                ];
+
+                $rootScope.addAlert = function (alert) {
+                    $rootScope.alerts.push(alert);
+                };
+
+                $rootScope.closeAlert = function (index) {
+                    $rootScope.alerts.splice(index, 1);
+                };
+                
+                $rootScope.checkResponseStatusCode = function (status) {
+                    if (status === 403) { // Forbidden
+                        $rootScope.redirectToLogin();
+                    } else if (status >= 400 && status < 500) {
+                        $rootScope.addAlert({type: 'danger', msg: 'This action is not allowed.'});
+                    } else if (status >= 500 && status < 600) {
+                        $rootScope.addAlert({type: 'danger', msg: 'No server connection.'});
+                    }
+                };
+				
+				$rootScope.redirectToLogin = function () {
+					window.location = "/discanno/signin.html";
+				};
+
+                if (($window.sessionStorage.role != 'admin')
+						&& ($window.sessionStorage.role != 'annotator')
+						&& ($window.sessionStorage.role != 'projectmanager')) {
+                    $rootScope.redirectToLogin();
                 } else {
                     $timeout(function () {
                         $scope.visible = 'true'
@@ -11,6 +42,7 @@ angular
 
                     $rootScope.projectName = "DiscAnno"; // TODO why?
                     $rootScope.isUnprivileged = $window.sessionStorage.isAnnotator;
+                    $rootScope.role = $window.sessionStorage.role;
 
                     $scope.prename = $window.sessionStorage.prename;
                     $scope.lastname = $window.sessionStorage.lastname;
@@ -34,17 +66,17 @@ angular
                 $rootScope.loadProjects = function () {
                     // If User show only assigned projects
                     if ($window.sessionStorage.role !== 'annotator') {
-                        var httpProjects = $http.get("discanno/project").then(function (response) {
-                            $rootScope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
-                        }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
-                        });
+                        var httpProjects = $http.get("discanno/project").success(function (response) {
+                            $rootScope.projects = JSOG.parse(JSON.stringify(response)).projects;
+                        }).error(function (response) {
+							$rootScope.checkResponseStatusCode(response.status);
+						});
                     } else {
-                        var httpProjects = $http.get("discanno/project/byuser/" + $window.sessionStorage.uId).then(function (response) {
-                            $rootScope.projects = JSOG.parse(JSON.stringify(response.data)).projects;
-                        }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
-                        });
+                        var httpProjects = $http.get("discanno/project/byuser/" + $window.sessionStorage.uId).success(function (response) {
+                            $rootScope.projects = JSOG.parse(JSON.stringify(response)).projects;
+                        }).error(function (response) {
+							$rootScope.checkResponseStatusCode(response.status);
+						});
                     }
                     return httpProjects;
                 };
@@ -54,6 +86,7 @@ angular
                  */
                 $rootScope.buildTableProjects = function () {
                     $rootScope.tableProjects = [];
+                    var currUser = {'id': parseInt($window.sessionStorage.uId)};
                     for (var i = 0; i < $rootScope.projects.length; i++) {
                         var proj = $rootScope.projects[i];
                         var projComplUser = 0;
@@ -97,7 +130,7 @@ angular
                                 var docCompl;
                                 var lastEdit = -1;
 
-                                //role: annotator
+                                // role: annotator
                                 if ($scope.isUnprivileged === 'true') {
                                     var usrPos = -1;
                                     for (var t = 0; t < proj.users.length; t++) {
@@ -116,7 +149,7 @@ angular
                                     docCompl = states[usrPos].completed;
                                     lastEdit = states[usrPos].lastEdit;
                                 }
-                                //role: admin
+                                // role: admin/ project manager
                                 else {
                                     var docComplAdmin = 0;
                                     for (var t = 0; t < states.length; t++) {
@@ -152,14 +185,43 @@ angular
                                 'name': proj.name,
                                 'users': proj.users,
                                 'completed': projCompl,
+								'scheme': proj.scheme,
                                 'numberOfDocuments': proj.documents.length,
                                 'documents': documents,
-                                'pms': proj.projectManager
+                                'pms': proj.projectManager,
+                                'watchingUsers': proj.watchingUsers,
+                                'isWatching': $rootScope.containsUser(proj.watchingUsers, currUser)
                             };
                             $rootScope.tableProjects.push(template);
                         }
                     }
 
+                };
+                
+                $rootScope.containsUser = function (userList, user) {
+                    if (userList !== undefined) {
+                        for (var i = 0; i < userList.length; i++) {
+                            if (userList[i].id == user.id) {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                };
+                
+                /**
+                 * 
+                 * @param {type} timeLogArr
+                 * @returns {String} String representation of the total logged time
+                 */
+                $rootScope.calcTotalTime = function (timeLogArr) {
+                    var totalTime = 0;
+                    for (var i = 0; i < timeLogArr.length; i++) {
+                        totalTime += parseInt(timeLogArr[i].loggedtime);
+                    }
+                    var hours = Math.floor(totalTime / 60);
+                    var minutes = totalTime % 60;
+                    return "" + hours + "h " + minutes + "min";
                 };
                 
                 /**
@@ -189,17 +251,6 @@ angular
                     $window.sessionStorage.title = docName;
                     $window.sessionStorage.project = projectName;
                     $window.sessionStorage.completed = completed;
-                };
-
-                $rootScope.alerts = [
-                ];
-
-                $rootScope.addAlert = function (alert) {
-                    $rootScope.alerts.push(alert);
-                };
-
-                $rootScope.closeAlert = function (index) {
-                    $rootScope.alerts.splice(index, 1);
                 };
 
             }]);

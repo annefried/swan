@@ -19,10 +19,17 @@ angular.module('app').controller('projectDeleteModalController', function ($scop
             for (var i = 0; i < $rootScope.tableProjects.length; i++) {
                 if ($rootScope.tableProjects[i].id === projId) {
                     $rootScope.tableProjects.splice(i, 1);
+					break;
                 }
             }
+			for (var i = 0; i < $rootScope.projects.length; i++) {
+				if ($rootScope.projects[i].id === projId) {
+					$rootScope.projects.splice(i, 1);
+					break;
+				}
+			}
         }).error(function (response) {
-            $rootScope.addAlert({type: 'danger', msg: 'No server connection'});
+            $rootScope.checkResponseStatusCode(response.status);
         });
 
         $uibModalInstance.close();

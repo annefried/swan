@@ -1,7 +1,7 @@
 'use strict';
 //Responsible directive for drawing the options field
 angular.module('app')
-        .directive('d3Options', ['$rootScope', 'd3', 'hotkeys', function ($rootScope, d3, hotkeys) {
+        .directive('d3Options', ['$rootScope', 'd3', 'hotkeys', '$window', function ($rootScope, d3, hotkeys, $window) {
                 return {
                     restrict: 'EA',
                     scope: {
@@ -24,6 +24,7 @@ angular.module('app')
                         var width;
                         var options = d3.select(iElement[0])
                                 .attr("width", "100%");
+                        $scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
 
                         //Re-render on window resize
                         window.onresize = function () {
@@ -34,8 +35,7 @@ angular.module('app')
                             return angular.element(window)[0].innerWidth;
                         }, function () {
                             return $scope.render();
-                        }
-                        );
+                        });
 
                         //Watch for data changes and re-render
                         $scope.$watch('selection', function () {
@@ -55,16 +55,20 @@ angular.module('app')
                             var left = options.append("div")
                                     .classed("col-md-4", true);
                             var middle = options.append("div")
-                                    .classed("col-md-4", true);
+                                    .classed("col-md-4", true)
                             var right = options.append("div")
-                                    .classed("col-md-4", true);
+                                    .classed("col-md-4", true)
+
+                            // add divs inside middle/right for correct spacing
+                            middle = middle.append("div");
+                            right = right.append("div");
 
                             if ($scope.selection !== null && $scope.selection !== undefined) {
 
-
                                 // add target types if options for annotation
-                                if ($scope.selection.type === "Annotation")
+                                if ($scope.selection.type === "Annotation") {
                                     $scope.addTargetTypes(left);
+                                }
 
                                 $scope.setNotSureOption(left);
 
@@ -74,8 +78,12 @@ angular.module('app')
                                         .attr("type", "button")
                                         .classed("btn btn-danger btn-xs", true)
                                         .attr("disabled", function () {
-                                            if ($scope.selection === $scope.tempAnno)
+                                            if ($scope.selection === $scope.tempAnno) {
                                                 return "true";
+                                            }
+                                            if (!$scope.isAnnotator) {
+                                                return "true";
+                                            }
                                         })
                                         .text(function () {
                                             if ($scope.selection.type === "Annotation") {
@@ -91,7 +99,6 @@ angular.module('app')
                                         });
 
                                 $scope.addLabelSets(middle, right);
-
 
                             }
                         };
@@ -154,32 +161,34 @@ angular.module('app')
                                 $scope.setLabel({label: type});
                             }
                         };
-
-                        hotkeys.bindTo($scope)
-                                .add({
-                                    combo: 'alt+t',
-                                    description: 'Select next TargetType',
-                                    callback: function () {
-                                        $scope.index++;
-                                        $scope.setTypeHotkeys($scope.index);
-                                    }
-                                })
-                                .add({
-                                    combo: 'alt+l',
-                                    description: 'Select next Label',
-                                    callback: function () {
-                                        $scope.indexLabels++;
-                                        $scope.setLabelHotkeys($scope.indexLabels);
-                                    }
-                                })
-                                .add({
-                                    combo: 'alt+backspace',
-                                    description: 'Deleting current Selection',
-                                    callback: function () {
-                                        $scope.delete();
-                                        $scope.setSelection({item: null});
-                                    }
-                                });
+                        // Only enable hotkeys for annotators
+                        if ($scope.isAnnotator) {
+                            hotkeys.bindTo($scope)
+                                    .add({
+                                        combo: 'alt+t',
+                                        description: 'Select next TargetType',
+                                        callback: function () {
+                                            $scope.index++;
+                                            $scope.setTypeHotkeys($scope.index);
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'alt+l',
+                                        description: 'Select next Label',
+                                        callback: function () {
+                                            $scope.indexLabels++;
+                                            $scope.setLabelHotkeys($scope.indexLabels);
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'alt+backspace',
+                                        description: 'Deleting current Selection',
+                                        callback: function () {
+                                            $scope.delete();
+                                            $scope.setSelection({item: null});
+                                        }
+                                    });
+                        }
 
                         $scope.index = -1;
                         $scope.indexLabels = -1;
@@ -188,7 +197,7 @@ angular.module('app')
                             var newParent = parent.append("div");
                             newParent.classed("targetTypesDiv", true)
                             newParent.append("div")
-                                    .text("Type")
+                                    .text("SPAN TYPE")
                                     .classed("optiontitle", true)
                                     .style("font-size", "120%");
                             var targetTypes = newParent.selectAll()
@@ -214,25 +223,27 @@ angular.module('app')
                                         }
                                         return false;
                                     })
+                                    .attr("disabled", function () {
+                                        if (!$scope.isAnnotator) {
+                                            return "true";
+                                        }
+                                    })
                                     .text(function (d) {
                                         return d.value.tag;
                                     })
                                     .on("click", function (d) {
                                         $scope.$apply(function () {
-                                            console.log("clicked on: " + d.value.tag)
                                             $scope.setTypeAndAdd({item: d.value});
-
                                         });
                                     });
                             parent.selectAll("button").each(function () {
                                 var br = document.createElement("br");
                                 this.parentNode.insertBefore(br, this.nextSibling);
                             });
-
-                            ;
                         };
 
                         $scope.addLabelSets = function (parent1, parent2) {
+
                             var par1Count = 0;
                             var par2Count = 0;
                             for (var id in $scope.selection.selectableLabels) {
@@ -246,16 +257,29 @@ angular.module('app')
                                     par2Count++;
                                 }
 
+                                // fix for displaying link label sets as if they are types
+                                if ($scope.selection.type === "Link") {
+                                    parent.append("p").text("LINK TYPE")
+                                            .classed("optiontitle", true)
+                                            .style("font-size", "110%");
+                                    parent.classed("targetTypesDiv", true);
+                                }
                                 parent.append("p")
                                         .text(function () {
                                             return labelSet.name;
                                         })
                                         .classed("optiontitle", true)
                                         .style("font-size", "110%");
-                                if (!labelSet.exclusive) {
+                                if (!labelSet.exclusive && labelSet.labels.length > 1) {
                                     parent.append("p").text("(multiple allowed)")
                                             .style("margin", "0")
                                             .style("font-size", "90%");
+                                } else {
+                                    if (labelSet.labels.length > 1) {
+                                        parent.append("p").text("(select one)")
+                                                .style("margin", "0")
+                                                .style("font-size", "90%");
+                                    }
                                 }
 
                                 var labels = parent.selectAll()
@@ -278,8 +302,13 @@ angular.module('app')
                                             }
                                             return false;
                                         })
+                                        .attr("disabled", function () {
+                                            if (!$scope.isAnnotator) {
+                                                return "true";
+                                            }
+                                        })
                                         .text(function (d) {
-                                            return d.toString(width);
+                                            return d.toString(width / 30);
                                         })
                                         .on("click", function (d) {
                                             $scope.$apply(function () {
@@ -297,12 +326,8 @@ angular.module('app')
 
                         $scope.setNotSureOption = function (parent) {
                             if ($scope.selection.type === AnnoType.Annotation) {
-//                                parent.append("div")
-//                                        .text("I'm not sure about this annotation")
-//                                        .classed("optiontitle", "true")
-//                                        .attr("font-size", "140%");
                                 parent.append("br");
-                                parent.append("br")
+                                parent.append("br");
 
                                 parent.append("input")
                                         .attr("type", "checkbox")
@@ -310,6 +335,15 @@ angular.module('app')
                                         .attr("checked", function () {
                                             if ($scope.selection.notSure) {
                                                 return 'true';
+                                            }
+                                        })
+                                        .attr("disabled", function () {
+                                            var tType = $scope.selection.tType;
+                                            if (tType === undefined) {
+                                                return "true";
+                                            }
+                                            if (!$scope.isAnnotator) {
+                                                return "true";
                                             }
                                         })
                                         .on("click", function () {
@@ -321,7 +355,13 @@ angular.module('app')
                                 parent.append("label")
                                         .attr("for", "notSureCheckBox")
                                         .text("not sure")
-                                        .classed("checkboxLabel", true);
+                                        .classed("checkboxLabel", true)
+                                        .classed("checkboxLabelDisabled", function () {
+                                            var tType = $scope.selection.tType;
+                                            if (tType === undefined) {
+                                                return true;
+                                            }
+                                        });
 
                             }
                         };

@@ -131,7 +131,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/addManager/{projId}/{userId}")
     public Response addProjectManagerToProject(@PathParam("projId") Long projId, @PathParam("userId") Long userId) {
-        
+
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.addProjectManagerToProject(projId, userId);
@@ -150,6 +150,36 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.removeProjectManagerFromProject(projId, userId);
+            return Response.ok().build();
+        } catch (SecurityException e) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+
+    }
+    
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("/addWatchingUser/{projId}/{userId}")
+    public Response addWatchingUserToProject(@PathParam("projId") Long projId, @PathParam("userId") Long userId) {
+        
+        try {
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
+            service.addWatchingUserToProject(projId, userId);
+            return Response.ok().build();
+        } catch (SecurityException e) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+
+    }
+    
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("/delWatchingUser/{projId}/{userId}")
+    public Response deleteWatchingUserFromProject(@PathParam("projId") Long projId, @PathParam("userId") Long userId) {
+        
+        try {
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
+            service.removeWatchingUserFromProject(projId, userId);
             return Response.ok().build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
@@ -241,8 +271,8 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
     
      /**
      * This method returns a zip archive containing all Users annotations project
-     * related. For each document and user pair will be a single .xml file
-     * created in the de.unisaarland.disacnno.export.model format.
+     * related. For each document and user pair will be a single .xmi file
+     * created in the UIMA format.
      * 
      * @param projId
      * @return 

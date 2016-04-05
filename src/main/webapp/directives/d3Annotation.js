@@ -2,7 +2,7 @@
 
 //Responsible directive for drawing the text field
 angular.module('app')
-        .directive('d3Annotation', ['$rootScope', '$timeout', '$window', 'd3', 'hotkeys', function ($rootScope, $timeout, $window, d3, hotkeys) {
+        .directive('d3Annotation', ['$rootScope', '$timeout', '$window', 'd3', 'hotkeys', '$q', function ($rootScope, $timeout, $window, d3, hotkeys, $q) {
 
                 return {
                     restrict: 'EA',
@@ -35,6 +35,8 @@ angular.module('app')
                     },
                     link: function ($scope, iElement) {
 
+                        $scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
+
                         var width, height;
                         var lineCount;
                         var textWidth;
@@ -52,7 +54,7 @@ angular.module('app')
                         var prefixes = [];
                         var currJ = 0;
                         var jDistance = 30; //Amount of lines after which text should be redrawn
-                        var defaultLinkOpacity = 0.1;
+                        var defaultLinkOpacity = 0.3;
                         var oldJ = currJ;
                         var minJ = 0;
                         var maxJ = minJ + jDistance;
@@ -122,12 +124,14 @@ angular.module('app')
                             $scope.words = [];
                             var words = $scope.words;
                             $rootScope.ishotkeys = 'true';
-                            if (right === 'true')
-
-                            {
+                            if (right === 'true') {
                                 var textWord = $scope.data[i].words[j];
                                 if (textWord !== undefined) {
-                                    if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
+                                    if (textWord.text === " "
+                                            || textWord.text === "."
+                                            || textWord.text === ","
+                                            || textWord.start === textWord.end
+                                            || textWord.text === "	") {
                                         j++;
                                         $scope.hot('true');
                                         return;
@@ -150,7 +154,11 @@ angular.module('app')
                             } else {
                                 var textWord = $scope.data[i].words[j];
                                 if (textWord !== undefined) {
-                                    if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
+                                    if (textWord.text === " "
+                                            || textWord.text === "."
+                                            || textWord.text === ","
+                                            || textWord.start === textWord.end
+                                            || textWord.text === "	") {
                                         j--;
                                         $scope.hot('false');
                                         return;
@@ -176,7 +184,11 @@ angular.module('app')
                             if (right) {
                                 var textWord = $scope.data[i].words[j];
                                 if (textWord !== undefined) {
-                                    if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
+                                    if (textWord.text === " "
+                                            || textWord.text === "."
+                                            || textWord.text === ","
+                                            || textWord.start === textWord.end
+                                            || textWord.text === "	") {
                                         textWord.setIndices(i, j);
                                         words.push(textWord);
                                         j++;
@@ -200,7 +212,11 @@ angular.module('app')
                             } else {
                                 var textWord = $scope.data[i].words[j];
                                 if ((words.indexOf(textWord) !== '-1') && (textWord !== undefined)) {
-                                    if (textWord.text === " " || textWord.text === "." || textWord.text === "," || textWord.start === textWord.end || textWord.text === "	") {
+                                    if (textWord.text === " "
+                                            || textWord.text === "."
+                                            || textWord.text === ","
+                                            || textWord.start === textWord.end
+                                            || textWord.text === "	") {
                                         words.pop(textWord);
                                         if (j === 0) {
                                             i--;
@@ -276,135 +292,122 @@ angular.module('app')
                             }
                         };
                         $scope.words = [];
-                        hotkeys.bindTo($scope)
-                                .add({
-                                    combo: 'shift+up',
-                                    description: 'Delete temporal selection in current line',
-                                    callback: function () {
-                                        $scope.hotShiftDown('true', $scope.words);
-                                    }
-                                })
-                                .add({
-                                    combo: 'shift+down',
-                                    description: 'Select whole line',
-                                    callback: function () {
-                                        $scope.hotShiftDown(false, $scope.words);
-                                    }
-                                })
-                                .add({
-                                    combo: 'shift+right',
-                                    description: 'Long selection',
-                                    callback: function () {
-                                        $scope.hotShift(true, $scope.words);
-                                    }
-                                })
-                                .add({
-                                    combo: 'shift+left',
-                                    description: 'Delete words from long selection',
-                                    callback: function () {
+                        // Only enable hotkeys for annotators
+                        if ($scope.isAnnotator) {
+                            hotkeys.bindTo($scope)
+                                    .add({
+                                        combo: 'shift+up',
+                                        description: 'Delete temporal selection in current line',
+                                        callback: function () {
+                                            $scope.hotShiftDown('true', $scope.words);
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'shift+down',
+                                        description: 'Select whole line',
+                                        callback: function () {
+                                            $scope.hotShiftDown(false, $scope.words);
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'shift+right',
+                                        description: 'Long selection',
+                                        callback: function () {
+                                            $scope.hotShift(true, $scope.words);
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'shift+left',
+                                        description: 'Delete words from long selection',
+                                        callback: function () {
 
-                                        $scope.hotShift(false, $scope.words);
-                                    }
-                                })
-                                .add({
-                                    combo: 'shift+left',
-                                    description: 'Delete words from long selection',
-                                    callback: function () {
-                                        $scope.hotShift(false, $scope.words);
-                                    }
-                                })
-//                                .add({
-//                                    combo: 'right',
-//                                    description: 'Jump word by word',
-//                                    callback: function () {
-//                                        j++;
-//                                        $scope.hot('true');
-//                                    }
-//                                })
-//                                .add({
-//                                    combo: 'left',
-//                                    description: 'Jump back to first word in current line',
-//                                    callback: function () {
-//                                        j--;
-//                                        $scope.hot('false');
-//                                    }
-//                                })
-                                .add({
-                                    combo: 'up',
-                                    description: 'Jump to first word in upper line',
-                                    callback: function () {
-                                        if (i > 0) {
-                                            j = 0;
-                                            i--;
-                                            $scope.hot('true');
-                                        } else {
-                                            j = 0;
-                                            i = (maxLines - 1);
-                                            $scope.hot('true');
+                                            $scope.hotShift(false, $scope.words);
                                         }
-                                    }
-                                })
-                                .add({
-                                    combo: 'down',
-                                    description: 'Jump to first word in lower line',
-                                    callback: function () {
-                                        if (i < (maxLines - 1)) {
-                                            j = 0;
-                                            i++;
-                                            $scope.hot('true');
-                                        } else {
-                                            j = 0;
-                                            i = 0;
-                                            $scope.hot('true');
+                                    })
+                                    .add({
+                                        combo: 'shift+left',
+                                        description: 'Delete words from long selection',
+                                        callback: function () {
+                                            $scope.hotShift(false, $scope.words);
                                         }
-                                    }
-                                })
-                                .add({
-                                    combo: 'right',
-                                    description: 'Jump from annotation to annotation',
-                                    callback: function () {
-                                        $scope.index++;
-                                        var anno = $scope.getAllAnnos($scope.index, false);
-                                        $scope.setSelection({item: anno});
-                                    }
-                                })
-                                .add({
-                                    combo: 'left',
-                                    description: 'Jump from annotation to annotation',
-                                    callback: function () {
-                                        $scope.index--;
-                                        var anno = $scope.getAllAnnos($scope.index, true);
-                                        $scope.setSelection({item: anno});
-                                    }
-                                })
-                                .add({
-                                    combo: 'f',
-                                    description: 'Add the word to the right to the current annotation',
-                                    callback: function () {
-                                        $scope.increaseSelectedAnnoSizeRight();
-                                    }
-                                })
-                                .add({
-                                    combo: 'd',
-                                    description: 'Remove the word to the right from the current annotation',
-                                    callback: function () {
-                                        $scope.decreaseSelectedAnnoSizeRight();
-                                    }
-                                })
-                                .add({
-                                    combo: 's',
-                                    description: 'Remove the word to the left from the current annotation',
-                                    callback: function () {
-                                        $scope.decreaseSelectedAnnoSizeLeft();
-                                    }
-                                })
-                                .add({
-                                    combo: 'a',
-                                    description: 'Add the word to the left to the current annotation',
-                                    callback: function () {
-                                        $scope.increaseSelectedAnnoSizeLeft();
-                                    }
-                                });
+                                    })
+                                    .add({
+                                        combo: 'up',
+                                        description: 'Jump to first word in upper line',
+                                        callback: function () {
+                                            if (i > 0) {
+                                                j = 0;
+                                                i--;
+                                                $scope.hot('true');
+                                            } else {
+                                                j = 0;
+                                                i = (maxLines - 1);
+                                                $scope.hot('true');
+                                            }
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'down',
+                                        description: 'Jump to first word in lower line',
+                                        callback: function () {
+                                            if (i < (maxLines - 1)) {
+                                                j = 0;
+                                                i++;
+                                                $scope.hot('true');
+                                            } else {
+                                                j = 0;
+                                                i = 0;
+                                                $scope.hot('true');
+                                            }
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'right',
+                                        description: 'Jump from annotation to annotation',
+                                        callback: function () {
+                                            $scope.index++;
+                                            var anno = $scope.getAllAnnos($scope.index, false);
+                                            $scope.setSelection({item: anno});
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'left',
+                                        description: 'Jump from annotation to annotation',
+                                        callback: function () {
+                                            $scope.index--;
+                                            var anno = $scope.getAllAnnos($scope.index, true);
+                                            $scope.setSelection({item: anno});
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'f',
+                                        description: 'Add the word to the right to the current annotation',
+                                        callback: function () {
+                                            $scope.increaseSelectedAnnoSizeRight();
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'd',
+                                        description: 'Remove the word to the right from the current annotation',
+                                        callback: function () {
+                                            $scope.decreaseSelectedAnnoSizeRight();
+                                        }
+                                    })
+                                    .add({
+                                        combo: 's',
+                                        description: 'Remove the word to the left from the current annotation',
+                                        callback: function () {
+                                            $scope.decreaseSelectedAnnoSizeLeft();
+                                        }
+                                    })
+                                    .add({
+                                        combo: 'a',
+                                        description: 'Add the word to the left to the current annotation',
+                                        callback: function () {
+                                            $scope.increaseSelectedAnnoSizeLeft();
+                                        }
+                                    });
+                        }
 
 
                         $scope.sort = function (array) {
@@ -540,6 +543,24 @@ angular.module('app')
                                 $scope.highlightSelected();
                             }
                         }, true);
+                        //Listens to changes to the last removed target
+                        $scope.$watch('removedTarget', function (newVals) {
+                            if (newVals !== undefined) {
+                                $scope.removeFormAnnotation(newVals);
+                                $scope.setLineHeights();
+                                $scope.drawAnnotations(minJ, maxJ);
+                            }
+                        });
+                        // ADDED for AnnoView
+                        $rootScope.changeCallback = function () {
+                            $scope.onUserChange();
+                        };
+                        $scope.$watch('annotations', function (newVals, oldVals) {
+                            $scope.formatTargets();
+                            $scope.formatAnnotations();
+                            $scope.setLineHeights();
+                            $scope.render(true);
+                        });
                         //Size increased
                         $scope.$watch('sizeIncreased', function (newVals) {
                             if (newVals !== undefined) {
@@ -572,28 +593,11 @@ angular.module('app')
                                 $scope.resetSizeIncreased();
                             }
                         }, true);
-                        //Listens to changes to the last removed target
-                        $scope.$watch('removedTarget', function (newVals) {
-                            if (newVals !== undefined) {
-                                $scope.removeFormAnnotation(newVals);
-                                $scope.setLineHeights();
-                                $scope.drawAnnotations(minJ, maxJ);
-                            }
-                        });
-                        // ADDED for AnnoView
-                        $rootScope.changeCallback = function () {
-                            $scope.onUserChange();
-                        };
-                        $scope.$watch('annotations', function (newVals, oldVals) {
-                            $scope.formatTargets();
-                            $scope.formatAnnotations();
-                            $scope.setLineHeights();
-                            $scope.render(true);
-                        });
                         //Determines what text passage the cursor is currently highlighting
                         //and tries to create a new temporary annotation for that section
                         $scope.$watch('startSelection', function (newVals) {
-                            if (newVals === undefined)
+                            if (newVals === undefined
+                                    || !$scope.isAnnotator)
                                 return;
                             var startLine;
                             var startRow;
@@ -616,8 +620,10 @@ angular.module('app')
                             }
 
                             //Do nothing when no indicies for the words are found
-                            if (startLine === undefined || startRow === undefined
-                                    || endLine === undefined || endRow === undefined)
+                            if (startLine === undefined
+                                    || startRow === undefined
+                                    || endLine === undefined
+                                    || endRow === undefined)
                                 return;
                             //Add every word between first and last selected word
                             var words = [];
@@ -647,6 +653,7 @@ angular.module('app')
                             $scope.words = words;
                             $rootScope.ishotkeys = 'false';
                             $scope.setTemp({item: words});
+                            $scope.clearSelection();
                         });
                         //Computes and splits the lines displayed in the annotation field. This is necessary because it is
                         //possible that the lines of the text don't fit into one line of the actual field.
@@ -1171,8 +1178,14 @@ angular.module('app')
                                             $scope.$apply(function () {
                                                 var link;
                                                 if ($scope.linking()) {
-                                                    if (linkStart.id !== d.annotation.id)
-                                                        link = $scope.addLink({source: linkStart, target: d.annotation});
+                                                    if (linkStart.id !== d.annotation.id) {
+                                                        var promise = $scope.addLink({source: linkStart, target: d.annotation});
+                                                        promise.then(function (link) {
+                                                            if (link !== undefined) {
+                                                                $scope.setSelection({item: link});
+                                                            }
+                                                        });
+                                                    }
                                                     linkStart = null;
                                                 }
 
@@ -1507,7 +1520,6 @@ angular.module('app')
                                                         return 1;
                                                 }
 
-
                                             }
 
                                             return opa;
@@ -1566,9 +1578,9 @@ angular.module('app')
                                                 case 0:
                                                     return defaultLinkOpacity;
                                                 case 3:
-                                                    return 0.6;
+                                                    return 1;
                                                 default:
-                                                    return 0.39;
+                                                    return 0.5;
                                             }
                                         });
                                 svg.selectAll(".annotationlinktext")

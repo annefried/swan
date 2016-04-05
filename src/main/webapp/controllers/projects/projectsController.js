@@ -1,5 +1,8 @@
-/* global JSOG */
-
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 'use strict';
 
 angular
@@ -8,8 +11,10 @@ angular
             function ($scope, $rootScope, $window, $http, $uibModal, $location, hotkeys, $q) {
 
                 // Redirect if client is not logged in
-                if (($window.sessionStorage.role != 'admin') && ($window.sessionStorage.role != 'annotator') && ($window.sessionStorage.role != 'projectmanager')) {
-                    window.location = "/discanno/signin.html";
+                if (($window.sessionStorage.role != 'admin')
+						&& ($window.sessionStorage.role != 'annotator')
+						&& ($window.sessionStorage.role != 'projectmanager')) {
+                    $rootScope.redirectToLogin();
                 } else {
 
                     $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
@@ -111,11 +116,11 @@ angular
                      * Load Schemes from Database
                      */
                     $scope.loadSchemes = function () {
-                        var httpSchemes = $http.get("discanno/scheme/schemes").then(function (response) {
-                            $scope.schemes = JSOG.parse(JSON.stringify(response.data)).schemes;
-                        }, function (err) {
-                            $rootScope.addAlert({type: 'danger', msg: 'No Connection to Server.'});
-                        });
+                        var httpSchemes = $http.get("discanno/scheme/schemes").success(function (response) {
+                            $rootScope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
+                        }).error(function (response) {
+							$rootScope.checkResponseStatusCode(response.status);
+						});
                         return httpSchemes;
                     };
 
@@ -125,7 +130,7 @@ angular
                      * @returns {String} the adress for export
                      */
                     $scope.exportProject = function (projId) {
-                        return "/project/export/" + projId;
+                        return "discanno/project/export/" + projId;
                     };
                     
                     /**
@@ -134,7 +139,7 @@ angular
                      * @returns {String} the adress for export
                      */
                     $scope.exportProjectXmi = function (projId) {
-                        return "/project/exportXmi/" + projId;
+                        return "discanno/project/exportXmi/" + projId;
                     };
 
                     /**
@@ -188,11 +193,20 @@ angular
                      * @param {type} projectId the projects id
                      */
                     $scope.openProjectSchemeModal = function (projectId) {
-                        for (var i = 0; i < $rootScope.projects.length; i++) {
-                            if ($rootScope.projects[i].id === projectId) {
-                                $rootScope.currentScheme = $rootScope.projects[i].scheme;
+                        
+                        var isSearching = true;
+                        for (var i = 0; i < $rootScope.schemes.length && isSearching; i++) {
+                            var scheme = $rootScope.schemes[i];
+                            for (var j = 0; j < scheme.projects.length; j++) {
+                                var proj = scheme.projects[j];
+                                if (proj.id === projectId) {
+                                    $rootScope.currentScheme = scheme;
+                                    isSearching = false;
+                                    break;
+                                }
                             }
                         }
+                        
                         var modalInstance = $uibModal.open({
                             animation: $scope.animationsEnabled,
                             templateUrl: 'templates/schemes/schemeViewModal.html',
@@ -271,51 +285,53 @@ angular
                                 'scheme': {
                                     'id': full.scheme.id
                                 }
-
                             };
-                            $http.post('discanno/project', JSON.stringify(projectTemplate))
-                                    .then(function (response) {
-                                        var template = {
-                                            'id': response.data,
-                                            'name': full.name,
-                                            'users': [],
-                                            'pms': [],
-                                            'completed': [],
-                                            'numberOfDocuments': 0,
-                                            'documents': []
-                                        };
+							
+                            $http.post('discanno/project', JSON.stringify(projectTemplate)).then(function (response) {
+                                var template = {
+                                    'id': response.data,
+                                    'name': full.name,
+									'scheme': projectTemplate.scheme,
+                                    'users': [],
+                                    'pms': [],
+                                    'completed': [],
+                                    'numberOfDocuments': 0,
+                                    'documents': []
+                                };
 
-
-                                        if ($window.sessionStorage.role != 'projectmanager') {
-
-                                            $rootScope.tableProjects.push(template);
-                                        } else {
-                                            //get the current user (there is not REST interface for getUser by ID)
-                                            $http.get("discanno/user/").then(function (response) {
-                                                var users = JSOG.parse(JSON.stringify(response.data)).users;
-                                                for (var i = 0; i < users.length; i++) {
-                                                    var u = users[i];
-                                                    if ($window.sessionStorage.uId == u.id) {
-                                                        template.pms = [u];
-                                                    }
-                                                }
-                                                $rootScope.tableProjects.push(template);
-                                            }, function () {});
-
-                                            $http.post("discanno/project/addManager/"
-                                                    + template.id
-                                                    + "/"
-                                                    + $window.sessionStorage.uId);
+                                if ($window.sessionStorage.role != 'projectmanager') {
+                                    $rootScope.tableProjects.push(template);
+									$rootScope.projects.push(template);
+                                } else {
+                                    // TODO necessary?
+                                    //get the current user (there is not REST interface for getUser by ID)
+                                    $http.get("discanno/user/").then(function (response) {
+                                        var users = JSOG.parse(JSON.stringify(response.data)).users;
+                                        for (var i = 0; i < users.length; i++) {
+                                            var u = users[i];
+                                            if ($window.sessionStorage.uId == u.id) {
+                                                template.pms = [u];
+                                            }
                                         }
-                                        $scope.projectToggeled(response.data);
+                                        $rootScope.tableProjects.push(template);
+										$rootScope.projects.push(template);
+                                    }, function () {});
 
-                                    }, function () {
-                                        $rootScope.addAlert({type: 'danger', msg: 'A Project with this name already exists.'});
-                                    });
+                                    // Add project manager to the corresponding proj manager list
+                                    $http.post("discanno/project/addManager/"
+                                            + template.id
+                                            + "/"
+                                            + $window.sessionStorage.uId);
+                                }
+                                $scope.projectToggeled(response.data);
 
-                                    if ($rootScope.tour !== undefined) {
-                                        $("#tour-next-button").prop("disabled", false);
-                                    }
+                            }, function () {
+                                $rootScope.addAlert({type: 'danger', msg: 'A Project with this name already exists.'});
+                            });
+
+                            if ($rootScope.tour !== undefined) {
+                                $("#tour-next-button").prop("disabled", false);
+                            }
                         }, function () {
 
                         });

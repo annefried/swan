@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  <name>Simple</name>
+  <name>OneLabelScheme</name>
   <targetTypes>
     <item>verb</item>
     <item>passage</item>
@@ -14,9 +14,6 @@
       </appliesToTargetTypes>
       <labels>
         <item>STATE</item>
-        <item>EVENT</item>
-        <item>GENERIC</item>
-        <item>OTHER</item>
       </labels>
     </item>
     <item>
@@ -41,8 +38,6 @@
       <allowUnlabeledLinks></allowUnlabeledLinks>
       <linkLabels>
         <item>before</item>
-        <item>after</item>
-        <item>overlap</item>
       </linkLabels>
     </item>
     <item>

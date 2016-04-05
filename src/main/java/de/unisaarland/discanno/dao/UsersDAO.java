@@ -8,6 +8,7 @@ package de.unisaarland.discanno.dao;
 import de.unisaarland.discanno.entities.Users;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -52,11 +53,20 @@ public class UsersDAO extends BaseEntityDAO<Users> {
                     executeQuery(Users.QUERY_FIND_BY_EMAIL_AND_PASSWORD, params));
     }
     
-    private Users getUserBySession(String session) {
+    public Users getUserBySession(String session) {
         return firstResult(
                     executeQuery(
                         Users.QUERY_FIND_BY_SESSION,
                         Collections.singletonMap(Users.PARAM_SESSION, session)));
+    }
+    
+    /**
+     * Returns all users ascending by their email
+     * 
+     * @return List<Users>
+     */
+    public List<Users> getAllUsersAscending() {
+        return executeQuery(Users.QUERY_GET_ALL_USERS_ASC);
     }
     
 }

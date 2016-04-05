@@ -50,7 +50,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
             query = "SELECT u FROM Users u WHERE u.email = :" + Users.PARAM_EMAIL + " AND u.password = :" + Users.PARAM_PASSWORD),
     @NamedQuery(
             name = Users.QUERY_FIND_BY_SESSION,
-            query = "SELECT u FROM Users u WHERE u.session = :" + Users.PARAM_SESSION)
+            query = "SELECT u FROM Users u WHERE u.session = :" + Users.PARAM_SESSION),
+    @NamedQuery(
+            name = Users.QUERY_GET_ALL_USERS_ASC,
+            query = "SELECT u FROM Users u ORDER BY u.email ASC")
 })
 public class Users extends BaseEntity {
 
@@ -63,6 +66,11 @@ public class Users extends BaseEntity {
      * Named query identifier for "find by session".
      */
     public static final String QUERY_FIND_BY_SESSION = "Users.QUERY_FIND_BY_SESSION";
+    
+    /**
+     * Named query identifier for "get all users ascending by email".
+     */
+    public static final String QUERY_GET_ALL_USERS_ASC = "Users.QUERY_GET_ALL_USERS_ASC";
     
     /**
      * Query parameter constant for the attribute "uuid".
@@ -121,6 +129,15 @@ public class Users extends BaseEntity {
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     private Set<Project> managingProjects = new HashSet<>();
+    
+    /**
+     * All projects which are watched by project manager i.e. E-Mail notification.
+     */
+    @JsonView({ View.Users.class })
+    @ManyToMany(mappedBy = "projectManager",
+                cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                fetch = FetchType.EAGER)
+    private Set<Project> watchingProjects = new HashSet<>();
 
     
     public String getPrename() {
@@ -205,6 +222,18 @@ public class Users extends BaseEntity {
     
     public void addManagingProjects(Project project) {
         this.managingProjects.add(project);
+    }
+
+    public Set<Project> getWatchingProjects() {
+        return watchingProjects;
+    }
+
+    public void setWatchingProjects(Set<Project> watchingProjects) {
+        this.watchingProjects = watchingProjects;
+    }
+    
+    public void addWatchingProjects(Project project) {
+        this.watchingProjects.add(project);
     }
     
 }
