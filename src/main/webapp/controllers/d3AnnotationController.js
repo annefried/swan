@@ -34,5 +34,7 @@ angular.module('app')
 
                     } else if (document.selection)  // IE
                         document.selection.empty();
+                    this.startSelection = null;
+                    this.endSelection = null;
                 };
             }]);
