@@ -108,10 +108,10 @@ angular.module('app')
                     return undefined;
                 };
 				
-				$scope.addLabelToLink = function (link) {
-					var label = $scope.getLinkLabel(link);
-					link.label = label;
-				};
+                $scope.addLabelToLink = function (link) {
+                    var label = $scope.getLinkLabel(link);
+                    link.label = label;
+                };
                 
                 /**
                  * Returns all links.
@@ -222,9 +222,9 @@ angular.module('app')
                     }
                 };
 				
-				$scope.initializeIsTargetOfProp = function (targetNode) {
-					targetNode.isTargetOf = [];
-				};
+                $scope.initializeIsTargetOfProp = function (targetNode) {
+                        targetNode.isTargetOf = [];
+                };
                 
                 /**
                  * Returns a list of nodes which were visited.
@@ -280,15 +280,15 @@ angular.module('app')
                 $scope.clustering = function () {
                     var clusterList = [];
                     
-					// TODO find better solution
-					// problem is that the property isTargetOf remains if one
-					// link or node is deleted. One solution could be to realize
-					// it with the watch functions but it has also linear rumtime
-					// but the chance is higher to find the desired node before
-					// iterating over all nodes but we don't expect too many nodes
-					graph.nodes.forEach(function(node) {
-						$scope.initializeIsTargetOfProp(node);
-					});
+                    // TODO find better solution
+                    // problem is that the property isTargetOf remains if one
+                    // link or node is deleted. One solution could be to realize
+                    // it with the watch functions but it has also linear rumtime
+                    // but the chance is higher to find the desired node before
+                    // iterating over all nodes but we don't expect too many nodes
+                    graph.nodes.forEach(function(node) {
+                            $scope.initializeIsTargetOfProp(node);
+                    });
 					
                     graph.nodes.forEach(function (node) {
                         
@@ -506,10 +506,10 @@ angular.module('app')
                 var rendered = false;
                 // Re-render when graph is changed
                 $scope.$watch(
-					// This function returns the value being watched. It is called for each turn of the $digest loop
-					function() { return graph; },
-					// This is the change listener, called when the value returned from the above function changes
-					function(newVals) {
+                    // This function returns the value being watched. It is called for each turn of the $digest loop
+                    function() { return graph; },
+                    // This is the change listener, called when the value returned from the above function changes
+                    function(newVals) {
                         if (newVals !== undefined && !rendered) {
                             $scope.render(true);
                             rendered = true;
@@ -519,7 +519,7 @@ angular.module('app')
                 // Set linking by id
                 var nodeById = d3.map();
                 graph.nodes.forEach(function(node) {
-					nodeById.set(node.id, node);
+                    nodeById.set(node.id, node);
                 });
 //				$scope.render(true);
 
@@ -572,8 +572,8 @@ angular.module('app')
                 $scope.$watch("addedLink", function(newVals) {
                     if(newVals !== undefined && newVals !== null) {
                         graph.links.push(newVals);
-						$scope.addLabelToLink(newVals);
-						$scope.render(false);
+                        $scope.addLabelToLink(newVals);
+                        $scope.render(false);
                     }
                 });
                 
@@ -756,8 +756,6 @@ angular.module('app')
                         .attr("d", "M0,-5L10,0L0,5")
                         .style("opacity", 0.3);
                 };
-                
-                
                 
                 // Update node appearance depending on current node information
                 $scope.updateNodes = function() {
@@ -968,7 +966,7 @@ angular.module('app')
                 // Add new node to graph
                 $scope.addGraphNode = function (node) {
                     graph.nodes.push(node);
-					nodeById.set(node.id, node);
+                    nodeById.set(node.id, node);
                 };
 
                 // Remove node from graph
@@ -978,7 +976,7 @@ angular.module('app')
 
                         if (graphNode.id === node.id) {
                             graph.nodes.splice(i, 1);
-							nodeById.remove(node.id);
+                            nodeById.remove(node.id);
                             return true;
                         }
                     }

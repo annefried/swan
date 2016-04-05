@@ -31,7 +31,6 @@ angular
                     $rootScope.initialized = 'true';
                 };
 
-
                 //Backend communication
                 this.readData = function () {
                     this.annotationDatabase = getAnnotationService.getAnnotations($window.sessionStorage.shownUser, $window.sessionStorage.docId);

@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -12,8 +12,8 @@ angular
 
                 // Redirect if client is not logged in
                 if (($window.sessionStorage.role != 'admin')
-						&& ($window.sessionStorage.role != 'annotator')
-						&& ($window.sessionStorage.role != 'projectmanager')) {
+                        && ($window.sessionStorage.role != 'annotator')
+                        && ($window.sessionStorage.role != 'projectmanager')) {
                     $rootScope.redirectToLogin();
                 } else {
 
@@ -119,8 +119,8 @@ angular
                         var httpSchemes = $http.get("discanno/scheme/schemes").success(function (response) {
                             $rootScope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
                         }).error(function (response) {
-							$rootScope.checkResponseStatusCode(response.status);
-						});
+                            $rootScope.checkResponseStatusCode(response.status);
+                        });
                         return httpSchemes;
                     };
 
@@ -132,7 +132,7 @@ angular
                     $scope.exportProject = function (projId) {
                         return "discanno/project/export/" + projId;
                     };
-                    
+
                     /**
                      * Get the address to export a project.
                      * @param {type} projId the Projects id
@@ -151,6 +151,7 @@ angular
                      * @param {Boolean} completed state of the document
                      */
                     $scope.openAnnoTool = function (docId, docName, projectName, completed) {
+                        $scope.alertVisible = true;
                         $rootScope.initAnnoTool(docId, docName, projectName, completed);
                         $location.path('/annotation');
                     };
@@ -193,7 +194,7 @@ angular
                      * @param {type} projectId the projects id
                      */
                     $scope.openProjectSchemeModal = function (projectId) {
-                        
+
                         var isSearching = true;
                         for (var i = 0; i < $rootScope.schemes.length && isSearching; i++) {
                             var scheme = $rootScope.schemes[i];
@@ -206,7 +207,7 @@ angular
                                 }
                             }
                         }
-                        
+
                         var modalInstance = $uibModal.open({
                             animation: $scope.animationsEnabled,
                             templateUrl: 'templates/schemes/schemeViewModal.html',
@@ -242,7 +243,7 @@ angular
                             $scope.animationsEnabled = !$scope.animationsEnabled;
                         };
                     };
-                    
+
                     /**
                      * Called upon clicking the 'x'-Button
                      * Opens the DocumenttDeleteModal
@@ -286,12 +287,12 @@ angular
                                     'id': full.scheme.id
                                 }
                             };
-							
+
                             $http.post('discanno/project', JSON.stringify(projectTemplate)).then(function (response) {
                                 var template = {
                                     'id': response.data,
                                     'name': full.name,
-									'scheme': projectTemplate.scheme,
+                                    'scheme': projectTemplate.scheme,
                                     'users': [],
                                     'pms': [],
                                     'completed': [],
@@ -301,7 +302,7 @@ angular
 
                                 if ($window.sessionStorage.role != 'projectmanager') {
                                     $rootScope.tableProjects.push(template);
-									$rootScope.projects.push(template);
+                                    $rootScope.projects.push(template);
                                 } else {
                                     // TODO necessary?
                                     //get the current user (there is not REST interface for getUser by ID)
@@ -314,7 +315,7 @@ angular
                                             }
                                         }
                                         $rootScope.tableProjects.push(template);
-										$rootScope.projects.push(template);
+                                        $rootScope.projects.push(template);
                                     }, function () {});
 
                                     // Add project manager to the corresponding proj manager list
