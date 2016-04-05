@@ -631,6 +631,7 @@ angular.module('app')
                             $scope.words = words;
                             $rootScope.ishotkeys = 'false';
                             $scope.setTemp({item: words});
+                            $scope.clearSelection();
                         });
                         //Computes and splits the lines displayed in the annotation field. This is necessary because it is
                         //possible that the lines of the text don't fit into one line of the actual field.
