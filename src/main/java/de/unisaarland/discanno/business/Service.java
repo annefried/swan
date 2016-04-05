@@ -132,6 +132,14 @@ public class Service {
         return lines;
     }
     
+    public Response edit(Annotation entity) {
+        Annotation annoOrig = annotationDAO.find(entity.getId(), false);
+        annoOrig.setStart(entity.getStart());
+        annoOrig.setEnd(entity.getEnd());
+        annoOrig.setText(entity.getText());
+        return annotationDAO.merge(annoOrig);
+    }
+    
     ///////////////////////////////////////////////
     //  PROCESS
     //

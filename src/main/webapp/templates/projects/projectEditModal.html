@@ -14,23 +14,23 @@ and open the template in the editor.
         <form role="form">
             <div class="modal-header">
                 <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Edit Project</h4>
+                <h4 class="modal-title" id="myModalLabel">Edit project</h4>
             </div>
             <div class="modal-body">
                 <div>
                     <div class="form-group">
                         <label for="name">Name:</label> {{this.currentProjectName}}
                     </div>
-                    
+
                     <div class="form-group" ng-show="this.role == 'projectmanager'">
                         <label for="notification">Receive weekly E-Mail notification:</label>
                         <input type="checkbox"
                                ng-model="isWatching"
                                ng-click="watchProject(isWatching)">
                     </div>
-                    
+
                     <div class="form-group">
-                        <label>Project Managers:</label>
+                        <label>Project managers:</label>
                         <table id="listingTable">
                             <tbody>
                                 <tr ng-repeat="pm in this.projPms">
@@ -47,9 +47,9 @@ and open the template in the editor.
                         </table>
                     </div>
                     <div class="form-group">
-                        <label>Add Project Manager:</label>
+                        <label>Add project manager:</label>
                         <select ng-model="newPM"
-                                ng-options="pm.id as pm.email for pm in (getUserComplement(this.pms, this.projPms) | orderBy: '-email')">
+                                ng-options="pm.id as pm.email for pm in (getUserComplement(this.pms, this.projPms)| orderBy: '-email')">
                         </select>
                         <button class="btn btn-primary" ng-click="addSelectedPM()">
                             Add
@@ -60,7 +60,7 @@ and open the template in the editor.
                 <div>
                     <div class="form-group">
 
-                        <label>Users:</label>
+                        <label>Annotators:</label>
                         <table id="listingTable">
                             <tbody>
                                 <tr ng-repeat="user in this.projUsers">
@@ -75,17 +75,20 @@ and open the template in the editor.
                         </table>
                     </div>
                     <div class="form-group">
-                        <label>Add User:</label>
+                        <label>Add annotator:</label>
                         <select ng-model="newUser"
-                                ng-options="user.id as user.email for user in (getUserComplement(this.users, this.projUsers) | orderBy: '-email')">
+                                ng-options="user.id as user.email for user in (getUserComplement(this.users, this.projUsers)| orderBy: '-email')">
                         </select>
                         <button class="btn btn-primary" ng-click="addSelectedUser()">
                             Add
                         </button>
                     </div>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" style="float: right" ng-click="cancel()" data-dismiss="modal">Close</button>
+                </div>
         </form>
+
 
     </body>
 </html>

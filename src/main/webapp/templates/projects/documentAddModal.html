@@ -17,7 +17,7 @@ and open the template in the editor.
                 <button type="button" class="close" ng-click="cancel()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Create New Documents</h4>
+                <h4 class="modal-title" id="myModalLabel">Add text documents</h4>
             </div>
             <div class="col-lg-6">
                 <uib-alert ng-repeat="alert in alerts"
@@ -30,8 +30,8 @@ and open the template in the editor.
             <div class="modal-body">
                 <table class="table">
                     <thead class="headDark">
-                    <th>File Name</th>
-                    <th>Target</th>
+                    <th>Filename</th>
+                    <th>Pre-defined span annotations</th>
                     </thead>
                     <tbody>
                         <tr ng-repeat="(fileName, fileContent) in this.textFileMap">
@@ -43,9 +43,13 @@ and open the template in the editor.
                         </tr>
                     </tbody>
                 </table>
-                <i>*: Hover over a file, to see the content.</i>
+                <i>Hover over a file in the table above to see its content.</i><br/>
+                <i>If you want to upload pre-defined span annotations, the JSON files containing
+                    them should have the same filename (prefix) as the .txt documents containing
+                    the plain text.</i>
                 <div class="form-group">
-                    <label for="text">Upload Text:</label>
+                    <br/>
+                    <label for="text">Upload text documents (*.txt format):</label>
                     <input type="file"
                            accept=".txt"
                            name="text"
@@ -54,7 +58,8 @@ and open the template in the editor.
                            on-read-file="this.sendText($fileContent,$fileName)"
                            ng-click="clearFileMap()"
                            multiple/>
-                    <label for="targets">Upload Targets:</label>
+                    <br/>
+                    <label for="targets">Upload pre-defined span annotations (*.json format):</label>
                     <input type="file"
                            accept=".xml,.json"
                            name="targets"

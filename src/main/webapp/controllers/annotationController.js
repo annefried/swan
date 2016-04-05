@@ -14,19 +14,17 @@ angular
                         $('.scroll-pane').jScrollPane();
                     });
                     $scope.role = $window.sessionStorage.role;
-                    if ($window.sessionStorage.role == 'annotator') {
+                    if ($window.sessionStorage.role === 'annotator') {
                         $window.sessionStorage.shownUser = $window.sessionStorage.uId;
                     } else {
                         this.setUpAnnoView();
                     }
                     this.readData();
-//                    this.checkDocumentSize();
                     this.readSchemes();
                     this.buildText();
                     this.buildAnnotations();
                     this.buildLinks();
                     $scope.completed = $window.sessionStorage.completed === 'true';
-
                     if ($rootScope.tour !== undefined) {
                         $rootScope.tour.resume();
                     }
@@ -45,17 +43,7 @@ angular
                     $q.all([httpProjects]).then(function () {
                         $rootScope.buildTableProjects();
                     });
-                };
 
-                this.checkDocumentSize = function () {
-                    var DOCUMENT_LIMIT = 4000;
-                    var size = 0;
-                    for (var i = 0; i < this.tokenData.length; i++) {
-                        size += this.tokenData[i].lineLength;
-                    }
-                    if (size >= DOCUMENT_LIMIT) {
-                        $rootScope.addAlert({type: 'success', msg: 'The document seems to be big. Loading may take a while.'});
-                    }
                 };
 
                 /**
@@ -72,18 +60,25 @@ angular
                 };
 
                 this.setUpAnnoView = function () {
-                    if ($window.sessionStorage.shownUser == undefined) {
-                        $window.sessionStorage.shownUser = $window.sessionStorage.uId;
-                    }
                     if ($scope.shownUserList === undefined) {
                         $scope.shownUserList = {};
                     }
+
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("GET", "discanno/document/" + $window.sessionStorage.docId, false); // false for synchronous request
+                    xmlHttp.send(null);
+                    var resp = xmlHttp.responseText;
+                    $scope.users = JSOG.parse(resp).project.users;
+                    if ($window.sessionStorage.shownUser === "undefined" || $window.sessionStorage.shownUser === undefined || $window.sessionStorage.shownUser == $window.sessionStorage.uId) {
+                        if ($scope.users.length > 0) {
+                            var firstUserId = $scope.users[0].id;
+                            $window.sessionStorage.shownUser = firstUserId;
+                        } else {
+                            $window.sessionStorage.shownUser = $window.sessionStorage.uId;
+                        }
+
+                    }
                     $scope.shownUserList[$window.sessionStorage.shownUser] = $window.sessionStorage.shownUser;
-                    $http.get("discanno/document/" + $window.sessionStorage.docId).success(function (response) {
-                        $scope.users = JSOG.parse(JSON.stringify(response)).project.users;
-                    }).error(function (response) {
-                        $rootScope.checkResponseStatusCode(response.status);
-                    });
                 };
 
                 this.onUserChange = function () {
@@ -110,7 +105,6 @@ angular
                         var currentLine = this.tokenData[i].tokens;
                         start = end + 1;
                         end = start + this.tokenData[i].lineLength;
-
                         var annoLine = new TextLine(start, end);
                         for (var j = 0; j < currentLine.length; j++) {
                             var word = new TextWord(currentLine[j].text, currentLine[j].start, currentLine[j].end);
@@ -135,7 +129,6 @@ angular
                         var anno = new Annotation(color, annotations[a].id, targetType);
                         anno.notSure = annotations[a].notSure;
                         this.findWords(start, end, anno);
-
                         //Add labels
                         for (var l = 0; l < annotations[a].labelMap.length; l++) {
                             var label = annotations[a].labelMap[l];
@@ -246,15 +239,105 @@ angular
                         this.changeLinkLabel = { "link": this.selectedNode, "label": label};
                     }
                 };
-                this.increaseSelectedAnnoSize = function () {
+                // Update an existing Anno in the db
+                this.updateAnno = function (newAnno) {
+                    var jsonTemplate = {
+                        "id": newAnno.id,
+                        "user": {
+                            "id": $window.sessionStorage.uId
+                        },
+                        "targetType": {
+                            "targetType": newAnno.tType.tag
+                        },
+                        "document": {
+                            "id": $window.sessionStorage.docId
+                        },
+                        "start": newAnno.words[0].start,
+                        "end": newAnno.words[newAnno.words.length - 1].end,
+                        "text": newAnno.text,
+                        "notSure": newAnno.notSure
+                    };
+                    // add to db
+                    $http.put("discanno/annotations", JSON.stringify(jsonTemplate)).then(function (object) {
+                        return function (response) {
+                            object.sizeIncreased = newAnno;
+                        };
+                    }(this), function (err) {
+                        $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
+                    });
+                };
+                //Reset sizeIncreased variable to prevent changes from happening twice
+                this.resetSizeIncreased = function () {
+                    this.sizeIncreased = undefined;
+                    this.selectedNode.updatedWords = [];
+                    this.selectedNode.removedWord = undefined;
+
+                };
+                // Increase size of currently selected Node by one word
+                this.increaseSelectedAnnoSizeRight = function () {
                     if (this.selectedNode !== null && this.selectedNode !== undefined
                             && this.selectedNode.type === "Annotation") {
                         var word = this.nextWord(this.selectedNode.endIndex());
-                        this.selectedNode.addWord(word);
-                        if (word.text === " ") {
-                            this.increaseSelectedAnnoSize();
+                        if (word !== undefined) {
+                            this.selectedNode.addWord(word);
+                            if (this.selectedNode.updatedWords === undefined) {
+                                this.selectedNode.updatedWords = [];
+                            }
+                            this.selectedNode.updatedWords.push(word);
                         }
-                        this.sizeIncreased = this.selectedNode;
+                        if (word !== undefined && word.text === " ") {
+                            this.increaseSelectedAnnoSizeRight();
+                        }
+                        if (this.tempAnno !== this.selectedNode) {
+                            this.updateAnno(this.selectedNode);
+                        }
+                    }
+                };
+                this.increaseSelectedAnnoSizeLeft = function () {
+                    if (this.selectedNode !== null && this.selectedNode !== undefined
+                            && this.selectedNode.type === "Annotation") {
+                        var word = this.previousWord(this.selectedNode.words[0].end);
+                        if (word !== undefined) {
+                            this.selectedNode.addWordBefore(word);
+                            if (this.selectedNode.updatedWords === undefined) {
+                                this.selectedNode.updatedWords = [];
+                            }
+                            this.selectedNode.updatedWords.push(word);
+                        }
+                        if (word !== undefined && word.text === " ") {
+                            this.increaseSelectedAnnoSizeLeft();
+                        }
+                        if (this.tempAnno !== this.selectedNode) {
+                            this.updateAnno(this.selectedNode);
+                        }
+                    }
+
+                };
+                // Decrease size of currently selected Node by one word
+                this.decreaseSelectedAnnoSizeRight = function () {
+                    if (this.selectedNode !== null && this.selectedNode !== undefined
+                            && this.selectedNode.type === "Annotation") {
+                        var word = this.selectedNode.removeLastWord();
+                        this.selectedNode.removedWord = word;
+                        if (word !== undefined && this.previousWord(word.end).text === " ") {
+                            word = this.selectedNode.removeLastWord();
+                        }
+                        if (this.tempAnno !== this.selectedNode) {
+                            this.updateAnno(this.selectedNode);
+                        }
+                    }
+                };
+                this.decreaseSelectedAnnoSizeLeft = function () {
+                    if (this.selectedNode !== null && this.selectedNode !== undefined
+                            && this.selectedNode.type === "Annotation") {
+                        var word = this.selectedNode.removeFirstWord();
+                        this.selectedNode.removedWord = word;
+                        if (word !== undefined && this.nextWord(word.end).text === " ") {
+                            word = this.selectedNode.removeFirstWord();
+                        }
+                        if (this.tempAnno !== this.selectedNode) {
+                            this.updateAnno(this.selectedNode);
+                        }
                     }
                 };
 
@@ -363,7 +446,7 @@ angular
                 };
                 //Deletes an annotatioan and makes a callback to the backend
                 this.removeAnnotation = function (annotation) {
-
+                    this.sizeIncreased = undefined;
                     this.lastRemoved = annotation;
                     if (annotation === this.tempAnno) {
                         this.tempAnno.onDelete();
@@ -457,13 +540,17 @@ angular
                 };
                 //Checks if two annotations are linkable depending on their target type
                 this.linkable = function (source, target) {
+                    if (this.annotationLinks !== undefined && this.annotationLinks[source.id] !== undefined) {
+                        var alreadyExists = (this.annotationLinks[source.id][target.id] !== undefined)
+                    } else {
+                        var alreadyExists = false;
+                    }
                     return this.linkLabels[source.tType.tag] !== undefined
-                            && this.linkLabels[source.tType.tag][target.tType.tag] !== undefined;
+                            && this.linkLabels[source.tType.tag][target.tType.tag] !== undefined && !alreadyExists;
                 };
                 //Remove a link and make a corresponding callback to the backend
                 this.removeLink = function (link) {
 
-                    //TODO: db callback;
                     if (link !== undefined) {
                         $http.delete("discanno/links/" + link.id).then(function (object) {
                             return function (response) {
@@ -639,6 +726,29 @@ angular
                         }
                     }
                 }
+
+                //Helper function to find previous word
+                this.previousWord = function (end) {
+                    var start = 0;
+                    var ending = -1;
+                    var previousWord;
+                    for (var i = 0; i < this.tokenData.length; i++) {
+                        var line = this.tokenData[i].tokens;
+                        start = ending + 1;
+                        ending = start + this.tokenData[i].lineLength;
+                        var annoLine = new TextLine(start, ending);
+                        for (var j = 0; j < line.length; j++) {
+                            var word = new TextWord(line[j].text, line[j].start, line[j].end);
+                            word.lineIndex = i;
+                            word.wordIndex = annoLine.words.length;
+                            annoLine.words.push(word);
+                            if (line[j].end === end) {
+                                return previousWord;
+                            }
+                            previousWord = word;
+                        }
+                    }
+                };
                 //Helper function for finding corresponding words in the text
                 //that are indexed by start and end
                 this.findWords = function (start, end, object) {
@@ -756,6 +866,7 @@ angular
                 ];
 
                 $scope.$on("$destroy", function () {
+                    delete $window.sessionStorage.shownUser;
                     $rootScope.initialized = 'false';
                 });
                 if ($rootScope.initialized !== 'true')

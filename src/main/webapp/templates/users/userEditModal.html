@@ -11,14 +11,34 @@ and open the template in the editor.
     </head>
     <body>
         <div class="modal-header">
-            <h3 class="modal-title">Edit User</h3>
+            <h3 class="modal-title">Reset password</h3>
         </div>
         <div class="modal-body">
-            <form name="form" role="form">
-                <label>Do you want to reset the user's password?</label>
+            <!-- removed this functionality for demo, as we don't have real e-mail addresses -->
+            <!--form name="form" role="form">
+                <label>Do you want to reset this user's password?</label>
                 <br></br>
                 <div class="form-actions">
                     <button type="button" class="btn btn-danger" ng-click="resetUserPassword()">Reset user password</button>
+                </div>
+            </form-->
+            <form name="form" ng-submit="vm.addUser()" role="form">
+                <div class="form-group"
+                     ng-class="{ 'has-error': form.fname.$dirty && form.fname.$error.required }">
+                    <label for="pw">Password (Min. 5 characters):</label>
+                    <input type="password" pattern=".{5,}" title="5 characters minimum"
+                           name="pw" id="pw" class="form-control" ng-model="vm.pw"
+                           ng-init="vm.fname = password" required />
+                    <label for="rpw">repeat password:</label>
+                    <input type="password" pattern=".{5,}" title="5 characters minimum"
+                           name="pw" id="rpw" class="form-control" ng-model="vm.rpw"
+                           ng-init="vm.fname = password" required />
+                </div>
+                <div class="form-actions">
+                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading || vm.pw != vm.rpw"
+                            class="btn btn-primary" ng-click="changePassword(vm.pw)">
+                        Change password
+                    </button>
                 </div>
             </form>
         </div>

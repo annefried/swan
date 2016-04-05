@@ -26,6 +26,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -62,6 +63,28 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             service.process(entity);
             return annotationDAO.create(entity);
+        } catch (SecurityException e) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (NullPointerException | NoResultException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        
+    }
+    
+    /**
+     * Updates an existing annotation. Used for the stretch feature in the GUI.
+     * Only end, start and text can be changed.
+     * 
+     * @param entity (Annotation)
+     * @return Response
+     */
+    @PUT
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response edit(Annotation entity) {
+        
+        try {
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+            return service.edit(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
         } catch (NullPointerException | NoResultException e) {

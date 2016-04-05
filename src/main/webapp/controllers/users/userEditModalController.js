@@ -7,6 +7,7 @@
 
 angular.module('app').controller('userEditModalController', function ($rootScope, $scope, $http, $window, $uibModalInstance) {
 
+    // to reset password via e-mail
     $scope.resetUserPassword = function () {
         var user = {'id': $rootScope.toEdit};
         $http.post('discanno/user/reset/', user).success(function (response) {
@@ -15,6 +16,18 @@ angular.module('app').controller('userEditModalController', function ($rootScope
             $rootScope.checkResponseStatusCode(response.status);
         });
 
+        $uibModalInstance.close();
+    };
+
+    // to manually reset password for user
+    $scope.changePassword = function (password) {
+
+        $http.put('discanno/user/' + $rootScope.toEdit, password).success(function (response) {
+            $rootScope.addAlert({type: 'success', msg: 'Password changed succesfully.'});
+        }).error(function (response) {
+			$rootScope.checkResponseStatusCode(response.status);
+		});
+        
         $uibModalInstance.close();
     };
     

@@ -1,7 +1,7 @@
 <link href="css/annotation.css" rel="stylesheet">
 <link href="css/graph.css" rel="stylesheet">
 <link href="css/annotationoptions.css" rel="stylesheet">
-    
+
 <div>
     <script type="text/ng-template" id="alert.html">
         <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
@@ -68,7 +68,11 @@
                                                add-link="annotation.addLink(source, target)"
                                                linkable="annotation.linkable(source, target)"
                                                clear-selection="d3Anno.clearSelection()"
-                                               increase-selected-anno-size="annotation.increaseSelectedAnnoSize()">
+                                               increase-selected-anno-size-right="annotation.increaseSelectedAnnoSizeRight()"
+                                               increase-selected-anno-size-left="annotation.increaseSelectedAnnoSizeLeft()"
+                                               decrease-selected-anno-size-right="annotation.decreaseSelectedAnnoSizeRight()"
+                                               decrease-selected-anno-size-left="annotation.decreaseSelectedAnnoSizeLeft()"
+                                               reset-size-increased="annotation.resetSizeIncreased()">
                                 </d3-annotation>
                             </div>
 
@@ -102,7 +106,7 @@
                         </div>
 
                         <!-- Timeline -->
-                        <uib-accordion-group heading="Timeline" is-open="true" is-disabled="false" class="unselectable">
+<!--                        <uib-accordion-group heading="Timeline" is-open="true" is-disabled="false" class="unselectable">
                             <div>
                                 <div ng-controller="d3TimelineController as timeline">
                                     <d3-timeline
@@ -121,7 +125,7 @@
                                 </div>
 
                             </div>
-                        </uib-accordion-group>
+                        </uib-accordion-group>-->
                         
                         <!-- Graph -->
                         <uib-accordion-group heading="Graph" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable" id="anno-graph">
@@ -141,7 +145,7 @@
                                 </div>
                             </div>
                         </uib-accordion-group>
-                        
+
                         <!-- Annotation options -->
                         <uib-accordion-group heading="Annotations" is-disabled="false" is-open="true" class="unselectable" id="anno-options">
                             <div ng-controller="d3OptionsController as options">
