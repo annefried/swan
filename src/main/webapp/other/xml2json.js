@@ -1,7 +1,7 @@
 
 /**
  *
- * @param {type} xml The XML to be paresd
+ * @param {type} xml The XML to be parsed
  * @param {type} tab A boolean if tabs should be used
  * @returns {String} The parsed JSON as String
  */
@@ -67,35 +67,43 @@ function xml2json(xml, tab) {
             return o;
         },
         toJson: function (o, name, ind) {
-            if (name != "root" && name != "item" && name != "element")
+            if (name !== "root" && name !== "label" && name != "spanType" && name != "labelSet" && name != "linkType")
                 var json = name ? ("\"" + name + "\"") : "";
             else {
                 name = undefined;
                 var json = "";
             }
             if (o instanceof Array) {
-                for (var i = 0, n = o.length; i < n; i++)
+                for (var i = 0, n = o.length; i < n; i++) {
                     o[i] = X.toJson(o[i], "", ind + "\t");
-                json += (name ? ":[" : "[") + (o.length > 1 ? ("\n" + ind + "\t" + o.join(",\n" + ind + "\t") + "\n" + ind) : o.join("")) + "]";
-            } else if (o == null)
+                }
+                json += (name ? ":[" : "") + (o.length > 0 ? ("\n" + ind + "\t" + o.join(",\n" + ind + "\t") + "\n" + ind) : o.join("")) + (name ? "]" : "");
+            } else if (o === null) {
                 json += (name && ":") + "[]";
-            else if (typeof (o) == "object") {
+            } else if (typeof (o) === "object") {
                 var arr = [];
-                for (var m in o)
+                for (var m in o) {
                     arr[arr.length] = X.toJson(o[m], m, ind + "\t");
-                if (name == undefined)
-                    json += arr.length > 1 ? ("\n" + ind + "\t" + arr.join(",\n" + ind + "\t") + "\n" + ind) : arr.join("");
-                else if (name == "labelSets" || name == "linkSets")
-                    json += (name ? ":[\n{" : "{") + (arr.length > 1 ? ("\n" + ind + "\t" + arr.join(",\n" + ind + "\t") + "\n" + ind) : arr.join("")) + (name ? "}\n]" : "}");
-                else
-                    json += (name ? ":" : "{") + (arr.length > 1 ? ("\n" + ind + "\t" + arr.join(",\n" + ind + "\t") + "\n" + ind) : arr.join("")) + (name ? "" : "}");
-            } else if (typeof (o) == "string")
-                if (name == undefined)
+                }
+                if (name === undefined) {
+                    json += ind + "\t" + arr.join(",\n" + ind + "\t") + "\n";
+                } else if (name !== "labels" && name !== "linkLabels" && name !== "appliesToSpanTypes" && name !== "linkTypes" && name !== "spanTypes" && name !== "labelSets") {
+                    json += (name ? ":" : "{") + ("\n" + ind + "\t" + arr.join(",\n" + ind + "\t") + "\n" + ind) + (name ? "" : "}");
+                } else {
+
+                    json += (name ? ":" : "{") + ("[\n" + ind + "\t" + arr.join(",\n" + ind + "\t") + "]\n" + ind) + (name ? "" : "}");
+                }
+            } else if (typeof (o) === "string") {
+                if (name === undefined) {
                     json += "\"" + o.toString() + "\"";
-                else
+                } else {
                     json += (name && ":") + "\"" + o.toString() + "\"";
-            else
+                }
+            } else {
                 json += (name && ":") + o.toString();
+            }
+            //console.log("toJson: " + name);
+            //console.log("returning: " + json);
             return json;
         },
         innerXml: function (node) {
@@ -155,5 +163,8 @@ function xml2json(xml, tab) {
     if (xml.nodeType == 9) // document node
         xml = xml.documentElement;
     var json = X.toJson(X.toObj(X.removeWhite(xml)), xml.nodeName, "\t");
-    return "{\n" + tab + (tab ? json.replace(/\t/g, tab) : json.replace(/\t|\n/g, "")) + "\n}";
+
+    json = "{\n" + tab + (tab ? json.replace(/\t/g, tab) : json.replace(/\t|\n/g, "")) + "\n}";
+
+    return json;
 }

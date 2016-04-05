@@ -18,31 +18,33 @@ angular.module('app').controller('schemeViewModalController', function ($scope, 
         var scheme = JSON.parse(JSON.stringify($rootScope.currentScheme));
 
         // remove things that we don't want to display
-        scheme.id = undefined;
-        scheme.creator = undefined;
-        scheme.projects = undefined;
+        delete scheme.id;
+        delete scheme.creator;
+        delete scheme.projects;
 
 
         var targetTypesSimple = new Array();
         for (var j = 0; j < scheme.targetTypes.length; j++) {
             targetTypesSimple.push(scheme.targetTypes[j].targetType);
         }
-        scheme.targetTypes = targetTypesSimple;
+        scheme.spanTypes = targetTypesSimple;
+        scheme.linkTypes = scheme.linkSets;
 
         for (var j = 0; j < scheme.labelSets.length; j++) {
             var curLabelSet = scheme.labelSets[j];
-            curLabelSet.id = undefined;
+            delete curLabelSet.id;
             var targetTypesSimple2 = new Array();
             for (var i = 0; i < curLabelSet.appliesToTargetTypes.length; i++) {
                 targetTypesSimple2.push(curLabelSet.appliesToTargetTypes[i].targetType);
             }
-            curLabelSet.appliesToTargetTypes = targetTypesSimple2;
+            curLabelSet.appliesToSpanTypes = targetTypesSimple2;
+            delete curLabelSet.appliesToTargetTypes;
 
             var labelsSimple = new Array();
             for (var k = 0; k < curLabelSet.labels.length; k++) {
                 var curLabel = curLabelSet.labels[k];
                 labelsSimple.push(curLabel.labelId);
-                curLabel.labelSet = undefined;
+                delete curLabel.labelSet;
             }
             curLabelSet.labels = labelsSimple;
         }
@@ -55,10 +57,18 @@ angular.module('app').controller('schemeViewModalController', function ($scope, 
                 linkLabelsSimple.push(curLabel.linkLabel);
             }
             curLinkSet.linkLabels = linkLabelsSimple;
+            curLinkSet.startSpanType = curLinkSet.startType;
+            curLinkSet.endSpanType = curLinkSet.endType;
+            delete curLinkSet.startType;
+            delete curLinkSet.endType;
+            delete curLinkSet.allowUnlabeledLinks;
+            delete curLinkSet.id;
         }
-
+        
+        delete scheme.linkSets;
+        delete scheme.targetTypes;
         function replacer(key, value) {
-            if (key === "startType" || key === "endType") {
+            if (key === "startSpanType" || key === "endSpanType") {
                 return value.targetType;
             }
             return value;
