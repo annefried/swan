@@ -503,7 +503,6 @@ angular.module('app')
                         //Listens to changes to the last removed object
                         $scope.$watch('lastRemoved', function (newVals) {
                             if (newVals !== undefined) {
-
                                 //Gather all the formatted words that correspond
                                 //to the annotated words fo this annotation
                                 var formWords = [];
@@ -881,7 +880,6 @@ angular.module('app')
                         //Iterate over annotation grid to find a position for the annotations
                         //that don't overlap with existing annotations
                         $scope.findBoxPosition = function (annotationBox) {
-
                             for (var k = 0; k < annotationBox.formWords[0].maxAnnotations; k++) {
                                 var foundPosition = false;
                                 for (var l = 0; l < annotationBox.formWords.length; l++) {
@@ -900,8 +898,9 @@ angular.module('app')
                                     annotationBox.height = k;
                                     for (var h = 0; h < annotationBox.formWords.length; h++) {
                                         var formWord = annotationBox.formWords[h];
-                                        if (!isTempAnno)
+                                        if (!isTempAnno) {
                                             formWord.annoGrid[k] = annotationBox.annotation;
+                                        }
                                     }
 
                                     break;

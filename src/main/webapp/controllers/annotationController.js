@@ -25,7 +25,6 @@ angular
                     this.buildAnnotations();
                     this.buildLinks();
                     $scope.completed = $window.sessionStorage.completed === 'true';
-
                     if ($rootScope.tour !== undefined) {
                         $rootScope.tour.resume();
                     }
@@ -107,7 +106,6 @@ angular
                         var currentLine = this.tokenData[i].tokens;
                         start = end + 1;
                         end = start + this.tokenData[i].lineLength;
-
                         var annoLine = new TextLine(start, end);
                         for (var j = 0; j < currentLine.length; j++) {
                             var word = new TextWord(currentLine[j].text, currentLine[j].start, currentLine[j].end);
@@ -132,7 +130,6 @@ angular
                         var anno = new Annotation(color, annotations[a].id, targetType);
                         anno.notSure = annotations[a].notSure;
                         this.findWords(start, end, anno);
-
                         //Add labels
                         for (var l = 0; l < annotations[a].labelMap.length; l++) {
                             var label = annotations[a].labelMap[l];
@@ -450,7 +447,7 @@ angular
                 };
                 //Deletes an annotatioan and makes a callback to the backend
                 this.removeAnnotation = function (annotation) {
-
+                    this.sizeIncreased = undefined;
                     this.lastRemoved = annotation;
                     if (annotation === this.tempAnno) {
                         this.tempAnno.onDelete();
