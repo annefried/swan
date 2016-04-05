@@ -106,7 +106,8 @@ public class ExportUtil {
                         Set<Label> labels = convertLabelsToExportLabelSet(annotation.getLabelMap());
                         for (Label label : labels) {
                             for (String labelName : label.getLabel()) {
-                                de.unisaarland.discanno.export.uimaTypes.DiscAnnoLabel uimaLabel = new de.unisaarland.discanno.export.uimaTypes.DiscAnnoLabel(jCas);
+                                de.unisaarland.discanno.export.uimaTypes.DiscAnnoLabel uimaLabel
+                                        = new de.unisaarland.discanno.export.uimaTypes.DiscAnnoLabel(jCas);
                                 uimaLabel.setName(labelName);
                                 uimaLabel.setLabelSet(label.getlabelSetName());
 
@@ -132,7 +133,8 @@ public class ExportUtil {
                         Set<Label> labels = convertLinkLabelsToExportLabelSet(link.getLabelMap());
                         for (Label label : labels) {
                             for (String labelName : label.getLabel()) {
-                                de.unisaarland.discanno.export.uimaTypes.DiscAnnoLabel uimaLabel = new de.unisaarland.discanno.export.uimaTypes.DiscAnnoLabel(jCas);
+                                de.unisaarland.discanno.export.uimaTypes.DiscAnnoLabel uimaLabel
+                                        = new de.unisaarland.discanno.export.uimaTypes.DiscAnnoLabel(jCas);
                                 uimaLabel.setName(labelName);
                                 uimaLabel.setLabelSet(label.getlabelSetName());
 

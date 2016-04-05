@@ -11,6 +11,8 @@ import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.dao.*;
 import de.unisaarland.discanno.email.EmailProvider;
 import de.unisaarland.discanno.entities.*;
+import de.unisaarland.discanno.export.ExportUtil;
+import edu.stanford.nlp.ling.CoreLabel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -21,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
+import javax.ejb.CreateException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.core.Response;
@@ -635,24 +638,14 @@ public class Service {
         link.addLabelMap(map);
     }
     
-    /**
-     * Adds a document to a project and creates the new targets/ default annotations
-     * for the existing users.
-     * 
-     * @param entity
-     * @return
-     * @throws IllegalArgumentException
-     * @throws CloneNotSupportedException 
-     */
-    public Document addDocumentToProject(Document entity) throws IllegalArgumentException, CloneNotSupportedException {
+    private void checkTargets(Document entity) throws CreateException {
         
-        Project project = (Project) projectDAO.find(entity.getProject().getId(), false);
-        entity.setProject(project);
-        entity.setStates(new HashSet<State>());
+        HashMap<String, HashMap<Integer, CoreLabel>> maps = TokenizationUtil.getTokenMap(entity.getText());
+        HashMap<Integer, CoreLabel> mapStart = maps.get("start");
+        HashMap<Integer, CoreLabel> mapEnd = maps.get("end");
         
         // It is expected that the defaultAnnotations/ targets don't have user ids,
         // so set all attributes to null or empty sets except
-        // a.setDocument and a.setTargetType
         for (Annotation a : entity.getDefaultAnnotations()) {
             a.setDocument(entity);
             a.setLabelMap(new HashSet<LabelLabelSetMap>());
@@ -660,12 +653,37 @@ public class Service {
             a.setUser(null);
             
             if (a.getTargetType() == null) {
-                throw new IllegalArgumentException("Service: no targetype specified!");
+                throw new CreateException("Service: No targetype specified!");
             } else {
                 TargetType tt = (TargetType) targetTypeDAO.find(a.getTargetType().getTargetType(), false);
                 a.setTargetType(tt);
             }
+            if (mapStart.get(a.getStart()) == null) {
+                throw new CreateException(
+                        "Service: start position did not match with tokens (Target: start was " + a.getStart() + ")");
+            } else if (mapEnd.get(a.getEnd()) == null) {
+                throw new CreateException(
+                        "Service: end  position did not match with tokens (Target: end was " + a.getEnd() + ")");
+            }
         }
+    }
+    
+    /**
+     * Adds a document to a project and creates the new targets/ default annotations
+     * for the existing users.
+     * 
+     * @param entity
+     * @return
+     * @throws javax.ejb.CreateException
+     * @throws CloneNotSupportedException 
+     */
+    public Document addDocumentToProject(Document entity) throws CreateException, CloneNotSupportedException {
+        
+        Project project = (Project) projectDAO.find(entity.getProject().getId(), false);
+        entity.setProject(project);
+        entity.setStates(new HashSet<State>());
+        
+        checkTargets(entity);
         
         // Add to every Document a new State object initialized with User and
         // Document

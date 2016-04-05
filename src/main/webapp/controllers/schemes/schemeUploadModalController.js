@@ -285,7 +285,6 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             if ($scope.currentLinkSet[i].id === id) {
                 $scope.currentLinkSet.splice(i, 1);
             }
-
         }
     };
 
@@ -330,7 +329,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             }
 
             // Validate scheme
-            var tTypeMap = {}; // for linear access
+            var tTypeMap = {}; // for constant access
             for (var i = 0; i < scheme.targetTypes.length; i++) {
                 var tType = scheme.targetTypes[i];
                 tTypeMap[tType.toString()] = tType;

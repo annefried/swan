@@ -12,6 +12,7 @@ import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,7 +23,7 @@ import java.util.regex.Pattern;
  */
 public class TokenizationUtil {
     
-    private static Pattern pattern = Pattern.compile("\r\n|\r|\n");
+    private final static Pattern PATTERN = Pattern.compile("\r\n|\r|\n");
     
     public static List<Line> tokenize(final String str) {
         
@@ -67,6 +68,39 @@ public class TokenizationUtil {
         return lines;
     }
     
+    /**
+     * Tokenizes the given text and puts the start and end positions in the
+     * HashMap so that the given targets can be validated for their positions.
+     * A HashMap is used for constant access.
+     * 
+     * @param str
+     * @return 
+     */
+    public static HashMap<String, HashMap<Integer, CoreLabel>> getTokenMap(final String str) {
+        
+        StringReader reader = new StringReader(str);
+        HashMap<Integer, CoreLabel> mapStart = new HashMap<>();
+        HashMap<Integer, CoreLabel> mapEnd = new HashMap<>();
+        HashMap<String, HashMap<Integer, CoreLabel>> maps = new HashMap<>();
+        maps.put("start", mapStart);
+        maps.put("end", mapEnd);
+        
+        // The passed options prevent tokenizing '(' into '-LRB-' etc.
+        // http://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/process/PTBTokenizer.html
+        PTBTokenizer<CoreLabel> ptbt = new PTBTokenizer<>(
+                                        reader,
+                                        new CoreLabelTokenFactory(),
+                                        "ptb3Escaping=false,normalizeParentheses=false,normalizeOtherBrackets=false");
+
+        while (ptbt.hasNext()) {
+            CoreLabel label = ptbt.next();
+            mapStart.put(label.beginPosition(), label);
+            mapEnd.put(label.endPosition(), label);
+        }
+        
+        return maps;
+    }
+    
     private static Token createToken(int start, int end, String text) {
         Token token = new Token();
         token.setStart(start);
@@ -89,7 +123,7 @@ public class TokenizationUtil {
     private static List<Line> processSubString(Line currLine, String str) {
         
         List<Line> lines = new ArrayList<>();
-        Matcher m = pattern.matcher(str);
+        Matcher m = PATTERN.matcher(str);
         
         for (int i = 1; i <= str.length(); i++) {
             int start = i - 1;
@@ -113,7 +147,7 @@ public class TokenizationUtil {
      * @return 
      */
     private static int lineAppeared(String subStr) {
-        Matcher m = pattern.matcher(subStr);
+        Matcher m = PATTERN.matcher(subStr);
         
         int i = 0;
         for (; m.find(); i++);
