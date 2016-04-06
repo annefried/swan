@@ -21,14 +21,15 @@ import javax.persistence.MappedSuperclass;
 public class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    @JsonView({ View.Annotations.class,
-                View.Schemes.class ,
-                View.Users.class,
-                View.Links.class,
-                View.Projects.class })
+
+    @JsonView({View.Annotations.class,
+        View.Schemes.class,
+        View.Users.class,
+        View.Links.class,
+        View.Projects.class})
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    // this forces the DB to take care of primary key generation per table.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public Long getId() {
@@ -63,5 +64,5 @@ public class BaseEntity implements Serializable {
     public String toString() {
         return "de.unisaarland.discanno.entities.BaseEntity[ id=" + id + " ]";
     }
-    
+
 }
