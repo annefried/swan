@@ -290,7 +290,7 @@ angular
                                         path: "/discanno/#/projects",
                                         element: "#pe_createProjectButton",
                                         title: "Create a new project",
-                                        delay: 750,
+                                        delay: 1000,
                                         placement: "left",
                                         content: "Enter a name for the project, and select the scheme we created earlier.",
                                         reflex: true,
