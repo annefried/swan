@@ -12,7 +12,8 @@ angular
                 // were added with 1 ms duration as a workaround. Additionally
                 // the corresponding controllers have to check for the tour
                 // in the $rootScope and resume if specified.
-                // For modals, the first step must have a delay of 1.
+                // For modals, the first step must have a delay of 1000, 
+                // allowing time for loading and updating the DOM.
 
                 $scope.existsDocumentsInProjects = function (projects) {
                     for (var i = 0; i < projects.length; i++) {
@@ -27,10 +28,9 @@ angular
                     }
                     return undefined;
                 };
-				
                 if (($window.sessionStorage.role != 'admin')
-						&& ($window.sessionStorage.role != 'annotator')
-						&& ($window.sessionStorage.role != 'projectmanager')) {
+                        && ($window.sessionStorage.role != 'annotator')
+                        && ($window.sessionStorage.role != 'projectmanager')) {
                     $rootScope.redirectToLogin();
                 } else {
 
@@ -45,7 +45,7 @@ angular
                                 container: "body",
                                 keyboard: true,
                                 storage: window.localStorage,
-                                //debug: true,
+                                debug: false,
                                 backdrop: false,
                                 backdropContainer: 'body',
                                 backdropPadding: 0,
@@ -90,7 +90,6 @@ angular
                                         title: "Users",
                                         content: "Here, you can see a list of all users in the database. They are identified by their email address, and can be 'annotators', 'project managers' or 'admins'.",
                                         path: "/discanno/#/users",
-                                        reflex: true
                                     },
                                     {
                                         element: "#addUserButton",
@@ -99,23 +98,22 @@ angular
                                         content: "Click here and fill out the user details for a new annotator. Make sure to choose the role 'Annotator'.",
                                         path: "/discanno/#/users",
                                         reflex: true,
-                                        onShown: function (tour) {
+                                        onShown: function () {
+                                            console.log("hahllo");
                                             $("#tour-next-button").prop("disabled", true);
                                         }
                                     },
                                     {
                                         element: "#submit_add_user_button",
                                         title: "Fill out valid user information",
-                                        delay: 1,
                                         content: "Select the role 'Annotator' and then click here.",
                                         path: "/discanno/#/users",
-                                    },
-                                    {
-                                        element: "#submit_add_user_button",
-                                        title: "Fill out valid user information",
-                                        content: "Select the role 'Annotator' and then click here.",
-                                        path: "/discanno/#/users",
-                                        reflex: true
+                                        reflex: true,
+                                        delay:750,
+                                        onShown: function (tour) {
+                                            console.log("showing...");
+                                            $("#tour-next-button").prop("disabled", true);
+                                        },
                                     },
                                     {
                                         element: "#1-users-header",
@@ -189,7 +187,7 @@ angular
                                     {
                                         element: "#scheme-name-input",
                                         title: "Scheme name",
-                                        delay: 1,
+                                        delay: 750,
                                         content: "The most important thing is to give a meaningful name to your scheme. Note that scheme names need to be unique across the database, i.e., you cannot give a name to your scheme that another project manager has used already. But good news: you can use their schemes if you want to!",
                                         path: "/discanno/#/schemes"
                                     },
@@ -221,16 +219,15 @@ angular
                                         path: "/discanno/#/schemes",
                                         reflex: true,
                                         onShown: function (tour) {
-
                                             $("#tour-next-button").prop("disabled", true);
                                         }
                                     },
                                     {
-                                        orpphan: true,
+                                        orphan: true,
                                         title: "Congrats, you have just created your first DiscAnno annotation scheme!",
                                         content: "If you have already added an annotator, check out the project management tutorial now!",
                                         path: "/discanno/#/schemes",
-                                    },
+                                    }
                                 ]});
                             $scope.peTour = new Tour({
                                 name: "DiscAnno_project_explorer_tutorial",
@@ -293,7 +290,7 @@ angular
                                         path: "/discanno/#/projects",
                                         element: "#pe_createProjectButton",
                                         title: "Create a new project",
-                                        delay: 1,
+                                        delay: 750,
                                         placement: "left",
                                         content: "Enter a name for the project, and select the scheme we created earlier.",
                                         reflex: true,
@@ -526,4 +523,5 @@ angular
                     $rootScope.tour.start();
                 };
             }
+
         ]);

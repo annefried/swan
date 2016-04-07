@@ -106,27 +106,27 @@
                         </div>
 
                         <!-- Timeline -->
-<!--                        <uib-accordion-group heading="Timeline" is-open="true" is-disabled="false" class="unselectable">
-                            <div>
-                                <div ng-controller="d3TimelineController as timeline">
-                                    <d3-timeline
-                                        annotations="annotation.annotationData"
-                                        annotation-links="annotation.annotationLinks"
-                                        selection="annotation.selectedNode"
-                                        added-annotation="annotation.lastAdded"
-                                        removed-annotation="annotation.lastRemoved"
-                                        added-link="annotation.lastAddedLink"
-                                        removed-link="annotation.lastRemovedLink"
-                                        last-set="annotation.lastSet"
-                                        change-link-label="annotation.changeLinkLabel"
-                                        last-targeted="annotation.lastTargeted"
-                                        set-selection="annotation.setSelected(item)">
-                                    </d3-timeline>
-                                </div>
-
-                            </div>
-                        </uib-accordion-group>-->
+                        <!--                        <uib-accordion-group heading="Timeline" is-open="true" is-disabled="false" class="unselectable">
+                                                    <div>
+                                                        <div ng-controller="d3TimelineController as timeline">
+                                                            <d3-timeline
+                                                                annotations="annotation.annotationData"
+                                                                annotation-links="annotation.annotationLinks"
+                                                                selection="annotation.selectedNode"
+                                                                added-annotation="annotation.lastAdded"
+                                                                removed-annotation="annotation.lastRemoved"
+                                                                added-link="annotation.lastAddedLink"
+                                                                removed-link="annotation.lastRemovedLink"
+                                                                last-set="annotation.lastSet"
+                                                                change-link-label="annotation.changeLinkLabel"
+                                                                last-targeted="annotation.lastTargeted"
+                                                                set-selection="annotation.setSelected(item)">
+                                                            </d3-timeline>
+                                                        </div>
                         
+                                                    </div>
+                                                </uib-accordion-group>-->
+
                         <!-- Graph -->
                         <uib-accordion-group heading="Graph" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable" id="anno-graph">
                             <div>
@@ -204,12 +204,45 @@
                                 You can also go to another document by using the Project navigation box.</p>
 
                             <p><strong>Shortcuts:</strong> There are many cool shortcuts using
-                                keys that will make your life much easier. Check them out:
+                                keys that will make your life much easier. Check them out! <br/><br/>
+
+                                <strong>When a span annotation is selected, changing annotations:</strong>
+                            <table class="table">
+                                
+                                <tr>
+                                    <td><kbd><kbd>a</kbd></kbd></td>
+                                    <td>add the token on the left to the current annotation</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd><kbd>s</kbd></kbd></td>
+                                    <td>remove the left-most token from the current span annotation</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd><kbd>d</kbd></kbd></td>
+                                    <td>remove the right-most token from the current span annotation</td>
+                                </tr>  
+                                <tr>
+                                    <td><kbd><kbd>f</kbd></kbd></td>
+                                    <td>add the token on the right to the current annotation</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd>alt+up</kbd> / <kbd>alt+down</kbd></td>
+                                    <td>Add or remove current line from selection</td>
+                                </tr>
+                            </table>
+
+
+                            <strong>When a span annotation is selected, changing the selection:</strong>
                             <table class="table">
                                 <tr>
+                                    <td><kbd>left</kbd> / <kbd>right</kbd></td>
+                                    <td>jump between annotations</td>
+                                </tr>
+                                <!--tr>
                                     <td><kbd><kbd>?</kbd></kbd></td>
                                     <td>Show all shortcuts (Shift + ?)</td>
-                                </tr>                                      
+                                </tr-->
+                                
                             </table>
                         </uib-accordion-group>
 

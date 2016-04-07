@@ -320,14 +320,6 @@ angular.module('app')
                                         combo: 'shift+left',
                                         description: 'Delete words from long selection',
                                         callback: function () {
-
-                                            $scope.hotShift(false, $scope.words);
-                                        }
-                                    })
-                                    .add({
-                                        combo: 'shift+left',
-                                        description: 'Delete words from long selection',
-                                        callback: function () {
                                             $scope.hotShift(false, $scope.words);
                                         }
                                     })
