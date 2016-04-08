@@ -1116,6 +1116,9 @@ angular.module('app')
                                         .attr("fill", function (d) {
                                             return d.annotation.color.fill();
                                         })
+                                        .attr("title", function (d) {
+                                            return d.annotation;
+                                        })
                                         .attr("stroke", function (d) {
                                             return d.annotation.color.back;
                                         })
@@ -1193,8 +1196,20 @@ angular.module('app')
                                                     $scope.setSelection({item: link});
                                                 else
                                                     $scope.setSelection({item: d.annotation});
-                                            });
-                                        });
+                                            })
+                                        })
+                                        .append("svg:title").text(function (d) {
+                                    var ret = "";
+                                    for (var key in d.annotation.activeLabels) {
+                                        var set = d.annotation.activeLabels[key];
+                                        for (var i = 0; i < set.length; i++) {
+                                            ret += (set[i].tag + " ");
+                                        }
+                                    }
+                                    return 'Type: ' + d.annotation.tType.tag + " | Labels: " + ret;
+
+                                });
+
                                 //Draw the actual annotation text
                                 svg.selectAll("annotations")
                                         .data(annotationBoxes)
@@ -1279,7 +1294,17 @@ angular.module('app')
                                                 else
                                                     $scope.setSelection({item: d.annotation});
                                             });
-                                        });
+                                        }).append("svg:title").text(function (d) {
+                                    var ret = "";
+                                    for (var key in d.annotation.activeLabels) {
+                                        var set = d.annotation.activeLabels[key];
+                                        for (var i = 0; i < set.length; i++) {
+                                            ret += (set[i].tag + " ");
+                                        }
+                                    }
+                                    return 'Type: ' + d.annotation.tType.tag + " | Labels: " + ret;
+
+                                });
                             }
                         };
                         //Draw the links as lines between the corresponding annotation boxes
