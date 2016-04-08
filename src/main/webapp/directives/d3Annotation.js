@@ -68,6 +68,14 @@ angular.module('app')
                         window.onresize = function () {
                             return $scope.$apply();
                         };
+                        // Recompute max-height of right site on resize, to allow for scrolling
+                        $scope.onResize = function () {
+                            var offset = 150;
+                            $('.scroll-pane').css('max-height', ($(window).height() - offset));
+                        };
+                        $scope.onResize();
+                        angular.element($window).bind('resize', $scope.onResize);
+
                         //Watch scroll behaviour of user to only render important
                         //text segments
                         angular.element($window).bind("scroll", function () {

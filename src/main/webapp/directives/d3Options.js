@@ -25,7 +25,21 @@ angular.module('app')
                         var options = d3.select(iElement[0])
                                 .attr("width", "100%");
                         $scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
-
+                        // used to compare labels
+                        $scope.labelComp = function (a, b) {
+                            if (a.tag < b.tag)
+                                return -1;
+                            if (a.tag > b.tag)
+                                return 1;
+                            return 0;
+                        };
+                        $scope.targetTypeComp = function (a, b) {
+                            if (a.key < b.key)
+                                return -1;
+                            if (a.key > b.key)
+                                return 1;
+                            return 0;
+                        };
                         //Re-render on window resize
                         window.onresize = function () {
                             return $scope.$apply();
@@ -200,8 +214,10 @@ angular.module('app')
                                     .text("SPAN TYPE")
                                     .classed("optiontitle", true)
                                     .style("font-size", "120%");
+                            // Sort target types alphabetically
+                            var targetTypesAsArray = d3.entries($scope.targetTypes).sort($scope.targetTypeComp);
                             var targetTypes = newParent.selectAll()
-                                    .data(d3.entries($scope.targetTypes))
+                                    .data(targetTypesAsArray)
                                     .enter()
                                     .append("button")
                                     .attr("id", function (d) {
@@ -281,7 +297,15 @@ angular.module('app')
                                                 .style("font-size", "90%");
                                     }
                                 }
-
+                                labelSet.labels.sort(function (a, b) {
+                                    if (a.tag < b.tag)
+                                        return -1;
+                                    if (a.tag > b.tag)
+                                        return 1;
+                                    return 0;
+                                });
+                                // Sort labels alphabetically
+                                labelSet.labels.sort($scope.labelComp);
                                 var labels = parent.selectAll()
                                         .data(labelSet.labels)
                                         .enter()
