@@ -5,6 +5,8 @@
 .scroll-pane
 {
 	overflow: scroll !important;
+          height:auto;
+/*    max-height: 400px;*/
 }
 
 .annotationtitle {
