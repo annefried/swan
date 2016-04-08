@@ -223,6 +223,9 @@ angular.module('app')
                                     .attr("id", function (d) {
                                         return "tt_" + d.value.tag;
                                     })
+                                    .attr("title", function (d) {
+                                        return d.value.tag;
+                                    })
                                     .classed("btn btn-default btn-xs", true)
                                     // TODO: create utility function for the two functions below
                                     .classed("btn-default", function (d) {
@@ -318,6 +321,9 @@ angular.module('app')
                                                 return true;
                                             }
                                             return false;
+                                        })
+                                        .attr("title", function (d) {
+                                            return d.tag;
                                         })
                                         .attr("disabled", function () {
                                             if (!$scope.isAnnotator) {
