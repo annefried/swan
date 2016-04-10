@@ -109,7 +109,7 @@ angular.module('app').controller('documentAddModalController', function ($scope,
                     return function (response) {
                         var docTemplate = {
                             'completed': 0,
-                            'id': response,
+                            'id': response.data,
                             'name': curFileName
                         };
                         for (var i = 0; i < $rootScope.tableProjects.length; i++) {
