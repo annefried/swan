@@ -444,7 +444,7 @@ angular
                         $rootScope.checkResponseStatusCode(err.status);
                     });
                 };
-                //Deletes an annotatioan and makes a callback to the backend
+                //Deletes an annotation and makes a callback to the backend
                 this.removeAnnotation = function (annotation) {
                     this.sizeIncreased = undefined;
                     this.lastRemoved = annotation;

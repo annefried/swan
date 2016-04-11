@@ -1098,6 +1098,39 @@ angular.module('app')
                                         });
                             }
                         };
+                        $scope.applyLink = function (d) {
+                            var link;
+                            if ($scope.linking()) {
+                                if (linkStart.id !== d.annotation.id) {
+                                    var promise = $scope.addLink({source: linkStart, target: d.annotation});
+                                    promise.then(function (link) {
+                                        if (link !== undefined) {
+                                            $scope.setSelection({item: link});
+                                        }
+                                    });
+                                }
+                                linkStart = null;
+                            }
+
+                            if (link !== undefined)
+                                $scope.setSelection({item: link});
+                            else
+                                $scope.setSelection({item: d.annotation});
+                        };
+                        $scope.getTitle = function (d) {
+                            var text = "";
+                            for (var key in d.annotation.activeLabels) {
+                                var set = d.annotation.activeLabels[key];
+                                for (var i = 0; i < set.length; i++) {
+                                    text += (set[i].tag + " ");
+                                }
+                            }
+                            if (d.annotation.tType === undefined) {
+                                return "";
+                            } else {
+                                return 'Type: ' + d.annotation.tType.tag + " | Labels: " + text;
+                            }
+                        };
                         //Draw annotations above corresponding words in the text
                         $scope.drawAnnotations = function (minLine, maxLine) {
                             svg.selectAll(".annotationbox").remove();
@@ -1178,37 +1211,11 @@ angular.module('app')
                                             });
                                         })
                                         .on("mouseup", function (d) {
-                                            $scope.$apply(function () {
-                                                var link;
-                                                if ($scope.linking()) {
-                                                    if (linkStart.id !== d.annotation.id) {
-                                                        var promise = $scope.addLink({source: linkStart, target: d.annotation});
-                                                        promise.then(function (link) {
-                                                            if (link !== undefined) {
-                                                                $scope.setSelection({item: link});
-                                                            }
-                                                        });
-                                                    }
-                                                    linkStart = null;
-                                                }
-
-                                                if (link !== undefined)
-                                                    $scope.setSelection({item: link});
-                                                else
-                                                    $scope.setSelection({item: d.annotation});
-                                            })
+                                            $scope.$apply($scope.applyLink(d));
                                         })
                                         .append("svg:title").text(function (d) {
-                                    var ret = "";
-                                    for (var key in d.annotation.activeLabels) {
-                                        var set = d.annotation.activeLabels[key];
-                                        for (var i = 0; i < set.length; i++) {
-                                            ret += (set[i].tag + " ");
-                                        }
-                                    }
-                                    return 'Type: ' + d.annotation.tType.tag + " | Labels: " + ret;
-
-                                });
+                                            return $scope.getTitle(d);
+                                        });
 
                                 //Draw the actual annotation text
                                 svg.selectAll("annotations")
@@ -1281,30 +1288,10 @@ angular.module('app')
                                             $scope.textMarkable(false);
                                         })
                                         .on("mouseup", function (d) {
-                                            $scope.$apply(function () {
-                                                var link;
-                                                if ($scope.linking()) {
-                                                    if (linkStart.id !== d.annotation.id)
-                                                        link = $scope.addLink({source: linkStart, target: d.annotation});
-                                                    linkStart = null;
-                                                }
-
-                                                if (link !== undefined)
-                                                    $scope.setSelection({item: link});
-                                                else
-                                                    $scope.setSelection({item: d.annotation});
-                                            });
+                                            $scope.$apply($scope.applyLink(d));
                                         }).append("svg:title").text(function (d) {
-                                    var ret = "";
-                                    for (var key in d.annotation.activeLabels) {
-                                        var set = d.annotation.activeLabels[key];
-                                        for (var i = 0; i < set.length; i++) {
-                                            ret += (set[i].tag + " ");
-                                        }
-                                    }
-                                    return 'Type: ' + d.annotation.tType.tag + " | Labels: " + ret;
-
-                                });
+                                            return $scope.getTitle(d);
+                                        });
                             }
                         };
                         //Draw the links as lines between the corresponding annotation boxes
