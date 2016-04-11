@@ -55,7 +55,7 @@ public class EmailProvider {
      * which are watching projects. Only users which are watching projects are
      * receiving notification.
      */
-    @Schedule(dayOfWeek="Sun", hour="0")
+//    @Schedule(dayOfWeek="Sun", hour="0")
     public void sendProgressNotification() {
         List<Users> users = usersDAO.findAll();
 
