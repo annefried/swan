@@ -19,10 +19,10 @@ import de.unisaarland.discanno.entities.Users;
 import de.unisaarland.discanno.rest.view.View;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.CreateException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -75,6 +75,8 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             return projectDAO.create(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
@@ -89,7 +91,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
@@ -98,7 +100,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/add/{projId}/{userId}")
-    public Response addUserToProject(@PathParam("projId") Long projId, @PathParam("userId") Long userId) {
+    public Response addUserToProject(@PathParam("projId") Long projId, @PathParam("userId") Long userId) throws CloneNotSupportedException {
         
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
@@ -106,7 +108,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             return Response.ok().build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException | CloneNotSupportedException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
@@ -123,6 +125,8 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             return Response.ok().build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException ex) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
@@ -138,6 +142,8 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             return Response.ok().build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException ex) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
@@ -153,6 +159,8 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             return Response.ok().build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException ex) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
@@ -168,6 +176,8 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             return Response.ok().build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException ex) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
@@ -183,13 +193,15 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             return Response.ok().build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException ex) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
     
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getProjects() throws URISyntaxException {
+    public Response getProjects() {
 
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
@@ -257,7 +269,6 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
                         .ok(FileUtils.readFileToByteArray(file))
                         .header("Content-Disposition", "attachment; filename=\"export_" + proj.getName() + ".zip\"")
                         .build();
-            
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
         } catch (IOException ex) {
@@ -294,7 +305,6 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
                         .ok(FileUtils.readFileToByteArray(file))
                         .header("Content-Disposition", "attachment; filename=\"exportXmi_" + proj.getName() + ".zip\"")
                         .build();
-            
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
         } catch (IOException ex) {

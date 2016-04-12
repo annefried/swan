@@ -19,9 +19,9 @@ import de.unisaarland.discanno.rest.view.View;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.CreateException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.NoResultException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -65,7 +65,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
             return annotationDAO.create(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NullPointerException | NoResultException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -87,7 +87,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
             return service.edit(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NullPointerException | NoResultException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -103,7 +103,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -129,8 +129,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException | IllegalArgumentException e) {
-            System.out.println(e);
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -151,11 +150,10 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             Annotation anno = service.addLabelToAnnotation(annoId, label);
-            annotationDAO.merge(anno);
-            return Response.ok().build();
+            return annotationDAO.merge(anno);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException | IllegalArgumentException | CloneNotSupportedException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -173,7 +171,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
             return Response.ok().build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -191,7 +189,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
             return Response.ok().build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         

@@ -17,7 +17,6 @@ import de.unisaarland.discanno.rest.services.v1.ProjectFacadeREST;
 import de.unisaarland.discanno.rest.services.v1.SchemeFacadeREST;
 import de.unisaarland.discanno.rest.services.v1.UserFacadeREST;
 import java.util.Set;
-import javax.persistence.NoResultException;
 import javax.ws.rs.core.Response;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -49,7 +48,7 @@ public class AnnotationFacadeRESTTest extends BaseTest {
     }
     
     @Before
-    public void setupForAnnotations() {
+    public void setupForAnnotations() throws CloneNotSupportedException {
         Users admin = TestDataProvider.getAdmin();
         admin.setSession(BaseTest.SESSION_STR);
         em.persist(admin);

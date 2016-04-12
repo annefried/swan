@@ -12,12 +12,13 @@ import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.TimeLoggingDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.TimeLogging;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.CreateException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -59,6 +60,8 @@ public class TimeLoggingFacadeREST extends AbstractFacade<TimeLogging> {
             return usersDAO.create(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException ex) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
@@ -66,7 +69,7 @@ public class TimeLoggingFacadeREST extends AbstractFacade<TimeLogging> {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getTimeLoggingByUserId(@PathParam("id") Long id) throws URISyntaxException {
+    public Response getTimeLoggingByUserId(@PathParam("id") Long id) {
 
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
@@ -79,6 +82,8 @@ public class TimeLoggingFacadeREST extends AbstractFacade<TimeLogging> {
                             .build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (NoResultException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         } catch (JsonProcessingException ex) {
             Logger.getLogger(UserFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
             return Response.serverError().build();

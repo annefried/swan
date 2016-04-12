@@ -16,7 +16,6 @@ import de.unisaarland.discanno.entities.Document;
 import de.unisaarland.discanno.tokenization.model.Line;
 import de.unisaarland.discanno.entities.Users;
 import de.unisaarland.discanno.rest.view.View;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,7 +70,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
             return Response.ok().build();
         } catch (SecurityException e){
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -80,7 +79,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     @POST
     @Path("/adddoctoproject")
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response addDocumentToProjectREST(Document entity) {
+    public Response addDocumentToProjectREST(Document entity) throws CloneNotSupportedException {
         
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
@@ -88,8 +87,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
             return documentDAO.create(doc);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException | IllegalArgumentException
-                    | CloneNotSupportedException | CreateException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -105,7 +103,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e){
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException e) {
+        } catch (CreateException | NoResultException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -114,13 +112,13 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Document find(@PathParam("id") Long id) throws URISyntaxException {
+    public Document find(@PathParam("id") Long id) {
         
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             Document doc = documentDAO.find(id);
             return doc;
-        } catch (SecurityException e){
+        } catch (SecurityException | NoResultException e) {
            return null;
         }
         
