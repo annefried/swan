@@ -82,54 +82,40 @@ and open the template in the editor.
                 <!-- Note: the checked HTML attributes for radio buttons do not work here -->
                 <label>Select the visualization:</label>
                 <div class="row">
-                    <div class="form-group" ng-init="visKind='None'">
-                        <div class="col-lg-3">
-                            <label class="radio-inline">
-                                <input type="radio"
-                                       name="optradioVis"
-                                       value="None"
-                                       ng-model="visKind"
-                                       ng-change="watchVisualizationChange(visKind)">
-                                None
-                            </label>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="radio-inline">
-                                <input type="radio"
-                                       name="optradioVis"
-                                       value="Graph"
-                                       ng-model="visKind"
-                                       ng-change="watchVisualizationChange(visKind)">
-                                Graph
-                            </label>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="radio-inline">
-                                <input type="radio"
-                                       name="optradioVis"
-                                       value="Timeline"
-                                       ng-model="visKind"
-                                       ng-change="watchVisualizationChange(visKind)">
-                                Timeline
-                            </label>
-                        </div>
+                    <div class="form-group col-lg-6">
+                        <input type="checkbox" 
+                               ng-model="graphView.checked"
+                               ng-true-value="true"
+                               ng-false-value="false"
+                               id="cb_graph">
+                        <label for="cb_graph">Graph</label>
                     </div>
-                </div>
+                    <div class="form-group col-lg-6">
+                        <input type="checkbox"
+                               ng-model="timelineView.checked"
+                               ng-true-value="true"
+                               ng-false-value="false"
+                               id="cb_timeline">
+                        <label for="cb_timeline">Timeline</label>
+                    </div>
+                    <!--
+                    <div class="form-group col-lg-6">
+                        <input ng-model="collapseTree" type="checkbox" id="cb_graph">
+                        <label for="cb_graph">Graph</label>
+                    </div>-->
                     
-                <div class="row" ng-show="noView.checked || graphView.checked || timelineView.checked">
-                    <div class="form-group col-lg-3">
-                    </div>
-                    <div class="form-group col-lg-3">
-                        <div class="radio" ng-show="graphView.checked">
+                    <div class="form-group col-lg-6 sb_left" ng-show="graphView.checked">
+                        <div class="radio">
                             <label>
                                 <input type="radio"
                                        name="optradioGraph"
                                        ng-model="graphView.state"
-                                       value="opened">
+                                       value="opened"
+                                       checked="checked">
                                 is open
                             </label>
                         </div>
-                        <div class="radio" ng-show="graphView.checked">
+                        <div class="radio">
                             <label>
                                 <input type="radio"
                                        name="optradioGraph"
@@ -139,8 +125,8 @@ and open the template in the editor.
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-lg-3">
-                        <div class="radio" ng-show="timelineView.checked">
+                    <div class="form-group col-lg-6 sb_right" ng-show="timelineView.checked">
+                        <div class="radio">
                             <label>
                                 <input type="radio"
                                        name="optradioTimeline"
@@ -150,7 +136,7 @@ and open the template in the editor.
                                 is open
                             </label>
                         </div>
-                        <div class="radio" ng-show="timelineView.checked">
+                        <div class="radio">
                             <label>
                                 <input type="radio"
                                        name="optradioTimeline"
