@@ -37,13 +37,13 @@ angular
                     this.scheme = schemeService.getScheme($window.sessionStorage.docId);
                     this.linkData = linkService.getLinks($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                     this.tokenData = tokenService.getTokens($window.sessionStorage.docId);
+                    
                     // Retrieve projects and process projects
                     var httpProjects = $rootScope.loadProjects();
                     // Wait for both http requests to be answered
                     $q.all([httpProjects]).then(function () {
                         $rootScope.buildTableProjects();
                     });
-
                 };
 
                 /**
@@ -593,6 +593,25 @@ angular
                 };
                 //Read all data from the commited scheme
                 this.readSchemes = function () {
+                    $scope.graph = {
+                        "isOpen": false,
+                        "isDisabled": true
+                    };
+                    $scope.timeline = {
+                        "isOpen": false,
+                        "isDisabled": true
+                    };
+                    for (var i = 0; i < this.scheme.visElements.length; i++) {
+                        var visElement = this.scheme.visElements[i];
+                        if (visElement.visKind === "graph") {
+                            $scope.graph.isOpen = visElement.visState === "hidden" ? false : true;
+                            $scope.graph.isDisabled = visElement.visState === "opened" ? false : true;
+                        } else if (visElement.visKind === "timeline") {
+                            $scope.timeline.isOpen = visElement.visState === "hidden" ? false : true;
+                            $scope.timeline.isDisabled = visElement.visState === "opened" ? false : true;
+                        }
+                    }
+                    
                     this.buildTargetTypes();
                     this.buildLabels();
                     this.buildLinkLabels();

@@ -29,12 +29,12 @@ and open the template in the editor.
                 <!-- 1. row -->
                 <div class="row">
                     <div class="form-group col-lg-6">
-                        <input ng-model=collapse type="checkbox" id="sb_createFromExisting">
+                        <input ng-model="collapseUpload" type="checkbox" id="sb_createFromExisting">
                         <label for="sb_createFromExisting">Create from existing scheme</label>
                     </div>
 
                     <!-- Upload scheme or select from existing schemes -->
-                    <div class="form-group col-lg-12" ng-show=collapse>
+                    <div class="form-group col-lg-12" ng-show="collapseUpload">
                         <div class="sb_left">
                             <label>Load existing scheme from database...</label>
                             <div class="sb_inputText">
@@ -64,6 +64,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 <hr/>
+                
                 <div class="row">
                     <!-- Scheme name -->
                     <div class="form-group col-lg-9">
@@ -77,7 +78,76 @@ and open the template in the editor.
                     </div>
                 </div>
                 <hr>
-                <!-- 3. row -->
+                
+                <label>Select the visualization kind:</label>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <input type="checkbox" 
+                               ng-model="graphView.checked"
+                               ng-true-value="true"
+                               ng-false-value="false"
+                               id="cb_graph">
+                        <label for="cb_graph">Graph</label>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input type="checkbox"
+                               ng-model="timelineView.checked"
+                               ng-true-value="true"
+                               ng-false-value="false"
+                               id="cb_timeline">
+                        <label for="cb_timeline">Timeline</label>
+                    </div>
+                    <!--
+                    <div class="form-group col-lg-6">
+                        <input ng-model="collapseTree" type="checkbox" id="cb_graph">
+                        <label for="cb_graph">Graph</label>
+                    </div>-->
+                    
+                    <div class="form-group col-lg-6 sb_left" ng-show="graphView.checked">
+                        <div class="radio">
+                            <label>
+                                <input type="radio"
+                                       name="optradioGraph"
+                                       ng-model="graphView.state"
+                                       value="opened"
+                                       checked="checked">
+                                is open
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio"
+                                       name="optradioGraph"
+                                       ng-model="graphView.state"
+                                       value="closed">
+                                is closed
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 sb_right" ng-show="timelineView.checked">
+                        <div class="radio">
+                            <label>
+                                <input type="radio"
+                                       name="optradioTimeline"
+                                       ng-model="timelineView.state"
+                                       value="opened"
+                                       checked="checked">
+                                is open
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio"
+                                       name="optradioTimeline"
+                                       ng-model="timelineView.state"
+                                       value="closed">
+                                is closed
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                
                 <div class="row">
                     <!-- Target Types -->
                     <div class="form-group col-lg-7">
@@ -117,6 +187,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 <hr/>
+                
                 <div class="row">
                     <div class="form-group col-lg-12" >
                         <label>
@@ -219,7 +290,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 <hr>
-                <!-- 4. row -->
+                
                 <div class="row">
                     <!-- Label Sets -->
                     <div class="form-group col-xs-6 sb_left vr_right" id="addLabelSetsDiv">

@@ -12,6 +12,14 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
      */
     $scope.init = function () {
         $scope.loadSchemes();
+        $scope.graphView = {
+            checked: false,
+            state: 'hidden'
+        };
+        $scope.timelineView = {
+            checked: false,
+            state: 'hidden'
+        };
         $rootScope.alertsModal = [];
         $scope.targetIdCounter = 0;
         $scope.labelLabelSetIdCounter = 0;
@@ -403,6 +411,26 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
             };
             var file = fileTemplate;
             try {
+                // Visualization elements
+                var visElements = [];
+                var graphViewTem = {
+                    "visState": "hidden",
+                    "visKind": "graph"
+                };
+                if ($scope.graphView.checked) {
+                    graphViewTem.visState = $scope.graphView.state;
+                }
+                var timelineViewTem = {
+                    "visState": "hidden",
+                    "visKind": "timeline"
+                };
+                if ($scope.timelineView.checked) {
+                    timelineViewTem.visState = $scope.timelineView.state;
+                }
+                visElements.push(graphViewTem);
+                visElements.push(timelineViewTem);
+                
+                // TargetTypes
                 var targetTypes = [];
                 for (var i = 0; i < file.targetTypes.length; i++) {
                     var cur = {
@@ -464,8 +492,9 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                 }
                 var template = {
                     "id": null,
-                    "creator": currUser,
                     "name": file.name,
+                    "creator": currUser,
+                    "visElements": visElements,
                     "targetTypes": targetTypes,
                     "labelSets": labelSets,
                     "linkSets": linkSets,
@@ -477,6 +506,7 @@ angular.module('app').controller('schemeUploadModalController', function ($scope
                         'id': response,
                         'name': template.name,
                         "creator": currUser,
+                        "visElements": visElements,
                         'tableIndex': $scope.schemeCounter++,
                         'projects': [],
                         'labelSetCount': template.labelSets.length,
