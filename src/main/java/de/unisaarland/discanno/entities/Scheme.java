@@ -106,6 +106,14 @@ public class Scheme extends BaseEntity {
             optional = true)
     private Users creator;
     
+	@JsonView({View.Scheme.class})
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
+                fetch = FetchType.EAGER)
+    @JoinTable(name="SCHEME_VISELEMENTS", 
+          joinColumns=@JoinColumn(name="SCHEME_ID"),
+          inverseJoinColumns=@JoinColumn(name="VISELEMENT_ID"))
+    private List<VisualizationElement> visElements = new ArrayList();
+
     @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
@@ -151,6 +159,14 @@ public class Scheme extends BaseEntity {
 
     public void setCreator(Users creator) {
         this.creator = creator;
+    }
+
+    public List<VisualizationElement> getVisElements() {
+        return visElements;
+    }
+
+    public void setVisElements(List<VisualizationElement> visElements) {
+        this.visElements = visElements;
     }
 
     public Set<TargetType> getTargetTypes() {
