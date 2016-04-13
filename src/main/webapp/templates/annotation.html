@@ -3,11 +3,6 @@
 <link href="css/annotationoptions.css" rel="stylesheet">
 
 <div>
-    <script type="text/ng-template" id="alert.html">
-        <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
-        <div ng-transclude></div>
-        </div>
-    </script>
     <div>
 
         <div>
@@ -15,18 +10,35 @@
             <div class="col-md-7" ng-controller="d3AnnotationController as d3Anno" ng-mouseup="d3Anno.UpdateSelectionText()">
 
                 <div class="annotationtitle filename" id="1-anno-tool">
-                    {{d3Anno.project}} > <i>{{d3Anno.title}}</i>
-                    <label ng-hide="isUnprivileged == 'false'">&nbsp;&nbsp;(</label>
-                    <div 
-                        style="display: inline-block;"
+                    <label class="headerinfo">Project: </label>
+                    <label class="infotitle">{{d3Anno.project}}&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label class="headerinfo">Document: </label>
+                    <label class="infotitle">{{d3Anno.title}}</label>
+                    <label ng-hide="isUnprivileged == 'false'">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div style="display: inline-block;"
                         ng-controller="annotationController as annoCon"
                         ng-hide="isUnprivileged == 'false'">
-                        <input type="checkbox" value=""
+                        <input type="checkbox"
+                               value=""
+                               style="margin: 0px;"
                                ng-model="completed"
                                ng-click="annoCon.setDocCompleted()">
-                        <label>Completed</label>
+                        <label>Completed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <div class="row" style="display: inline-block;">
+                            <button class="btn btn-default"
+                                    style="text-align:center; width:80px; line-height: 18px;"
+                                    ng-click="annoCon.nextDoc(-1)">
+                                <span class="glyphicon glyphicon-chevron-left pull-left"
+                                      style="display: inline-block;"></span> Previous
+                            </button>
+                            <button class="btn btn-default"
+                                    style="text-align:center; width:80px; line-height: 18px;"
+                                    ng-click="annoCon.nextDoc(1)">
+                                <span class="glyphicon glyphicon-chevron-right pull-right"
+                                      style="display: inline-block;"></span> Next
+                            </button>
+                        </div>
                     </div>
-                    <label ng-hide="isUnprivileged == 'false'">)</label>
                 </div>
 
                 <hr class="featurette-divider">
@@ -203,12 +215,11 @@
                                 through your text document by clicking on the nodes in the graph.
                                 You can also go to another document by using the Project navigation box.</p>
 
-                            <p><strong>Shortcuts:</strong> There are many cool shortcuts using
+                            <p><strong>Shortcuts:</strong> there are many cool shortcuts using
                                 keys that will make your life much easier. Check them out! <br/><br/>
 
                                 <strong>When a span annotation is selected, changing annotations:</strong>
                             <table class="table">
-                                
                                 <tr>
                                     <td><kbd><kbd>a</kbd></kbd></td>
                                     <td>add the token on the left to the current annotation</td>
@@ -225,12 +236,7 @@
                                     <td><kbd><kbd>f</kbd></kbd></td>
                                     <td>add the token on the right to the current annotation</td>
                                 </tr>
-                                <tr>
-                                    <td><kbd>alt+up</kbd> / <kbd>alt+down</kbd></td>
-                                    <td>Add or remove current line from selection</td>
-                                </tr>
                             </table>
-
 
                             <strong>When a span annotation is selected, changing the selection:</strong>
                             <table class="table">

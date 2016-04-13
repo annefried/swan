@@ -69,7 +69,9 @@ angular
                     xmlHttp.send(null);
                     var resp = xmlHttp.responseText;
                     $scope.users = JSOG.parse(resp).project.users;
-                    if ($window.sessionStorage.shownUser === "undefined" || $window.sessionStorage.shownUser === undefined || $window.sessionStorage.shownUser == $window.sessionStorage.uId) {
+                    if ($window.sessionStorage.shownUser === "undefined"
+                            || $window.sessionStorage.shownUser === undefined
+                            || $window.sessionStorage.shownUser == $window.sessionStorage.uId) {
                         if ($scope.users.length > 0) {
                             var firstUserId = $scope.users[0].id;
                             $window.sessionStorage.shownUser = firstUserId;
@@ -84,7 +86,10 @@ angular
                 this.onUserChange = function () {
                     var form = document.getElementById("users");
                     $window.sessionStorage.shownUser = form.elements["users"].value;
-                    $scope.openAnnoTool($window.sessionStorage.docId, $window.sessionStorage.title, $window.sessionStorage.project, $window.sessionStorage.completed);
+                    $scope.openAnnoTool($window.sessionStorage.docId,
+                                        $window.sessionStorage.title,
+                                        $window.sessionStorage.project,
+                                        $window.sessionStorage.completed);
                     // For TODO: dynamic AnnoLoading
 //                    this.readData();//FIXME: does not work for some reason
 //                    this.buildText();
@@ -802,6 +807,40 @@ angular
                 };
                 this.initCompletedCheckbox = function () {
                     //!$window.sessionStorage.complete;
+                };
+                this.nextDoc = function (next) {
+                    var found = false;
+                    for (var i = 0; i < $rootScope.tableProjects.length && !found; i++) {
+                        var proj = $rootScope.tableProjects[i];
+                        if (proj.name === $window.sessionStorage.project) {
+                            for (var j = 0; j < proj.documents.length && !found; j++) {
+                                var doc = proj.documents[j];
+                                if (doc.id == $window.sessionStorage.docId) {
+                                    // Next document
+                                    if (next === 1) {
+                                        if (j + 1 >= proj.documents.length) {
+                                            doc = proj.documents[0];
+                                        } else {
+                                            doc = proj.documents[j + 1];
+                                        }
+                                    } else if (next === -1) { // Previous document
+                                        if (j - 1 < 0) {
+                                            doc = proj.documents[proj.documents.length - 1];
+                                        } else {
+                                            doc = proj.documents[j - 1];
+                                        }
+                                    }
+                                    
+                                    found = true;
+                                    $scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.project, doc.completed);
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (!found) {
+                        throw "AnnotationController: Could not find the given project and document";
+                    }
                 };
                 this.setDocCompleted = function () {
 

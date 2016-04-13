@@ -27,13 +27,14 @@ angular.module('app').controller('dashboardController', ['$rootScope', '$scope',
                     }
                 };
 				
-				$rootScope.redirectToLogin = function () {
-					window.location = "/discanno/signin.html";
-				};
+                $rootScope.redirectToLogin = function () {
+                    window.location = "/discanno/signin.html";
+                };
 
                 if (($window.sessionStorage.role != 'admin')
-						&& ($window.sessionStorage.role != 'annotator')
-						&& ($window.sessionStorage.role != 'projectmanager')) {
+                    && ($window.sessionStorage.role != 'annotator')
+                    && ($window.sessionStorage.role != 'projectmanager')) {
+                
                     $rootScope.redirectToLogin();
                 } else {
                     $timeout(function () {
