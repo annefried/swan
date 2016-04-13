@@ -16,7 +16,6 @@ import de.unisaarland.discanno.rest.services.v1.SchemeFacadeREST;
 import java.io.IOException;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import java.net.URISyntaxException;
 import java.util.Set;
 import javax.ws.rs.core.Response;
 import org.codehaus.jettison.json.JSONArray;

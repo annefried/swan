@@ -2,7 +2,8 @@
 
 //Responsible directive for drawing the text field
 angular.module('app')
-        .directive('d3Annotation', ['$rootScope', '$timeout', '$window', 'd3', 'hotkeys', '$q', function ($rootScope, $timeout, $window, d3, hotkeys, $q) {
+        .directive('d3Annotation', ['$rootScope', '$timeout', '$window', 'd3', 'hotkeys', '$q',
+    function ($rootScope, $timeout, $window, d3, hotkeys, $q) {
 
                 return {
                     restrict: 'EA',
@@ -44,7 +45,7 @@ angular.module('app')
                         var textHeight = 0;
                         var lineHeight = 40;
                         var wordHeight = 40;
-                        var margin = 80; // space on top of text / bottom
+                        var margin = 80; // space on top of text
                         var annotationHeight = wordHeight / 2.4;
                         var scale = 1.2;
                         var arity = 1;
@@ -1770,7 +1771,7 @@ angular.module('app')
                             }
 
                             return true;
-                        }
+                        };
                     }
                 };
             }]);

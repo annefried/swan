@@ -4,8 +4,8 @@
 
 .scroll-pane
 {
-	overflow: scroll !important;
-          height:auto;
+    overflow: scroll !important;
+    height:auto;
 /*    max-height: 400px;*/
 }
 
@@ -29,9 +29,14 @@
     margin-right: auto
 }
 
-.filename {
+.headerinfo {
     font-weight: bold;
     font-size: 115%;
+}
+
+.infotitle {
+    font-size: 100%;
+    color: gray;
 }
 
 .annotationtext {
