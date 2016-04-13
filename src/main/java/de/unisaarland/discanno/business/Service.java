@@ -11,7 +11,6 @@ import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.dao.*;
 import de.unisaarland.discanno.email.EmailProvider;
 import de.unisaarland.discanno.entities.*;
-import de.unisaarland.discanno.export.ExportUtil;
 import edu.stanford.nlp.ling.CoreLabel;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +25,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import javax.ejb.CreateException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.ws.rs.core.Response;
 
 /**
@@ -135,12 +135,16 @@ public class Service {
         return lines;
     }
     
-    public Response edit(Annotation entity) {
-        Annotation annoOrig = annotationDAO.find(entity.getId(), false);
-        annoOrig.setStart(entity.getStart());
-        annoOrig.setEnd(entity.getEnd());
-        annoOrig.setText(entity.getText());
-        return annotationDAO.merge(annoOrig);
+    public Response edit(Annotation entity) throws CreateException {
+        try {
+            Annotation annoOrig = annotationDAO.find(entity.getId(), false);
+            annoOrig.setStart(entity.getStart());
+            annoOrig.setEnd(entity.getEnd());
+            annoOrig.setText(entity.getText());
+            return annotationDAO.merge(annoOrig);
+        } catch (NullPointerException | NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
     
     ///////////////////////////////////////////////
@@ -153,256 +157,269 @@ public class Service {
     //  different instances.
     ///////////////////////////////////////////////
     
-    public void process(Annotation entity) {
+    public void process(Annotation entity) throws CreateException {
         
-        Users user = (Users) usersDAO.find(entity.getUser().getId(), false);
-        entity.setUser(user);
-        
-        Document doc = (Document) documentDAO.find(entity.getDocument().getId(), false);
-        entity.setDocument(doc);
-        updateDocument(doc, user);
-        
-        TargetType targetType = (TargetType) targetTypeDAO.find(entity.getTargetType().getTargetType(), false);
-        entity.setTargetType(targetType);
-        
-        for (LabelLabelSetMap m : entity.getLabelMap()) {
-            Label newLabel = (Label) labelDAO.find(m.getLabel().getLabelId(), false);
-            
-            Set<LabelSet> labelSets = new HashSet<>();
-            for (LabelSet ls : m.getLabelSets()) {
-                LabelSet newLabelSet = (LabelSet) labelSetDAO.find(ls.getId(), false);
-                labelSets.add(newLabelSet);
+        try {
+            Users user = (Users) usersDAO.find(entity.getUser().getId(), false);
+            entity.setUser(user);
+
+            Document doc = (Document) documentDAO.find(entity.getDocument().getId(), false);
+            entity.setDocument(doc);
+            updateDocument(doc, user);
+
+            TargetType targetType = (TargetType) targetTypeDAO.find(entity.getTargetType().getTargetType(), false);
+            entity.setTargetType(targetType);
+
+            for (LabelLabelSetMap m : entity.getLabelMap()) {
+                Label newLabel = (Label) labelDAO.find(m.getLabel().getLabelId(), false);
+
+                Set<LabelSet> labelSets = new HashSet<>();
+                for (LabelSet ls : m.getLabelSets()) {
+                    LabelSet newLabelSet = (LabelSet) labelSetDAO.find(ls.getId(), false);
+                    labelSets.add(newLabelSet);
+                }
+
+                m.setLabel(newLabel);
+                m.setLabelSets(labelSets);
             }
-            
-            m.setLabel(newLabel);
-            m.setLabelSets(labelSets);
+        } catch (NullPointerException | NoResultException e) {
+            throw new CreateException(e.getMessage());
         }
         
     }
     
-    public void process(Set<Annotation> annotations) {
+    public void process(Set<Annotation> annotations) throws CreateException {
         for (Annotation a : annotations)
             process(a);
     }
 
-    public void process(Project entity) {
-        
-        Set<Document> docSet = new HashSet<>();
-        for (Document d : entity.getDocuments()) {
-            Document doc = (Document) documentDAO.find(d.getId(), false);
-            docSet.add(doc);
+    public void process(Project entity) throws CreateException {
+        try {
+            Set<Document> docSet = new HashSet<>();
+            for (Document d : entity.getDocuments()) {
+                Document doc = (Document) documentDAO.find(d.getId(), false);
+                docSet.add(doc);
+            }
+            entity.setDocuments(docSet);
+
+            Set<Users> userSet = new HashSet<>();
+            for (Users u : entity.getUsers()) {
+                Users user = (Users) usersDAO.find(u.getId(), false);
+                userSet.add(user);
+            }
+            entity.setUsers(userSet);
+
+            Set<Users> projectManagerSet = new HashSet<>();
+            for (Users u : entity.getProjectManager()) {
+                Users user = (Users) usersDAO.find(u.getId(), false);
+                projectManagerSet.add(user);
+            }
+            entity.setProjectManager(projectManagerSet);
+
+            Scheme scheme = (Scheme) schemeDAO.find(entity.getScheme().getId(), false);
+            entity.setScheme(scheme);
+            scheme.addProjects(entity);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
         }
-        entity.setDocuments(docSet);
-        
-        Set<Users> userSet = new HashSet<>();
-        for (Users u : entity.getUsers()) {
-            Users user = (Users) usersDAO.find(u.getId(), false);
-            userSet.add(user);
-        }
-        entity.setUsers(userSet);
-        
-        Set<Users> projectManagerSet = new HashSet<>();
-        for (Users u : entity.getProjectManager()) {
-            Users user = (Users) usersDAO.find(u.getId(), false);
-            projectManagerSet.add(user);
-        }
-        entity.setProjectManager(projectManagerSet);
-        
-        Scheme scheme = (Scheme) schemeDAO.find(entity.getScheme().getId(), false);
-        entity.setScheme(scheme);
-        scheme.addProjects(entity);
     }
 
-    public void process(Scheme entity) {
+    public void process(Scheme entity) throws CreateException {
         
-        if (entity.getCreator() != null
-                && entity.getCreator().getId() != null) {
-            Users user = usersDAO.find(entity.getCreator().getId(), true);
-            entity.setCreator(user);
-        }
-
-        Set<Project> projects = new HashSet<>();
-        for (Project p : entity.getProjects()) {
-            Project proj = (Project) projectDAO.find(p.getId(), false);
-            projects.add(proj);
-        }
-        entity.setProjects(projects);
-        
-        Map<String, TargetType> ttMap = new HashMap<>();
-        Set<TargetType> targetTypes = new HashSet<>();
-        for (TargetType t : entity.getTargetTypes()) {
-            
-            TargetType targetType = (TargetType) targetTypeDAO.find(t.getTargetType(), true);
-            
-            if (targetType == null) {
-                targetTypes.add(t);
-                ttMap.put(t.getTargetType(), t);
-            } else {
-                targetTypes.add(targetType);
-                ttMap.put(targetType.getTargetType(), targetType);
+        try {
+            if (entity.getCreator() != null
+                    && entity.getCreator().getId() != null) {
+                Users user = usersDAO.find(entity.getCreator().getId(), true);
+                entity.setCreator(user);
             }
-        }
-        
-        if (targetTypes.isEmpty()) {
-            throw new IllegalArgumentException("Service: No TargetTypes declared");
-        }
-        
-        entity.setTargetTypes(targetTypes);
-        
-        List<LabelSet> labelSets = new ArrayList<>();
-        Map<String, Label> labelMap = new HashMap<>();
-        for (LabelSet ls : entity.getLabelSets()) {
-            
-            if (ls.getId() == null) {
-                labelSets.add(ls);
-                
-                Set<TargetType> targetTypesLs = new HashSet<>();
-                for (TargetType t : ls.getAppliesToTargetTypes()) {
-                    targetTypesLs.add(ttMap.get(t.getTargetType()));
-                    t.addLabelSets(ls);
-                }
-                ls.setAppliesToTargetTypes(targetTypesLs);
-                
-                Set<Label> labels = new HashSet<>();
-                for (Label l : ls.getLabels()) {
-                    
-                    Label label = (Label) labelDAO.find(l.getLabelId(), true);
-                    Label label2 = labelMap.get(l.getLabelId());
-                    
-                    if (label2 != null) {
-                        labels.add(label2);
-                    } else if (label == null) {
-                        labels.add(l);
-                        labelMap.put(l.getLabelId(), l);
-                    } else {
-                        labels.add(label);
-                    }
-                }
-                ls.setLabels(labels);
-                
-                for (Label l : ls.getLabels()) {
-                    l.addLabelSet(ls);
-                }
-                
-            } else {
-                LabelSet labelSet = (LabelSet) labelSetDAO.find(ls.getId(), true);
 
-                if (labelSet == null) {
+            Set<Project> projects = new HashSet<>();
+            for (Project p : entity.getProjects()) {
+                Project proj = (Project) projectDAO.find(p.getId(), false);
+                projects.add(proj);
+            }
+            entity.setProjects(projects);
+
+            Map<String, TargetType> ttMap = new HashMap<>();
+            Set<TargetType> targetTypes = new HashSet<>();
+            for (TargetType t : entity.getTargetTypes()) {
+
+                TargetType targetType = (TargetType) targetTypeDAO.find(t.getTargetType(), true);
+
+                if (targetType == null) {
+                    targetTypes.add(t);
+                    ttMap.put(t.getTargetType(), t);
+                } else {
+                    targetTypes.add(targetType);
+                    ttMap.put(targetType.getTargetType(), targetType);
+                }
+            }
+
+            if (targetTypes.isEmpty()) {
+                throw new CreateException("Service: No TargetTypes declared.");
+            }
+
+            entity.setTargetTypes(targetTypes);
+
+            List<LabelSet> labelSets = new ArrayList<>();
+            Map<String, Label> labelMap = new HashMap<>();
+            for (LabelSet ls : entity.getLabelSets()) {
+
+                if (ls.getId() == null) {
                     labelSets.add(ls);
-                } else {
-                    labelSets.add(labelSet);
-                }
-            }
-            
-        }
-        entity.setLabelSets(labelSets);
 
-        List<LinkSet> linkSets = new ArrayList<>();
-        Map<String, LinkLabel> linkLabelMap = new HashMap<>();
-        for (LinkSet ls : entity.getLinkSets()) {
-            
-            if (ls.getId() == null) {
-                linkSets.add(ls);
-                
-                TargetType st = ttMap.get(ls.getStartType().getTargetType());
-                if (st == null) throw new IllegalArgumentException("Service: start type null");
-                ls.setStartType(st);
-                
-                TargetType et = ttMap.get(ls.getEndType().getTargetType());
-                if (et == null) throw new IllegalArgumentException("Service: end type null");
-                ls.setEndType(et);
-                
-                Set<LinkLabel> labels = new HashSet<>();
-                for (LinkLabel l : ls.getLinkLabels()) {
-                    
-                    LinkLabel label = (LinkLabel) linkLabelDAO.find(l.getLinkLabel(), true);
-                    LinkLabel label2 = linkLabelMap.get(l.getLinkLabel());
-                    
-                    if (label2 != null) {
-                        labels.add(label2);
-                    } else if (label == null) {
-                        labels.add(l);
-                        linkLabelMap.put(l.getLinkLabel(), l);
+                    Set<TargetType> targetTypesLs = new HashSet<>();
+                    for (TargetType t : ls.getAppliesToTargetTypes()) {
+                        targetTypesLs.add(ttMap.get(t.getTargetType()));
+                        t.addLabelSets(ls);
+                    }
+                    ls.setAppliesToTargetTypes(targetTypesLs);
+
+                    Set<Label> labels = new HashSet<>();
+                    for (Label l : ls.getLabels()) {
+
+                        Label label = (Label) labelDAO.find(l.getLabelId(), true);
+                        Label label2 = labelMap.get(l.getLabelId());
+
+                        if (label2 != null) {
+                            labels.add(label2);
+                        } else if (label == null) {
+                            labels.add(l);
+                            labelMap.put(l.getLabelId(), l);
+                        } else {
+                            labels.add(label);
+                        }
+                    }
+                    ls.setLabels(labels);
+
+                    for (Label l : ls.getLabels()) {
+                        l.addLabelSet(ls);
+                    }
+
+                } else {
+                    LabelSet labelSet = (LabelSet) labelSetDAO.find(ls.getId(), true);
+
+                    if (labelSet == null) {
+                        labelSets.add(ls);
                     } else {
-                        labels.add(label);
+                        labelSets.add(labelSet);
                     }
                 }
-                ls.setLinkLabels(labels);
-                
-                for (LinkLabel l : ls.getLinkLabels()) {
-                    l.addLinkSet(ls);
-                }
-                
-            } else {
-                LinkSet linkSet = (LinkSet) linkSetDAO.find(ls.getId(), true);
 
-                if (linkSet == null) {
-                    linkSets.add(ls);
-                } else {
-                    linkSets.add(linkSet);
-                }   
             }
-            
+            entity.setLabelSets(labelSets);
+
+            List<LinkSet> linkSets = new ArrayList<>();
+            Map<String, LinkLabel> linkLabelMap = new HashMap<>();
+            for (LinkSet ls : entity.getLinkSets()) {
+
+                if (ls.getId() == null) {
+                    linkSets.add(ls);
+
+                    TargetType st = ttMap.get(ls.getStartType().getTargetType());
+                    if (st == null) throw new CreateException("Service: start type null.");
+                    ls.setStartType(st);
+
+                    TargetType et = ttMap.get(ls.getEndType().getTargetType());
+                    if (et == null) throw new CreateException("Service: end type null.");
+                    ls.setEndType(et);
+
+                    Set<LinkLabel> labels = new HashSet<>();
+                    for (LinkLabel l : ls.getLinkLabels()) {
+
+                        LinkLabel label = (LinkLabel) linkLabelDAO.find(l.getLinkLabel(), true);
+                        LinkLabel label2 = linkLabelMap.get(l.getLinkLabel());
+
+                        if (label2 != null) {
+                            labels.add(label2);
+                        } else if (label == null) {
+                            labels.add(l);
+                            linkLabelMap.put(l.getLinkLabel(), l);
+                        } else {
+                            labels.add(label);
+                        }
+                    }
+                    ls.setLinkLabels(labels);
+
+                    for (LinkLabel l : ls.getLinkLabels()) {
+                        l.addLinkSet(ls);
+                    }
+
+                } else {
+                    LinkSet linkSet = (LinkSet) linkSetDAO.find(ls.getId(), true);
+
+                    if (linkSet == null) {
+                        linkSets.add(ls);
+                    } else {
+                        linkSets.add(linkSet);
+                    }   
+                }
+
+            }
+
+            entity.setLinkSets(linkSets);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
         }
-        
-        entity.setLinkSets(linkSets);
     }
     
-    public void process(Document entity) {
+    public void process(Document entity) throws CreateException {
         Project project = (Project) projectDAO.find(entity.getProject().getId(), false);
         entity.setProject(project);
         process(entity.getDefaultAnnotations());
     }
     
     // TODO user and doc id handling
-    public void process(Link entity) {
+    public void process(Link entity) throws CreateException {
+        try {
+            Users user = (Users) usersDAO.find(entity.getUser().getId(), false);
+            entity.setUser(user);
 
-        Users user = (Users) usersDAO.find(entity.getUser().getId(), false);
-        entity.setUser(user);
-        
-        Document doc = (Document) documentDAO.find(entity.getDocument().getId(), false);
-        entity.setDocument(doc);
-        updateDocument(doc, user);
-        
-        // Annotation 1
-        Annotation anno1 = entity.getAnnotation1();
-        if (anno1.getId() == null) { // does not exist already
-            process(anno1);
-        } else {
-            anno1 = (Annotation) annotationDAO.find(entity.getAnnotation1().getId(), false);
-        }
-        entity.setAnnotation1(anno1);
-        
-        // Annotation 2
-        Annotation anno2 = entity.getAnnotation2();
-        if (anno2.getId() == null) { // does not exist already
-            process(anno2);
-        } else {
-            anno2 = (Annotation) annotationDAO.find(entity.getAnnotation2().getId(), true);
-        }
-        entity.setAnnotation2(anno2);
-        
-        for (LinkLabelLinkSetMap m : entity.getLabelMap()) {
-            LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(m.getLabel().getLinkLabel(), false);
-            
-            Set<LinkSet> linkSets = new HashSet<>();
-            for (LinkSet ls : m.getLinkSets()) {
-                LinkSet newLinkSet = (LinkSet) linkSetDAO.find(ls.getId(), false);
-                linkSets.add(newLinkSet);
+            Document doc = (Document) documentDAO.find(entity.getDocument().getId(), false);
+            entity.setDocument(doc);
+            updateDocument(doc, user);
+
+            // Annotation 1
+            Annotation anno1 = entity.getAnnotation1();
+            if (anno1.getId() == null) { // does not exist already
+                process(anno1);
+            } else {
+                anno1 = (Annotation) annotationDAO.find(entity.getAnnotation1().getId(), false);
             }
-            
-            m.setLabel(newLabel);
-            m.setLinkSets(linkSets);
-        }
+            entity.setAnnotation1(anno1);
 
+            // Annotation 2
+            Annotation anno2 = entity.getAnnotation2();
+            if (anno2.getId() == null) { // does not exist already
+                process(anno2);
+            } else {
+                anno2 = (Annotation) annotationDAO.find(entity.getAnnotation2().getId(), true);
+            }
+            entity.setAnnotation2(anno2);
+
+            for (LinkLabelLinkSetMap m : entity.getLabelMap()) {
+                LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(m.getLabel().getLinkLabel(), false);
+
+                Set<LinkSet> linkSets = new HashSet<>();
+                for (LinkSet ls : m.getLinkSets()) {
+                    LinkSet newLinkSet = (LinkSet) linkSetDAO.find(ls.getId(), false);
+                    linkSets.add(newLinkSet);
+                }
+
+                m.setLabel(newLabel);
+                m.setLinkSets(linkSets);
+            }
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
     
-    public void process(Users currUser, Users newUser) {
+    public void process(Users currUser, Users newUser) throws CreateException {
         
         // Check user roles
         List<Users.RoleType> allowedRoles = userPermissionMap.get(currUser.getRole());
         if (!allowedRoles.contains(newUser.getRole())) {
-            throw new IllegalArgumentException("Service: The requested user role is not allowed.");
+            throw new CreateException("Service: The requested user role is not allowed.");
         }
         
         Set<Project> proSet = new HashSet<>();
@@ -417,9 +434,13 @@ public class Service {
                         newUser.getPassword()));
     }
     
-    public void process(TimeLogging entity) {
-        Users user = (Users) usersDAO.find(entity.getUsers().getId(), false);
-        entity.setUsers(user);
+    public void process(TimeLogging entity) throws CreateException {
+        try {
+            Users user = (Users) usersDAO.find(entity.getUsers().getId(), false);
+            entity.setUsers(user);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
     
     
@@ -439,175 +460,193 @@ public class Service {
      * @param userId
      * @throws CloneNotSupportedException 
      */
-    public void addUserToProject(Long projId, Long userId) throws CloneNotSupportedException {
+    public void addUserToProject(Long projId, Long userId) throws CloneNotSupportedException, CreateException {
         
-        Project proj = (Project) projectDAO.find(projId, false);
-        Users user =  (Users) usersDAO.find(userId, false);
-        
-        user.getProjects().add(proj);
-        proj.addUsers(user);
-        
-        for (Document d : proj.getDocuments()) {
-            d.addStates(getNewState(user, d));
+        try {
+            Project proj = (Project) projectDAO.find(projId, false);
+            Users user =  (Users) usersDAO.find(userId, false);
+
+            user.getProjects().add(proj);
+            proj.addUsers(user);
+
+            for (Document d : proj.getDocuments()) {
+                d.addStates(getNewState(user, d));
+            }
+
+            projectDAO.merge(proj);
+
+            generateTargets(proj, user);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
         }
-        
-        projectDAO.merge(proj);
-        
-        generateTargets(proj, user);
     }
     
-    public void addProjectManagerToProject(Long projId, Long userId) {
-        
-        Project proj = (Project) projectDAO.find(projId, false);
-        Users manager =  (Users) usersDAO.find(userId, false);
-        
-        manager.getManagingProjects().add(proj);
-        proj.addProjectManager(manager);
-        
-        projectDAO.merge(proj);
+    public void addProjectManagerToProject(Long projId, Long userId) throws CreateException {
+        try {
+            Project proj = (Project) projectDAO.find(projId, false);
+            Users manager =  (Users) usersDAO.find(userId, false);
+
+            manager.getManagingProjects().add(proj);
+            proj.addProjectManager(manager);
+
+            projectDAO.merge(proj);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
     
-    public void addWatchingUserToProject(Long projId, Long userId) {
+    public void addWatchingUserToProject(Long projId, Long userId) throws CreateException {
+        try {
+            Project proj = (Project) projectDAO.find(projId, false);
+            Users watchingUser =  (Users) usersDAO.find(userId, false);
 
-        Project proj = (Project) projectDAO.find(projId, false);
-        Users watchingUser =  (Users) usersDAO.find(userId, false);
-        
-        watchingUser.getWatchingProjects().add(proj);
-        proj.addWatchingUsers(watchingUser);
+            watchingUser.getWatchingProjects().add(proj);
+            proj.addWatchingUsers(watchingUser);
 
-        projectDAO.merge(proj);
+            projectDAO.merge(proj);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
     
     /**
      * TODO: There is no real control mechanism that there is not a wrong
      * Label added to the annotation.
      * 
-     * @param user
      * @param annoId
      * @param label
      * @return  
-     * @throws java.lang.CloneNotSupportedException
+     * @throws javax.ejb.CreateException
      */
-    public Annotation addLabelToAnnotation(Long annoId, Label label) throws CloneNotSupportedException {
+    public Annotation addLabelToAnnotation(Long annoId, Label label) throws CreateException {
 
-        Annotation anno = (Annotation) annotationDAO.find(annoId, false);
-        updateDocument(anno.getDocument(), anno.getUser());
-        
-        if (label.getLabelSet().size() != 1 || label.getLabelSet().get(0) == null) {
-            throw new IllegalArgumentException("Service: Adding Label to Annotation failed");
-        }
-        
-        Label newLabel = (Label) labelDAO.find(label.getLabelId(), false);
-        LabelSet newLabelSet = (LabelSet) labelSetDAO.find(label.getLabelSet().get(0).getId(), false);
-        
-        // If LabelSet is exclusive check if this LabelSet was added already
-        if (newLabelSet.isExclusive()) {
-            for (LabelLabelSetMap m : anno.getLabelMap()) {
-                // Use an iterator because we may have to delete a LabelSet
-                Iterator<LabelSet> iterator = m.getLabelSets().iterator();
-                while (iterator.hasNext()) {
-                    LabelSet ls = iterator.next();
-                    
-                    if (ls.equals(newLabelSet)) {
-                        // If the size of the LabelSets corresponding to the Label
-                        // is 1, we can just change the Label
-                        if (m.getLabelSets().size() == 1) {
-                            m.setLabel(newLabel);
-                            return anno;
-                        } else {
-                            // Check if the new Label is really different from
-                            // the current Label
-                            if (m.getLabel().equals(newLabel)) {
-                                // The given Label doesn't differ from the current one
+        try {
+            Annotation anno = (Annotation) annotationDAO.find(annoId, false);
+            updateDocument(anno.getDocument(), anno.getUser());
+
+            if (label.getLabelSet().size() != 1 || label.getLabelSet().get(0) == null) {
+                throw new CreateException("Service: Adding Label to Annotation failed");
+            }
+
+            Label newLabel = (Label) labelDAO.find(label.getLabelId(), false);
+            LabelSet newLabelSet = (LabelSet) labelSetDAO.find(label.getLabelSet().get(0).getId(), false);
+
+            // If LabelSet is exclusive check if this LabelSet was added already
+            if (newLabelSet.isExclusive()) {
+                for (LabelLabelSetMap m : anno.getLabelMap()) {
+                    // Use an iterator because we may have to delete a LabelSet
+                    Iterator<LabelSet> iterator = m.getLabelSets().iterator();
+                    while (iterator.hasNext()) {
+                        LabelSet ls = iterator.next();
+
+                        if (ls.equals(newLabelSet)) {
+                            // If the size of the LabelSets corresponding to the Label
+                            // is 1, we can just change the Label
+                            if (m.getLabelSets().size() == 1) {
+                                m.setLabel(newLabel);
                                 return anno;
                             } else {
-                                // We have to delete the current LabelSet because
-                                // it is exclusive and add another LabelLabelSetMap
-                                // containing the new Label and LabelSet
-                                iterator.remove();
-                                addNewLabelLabelSetMapToAnnotation(anno, newLabel, newLabelSet);
+                                // Check if the new Label is really different from
+                                // the current Label
+                                if (m.getLabel().equals(newLabel)) {
+                                    // The given Label doesn't differ from the current one
+                                    return anno;
+                                } else {
+                                    // We have to delete the current LabelSet because
+                                    // it is exclusive and add another LabelLabelSetMap
+                                    // containing the new Label and LabelSet
+                                    iterator.remove();
+                                    addNewLabelLabelSetMapToAnnotation(anno, newLabel, newLabelSet);
+                                    return anno;
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+                addNewLabelLabelSetMapToAnnotation(anno, newLabel, newLabelSet);
+                return anno;
+            } else {
+
+                for (LabelLabelSetMap m : anno.getLabelMap()) {
+                    if (m.getLabel().equals(newLabel)) {
+                        for (LabelSet ls : m.getLabelSets()) {
+                            if (ls.equals(newLabelSet)) {
+                                // Already exist
                                 return anno;
                             }
                         }
-                        
-                    }
-                }
-            }
-            
-            addNewLabelLabelSetMapToAnnotation(anno, newLabel, newLabelSet);
-            return anno;
-        } else {
-            
-            for (LabelLabelSetMap m : anno.getLabelMap()) {
-                if (m.getLabel().equals(newLabel)) {
-                    for (LabelSet ls : m.getLabelSets()) {
-                        if (ls.equals(newLabelSet)) {
-                            // Already exist
-                            return anno;
-                        }
-                    }
 
-                    m.addLabelSets(newLabelSet);
-                    return anno;
+                        m.addLabelSets(newLabelSet);
+                        return anno;
+                    }
                 }
+
+                // Label does not exist and a LabelLabelSetMap object must be created
+                // and added to the label
+                addNewLabelLabelSetMapToAnnotation(anno, newLabel, newLabelSet);
+                return anno;
             }
-        
-            // Label does not exist and a LabelLabelSetMap object must be created
-            // and added to the label
-            addNewLabelLabelSetMapToAnnotation(anno, newLabel, newLabelSet);
-            return anno;
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
         }
         
     }
     
-    public Link addLinkLabelToLink(Long linkId, LinkLabel label) {
+    public Link addLinkLabelToLink(Long linkId, LinkLabel label) throws CreateException {
 
         Link link = (Link) linkDAO.find(linkId, false);
         updateDocument(link.getDocument(), link.getUser());
         
         if (label.getLinkSet().size() != 1 || label.getLinkSet().get(0) == null) {
-            throw new IllegalArgumentException("Service: Adding LinkLabel to Link failed");
+            throw new CreateException("Service: Adding LinkLabel to Link failed.");
         }
         
-        LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(label.getLinkLabel(), false);
-        LinkSet newLinkSet = (LinkSet) linkSetDAO.find(label.getLinkSet().get(0).getId(), false);
-            
-        for (LinkLabelLinkSetMap m : link.getLabelMap()) {
-            // Use an iterator because we may have to delete a LinkSet
-            Iterator<LinkSet> iterator = m.getLinkSets().iterator();
-            while (iterator.hasNext()) {
-                LinkSet ls = iterator.next();
+        try {
+            LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(label.getLinkLabel(), false);
+            LinkSet newLinkSet = (LinkSet) linkSetDAO.find(label.getLinkSet().get(0).getId(), false);
 
-                if (ls.equals(newLinkSet)) {
-                    // If the size of the LinkSets corresponding to the LinkLabel
-                    // is 1, we can just change the Label
-                    if (m.getLinkSets().size() == 1) {
-                        m.setLabel(newLabel);
-                        return link;
-                    } else {
-                        // Check if the new LinkLabel is really different from
-                        // the current LinkLabel
-                        if (m.getLabel().equals(newLabel)) {
-                            // The given LinkLabel doesn't differ from the current one
+            for (LinkLabelLinkSetMap m : link.getLabelMap()) {
+                // Use an iterator because we may have to delete a LinkSet
+                Iterator<LinkSet> iterator = m.getLinkSets().iterator();
+                while (iterator.hasNext()) {
+                    LinkSet ls = iterator.next();
+
+                    if (ls.equals(newLinkSet)) {
+                        // If the size of the LinkSets corresponding to the LinkLabel
+                        // is 1, we can just change the Label
+                        if (m.getLinkSets().size() == 1) {
+                            m.setLabel(newLabel);
                             return link;
                         } else {
-                            // We have to delete the current LinkSet because
-                            // it is exclusive and add another LinkLabelLinkSetMap
-                            // containing the new LinkLabel and LinkSet
-                            iterator.remove();
-                            addNewLinkLabelLinkSetMapToLink(link, newLabel, newLinkSet);
-                            return link;
+                            // Check if the new LinkLabel is really different from
+                            // the current LinkLabel
+                            if (m.getLabel().equals(newLabel)) {
+                                // The given LinkLabel doesn't differ from the current one
+                                return link;
+                            } else {
+                                // We have to delete the current LinkSet because
+                                // it is exclusive and add another LinkLabelLinkSetMap
+                                // containing the new LinkLabel and LinkSet
+                                iterator.remove();
+                                addNewLinkLabelLinkSetMapToLink(link, newLabel, newLinkSet);
+                                return link;
+                            }
                         }
-                    }
 
+                    }
                 }
             }
-        }
 
-        // Label does not exist and a LinkLabelLinkSetMap object must be created
-        // and added to the label
-        addNewLinkLabelLinkSetMapToLink(link, newLabel, newLinkSet);
-        return link;
+            // Label does not exist and a LinkLabelLinkSetMap object must be created
+            // and added to the label
+            addNewLinkLabelLinkSetMapToLink(link, newLabel, newLinkSet);
+            return link;
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
+        
     }
     
     /**
@@ -679,24 +718,28 @@ public class Service {
      */
     public Document addDocumentToProject(Document entity) throws CreateException, CloneNotSupportedException {
         
-        Project project = (Project) projectDAO.find(entity.getProject().getId(), false);
-        entity.setProject(project);
-        entity.setStates(new HashSet<State>());
-        
-        checkTargets(entity);
-        
-        // Add to every Document a new State object initialized with User and
-        // Document
-        for (Users u : project.getUsers()) {
-            State state = getNewState(u, entity);
-            entity.addStates(state);
-        }
-        
-        generateTargets(project, entity);
-        
-        project.addDocuments(entity);
+        try {
+            Project project = (Project) projectDAO.find(entity.getProject().getId(), false);
+            entity.setProject(project);
+            entity.setStates(new HashSet<State>());
 
-        return entity;
+            checkTargets(entity);
+
+            // Add to every Document a new State object initialized with User and
+            // Document
+            for (Users u : project.getUsers()) {
+                State state = getNewState(u, entity);
+                entity.addStates(state);
+            }
+
+            generateTargets(project, entity);
+
+            project.addDocuments(entity);
+
+            return entity;
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
     
     /**
@@ -740,25 +783,29 @@ public class Service {
         }
     }
     
-    public Annotation changeTargetType(Long annoId, TargetType targetType) {
+    public Annotation changeTargetType(Long annoId, TargetType targetType) throws CreateException {
 
-        Annotation anno = (Annotation) annotationDAO.find(annoId, false);
-        updateDocument(anno.getDocument(), anno.getUser());
-        
-        targetType = (TargetType) targetTypeDAO.find(targetType.getTargetType(), false);
-        
-        anno.setTargetType(targetType);
-        
-        // Delete all links connected to the Annotation
-        List<Link> linkList = linkDAO.getAllLinksByAnnoId(annoId);
+        try {
+            Annotation anno = (Annotation) annotationDAO.find(annoId, false);
+            updateDocument(anno.getDocument(), anno.getUser());
 
-        for (Link l : linkList) {
-            linkDAO.remove(l);
+            targetType = (TargetType) targetTypeDAO.find(targetType.getTargetType(), false);
+
+            anno.setTargetType(targetType);
+
+            // Delete all links connected to the Annotation
+            List<Link> linkList = linkDAO.getAllLinksByAnnoId(annoId);
+
+            for (Link l : linkList) {
+                linkDAO.remove(l);
+            }
+
+            annotationDAO.merge(anno);
+
+            return anno;
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
         }
-        
-        annotationDAO.merge(anno);
-        
-        return anno;
     }
     
     /**
@@ -769,24 +816,30 @@ public class Service {
      * @param completed
      * @return a document to merge the updated state object
      */
-    public Document markDocumentAsCompletedByDocIdUserId(Long docId, Long userId, boolean completed) {
-        
-        State state = stateDAO.getStateByDocIdUserId(docId, userId, false);
-        state.setCompleted(completed);
-        state.setLastEdit(Utility.getCurrentTime());
-        
-        return state.getDocument();
+    public Document markDocumentAsCompletedByDocIdUserId(Long docId, Long userId, boolean completed) throws CreateException {
+        try {
+            State state = stateDAO.getStateByDocIdUserId(docId, userId, false);
+            state.setCompleted(completed);
+            state.setLastEdit(Utility.getCurrentTime());
+            return state.getDocument();
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
     
-    public Response resetUserPassword(Users entity) {
-        Users user = usersDAO.find(entity.getId(), false);
-        String newPwd = Utility.getRandomString(14);
-        String hashedPwd = Utility.hashPassword(newPwd);
+    public Response resetUserPassword(Users entity) throws CreateException {
+        try {
+            Users user = usersDAO.find(entity.getId(), false);
+            String newPwd = Utility.getRandomString(14);
+            String hashedPwd = Utility.hashPassword(newPwd);
 
-        emailProvider.sendPasswordResetNotification(user, newPwd);
-        
-        user.setPassword(hashedPwd);
-        return usersDAO.merge(user);
+            emailProvider.sendPasswordResetNotification(user, newPwd);
+
+            user.setPassword(hashedPwd);
+            return usersDAO.merge(user);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
     
     
@@ -794,7 +847,7 @@ public class Service {
     //  REMOVE
     ///////////////////////////////////////////////
     
-    public void removeProject(Project entity) {
+    public void removeProject(Project entity) throws CreateException {
 
         // It is necessary to create a ConcurrentModification safe set
         // because removeDocument() deletes the current document from
@@ -812,57 +865,75 @@ public class Service {
         projectDAO.remove(entity);
     }
     
-    public void removeUserFromProject(Long projId, Long userId) {
-        Project proj = (Project) projectDAO.find(projId, false);
-        Utility.removeObjectFromSet(proj.getUsers(), userId);
-        projectDAO.merge(proj);
-    }
-    
-    public void removeProjectManagerFromProject(Long projId, Long userId) {
-        Project proj = (Project) projectDAO.find(projId, false);
-        Users user = (Users) usersDAO.find(userId, false);
-        Utility.removeObjectFromSet(proj.getProjectManager(), userId);
-        Utility.removeObjectFromSet(user.getManagingProjects(), projId);
-        projectDAO.merge(proj);
-        usersDAO.merge(user);
-    }
-    
-    public void removeWatchingUserFromProject(Long projId, Long userId) {
-        Project proj = (Project) projectDAO.find(projId, false);
-        Users user = (Users) usersDAO.find(userId, false);
-        Utility.removeObjectFromSet(proj.getWatchingUsers(), userId);
-        Utility.removeObjectFromSet(user.getWatchingProjects(), projId);
-        projectDAO.merge(proj);
-        usersDAO.merge(user);
-    }
-    
-    public void removeDocument(Document entity) {
-        
-        entity.removeDefaultAnnotations();
-        documentDAO.merge(entity);
-        
-        List<Annotation> annos = annotationDAO.getAllAnnotationsByDocId(entity);
-        
-        for (Annotation a : annos) {
-            removeAnnotation(a);
+    public void removeUserFromProject(Long projId, Long userId) throws CreateException {
+        try {
+            Project proj = (Project) projectDAO.find(projId, false);
+            Utility.removeObjectFromSet(proj.getUsers(), userId);
+            projectDAO.merge(proj);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
         }
-        
-        Project project = entity.getProject();
-        
-        documentDAO.remove(entity);
-        project.removeDocuments(entity);
-        projectDAO.merge(project);
+    }
+    
+    public void removeProjectManagerFromProject(Long projId, Long userId) throws CreateException {
+        try {
+            Project proj = (Project) projectDAO.find(projId, false);
+            Users user = (Users) usersDAO.find(userId, false);
+            Utility.removeObjectFromSet(proj.getProjectManager(), userId);
+            Utility.removeObjectFromSet(user.getManagingProjects(), projId);
+            projectDAO.merge(proj);
+            usersDAO.merge(user);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
+    }
+    
+    public void removeWatchingUserFromProject(Long projId, Long userId) throws CreateException {
+        try {
+            Project proj = (Project) projectDAO.find(projId, false);
+            Users user = (Users) usersDAO.find(userId, false);
+            Utility.removeObjectFromSet(proj.getWatchingUsers(), userId);
+            Utility.removeObjectFromSet(user.getWatchingProjects(), projId);
+            projectDAO.merge(proj);
+            usersDAO.merge(user);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
+    }
+    
+    public void removeDocument(Document entity) throws CreateException {
+        try {
+            entity.removeDefaultAnnotations();
+            documentDAO.merge(entity);
+
+            List<Annotation> annos = annotationDAO.getAllAnnotationsByDocId(entity);
+
+            for (Annotation a : annos) {
+                removeAnnotation(a);
+            }
+
+            Project project = entity.getProject();
+
+            documentDAO.remove(entity);
+            project.removeDocuments(entity);
+            projectDAO.merge(project);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
 
-    public void removeAnnotation(Annotation entity) {
-        
-        List<Link> listLink = linkDAO.getAllLinksByAnnoId(entity.getId());
-        
-        for (Link l : listLink) {
-            linkDAO.remove(l);
+    public void removeAnnotation(Annotation entity) throws CreateException {
+        try {
+            List<Link> listLink = linkDAO.getAllLinksByAnnoId(entity.getId());
+
+            for (Link l : listLink) {
+                linkDAO.remove(l);
+            }
+
+            annotationDAO.remove(entity);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
         }
-        
-        annotationDAO.remove(entity);
     }
     
     /**
@@ -873,10 +944,10 @@ public class Service {
      * @param anno
      * @param label 
      */
-    public void removeLabelFromAnnotation(Annotation anno, Label label) {
+    public void removeLabelFromAnnotation(Annotation anno, Label label) throws CreateException {
         
         if (label.getLabelSet().size() != 1) {
-            throw new IllegalArgumentException("Service: LabelSet size in Label is not 1");
+            throw new CreateException("Service: LabelSet size in Label is not 1.");
         }
         
         LabelSet ls = label.getLabelSet().get(0);
@@ -890,83 +961,93 @@ public class Service {
             }
         }
 
-        throw new IllegalArgumentException("Service: Label does not exist in Annotation");
+        throw new CreateException("Service: Label does not exist in Annotation.");
     }
     
-    public void removeLabelFromLink(Link link, LinkLabel label) {
+    public void removeLabelFromLink(Link link, LinkLabel label) throws CreateException {
 
         if (label.getLinkSet().size() != 1) {
-            throw new IllegalArgumentException("Service: LabelSet size in Label is not 1");
+            throw new CreateException("Service: LabelSet size in Label is not 1.");
         }
         
-        LinkSet ls = label.getLinkSet().get(0);
-        
-        for (LinkLabelLinkSetMap map : link.getLabelMap()) {
-            if (map.getLabel().equals(label)
-                    && map.getLinkSets().contains(ls)) {
-                link.removeLabel(map, ls);
-                linkDAO.merge(link);
-                return;
-            }
-        }
+        try {
+            LinkSet ls = label.getLinkSet().get(0);
 
-        throw new IllegalArgumentException("Service: LinkLabel does not exist in Link");
-    }
-
-    public void removeUser(Users user) {
-        
-        List<TimeLogging> list = timeLoggingDAO.getAllTimeLoggingByUserId(user.getId());
-        for (TimeLogging t : list) {
-            timeLoggingDAO.remove(t);
-        }
-        
-        List<Annotation> listAnno = annotationDAO.getAllAnnotationsByUserId(user);
-        for (Annotation a : listAnno) {
-            removeAnnotation(a);
-        }
-        
-        List<State> listStates = stateDAO.getAllStatesByUserId(user);
-        for (State s : listStates) {
-            stateDAO.remove(s);
-        }
-        
-        Set<Project> listManagingProjects = user.getManagingProjects();
-        for (Project p : listManagingProjects) {
-            p.removeProjectManager(user);
-            projectDAO.merge(p);
-        }
-        
-        if (user.getRole().equals(Users.RoleType.projectmanager)
-                || user.getRole().equals(Users.RoleType.admin)) {
-            List<Scheme> schemes = schemeDAO.findAll();
-            for (Scheme s : schemes) {
-                if (s.getCreator() != null && s.getCreator().equals(user)) {
-                    s.setCreator(null);
+            for (LinkLabelLinkSetMap map : link.getLabelMap()) {
+                if (map.getLabel().equals(label)
+                        && map.getLinkSets().contains(ls)) {
+                    link.removeLabel(map, ls);
+                    linkDAO.merge(link);
+                    return;
                 }
             }
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
         }
-        
-        usersDAO.merge(user);
-        usersDAO.remove(user);
+
+        throw new CreateException("Service: LinkLabel does not exist in Link.");
+    }
+
+    public void removeUser(Users user) throws CreateException {
+        try {
+            List<TimeLogging> list = timeLoggingDAO.getAllTimeLoggingByUserId(user.getId());
+            for (TimeLogging t : list) {
+                timeLoggingDAO.remove(t);
+            }
+
+            List<Annotation> listAnno = annotationDAO.getAllAnnotationsByUserId(user);
+            for (Annotation a : listAnno) {
+                removeAnnotation(a);
+            }
+
+            List<State> listStates = stateDAO.getAllStatesByUserId(user);
+            for (State s : listStates) {
+                stateDAO.remove(s);
+            }
+
+            Set<Project> listManagingProjects = user.getManagingProjects();
+            for (Project p : listManagingProjects) {
+                p.removeProjectManager(user);
+                projectDAO.merge(p);
+            }
+
+            if (user.getRole().equals(Users.RoleType.projectmanager)
+                    || user.getRole().equals(Users.RoleType.admin)) {
+                List<Scheme> schemes = schemeDAO.findAll();
+                for (Scheme s : schemes) {
+                    if (s.getCreator() != null && s.getCreator().equals(user)) {
+                        s.setCreator(null);
+                    }
+                }
+            }
+
+            usersDAO.merge(user);
+            usersDAO.remove(user);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
     
     /**
      * Removes a scheme.
      * 
      * @param schemeId
-     * @throws UnsupportedOperationException is thrown when the scheme references
-     *         projects
+     * @throws CreateException is thrown when the scheme references projects
      */
-    public void removeScheme(Long schemeId) throws UnsupportedOperationException {
+    public void removeScheme(Long schemeId) throws CreateException {
 
-        Scheme scheme = (Scheme) schemeDAO.find(schemeId, false);
-        Set<Project> projectList = scheme.getProjects();
-        
-        if (!projectList.isEmpty()) {
-            throw new UnsupportedOperationException("Service: The scheme references projects");
+        try {
+            Scheme scheme = (Scheme) schemeDAO.find(schemeId, false);
+            Set<Project> projectList = scheme.getProjects();
+
+            if (!projectList.isEmpty()) {
+                throw new CreateException("Service: The scheme references projects.");
+            }
+
+            schemeDAO.remove(scheme);
+        } catch (NoResultException e) {
+            throw new CreateException(e.getMessage());
         }
-    
-        schemeDAO.remove(scheme);
     }
 
 }

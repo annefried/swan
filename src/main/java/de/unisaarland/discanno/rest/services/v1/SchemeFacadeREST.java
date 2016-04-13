@@ -14,13 +14,12 @@ import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.Scheme;
 import de.unisaarland.discanno.entities.Users;
 import de.unisaarland.discanno.rest.view.View;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.CreateException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.NoResultException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -63,6 +62,8 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
             return usersDAO.create(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException ex) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
@@ -77,7 +78,7 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException | UnsupportedOperationException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
@@ -108,7 +109,7 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
     @GET
     @Path("/schemes")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getSchemes() throws URISyntaxException {
+    public Response getSchemes() {
 
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));

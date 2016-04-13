@@ -18,6 +18,7 @@ import de.unisaarland.discanno.rest.view.View;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.CreateException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -63,6 +64,8 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
             return usersDAO.create(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException ex) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
@@ -99,6 +102,8 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
                             .build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (NoResultException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         } catch (JsonProcessingException ex) {
             Logger.getLogger(LinkFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
             return Response.serverError().build();
@@ -126,7 +131,7 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException | IllegalArgumentException e) {
+        } catch (NoResultException | CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -140,11 +145,10 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             Link link = service.addLinkLabelToLink(linkId, label);
-            linkDAO.merge(link);
-            return Response.ok().build();
+            return linkDAO.merge(link);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException e) {
+        } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }

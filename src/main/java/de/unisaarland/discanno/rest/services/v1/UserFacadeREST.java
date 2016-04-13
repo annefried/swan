@@ -12,15 +12,12 @@ import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.ProjectDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
-import de.unisaarland.discanno.entities.Project;
 import de.unisaarland.discanno.entities.Users;
 import de.unisaarland.discanno.rest.view.View;
-import java.net.URISyntaxException;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.CreateException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -73,9 +70,12 @@ public class UserFacadeREST extends AbstractFacade<Users> {
             LoginUtil.check(usersDAO.checkLogin(session, Users.RoleType.projectmanager));
             service.process(usersDAO.getUserBySession(session), entity);
             return usersDAO.create(entity);
-        } catch (SecurityException | IllegalArgumentException e) {
+        } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
+        
     }
     
     @POST
@@ -88,20 +88,26 @@ public class UserFacadeREST extends AbstractFacade<Users> {
             return service.resetUserPassword(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (CreateException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
+        
     }
     
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_JSON})
-    public void editPassword(@PathParam("id") Long id, String p) {
+    public Response editPassword(@PathParam("id") Long id, String p) {
 
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             Users u = usersDAO.find(id);
             u.setPassword(Utility.hashPassword(p));
+            return Response.ok().build();
         } catch (SecurityException e) {
-            Response.status(Response.Status.FORBIDDEN).build();
+            return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (NoResultException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
@@ -116,7 +122,7 @@ public class UserFacadeREST extends AbstractFacade<Users> {
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (NoResultException e) {
+        } catch (NoResultException | CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
@@ -124,7 +130,7 @@ public class UserFacadeREST extends AbstractFacade<Users> {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getUsers() throws URISyntaxException {
+    public Response getUsers() {
         
         try {   
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));

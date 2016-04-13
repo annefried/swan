@@ -12,9 +12,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.CreateException;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.persistence.NoResultException;
 
 /**
  * This DAO (Data Access Object) provides all CRUD operations for annotations.
@@ -37,10 +39,14 @@ public class AnnotationDAO extends BaseEntityDAO<Annotation> {
      * @param value
      * @return 
      */
-    public Annotation setNotSure(Long annoId, boolean value) {
-        Annotation anno = (Annotation) find(annoId, false);
-        anno.setNotSure(value);
-        return anno;
+    public Annotation setNotSure(Long annoId, boolean value) throws CreateException {
+        try {
+            Annotation anno = (Annotation) find(annoId, false);
+            anno.setNotSure(value);
+            return anno;
+        } catch(NoResultException e) {
+            throw new CreateException(e.getMessage());
+        }
     }
     
     public List<Annotation> getAllAnnotationsByUserIdDocId(Long userId, Long docId) {
