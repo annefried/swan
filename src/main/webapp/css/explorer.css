@@ -222,8 +222,20 @@ td p{
     width: 75%;
 }
 
-.sb_inputName{
+.sb_inputName {
     width:50%;
+}
+
+.sb_graySmalltext {
+    font-size: 11px;
+    color: gray;
+}
+
+.sb_normalText {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
 }
 
 hr {

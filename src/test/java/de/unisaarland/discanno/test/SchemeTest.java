@@ -10,7 +10,9 @@ import de.unisaarland.discanno.entities.Label;
 import de.unisaarland.discanno.entities.LabelSet;
 import de.unisaarland.discanno.entities.LinkSet;
 import de.unisaarland.discanno.entities.Scheme;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.ejb.CreateException;
 import static org.junit.Assert.assertFalse;
@@ -122,7 +124,7 @@ public class SchemeTest extends BaseTest {
         service.process(scheme);
     }
     
-    private Set convertLabelsToString(Set<Label> labels) {
+    private Set convertLabelsToString(List<Label> labels) {
         Set<String> set = new HashSet<>();
         for (Label l : labels) {
             set.add(l.getLabelId());
@@ -130,8 +132,8 @@ public class SchemeTest extends BaseTest {
         return set;
     }
     
-    private Label getLabelByString(Set<Label> set, String name) {
-        for (Label l : set) {
+    private Label getLabelByString(List<Label> list, String name) {
+        for (Label l : list) {
             if (l.getLabelId().equals(name)) {
                 return l;
             }

@@ -53,8 +53,11 @@ angular.module('app').controller('schemeViewModalController', function ($scope, 
             var linkLabelsSimple = new Array();
             for (var k = 0; k < curLinkSet.linkLabels.length; k++) {
                 var curLabel = curLinkSet.linkLabels[k];
-                curLabel.linkSet = undefined;
-                linkLabelsSimple.push(curLabel.linkLabel);
+                var linkLabel = {
+                    "name": curLabel.linkLabel,
+                    "options": curLabel.options
+                };
+                linkLabelsSimple.push(linkLabel);
             }
             curLinkSet.linkLabels = linkLabelsSimple;
             curLinkSet.startSpanType = curLinkSet.startType;
@@ -74,13 +77,9 @@ angular.module('app').controller('schemeViewModalController', function ($scope, 
             return value;
         }
 
-
-        $scope.currentScheme = JSON.stringify(scheme, replacer
-                , "\t");
+        $scope.currentScheme
+                = JSON.stringify(scheme, replacer, "\t");
     };
-
-
-
 
     $scope.submit = function () {
         $uibModalInstance.close();
