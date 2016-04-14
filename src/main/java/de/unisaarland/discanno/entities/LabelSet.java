@@ -10,7 +10,9 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * 
  * The JsonIdentityInfo annotations prevents infinite recursions.
  *
- * @author Janna Herrmann
+ * @author Timo Guehring
  */
 @Entity
 @XmlRootElement
@@ -39,8 +41,7 @@ public class LabelSet extends BaseEntity {
     private String name;
     
     /**
-     * Determines whether an annotation refers to several labels or
-     * one.
+     * Determines whether an annotation refers to several labels or one.
      */
     @JsonView({ View.Schemes.class })
     @Column(name = "Exclusive")
@@ -61,7 +62,7 @@ public class LabelSet extends BaseEntity {
     @ManyToMany(mappedBy = "labelSet",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
-    private Set<Label> labels;
+    private List<Label> labels = new ArrayList<>();
     
     
     public String getName() {
@@ -92,11 +93,11 @@ public class LabelSet extends BaseEntity {
         this.appliesToTargetTypes.add(targetType);
     }
 
-    public Set<Label> getLabels() {
+    public List<Label> getLabels() {
         return labels;
     }
 
-    public void setLabels(Set<Label> labels) {
+    public void setLabels(List<Label> labels) {
         this.labels = labels;
     }
     

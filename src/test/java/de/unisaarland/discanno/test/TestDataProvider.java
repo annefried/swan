@@ -156,7 +156,7 @@ public class TestDataProvider {
     public static LabelSet getLabelSet1() {
         
         // -----------1
-        Set<Label> listLabel1 = new HashSet();
+        List<Label> listLabel1 = new ArrayList();
         listLabel1.add(getLabel1());
         listLabel1.add(getLabel2());
         listLabel1.add(getLabel3());
@@ -189,7 +189,7 @@ public class TestDataProvider {
         label9.setLabelId("ARGUMENT/COMMENTARY");
         label10.setLabelId("OTHER");
         
-        Set<Label> listLabel2 = new HashSet();
+        List<Label> listLabel2 = new ArrayList();
         listLabel2.add(label5);
         listLabel2.add(label6);
         listLabel2.add(label7);
@@ -219,7 +219,7 @@ public class TestDataProvider {
         label13.setLabelId("Negated");
         label14.setLabelId("OTHER");
         
-        Set<Label> listLabel3 = new HashSet();
+        List<Label> listLabel3 = new ArrayList();
         listLabel3.add(label11);
         listLabel3.add(label12);
         listLabel3.add(label13);
@@ -243,7 +243,7 @@ public class TestDataProvider {
         linkLabel2.setLinkLabel("after");
         linkLabel3.setLinkLabel("overlap");
         
-        Set<LinkLabel> listLinkLabel1 = new HashSet();
+        List<LinkLabel> listLinkLabel1 = new ArrayList();
         listLinkLabel1.add(getLinkLabel1());
         listLinkLabel1.add(linkLabel2);
         listLinkLabel1.add(linkLabel3);
