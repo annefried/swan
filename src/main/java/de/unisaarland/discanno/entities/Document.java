@@ -105,6 +105,10 @@ public class Document extends BaseEntity {
         this.states.add(state);
     }
     
+    public void removeState(State state) {
+        this.states.remove(state);
+    }
+    
     public Set<Annotation> getDefaultAnnotations() {
         return defaultAnnotations;
     }

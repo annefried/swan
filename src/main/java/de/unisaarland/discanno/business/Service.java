@@ -870,6 +870,22 @@ public class Service {
             Project proj = (Project) projectDAO.find(projId, false);
             Utility.removeObjectFromSet(proj.getUsers(), userId);
             projectDAO.merge(proj);
+            
+            for (Document d : proj.getDocuments()) {
+                State state = null;
+                for (State s : d.getStates()) {
+                    if (s.getUser().getId().equals(userId)) {
+                        state = s;
+                        break;
+                        
+                    }
+                }
+                
+                stateDAO.remove(state);
+                d.removeState(state);
+                documentDAO.merge(d);
+            }
+            
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }

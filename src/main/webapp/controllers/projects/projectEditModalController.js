@@ -77,11 +77,38 @@ angular.module('app').controller('projectEditModalController', function ($scope,
 
     $scope.deleteUser = function (uId) {
         $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
-            for (var i = 0; i < $rootScope.tableProjects[$rootScope.currentProjectIndex].users.length; i++) {
-                if ($rootScope.tableProjects[$rootScope.currentProjectIndex].users[i].id == uId) {
-                    $rootScope.tableProjects[$rootScope.currentProjectIndex].users.splice(i, 1);
-					break;
-				}
+            var projectT = $rootScope.tableProjects[$rootScope.currentProjectIndex];
+            for (var i = 0; i < projectT.users.length; i++) {
+                if (projectT.users[i].id == uId) {
+                    projectT.users.splice(i, 1);
+                    projectT.completed.splice(i, 1);
+                    break;
+                }
+            }
+            // TODO refactor
+            // Not the most elegant code, we should change that when we do the
+            // big refactoring, when merging $rootScope.projects and $rootScope.tableProjects
+            var completedDecreaseMap = {};
+            for (var i = 0; i < $rootScope.projects.length; i++) {
+                var project = $rootScope.projects[i];
+                for (var j = 0; j < project.documents.length; j++) {
+                    var doc = project.documents[j];
+                    for (var s = 0; s < doc.states.length; s++) {
+                        var state = doc.states[s];
+                        if (state.completed && state.user.id == uId) {
+                            completedDecreaseMap[state.document.id] = state.document.id;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            for (var i = 0; i < projectT.documents.length; i++) {
+                var doc = projectT.documents[i];
+                if (completedDecreaseMap[doc.id] !== undefined
+                        && doc.completed > 0) {
+                    doc.completed--;
+                }
             }
         }).error(function (response) {
             $rootScope.checkResponseStatusCode(response.status);
@@ -90,11 +117,12 @@ angular.module('app').controller('projectEditModalController', function ($scope,
 
     $scope.deletePM = function (uId) {
         $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
-            for (var i = 0; i < $rootScope.tableProjects[$rootScope.currentProjectIndex].pms.length; i++) {
-                if ($rootScope.tableProjects[$rootScope.currentProjectIndex].pms[i].id == uId) {
-                    $rootScope.tableProjects[$rootScope.currentProjectIndex].pms.splice(i, 1);
-					break;
-				}
+            var project = $rootScope.tableProjects[$rootScope.currentProjectIndex];
+            for (var i = 0; i < project.pms.length; i++) {
+                if (project.pms[i].id == uId) {
+                    project.pms.splice(i, 1);
+                    break;
+                }
             }
         }).error(function (response) {
             $rootScope.checkResponseStatusCode(response.status);

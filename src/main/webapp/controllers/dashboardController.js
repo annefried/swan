@@ -6,7 +6,7 @@
 angular.module('app').controller('dashboardController', ['$rootScope', '$scope', '$window', '$http', '$timeout',
 	function ($rootScope, $scope, $window, $http, $timeout) {
 
-				$rootScope.alerts = [
+                $rootScope.alerts = [
                 ];
 
                 $rootScope.addAlert = function (alert) {
@@ -134,14 +134,15 @@ angular.module('app').controller('dashboardController', ['$rootScope', '$scope',
                                 // role: annotator
                                 if ($scope.isUnprivileged === 'true') {
                                     var usrPos = -1;
-                                    for (var t = 0; t < proj.users.length; t++) {
+                                    for (var t = 0; t < states.length; t++) {
                                         if ($window.sessionStorage.uId == states[t].user.id) {
                                             usrPos = t;
+                                            break;
                                         }
                                     }
 
                                     if (usrPos === -1 || states.length !== proj.users.length) {
-                                        console.log("Error");
+                                        throw "dashboardController: Illegal arguments";
                                     }
 
                                     if (states[usrPos].completed) {
@@ -186,7 +187,7 @@ angular.module('app').controller('dashboardController', ['$rootScope', '$scope',
                                 'name': proj.name,
                                 'users': proj.users,
                                 'completed': projCompl,
-								'scheme': proj.scheme,
+                                'scheme': proj.scheme,
                                 'numberOfDocuments': proj.documents.length,
                                 'documents': documents,
                                 'pms': proj.projectManager,
