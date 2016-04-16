@@ -86,20 +86,26 @@
                                 <!-- progress bar visible for ADMIN & PM -->
                                 <div ng-hide="isUnprivileged === 'true'"
                                      ng-repeat="cur in x.users" class="userprogress progress">
-                                    <div class="progress-bar  progress-bar-success"
-                                         role="progressbar" aria-valuenow="{{x.completed}}"
-                                         aria-valuemin="0" aria-valuemax="{{x.numberOfDocuments}}"
+                                    <div class="progress-bar
+                                         progress-bar-success"
+                                         role="progressbar"
+                                         aria-valuenow="{{x.completed}}"
+                                         aria-valuemin="0"
+                                         aria-valuemax="{{x.numberOfDocuments}}"
                                          style="width: {{100 * x.completed[$index] / x.numberOfDocuments}}%;">
-                                        <span> {{x.completed[$index]}}/{{x.numberOfDocuments}}</span>
+                                        <span>{{x.completed[$index]}}/{{x.numberOfDocuments}}</span>
                                     </div>
                                 </div>
                                 <!-- progress bar visible for ANNOTATOR -->
                                 <div ng-hide="isUnprivileged === 'false'" class="userprogress progress">
-                                    <div class="progress-bar  progress-bar-success"
-                                         role="progressbar" aria-valuenow="{{x.completed}}"
-                                         aria-valuemin="0" aria-valuemax="{{x.numberOfDocuments}}"
+                                    <div class="progress-bar
+                                         progress-bar-success"
+                                         role="progressbar"
+                                         aria-valuenow="{{x.completed}}"
+                                         aria-valuemin="0"
+                                         aria-valuemax="{{x.numberOfDocuments}}"
                                          style="width: {{100 * x.completed / x.numberOfDocuments}}%;">
-                                        <span> {{x.completed}}/{{x.numberOfDocuments}}</span>
+                                        <span>{{x.completed}}/{{x.numberOfDocuments}}</span>
                                     </div>
                                 </div>
                             </td>
@@ -179,11 +185,13 @@
                                       ng-if="isUnprivileged === 'true' && doc.completed === true"></span>
                                 <div ng-hide="isUnprivileged === 'true'" class="userprogress progress">
                                     <!-- TODO: adjust progress bar -->
-                                    <div class="progress-bar  progress-bar-success"
-                                         role="progressbar" aria-valuenow="{{doc.completed}}"
-                                         aria-valuemin="0" aria-valuemax="x.users.length"
+                                    <div class="progress-bar progress-bar-success"
+                                         role="progressbar"
+                                         aria-valuenow="{{doc.completed}}"
+                                         aria-valuemin="0"
+                                         aria-valuemax="x.users.length"
                                          style="width: {{100 * doc.completed / x.users.length}}%;">
-                                        <span> {{doc.completed}}/{{x.users.length}}</span>
+                                        <span>{{doc.completed}}/{{x.users.length}}</span>
                                     </div>
                                 </div>
                             </td>
