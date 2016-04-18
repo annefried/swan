@@ -605,21 +605,21 @@ angular
                 //Read all data from the commited scheme
                 this.readSchemes = function () {
                     $scope.graph = {
-                        "isOpen": false,
-                        "isDisabled": true
+                        "show": false,
+                        "isOpen": false
                     };
                     $scope.timeline = {
-                        "isOpen": false,
-                        "isDisabled": true
+                        "show": false,
+                        "isOpen": false
                     };
                     for (var i = 0; i < this.scheme.visElements.length; i++) {
                         var visElement = this.scheme.visElements[i];
                         if (visElement.visKind === "graph") {
-                            $scope.graph.isOpen = visElement.visState === "hidden" ? false : true;
-                            $scope.graph.isDisabled = visElement.visState === "opened" ? false : true;
+                            $scope.graph.show = visElement.visState === "hidden" ? false : true;
+                            $scope.graph.isOpen = visElement.visState === "opened" ? true : false;
                         } else if (visElement.visKind === "timeline") {
-                            $scope.timeline.isOpen = visElement.visState === "hidden" ? false : true;
-                            $scope.timeline.isDisabled = visElement.visState === "opened" ? false : true;
+                            $scope.timeline.show = visElement.visState === "hidden" ? false : true;
+                            $scope.timeline.isOpen = visElement.visState === "opened" ? true : false;
                         }
                     }
                     
