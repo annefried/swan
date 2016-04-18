@@ -37,13 +37,12 @@ angular.module('app')
                 var MARGIN = {top: -5, right: -5, bottom: -5, left: -5};
                 
                 // upper case for comparison
-                var BEFORE_STR = "BEFORE";
-                var AFTER_STR = "AFTER";
-                var OVERLAP_STR = "OVERLAP";
+                var HORIZONTAL_STR = "HORIZONTAL";
+                var VERTICAL_STR = "VERTICAL";
                 
                 var BEFORE_INT = 0;
                 var OVERLAP_INT = 1;
-                var AFTER_INT = 2;
+                var AFTER_INT = 2; // Supported but not used
                 
                 var NOT_LINKED = 0;
                 
@@ -83,36 +82,38 @@ angular.module('app')
                     node.width = 9 * (labels.length + text.length + 2);  
                 };
                 
+                $scope.getPositioningOptionInteger = function (linkLabel) {
+                    for (var i = 0; i < linkLabel.options.length; i++) {
+                        var opt = linkLabel.options[i];
+                        if (opt.toUpperCase() === HORIZONTAL_STR) {
+                            return BEFORE_INT;
+                        } else if (opt.toUpperCase() === VERTICAL_STR) {
+                            return OVERLAP_INT;
+                        } else {
+                            throw "d3Timeline: No proper option for timeline provided.";
+                        }
+                    }
+                };
+                
                 /**
                  * Takes the first LinkLabel and returns the corresponding
                  * integer value:
-                 * BEFORE_STR -> BEFORE_INT
-                 * AFTER_STR -> AFTER_INT
-                 * OVERLAP_STR -> OVERLAP_INT
-                 * else -> undefined
+                 * HORIZONTAL -> BEFORE_INT
+                 * VERTICAL -> OVERLAP_INT
+                 * else -> throw exception
                  * 
                  * @param {type} link
-                 * @returns {Number|undefined}
+                 * @returns {Number}
                  */
                 $scope.getLinkLabel = function (link) {
                     for (var id in link.activeLabels) {
                         var label = link.activeLabels[id];
-                        if (label.length > 0) {
-                            var tag = label[0].tag.toUpperCase();
-                            if (tag === BEFORE_STR) {
-                                return BEFORE_INT;
-                            } else if (tag === AFTER_STR) {
-                                return AFTER_INT;
-                            } else if (tag === OVERLAP_STR) {
-                                return OVERLAP_INT;
-                            } else {
-                                return undefined;
-                            }
+                        if (label.length === 1) {
+                            return $scope.getPositioningOptionInteger(label[0]);
                         } else {
-                            return undefined;
+                            throw "d3Timeline: More than one label in the timeline mode is not allowed.";
                         }
                     }
-                    return undefined;
                 };
 				
                 $scope.addLabelToLink = function (link) {

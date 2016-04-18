@@ -9,16 +9,11 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -33,13 +28,8 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-public class Label implements Serializable {
+public class Label extends BaseEntity {
     
-    private static final long serialVersionUID = 1L;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "LabelId")
     private String labelId;
     
     /**
@@ -49,7 +39,7 @@ public class Label implements Serializable {
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(
         name="LABEL_LABELSET",
-        joinColumns={@JoinColumn(name="LABEL_ID", referencedColumnName="LabelId")},
+        joinColumns={@JoinColumn(name="LABEL_ID", referencedColumnName="id")},
         inverseJoinColumns={@JoinColumn(name="LABEL_SET_ID", referencedColumnName="id")})
     private List<LabelSet> labelSet = new ArrayList();
 
