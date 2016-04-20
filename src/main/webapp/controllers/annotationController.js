@@ -854,7 +854,7 @@ angular
                         if ($scope.completed) {
                             $rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
                         } else {
-                            $rootScope.addAlert({type: 'success', msg: 'Document marked as uncomplete!'});
+                            $rootScope.addAlert({type: 'success', msg: 'Document marked as incomplete!'});
                         }
                     }).error(function (response) {
                         $rootScope.checkResponseStatusCode(response.status);
