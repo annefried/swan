@@ -304,7 +304,7 @@ public class ExportUtil {
         anno.setId(a.getId());
         anno.setStart(a.getStart());
         anno.setEnd(a.getEnd());
-        anno.setText(a.getText());
+       // anno.setText(a.getText());
         anno.setTargetType(a.getTargetType().getTargetType());
         anno.setLabels(
                 convertLabelsToExportLabelSet(
