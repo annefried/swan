@@ -87,9 +87,9 @@ angular
                     var form = document.getElementById("users");
                     $window.sessionStorage.shownUser = form.elements["users"].value;
                     $scope.openAnnoTool($window.sessionStorage.docId,
-                                        $window.sessionStorage.title,
-                                        $window.sessionStorage.project,
-                                        $window.sessionStorage.completed);
+                            $window.sessionStorage.title,
+                            $window.sessionStorage.project,
+                            $window.sessionStorage.completed);
                     // For TODO: dynamic AnnoLoading
 //                    this.readData();//FIXME: does not work for some reason
 //                    this.buildText();
@@ -107,6 +107,7 @@ angular
                     var start = 0;
                     var end = -1;
                     for (var i = 0; i < this.tokenData.length; i++) {
+                        //console.log("line " + i);
                         var currentLine = this.tokenData[i].tokens;
                         start = end + 1;
                         end = start + this.tokenData[i].lineLength;
@@ -116,8 +117,13 @@ angular
                             word.lineIndex = i;
                             word.wordIndex = annoLine.words.length;
                             annoLine.words.push(word);
+                            //console.log("pushing " + word.text)
                         }
-                        annoLine.end = annoLine.words[annoLine.words.length-1].end;
+                        if (annoLine.words.length > 0) {
+                            // end of line is end of last word
+                            annoLine.end = annoLine.words[annoLine.words.length - 1].end;
+                        }
+                        // else no words
                         this.annotationText.push(annoLine);
                     }
 
@@ -766,12 +772,23 @@ angular
                         lineStart++;
                         endL = this.annotationText[lineStart].end;
                     }
+                    //console.log("line start: " + lineStart + " " + endL)
                     //Search for last corresponding line
                     var lineEnd = lineStart;
-                    while (this.annotationText[lineEnd].end < end)
+                    //console.log("::" + this.annotationText[lineEnd].end + " " + end);
+                    while (this.annotationText[lineEnd].end < end) {
                         lineEnd++;
+                    }
+                    //console.log("line end: " + lineEnd + " " + end)
                     var firstLine = this.annotationText[lineStart];
                     var lastLine = this.annotationText[lineEnd];
+                    //console.log(firstLine);
+                    //console.log(lastLine);
+                    while (lastLine.words.length === 0) {
+                        //    // use previous line as last line
+                        lineEnd--;
+                        lastLine = this.annotationText[lineEnd];
+                    }
                     //Search for corresponding text(s) in line
                     var rowStart = 0;
                     while (firstLine.words[rowStart] !== undefined
@@ -830,14 +847,14 @@ angular
                                             doc = proj.documents[j - 1];
                                         }
                                     }
-                                    
+
                                     found = true;
                                     $scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.project, doc.completed);
                                 }
                             }
                         }
                     }
-                    
+
                     if (!found) {
                         throw "AnnotationController: Could not find the given project and document";
                     }
