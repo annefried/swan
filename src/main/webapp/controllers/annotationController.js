@@ -117,6 +117,7 @@ angular
                             word.wordIndex = annoLine.words.length;
                             annoLine.words.push(word);
                         }
+                        annoLine.end = annoLine.words[annoLine.words.length-1].end;
                         this.annotationText.push(annoLine);
                     }
 
@@ -765,7 +766,6 @@ angular
                         lineStart++;
                         endL = this.annotationText[lineStart].end;
                     }
-
                     //Search for last corresponding line
                     var lineEnd = lineStart;
                     while (this.annotationText[lineEnd].end < end)
