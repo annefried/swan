@@ -109,13 +109,16 @@ angular
                     for (var i = 0; i < this.tokenData.length; i++) {
                         var currentLine = this.tokenData[i].tokens;
                         start = end + 1;
-                        end = start + this.tokenData[i].lineLength;
+                        // why does the below not work?
+                        //end = start + this.tokenData[i].lineLength;
                         var annoLine = new TextLine(start, end);
                         for (var j = 0; j < currentLine.length; j++) {
                             var word = new TextWord(currentLine[j].text, currentLine[j].start, currentLine[j].end);
                             word.lineIndex = i;
                             word.wordIndex = annoLine.words.length;
                             annoLine.words.push(word);
+                            // added this instead
+                            annoLine.end = currentLine[j].end;
                         }
                         this.annotationText.push(annoLine);
                     }
@@ -757,6 +760,8 @@ angular
                 //Helper function for finding corresponding words in the text
                 //that are indexed by start and end
                 this.findWords = function (start, end, object) {
+                    //console.log("findword " + start + " " + end);
+                    //console.log(this.annotationText);
 
                     //Search for first corresponding line
                     var lineStart = 0;
