@@ -107,7 +107,6 @@ angular
                     var start = 0;
                     var end = -1;
                     for (var i = 0; i < this.tokenData.length; i++) {
-                        //console.log("line " + i);
                         var currentLine = this.tokenData[i].tokens;
                         start = end + 1;
                         end = start + this.tokenData[i].lineLength;
