@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  * @author Timo Guehring
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder={ "id", "start", "end", "text", "targetType", "labels"})
+@XmlType(propOrder={ "id", "start", "end", "targetType", "labels"})
 public class Annotation {
     
     private Long id;
@@ -27,7 +27,7 @@ public class Annotation {
     
     private int end;
     
-    private String text;
+    //private String text;
     
     private String targetType;
     
@@ -58,13 +58,13 @@ public class Annotation {
         this.end = end;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
+//    public String getText() {
+//        return text;
+//    }
+//
+//    public void setText(String text) {
+//        this.text = text;
+//    }
 
     public Set<Label> getLabels() {
         return labels;

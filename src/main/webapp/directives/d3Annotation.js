@@ -977,6 +977,7 @@ angular.module('app')
                         };
                         //Draw the the basic text
                         $scope.drawText = function (minLine, maxLine) {
+                            
                             svg.selectAll(".annotationtext").remove();
                             var pre = 30 + 20 * arity;
                             var currentLine = 0;

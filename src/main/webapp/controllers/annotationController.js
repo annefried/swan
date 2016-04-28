@@ -87,9 +87,9 @@ angular
                     var form = document.getElementById("users");
                     $window.sessionStorage.shownUser = form.elements["users"].value;
                     $scope.openAnnoTool($window.sessionStorage.docId,
-                                        $window.sessionStorage.title,
-                                        $window.sessionStorage.project,
-                                        $window.sessionStorage.completed);
+                            $window.sessionStorage.title,
+                            $window.sessionStorage.project,
+                            $window.sessionStorage.completed);
                     // For TODO: dynamic AnnoLoading
 //                    this.readData();//FIXME: does not work for some reason
 //                    this.buildText();
@@ -109,17 +109,20 @@ angular
                     for (var i = 0; i < this.tokenData.length; i++) {
                         var currentLine = this.tokenData[i].tokens;
                         start = end + 1;
-                        // why does the below not work?
-                        //end = start + this.tokenData[i].lineLength;
+                        end = start + this.tokenData[i].lineLength;
                         var annoLine = new TextLine(start, end);
                         for (var j = 0; j < currentLine.length; j++) {
                             var word = new TextWord(currentLine[j].text, currentLine[j].start, currentLine[j].end);
                             word.lineIndex = i;
                             word.wordIndex = annoLine.words.length;
                             annoLine.words.push(word);
-                            // added this instead
-                            annoLine.end = currentLine[j].end;
+                            //console.log("pushing " + word.text)
                         }
+                        if (annoLine.words.length > 0) {
+                            // end of line is end of last word
+                            annoLine.end = annoLine.words[annoLine.words.length - 1].end;
+                        }
+                        // else no words
                         this.annotationText.push(annoLine);
                     }
 
@@ -760,8 +763,6 @@ angular
                 //Helper function for finding corresponding words in the text
                 //that are indexed by start and end
                 this.findWords = function (start, end, object) {
-                    //console.log("findword " + start + " " + end);
-                    //console.log(this.annotationText);
 
                     //Search for first corresponding line
                     var lineStart = 0;
@@ -770,13 +771,23 @@ angular
                         lineStart++;
                         endL = this.annotationText[lineStart].end;
                     }
-
+                    //console.log("line start: " + lineStart + " " + endL)
                     //Search for last corresponding line
                     var lineEnd = lineStart;
-                    while (this.annotationText[lineEnd].end < end)
+                    //console.log("::" + this.annotationText[lineEnd].end + " " + end);
+                    while (this.annotationText[lineEnd].end < end) {
                         lineEnd++;
+                    }
+                    //console.log("line end: " + lineEnd + " " + end)
                     var firstLine = this.annotationText[lineStart];
                     var lastLine = this.annotationText[lineEnd];
+                    //console.log(firstLine);
+                    //console.log(lastLine);
+                    while (lastLine.words.length === 0) {
+                        //    // use previous line as last line
+                        lineEnd--;
+                        lastLine = this.annotationText[lineEnd];
+                    }
                     //Search for corresponding text(s) in line
                     var rowStart = 0;
                     while (firstLine.words[rowStart] !== undefined
@@ -835,14 +846,14 @@ angular
                                             doc = proj.documents[j - 1];
                                         }
                                     }
-                                    
+
                                     found = true;
                                     $scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.project, doc.completed);
                                 }
                             }
                         }
                     }
-                    
+
                     if (!found) {
                         throw "AnnotationController: Could not find the given project and document";
                     }
