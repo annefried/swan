@@ -1037,17 +1037,7 @@ angular.module('app')
                                 //Draw each word of the current text line into the
                                 //corresponding lines on the screen
                                 svg.selectAll("text.content")
-                                        .data(dat.filter(function (d) {
-                                            var guard = true;
-                                            for (var k = 0; k < dat.length; k++) {
-                                                guard = guard & $scope.$parent.isSpace(dat[k].word.text);
-                                            }
-                                            if (guard) {
-                                                return true;
-                                            } else {
-                                                return !$scope.$parent.isSpace(d.word.text);
-                                            }
-                                        }))
+                                        .data(dat)
                                         .enter()
                                         .append(function (d) {
                                             var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -1063,7 +1053,7 @@ angular.module('app')
                                         .attr("x", function (d) {
                                             if (d.lX === 0)
                                                 pos = pre;
-                                            var spacing = ($scope.$parent.isPunctuation(d.word.text)) ? 0 : wordSpacing;
+                                            var spacing = ($scope.$parent.isPunctuation(d.word.text) || d.word.text === " ") ? 0 : wordSpacing;
                                             pos += spacing;
                                             d.x = pos;
                                             d.width = d.element.getComputedTextLength();
@@ -1166,7 +1156,7 @@ angular.module('app')
                                             var width = 0;
                                             for (var i = 0; i < d.formWords.length; i++) {
                                                 var formWord = d.formWords[i];
-                                                if (formWord.element === undefined)
+                                                if (formWord.width === 0)
                                                     width += wordSpacing;
                                                 else
                                                     width += formWord.element.getComputedTextLength();
@@ -1176,11 +1166,13 @@ angular.module('app')
                                             return d.width;
                                         })
                                         .attr("x", function (d) {
+                                        	// Iterate, because first word could be a whitespace
                                             var word = d.formWords[0];
                                             d.x = word.x;
                                             return d.x;
                                         })
                                         .attr("y", function (d) {
+                                        	// Iterate, because first word could be a whitespace
                                             var word = d.formWords[0];
                                             var height = 1 + d.height;
                                             var firstAnnoHeight = wordHeight / 1.45;
