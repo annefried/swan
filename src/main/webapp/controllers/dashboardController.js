@@ -70,14 +70,14 @@ angular.module('app').controller('dashboardController', ['$rootScope', '$scope',
                         var httpProjects = $http.get("discanno/project").success(function (response) {
                             $rootScope.projects = JSOG.parse(JSON.stringify(response)).projects;
                         }).error(function (response) {
-							$rootScope.checkResponseStatusCode(response.status);
-						});
+                            $rootScope.checkResponseStatusCode(response.status);
+                        });
                     } else {
                         var httpProjects = $http.get("discanno/project/byuser/" + $window.sessionStorage.uId).success(function (response) {
                             $rootScope.projects = JSOG.parse(JSON.stringify(response)).projects;
                         }).error(function (response) {
-							$rootScope.checkResponseStatusCode(response.status);
-						});
+                            $rootScope.checkResponseStatusCode(response.status);
+                        });
                     }
                     return httpProjects;
                 };
@@ -103,28 +103,42 @@ angular.module('app').controller('dashboardController', ['$rootScope', '$scope',
                             if (u.role == 'annotator') {
                                 projComplAdmin.push(0);
                             } else {
-                                console.log("This should never happen.\nBut it will.");
+                                throw "dashboardController: Assigned user has not role 'annotator'";
                             }
                         }
-                        for (var j = 0; j < proj.projectManager.length; j++) {
-                            var p = proj.projectManager[j];
-                            if (p.id == $window.sessionStorage.uId) {
-                                myProject = true;
+                        if (!myProject) {
+                            for (var j = 0; j < proj.projectManager.length; j++) {
+                                var p = proj.projectManager[j];
+                                if (p.id == $window.sessionStorage.uId) {
+                                    myProject = true;
+                                }
                             }
                         }
+                        
+                        // Used to order the states in the same order like the
+                        // user array
+                        var userIdIndexMap = $rootScope.getUserIdIndexMap(proj.users);
 
                         if (myProject) {
                             var projComplUser = 0;
                             var documents = [];
 
                             for (var j = 0; j < proj.documents.length; j++) {
+                                
                                 var doc = proj.documents[j];
-                                var states = [];
-
+                                var states = new Array(doc.states.length);
+                                
+                                if (doc.states.length !== proj.users.length) {
+                                    throw "dashboardController: States and users length differs";
+                                }
+                                
                                 for (var yi = 0; yi < doc.states.length; yi++) {
-                                    var st = doc.states[yi];
-                                    if (st.user.role == 'annotator') {
-                                        states.push(st);
+                                    var state = doc.states[yi];
+                                    var index = userIdIndexMap[state.user.id];
+                                    if (index === undefined) {
+                                        throw "dashboardController: Unkown user";
+                                    } else {
+                                        states[index] = state;
                                     }
                                 }
 
@@ -141,7 +155,7 @@ angular.module('app').controller('dashboardController', ['$rootScope', '$scope',
                                         }
                                     }
 
-                                    if (usrPos === -1 || states.length !== proj.users.length) {
+                                    if (usrPos === -1) {
                                         throw "dashboardController: Illegal arguments";
                                     }
 
@@ -198,6 +212,15 @@ angular.module('app').controller('dashboardController', ['$rootScope', '$scope',
                         }
                     }
 
+                };
+                
+                $rootScope.getUserIdIndexMap = function (users) {
+                    var userIdIndexMap = {};
+                    for (var k = 0; k < users.length; k++) {
+                        var user = users[k];
+                        userIdIndexMap[user.id] = k;
+                    }
+                    return userIdIndexMap;
                 };
                 
                 $rootScope.containsUser = function (userList, user) {
