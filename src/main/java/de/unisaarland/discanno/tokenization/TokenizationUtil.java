@@ -28,7 +28,7 @@ public class TokenizationUtil {
         int docIdx = 0;
         while (ptbt.hasNext()) {
             CoreLabel label = (CoreLabel) ptbt.next();
-            System.out.println("label: " + (Object) label);
+            //System.out.println("label: " + (Object) label);
             while (label.beginPosition() > docIdx) {
                 String subStr = str.substring(docIdx, label.beginPosition());
                 String[] linesInSubstr = subStr.split("\\r?\\n", -1);
@@ -42,7 +42,7 @@ public class TokenizationUtil {
                         wsToken2 = TokenizationUtil.createToken(docIdx, docIdx + lineInSubstr.length(), lineInSubstr);
                         line.addTokens(wsToken2);
                         lines.add(line);
-                        System.out.println("NEWLINE");
+                        //System.out.println("NEWLINE");
                         line = new Line();
                         docIdx = docIdx + lineInSubstr.length();
                         if (str.substring(docIdx).startsWith("\r")) {
@@ -67,7 +67,7 @@ public class TokenizationUtil {
                             ++docIdx;
                         }
                         lines.add(line);
-                        System.out.println("NEWLINE--3 " + docIdx);
+                        //System.out.println("NEWLINE--3 " + docIdx);
                         line = new Line();
                         
                     }
@@ -106,13 +106,13 @@ public class TokenizationUtil {
                         ++docIdx;
                     }
                     lines.add(line);
-                    System.out.println("NEW LINE");
+                    //System.out.println("NEW LINE");
                     line = new Line();
                 }
             }
         }
         lines.add(line);
-        System.out.println("NEW LINE");
+        //System.out.println("NEW LINE");
         return lines;
     }
     
@@ -133,7 +133,7 @@ public class TokenizationUtil {
     }
     
     private static Token createToken(int start, int end, String text) {
-        System.out.println("creating token: " + start + " " + end + " >" + text + "<");
+        //System.out.println("creating token: " + start + " " + end + " >" + text + "<");
         Token token = new Token();
         token.setStart(start);
         token.setEnd(end);
