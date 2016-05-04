@@ -111,6 +111,7 @@ angular.module('app').controller('dashboardController', ['$rootScope', '$scope',
                                 var p = proj.projectManager[j];
                                 if (p.id == $window.sessionStorage.uId) {
                                     myProject = true;
+                                    break;
                                 }
                             }
                         }
@@ -232,6 +233,26 @@ angular.module('app').controller('dashboardController', ['$rootScope', '$scope',
                         }
                     }
                     return false;
+                };
+                
+                $rootScope.getProjectFromProjectName = function (projName, projects) {
+                    for (var i = 0; i < projects.length; i++) {
+                        var proj = projects[i];
+                        if (proj.name === projName) {
+                            return proj;
+                        }
+                    }
+                    throw "dashboardController: Project not found";
+                };
+                
+                $rootScope.getDocumentFromDocumentId = function (docId, project) {
+                    for (var j = 0; j < project.documents.length; j++) {
+                        var doc = project.documents[j];
+                        if (doc.id == docId) {
+                            return doc;
+                        }
+                    }
+                    throw "dashboardController. Document not found";
                 };
                 
                 /**

@@ -5,7 +5,8 @@ angular
         .module('app')
         .controller('annotationController', ['$scope', '$window', '$rootScope',
             '$http', 'tokenService', 'getAnnotationService', 'textService', 'targetService', 'linkService', 'schemeService', '$q', 'hotkeys',
-            function ($scope, $window, $rootScope, $http, tokenService, getAnnotationService, textService, targetService, linkService, schemeService, $q, hotkeys) {
+            function ($scope, $window, $rootScope, $http, tokenService,
+                        getAnnotationService, textService, targetService, linkService, schemeService, $q, hotkeys) {
 
                 //Reads the committed files and builds them into the used data structures
                 this.init = function () {
@@ -42,6 +43,8 @@ angular
                     // Wait for both http requests to be answered
                     $q.all([httpProjects]).then(function () {
                         $rootScope.buildTableProjects();
+                        $rootScope.currProj = $rootScope.getProjectFromProjectName($window.sessionStorage.project, $rootScope.tableProjects);
+                        $rootScope.currDoc = $rootScope.getDocumentFromDocumentId($window.sessionStorage.docId, $rootScope.currProj);
                     });
 
                 };
@@ -826,31 +829,27 @@ angular
                 };
                 this.nextDoc = function (next) {
                     var found = false;
-                    for (var i = 0; i < $rootScope.tableProjects.length && !found; i++) {
-                        var proj = $rootScope.tableProjects[i];
-                        if (proj.name === $window.sessionStorage.project) {
-                            for (var j = 0; j < proj.documents.length && !found; j++) {
-                                var doc = proj.documents[j];
-                                if (doc.id == $window.sessionStorage.docId) {
-                                    // Next document
-                                    if (next === 1) {
-                                        if (j + 1 >= proj.documents.length) {
-                                            doc = proj.documents[0];
-                                        } else {
-                                            doc = proj.documents[j + 1];
-                                        }
-                                    } else if (next === -1) { // Previous document
-                                        if (j - 1 < 0) {
-                                            doc = proj.documents[proj.documents.length - 1];
-                                        } else {
-                                            doc = proj.documents[j - 1];
-                                        }
-                                    }
-
-                                    found = true;
-                                    $scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.project, doc.completed);
+                    var proj = $rootScope.currProj;
+                    for (var j = 0; j < proj.documents.length && !found; j++) {
+                        var doc = proj.documents[j];
+                        if (doc.id == $window.sessionStorage.docId) {
+                            // Next document
+                            if (next === 1) {
+                                if (j + 1 >= proj.documents.length) {
+                                    doc = proj.documents[0];
+                                } else {
+                                    doc = proj.documents[j + 1];
+                                }
+                            } else if (next === -1) { // Previous document
+                                if (j - 1 < 0) {
+                                    doc = proj.documents[proj.documents.length - 1];
+                                } else {
+                                    doc = proj.documents[j - 1];
                                 }
                             }
+
+                            found = true;
+                            $scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.project, doc.completed);
                         }
                     }
 
@@ -859,14 +858,15 @@ angular
                     }
                 };
                 this.setDocCompleted = function () {
-
                     var payload = {
                         value: $scope.completed
                     };
-                    $window.sessionStorage.completed = $scope.completed;
                     var payloadJson = JSON.stringify(payload);
                     var docUser = $window.sessionStorage.docId + '/' + $window.sessionStorage.uId;
+                    
                     $http.post("discanno/document/" + docUser, payloadJson).success(function (response) {
+                        $window.sessionStorage.completed = $scope.completed;
+                        $rootScope.currDoc.completed = $scope.completed;
                         if ($scope.completed) {
                             $rootScope.addAlert({type: 'success', msg: 'Document marked as completed!'});
                         } else {
