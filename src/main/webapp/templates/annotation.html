@@ -118,45 +118,53 @@
                         </div>
 
                         <!-- Timeline -->
-                        <!--                        <uib-accordion-group heading="Timeline" is-open="true" is-disabled="false" class="unselectable">
-                                                    <div>
-                                                        <div ng-controller="d3TimelineController as timeline">
-                                                            <d3-timeline
-                                                                annotations="annotation.annotationData"
-                                                                annotation-links="annotation.annotationLinks"
-                                                                selection="annotation.selectedNode"
-                                                                added-annotation="annotation.lastAdded"
-                                                                removed-annotation="annotation.lastRemoved"
-                                                                added-link="annotation.lastAddedLink"
-                                                                removed-link="annotation.lastRemovedLink"
-                                                                last-set="annotation.lastSet"
-                                                                change-link-label="annotation.changeLinkLabel"
-                                                                last-targeted="annotation.lastTargeted"
-                                                                set-selection="annotation.setSelected(item)">
-                                                            </d3-timeline>
-                                                        </div>
-                        
-                                                    </div>
-                                                </uib-accordion-group>-->
+                        <div ng-if="timeline.show">
+                            <uib-accordion-group heading="Timeline"
+                                                 is-open="timeline.isOpen"
+                                                 class="unselectable">
+                                <div>
+                                    <div ng-controller="d3TimelineController as timeline">
+                                        <d3-timeline
+                                            annotations="annotation.annotationData"
+                                            annotation-links="annotation.annotationLinks"
+                                            selection="annotation.selectedNode"
+                                            added-annotation="annotation.lastAdded"
+                                            removed-annotation="annotation.lastRemoved"
+                                            added-link="annotation.lastAddedLink"
+                                            removed-link="annotation.lastRemovedLink"
+                                            last-set="annotation.lastSet"
+                                            change-link-label="annotation.changeLinkLabel"
+                                            last-targeted="annotation.lastTargeted"
+                                            set-selection="annotation.setSelected(item)">
+                                        </d3-timeline>
+                                    </div>
+                                </div>
+                            </uib-accordion-group>
+                        </div>
 
                         <!-- Graph -->
-                        <uib-accordion-group heading="Graph" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable" id="anno-graph">
-                            <div>
-                                <div ng-controller="d3GraphController as graph">
-                                    <d3-graph annotations="annotation.annotationData"
-                                              annotation-links="annotation.annotationLinks"
-                                              selection="annotation.selectedNode"
-                                              added-annotation="annotation.lastAdded"
-                                              removed-annotation="annotation.lastRemoved"
-                                              removed-link="annotation.lastRemovedLink"
-                                              added-link="annotation.lastAddedLink"
-                                              last-set="annotation.lastSet"
-                                              last-targeted="annotation.lastTargeted"
-                                              set-selection="annotation.setSelected(item)">
-                                    </d3-graph>
+                        <div ng-if="graph.show">
+                            <uib-accordion-group heading="Graph"
+                                                 is-open="graph.isOpen"
+                                                 class="unselectable"
+                                                 id="anno-graph">
+                                <div>
+                                    <div ng-controller="d3GraphController as graph">
+                                        <d3-graph annotations="annotation.annotationData"
+                                                  annotation-links="annotation.annotationLinks"
+                                                  selection="annotation.selectedNode"
+                                                  added-annotation="annotation.lastAdded"
+                                                  removed-annotation="annotation.lastRemoved"
+                                                  removed-link="annotation.lastRemovedLink"
+                                                  added-link="annotation.lastAddedLink"
+                                                  last-set="annotation.lastSet"
+                                                  last-targeted="annotation.lastTargeted"
+                                                  set-selection="annotation.setSelected(item)">
+                                        </d3-graph>
+                                    </div>
                                 </div>
-                            </div>
-                        </uib-accordion-group>
+                            </uib-accordion-group>
+                        </div>
 
                         <!-- Annotation options -->
                         <uib-accordion-group heading="Annotations" is-disabled="false" is-open="true" class="unselectable" id="anno-options">

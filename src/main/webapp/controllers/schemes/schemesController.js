@@ -2,12 +2,13 @@
 
 angular
         .module('app')
-        .controller('schemesController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', '$location', '$q', function ($scope, $rootScope, $window, $http, $uibModal, $location, $q) {
+        .controller('schemesController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', '$location', '$q',
+    function ($scope, $rootScope, $window, $http, $uibModal, $location, $q) {
 
                 // Redirect if client is not logged in
                 if (($window.sessionStorage.role != 'admin')
-						&& ($window.sessionStorage.role != 'annotator')
-						&& ($window.sessionStorage.role != 'projectmanager')) {
+                        && ($window.sessionStorage.role != 'annotator')
+                        && ($window.sessionStorage.role != 'projectmanager')) {
                     $rootScope.redirectToLogin();
                 } else {
 
@@ -30,6 +31,8 @@ angular
                     };
                     
                     /**
+                     * TODO refactor move to dashboardController
+                     * 
                      * Request list of all schemes.
                      * @returns http-Object of query
                      */
@@ -38,8 +41,8 @@ angular
                             $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
                         }).error(function (response) {
                             if (response == "") {
-								$rootScope.redirectToLogin();
-							}
+                                $rootScope.redirectToLogin();
+                            }
                         });
                         return httpSchemes;
                     };
@@ -52,10 +55,10 @@ angular
                         var httpProjects = $http.get("discanno/project").success(function (response) {
                             $scope.projects = JSOG.parse(JSON.stringify(response)).projects;
                         }).error(function (response) {
-							if (response == "") {
-								$rootScope.redirectToLogin();
-							}
-						});
+                            if (response == "") {
+                                $rootScope.redirectToLogin();
+                            }
+                        });
                         return httpProjects;
                     };
 
@@ -85,8 +88,8 @@ angular
                                 'labelSetCount': scheme.labelSets.length,
                                 'linkSetCount': scheme.linkSets.length
                             };
+                            
                             this.tableSchemes.push(schemePreview);
-
                         }
 
                         $rootScope.tableSchemes = this.tableSchemes;
