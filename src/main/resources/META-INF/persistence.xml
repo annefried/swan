@@ -4,6 +4,9 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:app/jdbc/DiscAnno</jta-data-source>
     <class>de.unisaarland.discanno.entities.Annotation</class>
+    <!-- Include MappedSuperClass because of an Eclipse bug:
+    	https://bugs.eclipse.org/bugs/show_bug.cgi?id=361042 -->
+    <class>de.unisaarland.discanno.entities.BaseEntity</class>
     <class>de.unisaarland.discanno.entities.Scheme</class>
     <class>de.unisaarland.discanno.entities.LabelSet</class>
     <class>de.unisaarland.discanno.entities.LinkLabelLinkSetMap</class>
