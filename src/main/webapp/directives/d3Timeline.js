@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -14,7 +14,8 @@
  * "isTargetOf" belonging to nodes consists only of node ids and not node
  * objects.
  */
-angular.module('app')
+angular
+    .module('app')
     .directive('d3Timeline', ['d3', function(d3) {
         return {
             restrict: 'EA',
