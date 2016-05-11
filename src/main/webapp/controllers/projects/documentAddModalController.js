@@ -36,29 +36,13 @@ angular
          * @param {type} targets
          * @param {type} projectId
          * @param {type} currFileName
-         * @returns {undefined}
          */
         $scope.validateTargets = function (targets, projectId, currFileName) {
-            var scheme = null;
-            for (var i = 0; i < $rootScope.tableProjects.length; i++) {
-                var curProj = $rootScope.tableProjects[i];
-                if (curProj.id === projectId) {
-                    scheme = curProj.scheme;
-                    break;
-                }
-            }
-            for (var i = 0; i < $rootScope.schemes.length; i++) {
-                var currScheme = $rootScope.schemes[i];
-                if (currScheme.id === scheme.id) {
-                    scheme = currScheme;
-                    break;
-                }
-            }
-            var tTypeMap = {}; // for linear access
-            for (var i = 0; i < scheme.targetTypes.length; i++) {
-                var tType = scheme.targetTypes[i].targetType;
-                tTypeMap[tType] = tType;
-            }
+
+        	const curProj = $rootScope.getProjectByProjectId(projectId, $rootScope.tableProjects);
+            const scheme = $rootScope.getSchemeBySchemeId(curProj.scheme.id, $rootScope.schemes);
+
+            const tTypeMap = $scope.getTargetTypeMap(scheme);
             for (var i = 0; i < targets.targets.length; i++) {
                 var target = targets.targets[i];
                 if (tTypeMap[target.type] === undefined) {
@@ -67,6 +51,22 @@ angular
                             " not defined in scheme.";
                 }
             }
+        };
+        
+        /**
+         * Returns a map which includes all target types to the given scheme.
+         * The map provides constant access for validation purposes.
+         * 
+         * @param {type} scheme
+         * @returns {type} tTypeMap
+         */
+        $scope.getTargetTypeMap = function (scheme) {
+            var tTypeMap = {};
+            for (var i = 0; i < scheme.targetTypes.length; i++) {
+                var tType = scheme.targetTypes[i].targetType;
+                tTypeMap[tType] = tType;
+            }
+            return tTypeMap;
         };
 
         $scope.submit = function () {
@@ -114,18 +114,21 @@ angular
 
                     $http.post("discanno/document/adddoctoproject", JSON.stringify(documentTemplate)).then(function (curFileName) {
                         return function (response) {
+                        	
+                        	$rootScope.currProj = $rootScope.getProjectByProjectId($rootScope.currentProjectId, $rootScope.tableProjects);
+                        	
                             var docTemplate = {
                                 'completed': 0,
                                 'id': response.data,
-                                'name': curFileName
+                                'name': curFileName,
+                                'states': undefined
                             };
-                            for (var i = 0; i < $rootScope.tableProjects.length; i++) {
-                                var curProj = $rootScope.tableProjects[i];
-                                if (curProj.id === $rootScope.currentProjectId) {
-                                    $rootScope.tableProjects[i].numberOfDocuments++;
-                                    $rootScope.tableProjects[i].documents.push(docTemplate);
-                                }
-                            }
+                            
+                            docTemplate.states = $scope.getStatesArrayForNewDoc(docTemplate, $rootScope.currProj);
+                            
+                            $rootScope.currProj.numberOfDocuments++;
+                            $rootScope.currProj.documents.push(docTemplate);
+                            
                             $uibModalInstance.close();
                         };
                     }(curFileName), function (response) {
@@ -138,6 +141,27 @@ angular
                 $rootScope.addAlert({type: 'danger', msg: ex});
             }
 
+        };
+        
+        /**
+         * Returns an array which consists of states for each user for
+         * a new document.
+         */
+        $scope.getStatesArrayForNewDoc = function (doc, proj) {
+        	var states = [];
+        	
+        	for (var i = 0; i < proj.users.length; i++) {
+        		var user = proj.users[i];
+        		var state = {
+    				'completed': false,
+    				'document': doc,
+    				'user': user
+        		};
+        		
+        		states.push(state);
+        	}
+        	
+        	return states;
         };
 
         $scope.cancel = function () {

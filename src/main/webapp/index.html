@@ -23,7 +23,6 @@ and open the template in the editor.
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-        <!--script src="bower_components/bootstrap-tour/build/js/bootstrap-tour-standalone.min.js"></script-->
 
         <script src="other/annotationStructures.js"></script>
         <script src="other/xml2json.js"></script>
@@ -40,41 +39,47 @@ and open the template in the editor.
         <script src="directives/d3Timeline.js"></script>
 
         <!--Angular Controllers-->
-        <script src="controllers/projects/projectsController.js"></script>
+        <script src="controllers/rootController.js"></script>
+        
         <script src="controllers/schemes/schemeViewModalController.js"></script>
         <script src="controllers/schemes/schemeDeleteModalController.js"></script>
         <script src="controllers/schemes/schemeUploadModalController.js"></script>
         <script src="controllers/schemes/schemesController.js"></script>
-        <script src="controllers/profileController.js"></script>
-        <script src="controllers/d3AnnotationController.js"></script>
-        <script src="controllers/d3GraphController.js"></script>
-        <script src="controllers/d3TimelineController.js"></script>
-        <script src="controllers/d3OptionsController.js"></script>
-        <script src="controllers/rootController.js"></script>
+        
+        <script src="controllers/profile/profileController.js"></script>
+        <script src="controllers/profile/profileEditModalController.js"></script>
+        
+        <script src="controllers/d3/d3AnnotationController.js"></script>
+        <script src="controllers/d3/d3GraphController.js"></script>
+        <script src="controllers/d3/d3TimelineController.js"></script>
+        <script src="controllers/d3/d3OptionsController.js"></script>
+        
         <script src="controllers/annotationController.js"></script>
+        
         <script src="controllers/users/usersController.js"></script>
         <script src="controllers/users/userEditModalController.js"></script>
         <script src="controllers/users/userAddModalController.js"></script>
         <script src="controllers/users/userDeleteModalController.js"></script>
+        
+        <script src="controllers/projects/projectsController.js"></script>
         <script src="controllers/projects/projectEditModalController.js"></script>
         <script src="controllers/projects/projectDeleteModalController.js"></script>
         <script src="controllers/projects/projectAddModalController.js"></script>
+        
         <script src="controllers/projects/documentAddModalController.js"></script>
         <script src="controllers/projects/documentDeleteModalController.js"></script>
+        
         <script src="controllers/tutorialController.js"></script>
         
         <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/app.css" rel="stylesheet">
         <link href="bower_components/angular-hotkeys/build/hotkeys.min.css" rel="stylesheet">
         <link href="bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet">
-        <!--link href="bower_components/bootstrap-tour/build/css/bootstrap-tour-standalone.min.css" rel="stylesheet"-->
         
         <link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="other/jquery.mousewheel.js"></script>
         <script type="text/javascript" src="other/jquery.jscrollpane.min.js"></script>
         <script type="text/javascript" src="other/mwheelIntent.js"></script>
-        
     </head>
 
     <body ng-controller="rootController">

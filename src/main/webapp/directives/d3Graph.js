@@ -25,9 +25,11 @@ angular
             },
             link: function ($scope, iElement) {
 
-                // constants
-                var MARGIN = {top: -5, right: -5, bottom: -5, left: -5};
-                var NOT_LINKED = 0;
+                // Constants
+                const MARGIN = {top: -5, right: -5, bottom: -5, left: -5};
+                const NOT_LINKED = 0;
+                const maxTextSize = 20;
+                const maxTextSizeHalf = maxTextSize / 2;
 
                 var force;
                 var drag; // dragging behavior for nodes
@@ -35,7 +37,6 @@ angular
                 var link;
                 var linkText;
                 var container;
-                var maxTextSize = 20;
                 var width = 0;
                 var height = 0;
 
@@ -289,7 +290,7 @@ angular
 
                     node.append("rect")
                             .attr("width", function (d) {
-                                var labels = d.shortenLabels(maxTextSize / 2);
+                                var labels = d.shortenLabels(maxTextSizeHalf);
                                 var text = d.toString(maxTextSize);
                                 d.width = 9 * (labels.length + text.length + 2);
                                 return d.width;
@@ -317,7 +318,7 @@ angular
                             .attr("dx", 5)
                             .attr("dy", 15)
                             .text(function (d) {
-                                var labels = d.shortenLabels(maxTextSize / 2);
+                                var labels = d.shortenLabels(maxTextSizeHalf);
                                 var text = "'" + d.toString(maxTextSize) + "'";
 
                                 return (labels === "") ? text : labels + " | " + text;
@@ -343,7 +344,7 @@ angular
                 $scope.updateNodeTexts = function () {
                     node.select("rect")
                             .attr("width", function (d) {
-                                var labels = d.shortenLabels(maxTextSize / 2);
+                                var labels = d.shortenLabels(maxTextSizeHalf);
                                 var text = d.toString(maxTextSize);
                                 d.width = 9 * (labels.length + text.length + 2);
                                 return d.width;
@@ -351,7 +352,7 @@ angular
 
                     node.select("text")
                             .text(function (d) {
-                                var labels = d.shortenLabels(maxTextSize / 2);
+                                var labels = d.shortenLabels(maxTextSizeHalf);
                                 var text = "'" + d.toString(maxTextSize) + "'";
 
                                 return (labels === "") ? text : labels + " | " + text;

@@ -28,11 +28,6 @@ function Config($routeProvider) {
             controller: 'rootController',
             controllerAs: 'dashboard'
         })
-        .when('/explorer', {
-            templateUrl: 'templates/explorer.html',
-            controller: 'explorerController',
-            controllerAs: 'explorer'
-        })
         .when('/projects', {
             templateUrl: 'templates/projects/projects.html',
             controller: 'projectsController',
@@ -49,7 +44,7 @@ function Config($routeProvider) {
             controllerAs: 'annotation'
         })
         .when('/profile', {
-            templateUrl: 'templates/profile.html',
+            templateUrl: 'templates/profile/profile.html',
             controller: 'profileController',
             controllerAs: 'profile'
         })

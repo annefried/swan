@@ -34,23 +34,23 @@ angular
             },
             link: function($scope, iElement) {
                 
-                // constants
-                var MARGIN = {top: -5, right: -5, bottom: -5, left: -5};
+                // Constants
+                const MARGIN = {top: -5, right: -5, bottom: -5, left: -5};
                 
-                // upper case for comparison
-                var BEFORE_STR = "BEFORE";
-                var AFTER_STR = "AFTER";
-                var OVERLAP_STR = "OVERLAP";
+                // Upper case for comparison
+                const BEFORE_STR = "BEFORE";
+                const AFTER_STR = "AFTER";
+                const OVERLAP_STR = "OVERLAP";
                 
-                var BEFORE_INT = 0;
-                var OVERLAP_INT = 1;
-                var AFTER_INT = 2;
+                const BEFORE_INT = 0;
+                const OVERLAP_INT = 1;
+                const AFTER_INT = 2;
                 
-                var NOT_LINKED = 0;
+                const NOT_LINKED = 0;
                 
-                var EDGE_ROUNDING = 4;
-                var BOX_HEIGHT = 20;
-                var BOX_PADDING = BOX_HEIGHT + 25; // Distance between boxes in y dimension
+                const EDGE_ROUNDING = 4;
+                const BOX_HEIGHT = 20;
+                const BOX_PADDING = BOX_HEIGHT + 25; // Distance between boxes in y dimension
                 
                 var node;
                 var link;

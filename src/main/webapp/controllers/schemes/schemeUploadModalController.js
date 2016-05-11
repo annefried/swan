@@ -126,7 +126,7 @@ angular
 
         /**
          * Called when clicking editing button in scheme table
-         * @param {type} name : name of the link set to be edited
+         * @param {type} set : link set to be edited
          */
         $scope.editLinkSet = function (set) {
             // find the link set to be edited
