@@ -73,6 +73,6 @@ angular
             $uibModalInstance.dismiss('cancel');
         };
 
-        // Initialise View
+        // Initialize View
         $scope.init();
     });

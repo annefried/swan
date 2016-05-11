@@ -44,24 +44,28 @@ angular
 
                 $scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
 
+                // Constants
+                const lineHeight = 40;
+                const wordHeight = 40;
+                const margin = 80; // Space on top of text
+                const annotationHeight = wordHeight / 2.4;
+                const scale = 1.2;
+                const jDistance = 30; // Amount of lines after which text should be redrawn
+                const defaultLinkOpacity = 0.3;
+                const wordSpacing = 3.5;
+                const opa = 0.15;
+                const oma = 0.55;
+                
                 var width, height;
                 var lineCount;
                 var textWidth;
-                var wordSpacing = 3.5;
                 var textHeight = 0;
-                var lineHeight = 40;
-                var wordHeight = 40;
-                var margin = 80; // space on top of text
-                var annotationHeight = wordHeight / 2.4;
-                var scale = 1.2;
                 var arity = 1;
                 var linkStart;
                 var formText = [];
                 var formAnnotations = {};
                 var prefixes = [];
                 var currJ = 0;
-                var jDistance = 30; //Amount of lines after which text should be redrawn
-                var defaultLinkOpacity = 0.3;
                 var oldJ = currJ;
                 var minJ = 0;
                 var maxJ = minJ + jDistance;
@@ -83,8 +87,8 @@ angular
                 $scope.onResize();
                 angular.element($window).bind('resize', $scope.onResize);
 
-                //Watch scroll behaviour of user to only render important
-                //text segments
+                // Watch scroll behavior of user to only render important
+                // text segments
                 angular.element($window).bind("scroll", function () {
                     var minDraw = window.pageYOffset;
                     currJ = Math.floor(minDraw / 40);
@@ -126,8 +130,7 @@ angular
                     $scope.drawText(0, $scope.maxLines());
                     $scope.drawAnnotations(0, $scope.maxLines());
                     return $scope.render(true);
-                }
-                );
+                });
                 var maxLines = $scope.data.length;
                 var i = 0;
                 var j = 0;
@@ -463,7 +466,7 @@ angular
                     if (newVals !== undefined && newVals !== null) {
 
                         //Gather all the formatted words that correspond
-                        //to the annotated words fo this annotation
+                        //to the annotated words for this annotation
                         var formWords = [];
                         for (var a = 0; a < newVals.words.length; a++) {
                             var word = newVals.words[a];
@@ -473,7 +476,7 @@ angular
                         var maxBefore = $scope.maxAnnotationInLine(formWords);
                         $scope.setLineHeights();
                         $scope.addFormAnnotation(newVals, false);
-                        var maxAfter = $scope.maxAnnotationInLine(formWords);
+                        const maxAfter = $scope.maxAnnotationInLine(formWords);
                         var maxDiff = true;
                         for (var b = 0; b < maxBefore.length; b++) {
                             var maxB = maxBefore[b];
@@ -492,8 +495,9 @@ angular
                             $scope.drawAnnotations(minJ, maxJ);
                             $scope.highlightSelected();
                             $scope.clearSelection();
-                        } else
+                        } else {
                             $scope.render();
+                        }
                     }
                 }, true);
                 //Listens to changes to the last added object
@@ -514,7 +518,7 @@ angular
                         //to the annotated words fo this annotation
                         var formWords = [];
                         for (var a = 0; a < newVals.words.length; a++) {
-                            var word = newVals.words[a];
+                            const word = newVals.words[a];
                             formWords.push(formText[word.lineIndex][word.wordIndex]);
                         }
 
@@ -522,11 +526,11 @@ angular
                         formAnnotations[newVals.id];
                         $scope.removeFormAnnotation(newVals);
                         $scope.setLineHeights();
-                        var maxAfter = $scope.maxAnnotationInLine(formWords);
+                        const maxAfter = $scope.maxAnnotationInLine(formWords);
                         var maxDiff = true;
                         for (var b = 0; b < maxBefore.length; b++) {
-                            var maxB = maxBefore[b];
-                            var maxA = maxAfter[b];
+                            const maxB = maxBefore[b];
+                            const maxA = maxAfter[b];
                             if (maxA !== maxB && maxA > 0 && maxB > 0) {
                                 maxDiff = false;
                                 break;
@@ -539,8 +543,9 @@ angular
                         if (maxDiff) {
                             $scope.drawAnnotations(minJ, maxJ);
                             $scope.highlightSelected();
-                        } else
+                        } else {
                             $scope.render();
+                        }
                     }
                 });
                 //Listens to changes to the last changed object
@@ -1315,23 +1320,23 @@ angular
                         //Path of the link
                         svg.selectAll("annotationlinks")
                                 .data(d3.entries(outerLinks).filter(function (d) {
-                                    var link = d.value;
-                                    var source = formAnnotations[link.source.id];
-                                    var target = formAnnotations[link.target.id];
+                                    const link = d.value;
+                                    const source = formAnnotations[link.source.id];
+                                    const target = formAnnotations[link.target.id];
                                     //Only draw link when at least one of the annotations are visible
                                     return $scope.isVisible(source, minLine, maxLine) || $scope.isVisible(target, minLine, maxLine);
                                 }))
                                 .enter()
                                 .append("path")
                                 .attr("d", function (d) {
-                                    var source = d.value.source;
-                                    var target = d.value.target;
-                                    var formSource = formAnnotations[source.id];
-                                    var formTarget = formAnnotations[target.id];
-                                    var sourceBox = formSource.annotationBoxes[formSource.annotationBoxes.length - 1];
-                                    var targetBox = formTarget.annotationBoxes[0];
+                                    const source = d.value.source;
+                                    const target = d.value.target;
+                                    const formSource = formAnnotations[source.id];
+                                    const formTarget = formAnnotations[target.id];
+                                    const sourceBox = formSource.annotationBoxes[formSource.annotationBoxes.length - 1];
+                                    const targetBox = formTarget.annotationBoxes[0];
                                     //Determine the edges of the path of the link
-                                    var lineData = [{"x": sourceBox.x + sourceBox.width, "y": sourceBox.y + 0.5 * wordHeight / 3},
+                                    const lineData = [{"x": sourceBox.x + sourceBox.width, "y": sourceBox.y + 0.5 * wordHeight / 3},
                                         {"x": ((sourceBox.x + sourceBox.width * 1.3)), "y": sourceBox.y + 0.5 * wordHeight / 3},
                                         {"x": ((sourceBox.x + sourceBox.width * 1.3)), "y": targetBox.y - 1.5 * wordHeight / 3},
                                         {"x": targetBox.x + 0.5 * targetBox.width, "y": targetBox.y - 1.5 * wordHeight / 3},
@@ -1402,7 +1407,7 @@ angular
                     //the screen
                     var currentHeight = margin;
                     if (minLine > 0) {
-                        var min = (formText[0].length === 0) ? minLine : minLine - 1;
+                        const min = (formText[0].length === 0) ? minLine : minLine - 1;
                         for (var i = 0; i < min; i++) {
                             if (prefixes[i] != undefined)
                                 currentHeight += prefixes[i].height;
@@ -1448,7 +1453,6 @@ angular
                 };
                 //Hightlight all annotations and their corresponding text
                 $scope.highlightAllAnnotations = function () {
-                    var opa = 0.15;
                     svg.selectAll(".annotationbox")
                             .style("opacity", function (d) {
                                 return 1;
@@ -1467,22 +1471,21 @@ angular
                 //Hightlight all annotations and their corresponding text
                 //if they are linkable with the source annotation
                 $scope.highlightLinkableAnnotations = function (source) {
-                    var opa = 0.15;
                     svg.selectAll(".annotationbox")
                             .style("opacity", function (d) {
-                                var linkable = $scope.linkable({source: source, target: d.annotation});
+                                const linkable = $scope.linkable({source: source, target: d.annotation});
                                 return linkable ? 1 : opa;
                             });
                     svg.selectAll(".annotationboxtext")
                             .style("opacity", function (d) {
-                                var linkable = $scope.linkable({source: source, target: d.annotation});
+                                const linkable = $scope.linkable({source: source, target: d.annotation});
                                 return linkable ? 1 : opa;
                             });
                     svg.selectAll(".annotationtext")
                             .style("opacity", function (d) {
                                 for (var id in d.annoGrid) {
-                                    var anno = d.annoGrid[id];
-                                    var linkable = $scope.linkable({source: source, target: anno});
+                                    const anno = d.annoGrid[id];
+                                    const linkable = $scope.linkable({source: source, target: anno});
                                     return linkable ? 1 : opa;
                                 }
 
@@ -1492,8 +1495,6 @@ angular
                 //Highlights the currently selected object and all
                 //related objects
                 $scope.highlightSelected = function (lastSelection) {
-                    var opa = 0.15;
-                    var oma = 0.55;
                     if ($scope.selection === null || $scope.selection === undefined)
                         $scope.drawEverything();
                     else {
@@ -1503,7 +1504,7 @@ angular
                                 var annotation = formAnnotations[annoID];
                                 if (annotation.annotation === $scope.selection) {
                                     // Move scrollbar to position of first word in Anno, since first box might not have a coordinate
-                                    var firstWord = annotation.annotationBoxes[0].formWords[0];
+                                    const firstWord = annotation.annotationBoxes[0].formWords[0];
                                     window.scrollTo(firstWord.x, firstWord.y);
                                 }
                             }
@@ -1622,13 +1623,13 @@ angular
                                         case 3:
                                             var target = link.target;
                                             var formTarget = formAnnotations[target.id];
-                                            var targetBox = formTarget.annotationBoxes[0];
+                                            const targetBox = formTarget.annotationBoxes[0];
                                             return targetBox.x + targetBox.width * 0.5;
                                         default:
                                             var source = link.source;
                                             var formTarget = formAnnotations[source.id];
                                             var boxCount = formTarget.annotationBoxes.length;
-                                            var sourceBox = formTarget.annotationBoxes[boxCount - 1];
+                                            const sourceBox = formTarget.annotationBoxes[boxCount - 1];
                                             return sourceBox.x + sourceBox.width + 10;
                                     }
                                 })
@@ -1645,14 +1646,14 @@ angular
                                             var formTarget = formAnnotations[target.id];
                                             var targetBox = formTarget.annotationBoxes[0];
                                             //Set heightScale depending on the relation of source and target
-                                            var heightScale = ($scope.links[target.id] !== undefined
+                                            const heightScale = ($scope.links[target.id] !== undefined
                                                     && $scope.links[target.id][link.source.id] !== undefined && $scope.selection.type !== "Link") ? 0.7 : 0.6;
                                             return targetBox.y - wordHeight * heightScale;
                                         default:
                                             var source = link.source;
                                             var formTarget = formAnnotations[source.id];
                                             var boxCount = formTarget.annotationBoxes.length;
-                                            var sourceBox = formTarget.annotationBoxes[boxCount - 1];
+                                            const sourceBox = formTarget.annotationBoxes[boxCount - 1];
                                             return sourceBox.y;
                                     }
                                 });
@@ -1763,8 +1764,8 @@ angular
                 };
                 $scope.isVisible = function (formAnnotation, minLine, maxLine) {
                     if (minLine !== undefined && maxLine !== undefined) {
-                        var min = formAnnotation.startLine();
-                        var max = formAnnotation.endLine();
+                        const min = formAnnotation.startLine();
+                        const max = formAnnotation.endLine();
                         if (max < minLine || min > maxLine)
                             return false;
                     }

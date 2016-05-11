@@ -15,7 +15,7 @@ angular
             $scope.projPms = $rootScope.tableProjects[$rootScope.currentProjectIndex].pms;
             $scope.watchingUsers = $rootScope.tableProjects[$rootScope.currentProjectIndex].watchingUsers;
             $rootScope.role = $window.sessionStorage.role;
-            $scope.currUser = {'id': parseInt($window.sessionStorage.uId)};
+            $scope.currUser = {'id': parseInt($window.sessionStorage.uId)};	// TODO maybe global
             $scope.isWatching = $rootScope.tableProjects[$rootScope.currentProjectIndex].isWatching;
         };
 
@@ -43,7 +43,7 @@ angular
             $http.post("discanno/project/add/" + $rootScope.currentProjectId + "/" + $scope.newUser).success(function (response) {
                 var emptyTemplate = ['0'];
                 for (var i = 0; i < $scope.users.length; i++) {
-                    var u = $scope.users[i];
+                    const u = $scope.users[i];
                     if (u.id === $scope.newUser) {
                         var proj = $rootScope.tableProjects[$rootScope.currentProjectIndex];
                         proj.users.push(u);
@@ -52,6 +52,19 @@ angular
                         } else {
                             proj.completed.push(0);
                         }
+                        
+                        // Add a new state object for every document
+                        for (var d = 0; d < proj.documents.length; d++) {
+                        	const doc = proj.documents[d];
+                        	var state = {
+                				'completed': false,
+                				'document': doc,
+                				'user': u
+                    		};
+                        	doc.states.push(state);
+                        }
+                        
+                        break;
                     }
                 }
             }).error(function (response) {
@@ -79,42 +92,51 @@ angular
 
         $scope.deleteUser = function (uId) {
             $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
-                var projectT = $rootScope.tableProjects[$rootScope.currentProjectIndex];
+                const projectT = $rootScope.tableProjects[$rootScope.currentProjectIndex];
+                var index = 0;
                 for (var i = 0; i < projectT.users.length; i++) {
                     if (projectT.users[i].id == uId) {
                         projectT.users.splice(i, 1);
                         projectT.completed.splice(i, 1);
+                        index = i;
                         break;
                     }
                 }
-                // TODO refactor
-                // Not the most elegant code, we should change that when we do the
-                // big refactoring, when merging $rootScope.projects and $rootScope.tableProjects
-                var completedDecreaseMap = {};
-                for (var i = 0; i < $rootScope.projects.length; i++) {
-                    var project = $rootScope.projects[i];
-                    for (var j = 0; j < project.documents.length; j++) {
-                        var doc = project.documents[j];
-                        for (var s = 0; s < doc.states.length; s++) {
-                            var state = doc.states[s];
-                            if (state.completed && state.user.id == uId) {
-                                completedDecreaseMap[state.document.id] = state.document.id;
-                                break;
-                            }
-                        }
-                    }
-                }
-
+                
+                const completedDecreaseMap = $scope.getCompletedDecreaseMap(projectT, uId);
                 for (var i = 0; i < projectT.documents.length; i++) {
-                    var doc = projectT.documents[i];
+                    const doc = projectT.documents[i];
                     if (completedDecreaseMap[doc.id] !== undefined
                             && doc.completed > 0) {
                         doc.completed--;
                     }
+                    doc.states.splice(index, 1);
                 }
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);
             });
+        };
+        
+        /**
+         * Generates a map which indicates which document's completed number
+         * has to be decreased. When a user is deleted from a project, the
+         * document itself does not hold the information whether the completed
+         * number has to be decreased depending on the user, because the user
+         * might have completed the document.
+         */
+        $scope.getCompletedDecreaseMap = function (project, uId) {
+        	const completedDecreaseMap = {};
+            for (var j = 0; j < project.documents.length; j++) {
+                const doc = project.documents[j];
+                for (var s = 0; s < doc.states.length; s++) {
+                    const state = doc.states[s];
+                    if (state.completed && state.user.id == uId) {
+                        completedDecreaseMap[state.document.id] = state.document.id;
+                        break;
+                    }
+                }
+            }
+            return completedDecreaseMap;
         };
 
         $scope.deletePM = function (uId) {
@@ -166,8 +188,8 @@ angular
                     $scope.isWatching = true;
                     $rootScope.tableProjects[$rootScope.currentProjectIndex].isWatching = true;
                 }).error(function (response) {
-                                    $rootScope.checkResponseStatusCode(response.status);
-                            });
+                    $rootScope.checkResponseStatusCode(response.status);
+                });
             } else {
                 // Remove project manager from watching list
                 $http.post("discanno/project/delWatchingUser/" + proj.id + "/" + $window.sessionStorage.uId).success(function (response) {
@@ -179,8 +201,8 @@ angular
                         }
                     }
                 }).error(function (response) {
-                                    $rootScope.checkResponseStatusCode(response.status);
-                            });
+                    $rootScope.checkResponseStatusCode(response.status);
+	            });
             }
             $rootScope.tableProjects[$rootScope.currentProjectIndex].watchingUsers = $scope.watchingUsers;
         };

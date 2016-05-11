@@ -6,8 +6,8 @@
 'use strict';
 
 /**
- * Called upon clicking 'x'-Button of a Scheme.
- * $rootScope.currentSchemeId : id of Scheme that will be deleted.
+ * Responsible controller for the deletion of a scheme. Called upon clicking
+ * 'x'-button of a scheme.
  */
 angular
     .module('app')
@@ -15,9 +15,9 @@ angular
 
         $scope.submit = function () {
             $http.delete("discanno/scheme/" + $rootScope.currentSchemeId).success(function (response) {
-                for (var k = 0; k < $rootScope.tableSchemes.length; k++) {
-                    if ($rootScope.tableSchemes[k].id === $rootScope.currentSchemeId) {
-                        $rootScope.tableSchemes.splice(k, 1);
+                for (var i = 0; i < $rootScope.tableSchemes.length; i++) {
+                    if ($rootScope.tableSchemes[i].id === $rootScope.currentSchemeId) {
+                        $rootScope.tableSchemes.splice(i, 1);
                     }
                 }
                 $uibModalInstance.close();
