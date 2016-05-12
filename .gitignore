@@ -1,9 +1,11 @@
 /target/
 /bin/
 /.idea/
+/src/main/webapp/node_modules/
 /.classpath
 /.settings/
 /nbactions.xml
+/npm-debug.log
 /Project1_Politics1_John_Locke.xml
 /export.zip
 /jacoco-report/
