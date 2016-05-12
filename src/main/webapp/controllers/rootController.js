@@ -21,12 +21,12 @@ angular
             $rootScope.alerts.splice(index, 1);
         };
 
-        $rootScope.checkResponseStatusCode = function (status) {
-            if (status === 403) { // Forbidden
+        $rootScope.checkResponseStatusCode = function (statusCode) {
+            if (statusCode === 403) { // Forbidden
                 $rootScope.redirectToLogin();
-            } else if (status >= 400 && status < 500) {
+            } else if (statusCode >= 400 && statusCode < 500) {
                 $rootScope.addAlert({type: 'danger', msg: 'This action is not allowed.'});
-            } else if (status >= 500 && status < 600) {
+            } else if (statusCode >= 500 && statusCode < 600) {
                 $rootScope.addAlert({type: 'danger', msg: 'No server connection.'});
             }
         };
@@ -36,9 +36,9 @@ angular
         };
         
         $rootScope.validateSignedInUser = function () {
-        	if (($window.sessionStorage.role != 'admin')
-        			&& ($window.sessionStorage.role != 'annotator')
-	                && ($window.sessionStorage.role != 'projectmanager')) {
+        	if ($window.sessionStorage.role != 'admin'
+        			&& $window.sessionStorage.role != 'annotator'
+	                && $window.sessionStorage.role != 'projectmanager') {
                 $rootScope.redirectToLogin();
             }
         };
