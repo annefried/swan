@@ -120,18 +120,24 @@ angular
                         const doc = proj.documents[j];
                         const states = new Array(doc.states.length);
 
+                        /** TODO HOTFIX
+                         * https://github.com/annefried/discanno/issues/167
                         if (doc.states.length !== proj.users.length) {
                             throw "rootController: States and users length differs";
                         }
+                         */
 
                         for (var yi = 0; yi < doc.states.length; yi++) {
                             const state = doc.states[yi];
                             const index = userIdIndexMap[state.user.id];
+                            /** TODO HOTFIX
+                             * https://github.com/annefried/discanno/issues/167
                             if (index === undefined) {
                                 throw "rootController: Unkown user";
                             } else {
+                            */
                                 states[index] = state;
-                            }
+                            //}
                         }
 
                         var docCompl;
