@@ -67,6 +67,7 @@ angular
                         break;
                     }
                 }
+                $scope.newUser = undefined;
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);
             });
@@ -85,6 +86,7 @@ angular
                         }
                     }
                 }
+                $scope.newPM = undefined;
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);
             });
