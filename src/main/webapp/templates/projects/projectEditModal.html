@@ -51,7 +51,7 @@ and open the template in the editor.
                         <select ng-model="newPM"
                                 ng-options="pm.id as pm.email for pm in (getUserComplement(this.pms, this.projPms)| orderBy: '-email')">
                         </select>
-                        <button class="btn btn-primary" ng-click="addSelectedPM()">
+                        <button class="btn btn-primary"  ng-disabled="newPM === undefined" ng-click="addSelectedPM()">
                             Add
                         </button>
                     </div>
@@ -79,7 +79,7 @@ and open the template in the editor.
                         <select ng-model="newUser"
                                 ng-options="user.id as user.email for user in (getUserComplement(this.users, this.projUsers)| orderBy: '-email')">
                         </select>
-                        <button class="btn btn-primary" ng-click="addSelectedUser()">
+                        <button class="btn btn-primary" ng-disabled="newUser === undefined" ng-click="addSelectedUser()">
                             Add
                         </button>
                     </div>
