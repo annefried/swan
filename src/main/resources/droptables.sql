@@ -1,6 +1,7 @@
 DROP TABLE annotation CASCADE;
 DROP TABLE annotation_labelmap CASCADE;
 DROP TABLE document CASCADE;
+DROP TABLE document_defaultannotations CASCADE;
 DROP TABLE label CASCADE;
 DROP TABLE label_labelset CASCADE;
 DROP TABLE labellabelsetmap CASCADE;
@@ -25,3 +26,4 @@ DROP TABLE link_labelmap CASCADE;
 DROP TABLE linklabellinksetmap CASCADE;
 DROP TABLE linklabellinksetmap_linkset CASCADE;
 DROP TABLE projects_manager CASCADE;
+DROP TABLE projects_watchingusers CASCADE;
