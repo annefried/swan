@@ -328,8 +328,10 @@ function AnnotationColor(name, num, shades, back, line) {
 }
 
 //Represents the label of an annotation
-function AnnotationLabel(tag, setID) {
+function AnnotationLabel(id, tag, options, setID) {
+    this.id = id;
     this.tag = tag;
+    this.options = options;
     this.setID = setID;
 
     this.toString = function (maxSize) {

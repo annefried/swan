@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -50,7 +50,7 @@ public class LinkSet extends BaseEntity {
     @ManyToMany(mappedBy = "linkSet",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
-    private Set<LinkLabel> linkLabels = new HashSet<>();
+    private List<LinkLabel> linkLabels = new ArrayList<>();
 
     
     public String getName() {
@@ -85,11 +85,11 @@ public class LinkSet extends BaseEntity {
         this.allowUnlabeledLinks = allowUnlabeledLinks;
     }
 
-    public Set<LinkLabel> getLinkLabels() {
+    public List<LinkLabel> getLinkLabels() {
         return linkLabels;
     }
 
-    public void setLinkLabels(Set<LinkLabel> linkLabels) {
+    public void setLinkLabels(List<LinkLabel> linkLabels) {
         this.linkLabels = linkLabels;
     }
     

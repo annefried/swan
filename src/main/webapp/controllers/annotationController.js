@@ -149,7 +149,7 @@ angular
                         var label = annotations[a].labelMap[l];
                         for (var k = 0; k < label.labelSets.length; k++) {
                             var setId = label.labelSets[k].id;
-                            var annotationLabel = new AnnotationLabel(label.label.labelId, setId);
+                            var annotationLabel = new AnnotationLabel(label.label.id, label.label.labelId, [], setId);
                             var labelSet = this.labelTable[setId];
                             anno.setLabel(labelSet, annotationLabel);
                         }
@@ -181,7 +181,7 @@ angular
                             for (var k = 0; k < label.linkSets.length; k++) {
                                 const setId = label.linkSets[k].id;
                                 const labelSet = this.linkLabels[source.tType.tag][target.tType.tag][setId];
-                                const linkLabel = new AnnotationLabel(label.label.linkLabel, setId);
+                                const inkLabel = new AnnotationLabel(label.label.id, label.label.linkLabel, label.label.options, setId);
                                 annotationLink.setLabel(labelSet, linkLabel);
                             }
                         }
@@ -226,6 +226,7 @@ angular
                     // Annotation
                     if (this.selectedNode.type === AnnoType.Annotation) {
                         labelTemplate = {
+							id: label.id,
                             labelId: label.tag,
                             labelSet: [{
                                     id: labelSet.id
@@ -235,6 +236,7 @@ angular
                         url = labeled ? 'swan/annotations/addlabel/' : 'swan/annotations/removelabel/';
                     } else { // Link
                         labelTemplate = {
+							id: label.id,
                             linkLabel: label.tag,
                             linkSet: [{
                                     id: labelSet.id
@@ -621,21 +623,21 @@ angular
             //Read all data from the commited scheme
             this.readSchemes = function () {
 				$scope.graph = {
-                	"isOpen": false,
-               	    "isDisabled": true
+                	"show": false,
+                    "isOpen": false
                 };
                 $scope.timeline = {
-                    "isOpen": false,
-                    "isDisabled": true
+                    "show": false,
+                    "isOpen": false
                 };
                 for (var i = 0; i < this.scheme.visElements.length; i++) {
                     var visElement = this.scheme.visElements[i];
                     if (visElement.visKind === "graph") {
-                    	$scope.graph.isOpen = visElement.visState === "hidden" ? false : true;
-                        $scope.graph.isDisabled = visElement.visState === "opened" ? false : true;
+                    	$scope.graph.show = visElement.visState === "hidden" ? false : true;
+                        $scope.graph.isOpen = visElement.visState === "opened" ? true : false;
                     } else if (visElement.visKind === "timeline") {
-                        $scope.timeline.isOpen = visElement.visState === "hidden" ? false : true;
-                        $scope.timeline.isDisabled = visElement.visState === "opened" ? false : true;
+                        $scope.timeline.show = visElement.visState === "hidden" ? false : true;
+                        $scope.timeline.isOpen = visElement.visState === "opened" ? true : false;
                     }
                 }		
 
@@ -673,7 +675,8 @@ angular
                     //Add labels to set
                     var listLabel = labSet.labels;
                     for (var j = 0; j < listLabel.length; j++) {
-                        var annotationLabel = new AnnotationLabel(listLabel[j].labelId, labSet.id);
+                        var oLabel = listLabel[j];
+                        var annotationLabel = new AnnotationLabel(oLabel.id, oLabel.labelId, [], labSet.id);
                         if (listLabel[j].labelId !== undefined) {
                             labelSet.addLabel(annotationLabel);
                         }
@@ -704,9 +707,12 @@ angular
                     this.linkLabels[startType][endType][linkSet.id] = linkLabelSet;
                     //Add labels to set
                     for (var j = 0; j < linkSet.linkLabels.length; j++) {
-                        var tag = linkSet.linkLabels[j].linkLabel;
-                        if (tag === undefined)
+                        var linkLabel = linkSet.linkLabels[j];
+                        var tag = linkLabel.linkLabel;
+                        if (tag === undefined) {
                             tag = "UndefTag";
+						}
+						var annotationLabel = new AnnotationLabel(linkLabel.id, tag, linkLabel.options, linkSet.id);
                         var annotationLabel = new AnnotationLabel(tag, linkSet.id);
                         linkLabelSet.addLabel(annotationLabel);
                     }

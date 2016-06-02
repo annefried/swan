@@ -124,10 +124,9 @@ and open the template in the editor.
                         </div>
 
                         <!-- Timeline -->
-                        <div ng-show="timeline.isOpen">
+                        <div ng-if="timeline.show">
                             <uib-accordion-group heading="Timeline"
                                                  is-open="timeline.isOpen"
-                                                 is-disabled="timeline.isDisabled"
                                                  class="unselectable">
                                 <div>
                                     <div ng-controller="d3TimelineController as timeline">
@@ -150,10 +149,9 @@ and open the template in the editor.
                         </div>
 
                         <!-- Graph -->
-                        <div ng-show="graph.isOpen">
+                        <div ng-if="graph.show">
                             <uib-accordion-group heading="Graph"
                                                  is-open="graph.isOpen"
-                                                 is-disabled="graph.isDisabled"
                                                  class="unselectable"
                                                  id="anno-graph">
                                 <div>
