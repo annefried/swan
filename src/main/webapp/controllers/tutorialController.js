@@ -188,7 +188,7 @@ angular
                             path: "/discanno/#/schemes"
                         },
                         {
-                            element: "#annotation-types-input",
+                            element: "#span-types-input",
                             title: "Annotation types",
                             content: "Next, we need at least one annotation type, which will later be assigned to spans. Try 'Clause', and don't forget to click 'Add'.",
                             path: "/discanno/#/schemes"
