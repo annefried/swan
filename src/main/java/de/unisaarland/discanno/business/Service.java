@@ -894,16 +894,17 @@ public class Service {
     public void removeUserFromProject(Long projId, Long userId) throws CreateException {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
-            Utility.removeObjectFromSet(proj.getUsers(), userId);
-            projectDAO.merge(proj);
-            
+            Users user = (Users) usersDAO.find(userId, false);
+
+            proj.removeUsers(user);
+            user.removeProject(proj);
+
             for (Document d : proj.getDocuments()) {
                 State state = null;
                 for (State s : d.getStates()) {
                     if (s.getUser().getId().equals(userId)) {
                         state = s;
                         break;
-                        
                     }
                 }
                 
@@ -911,7 +912,9 @@ public class Service {
                 d.removeState(state);
                 documentDAO.merge(d);
             }
-            
+
+            projectDAO.merge(proj);
+            usersDAO.merge(user);
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }

@@ -117,24 +117,18 @@ angular
                 const doc = proj.documents[j];
                 const states = new Array(doc.states.length);
 
-                /** TODO HOTFIX
-                 * https://github.com/annefried/discanno/issues/167
                 if (doc.states.length !== proj.users.length) {
                     throw "rootController: States and users length differs";
                 }
-                 */
 
                 for (var i = 0; i < doc.states.length; i++) {
                     const state = doc.states[i];
                     const index = userIdIndexMap[state.user.id];
-                    /** TODO HOTFIX
-                     * https://github.com/annefried/discanno/issues/167
                     if (index === undefined) {
-                        throw "rootController: Unkown user";
+                        throw "rootController: Unknown user";
                     } else {
-                    */
                         states[index] = state;
-                    //}
+                    }
                 }
 
                 var docCompl;
@@ -151,7 +145,7 @@ angular
                     }
 
                     if (usrPos === -1) {
-                        throw "rootController: Illegal arguments";
+                        throw "rootController: No corresponding state object existing";
                     }
 
                     if (states[usrPos].completed) {

@@ -138,7 +138,7 @@ describe('Test rootController', function () {
             $window.sessionStorage.role = 'admin';
 
             var $httpBackend = $injector.get('$httpBackend');
-            const url = 'discanno/project';
+            const url = 'discanno/project/byuser/3';
             var response = { projects: [] };
 
             $httpBackend
@@ -418,7 +418,7 @@ describe('Test rootController', function () {
                     role: 'annotator'
                 },
                 {
-                    id: 1,
+                    id: 5,
                     role: 'annotator'
                 },
                 {
@@ -428,7 +428,7 @@ describe('Test rootController', function () {
             ];
             var users2 = [
                 {
-                    id: 5,
+                    id: 3,
                     role: 'annotator'
                 }
             ];
@@ -496,7 +496,7 @@ describe('Test rootController', function () {
                     states: states2
                 }
             ];
-            var proj = [
+            var testProj1 = [
                 {
                     id: 431,
                     name: 'Heavy like Heaven',
@@ -517,9 +517,17 @@ describe('Test rootController', function () {
                 }
             ];
 
+            it('Test buildTableProjects with invalid user id', function () {
+                $window.sessionStorage.uId = '5';
+                $rootScope.projects = testProj1;
+                expect(function () {
+                    $rootScope.buildTableProjects();
+                }).toThrow("rootController: No corresponding state object existing");
+            });
+
             it('Test buildTableProjects with 2 projects as annotator', function () {
 
-                $rootScope.projects = proj;
+                $rootScope.projects = testProj1;
                 $rootScope.buildTableProjects();
 
                 // Test the original projects for changes
@@ -540,7 +548,7 @@ describe('Test rootController', function () {
                 expect(proj2O.watchingUsers).toEqual([]);
 
                 // Test the created projects
-                expect($rootScope.tableProjects.length).toEqual(1);
+                expect($rootScope.tableProjects.length).toEqual(2);
 
                 var proj1 = $rootScope.tableProjects[0];
                 expect(proj1.documents.length).toEqual(documents1.length);
@@ -564,7 +572,7 @@ describe('Test rootController', function () {
                 $window.sessionStorage.isAnnotator = 'false';
                 $scope.isUnprivileged = 'false';
 
-                $rootScope.projects = proj;
+                $rootScope.projects = testProj1;
                 $rootScope.buildTableProjects();
 
                 // Test the original projects for changes
@@ -672,40 +680,6 @@ describe('Test rootController', function () {
             expect($rootScope.tableProjects[0].pms).toEqual([]);
             expect($rootScope.tableProjects[0].watchingUsers).toEqual([]);
             expect($rootScope.tableProjects[0].isWatching).toBeFalsy();
-        });
-
-        it('Test buildTableProjects with with wrong user role', function () {
-            var users = [
-                {
-                    id: 0,
-                    role: 'annotator'
-                },
-                {
-                    id: 1,
-                    role: 'annotator'
-                },
-                {
-                    id: 3,
-                    role: 'admin'
-                }
-            ];
-
-            var proj = [
-                {
-                    id: 431,
-                    name: 'Heavy like Heaven',
-                    users: users,
-                    scheme: {},
-                    documents: [],
-                    projectManager: [],
-                    watchingUsers: []
-                }
-            ];
-            $rootScope.projects = proj;
-
-            expect(function () {
-                $rootScope.buildTableProjects();
-            }).toThrow("rootController: Assigned user with id 3 has not role 'annotator'");
         });
 
 
