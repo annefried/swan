@@ -15,7 +15,7 @@ So the first line is a real life imperative statement with DA for 'DiscAnno' and
     
 This should be one single commit. If you committed in the meantime and want to squash your commits, do this:
 ````
-    git commit --soft RESET~<Num> && git commit -m "DA-#GH_ISSUE: ..."
+    git reset --soft HEAD~<Num> && git commit -m "DA-#GH_ISSUE: ..."
 ````
 'Num' determines the number of commits you want to squash. !Be careful! and don't squash merges!
 
