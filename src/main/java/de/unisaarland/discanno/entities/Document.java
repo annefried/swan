@@ -41,6 +41,7 @@ public class Document extends BaseEntity {
      * The column definiton "TEXT" determines the database type.
      * From character varying(255) to "text"
      */
+    @JsonView({ View.Documents.class })
     @JsonProperty(access = Access.WRITE_ONLY)
     @Column(name = "Text", columnDefinition = "TEXT")
     private String text;
