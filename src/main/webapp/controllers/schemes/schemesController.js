@@ -46,11 +46,15 @@ angular
         };
 
         /**
+         * TODO refactor
+         *
          * Request list of all Projects.
          * @returns http-Object of query
          */
         $scope.loadProjects2 = function () {
-            var httpProjects = $http.get("discanno/project").success(function (response) {
+            const url = "discanno/project/byuser/" + $window.sessionStorage.uId;
+            
+            var httpProjects = $http.get(url).success(function (response) {
                 $scope.projects = JSOG.parse(JSON.stringify(response)).projects;
             }).error(function (response) {
                 if (response == "") {

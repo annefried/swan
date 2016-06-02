@@ -133,12 +133,7 @@ angular.module('app')
         }).factory('projectService', function ($window, $http) {
     return  {
         getScheme: function (docId) {
-            // Async
-            if ($window.sessionStorage.role !== 'user') {
-                var httpProjects = $http.get("discanno/project");
-            } else {
-                var httpProjects = $http.get("discanno/project/byuser/" + $window.sessionStorage.uId);
-            }
+            var httpProjects = $http.get("discanno/project/byuser/" + $window.sessionStorage.uId);
             return httpProjects;
         }
     }

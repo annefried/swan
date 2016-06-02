@@ -442,6 +442,32 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
+
+
+    ///////////////////////////////////////////////
+    //  GET
+    ///////////////////////////////////////////////
+
+    public List<Project> getAllProjectsByUserId(Long userId) {
+
+        Users user = (Users) usersDAO.find(userId, false);
+
+        List<Project> list = null;
+
+        switch (user.getRole()) {
+            case admin:
+                list = projectDAO.findAll();
+                break;
+            case projectmanager:
+                list = projectDAO.getAllProjectsAsProjectManagerByUserId(userId);
+                break;
+            case annotator:
+                list = projectDAO.getAllProjectsByUserId(userId);
+                break;
+        }
+
+        return list;
+    }
     
     
     ///////////////////////////////////////////////

@@ -66,7 +66,7 @@ public class ProjectFacadeRESTTest extends BaseTest {
         proj.setScheme(scheme);
         projRESTService.create(proj);
         
-        Response respProjects = projRESTService.getProjects();
+        Response respProjects = projRESTService.getProjectsByUserId(admin.getId());
         JSONObject jsonProjects = new JSONObject((String) respProjects.getEntity());
         JSONArray projects = jsonProjects.getJSONArray("projects");
         assertTrue(projects.length() == 1);
@@ -88,7 +88,7 @@ public class ProjectFacadeRESTTest extends BaseTest {
         Response resp = projRESTService.addProjectManagerToProject(proj.getId(), user.getId());
         assertTrue(resp.getStatus() == 200);
         
-        Project retProj = getFirstProject();
+        Project retProj = getFirstProject(user);
         assertNotNull(retProj);
         
         assertTrue(retProj.getProjectManager().size() == 1);
@@ -104,7 +104,7 @@ public class ProjectFacadeRESTTest extends BaseTest {
         assertTrue(resp.getStatus() == 200);
         assertNull(resp.getEntity());
         
-        Response respProjects = projRESTService.getProjects();
+        Response respProjects = projRESTService.getProjectsByUserId(user.getId());
         assertTrue(respProjects.getStatus() == 200);
         
         JSONObject jsonProjects = new JSONObject((String) respProjects.getEntity());
@@ -115,36 +115,36 @@ public class ProjectFacadeRESTTest extends BaseTest {
         assertTrue(retProj.getProjectManager().isEmpty());
     }
 
-    private void testAddUser(Project proj, Users admin) throws JSONException, IOException, CloneNotSupportedException {
+    private void testAddUser(Project proj, Users user) throws JSONException, IOException, CloneNotSupportedException {
 
-        Response resp = projRESTService.addUserToProject(proj.getId(), admin.getId());
+        Response resp = projRESTService.addUserToProject(proj.getId(), user.getId());
         assertTrue(resp.getStatus() == 200);
         
-        Project retProj = getFirstProject();
+        Project retProj = getFirstProject(user);
         Set<Users> userSet = retProj.getUsers();
         Object[] users = userSet.toArray();
-        Users user = (Users) users[0];
+        Users user1 = (Users) users[0];
         
-        Project retProjectById = getFirstProjectByUserId(admin.getId());
+        Project retProjectById = getFirstProjectByUserId(user.getId());
         assertTrue(retProjectById.getUsers().size() == 1);
         
-        assertNotNull(user);
-        assertTrue(user.getId().equals(admin.getId()));
+        assertNotNull(user1);
+        assertTrue(user1.getId().equals(user.getId()));
     }
 
-    private void testRemoveUser(Project proj, Users admin) throws JSONException, IOException {
+    private void testRemoveUser(Project proj, Users user) throws JSONException, IOException {
 
-        Response resp = projRESTService.deleteUserFromProject(proj.getId(), admin.getId());
+        Response resp = projRESTService.deleteUserFromProject(proj.getId(), user.getId());
         assertTrue(resp.getStatus() == 200);
 
-        Project retProj = getFirstProject();
+        Project retProj = getFirstProject(user);
         Set<Users> userSet = retProj.getUsers();
         
         assertTrue(userSet.isEmpty());
     }
     
-    private Project getFirstProject() throws JSONException, IOException {
-        Response respProjects = projRESTService.getProjects();
+    private Project getFirstProject(Users user) throws JSONException, IOException {
+        Response respProjects = projRESTService.getProjectsByUserId(user.getId());
         JSONObject jsonProjects = new JSONObject((String) respProjects.getEntity());
         JSONArray projects = jsonProjects.getJSONArray("projects");
         

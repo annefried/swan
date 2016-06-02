@@ -60,10 +60,7 @@ angular
          */
         $rootScope.loadProjects = function () {
         	
-        	// If role 'annotator' show only assigned projects
-        	const url = $window.sessionStorage.role !== 'annotator'
-        					? "discanno/project"
-        							: "discanno/project/byuser/" + $window.sessionStorage.uId;
+        	const url = "discanno/project/byuser/" + $window.sessionStorage.uId;
             
             var httpProjects = $http.get(url).success(function (response) {
             	$rootScope.projects = JSOG.parse(JSON.stringify(response)).projects;
@@ -83,51 +80,26 @@ angular
             for (var i = 0; i < $rootScope.projects.length; i++) {
 
                 var proj = $rootScope.projects[i];
-                var projComplAdmin = [];
+                var projComplAdmin = new Array(proj.users.length);
+                for(var p = 0; p < projComplAdmin.length; p++) projComplAdmin[p] = 0;
                 var documents = [];
-                var myProject = $window.sessionStorage.role === 'admin';
 
-                for (var j = 0; j < proj.users.length; j++) {
-                    const u = proj.users[j];
-                    if (u.id == $window.sessionStorage.uId) {
-                        myProject = true;
-                    }
-                    if (u.role == 'annotator') {
-                        projComplAdmin.push(0);
-                    } else {
-                        throw "rootController: Assigned user with id "
-                                + u.id + " has not role 'annotator'";
-                    }
-                }
-                if (!myProject) {
-                    for (var j = 0; j < proj.projectManager.length; j++) {
-                        var p = proj.projectManager[j];
-                        if (p.id == $window.sessionStorage.uId) {
-                            myProject = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (myProject) {
-
-                    const projComplUser = $scope.buildDocuments(proj, documents, projComplAdmin);
-                    const projCompl = $scope.isUnprivileged === 'true' ? projComplUser : projComplAdmin;
-
-                    const template = {
-                        'id': proj.id,
-                        'name': proj.name,
-                        'users': proj.users,
-                        'completed': projCompl,
-                        'scheme': proj.scheme,
-                        'numberOfDocuments': proj.documents.length,
-                        'documents': documents,
-                        'pms': proj.projectManager,
-                        'watchingUsers': proj.watchingUsers,
-                        'isWatching': $rootScope.containsUser(proj.watchingUsers, currUser)
-                    };
-                    $rootScope.tableProjects.push(template);
-                }
+                const projComplUser = $scope.buildDocuments(proj, documents, projComplAdmin);
+                const projCompl = $scope.isUnprivileged === 'true' ? projComplUser : projComplAdmin;
+                const template = {
+                    'id': proj.id,
+                    'name': proj.name,
+                    'users': proj.users,
+                    'completed': projCompl,
+                    'scheme': proj.scheme,
+                    'numberOfDocuments': proj.documents.length,
+                    'documents': documents,
+                    'pms': proj.projectManager,
+                    'watchingUsers': proj.watchingUsers,
+                    'isWatching': $rootScope.containsUser(proj.watchingUsers, currUser)
+                };
+                
+                $rootScope.tableProjects.push(template);
             }
 
         };
