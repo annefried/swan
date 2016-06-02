@@ -38,10 +38,16 @@ module.exports = function(config){
         'Firefox'
     ],
 
+    reporters: [
+        'progress',
+        'coverage'
+    ],
+
     plugins : [
         'karma-chrome-launcher',
         'karma-firefox-launcher',
         'karma-jasmine',
+        'karma-coverage',
         'karma-junit-reporter'
     ],
 
