@@ -512,10 +512,11 @@ public class Service {
             Project proj = (Project) projectDAO.find(projId, false);
             Users manager =  (Users) usersDAO.find(userId, false);
 
-            manager.getManagingProjects().add(proj);
+            manager.addManagingProjects(proj);
             proj.addProjectManager(manager);
 
             projectDAO.merge(proj);
+            usersDAO.merge(manager);
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -526,10 +527,11 @@ public class Service {
             Project proj = (Project) projectDAO.find(projId, false);
             Users watchingUser =  (Users) usersDAO.find(userId, false);
 
-            watchingUser.getWatchingProjects().add(proj);
+            watchingUser.addWatchingProjects(proj);
             proj.addWatchingUsers(watchingUser);
 
             projectDAO.merge(proj);
+            usersDAO.merge(watchingUser);
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -921,8 +923,10 @@ public class Service {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
             Users user = (Users) usersDAO.find(userId, false);
-            Utility.removeObjectFromSet(proj.getProjectManager(), userId);
-            Utility.removeObjectFromSet(user.getManagingProjects(), projId);
+
+            proj.removeProjectManager(user);
+            user.removeManagingProjects(proj);
+
             projectDAO.merge(proj);
             usersDAO.merge(user);
         } catch (NoResultException e) {
@@ -934,8 +938,10 @@ public class Service {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
             Users user = (Users) usersDAO.find(userId, false);
+
             Utility.removeObjectFromSet(proj.getWatchingUsers(), userId);
             Utility.removeObjectFromSet(user.getWatchingProjects(), projId);
+
             projectDAO.merge(proj);
             usersDAO.merge(user);
         } catch (NoResultException e) {
