@@ -212,6 +212,10 @@ public class Users extends BaseEntity {
         this.projects.add(project);
     }
 
+    public void removeProject(Project project) {
+        this.projects.remove(project);
+    }
+
     public Set<Project> getManagingProjects() {
         return managingProjects;
     }
