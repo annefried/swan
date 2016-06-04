@@ -60,10 +60,7 @@ angular
          */
         $rootScope.loadProjects = function () {
         	
-        	// If role 'annotator' show only assigned projects
-        	const url = $window.sessionStorage.role !== 'annotator'
-        					? "discanno/project"
-        							: "discanno/project/byuser/" + $window.sessionStorage.uId;
+        	const url = "discanno/project/byuser/" + $window.sessionStorage.uId;
             
             var httpProjects = $http.get(url).success(function (response) {
             	$rootScope.projects = JSOG.parse(JSON.stringify(response)).projects;
@@ -83,123 +80,109 @@ angular
             for (var i = 0; i < $rootScope.projects.length; i++) {
 
                 var proj = $rootScope.projects[i];
-                var projComplUser = 0;
-                var projComplAdmin = [];
+                var projComplAdmin = new Array(proj.users.length);
+                for(var p = 0; p < projComplAdmin.length; p++) projComplAdmin[p] = 0;
                 var documents = [];
-                var myProject = $window.sessionStorage.role === 'admin';
 
-                for (var j = 0; j < proj.users.length; j++) {
-                    var u = proj.users[j];
-                    if (u.id == $window.sessionStorage.uId) {
-                        myProject = true;
-                    }
-                    if (u.role == 'annotator') {
-                        projComplAdmin.push(0);
+                const projComplUser = $scope.buildDocuments(proj, documents, projComplAdmin);
+                const projCompl = $scope.isUnprivileged === 'true' ? projComplUser : projComplAdmin;
+                const template = {
+                    'id': proj.id,
+                    'name': proj.name,
+                    'users': proj.users,
+                    'completed': projCompl,
+                    'scheme': proj.scheme,
+                    'numberOfDocuments': proj.documents.length,
+                    'documents': documents,
+                    'pms': proj.projectManager,
+                    'watchingUsers': proj.watchingUsers,
+                    'isWatching': $rootScope.containsUser(proj.watchingUsers, currUser)
+                };
+                
+                $rootScope.tableProjects.push(template);
+            }
+
+        };
+
+        $scope.buildDocuments = function (proj, documents, projComplAdmin) {
+
+            // Used to order the states in the same order like the
+            // user array and therefore the completed array. Necessary for
+            // the progress bars.
+            const userIdIndexMap = $rootScope.getUserIdIndexMap(proj.users);
+            var projComplUser = 0;
+
+            for (var j = 0; j < proj.documents.length; j++) {
+
+                const doc = proj.documents[j];
+                const states = new Array(doc.states.length);
+
+                if (doc.states.length !== proj.users.length) {
+                    throw "rootController: States and users length differs";
+                }
+
+                for (var i = 0; i < doc.states.length; i++) {
+                    const state = doc.states[i];
+                    const index = userIdIndexMap[state.user.id];
+                    if (index === undefined) {
+                        throw "rootController: Unknown user";
                     } else {
-                        throw "rootController: Assigned user has not role 'annotator'";
+                        states[index] = state;
                     }
                 }
-                if (!myProject) {
-                    for (var j = 0; j < proj.projectManager.length; j++) {
-                        var p = proj.projectManager[j];
-                        if (p.id == $window.sessionStorage.uId) {
-                            myProject = true;
+
+                var docCompl;
+                var lastEdit = -1;
+
+                // role: annotator
+                if ($scope.isUnprivileged === 'true') {
+                    var usrPos = -1;
+                    for (var t = 0; t < states.length; t++) {
+                        if ($window.sessionStorage.uId == states[t].user.id) {
+                            usrPos = t;
                             break;
                         }
                     }
-                }
 
-                // Used to order the states in the same order like the
-                // user array and therefore the completed array
-                var userIdIndexMap = $rootScope.getUserIdIndexMap(proj.users);
-
-                if (myProject) {
-
-                    for (var j = 0; j < proj.documents.length; j++) {
-
-                        const doc = proj.documents[j];
-                        const states = new Array(doc.states.length);
-
-                        if (doc.states.length !== proj.users.length) {
-                            throw "rootController: States and users length differs";
-                        }
-
-                        for (var yi = 0; yi < doc.states.length; yi++) {
-                            const state = doc.states[yi];
-                            const index = userIdIndexMap[state.user.id];
-                            if (index === undefined) {
-                                throw "rootController: Unkown user";
-                            } else {
-                                states[index] = state;
-                            }
-                        }
-
-                        var docCompl;
-                        var lastEdit = -1;
-
-                        // role: annotator
-                        if ($scope.isUnprivileged === 'true') {
-                            var usrPos = -1;
-                            for (var t = 0; t < states.length; t++) {
-                                if ($window.sessionStorage.uId == states[t].user.id) {
-                                    usrPos = t;
-                                    break;
-                                }
-                            }
-
-                            if (usrPos === -1) {
-                                throw "rootController: Illegal arguments";
-                            }
-
-                            if (states[usrPos].completed) {
-                                projComplUser++;
-                            }
-                            docCompl = states[usrPos].completed;
-                            lastEdit = states[usrPos].lastEdit;
-                        }
-                        // role: admin/ project manager
-                        else {
-                            var docComplAdmin = 0;
-                            for (var t = 0; t < states.length; t++) {
-                                if (states[t].completed) {
-                                    projComplAdmin[t]++;
-                                    docComplAdmin++;
-                                }
-                                if (states[t].lastEdit > lastEdit) {
-                                    lastEdit = states[t].lastEdit;
-                                }
-                            }
-                            docCompl = docComplAdmin;
-                        }
-                        const docTemplate = {
-                            'id': doc.id,
-                            'name': doc.name,
-                            'states': states,
-                            'completed': docCompl,
-                            'lastEdit': lastEdit
-                        };
-                        documents.push(docTemplate);
+                    if (usrPos === -1) {
+                        throw "rootController: No corresponding state object existing";
                     }
-                    documents.sort($rootScope.compareDocumentsByLastEdit);
 
-                    const projCompl = $scope.isUnprivileged === 'true' ? projComplUser : projComplAdmin;
-
-                    const template = {
-                        'id': proj.id,
-                        'name': proj.name,
-                        'users': proj.users,
-                        'completed': projCompl,
-                        'scheme': proj.scheme,
-                        'numberOfDocuments': proj.documents.length,
-                        'documents': documents,
-                        'pms': proj.projectManager,
-                        'watchingUsers': proj.watchingUsers,
-                        'isWatching': $rootScope.containsUser(proj.watchingUsers, currUser)
-                    };
-                    $rootScope.tableProjects.push(template);
+                    if (states[usrPos].completed) {
+                        projComplUser++;
+                    }
+                    docCompl = states[usrPos].completed;
+                    lastEdit = states[usrPos].lastEdit;
                 }
-            }
+                // role: admin/ project manager
+                else {
+                    var docComplAdmin = 0;
+                    for (var t = 0; t < states.length; t++) {
+                        if (states[t].completed) {
+                            projComplAdmin[t]++;
+                            docComplAdmin++;
+                        }
+                        if (states[t].lastEdit > lastEdit) {
+                            lastEdit = states[t].lastEdit;
+                        }
+                    }
+                    docCompl = docComplAdmin;
+                }
 
+                const docTemplate = {
+                    'id': doc.id,
+                    'name': doc.name,
+                    'states': states,
+                    'completed': docCompl,
+                    'lastEdit': lastEdit
+                };
+                documents.push(docTemplate);
+            }
+            // Sort the documents by their corresponding last edit timestamp
+            // So that the latest changed document is the first
+            documents.sort($rootScope.compareDocumentsByLastEdit);
+
+            return projComplUser;
         };
 
         $rootScope.getUserIdIndexMap = function (users) {

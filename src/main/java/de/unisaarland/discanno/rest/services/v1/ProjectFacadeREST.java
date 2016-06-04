@@ -198,28 +198,6 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         }
 
     }
-    
-    @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response getProjects() {
-
-        try {
-            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
-
-            List<Project> list = projectDAO.findAll();
-
-            return Response.ok(mapper.writerWithView(View.Projects.class)
-                                        .withRootName("projects")
-                                        .writeValueAsString(list))
-                            .build();
-        } catch (SecurityException e) {
-            return Response.status(Response.Status.FORBIDDEN).build();
-        } catch (JsonProcessingException ex) {
-            Logger.getLogger(SchemeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
-            return Response.serverError().build();
-        }
-        
-    }
 
     @GET
     @Path("/byuser/{userId}")
@@ -229,7 +207,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
 
-            List<Project> list = projectDAO.getAllProjectsByUserId(userId);
+            List<Project> list = service.getAllProjectsByUserId(userId);
 
             return Response.ok(mapper.writerWithView(View.Projects.class)
                                         .withRootName("projects")

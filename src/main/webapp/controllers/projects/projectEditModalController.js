@@ -67,6 +67,7 @@ angular
                         break;
                     }
                 }
+                $scope.newUser = undefined;
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);
             });
@@ -85,6 +86,7 @@ angular
                         }
                     }
                 }
+                $scope.newPM = undefined;
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);
             });
@@ -140,7 +142,7 @@ angular
         };
 
         $scope.deletePM = function (uId) {
-            $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
+            $http.post("discanno/project/delManager/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
                 var project = $rootScope.tableProjects[$rootScope.currentProjectIndex];
                 for (var i = 0; i < project.pms.length; i++) {
                     if (project.pms[i].id == uId) {

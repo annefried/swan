@@ -331,6 +331,7 @@ angular
                 }
 
                 // Validate scheme
+                // TODO rename target type to span type
                 var tTypeMap = {}; // for constant access
                 for (var i = 0; i < scheme.targetTypes.length; i++) {
                     var tType = scheme.targetTypes[i];

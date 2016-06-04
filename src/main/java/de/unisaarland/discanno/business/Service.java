@@ -442,6 +442,32 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
+
+
+    ///////////////////////////////////////////////
+    //  GET
+    ///////////////////////////////////////////////
+
+    public List<Project> getAllProjectsByUserId(Long userId) {
+
+        Users user = (Users) usersDAO.find(userId, false);
+
+        List<Project> list = null;
+
+        switch (user.getRole()) {
+            case admin:
+                list = projectDAO.findAll();
+                break;
+            case projectmanager:
+                list = projectDAO.getAllProjectsAsProjectManagerByUserId(userId);
+                break;
+            case annotator:
+                list = projectDAO.getAllProjectsByUserId(userId);
+                break;
+        }
+
+        return list;
+    }
     
     
     ///////////////////////////////////////////////
@@ -486,10 +512,11 @@ public class Service {
             Project proj = (Project) projectDAO.find(projId, false);
             Users manager =  (Users) usersDAO.find(userId, false);
 
-            manager.getManagingProjects().add(proj);
+            manager.addManagingProjects(proj);
             proj.addProjectManager(manager);
 
             projectDAO.merge(proj);
+            usersDAO.merge(manager);
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -500,10 +527,11 @@ public class Service {
             Project proj = (Project) projectDAO.find(projId, false);
             Users watchingUser =  (Users) usersDAO.find(userId, false);
 
-            watchingUser.getWatchingProjects().add(proj);
+            watchingUser.addWatchingProjects(proj);
             proj.addWatchingUsers(watchingUser);
 
             projectDAO.merge(proj);
+            usersDAO.merge(watchingUser);
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -868,16 +896,17 @@ public class Service {
     public void removeUserFromProject(Long projId, Long userId) throws CreateException {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
-            Utility.removeObjectFromSet(proj.getUsers(), userId);
-            projectDAO.merge(proj);
-            
+            Users user = (Users) usersDAO.find(userId, false);
+
+            proj.removeUsers(user);
+            user.removeProject(proj);
+
             for (Document d : proj.getDocuments()) {
                 State state = null;
                 for (State s : d.getStates()) {
                     if (s.getUser().getId().equals(userId)) {
                         state = s;
                         break;
-                        
                     }
                 }
                 
@@ -885,7 +914,9 @@ public class Service {
                 d.removeState(state);
                 documentDAO.merge(d);
             }
-            
+
+            projectDAO.merge(proj);
+            usersDAO.merge(user);
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -895,8 +926,10 @@ public class Service {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
             Users user = (Users) usersDAO.find(userId, false);
-            Utility.removeObjectFromSet(proj.getProjectManager(), userId);
-            Utility.removeObjectFromSet(user.getManagingProjects(), projId);
+
+            proj.removeProjectManager(user);
+            user.removeManagingProjects(proj);
+
             projectDAO.merge(proj);
             usersDAO.merge(user);
         } catch (NoResultException e) {
@@ -908,8 +941,10 @@ public class Service {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
             Users user = (Users) usersDAO.find(userId, false);
+
             Utility.removeObjectFromSet(proj.getWatchingUsers(), userId);
             Utility.removeObjectFromSet(user.getWatchingProjects(), projId);
+
             projectDAO.merge(proj);
             usersDAO.merge(user);
         } catch (NoResultException e) {

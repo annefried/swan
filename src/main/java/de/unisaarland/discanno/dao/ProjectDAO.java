@@ -24,7 +24,14 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
         super(Project.class);
     }
 
-    
+    /**
+     * Returns a list of all projects whose user id is included
+     * in the the projects users list. Currently used to
+     * retrieve all projects by users with user role 'annotator'.
+     *
+     * @param userId
+     * @return
+     */
     public List<Project> getAllProjectsByUserId(Long userId) {
 
         final String strQuery = "SELECT * " +
@@ -36,6 +43,27 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
         return em.createNativeQuery(strQuery, Project.class)
                             .setParameter(1, userId)
                             .getResultList();
+    }
+
+    /**
+     * Returns a list of all projects whose user id is included
+     * in the projects projectsManager list. Only used for project
+     * manager.
+     *
+     * @param userId
+     * @return
+     */
+    public List<Project> getAllProjectsAsProjectManagerByUserId(Long userId) {
+
+        final String strQuery = "SELECT * " +
+                                "FROM project p " +
+                                "WHERE EXISTS(SELECT 1 " +
+                                        "FROM PROJECTS_MANAGER pm " +
+                                        "WHERE pm.manager_id = ? AND p.id = pm.project_id)";
+
+        return em.createNativeQuery(strQuery, Project.class)
+                .setParameter(1, userId)
+                .getResultList();
     }
     
 }

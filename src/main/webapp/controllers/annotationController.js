@@ -565,8 +565,11 @@ angular
                         deferred.reject(undefined);
                     });
 
-                    return deferred.promise;
+                } else {
+                    deferred.reject(undefined);
                 }
+
+                return deferred.promise;
             };
             //Checks if two annotations are linkable depending on their target type
             this.linkable = function (source, target) {

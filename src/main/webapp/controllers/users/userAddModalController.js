@@ -7,10 +7,11 @@
 
 angular
     .module('app')
-    .controller('userAddModalController', function ($scope, $rootScope, $http, $uibModalInstance) {
+    .controller('userAddModalController', function ($scope, $rootScope, $http, $window, $uibModalInstance) {
 
         // Initialize User View
         $scope.init = function () {
+            $scope.role = $window.sessionStorage.role;
             $scope.availableRoles = [{name: "Annotator", value: "annotator"}];
             if ($scope.role === "admin") {
                 $scope.availableRoles.push({value: "admin", name: "Admin"});

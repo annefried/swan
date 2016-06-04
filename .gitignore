@@ -2,6 +2,7 @@
 /bin/
 /.idea/
 /src/main/webapp/node_modules/
+/node_modules/
 /.classpath
 /.settings/
 /nbactions.xml
@@ -9,4 +10,5 @@
 /Project1_Politics1_John_Locke.xml
 /export.zip
 /jacoco-report/
+/src/main/webapp/coverage/
 .DS_Store
