@@ -6,6 +6,7 @@
 /.classpath
 /.settings/
 /nbactions.xml
+/src/main/webapp/npm-debug.log
 /npm-debug.log
 /Project1_Politics1_John_Locke.xml
 /export.zip

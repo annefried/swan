@@ -24,6 +24,24 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
         super(Project.class);
     }
 
+    public List<Project> getAllProjectsAsAdmin() {
+        return findAll();
+
+        /*
+         TODO we should optimize the fetching strategy probably via
+         a manual SQL query so that we do not fetch the documents text
+         attribute etc.
+
+        final String strQuery = "SELECT p.id, p.name, p.scheme " +
+                                "FROM Project AS p " +
+                                "JOIN p.documents docs GROUP BY docs.project " +
+                                "JOIN p.users users";
+
+        return em.createQuery(strQuery, Project.class).getResultList();
+        */
+    }
+
+
     /**
      * Returns a list of all projects whose user id is included
      * in the the projects users list. Currently used to
