@@ -55,7 +55,8 @@ angular
                 const wordSpacing = 3.5;
                 const opa = 0.15;
                 const oma = 0.55;
-                
+                // Map to save width of text elements
+                $scope.widthMap = {}
                 var width, height;
                 var lineCount;
                 var textWidth;
@@ -127,9 +128,6 @@ angular
                     $scope.setLineHeights();
                     $scope.formatTargets();
                     $scope.formatAnnotations();
-                    $scope.drawText(0, $scope.maxLines());
-                    $scope.drawAnnotations(0, $scope.maxLines());
-                    return $scope.render(true);
                 });
                 var maxLines = $scope.data.length;
                 var i = 0;
@@ -1033,73 +1031,100 @@ angular
 
                     currentLine = firstLine;
                     //Draw the actual text by iterating through the lines
-
+                    var dat = []
+                    var pos = pre;
                     for (var j = firstLine; j <= lastLine; j++) {
-                        var dat = formText[j];
-                        var pos = pre;
-                        //Safety measure:
-                        //Stop drawing if a non-existing line is reached
-                        if (dat === undefined)
-                            break;
-                        if (dat.length === 0) {
-                            currentHeight += lineHeight;
-                            continue;
+                    	//Safety measure:
+                    	//Stop drawing if a non-existing line is reached
+                    	 if (formText[j] === undefined){
+                    	   break;
+                    	 }
+                    	// Add empty line in front of first line
+                    	if(j == 0){
+                    		dat.push(undefined)
+                    	}
+                    	// Add line to draw
+                        dat = dat.concat(formText[j]);
+                        // If empty line add undefined
+                        if (formText[j].length === 0) {
+                        	dat.push(undefined)
                         }
+                    }
+                    //Draw each word of the current text line into the
+                    //corresponding lines on the screen
+                    svg.selectAll("text.content")
+                            .data(dat)
+                            .enter()
+                            .append(function (d) {
+                                var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                                // Handle empty lines
+                                if(d === undefined){
+                                	text.innerHTML = ''
+                                }else{
+                                	text.innerHTML = d.word.text;
+                                	d.element = text;
+                                }
+                                return text;
+                            })
+                            .attr("font-size", function () {
+                                return Math.floor(scale * 100) + "%";
+                            })
+                            .attr("fill", "black")
+                            // Compute widths bundled beforehand, because it forces browser reflow
+                            .each(function(d){
+                            	// Handle empty lines
+                            	if(d === undefined || $scope.widthMap[d.word.text] !== undefined){
+                            		return
+                            	}
+                            	$scope.widthMap[d.word.text] = d.element.getComputedTextLength()
+                            })
+                            .attr("x", function (d) {
+                            	// Handle empty lines
+                            	if(d === undefined){
+                            		return pos
+                            	}
+                                if (d.lX === 0)
+                                    pos = pre;
+                                var spacing = ($scope.$parent.isPunctuation(d.word.text) || d.word.text === " ") ? 0 : wordSpacing;
+                                pos += spacing;
+                                d.x = pos;
+                                // load previously computed lengths
+                                d.width = $scope.widthMap[d.word.text]
+                                pos += d.width;
 
-                        //Draw each word of the current text line into the
-                        //corresponding lines on the screen
-                        svg.selectAll("text.content")
-                                .data(dat)
-                                .enter()
-                                .append(function (d) {
-                                    var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                                    text.innerHTML = d.word.text;
-                                    d.element = text;
-                                    return text;
-                                })
-
-                                .attr("font-size", function () {
-                                    return Math.floor(scale * 100) + "%";
-                                })
-                                .attr("fill", "black")
-                                .attr("x", function (d) {
-                                    if (d.lX === 0)
-                                        pos = pre;
-                                    var spacing = ($scope.$parent.isPunctuation(d.word.text) || d.word.text === " ") ? 0 : wordSpacing;
-                                    pos += spacing;
-                                    d.x = pos;
-                                    d.width = d.element.getComputedTextLength();
-                                    pos += d.width;
-                                    return d.x;
-                                })
-                                .attr("y", function (d, i) {
-                                    //Set the height of the first word of the text
-                                    if (j === firstLine && i === 0) {
-                                        d.y = currentHeight + d.height;
-                                        currentLine = d.lY;
-                                    }
+                                // Rounded values increase performance
+                                return ~~d.x;
+                            })
+                            .attr("y", function (d, i) {
+                            	// Handle empty lines
+                            	if (d === undefined){
+                            		currentHeight += lineHeight;
+                            	}else{
                                     //Set the height of the current word to the height of
                                     //the previous word if we are still in the same line
-                                    else if (d.lY === currentLine)
+                                    if (d.lY === currentLine){
                                         d.y = currentHeight;
-                                    //Set the height of the first word of a new line
-                                    //to the previous height + the height of that line
-                                    else {
+                                    }else {
+                                    	//Set the height of the first word of a new line
+                                    	//to the previous height + the height of that line
                                         d.y = currentHeight + d.height;
                                         currentLine = d.lY;
                                     }
-
                                     currentHeight = d.y;
-                                    return currentHeight;
-                                })
-                                .classed("annotationtext", true)
-                                .on("mouseup", function () {
-                                    if (linkStart !== null) {
-                                        linkStart = null;
-                                        $scope.drawEverything();
-                                    }
-                                });
-                    }
+                            	}
+                                // Rounded values increase performance
+                                return ~~currentHeight;
+                            })
+                            .classed("annotationtext", function(d){
+                            	// Handle empty lines
+                            	return d !== undefined;
+                            })
+                            .on("mouseup", function () {
+                                if (linkStart !== null) {
+                                    linkStart = null;
+                                    $scope.drawEverything();
+                                }
+                            });
                 };
                 $scope.applyLink = function (d) {
                     var link;
@@ -1171,17 +1196,20 @@ angular
                                         if (formWord.width === 0)
                                             width += wordSpacing;
                                         else
-                                            width += formWord.element.getComputedTextLength();
+                                        	// load previously computed lengths
+                                            width += $scope.widthMap[formWord.word.text];
                                     }
 
                                     d.width = width;
-                                    return d.width;
+                                    // Rounded values increase performance
+                                    return ~~d.width;
                                 })
                                 .attr("x", function (d) {
                                         // Iterate, because first word could be a whitespace
                                     var word = d.formWords[0];
                                     d.x = word.x;
-                                    return d.x;
+                                    // Rounded values increase performance
+                                    return ~~d.x;
                                 })
                                 .attr("y", function (d) {
                                         // Iterate, because first word could be a whitespace
@@ -1191,7 +1219,8 @@ angular
                                     var y = (height === 1) ? firstAnnoHeight :
                                             firstAnnoHeight + (annotationHeight * (height - 1));
                                     d.y = word.y - y;
-                                    return d.y;
+                                    // Rounded values increase performance
+                                    return ~~d.y;
                                 })
                                 .classed("annotationbox", true)
                                 .on("mouseout", function (d) {
@@ -1239,10 +1268,11 @@ angular
                                         if (formWord.element === undefined)
                                             width += wordSpacing;
                                         else
-                                            width += formWord.element.getComputedTextLength();
+                                        	// load previously computed lengths
+                                            width += $scope.widthMap[formWord.word.text];
                                     }
-
-                                    return firstWord.x + 0.5 * width;
+                                    // Rounded values increase performance
+                                    return ~~firstWord.x + 0.5 * width;
                                 })
                                 .attr("y", function (d) {
                                     var offsetFactor = 0.575;
@@ -1251,7 +1281,8 @@ angular
                                     var firstAnnoHeight = wordHeight / 1.45 * offsetFactor;
                                     var y = (height === 1) ? firstAnnoHeight :
                                             firstAnnoHeight + (annotationHeight * (height - 1));
-                                    return word.y - y;
+                                    // Rounded values increase performance
+                                    return ~~word.y - y;
                                 })
                                 .text(function (d) {
                                     var textLength = 0;
@@ -1336,11 +1367,12 @@ angular
                                     const sourceBox = formSource.annotationBoxes[formSource.annotationBoxes.length - 1];
                                     const targetBox = formTarget.annotationBoxes[0];
                                     //Determine the edges of the path of the link
-                                    const lineData = [{"x": sourceBox.x + sourceBox.width, "y": sourceBox.y + 0.5 * wordHeight / 3},
-                                        {"x": ((sourceBox.x + sourceBox.width * 1.3)), "y": sourceBox.y + 0.5 * wordHeight / 3},
-                                        {"x": ((sourceBox.x + sourceBox.width * 1.3)), "y": targetBox.y - 1.5 * wordHeight / 3},
-                                        {"x": targetBox.x + 0.5 * targetBox.width, "y": targetBox.y - 1.5 * wordHeight / 3},
-                                        {"x": targetBox.x + 0.5 * targetBox.width, "y": targetBox.y}];
+                                    // Rounded values increase performance
+                                    const lineData = [{"x": ~~sourceBox.x + sourceBox.width, "y": ~~sourceBox.y + 0.5 * wordHeight / 3},
+                                        {"x": ~~((sourceBox.x + sourceBox.width * 1.3)), "y": ~~sourceBox.y + 0.5 * wordHeight / 3},
+                                        {"x": ~~((sourceBox.x + sourceBox.width * 1.3)), "y": ~~targetBox.y - 1.5 * wordHeight / 3},
+                                        {"x": ~~targetBox.x + 0.5 * targetBox.width, "y": ~~targetBox.y - 1.5 * wordHeight / 3},
+                                        {"x": ~~targetBox.x + 0.5 * targetBox.width, "y": ~~targetBox.y}];
                                     return lineFunction(lineData);
                                 })
                                 .attr("fill", "none")
@@ -1429,7 +1461,7 @@ angular
                             .attr("class", "unselectable")
                             .attr("y", function (d) {
                                 currentHeight += d.height;
-                                return currentHeight;
+                                return ~~currentHeight;
                             })
                             .attr("x", 20)
                             .text(function (d) {
