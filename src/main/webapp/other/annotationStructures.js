@@ -97,12 +97,15 @@ function AnnotationObject(id, type, labels, text) {
 
             if (set.exclusive) {
                 this.activeLabels[set.id] = [];
-                if (!removed)
+                if (!removed) {
                     this.activeLabels[set.id].push(label);
+                } else {
+                    delete this.activeLabels[set.id];
+                }
             } else {
-                if (!removed)
+                if (!removed) {
                     this.activeLabels[set.id].push(label);
-                else {
+                } else {
                     if (this.activeLabels[set.id].length === 0)
                         delete this.activeLabels[set.id];
                 }
