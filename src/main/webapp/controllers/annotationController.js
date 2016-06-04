@@ -477,16 +477,18 @@ angular
             //Deletes an annotation and makes a callback to the backend
             this.removeAnnotation = function (annotation) {
                 this.sizeIncreased = undefined;
-                this.lastRemoved = annotation;
                 if (annotation === this.tempAnno) {
                     this.tempAnno.onDelete();
                     this.tempAnno = null;
+                    this.lastRemoved = annotation;
                 } else {
+                    var annoCtrl = this;
                     $http.delete("discanno/annotations/" + annotation.id).then(function (object) {
                         return function (response) {
+                            object.removeConnectedLinks(annotation);
+                            annoCtrl.lastRemoved = annotation;
                             annotation.onDelete();
                             delete object.annotationData[annotation.id];
-                            object.removeConnectedLinks(annotation);
                         };
                     }(this), function (err) {
                         $rootScope.checkResponseStatusCode(err.status);
