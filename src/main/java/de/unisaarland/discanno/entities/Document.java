@@ -54,7 +54,8 @@ public class Document extends BaseEntity {
     
     @JsonView({ View.Documents.class, View.Projects.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
-                mappedBy = "document")
+                mappedBy = "document",
+                fetch = FetchType.EAGER)
     private Set<State> states = new HashSet<>();
     
     /**
@@ -62,7 +63,8 @@ public class Document extends BaseEntity {
      * They do not have an user id.
      */
     @JsonView({ View.Documents.class })
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE }, fetch = FetchType.EAGER)
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
+                fetch = FetchType.LAZY)
     @JoinTable(
         name="DOCUMENT_DEFAULTANNOTATIONS",
         joinColumns={@JoinColumn(name="DOC_ID", referencedColumnName="id")},

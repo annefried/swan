@@ -456,7 +456,7 @@ public class Service {
 
         switch (user.getRole()) {
             case admin:
-                list = projectDAO.findAll();
+                list = projectDAO.getAllProjectsAsAdmin();
                 break;
             case projectmanager:
                 list = projectDAO.getAllProjectsAsProjectManagerByUserId(userId);
