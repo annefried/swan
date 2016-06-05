@@ -187,7 +187,7 @@ angular
 
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: 'templates/profileEditModal.html',
+                templateUrl: 'templates/profile/profileEditModal.html',
                 controller: 'profileEditModalController'
             });
 
