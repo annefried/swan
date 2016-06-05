@@ -47,7 +47,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @NamedQueries({
     @NamedQuery(
             name = Users.QUERY_FIND_BY_EMAIL_AND_PASSWORD,
-            query = "SELECT u FROM Users u WHERE u.email = :" + Users.PARAM_EMAIL + " AND u.password = :" + Users.PARAM_PASSWORD),
+            query = "SELECT u.id, u.email, u.createDate, u.prename, u.lastname, u.role " +
+                    "FROM Users u WHERE u.email = :" + Users.PARAM_EMAIL + " AND u.password = :" + Users.PARAM_PASSWORD),
     @NamedQuery(
             name = Users.QUERY_FIND_BY_SESSION,
             query = "SELECT u FROM Users u WHERE u.session = :" + Users.PARAM_SESSION),
