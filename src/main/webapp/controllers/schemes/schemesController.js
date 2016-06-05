@@ -140,7 +140,8 @@ angular
                 animation: $scope.animationsEnabled,
                 templateUrl: 'templates/schemes/schemeUploadModal.html',
                 controller: 'schemeUploadModalController',
-                size: 'lg'
+                size: 'lg',
+                backdrop: false
             });
 
             modalInstance.result.then(function (response) {
