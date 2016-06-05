@@ -5,7 +5,10 @@
  */
 package de.unisaarland.discanno.dao;
 
+import de.unisaarland.discanno.entities.Document;
 import de.unisaarland.discanno.entities.Users;
+
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +16,7 @@ import java.util.Map;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.persistence.Query;
 
 /**
  * This DAO (Data Access Object) provides all CRUD operations for users.
@@ -46,11 +50,16 @@ public class UsersDAO extends BaseEntityDAO<Users> {
     }
     
     public Users getUserByEmailPwd(String email, String password) {
-        Map<String, String> params = new HashMap<>();
-        params.put(Users.PARAM_EMAIL, email);
-        params.put(Users.PARAM_PASSWORD, password);
-        return firstResult(
-                    executeQuery(Users.QUERY_FIND_BY_EMAIL_AND_PASSWORD, params));
+        String str =
+                "SELECT u.id, u.email, u.role " +
+                "FROM Users u WHERE u.email = ?1 AND u.password = ?2";
+
+        Query query = em.createNativeQuery(str, Users.class);
+        query.setParameter(1, email);
+        query.setParameter(2, password);
+        List<Object> result = query.getResultList();
+
+        return (Users) result.get(0);
     }
     
     public Users getUserBySession(String session) {
