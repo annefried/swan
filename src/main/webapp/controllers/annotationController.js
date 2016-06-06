@@ -26,7 +26,7 @@ angular
                     $('.scroll-pane').jScrollPane();
                 });
                 $scope.role = $window.sessionStorage.role;
-                if ($window.sessionStorage.role === 'annotator') {
+                if ($window.sessionStorage.role == 'annotator') {
                     $window.sessionStorage.shownUser = $window.sessionStorage.uId;
                 } else {
                     this.setUpAnnoView();
@@ -51,7 +51,7 @@ angular
                 this.tokenData = tokenService.getTokens($window.sessionStorage.docId);
                 // Retrieve projects and process projects
                 var httpProjects = $rootScope.loadProjects();
-                // Wait for both http requests to be answered
+                // Wait for both projects to be processed
                 $q.all([httpProjects]).then(function () {
                     $rootScope.buildTableProjects();
                     $rootScope.currProj = $rootScope.getProjectByProjectName($window.sessionStorage.project, $rootScope.tableProjects);

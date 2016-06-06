@@ -51,7 +51,7 @@ public class UsersDAO extends BaseEntityDAO<Users> {
     
     public Users getUserByEmailPwd(String email, String password) {
         String str =
-                "SELECT u.id, u.email, u.role " +
+                "SELECT u.id, u.email, u.role, u.prename, u.lastname, u.createDate " +
                 "FROM Users u WHERE u.email = ?1 AND u.password = ?2";
 
         Query query = em.createNativeQuery(str, Users.class);
