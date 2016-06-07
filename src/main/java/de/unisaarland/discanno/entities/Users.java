@@ -46,15 +46,23 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 @NamedQueries({
     @NamedQuery(
-            name = Users.QUERY_FIND_BY_EMAIL_AND_PASSWORD,
-            query = "SELECT u.id, u.email, u.createDate, u.prename, u.lastname, u.role " +
-                    "FROM Users u WHERE u.email = :" + Users.PARAM_EMAIL + " AND u.password = :" + Users.PARAM_PASSWORD),
+        name = Users.QUERY_FIND_BY_EMAIL_AND_PASSWORD,
+        query = "SELECT u " +
+                "FROM Users u " +
+                "WHERE u.email = :" + Users.PARAM_EMAIL + " AND u.password = :" + Users.PARAM_PASSWORD),
     @NamedQuery(
-            name = Users.QUERY_FIND_BY_SESSION,
-            query = "SELECT u FROM Users u WHERE u.session = :" + Users.PARAM_SESSION),
+        name = Users.QUERY_FIND_BY_SESSION,
+        query = "SELECT u " +
+                "FROM Users u " +
+                "WHERE u.session = :" + Users.PARAM_SESSION),
     @NamedQuery(
-            name = Users.QUERY_GET_ALL_USERS_ASC,
-            query = "SELECT u FROM Users u ORDER BY u.email ASC")
+        name = Users.QUERY_GET_ALL_USERS_ASC,
+        query = "SELECT DISTINCT u " +
+                "FROM Users u " +
+                "LEFT JOIN FETCH u.projects proj " +
+                "LEFT JOIN FETCH u.managingProjects manProj " +
+                "LEFT JOIN FETCH u.watchingProjects watProj " +
+                "ORDER BY u.email ASC")
 })
 public class Users extends BaseEntity {
 
@@ -92,7 +100,7 @@ public class Users extends BaseEntity {
     public static enum RoleType {
         admin, annotator, projectmanager;
     }
-    
+
     @Column(name = "Prename")
     private String prename;
     
@@ -118,7 +126,7 @@ public class Users extends BaseEntity {
     private Timestamp createDate;
     
     @JsonView({ View.Users.class })
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
     @JoinTable(
         name="USERS_PROJECTS",
         joinColumns={@JoinColumn(name="USERS_ID", referencedColumnName="id")},
@@ -128,7 +136,7 @@ public class Users extends BaseEntity {
     @JsonView({ View.Users.class })
     @ManyToMany(mappedBy = "projectManager",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     private Set<Project> managingProjects = new HashSet<>();
     
     /**
@@ -137,7 +145,7 @@ public class Users extends BaseEntity {
     @JsonView({ View.Users.class })
     @ManyToMany(mappedBy = "projectManager",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     private Set<Project> watchingProjects = new HashSet<>();
 
     

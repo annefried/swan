@@ -25,6 +25,7 @@ public class BaseEntity implements Serializable {
     @JsonView({View.Annotations.class,
         View.Schemes.class,
         View.Users.class,
+        View.Login.class,
         View.Links.class,
         View.Projects.class})
     @Id

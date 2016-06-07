@@ -11,15 +11,7 @@ import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  * The Entity Project represents a set of documents and has a unique name.
@@ -28,20 +20,37 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
+@NamedQueries({
+    @NamedQuery(
+        name = Project.QUERY_FIND_ALL,
+        query = "SELECT DISTINCT p " +
+                "FROM Project p " +
+                "LEFT JOIN FETCH p.documents " +
+                "LEFT JOIN FETCH p.projectManager " +
+                "LEFT JOIN FETCH p.watchingUsers " +
+                "LEFT JOIN FETCH p.users " +
+                "LEFT JOIN FETCH p.scheme "
+    )
+})
 public class Project extends BaseEntity {
-    
-    @JsonView({ View.Projects.class })
+
+    /**
+     * Named query identifier for "find all".
+     */
+    public static final String QUERY_FIND_ALL = "Project.QUERY_FIND_ALL";
+
+    @JsonView({ View.Projects.class, View.Documents.class })
     @Column(name = "Name", unique = true)
     private String name;
     
     @JsonView({ View.Projects.class })
     @OneToMany(mappedBy = "project",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     private Set<Document> documents = new HashSet<>();
     
     @JsonView({ View.Projects.class })
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
     @JoinTable(
         name="PROJECTS_MANAGER",
         joinColumns={@JoinColumn(name="PROJECT_ID", referencedColumnName="id")},
@@ -49,7 +58,7 @@ public class Project extends BaseEntity {
     private Set<Users> projectManager = new HashSet<>();
     
     @JsonView({ View.Projects.class })
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
     @JoinTable(
         name="PROJECTS_WATCHINGUSERS",
         joinColumns={@JoinColumn(name="PROJECT_ID", referencedColumnName="id")},
@@ -59,12 +68,12 @@ public class Project extends BaseEntity {
     @JsonView({ View.Projects.class })
     @ManyToMany(mappedBy = "projects",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     private Set<Users> users = new HashSet<>();
     
     @JsonView({ View.Projects.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinColumn(name="Scheme", nullable = false)
     private Scheme scheme;
 

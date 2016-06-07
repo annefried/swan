@@ -51,7 +51,7 @@ angular
                 this.tokenData = tokenService.getTokens($window.sessionStorage.docId);
                 // Retrieve projects and process projects
                 var httpProjects = $rootScope.loadProjects();
-                // Wait for both projects to be processed
+                // Wait for projects to be processed
                 $q.all([httpProjects]).then(function () {
                     $rootScope.buildTableProjects();
                     $rootScope.currProj = $rootScope.getProjectByProjectName($window.sessionStorage.project, $rootScope.tableProjects);

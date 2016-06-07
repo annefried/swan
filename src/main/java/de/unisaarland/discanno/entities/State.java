@@ -27,11 +27,15 @@ import javax.persistence.UniqueConstraint;
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = { "user_fk", "document_fk" })})
 @NamedQueries({
     @NamedQuery(
-            name = State.QUERY_FIND_BY_DOC_AND_USER,
-            query = "SELECT s FROM State s WHERE s.document.id = :" + State.PARAM_DOC + " AND s.user.id = :" + State.PARAM_USER),
+        name = State.QUERY_FIND_BY_DOC_AND_USER,
+        query = "SELECT s " +
+                "FROM State s " +
+                "WHERE s.document.id = :" + State.PARAM_DOC + " AND s.user.id = :" + State.PARAM_USER),
     @NamedQuery(
-            name = State.QUERY_FIND_BY_USER,
-            query = "SELECT s FROM State s WHERE s.user = :" + State.PARAM_USER)
+        name = State.QUERY_FIND_BY_USER,
+        query = "SELECT s " +
+                "FROM State s " +
+                "WHERE s.user = :" + State.PARAM_USER)
 })
 public class State extends BaseEntity {
 

@@ -9,6 +9,7 @@ import de.unisaarland.discanno.entities.Document;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import java.util.Collections;
 
 /**
  * This DAO (Data Access Object) provides all CRUD operations for documents.
@@ -21,6 +22,13 @@ public class DocumentDAO extends BaseEntityDAO<Document> {
     
     public DocumentDAO() {
         super(Document.class);
+    }
+
+    public Document findDocumentById(Long docId) {
+        return firstResult(
+                    executeQuery(
+                            Document.QUERY_FIND_BY_ID,
+                            Collections.singletonMap(Document.PARAM_ID, docId)));
     }
     
 }

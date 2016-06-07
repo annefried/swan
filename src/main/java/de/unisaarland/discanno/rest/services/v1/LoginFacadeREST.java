@@ -11,6 +11,8 @@ import de.unisaarland.discanno.LoginUtil;
 import de.unisaarland.discanno.Utility;
 import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.Users;
+import de.unisaarland.discanno.rest.view.View;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.FormParam;
@@ -59,7 +61,7 @@ public class LoginFacadeREST extends AbstractFacade<Users> {
                 user.setSession(getSessionID());
                 usersDAO.merge(user);
             
-                return Response.ok(MAPPER.writer()
+                return Response.ok(MAPPER.writerWithView(View.Login.class)
                                             .withRootName("user")
                                             .writeValueAsString(user))
                                 .build();

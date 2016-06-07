@@ -38,16 +38,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = { "user_fk", "document_fk", "targetType_fk", "StartS", "EndS" })})
 @NamedQueries({
     @NamedQuery(
-            name = Annotation.QUERY_FIND_BY_DOCUMENT,
-            query = "SELECT a FROM Annotation a WHERE a.document = :" + Annotation.PARAM_DOCUMENT),
+        name = Annotation.QUERY_FIND_BY_DOCUMENT,
+        query = "SELECT a " +
+                "FROM Annotation a " +
+                "WHERE a.document = :" + Annotation.PARAM_DOCUMENT),
     @NamedQuery(
-            name = Annotation.QUERY_FIND_BY_USER,
-            query = "SELECT a FROM Annotation a WHERE a.user = :" + Annotation.PARAM_USER),
+        name = Annotation.QUERY_FIND_BY_USER,
+        query = "SELECT a " +
+                "FROM Annotation a " +
+                "WHERE a.user = :" + Annotation.PARAM_USER),
     @NamedQuery(
-            name = Annotation.QUERY_FIND_BY_USER_AND_DOC,
-            query = "SELECT a1 " +
-                    "FROM Annotation a1 " +
-                    "WHERE a1.user.id = :" + Annotation.PARAM_USER + " AND a1.document.id = :" + Annotation.PARAM_DOCUMENT)
+        name = Annotation.QUERY_FIND_BY_USER_AND_DOC,
+        query = "SELECT a1 " +
+                "FROM Annotation a1 " +
+                "WHERE a1.user.id = :" + Annotation.PARAM_USER + " AND a1.document.id = :" + Annotation.PARAM_DOCUMENT)
 })
 public class Annotation extends BaseEntity {
     
@@ -82,11 +86,11 @@ public class Annotation extends BaseEntity {
     private Users user;
     
     @JsonView({ View.Annotations.class, View.Links.class })
-    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
     @JoinColumn(name = "document_fk")
     private Document document;
     
-    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
     @JoinColumn(name = "targetType_fk")
     private TargetType targetType;
     

@@ -58,7 +58,7 @@ public class UserFacadeREST extends AbstractFacade<Users> {
      * Inserts an user and hashes the password before.
      * 
      * @param entity
-     * @param User entity 
+     * @param Users entity
      * @return  
      */
     @POST

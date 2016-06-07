@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.persistence.Query;
 
 /**
  * This DAO (Data Access Object) provides all CRUD operations for projects.
@@ -25,20 +26,7 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
     }
 
     public List<Project> getAllProjectsAsAdmin() {
-        return findAll();
-
-        /*
-         TODO we should optimize the fetching strategy probably via
-         a manual SQL query so that we do not fetch the documents text
-         attribute etc.
-
-        final String strQuery = "SELECT p.id, p.name, p.scheme " +
-                                "FROM Project AS p " +
-                                "JOIN p.documents docs GROUP BY docs.project " +
-                                "JOIN p.users users";
-
-        return em.createQuery(strQuery, Project.class).getResultList();
-        */
+        return executeQuery(Project.QUERY_FIND_ALL);
     }
 
 
@@ -50,17 +38,16 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
      * @param userId
      * @return
      */
-    public List<Project> getAllProjectsByUserId(Long userId) {
+    public List<Project> getAllProjectsByUserId(final Long userId) {
 
         final String strQuery = "SELECT * " +
                                 "FROM project p " +
                                 "WHERE EXISTS(SELECT 1 " +
                                         "FROM users_projects up " +
                                         "WHERE up.users_id = ? AND p.id = up.project_id)";
-        
         return em.createNativeQuery(strQuery, Project.class)
-                            .setParameter(1, userId)
-                            .getResultList();
+                .setParameter(1, userId)
+                .getResultList();
     }
 
     /**
@@ -71,7 +58,7 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
      * @param userId
      * @return
      */
-    public List<Project> getAllProjectsAsProjectManagerByUserId(Long userId) {
+    public List<Project> getAllProjectsAsProjectManagerByUserId(final Long userId) {
 
         final String strQuery = "SELECT * " +
                                 "FROM project p " +

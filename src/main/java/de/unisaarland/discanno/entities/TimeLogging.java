@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @Entity
 @NamedQueries({
     @NamedQuery(
-            name = TimeLogging.QUERY_FIND_BY_USER,
-            query = "SELECT t FROM TimeLogging t WHERE t.users.id = :" + TimeLogging.PARAM_USER + " ORDER BY t.loggedat DESC")
+        name = TimeLogging.QUERY_FIND_BY_USER,
+        query = "SELECT t FROM TimeLogging t WHERE t.users.id = :" + TimeLogging.PARAM_USER + " ORDER BY t.loggedat DESC")
 })
 public class TimeLogging extends BaseEntity {
 

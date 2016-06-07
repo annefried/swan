@@ -36,39 +36,41 @@ public class Scheme extends BaseEntity {
 
     @Column(name = "Name", unique = true)
     private String name;
-    
+
+    @JsonView({ View.Schemes.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-            fetch = FetchType.EAGER,
+            fetch = FetchType.LAZY,
             optional = true)
     private Users creator;
     
-    @JsonView({View.Schemes.class})
+    @JsonView({ View.Schemes.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinTable(name="SCHEME_TARGETTYPE", 
           joinColumns=@JoinColumn(name="SCHEME_ID"),
           inverseJoinColumns=@JoinColumn(name="TARGETTYPE"))
     private Set<TargetType> targetTypes = new HashSet();
     
-    @JsonView({View.Schemes.class})
+    @JsonView({ View.Schemes.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinTable(name="SCHEME_LABELSET", 
           joinColumns=@JoinColumn(name="SCHEME_ID"),
           inverseJoinColumns=@JoinColumn(name="LABELSET_ID"))
     private List<LabelSet> labelSets = new ArrayList();
     
-    @JsonView({View.Schemes.class})
+    @JsonView({ View.Schemes.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinTable(name="SCHEME_LINKSET", 
           joinColumns=@JoinColumn(name="SCHEME_ID"),
           inverseJoinColumns=@JoinColumn(name="LINKSET_ID"))
     private List<LinkSet> linkSets = new ArrayList();
-    
+
+    @JsonView({ View.Schemes.class })
     @OneToMany(mappedBy = "scheme",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     private Set<Project> projects = new HashSet();
     
     

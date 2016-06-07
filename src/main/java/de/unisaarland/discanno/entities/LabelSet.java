@@ -50,7 +50,7 @@ public class LabelSet extends BaseEntity {
      * Contains the targettypes which can be annotated with this label.
      */
     @JsonView({ View.Schemes.class })
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
     @JoinTable(
         name="TARGETTYPE_LABELSET",
         joinColumns={@JoinColumn(name="LABEL_SET_ID", referencedColumnName="id")},

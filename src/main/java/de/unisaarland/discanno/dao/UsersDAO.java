@@ -48,18 +48,13 @@ public class UsersDAO extends BaseEntityDAO<Users> {
     public Users checkLogin(String session) throws SecurityException {
         return checkLogin(session, Users.RoleType.annotator);
     }
-    
+
     public Users getUserByEmailPwd(String email, String password) {
-        String str =
-                "SELECT u.id, u.email, u.role, u.prename, u.lastname, u.createDate " +
-                "FROM Users u WHERE u.email = ?1 AND u.password = ?2";
-
-        Query query = em.createNativeQuery(str, Users.class);
-        query.setParameter(1, email);
-        query.setParameter(2, password);
-        List<Object> result = query.getResultList();
-
-        return (Users) result.get(0);
+        Map<String, String> params = new HashMap<>();
+        params.put(Users.PARAM_EMAIL, email);
+        params.put(Users.PARAM_PASSWORD, password);
+        return firstResult(
+                executeQuery(Users.QUERY_FIND_BY_EMAIL_AND_PASSWORD, params));
     }
     
     public Users getUserBySession(String session) {
@@ -75,7 +70,8 @@ public class UsersDAO extends BaseEntityDAO<Users> {
      * @return List<Users>
      */
     public List<Users> getAllUsersAscending() {
-        return executeQuery(Users.QUERY_GET_ALL_USERS_ASC);
+        List<Users> users = executeQuery(Users.QUERY_GET_ALL_USERS_ASC);
+        return users;
     }
     
 }

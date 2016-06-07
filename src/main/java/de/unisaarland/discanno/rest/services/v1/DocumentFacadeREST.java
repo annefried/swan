@@ -99,7 +99,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
         
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
-            service.removeDocument(documentDAO.find(id));
+            service.removeDocument(documentDAO.findDocumentById(id));
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e){
             return Response.status(Response.Status.FORBIDDEN).build();
@@ -116,7 +116,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
         
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
-            Document doc = documentDAO.find(id);
+            Document doc = documentDAO.findDocumentById(id);
             return doc;
         } catch (SecurityException | NoResultException e) {
            return null;

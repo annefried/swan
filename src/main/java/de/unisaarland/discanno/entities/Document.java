@@ -14,14 +14,7 @@ import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  * The Entity Document represents a text that should be
@@ -31,8 +24,29 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
+@NamedQueries({
+    @NamedQuery(
+        name = Document.QUERY_FIND_BY_ID,
+        query = "SELECT DISTINCT d " +
+                "FROM Document d " +
+                "LEFT JOIN FETCH d.project " +
+                "LEFT JOIN FETCH d.states " +
+                "LEFT JOIN FETCH d.defaultAnnotations " +
+                "WHERE d.id = :" + Document.PARAM_ID
+    )
+})
 public class Document extends BaseEntity {
-    
+
+    /**
+     * Named query identifier for "find by id".
+     */
+    public static final String QUERY_FIND_BY_ID = "Document.QUERY_FIND_BY_ID";
+
+    /**
+     * Query parameter constant for the attribute "id".
+     */
+    public static final String PARAM_ID = "id";
+
     @JsonView({ View.Documents.class, View.Projects.class })
     @Column(name = "Name")
     private String name;
@@ -55,7 +69,7 @@ public class Document extends BaseEntity {
     @JsonView({ View.Documents.class, View.Projects.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 mappedBy = "document",
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     private Set<State> states = new HashSet<>();
     
     /**

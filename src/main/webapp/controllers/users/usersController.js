@@ -30,9 +30,12 @@ angular
                 $http.get("discanno/user").success(function (response) {
                     var res = JSOG.parse(JSON.stringify(response));
                     $scope.users = res.users;
+                    /* TODO change this cruel code
+                        it evokes for every user a single project and timelogging request
                     for (var i = 0; i < $scope.users.length; i++) {
                         $scope.enhanceUserData($scope.users[i], i);
                     }
+                    */
                     $scope.loaded = true;
                 }).error(function (response) {
                     $rootScope.checkResponseStatusCode(response.status);
