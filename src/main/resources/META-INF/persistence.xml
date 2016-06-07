@@ -26,11 +26,11 @@
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
       <property name="eclipselink.ddl-generation.output-mode" value="database"/>
       <property name="eclipselink.jpa.uppercase-column-names" value="true"/>
-      <!-- Enable this for debugging purposes -->
+      <!-- Enable this for debugging purposes
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.logging.parameters" value="true"/>
       <property name="eclipselink.logging.level.sql" value="FINE"/>
-      <property name="eclipselink.logging.timestamp" value="true"/>
+      <property name="eclipselink.logging.timestamp" value="true"/> -->
     </properties>
   </persistence-unit>
   <persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
