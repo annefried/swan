@@ -208,11 +208,11 @@ and open the template in the editor.
                                     <!-- Show open eye for admin/ project manager and pencil for user -->
                                     <span class="glyphicon glyphicon-eye-open"
                                           ng-hide="isUnprivileged === 'true'"
-                                          ng-click="openAnnoTool(doc.id, doc.name, x.name, doc.completed)">
+                                          ng-click="openAnnoTool(doc.id, doc.name, x.name, doc.completed, x.users)">
                                     </span>
                                     <span class="glyphicon glyphicon-pencil"
                                           ng-hide="isUnprivileged === 'false'"
-                                          ng-click="openAnnoTool(doc.id, doc.name, x.name, doc.completed)">
+                                          ng-click="openAnnoTool(doc.id, doc.name, x.name, doc.completed, x.users)">
                                     </span>
                                 </a>
                             </td>

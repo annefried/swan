@@ -77,12 +77,7 @@ angular
                 if ($scope.shownUserList === undefined) {
                     $scope.shownUserList = {};
                 }
-
-                var xmlHttp = new XMLHttpRequest();
-                xmlHttp.open("GET", "discanno/document/" + $window.sessionStorage.docId, false); // false for synchronous request
-                xmlHttp.send(null);
-                var resp = xmlHttp.responseText;
-                $scope.users = JSOG.parse(resp).project.users;
+                $scope.users = JSON.parse($window.sessionStorage.users);
                 if ($window.sessionStorage.shownUser === "undefined"
                         || $window.sessionStorage.shownUser === undefined
                         || $window.sessionStorage.shownUser == $window.sessionStorage.uId) {
