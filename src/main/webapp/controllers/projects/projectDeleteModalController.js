@@ -18,15 +18,21 @@ angular
 
         $scope.deleteProject = function (projId) {
             $http.delete("swan/project/" + projId).success(function (response) {
-                for (var i = 0; i < $rootScope.tableProjects.length; i++) {
-                    if ($rootScope.tableProjects[i].id === projId) {
-                        $rootScope.tableProjects.splice(i, 1);
-                        break;
-                    }
-                }
+
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);
             });
+
+            // TODO this should be inside the success function
+            // but currently the response takes too much time
+            // first this issue has to be fixed:
+            // https://github.com/annefried/discanno/issues/190
+            for (var i = 0; i < $rootScope.tableProjects.length; i++) {
+                if ($rootScope.tableProjects[i].id === projId) {
+                    $rootScope.tableProjects.splice(i, 1);
+                    break;
+                }
+            }
 
             $uibModalInstance.close();
         };
