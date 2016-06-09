@@ -251,10 +251,11 @@ hr {
 }
 
    #blackout {
+   	position: fixed !important;
       width:100%;
       background-color: grey;
       opacity: 0.5;
       height:100%; /* make sure you have set parents to a height of 100% too*/
       position: absolute;
-      left:0; top:0;
+      left:0%; top:0%;
       z-index:99 /*just to make sure its on top*/}
