@@ -27,7 +27,7 @@ angular
 
             // Request list of users from backend
             $scope.getUsers = function () {
-                $http.get("discanno/user").success(function (response) {
+                $http.get("swan/user").success(function (response) {
                     var res = JSOG.parse(JSON.stringify(response));
                     $scope.users = res.users;
                     /* TODO change this cruel code
@@ -47,12 +47,12 @@ angular
             };
 
             $scope.enhanceUserData = function (u, i) {
-                var projReq = $http.get("discanno/project/byuser/" + u.id).success(function (response) {
+                var projReq = $http.get("swan/project/byuser/" + u.id).success(function (response) {
                     $scope.projects = JSOG.parse(JSON.stringify(response)).projects;
                 }).error(function (response) {
                     $rootScope.checkResponseStatusCode(response.status);
                 });
-                var timeReq = $http.get("discanno/timelogging/" + u.id).success(function (response) {
+                var timeReq = $http.get("swan/timelogging/" + u.id).success(function (response) {
                     $scope.tilog = JSOG.parse(JSON.stringify(response)).timelogging;
                 }).error(function (response) {
                     $rootScope.checkResponseStatusCode(response.status);

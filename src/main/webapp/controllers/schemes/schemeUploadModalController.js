@@ -474,7 +474,7 @@ angular
                         "linkSets": linkSets,
                         "projects": []
                     };
-                    $http.post("discanno/scheme", JSON.stringify(template)).success(function (response) {
+                    $http.post("swan/scheme", JSON.stringify(template)).success(function (response) {
                         $rootScope.schemesTable[template.name] = template;
                         var schemePreview = {
                             'id': response,
@@ -505,7 +505,7 @@ angular
         };
 
         $scope.loadSchemes = function () {
-            $http.get('discanno/scheme/schemes').success(function (response) {
+            $http.get('swan/scheme/schemes').success(function (response) {
                 var schemes = JSOG.parse(JSON.stringify(response.schemes));
                 $scope.loadedSchemes = [];
                 for (var i = 0; i < schemes.length; i++) {

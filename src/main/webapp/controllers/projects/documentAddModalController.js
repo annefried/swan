@@ -112,7 +112,7 @@ angular
                         'defaultAnnotations': defaultAnnotations
                     };
 
-                    $http.post("discanno/document/adddoctoproject", JSON.stringify(documentTemplate)).then(function (curFileName) {
+                    $http.post("swan/document/adddoctoproject", JSON.stringify(documentTemplate)).then(function (curFileName) {
                         return function (response) {
                         	
                         	$rootScope.currProj = $rootScope.getProjectByProjectId($rootScope.currentProjectId, $rootScope.tableProjects);

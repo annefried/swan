@@ -32,7 +32,7 @@ angular
         };
 
         $rootScope.redirectToLogin = function () {
-            window.location = "/discanno/signin.html";
+            window.location = "/swan/signin.html";
         };
         
         $rootScope.validateSignedInUser = function () {
@@ -47,7 +47,7 @@ angular
         $rootScope.isUnprivileged = $window.sessionStorage.isAnnotator;
 
         $scope.logout = function () {
-            $http.post('discanno/usermanagment/logout');
+            $http.post('swan/usermanagment/logout');
             $window.sessionStorage.uId = null;
             $window.sessionStorage.prename = null;
             $window.sessionStorage.lastname = null;
@@ -60,7 +60,7 @@ angular
          */
         $rootScope.loadProjects = function () {
         	
-        	const url = "discanno/project/byuser/" + $window.sessionStorage.uId;
+        	const url = "swan/project/byuser/" + $window.sessionStorage.uId;
             
             var httpProjects = $http.get(url).success(function (response) {
             	$rootScope.projects = JSOG.parse(JSON.stringify(response)).projects;

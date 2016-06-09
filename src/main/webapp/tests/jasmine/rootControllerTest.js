@@ -117,7 +117,7 @@ describe('Test rootController', function () {
         it('Test loadProjects as annotator', function () {
 
             var $httpBackend = $injector.get('$httpBackend');
-            const url = 'discanno/project/byuser/' + $window.sessionStorage.uId;
+            const url = 'swan/project/byuser/' + $window.sessionStorage.uId;
             var response = { projects: [] };
 
             $httpBackend
@@ -138,7 +138,7 @@ describe('Test rootController', function () {
             $window.sessionStorage.role = 'admin';
 
             var $httpBackend = $injector.get('$httpBackend');
-            const url = 'discanno/project/byuser/3';
+            const url = 'swan/project/byuser/3';
             var response = { projects: [] };
 
             $httpBackend

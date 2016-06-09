@@ -17,7 +17,7 @@ angular
         };
 
         $scope.deleteProject = function (projId) {
-            $http.delete("discanno/project/" + projId).success(function (response) {
+            $http.delete("swan/project/" + projId).success(function (response) {
                 for (var i = 0; i < $rootScope.tableProjects.length; i++) {
                     if ($rootScope.tableProjects[i].id === projId) {
                         $rootScope.tableProjects.splice(i, 1);

@@ -20,7 +20,7 @@ angular
         };
 
         $scope.loadUsers = function () {
-            $http.get("discanno/user").success(function (response) {
+            $http.get("swan/user").success(function (response) {
                 var usersPms = JSOG.parse(JSON.stringify(response)).users;
                 $scope.users = [];
                 $scope.pms = [];
@@ -40,7 +40,7 @@ angular
         };
 
         $scope.addSelectedUser = function () {
-            $http.post("discanno/project/add/" + $rootScope.currentProjectId + "/" + $scope.newUser).success(function (response) {
+            $http.post("swan/project/add/" + $rootScope.currentProjectId + "/" + $scope.newUser).success(function (response) {
                 var emptyTemplate = ['0'];
                 for (var i = 0; i < $scope.users.length; i++) {
                     const u = $scope.users[i];
@@ -74,7 +74,7 @@ angular
         };
 
         $scope.addSelectedPM = function () {
-            $http.post("discanno/project/addManager/" + $rootScope.currentProjectId + "/" + $scope.newPM).success(function (response) {
+            $http.post("swan/project/addManager/" + $rootScope.currentProjectId + "/" + $scope.newPM).success(function (response) {
                 var emptyTemplate = ['0'];
                 for (var i = 0; i < $scope.pms.length; i++) {
                     if ($scope.pms[i].id === $scope.newPM) {
@@ -93,7 +93,7 @@ angular
         };
 
         $scope.deleteUser = function (uId) {
-            $http.post("discanno/project/del/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
+            $http.post("swan/project/del/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
                 const projectT = $rootScope.tableProjects[$rootScope.currentProjectIndex];
                 var index = 0;
                 for (var i = 0; i < projectT.users.length; i++) {
@@ -142,7 +142,7 @@ angular
         };
 
         $scope.deletePM = function (uId) {
-            $http.post("discanno/project/delManager/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
+            $http.post("swan/project/delManager/" + $rootScope.currentProjectId + "/" + uId).success(function (response) {
                 var project = $rootScope.tableProjects[$rootScope.currentProjectIndex];
                 for (var i = 0; i < project.pms.length; i++) {
                     if (project.pms[i].id == uId) {
@@ -182,7 +182,7 @@ angular
             var proj = $rootScope.tableProjects[$rootScope.currentProjectIndex];
             if (bool) {
                 // Add project manager to watching list
-                $http.post("discanno/project/addWatchingUser/" + proj.id + "/" + $window.sessionStorage.uId).success(function (response) {
+                $http.post("swan/project/addWatchingUser/" + proj.id + "/" + $window.sessionStorage.uId).success(function (response) {
                     if ($scope.watchingUsers === undefined) {
                         $scope.watchingUsers = [];
                     }
@@ -194,7 +194,7 @@ angular
                 });
             } else {
                 // Remove project manager from watching list
-                $http.post("discanno/project/delWatchingUser/" + proj.id + "/" + $window.sessionStorage.uId).success(function (response) {
+                $http.post("swan/project/delWatchingUser/" + proj.id + "/" + $window.sessionStorage.uId).success(function (response) {
                     for (var i = 0; i < $scope.watchingUsers.length; i++) {
                         if ($scope.watchingUsers[i].id === $scope.currUser.id) {
                             $scope.watchingUsers.splice(i, 1);
