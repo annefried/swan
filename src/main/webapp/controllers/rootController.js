@@ -105,8 +105,7 @@ angular
         };
 
         $scope.buildDocuments = function (proj, documents, projComplAdmin) {
-
-            // Used to order the states in the same order like the
+            // Used to order the states in the same order as the
             // user array and therefore the completed array. Necessary for
             // the progress bars.
             const userIdIndexMap = $rootScope.getUserIdIndexMap(proj.users);
@@ -178,9 +177,8 @@ angular
                 };
                 documents.push(docTemplate);
             }
-            // Sort the documents by their corresponding last edit timestamp
-            // So that the latest changed document is the first
-            documents.sort($rootScope.compareDocumentsByLastEdit);
+            // Sort the documents alphabetically
+            documents.sort($rootScope.compareDocumentsByName);
 
             return projComplUser;
         };
@@ -261,8 +259,8 @@ angular
         };
 
         /**
-         * Compares two documents by their lastEdit value. Used to
-         * sort the documents in a project.
+         * Compares two documents by their lastEdit value. Can be used to
+         * sort the documents in a project. (Not currently used.)
          * 
          * @param {Document} doc1
          * @param {Document} doc2
@@ -272,6 +270,28 @@ angular
          */
         $rootScope.compareDocumentsByLastEdit = function (doc1, doc2) {
             return doc2.lastEdit - doc1.lastEdit;
+        };
+
+        /**
+         * Compares two documents by their name. Used to
+         * sort the documents in a project.
+         *
+         * @param {Document} doc1
+         * @param {Document} doc2
+         * @returns {Integer} return -1, 0 or 1
+         *                  if doc2.name is less, equal or higher
+         *                  than doc1.name
+         */
+        $rootScope.compareDocumentsByName = function (doc1, doc2) {
+            const docname1 = doc1.name.toLowerCase();
+            const docname2 = doc2.name.toLowerCase();
+            if (docname1 < docname2) {
+                return -1;
+            } else if (docname1 > docname2) {
+                return 1;
+            } else {
+                return 0;
+            }
         };
 
         /**
