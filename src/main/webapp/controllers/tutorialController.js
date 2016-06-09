@@ -316,7 +316,7 @@ angular
                         {
                             orphan: true,
                             title: "Okay, that's it.",
-                            content: "For more info and technical details, check out our <a href='https://github.com/annefried/discanno'>GitHub site</a>.",
+                            content: "For more info and technical details, check out our GitHub site (URL will be added upon publication).",
                             path: "/swan/#/projects"
                         }
                     ]
