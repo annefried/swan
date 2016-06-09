@@ -35,7 +35,7 @@ angular
          * @returns http-Object of query
          */
         $scope.loadSchemes = function () {
-            var httpSchemes = $http.get("discanno/scheme/schemes").success(function (response) {
+            var httpSchemes = $http.get("swan/scheme/schemes").success(function (response) {
                 $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
             }).error(function (response) {
                 if (response == "") {
@@ -52,7 +52,7 @@ angular
          * @returns http-Object of query
          */
         $scope.loadProjects2 = function () {
-            const url = "discanno/project/byuser/" + $window.sessionStorage.uId;
+            const url = "swan/project/byuser/" + $window.sessionStorage.uId;
             
             var httpProjects = $http.get(url).success(function (response) {
                 $scope.projects = JSOG.parse(JSON.stringify(response)).projects;

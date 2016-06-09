@@ -14,7 +14,7 @@ angular
         };
 
         $scope.loadSchemes = function () {
-            $http.get("discanno/scheme/schemes").success(function (response) {
+            $http.get("swan/scheme/schemes").success(function (response) {
                 $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);

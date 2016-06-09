@@ -11,7 +11,7 @@ angular
     
         $scope.changePassword = function (password) {
 
-            $http.put('discanno/user/' + $window.sessionStorage.uId, password).success(function (response) {
+            $http.put('swan/user/' + $window.sessionStorage.uId, password).success(function (response) {
                 $rootScope.addAlert({type: 'success', msg: 'Password changed succesfully.'});
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);

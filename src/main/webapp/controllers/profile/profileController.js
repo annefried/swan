@@ -62,7 +62,7 @@ angular
 
         $scope.getTime = function () {
             $scope.tilog = [];
-            $http.get("discanno/timelogging/" + $scope.userId).success(function (response) {
+            $http.get("swan/timelogging/" + $scope.userId).success(function (response) {
                 $scope.tilog = JSOG.parse(JSON.stringify(response)).timelogging;
                 $scope.origTilog = $scope.tilog;
                 $scope.totalTime = $scope.calcTotalTime($scope.origTilog.length - 1);
@@ -136,7 +136,7 @@ angular
                     'loggedtime': loggedTime
                 };
 
-                $http.post("discanno/timelogging", JSON.stringify(json)).success(function (response) {
+                $http.post("swan/timelogging", JSON.stringify(json)).success(function (response) {
                     jsonForTable.id = response;
                     $scope.origTilog.push(jsonForTable);
                     $rootScope.addAlert({type: 'success', msg: 'Time logged!'});

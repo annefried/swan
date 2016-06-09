@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <description>DiscAnno Web App</description>
+  <description>Swan Web App</description>
   <session-config>
     <session-timeout>30</session-timeout>
     <cookie-config>
       <http-only>true</http-only>
     </cookie-config>
   </session-config>
-  <display-name>discanno</display-name>
+  <display-name>swan</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
@@ -22,6 +22,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Jersey Web Application</servlet-name>
-    <url-pattern>/discanno/*</url-pattern>
+    <url-pattern>/swan/*</url-pattern>
   </servlet-mapping>
 </web-app>

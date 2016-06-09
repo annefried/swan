@@ -23,7 +23,7 @@ angular
          * @param {type} projId the projects id
          */
         $scope.deleteDocument = function (documentId, projId) {
-            $http.delete("discanno/document/" + documentId).success(function (response) {
+            $http.delete("swan/document/" + documentId).success(function (response) {
             	
             	const project = $rootScope.getProjectByProjectId(projId, $rootScope.tableProjects);
             	
