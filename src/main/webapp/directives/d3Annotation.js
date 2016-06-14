@@ -44,6 +44,8 @@ angular
 
                 $scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
 
+                $scope.index = -1;
+
                 // Constants
                 const lineHeight = 40;
                 const wordHeight = 40;
@@ -374,7 +376,8 @@ angular
                                 description: 'Jump from annotation to annotation',
                                 callback: function () {
                                     $scope.index++;
-                                    var anno = $scope.getAllAnnos($scope.index, false);
+                                    var anno = $scope.getAnnotationAtPosition($scope.index, false);
+                                    anno.selectedByHotkey = true;
                                     $scope.setSelection({item: anno});
                                 }
                             })
@@ -383,7 +386,8 @@ angular
                                 description: 'Jump from annotation to annotation',
                                 callback: function () {
                                     $scope.index--;
-                                    var anno = $scope.getAllAnnos($scope.index, true);
+                                    var anno = $scope.getAnnotationAtPosition($scope.index, true);
+                                    anno.selectedByHotkey = true;
                                     $scope.setSelection({item: anno});
                                 }
                             })
@@ -417,28 +421,12 @@ angular
                             });
                 }
 
-
-                $scope.sort = function (array) {
-                    return array.sort(function (a, b) {
-                        var x = a.words[0].start;
-                        var y = b.words[0].start;
-                        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-                    });
-                };
-                $scope.index = -1;
-                $scope.getAllAnnos = function (index, back) {
-                    var a = [];
-                    var i = 0;
-                    for (var id in $scope.annotations) {
-                        var anno = $scope.annotations[id];
-                        a[i] = anno;
-                        i++;
-                    }
-                    a = $scope.sort(a);
+                $scope.getAnnotationAtPosition = function (index, backwards) {
+                    var a = $scope.getSortedAnnotations();
                     if (index < a.length && index >= 0) {
                         return a[index];
                     } else {
-                        if (back) {
+                        if (backwards) {
                             $scope.index = a.length - 1;
                             return a[a.length - 1];
                         } else {
@@ -447,8 +435,49 @@ angular
                         }
                     }
                 };
+
+                $scope.getPositionOfAnnotation = function(anno) {
+                    var a = $scope.getSortedAnnotations();
+                    for (var i in a) {
+                        if (a[i].id === anno.id) {
+                            return i;
+                        }
+                    }
+                    return -1;
+                };
+
+                $scope.getSortedAnnotations = function() {
+                    var a = [];
+                    var i = 0;
+                    for (var id in $scope.annotations) {
+                        var anno = $scope.annotations[id];
+                        a[i] = anno;
+                        i++;
+                    }
+                    return $scope.sortAnnotationsByPosition(a);
+                };
+
+                $scope.sortAnnotationsByPosition = function (array) {
+                    return array.sort($scope.compareAnnotationsByPosition);
+                };
+
+                $scope.compareAnnotationsByPosition = function (anno1, anno2) {
+                    var x = anno1.words[0].start;
+                    var y = anno2.words[0].start;
+                    if (x < y) {
+                        return -1;
+                    } else if (x > y) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                };
+
                 //Listens to selection changes and redraws correlating sections
                 $scope.$watch('selection', function (newVals, oldVals) {
+                    if (newVals !== null && newVals !== undefined) {
+                        $scope.index = $scope.getPositionOfAnnotation(newVals);
+                    }
                     $scope.highlightSelected(oldVals);
                 }, true);
                 $scope.$watch('links', function () {
@@ -1530,7 +1559,7 @@ angular
                     if ($scope.selection === null || $scope.selection === undefined)
                         $scope.drawEverything();
                     else {
-                        if ($scope.selection !== null && $scope.selection !== undefined && $scope.selection.selectedInGraph === true) {
+                        if ($scope.selection.selectedInGraph === true) {
                             // If clicked in the graph, find annotation
                             for (var annoID in formAnnotations) {
                                 var annotation = formAnnotations[annoID];
@@ -1541,7 +1570,17 @@ angular
                                 }
                             }
                             $scope.selection.selectedInGraph = false;
+                        } else if ($scope.selection.selectedByHotkey === true) {
+                            for (var annoID in formAnnotations) {
+                                var annotation = formAnnotations[annoID];
+                                if (annotation.annotation === $scope.selection) {
+                                    const firstWord = annotation.annotationBoxes[0].formWords[0];
+                                    $scope.smartJump(firstWord);
+                                }
+                            }
+                            $scope.selection.selectedByHotkey = false;
                         }
+
                         svg.selectAll(".annotationtext")
                                 .style("opacity", function (d) {
                                     for (var id in d.annoGrid) {
@@ -1691,6 +1730,24 @@ angular
                                 });
                     }
                 };
+
+                $scope.smartJump = function(word) {
+                    // If the word is currently not within view, jump towards it
+                    // so that is positioned near the edge of the screen
+                    // (less disorienting when navigating the document)
+                    const sizeOfNavbar = 55;
+                    const spaceAboveText = 120;
+                    const bufferSpaceLower = 20;
+                    const bufferSpaceUpper = 70;
+                    const lowerEdge = window.innerHeight + window.scrollY - sizeOfNavbar - spaceAboveText - bufferSpaceLower;
+                    const upperEdge = lowerEdge - (window.innerHeight - sizeOfNavbar) + bufferSpaceUpper;
+                    if (word.y < upperEdge) {
+                        window.scrollTo(word.x, word.y);
+                    } else if (word.y > lowerEdge) {
+                        window.scrollTo(word.x, word.y - (window.innerHeight - sizeOfNavbar - 175));
+                    }
+                };
+
                 //Determine relation between the object and the current selection
                 $scope.getConnection = function (object, selection) {
                     switch (selection.type) {
