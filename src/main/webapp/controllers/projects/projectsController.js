@@ -7,8 +7,8 @@
 
 angular
     .module('app')
-    .controller('projectsController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', '$location', 'hotkeys', '$q',
-       function ($scope, $rootScope, $window, $http, $uibModal, $location, hotkeys, $q) {
+    .controller('projectsController', ['$scope', '$rootScope', '$window', '$http', '$uibModal', '$location', 'hotkeys', 'schemeByIdService', '$q',
+       function ($scope, $rootScope, $window, $http, $uibModal, $location, hotkeys, schemeByIdService, $q) {
 
             $rootScope.validateSignedInUser();
     	
@@ -193,28 +193,44 @@ angular
              */
             $scope.openProjectSchemeModal = function (projectId) {
 
-                var isSearching = true;
-                for (var i = 0; i < $rootScope.schemes.length && isSearching; i++) {
-                    var scheme = $rootScope.schemes[i];
-                    for (var j = 0; j < scheme.projects.length; j++) {
-                        var proj = scheme.projects[j];
-                        if (proj.id === projectId) {
-                            $rootScope.currentScheme = scheme;
-                            isSearching = false;
-                            break;
-                        }
-                    }
-                }
-
-                var modalInstance = $uibModal.open({
+                const uidObject = {
                     animation: $scope.animationsEnabled,
                     templateUrl: 'templates/schemes/schemeViewModal.html',
                     controller: 'schemeViewModalController'
-                });
+                };
+                var modalInstance = null;
+                var proj = null;
+                for (var i = 0; i < $rootScope.tableProjects.length; i++) {
+                    if ($rootScope.tableProjects[i].id == projectId) {
+                        proj = $rootScope.tableProjects[i];
+                        break;
+                    }
+                }
 
-                modalInstance.result.then(function (response) {
+                if (proj == null) {
+                    throw "projectsController: Wrong project id";
+                }
 
-                });
+                if (proj.scheme.name === undefined) {
+                    $http.get("swan/scheme/byid/" + proj.scheme.id).success(function (response) {
+                        proj.scheme = response.scheme;
+                        $rootScope.schemes.push(proj.scheme);
+                        $rootScope.currentScheme = proj.scheme;
+                        modalInstance = $uibModal.open(uidObject);
+                        modalInstance.result.then(function (response) {
+
+                        });
+                    }).error(function (response) {
+                        $rootScope.checkResponseStatusCode(response.status);
+                    });
+                } else {
+                    $rootScope.currentScheme = proj.scheme;
+                    modalInstance = $uibModal.open(uidObject);
+                    modalInstance.result.then(function (response) {
+
+                    });
+                }
+
                 $scope.toggleAnimation = function () {
                     $scope.animationsEnabled = !$scope.animationsEnabled;
                 };
@@ -353,6 +369,9 @@ angular
                 $rootScope.collapsed[projectId] = true;
                 $rootScope.currentProjectIndex = projectIndex;
                 $rootScope.currentProjectId = projectId;
+                $rootScope.currProj = $rootScope.getProjectByProjectId(projectId, $rootScope.tableProjects);
+                $rootScope.currScheme = schemeByIdService.getScheme($rootScope.currProj.scheme.id);
+
                 var modalInstance = $uibModal.open({
                     animation: $scope.animationsEnabled,
                     templateUrl: 'templates/projects/documentAddModal.html',

@@ -86,9 +86,7 @@ angular
                     'name': scheme.name,
                     'creator': scheme.creator,
                     'projects': newProjects,
-                    'tableIndex': $scope.schemeCounter,
-                    'labelSetCount': scheme.labelSets.length,
-                    'linkSetCount': scheme.linkSets.length
+                    'tableIndex': $scope.schemeCounter
                 };
                 this.tableSchemes.push(schemePreview);
 
@@ -158,16 +156,34 @@ angular
          * @param {type} name
          */
         $scope.openSchemeViewModal = function (name) {
-            $rootScope.currentScheme = $rootScope.schemesTable[name];
-            var modalInstance = $uibModal.open({
+
+            const uidObject = {
                 animation: $scope.animationsEnabled,
                 templateUrl: 'templates/schemes/schemeViewModal.html',
                 controller: 'schemeViewModalController'
-            });
+            };
+            var modalInstance = null;
 
-            modalInstance.result.then(function (response) {
+            var scheme = $rootScope.schemesTable[name];
+            if (scheme.targetTypes === undefined) {
+                $http.get("swan/scheme/byid/" + scheme.id).success(function (response) {
+                    scheme = response.scheme;
+                    $rootScope.currentScheme = scheme;
+                    modalInstance = $uibModal.open(uidObject);
+                    modalInstance.result.then(function (response) {
 
-            });
+                    });
+                }).error(function (response) {
+                    $rootScope.checkResponseStatusCode(response.status);
+                });
+            } else {
+                $rootScope.currentScheme = scheme;
+                modalInstance = $uibModal.open(uidObject);
+                modalInstance.result.then(function (response) {
+
+                });
+            }
+
             $scope.toggleAnimation = function () {
                 $scope.animationsEnabled = !$scope.animationsEnabled;
             };

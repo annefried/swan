@@ -43,8 +43,18 @@ angular
             }
         };
 
+        $scope.getUser = function () {
+            $scope.prename = $window.sessionStorage.prename;
+            $scope.lastname = $window.sessionStorage.lastname;
+            $scope.email = $window.sessionStorage.email;
+            $scope.role = $window.sessionStorage.role;
+        };
+
+        // Explicit call here
         $rootScope.validateSignedInUser();
+        $scope.getUser();
         $rootScope.isUnprivileged = $window.sessionStorage.isAnnotator;
+
 
         $scope.logout = function () {
             $http.post('swan/usermanagment/logout');

@@ -25,7 +25,7 @@ angular
             delete scheme.projects;
 
 
-            var targetTypesSimple = new Array();
+            var targetTypesSimple = [];
             for (var j = 0; j < scheme.targetTypes.length; j++) {
                 targetTypesSimple.push(scheme.targetTypes[j].targetType);
             }

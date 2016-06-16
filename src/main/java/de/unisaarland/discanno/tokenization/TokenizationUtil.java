@@ -16,19 +16,21 @@ import java.util.regex.Pattern;
 public class TokenizationUtil {
 
     private static final Pattern LINEBREAK_PATTERN = Pattern.compile("\r\n|\r|\n");
-    
+    private static final String OPTIONS = "ptb3Escaping=false,normalizeParentheses=false,normalizeOtherBrackets=false";
+
     public static List<Line> tokenize(String str) {
         Token wsToken;
         Token wsToken2;
         String lineInSubstr;
         StringReader reader = new StringReader(str);
-        PTBTokenizer ptbt = new PTBTokenizer((Reader) reader, (LexedTokenFactory) new CoreLabelTokenFactory(), "ptb3Escaping=false,normalizeParentheses=false,normalizeOtherBrackets=false");
+        PTBTokenizer ptbt = new PTBTokenizer(reader, new CoreLabelTokenFactory(), OPTIONS);
         Line line = new Line();
-        ArrayList<Line> lines = new ArrayList<Line>();
+        ArrayList<Line> lines = new ArrayList<>();
         int docIdx = 0;
+
         while (ptbt.hasNext()) {
             CoreLabel label = (CoreLabel) ptbt.next();
-            //System.out.println("label: " + (Object) label);
+
             while (label.beginPosition() > docIdx) {
                 String subStr = str.substring(docIdx, label.beginPosition());
                 String[] linesInSubstr = subStr.split("\\r?\\n", -1);
@@ -42,8 +44,8 @@ public class TokenizationUtil {
                         wsToken2 = TokenizationUtil.createToken(docIdx, docIdx + lineInSubstr.length(), lineInSubstr);
                         line.addTokens(wsToken2);
                         lines.add(line);
-                        //System.out.println("NEWLINE");
                         line = new Line();
+
                         docIdx = docIdx + lineInSubstr.length();
                         if (str.substring(docIdx).startsWith("\r")) {
                             ++docIdx;
@@ -66,10 +68,9 @@ public class TokenizationUtil {
                         if (str.substring(docIdx).startsWith("\n")) {
                             ++docIdx;
                         }
+
                         lines.add(line);
-                        //System.out.println("NEWLINE--3 " + docIdx);
                         line = new Line();
-                        
                     }
                 }
             }
@@ -77,6 +78,7 @@ public class TokenizationUtil {
             line.addTokens(token);
             docIdx = label.endPosition();
         }
+
         if (str.length() > docIdx) {
             String subStr = str.substring(docIdx);
             String[] linesInSubstr = subStr.split("\\r?\\n", -1);
@@ -105,25 +107,25 @@ public class TokenizationUtil {
                     if (str.substring(docIdx).startsWith("\n")) {
                         ++docIdx;
                     }
+
                     lines.add(line);
-                    //System.out.println("NEW LINE");
                     line = new Line();
                 }
             }
         }
+
         lines.add(line);
-        //System.out.println("NEW LINE");
         return lines;
     }
     
     public static HashMap<String, HashMap<Integer, CoreLabel>> getTokenMap(String str) {
         StringReader reader = new StringReader(str);
-        HashMap<Integer, CoreLabel> mapStart = new HashMap<Integer, CoreLabel>();
-        HashMap<Integer, CoreLabel> mapEnd = new HashMap<Integer, CoreLabel>();
-        HashMap<String, HashMap<Integer, CoreLabel>> maps = new HashMap<String, HashMap<Integer, CoreLabel>>();
+        HashMap<Integer, CoreLabel> mapStart = new HashMap<>();
+        HashMap<Integer, CoreLabel> mapEnd = new HashMap<>();
+        HashMap<String, HashMap<Integer, CoreLabel>> maps = new HashMap<>();
         maps.put("start", mapStart);
         maps.put("end", mapEnd);
-        PTBTokenizer ptbt = new PTBTokenizer((Reader) reader, (LexedTokenFactory) new CoreLabelTokenFactory(), "ptb3Escaping=false,normalizeParentheses=false,normalizeOtherBrackets=false");
+        PTBTokenizer ptbt = new PTBTokenizer(reader, new CoreLabelTokenFactory(), OPTIONS);
         while (ptbt.hasNext()) {
             CoreLabel label = (CoreLabel) ptbt.next();
             mapStart.put(label.beginPosition(), label);
@@ -132,8 +134,7 @@ public class TokenizationUtil {
         return maps;
     }
     
-    private static Token createToken(int start, int end, String text) {
-        //System.out.println("creating token: " + start + " " + end + " >" + text + "<");
+    private static Token createToken(final int start, final int end, final String text) {
         Token token = new Token();
         token.setStart(start);
         token.setEnd(end);

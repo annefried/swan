@@ -9,6 +9,8 @@ import de.unisaarland.discanno.entities.Scheme;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * This DAO (Data Access Object) provides all CRUD operations for schemes.
@@ -22,22 +24,24 @@ public class SchemeDAO extends BaseEntityDAO<Scheme> {
     public SchemeDAO() {
         super(Scheme.class);
     }
-    
-    
-    public Scheme getSchemeByDocId(Long docId) {
 
-        final String strQuery = "SELECT * " +
-                                "FROM SCHEME s " +
-                                "WHERE EXISTS(SELECT 1 " +
-                                            "FROM PROJECT p " +
-                                            "WHERE EXISTS(SELECT 1 " +
-                                                            "FROM DOCUMENT d " +
-                                                            "WHERE d.id = ? AND project_fk = p.id) " +
-                                            "AND p.scheme = s.id)";
-        
-        return (Scheme) em.createNativeQuery(strQuery, Scheme.class)
-                            .setParameter(1, docId)
-                            .getSingleResult();
+    @Override
+    public List<Scheme> findAll() {
+        return executeQuery(Scheme.QUERY_FIND_ALL);
+    }
+
+    public Scheme find(final Long schemeId) {
+        return firstResult(
+                    executeQuery(
+                        Scheme.QUERY_FIND_BY_ID,
+                        Collections.singletonMap(Scheme.PARAM_SCHEME_ID, schemeId)));
+    }
+
+    public Scheme getSchemeByDocId(final Long docId) {
+        return firstResult(
+                executeQuery(
+                        Scheme.QUERY_FIND_BY_DOC_ID,
+                        Collections.singletonMap(Scheme.PARAM_DOC_ID, docId)));
     }
     
 }

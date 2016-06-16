@@ -510,57 +510,10 @@ angular
                 $scope.loadedSchemes = [];
                 for (var i = 0; i < schemes.length; i++) {
                     var currentScheme = schemes[i];
-                    // Target Types
-                    var targetTypes = [];
-                    for (var j = 0; j < currentScheme.targetTypes.length; j++) {
-                        targetTypes.push(currentScheme.targetTypes[j].targetType);
-                    }
-                    // Label Sets
-                    var labelSets = [];
-                    for (var j = 0; j < currentScheme.labelSets.length; j++) {
-                        var labelSet = currentScheme.labelSets[j];
-                        var appliesToTargetTypes = [];
-                        for (var k = 0; k < labelSet.appliesToTargetTypes.length; k++) {
-                            var targetType = labelSet.appliesToTargetTypes[k];
-                            appliesToTargetTypes.push(targetType.targetType);
-                        }
-                        var labels = [];
-                        for (var k = 0; k < labelSet.labels.length; k++) {
-                            var label = labelSet.labels[k];
-                            labels.push(label.labelId);
-                        }
-                        var labelSetTemplate = {
-                            name: labelSet.name,
-                            exclusive: labelSet.exclusive,
-                            appliesToTargetTypes: appliesToTargetTypes,
-                            labels: labels
-                        };
-                        labelSets.push(labelSetTemplate);
-                    }
-                    // ToDo: Link Sets
-                    var linkSets = [];
-                    for (var j = 0; j < currentScheme.linkSets.length; j++) {
-                        var linkSet = currentScheme.linkSets[j];
-                        var startType = linkSet.startType.targetType;
-                        var endType = linkSet.endType.targetType;
-                        var linkLabels = [];
-                        for (var k = 0; k < linkSet.linkLabels.length; k++) {
-                            var label = linkSet.linkLabels[k];
-                            linkLabels.push(label.linkLabel);
-                        }
-                        var linkSetTemplate = {
-                            name: linkSet.name,
-                            startType: startType,
-                            endType: endType,
-                            linkLabels: linkLabels
-                        };
-                        linkSets.push(linkSetTemplate);
-                    }
+
                     var template = {
-                        name: currentScheme.name,
-                        targetTypes: targetTypes,
-                        labelSets: labelSets,
-                        linkSets: linkSets
+                        id: currentScheme.id,
+                        name: currentScheme.name
                     };
                     $scope.loadedSchemes.push(template);
                 }
@@ -569,11 +522,94 @@ angular
             });
         };
 
-        $scope.loadPreloadedScheme = function (preloadedScheme) {
-            $scope.name = "Copy of " + preloadedScheme.name;
-            $scope.targets = preloadedScheme.targetTypes;
-            $scope.labelSets = preloadedScheme.labelSets;
-            $scope.linkSets = preloadedScheme.linkSets;
+        $scope.loadPreloadedScheme = function (scheme) {
+
+            if (scheme == null || scheme == undefined) {
+                // Do nothing
+            } else if (scheme.targetTypes == undefined) {
+                $http.get("swan/scheme/byid/" + scheme.id).success(function (response) {
+                    const resScheme = JSOG.parse(JSON.stringify(response.scheme));
+                    scheme = $scope.processScheme(resScheme);
+                    $scope.setSchemeProperties(scheme);
+                    for (var i = 0; i < $scope.loadedSchemes.length; i++) {
+                        if ($scope.loadedSchemes[i].id == scheme.id) {
+                            $scope.loadedSchemes[i] = scheme;
+                            break;
+                        }
+                    }
+                }).error(function (response) {
+                    $rootScope.checkResponseStatusCode(response.status);
+                });
+            } else {
+                $scope.setSchemeProperties(scheme);
+            }
+
+        };
+
+        $scope.processScheme = function (scheme) {
+            // Target Types
+            var targetTypes = [];
+            for (var j = 0; j < scheme.targetTypes.length; j++) {
+                targetTypes.push(scheme.targetTypes[j].targetType);
+            }
+            // Label Sets
+            var labelSets = [];
+            for (var j = 0; j < scheme.labelSets.length; j++) {
+                var labelSet = scheme.labelSets[j];
+                var appliesToTargetTypes = [];
+                for (var k = 0; k < labelSet.appliesToTargetTypes.length; k++) {
+                    var targetType = labelSet.appliesToTargetTypes[k];
+                    appliesToTargetTypes.push(targetType.targetType);
+                }
+                var labels = [];
+                for (var k = 0; k < labelSet.labels.length; k++) {
+                    var label = labelSet.labels[k];
+                    labels.push(label.labelId);
+                }
+                var labelSetTemplate = {
+                    name: labelSet.name,
+                    exclusive: labelSet.exclusive,
+                    appliesToTargetTypes: appliesToTargetTypes,
+                    labels: labels
+                };
+                labelSets.push(labelSetTemplate);
+            }
+            // ToDo: Link Sets
+            var linkSets = [];
+            for (var j = 0; j < scheme.linkSets.length; j++) {
+                var linkSet = scheme.linkSets[j];
+                var startType = linkSet.startType.targetType;
+                var endType = linkSet.endType.targetType;
+                var linkLabels = [];
+                for (var k = 0; k < linkSet.linkLabels.length; k++) {
+                    var label = linkSet.linkLabels[k];
+                    linkLabels.push(label.linkLabel);
+                }
+                var linkSetTemplate = {
+                    name: linkSet.name,
+                    startType: startType,
+                    endType: endType,
+                    linkLabels: linkLabels
+                };
+                linkSets.push(linkSetTemplate);
+            }
+
+            var template = {
+                id: scheme.id,
+                name: scheme.name,
+                targetTypes: targetTypes,
+                labelSets: labelSets,
+                linkSets: linkSets
+            };
+
+            return template;
+        };
+
+        $scope.setSchemeProperties = function (scheme) {
+            $scope.name = "Copy of " + scheme.name;
+            $scope.targets = scheme.targetTypes;
+            $scope.labelSets = scheme.labelSets;
+            $scope.linkSets = scheme.linkSets;
             $scope.loadScheme = true;
         };
 

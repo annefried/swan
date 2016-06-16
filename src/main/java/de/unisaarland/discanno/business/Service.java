@@ -459,10 +459,10 @@ public class Service {
                 list = projectDAO.getAllProjectsAsAdmin();
                 break;
             case projectmanager:
-                list = projectDAO.getAllProjectsAsProjectManagerByUserId(userId);
+                list = projectDAO.getAllProjectsAsProjectManagerByUser(user);
                 break;
             case annotator:
-                list = projectDAO.getAllProjectsByUserId(userId);
+                list = projectDAO.getAllProjectsByUser(user);
                 break;
         }
 

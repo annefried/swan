@@ -22,9 +22,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.CreateException;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 import javax.persistence.NoResultException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -54,7 +52,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
     
     @EJB
     UsersDAO usersDAO;
-    
+
     @EJB
     ProjectDAO projectDAO;
     

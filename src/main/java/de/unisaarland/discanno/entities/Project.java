@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
+import org.eclipse.persistence.config.QueryHints;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -25,11 +27,42 @@ import javax.persistence.*;
         name = Project.QUERY_FIND_ALL,
         query = "SELECT DISTINCT p " +
                 "FROM Project p " +
-                "LEFT JOIN FETCH p.documents " +
+                "LEFT JOIN FETCH p.documents docs " +
                 "LEFT JOIN FETCH p.projectManager " +
                 "LEFT JOIN FETCH p.watchingUsers " +
                 "LEFT JOIN FETCH p.users " +
-                "LEFT JOIN FETCH p.scheme "
+                "LEFT JOIN FETCH p.scheme ",
+        hints = {
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.states")
+        }
+    ),
+    @NamedQuery(
+        name = Project.QUERY_FIND_PROJECTS_BY_USER,
+        query = "SELECT DISTINCT p " +
+                "FROM Project p " +
+                "LEFT JOIN FETCH p.documents docs " +
+                "LEFT JOIN FETCH p.projectManager " +
+                "LEFT JOIN FETCH p.watchingUsers " +
+                "LEFT JOIN FETCH p.users " +
+                "LEFT JOIN FETCH p.scheme " +
+                "WHERE :" + Project.PARAM_USER + " MEMBER OF p.users",
+        hints = {
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.states")
+        }
+    ),
+    @NamedQuery(
+        name = Project.QUERY_FIND_PROJECTS_BY_PROJECT_MANAGER,
+        query = "SELECT DISTINCT p " +
+                "FROM Project p " +
+                "LEFT JOIN FETCH p.documents docs " +
+                "LEFT JOIN FETCH p.projectManager " +
+                "LEFT JOIN FETCH p.watchingUsers " +
+                "LEFT JOIN FETCH p.users " +
+                "LEFT JOIN FETCH p.scheme " +
+                "WHERE :" + Project.PARAM_USER + " MEMBER OF p.projectManager",
+        hints = {
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.states")
+        }
     )
 })
 public class Project extends BaseEntity {
@@ -38,6 +71,22 @@ public class Project extends BaseEntity {
      * Named query identifier for "find all".
      */
     public static final String QUERY_FIND_ALL = "Project.QUERY_FIND_ALL";
+
+    /**
+     * Named query identifier for "find projects by user".
+     */
+    public static final String QUERY_FIND_PROJECTS_BY_USER = "Project.QUERY_FIND_PROJECTS_BY_USER";
+
+    /**
+     * Named query identifier for "find projects by project manager".
+     */
+    public static final String QUERY_FIND_PROJECTS_BY_PROJECT_MANAGER = "Project.QUERY_FIND_PROJECTS_BY_PROJECT_MANAGER";
+
+    /**
+     * Query parameter constant for the attribute "user".
+     */
+    public static final String PARAM_USER = "user";
+
 
     @JsonView({ View.Projects.class, View.Documents.class })
     @Column(name = "Name", unique = true)
@@ -50,7 +99,8 @@ public class Project extends BaseEntity {
     private Set<Document> documents = new HashSet<>();
     
     @JsonView({ View.Projects.class })
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                fetch = FetchType.LAZY)
     @JoinTable(
         name="PROJECTS_MANAGER",
         joinColumns={@JoinColumn(name="PROJECT_ID", referencedColumnName="id")},
@@ -58,7 +108,8 @@ public class Project extends BaseEntity {
     private Set<Users> projectManager = new HashSet<>();
     
     @JsonView({ View.Projects.class })
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+            fetch = FetchType.LAZY)
     @JoinTable(
         name="PROJECTS_WATCHINGUSERS",
         joinColumns={@JoinColumn(name="PROJECT_ID", referencedColumnName="id")},

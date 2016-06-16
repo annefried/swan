@@ -28,14 +28,14 @@ import javax.persistence.ManyToMany;
  * 
  * The JsonIdentityInfo annotations prevents infinite recursions.
  * 
- * @author Janna Herrmann
+ * @author Timo Guehring
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 public class TargetType implements Serializable {
     
     private static final long serialVersionUID = 1L;
-    @JsonView({ View.Schemes.class, View.Annotations.class })
+    @JsonView({ View.Scheme.class, View.Annotations.class })
     @Id
     @Column(name = "TargetType")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,7 +44,7 @@ public class TargetType implements Serializable {
     @JsonIgnore
     @ManyToMany(mappedBy = "appliesToTargetTypes",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     private List<LabelSet> labelSets = new ArrayList<>();
 
     public String getTargetType() {

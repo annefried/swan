@@ -23,13 +23,13 @@ import javax.persistence.ManyToOne;
  * 
  * The JsonIdentityInfo annotations prevents infinite recursions.
  *
- * @author Janna Herrmann
+ * @author Timo Guehring
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 public class LinkSet extends BaseEntity {
     
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class })
     @Column(name = "Name")
     private String name;
     
@@ -46,7 +46,7 @@ public class LinkSet extends BaseEntity {
     @Column(name = "AllowUnlabeledLinks")
     private boolean allowUnlabeledLinks;
     
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class })
     @ManyToMany(mappedBy = "linkSet",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)

@@ -53,13 +53,6 @@ angular
             }
         };
 
-        $scope.getUser = function () {
-            $scope.prename = $window.sessionStorage.prename;
-            $scope.lastname = $window.sessionStorage.lastname;
-            $scope.email = $window.sessionStorage.email;
-            $scope.role = $window.sessionStorage.role;
-        };
-
         $scope.getTime = function () {
             $scope.tilog = [];
             $http.get("swan/timelogging/" + $scope.userId).success(function (response) {

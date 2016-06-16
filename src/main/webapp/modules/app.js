@@ -20,12 +20,12 @@ function Config($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'templates/dashboard.html',
-            controller: 'profileController',
+            controller: 'rootController',
             controllerAs: 'dashboard'
         })
         .when('/dashboard', {
             templateUrl: 'templates/dashboard.html',
-            controller: 'profileController',
+            controller: 'rootController',
             controllerAs: 'dashboard'
         })
         .when('/projects', {

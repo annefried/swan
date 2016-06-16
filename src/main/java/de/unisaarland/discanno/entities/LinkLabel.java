@@ -38,7 +38,7 @@ public class LinkLabel implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    @JsonView({ View.Links.class, View.Schemes.class })
+    @JsonView({ View.Links.class, View.Scheme.class })
     @Id
     @Column(name = "LinkLabel")
     @GeneratedValue(strategy = GenerationType.AUTO)

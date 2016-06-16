@@ -126,7 +126,8 @@ public class Users extends BaseEntity {
     private Timestamp createDate;
     
     @JsonView({ View.Users.class })
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+            fetch = FetchType.LAZY)
     @JoinTable(
         name="USERS_PROJECTS",
         joinColumns={@JoinColumn(name="USERS_ID", referencedColumnName="id")},
