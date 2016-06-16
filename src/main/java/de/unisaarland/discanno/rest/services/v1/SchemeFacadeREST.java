@@ -59,7 +59,7 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.process(entity);
-            return usersDAO.create(entity);
+            return schemeDAO.create(entity);
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();
         } catch (CreateException ex) {
@@ -94,7 +94,29 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
 
             Scheme scheme = schemeDAO.getSchemeByDocId(docId);
 
-            return Response.ok(mapper.writerWithView(View.Schemes.class)
+            return Response.ok(mapper.writerWithView(View.Scheme.class)
+                                        .withRootName("scheme")
+                                        .writeValueAsString(scheme))
+                            .build();
+        } catch (SecurityException e) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(SchemeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.serverError().build();
+        }
+    }
+
+    @GET
+    @Path("/byid/{schemeId}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getSchemeById(@PathParam("schemeId") Long schemeId) {
+
+        try {
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+
+            Scheme scheme = schemeDAO.find(schemeId);
+
+            return Response.ok(mapper.writerWithView(View.Scheme.class)
                                         .withRootName("scheme")
                                         .writeValueAsString(scheme))
                             .build();

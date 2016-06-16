@@ -6,11 +6,13 @@
 package de.unisaarland.discanno.dao;
 
 import de.unisaarland.discanno.entities.Project;
+import de.unisaarland.discanno.entities.Users;
+
+import java.util.Collections;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-import javax.persistence.Query;
 
 /**
  * This DAO (Data Access Object) provides all CRUD operations for projects.
@@ -29,25 +31,18 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
         return executeQuery(Project.QUERY_FIND_ALL);
     }
 
-
     /**
      * Returns a list of all projects whose user id is included
      * in the the projects users list. Currently used to
      * retrieve all projects by users with user role 'annotator'.
      *
-     * @param userId
+     * @param user
      * @return
      */
-    public List<Project> getAllProjectsByUserId(final Long userId) {
-
-        final String strQuery = "SELECT * " +
-                                "FROM project p " +
-                                "WHERE EXISTS(SELECT 1 " +
-                                        "FROM users_projects up " +
-                                        "WHERE up.users_id = ? AND p.id = up.project_id)";
-        return em.createNativeQuery(strQuery, Project.class)
-                .setParameter(1, userId)
-                .getResultList();
+    public List<Project> getAllProjectsByUser(final Users user) {
+        return executeQuery(
+                Project.QUERY_FIND_PROJECTS_BY_USER,
+                Collections.singletonMap(Project.PARAM_USER, user));
     }
 
     /**
@@ -55,20 +50,13 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
      * in the projects projectsManager list. Only used for project
      * manager.
      *
-     * @param userId
+     * @param user
      * @return
      */
-    public List<Project> getAllProjectsAsProjectManagerByUserId(final Long userId) {
-
-        final String strQuery = "SELECT * " +
-                                "FROM project p " +
-                                "WHERE EXISTS(SELECT 1 " +
-                                        "FROM PROJECTS_MANAGER pm " +
-                                        "WHERE pm.manager_id = ? AND p.id = pm.project_id)";
-
-        return em.createNativeQuery(strQuery, Project.class)
-                .setParameter(1, userId)
-                .getResultList();
+    public List<Project> getAllProjectsAsProjectManagerByUser(final Users user) {
+        return executeQuery(
+                Project.QUERY_FIND_PROJECTS_BY_PROJECT_MANAGER,
+                Collections.singletonMap(Project.PARAM_USER, user));
     }
-    
+
 }

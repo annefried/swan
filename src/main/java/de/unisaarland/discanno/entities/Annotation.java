@@ -81,21 +81,25 @@ public class Annotation extends BaseEntity {
     public static final String PARAM_USER = "user";
     
     @JsonView({ View.Annotations.class, View.Links.class })
-    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER, optional = true)
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name="user_fk")
     private Users user;
     
     @JsonView({ View.Annotations.class, View.Links.class })
-    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                fetch = FetchType.LAZY)
     @JoinColumn(name = "document_fk")
     private Document document;
     
-    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                fetch = FetchType.EAGER)
     @JoinColumn(name = "targetType_fk")
     private TargetType targetType;
     
     @JsonView({ View.Annotations.class, View.Links.class })
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                fetch = FetchType.EAGER)
     @JoinTable(
         name="ANNOTATION_LABELMAP",
         joinColumns={@JoinColumn(name="ANNOTATION_ID", referencedColumnName="id")},

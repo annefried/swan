@@ -80,6 +80,9 @@ function AnnotationObject(id, type, labels, text) {
     //Sets a label for this object. If this object already has this label, the label
     //is removed; added otherwise
     this.setLabel = function (labelSet, label) {
+        if (labelSet == undefined || label == undefined) {
+            throw "annotationStructure: labelSet or label undefined";
+        }
         var set = this.selectableLabels[labelSet.id];
 
         //Check if this object can be labeled with the set

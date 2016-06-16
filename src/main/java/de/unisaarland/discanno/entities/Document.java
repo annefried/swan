@@ -52,7 +52,7 @@ public class Document extends BaseEntity {
     private String name;
     
     /**
-     * The column definiton "TEXT" determines the database type.
+     * The column definition "TEXT" determines the database type.
      * From character varying(255) to "text"
      */
     @JsonView({ View.Documents.class })
@@ -62,7 +62,8 @@ public class Document extends BaseEntity {
     
     @JsonView({ View.Documents.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                optional = false)
+                optional = false,
+                fetch = FetchType.LAZY)
     @JoinColumn(name = "project_fk")
     private Project project;
     

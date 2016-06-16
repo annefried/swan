@@ -1,11 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 'use strict';
 
+// TODO this is a mess
 angular.module('app')
         .factory("getAnnotationService", function ($http) {
             return  {
                 getAnnotations: function (uId, docId) {
 
-                    // IDEA: Return http without then. Controller handeles then. http://stackoverflow.com/questions/16227644/angularjs-factory-http-service
+                    // IDEA: Return http without then. Controller handles then. http://stackoverflow.com/questions/16227644/angularjs-factory-http-service
                     // Async
 //                    var httpCallback = $http.get("swan/annotations/" + uId + "/" + docId);
 //                    return httpCallback;
@@ -92,8 +98,7 @@ angular.module('app')
 
                 }
             }
-        }
-        )
+        })
         .factory('linkService', function ($http) {
             return  {
                 getLinks: function (uId, docId) {
@@ -113,7 +118,7 @@ angular.module('app')
             }
         })
         .factory('schemeService', function ($http) {
-            return  {
+            return {
                 getScheme: function (docId) {
                     // Async
 //                    $http.get("swan/scheme/" + docId).then(function (response) {
@@ -127,14 +132,25 @@ angular.module('app')
                     xmlHttp.send(null);
                     var schemeJSON = JSOG.parse(xmlHttp.responseText).scheme;
                     return schemeJSON;
-
                 }
             }
-        }).factory('projectService', function ($window, $http) {
-    return  {
-        getScheme: function (docId) {
-            var httpProjects = $http.get("swan/project/byuser/" + $window.sessionStorage.uId);
-            return httpProjects;
-        }
-    }
-});
+        })
+        .factory('schemeByIdService', function ($http) {
+            return {
+                getScheme: function (schemeId) {
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("GET", "swan/scheme/byid/" + schemeId, false); // false for synchronous request
+                    xmlHttp.send(null);
+                    var schemeJSON = JSOG.parse(xmlHttp.responseText).scheme;
+                    return schemeJSON;
+                }
+            }
+        })
+        .factory('projectService', function ($window, $http) {
+            return {
+                getScheme: function (docId) {
+                    var httpProjects = $http.get("swan/project/byuser/" + $window.sessionStorage.uId);
+                    return httpProjects;
+                }
+            }
+        });

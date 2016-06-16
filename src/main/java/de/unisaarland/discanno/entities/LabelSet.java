@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 public class LabelSet extends BaseEntity {
 
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class })
     @Column(name = "Name")
     private String name;
     
@@ -42,14 +42,14 @@ public class LabelSet extends BaseEntity {
      * Determines whether an annotation refers to several labels or
      * one.
      */
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class })
     @Column(name = "Exclusive")
     private boolean exclusive;
 
     /**
      * Contains the targettypes which can be annotated with this label.
      */
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
     @JoinTable(
         name="TARGETTYPE_LABELSET",
@@ -57,7 +57,7 @@ public class LabelSet extends BaseEntity {
         inverseJoinColumns={@JoinColumn(name="TARGETTYPE", referencedColumnName="TargetType")})
     private Set<TargetType> appliesToTargetTypes = new HashSet<>();
     
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class })
     @ManyToMany(mappedBy = "labelSet",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)

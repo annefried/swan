@@ -38,10 +38,7 @@ angular
          * @param {type} currFileName
          */
         $scope.validateTargets = function (targets, projectId, currFileName) {
-
-        	const curProj = $rootScope.getProjectByProjectId(projectId, $rootScope.tableProjects);
-            const scheme = $rootScope.getSchemeBySchemeId(curProj.scheme.id, $rootScope.schemes);
-
+            const scheme = $rootScope.currScheme;
             const tTypeMap = $scope.getTargetTypeMap(scheme);
             for (var i = 0; i < targets.targets.length; i++) {
                 var target = targets.targets[i];

@@ -9,18 +9,13 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
+import org.eclipse.persistence.config.QueryHints;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -32,18 +27,86 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @JsonIdentityInfo(generator=JSOGGenerator.class)
+@NamedQueries({
+    @NamedQuery(
+        name = Scheme.QUERY_FIND_ALL,
+        query = "SELECT DISTINCT s " +
+                "FROM Scheme s " +
+                "LEFT JOIN FETCH s.projects "
+    ),
+    @NamedQuery(
+        name = Scheme.QUERY_FIND_BY_ID,
+        query = "SELECT DISTINCT s " +
+                "FROM Scheme s " +
+                "LEFT JOIN FETCH s.creator " +
+                "LEFT JOIN FETCH s.targetTypes " +
+                "LEFT JOIN FETCH s.labelSets " +
+                "LEFT JOIN FETCH s.linkSets " +
+                "LEFT JOIN FETCH s.projects " +
+                "WHERE s.id = :" + Scheme.PARAM_SCHEME_ID,
+        hints = {
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.appliesToTargetTypes"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.labels"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.startType"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.endType"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.linkLabels")
+        }
+    ),
+    @NamedQuery(
+        name = Scheme.QUERY_FIND_BY_DOC_ID,
+        query = "SELECT DISTINCT s " +
+                "FROM Scheme s " +
+                "LEFT JOIN FETCH s.creator " +
+                "LEFT JOIN FETCH s.targetTypes " +
+                "LEFT JOIN FETCH s.labelSets " +
+                "LEFT JOIN FETCH s.linkSets " +
+                "LEFT JOIN FETCH s.projects " +
+                    "WHERE EXISTS( " +
+                            "SELECT d " +
+                            "FROM Document d " +
+                            "WHERE d.id = :" + Scheme.PARAM_DOC_ID + " AND d.project.scheme = s)",
+        hints = { }
+    )
+})
 public class Scheme extends BaseEntity {
 
+    /**
+     * Named query identifier for "find all".
+     */
+    public static final String QUERY_FIND_ALL = "Scheme.QUERY_FIND_ALL";
+
+    /**
+     * Named query identifier for "find by id".
+     */
+    public static final String QUERY_FIND_BY_ID = "Scheme.QUERY_FIND_BY_ID";
+
+    /**
+     * Named query identifier for "find by doc id".
+     */
+    public static final String QUERY_FIND_BY_DOC_ID = "Scheme.QUERY_FIND_BY_DOC_ID";
+
+    /**
+     * Query parameter constant for the attribute "id".
+     */
+    public static final String PARAM_SCHEME_ID = "id";
+
+    /**
+     * Query parameter constant for the attribute "doc_id".
+     */
+    public static final String PARAM_DOC_ID = "doc_id";
+
+
+    @JsonView({ View.Scheme.class, View.Schemes.class })
     @Column(name = "Name", unique = true)
     private String name;
 
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
             fetch = FetchType.LAZY,
             optional = true)
     private Users creator;
     
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     @JoinTable(name="SCHEME_TARGETTYPE", 
@@ -51,7 +114,7 @@ public class Scheme extends BaseEntity {
           inverseJoinColumns=@JoinColumn(name="TARGETTYPE"))
     private Set<TargetType> targetTypes = new HashSet();
     
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     @JoinTable(name="SCHEME_LABELSET", 
@@ -59,7 +122,7 @@ public class Scheme extends BaseEntity {
           inverseJoinColumns=@JoinColumn(name="LABELSET_ID"))
     private List<LabelSet> labelSets = new ArrayList();
     
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     @JoinTable(name="SCHEME_LINKSET", 
@@ -67,7 +130,7 @@ public class Scheme extends BaseEntity {
           inverseJoinColumns=@JoinColumn(name="LINKSET_ID"))
     private List<LinkSet> linkSets = new ArrayList();
 
-    @JsonView({ View.Schemes.class })
+    @JsonView({ View.Scheme.class, View.Schemes.class })
     @OneToMany(mappedBy = "scheme",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
