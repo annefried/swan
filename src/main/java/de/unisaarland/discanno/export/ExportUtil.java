@@ -73,7 +73,7 @@ public class ExportUtil {
      */
     public File getExportDataXmi(Project proj) {
         try {
-            File file = new File("discanno_" + proj.getName() + ".zip");
+            File file = new File("swan_" + proj.getName() + ".zip");
             FileOutputStream fos = new FileOutputStream(file);
             BufferedOutputStream bos = new BufferedOutputStream(fos);
             ZipOutputStream zos = new ZipOutputStream(bos);
@@ -207,7 +207,7 @@ public class ExportUtil {
     public File getExportData(Project proj) {
 
         try {
-            File file = new File("discanno_" + proj.getName() + ".zip");
+            File file = new File("swan_" + proj.getName() + ".zip");
             FileOutputStream fos = new FileOutputStream(file);
             BufferedOutputStream bos = new BufferedOutputStream(fos);
             ZipOutputStream zos = new ZipOutputStream(bos);

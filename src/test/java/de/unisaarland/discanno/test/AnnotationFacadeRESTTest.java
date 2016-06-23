@@ -51,7 +51,7 @@ public class AnnotationFacadeRESTTest extends BaseTest {
     public void setupForAnnotations() throws CloneNotSupportedException {
         Users admin = TestDataProvider.getAdmin();
         admin.setSession(BaseTest.SESSION_STR);
-        em.persist(admin);
+        persistAndFlush(admin);
         this.user = admin;
         
         Scheme scheme = TestDataProvider.getScheme1();

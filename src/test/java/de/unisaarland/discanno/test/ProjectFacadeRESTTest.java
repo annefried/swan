@@ -13,10 +13,17 @@ import de.unisaarland.discanno.entities.Users;
 import de.unisaarland.discanno.rest.services.v1.DocumentFacadeREST;
 import de.unisaarland.discanno.rest.services.v1.ProjectFacadeREST;
 import de.unisaarland.discanno.rest.services.v1.SchemeFacadeREST;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import java.util.Set;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
 import javax.ws.rs.core.Response;
 import org.codehaus.jettison.json.JSONArray;
 import static org.junit.Assert.*;
@@ -40,18 +47,12 @@ public class ProjectFacadeRESTTest extends BaseTest {
         super.configureService(documentRESTService);
     }
     
-    // TODO fix this
-    // Tests have been disabled due to time reasons because the 
-    // @GeneratedValue(strategy = GenerationType.AUTO) in BaseEntity
-    // has been changed to GenerationType.IDENTITY. Persisting does not create
-    // an id while persisting
-    
-//    @Test
+    @Test
     public void testScenario1() throws JSONException, IOException, CloneNotSupportedException {
 
         Users admin = TestDataProvider.getAdmin();
         admin.setSession(BaseTest.SESSION_STR);
-        em.persist(admin);
+        persistAndFlush(admin);
         
         Scheme scheme = TestDataProvider.getScheme1();
         schemeRESTService.create(scheme);
@@ -171,19 +172,29 @@ public class ProjectFacadeRESTTest extends BaseTest {
         Document doc = TestDataProvider.getDocument1();
         doc.setProject(proj);
         documentRESTService.addDocumentToProjectREST(doc);
-        
-        // TODO check ZIP file
+
         Response resp = projRESTService.exportProjectByProjIdAsZip(proj.getId());
         assertTrue(resp.getStatus() == 200);
         assertNotNull(resp.getEntity());
-        
+
+        // Test zip file
+        File file = new File(proj.getName() + ".zip");
+        try (FileOutputStream fos = new FileOutputStream(file) ) {
+            byte[] zipByteArray = (byte[]) resp.getEntity();
+            fos.write(zipByteArray);
+            ZipFile zipFile = new ZipFile(file);
+            assertTrue(zipFile.size() == 1);
+        } catch (IOException | NullPointerException e) {
+            fail("Problem generating zip file.");
+        }
+
         documentRESTService.remove(doc.getId());
     }
 
     private void testRemoveProject(Project proj) {
         
         Long id = proj.getId();
-        
+
         Response resp = projRESTService.remove(id);
         assertTrue(resp.getStatus() == 200);
         
