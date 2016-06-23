@@ -32,19 +32,14 @@ public class SchemeTest extends BaseTest {
     public void configService() {
         super.configureService(service);
     }
+
     
-    // TODO fix this
-    // Tests have been disabled due to time reasons because the 
-    // @GeneratedValue(strategy = GenerationType.AUTO) in BaseEntity
-    // has been changed to GenerationType.IDENTITY. Persisting does not create
-    // an id while persisting
-    
-//    @Test
+    @Test
     public void testCreate() throws CreateException {
         
         Scheme scheme = TestDataProvider.getScheme1();
         service.process(scheme);
-        em.persist(scheme);
+        persistAndFlush(scheme);
         
         Scheme retScheme = em.find(Scheme.class, scheme.getId());
         

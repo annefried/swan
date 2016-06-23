@@ -6,8 +6,10 @@
 package de.unisaarland.discanno.test;
 
 import de.unisaarland.discanno.entities.*;
+
+import java.io.File;
 import java.lang.reflect.Field;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.persistence.EntityManager;
@@ -21,7 +23,6 @@ import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Query;
@@ -64,6 +65,7 @@ public abstract class BaseTest {
     }
     
     protected EntityManager em;
+    private Set<File> existingFiles;
     
     @Before
     public void setup() throws IOException {
@@ -71,6 +73,9 @@ public abstract class BaseTest {
                         .createEntityManagerFactory("test");
         em = emf.createEntityManager();
         em.getTransaction().begin();
+
+        File dir = new File(".");
+        existingFiles = new HashSet<File>(Arrays.asList(dir.listFiles()));
     }
     
     @After
@@ -78,6 +83,28 @@ public abstract class BaseTest {
 //        removeAll();
         em.getTransaction().rollback();
         em.close();
+    }
+
+    /**
+     * This method deletes any new files that may have been created during an export.
+     */
+    @After
+    public void deleteCreatedFiles() {
+        File dir = new File(".");
+        File[] currentFiles = dir.listFiles();
+
+        for (File f : currentFiles) {
+            String filename = f.getName();
+            if (!existingFiles.contains(f)
+                    && (filename.endsWith(".zip") || filename.endsWith(".xml") || filename.endsWith(".xmi"))) {
+                f.delete();
+            }
+        }
+    }
+
+    protected void persistAndFlush(BaseEntity entity) {
+        em.persist(entity);
+        em.flush();
     }
     
     private <E> void setEntityManager(Object bm) {

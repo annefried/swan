@@ -91,6 +91,8 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             return Response.status(Response.Status.FORBIDDEN).build();
         } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (NoResultException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }

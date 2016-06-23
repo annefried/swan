@@ -42,29 +42,23 @@ public class ProjectsTest extends BaseTest {
         super.configureService(service);
     }
     
-    // TODO fix this
-    // Tests have been disabled due to time reasons because the 
-    // @GeneratedValue(strategy = GenerationType.AUTO) in BaseEntity
-    // has been changed to GenerationType.IDENTITY. Persisting does not create
-    // an id while persisting
-    
-//    @Test
+    @Test
     public void testScenario1() throws CloneNotSupportedException, CreateException {
         
         // Create scheme
         Scheme scheme = TestDataProvider.getScheme1();
         service.process(scheme);
-        em.persist(scheme);
-        
+        persistAndFlush(scheme);
+
         // Create user
         Users user = TestDataProvider.getAdmin();
-        em.persist(user);
+        persistAndFlush(user);
         
         // Create project and set scheme
         Project project = TestDataProvider.getProject1();
         project.getScheme().setId(scheme.getId());
         service.process(project);
-        em.persist(project);
+        persistAndFlush(project);
         
         Users retUser = em.find(Users.class, user.getId());
         assertNotNull(retUser);
@@ -88,7 +82,7 @@ public class ProjectsTest extends BaseTest {
         Document doc = TestDataProvider.getDocument1();
         doc.setProject(project);
         service.process(doc);
-        em.persist(doc);
+        persistAndFlush(doc);
         
         Document retDoc = em.find(Document.class, doc.getId());
         assertNotNull(retDoc);
@@ -130,7 +124,7 @@ public class ProjectsTest extends BaseTest {
         anno.setUser(user);
         anno.setDocument(doc);
         service.process(anno);
-        em.persist(anno);
+        persistAndFlush(anno);
         
         Annotation retAnno = em.find(Annotation.class, anno.getId());
         assertNotNull(retAnno);
@@ -161,7 +155,7 @@ public class ProjectsTest extends BaseTest {
             Label labelBroken = TestDataProvider.getLabel1();
             service.addLabelToAnnotation(retAnno.getId(), labelBroken);
             fail("No IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
+        } catch (CreateException e) {
             assertTrue(e.getMessage()
                     .equals("Service: Adding Label to Annotation failed"));
         }
@@ -175,7 +169,7 @@ public class ProjectsTest extends BaseTest {
         anno.setUser(user);
         anno.setDocument(doc);
         service.process(anno);
-        em.persist(anno);
+        persistAndFlush(anno);
         
         Annotation retAnno = em.find(Annotation.class, anno.getId());
         assertNotNull(retAnno);
@@ -212,7 +206,7 @@ public class ProjectsTest extends BaseTest {
             anno.setUser(user);
             anno.setDocument(doc);
             service.process(anno);
-            em.persist(anno);
+            persistAndFlush(anno);
         }
         
         List<Annotation> retAnnos = findAll(Annotation.class);
@@ -228,7 +222,7 @@ public class ProjectsTest extends BaseTest {
         link.setUser(user);
 
         service.process(link);
-        em.persist(link);
+        persistAndFlush(link);
         
         Link retLink = em.find(Link.class, link.getId());
         assertNotNull(retLink);
@@ -256,9 +250,9 @@ public class ProjectsTest extends BaseTest {
             LinkLabel labelBroken = TestDataProvider.getLinkLabel1();
             service.addLinkLabelToLink(retLink.getId(), labelBroken);
             fail("No IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
+        } catch (CreateException e) {
             assertTrue(e.getMessage()
-                    .equals("Service: Adding LinkLabel to Link failed"));
+                    .equals("Service: Adding LinkLabel to Link failed."));
         }
 
     }
