@@ -49,7 +49,7 @@ public class AnnotationDAO extends BaseEntityDAO<Annotation> {
         }
     }
     
-    public List<Annotation> getAllAnnotationsByUserIdDocId(Long userId, Long docId) {
+    public List<Annotation> getAllAnnotationsByUserIdDocId(final Long userId, final Long docId) {
         Map<String, Long> map = new HashMap<>();
         map.put(Annotation.PARAM_USER, userId);
         map.put(Annotation.PARAM_DOCUMENT, docId);
@@ -68,18 +68,16 @@ public class AnnotationDAO extends BaseEntityDAO<Annotation> {
                     Annotation.QUERY_FIND_BY_USER,
                     Collections.singletonMap(Annotation.PARAM_USER, entity));
     }
-    
+
     /**
-     * Returns all annotations by a specific document id. Just for remove
-     * purposes.
-     * 
+     * Removes all annotations belonging to a document.
+     *
      * @param entity
-     * @return 
      */
-    public List<Annotation> getAllAnnotationsByDocId(Document entity) {
-        return executeQuery(
-                    Annotation.QUERY_FIND_BY_DOCUMENT,
-                    Collections.singletonMap(Annotation.PARAM_DOCUMENT, entity));
+    public void removeAllAnnotationsByDocId(Document entity) {
+        executeUpdate(
+                Annotation.QUERY_DELETE_BY_DOCUMENT,
+                Collections.singletonMap(Annotation.PARAM_DOCUMENT, entity));
     }
     
 }

@@ -7,17 +7,10 @@ package de.unisaarland.discanno.entities;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import de.unisaarland.discanno.rest.view.View;
+
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  *
@@ -26,11 +19,24 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({
     @NamedQuery(
-            name = Link.QUERY_FIND_BY_DOC_AND_USER,
-            query = "SELECT l FROM Link l WHERE l.document.id = :" + Link.PARAM_DOC + " AND l.user.id = :" + Link.PARAM_USER),
+        name = Link.QUERY_FIND_BY_DOC_AND_USER,
+        query = "SELECT l " +
+                "FROM Link l " +
+                "WHERE l.document.id = :" + Link.PARAM_DOC_ID + " AND l.user.id = :" + Link.PARAM_USER_ID
+    ),
     @NamedQuery(
-            name = Link.QUERY_FIND_BY_ANNO1_AND_ANNO2,
-            query = "SELECT l FROM Link l WHERE l.annotation1.id = :" + Link.PARAM_ANNOTATION1 + " OR l.annotation2.id = :" + Link.PARAM_ANNOTATION2)
+        name = Link.QUERY_FIND_BY_ANNO1_AND_ANNO2,
+        query = "SELECT l " +
+                "FROM Link l " +
+                "WHERE l.annotation1.id = :" + Link.PARAM_ANNOTATION1 + " " +
+                    "OR l.annotation2.id = :" + Link.PARAM_ANNOTATION2
+    ),
+    @NamedQuery(
+        name = Link.QUERY_DELETE_BY_DOC_ID,
+        query = "DELETE " +
+                "FROM Link l " +
+                "WHERE l.document.id = :" + Link.PARAM_DOC_ID
+    )
 })
 public class Link extends BaseEntity {
     
@@ -43,16 +49,21 @@ public class Link extends BaseEntity {
      * Named query identifier for "find by user".
      */
     public static final String QUERY_FIND_BY_ANNO1_AND_ANNO2 = "Link.QUERY_FIND_BY_ANNO1_AND_ANNO2";
+
+    /**
+     * Named query identifier for "delete by doc id"
+     */
+    public static final String QUERY_DELETE_BY_DOC_ID = "Link.QUERY_DELETE_BY_DOC_ID";
     
     /**
-     * Query parameter constant for the attribute "user".
+     * Query parameter constant for the attribute "user.id".
      */
-    public static final String PARAM_USER = "user";
+    public static final String PARAM_USER_ID = "user_id";
     
     /**
-     * Query parameter constant for the attribute "document".
+     * Query parameter constant for the attribute "document.id".
      */
-    public static final String PARAM_DOC = "doc";
+    public static final String PARAM_DOC_ID = "doc_id";
     
     /**
      * Query parameter constant for the attribute "annotation1".

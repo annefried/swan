@@ -25,6 +25,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import javax.ejb.CreateException;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionRolledbackLocalException;
 import javax.persistence.NoResultException;
 import javax.ws.rs.core.Response;
 
@@ -799,7 +800,7 @@ public class Service {
     /**
      * Generates the default annotations for one user and one document.
      * 
-     * @param proj
+     * @param user
      * @param doc
      * @throws CloneNotSupportedException 
      */
@@ -875,7 +876,9 @@ public class Service {
     //  REMOVE
     ///////////////////////////////////////////////
     
-    public void removeProject(Project entity) throws CreateException {
+    public void removeProject(final Long projId) throws CreateException {
+
+        Project entity = projectDAO.getProjectToDelete(projId);
 
         // It is necessary to create a ConcurrentModification safe set
         // because removeDocument() deletes the current document from
@@ -957,18 +960,16 @@ public class Service {
             entity.removeDefaultAnnotations();
             documentDAO.merge(entity);
 
-            List<Annotation> annos = annotationDAO.getAllAnnotationsByDocId(entity);
-
-            for (Annotation a : annos) {
-                removeAnnotation(a);
-            }
+            linkDAO.removeAllLinksByDocId(entity.getId());
+            annotationDAO.removeAllAnnotationsByDocId(entity);
+            stateDAO.removeAllStatesByDocId(entity.getId());
 
             Project project = entity.getProject();
 
             documentDAO.remove(entity);
             project.removeDocuments(entity);
             projectDAO.merge(project);
-        } catch (NoResultException e) {
+        } catch (NoResultException | TransactionRolledbackLocalException e) {
             throw new CreateException(e.getMessage());
         }
     }
@@ -1048,6 +1049,8 @@ public class Service {
 
             List<Annotation> listAnno = annotationDAO.getAllAnnotationsByUserId(user);
             for (Annotation a : listAnno) {
+                // TODO not very efficient
+                // instead create a named DELETE query
                 removeAnnotation(a);
             }
 

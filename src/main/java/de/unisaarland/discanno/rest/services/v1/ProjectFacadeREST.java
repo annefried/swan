@@ -85,7 +85,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
 
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
-            service.removeProject(projectDAO.find(id, false));
+            service.removeProject(id);
             return Response.status(Response.Status.OK).build();
         } catch (SecurityException e) {
             return Response.status(Response.Status.FORBIDDEN).build();

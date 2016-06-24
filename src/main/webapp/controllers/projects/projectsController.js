@@ -17,7 +17,7 @@ angular
             
             /**
              * Called at the end of Controller construction.
-             * Initializes fields with data from Server.
+             * Initializes fields with data from backend.
              */
             $scope.init = function () {
                 $scope.loaded = false;
@@ -48,7 +48,7 @@ angular
             });
 
             /**
-             * Used for the toggle + Button.
+             * Used for the toggle '+'-Button.
              * @param {type} id the id of the Project to toggle.
              * @returns {String} css class.
              */
@@ -109,7 +109,7 @@ angular
             };
 
             /**
-             * Load Schemes from Database
+             * Load Schemes from backend
              */
             $scope.loadSchemes = function () {
                 var httpSchemes = $http.get("swan/scheme/schemes").success(function (response) {

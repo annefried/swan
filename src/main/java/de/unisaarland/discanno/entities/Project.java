@@ -63,6 +63,18 @@ import javax.persistence.*;
         hints = {
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.states")
         }
+    ),
+    @NamedQuery(
+        name = Project.QUERY_FIND_PROJECT_TO_DELETE,
+        query = "SELECT p " +
+                "FROM Project p " +
+                "LEFT JOIN FETCH p.documents " +
+                "LEFT JOIN FETCH p.scheme " +
+                "WHERE p.id = :" + Project.PARAM_ID,
+        hints = {
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.states"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.defaultAnnotations")
+        }
     )
 })
 public class Project extends BaseEntity {
@@ -83,9 +95,19 @@ public class Project extends BaseEntity {
     public static final String QUERY_FIND_PROJECTS_BY_PROJECT_MANAGER = "Project.QUERY_FIND_PROJECTS_BY_PROJECT_MANAGER";
 
     /**
+     * Named query identifier for "find project to delete"
+     */
+    public static final String QUERY_FIND_PROJECT_TO_DELETE = "Project.QUERY_FIND_PROJECT_TO_DELETE";
+
+    /**
      * Query parameter constant for the attribute "user".
      */
     public static final String PARAM_USER = "user";
+
+    /**
+     * Query parameter constant for the attribute "id"
+     */
+    public static final String PARAM_ID = "id";
 
 
     @JsonView({ View.Projects.class, View.Documents.class })

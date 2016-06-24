@@ -78,7 +78,7 @@ public class Document extends BaseEntity {
      * They do not have an user id.
      */
     @JsonView({ View.Documents.class })
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     @JoinTable(
         name="DOCUMENT_DEFAULTANNOTATIONS",

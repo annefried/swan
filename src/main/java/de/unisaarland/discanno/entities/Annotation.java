@@ -7,29 +7,15 @@ package de.unisaarland.discanno.entities;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import de.unisaarland.discanno.rest.view.View;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * The Entity Annotation holds all the information about an annotation
- * in the text:
- * - the user who annotated the text
- * - the section that is annotated
- * - the labels which belong to the annotation
  *
  * @author Timo Guehring
  */
@@ -38,28 +24,28 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = { "user_fk", "document_fk", "targetType_fk", "StartS", "EndS" })})
 @NamedQueries({
     @NamedQuery(
-        name = Annotation.QUERY_FIND_BY_DOCUMENT,
-        query = "SELECT a " +
+        name = Annotation.QUERY_DELETE_BY_DOCUMENT,
+        query = "DELETE " +
                 "FROM Annotation a " +
-                "WHERE a.document = :" + Annotation.PARAM_DOCUMENT),
+                "WHERE a.document = :" + Annotation.PARAM_DOCUMENT,
+        hints = {
+        }
+    ),
     @NamedQuery(
         name = Annotation.QUERY_FIND_BY_USER,
         query = "SELECT a " +
                 "FROM Annotation a " +
-                "WHERE a.user = :" + Annotation.PARAM_USER),
+                "WHERE a.user = :" + Annotation.PARAM_USER
+    ),
     @NamedQuery(
         name = Annotation.QUERY_FIND_BY_USER_AND_DOC,
         query = "SELECT a1 " +
                 "FROM Annotation a1 " +
-                "WHERE a1.user.id = :" + Annotation.PARAM_USER + " AND a1.document.id = :" + Annotation.PARAM_DOCUMENT)
+                "WHERE a1.user.id = :" + Annotation.PARAM_USER + " AND a1.document.id = :" + Annotation.PARAM_DOCUMENT
+    )
 })
 public class Annotation extends BaseEntity {
-    
-    /**
-     * Named query identifier for "find by document".
-     */
-    public static final String QUERY_FIND_BY_DOCUMENT = "Annotation.QUERY_FIND_BY_DOCUMENT";
-    
+
     /**
      * Named query identifier for "find by user".
      */
@@ -69,7 +55,12 @@ public class Annotation extends BaseEntity {
      * Named query identifier for "find by user and doc".
      */
     public static final String QUERY_FIND_BY_USER_AND_DOC = "Annotation.QUERY_FIND_BY_USER_AND_DOC";
-    
+
+    /**
+     * Named query identifier for "delete by document"
+     */
+    public static final String QUERY_DELETE_BY_DOCUMENT = "Annotation.QUERY_DELETE_BY_DOCUMENT";
+
     /**
      * Query parameter constant for the attribute "document".
      */
@@ -82,7 +73,8 @@ public class Annotation extends BaseEntity {
     
     @JsonView({ View.Annotations.class, View.Links.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER, optional = true)
+                fetch = FetchType.EAGER,
+                optional = true)
     @JoinColumn(name="user_fk")
     private Users user;
     
