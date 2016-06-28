@@ -8,8 +8,8 @@
 //Responsible directive for drawing the text field
 angular
     .module('app')
-    .directive('d3Annotation', ['$rootScope', '$timeout', '$window', 'd3', 'hotkeys', '$q',
-    function ($rootScope, $timeout, $window, d3, hotkeys, $q) {
+    .directive('d3Annotation', ['$rootScope', '$timeout', '$window', 'd3', 'hotkeys', 'clipboard', '$q',
+    function ($rootScope, $timeout, $window, d3, hotkeys, clipboard, $q) {
 
         return {
             restrict: 'EA',
@@ -157,7 +157,6 @@ angular
                             textWord.setIndices(i, j);
                             words.push(textWord);
                             $scope.setTemp({item: words});
-                            words = [];
                         } else {
                             if (i < (maxLines - 1)) {
                                 i++;
@@ -184,7 +183,6 @@ angular
                             textWord.setIndices(i, j);
                             words.push(textWord);
                             $scope.setTemp({item: words});
-                            words = [];
                         } else {
                             if (i > 0) {
                                 i--;
@@ -351,7 +349,7 @@ angular
                                         $scope.hot('true');
                                     } else {
                                         j = 0;
-                                        i = (maxLines - 1);
+                                        i = maxLines - 1;
                                         $scope.hot('true');
                                     }
                                 }
@@ -418,6 +416,23 @@ angular
                                 callback: function () {
                                     $scope.increaseSelectedAnnoSizeLeft();
                                 }
+                            })
+                            .add({
+                                combo: 'ctrl+c',
+                                description: 'Copy the current selected annotations text to the clipboard',
+                                callback: function () {
+                                    if ($scope.selection !== null
+                                            && $scope.selection !== undefined
+                                            && $scope.selection.type !== "Link") {
+
+                                        if (!clipboard.supported) {
+                                            console.log('d3Annotation: Copy to clipboard function not supported.');
+                                        } else {
+                                            clipboard.copyText($scope.selection.text);
+                                        }
+                                    }
+                                }
+
                             });
                 }
 
@@ -1556,9 +1571,9 @@ angular
                 //Highlights the currently selected object and all
                 //related objects
                 $scope.highlightSelected = function (lastSelection) {
-                    if ($scope.selection === null || $scope.selection === undefined)
+                    if ($scope.selection === null || $scope.selection === undefined) {
                         $scope.drawEverything();
-                    else {
+                    } else {
                         if ($scope.selection.selectedInGraph === true) {
                             // If clicked in the graph, find annotation
                             for (var annoID in formAnnotations) {

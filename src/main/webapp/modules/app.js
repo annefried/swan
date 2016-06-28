@@ -12,7 +12,8 @@ angular
         'ui.bootstrap',
         'ui.bootstrap.tpls',
         'd3Module',
-        'cfp.hotkeys'
+        'cfp.hotkeys',
+        'angular-clipboard'
     ])
     .config(Config);
 
