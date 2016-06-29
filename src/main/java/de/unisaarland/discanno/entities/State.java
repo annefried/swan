@@ -30,12 +30,20 @@ import javax.persistence.UniqueConstraint;
         name = State.QUERY_FIND_BY_DOC_AND_USER,
         query = "SELECT s " +
                 "FROM State s " +
-                "WHERE s.document.id = :" + State.PARAM_DOC + " AND s.user.id = :" + State.PARAM_USER),
+                "WHERE s.document.id = :" + State.PARAM_DOC + " AND s.user.id = :" + State.PARAM_USER
+    ),
     @NamedQuery(
         name = State.QUERY_FIND_BY_USER,
         query = "SELECT s " +
                 "FROM State s " +
-                "WHERE s.user = :" + State.PARAM_USER)
+                "WHERE s.user = :" + State.PARAM_USER
+    ),
+    @NamedQuery(
+        name = State.QUERY_DELETE_BY_DOCUMENT,
+        query = "DELETE " +
+                "FROM State s " +
+                "WHERE s.document.id = :" + State.PARAM_DOC
+    )
 })
 public class State extends BaseEntity {
 
@@ -48,7 +56,12 @@ public class State extends BaseEntity {
      * Named query identifier for "find by user".
      */
     public static final String QUERY_FIND_BY_USER = "State.QUERY_FIND_BY_USER";
-    
+
+    /**
+     * Named query identifier for "delete by document".
+     */
+    public static final String QUERY_DELETE_BY_DOCUMENT = "State.QUERY_DELETE_BY_DOCUMENT";
+
     /**
      * Query parameter constant for the attribute "user".
      */

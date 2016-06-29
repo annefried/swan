@@ -6,6 +6,8 @@
 package de.unisaarland.discanno.dao;
 
 import de.unisaarland.discanno.entities.Link;
+
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,17 +35,23 @@ public class LinkDAO extends BaseEntityDAO<Link> {
      * @param annoId
      * @return 
      */
-    public List<Link> getAllLinksByAnnoId(Long annoId) {
+    public List<Link> getAllLinksByAnnoId(final Long annoId) {
         Map<String, Long> params = new HashMap<>();
         params.put(Link.PARAM_ANNOTATION1, annoId);
         params.put(Link.PARAM_ANNOTATION2, annoId);
         return executeQuery(Link.QUERY_FIND_BY_ANNO1_AND_ANNO2, params);
     }
+
+    public void removeAllLinksByDocId(final Long docId) {
+        executeUpdate(
+                Link.QUERY_DELETE_BY_DOC_ID,
+                Collections.singletonMap(Link.PARAM_DOC_ID, docId));
+    }
     
-    public List<Link> getAllLinksByUserIdDocId(Long userId, Long docId) {
+    public List<Link> getAllLinksByUserIdDocId(final Long userId, final Long docId) {
         Map<String, Long> params = new HashMap<>();
-        params.put(Link.PARAM_DOC, docId);
-        params.put(Link.PARAM_USER, userId);
+        params.put(Link.PARAM_DOC_ID, docId);
+        params.put(Link.PARAM_USER_ID, userId);
         return executeQuery(Link.QUERY_FIND_BY_DOC_AND_USER, params);
     }
     

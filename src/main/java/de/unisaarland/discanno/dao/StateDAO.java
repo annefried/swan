@@ -41,11 +41,17 @@ public class StateDAO extends BaseEntityDAO<State> {
                     Collections.singletonMap(State.PARAM_USER, user));
     }
     
-    public State getStateByDocIdUserId(Long docId, Long userId, boolean nullOptional) {
+    public State getStateByDocIdUserId(final Long docId, final Long userId, boolean nullOptional) {
         Map<String, Long> params = new HashMap<>();
         params.put(State.PARAM_DOC, docId);
         params.put(State.PARAM_USER, userId);
         return executeQuery(State.QUERY_FIND_BY_DOC_AND_USER, params, nullOptional);
+    }
+
+    public void removeAllStatesByDocId(final Long docId) {
+        executeUpdate(
+                State.QUERY_DELETE_BY_DOCUMENT,
+                Collections.singletonMap(State.PARAM_DOC, docId));
     }
     
 }

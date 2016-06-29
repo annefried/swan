@@ -59,4 +59,11 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
                 Collections.singletonMap(Project.PARAM_USER, user));
     }
 
+    public Project getProjectToDelete(final Long projId) {
+        return firstResult(
+                    executeQuery(
+                        Project.QUERY_FIND_PROJECT_TO_DELETE,
+                        Collections.singletonMap(Project.PARAM_ID, projId)));
+    }
+
 }

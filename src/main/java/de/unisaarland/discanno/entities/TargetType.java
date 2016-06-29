@@ -47,6 +47,7 @@ public class TargetType implements Serializable {
                 fetch = FetchType.LAZY)
     private List<LabelSet> labelSets = new ArrayList<>();
 
+
     public String getTargetType() {
         return targetType;
     }

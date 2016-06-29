@@ -61,13 +61,23 @@ public abstract class BaseEntityDAO<Entity> extends AbstractDAO {
             return firstResult(entities);
         }
     }
-    
-    protected List<Entity> executeQuery(String queryName, Map<String, ?> parameters) {
+
+    private TypedQuery<Entity> prepareQuery(String queryName, Map<String, ?> parameters) {
         TypedQuery<Entity> query = createNamedQuery(queryName, entityClass);
         for (Map.Entry<String, ?> entry : parameters.entrySet()) {
             query.setParameter(entry.getKey(), entry.getValue());
         }
+        return query;
+    }
+    
+    protected List<Entity> executeQuery(String queryName, Map<String, ?> parameters) {
+        TypedQuery<Entity> query = prepareQuery(queryName, parameters);
         return query.getResultList();
+    }
+
+    protected int executeUpdate(String queryName, Map<String, ?> parameters) {
+        TypedQuery<Entity> query = prepareQuery(queryName, parameters);
+        return query.executeUpdate();
     }
     
 }
