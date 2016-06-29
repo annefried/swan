@@ -53,11 +53,7 @@ angular
             }
             if (guard) {
                 $scope.labelSets.push(newLabelSet);
-                // reset input fields
-                $scope.nameLabelSet = undefined;
-                $scope.exclusiveLabelSet = false;
-                $scope.currentLabelSet = [];
-                $scope.selectedTargetsLabel = [];
+                $scope.resetLabelSetInputFields();
             } else {
                 $rootScope.addAlert({type: 'danger', msg: 'A LabelSet with this name is already part of this scheme.'});
             }
@@ -116,12 +112,7 @@ angular
             };
 
             $scope.linkSets.push(newLinkSet);
-            // reset input fields
-            $scope.startType = undefined;
-            $scope.nameLinkSet = undefined;
-            $scope.endType = undefined;
-            $scope.currentLinkSet = [];
-            $scope.selectedTargetsLink = [];
+            $scope.resetLinkSetInputFields();
         };
 
         /**
@@ -384,6 +375,8 @@ angular
                     $scope.labelSets = scheme.labelSets;
                     $scope.linkSets = scheme.linkSets;
                     $scope.targets = scheme.targetTypes;
+                    $scope.resetLabelSetInputFields();
+                    $scope.resetLinkSetInputFields();
                 } catch (ex) {
                     $rootScope.addAlert({type: 'danger', msg: 'The selected file does not contain a valid annotation scheme. Reason: ' + ex});
                 }
@@ -543,7 +536,6 @@ angular
             } else {
                 $scope.setSchemeProperties(scheme);
             }
-
         };
 
         $scope.processScheme = function (scheme) {
@@ -611,8 +603,24 @@ angular
             $scope.labelSets = scheme.labelSets;
             $scope.linkSets = scheme.linkSets;
             $scope.loadScheme = true;
+            $scope.resetLabelSetInputFields();
+            $scope.resetLinkSetInputFields();
         };
 
+        $scope.resetLabelSetInputFields = function () {
+            $scope.nameLabelSet = undefined;
+            $scope.exclusiveLabelSet = false;
+            $scope.currentLabelSet = [];
+            $scope.selectedTargetsLabel = [];
+        };
+
+        $scope.resetLinkSetInputFields = function () {
+            $scope.startType = undefined;
+            $scope.nameLinkSet = undefined;
+            $scope.endType = undefined;
+            $scope.currentLinkSet = [];
+            $scope.selectedTargetsLink = [];
+        };
 
         $scope.submit = function () {
 
