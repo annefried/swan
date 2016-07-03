@@ -427,6 +427,20 @@ angular
                                 }
                             })
                             .add({
+                                combo: 'n',
+                                description: 'Cycle backward through outgoing links of selected annotation',
+                                callback: function () {
+                                    $scope.cycleThroughLinks(true);
+                                }
+                            })
+                            .add({
+                                combo: 'm',
+                                description: 'Cycle forward through outgoing links of selected annotation',
+                                callback: function () {
+                                    $scope.cycleThroughLinks(false);
+                                }
+                            })
+                            .add({
                                 combo: 'ctrl+c',
                                 description: 'Copy the current selected annotations text to the clipboard',
                                 callback: function () {
@@ -444,6 +458,58 @@ angular
 
                             });
                 }
+
+                // Cycle through outgoing links of the currently selected annotation
+                $scope.cycleThroughLinks = function(backwards) {
+                    if ($scope.selection === null) {
+                        return;
+                    }
+
+                    var links;
+                    if ($scope.selection.type === "Annotation") {
+                        // If current selection is an annotation, select first/last outgoing link
+                        links = $scope.getLinksAsArray($scope.selection);
+                        if (links.length > 0) {
+                            if (!backwards) {
+                                $scope.selection = links[0];
+                            } else {
+                                $scope.selection = links[links.length - 1];
+                            }
+                        }
+                    } else if ($scope.selection.type === "Link") {
+                        // If current selection is a link, select next/previous outgoing link
+                        links = $scope.getLinksAsArray($scope.selection.source);
+                        for (var i = 0; i < links.length; i++) {
+                            if (links[i] === $scope.selection) {
+                                var j;
+                                if (!backwards) {
+                                    j = i + 1;
+                                    if (j >= links.length) {
+                                        j = 0;
+                                    }
+                                } else {
+                                    j = i - 1;
+                                    if (j < 0) {
+                                        j = links.length - 1;
+                                    }
+                                }
+                                $scope.selection = links[j];
+                                break;
+                            }
+                        }
+                    }
+                };
+
+                $scope.getLinksAsArray = function(anno) {
+                    var res = [];
+                    var i = 0;
+                    for (var j in $scope.links[anno.id])
+                    {
+                        res[i] = $scope.links[anno.id][j];
+                        i++;
+                    }
+                    return res;
+                };
 
                 $scope.getAnnotationAtPosition = function (index, backwards) {
                     var a = $scope.getSortedAnnotations();
