@@ -16,6 +16,7 @@ import de.unisaarland.discanno.rest.services.v1.DocumentFacadeREST;
 import de.unisaarland.discanno.rest.services.v1.ProjectFacadeREST;
 import de.unisaarland.discanno.rest.services.v1.SchemeFacadeREST;
 import de.unisaarland.discanno.rest.services.v1.UserFacadeREST;
+import java.util.List;
 import java.util.Set;
 import javax.ws.rs.core.Response;
 import static org.junit.Assert.*;
@@ -68,7 +69,7 @@ public class AnnotationFacadeRESTTest extends BaseTest {
         docRESTService.addDocumentToProjectREST(doc);
         this.doc = doc;
     }
-    
+
     @Test
     public void testScenario1() {
         Annotation anno = TestDataProvider.getAnnotation1();
@@ -83,7 +84,7 @@ public class AnnotationFacadeRESTTest extends BaseTest {
         Response lResp1 = annoRESTService.addLabelToAnnotationREST(anno.getId(), label1);
         assertTrue(lResp1.getStatus() == Response.Status.BAD_REQUEST.getStatusCode());
         
-        Set<Label> labelsSet = scheme.getLabelSets().get(0).getLabels();
+        List<Label> labelsSet = scheme.getLabelSets().get(0).getLabels();
         Object[] labels = labelsSet.toArray();
         Label label = (Label) labels[0];
         Response lResp2 = annoRESTService.addLabelToAnnotationREST(anno.getId(), label);
@@ -118,7 +119,5 @@ public class AnnotationFacadeRESTTest extends BaseTest {
         assertTrue(resp.getStatus() == Response.Status.BAD_REQUEST.getStatusCode());
         assertNull(resp.getEntity());
     }
-    
-    
     
 }

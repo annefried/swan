@@ -55,8 +55,11 @@ angular
                 var linkLabelsSimple = new Array();
                 for (var k = 0; k < curLinkSet.linkLabels.length; k++) {
                     var curLabel = curLinkSet.linkLabels[k];
-                    curLabel.linkSet = undefined;
-                    linkLabelsSimple.push(curLabel.linkLabel);
+                	var linkLabel = {
+                    	"name": curLabel.linkLabel,
+                    	"options": curLabel.options
+                	};
+                	linkLabelsSimple.push(linkLabel);
                 }
                 curLinkSet.linkLabels = linkLabelsSimple;
                 curLinkSet.startSpanType = curLinkSet.startType;

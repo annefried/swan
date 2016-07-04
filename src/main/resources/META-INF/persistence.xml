@@ -21,6 +21,7 @@
     <class>de.unisaarland.discanno.entities.State</class>
     <class>de.unisaarland.discanno.entities.TimeLogging</class>
     <class>de.unisaarland.discanno.entities.Users</class>
+    <class>de.unisaarland.discanno.entities.VisualizationElement</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

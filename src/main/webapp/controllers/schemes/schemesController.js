@@ -88,8 +88,8 @@ angular
                     'projects': newProjects,
                     'tableIndex': $scope.schemeCounter
                 };
-                this.tableSchemes.push(schemePreview);
 
+                this.tableSchemes.push(schemePreview);
             }
 
             $rootScope.tableSchemes = this.tableSchemes;

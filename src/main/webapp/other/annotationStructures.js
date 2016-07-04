@@ -328,15 +328,46 @@ function AnnotationColor(name, num, shades, back, line) {
 }
 
 //Represents the label of an annotation
-function AnnotationLabel(tag, setID) {
+function AnnotationLabel(id, tag, options, setID) {
+    this.id = id;
     this.tag = tag;
+    this.options = options;
     this.setID = setID;
 
     this.toString = function (maxSize) {
-        if (this.tag.length <= maxSize)
+        if (this.tag.length <= maxSize) {
             return this.tag;
+        } 
 
         return this.tag.substring(0, maxSize - 3) + "...";
+    };
+
+    this.toStringWithOptionsString = function (maxSize) {
+        var text = this.tag;
+        // If the label text is already too long
+        if (text.length >= maxSize) {
+            // If only one option is defined, only take the first character
+            if (this.options.length === 1) {
+                text = text.substring(0, maxSize - 3) + "..." + "[" + this.options[0][0] + "]";
+            }
+            // If more options are defined, take the first character of the first option
+            // and short the others with "..."
+            else {
+                text = text.substring(0, maxSize - 3) + "..." + "[" + this.options[0][0] + ",...]";
+            }
+        } else {
+            if (this.options.length > 0) {
+                var optText = this.options.toString();
+                if (text.length + optText.length >= maxSize) {
+                    text += "[" + optText;
+                    text = text.substring(0, maxSize - 3) + "...]";
+                } else {
+                    text += "[" + optText + "]";
+                }
+            }
+        }
+
+        return text;
     };
 }
 
