@@ -140,6 +140,7 @@ public class ProjectsTest extends BaseTest {
         // Add label to annotation 1
         Label label = TestDataProvider.getLabel1();
         label.addLabelSet(labelSet);
+        persistAndFlush(label);
         service.addLabelToAnnotation(retAnno.getId(), label);
         
         Set<LabelLabelSetMap> mapSet = retAnno.getLabelMap();
@@ -185,6 +186,7 @@ public class ProjectsTest extends BaseTest {
         // Add label to annotation 1
         Label label = TestDataProvider.getLabel1();
         label.addLabelSet(labelSet);
+        persistAndFlush(label);
         service.addLabelToAnnotation(retAnno.getId(), label);
         
         Set<LabelLabelSetMap> mapSet = retAnno.getLabelMap();
@@ -235,6 +237,7 @@ public class ProjectsTest extends BaseTest {
         // Add label to link
         LinkLabel label = TestDataProvider.getLinkLabel1();
         label.addLinkSet(linkSet);
+        persistAndFlush(label);
         service.addLinkLabelToLink(retLink.getId(), label);
         
         Set<LinkLabelLinkSetMap> mapSet = retLink.getLabelMap();

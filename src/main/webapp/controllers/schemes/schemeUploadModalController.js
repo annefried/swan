@@ -25,6 +25,7 @@ angular
                 checked: false,
                 state: 'opened'
             };
+            $scope.visKind = 'None';
             $rootScope.alertsModal = [];
             $scope.targetIdCounter = 0;
             $scope.labelLabelSetIdCounter = 0;
@@ -117,7 +118,9 @@ angular
                 for (var k = 0; k < linkSet.linkLabels.length; k++) {
                     var linkLabel = {
                         linkLabel: linkSet.linkLabels[k].linkLabel,
-                        options: linkSet.linkLabels[k].options
+                        // Change this later if more options are needed
+                        options: linkSet.linkLabels[k].options.length == 0
+                                    ? undefined : linkSet.linkLabels[k].options[0]
                     };
                     linkLabels.push(linkLabel);
                 }
@@ -129,13 +132,22 @@ angular
                 };
                 linkSets.push(linkSetTemplate);
             }
+            var visElements = [];
+            for (var j = 0; j < scheme.visElements.length; j++) {
+                var visElement = {
+                    visKind: scheme.visElements[j].visKind,
+                    visState: scheme.visElements[j].visState
+                };
+                visElements.push(visElement);
+            }
 
             var template = {
                 id: scheme.id,
                 name: scheme.name,
                 targetTypes: targetTypes,
                 labelSets: labelSets,
-                linkSets: linkSets
+                linkSets: linkSets,
+                visElements: visElements
             };
 
             return template;
@@ -146,6 +158,36 @@ angular
             $scope.targets = scheme.targetTypes;
             $scope.labelSets = scheme.labelSets;
             $scope.linkSets = scheme.linkSets;
+            $scope.visElements = scheme.visElements;
+            $scope.noView.checked = true;
+            $scope.timelineView.checked = false;
+            $scope.graphView.checked = false;
+            $scope.visKind = 'None';
+            for (var i = 0; i < scheme.visElements.length; i++) {
+                const visElement = scheme.visElements[i];
+                if (visElement.visKind == 'graph') {
+                    if (visElement.visState != 'hidden') {
+                        $scope.noView.checked = false;
+                        $scope.graphView.checked = true;
+                        $scope.timelineView.checked = false;
+                        $scope.visKind = 'Graph';
+                        $scope.graphView.state = visElement.visState;
+                    } else {
+                        $scope.graphView.state = 'opened';
+                    }
+                } else if (visElement.visKind == 'timeline') {
+                    if (visElement.visState != 'hidden') {
+                        $scope.noView.checked = false;
+                        $scope.graphView.checked = false;
+                        $scope.timelineView.checked = true;
+                        $scope.visKind = 'Timeline';
+                        $scope.timelineView.state = visElement.visState;
+                    } else {
+                        $scope.timelineView.state = 'opened';
+                    }
+                }
+            }
+
             $scope.loadScheme = true;
         };
 
@@ -230,10 +272,14 @@ angular
                         for (var j = 0; j < file.linkSets[i].linkLabels.length; j++) {
                             var oLinkLabel = file.linkSets[i].linkLabels[j];
                             var linkLabel = {
-                                linkLabel: oLinkLabel.name,
-                                // Change this later if more options are needed
-                                options: [oLinkLabel.options]
+                                linkLabel: oLinkLabel.linkLabel,
+                                options: []
                             };
+                            if (oLinkLabel.options !== undefined) {
+                                // Change this later if more options are needed
+                                linkLabel.options = [oLinkLabel.options];
+                            }
+
                             linkLabels.push(linkLabel);
                         }
 
@@ -256,7 +302,7 @@ angular
                         "linkSets": linkSets,
                         "projects": []
                     };
-                    $http.post("discanno/scheme", JSON.stringify(template)).success(function (response) {
+                    $http.post("swan/scheme", JSON.stringify(template)).success(function (response) {
                         $rootScope.schemesTable[template.name] = template;
                         var schemePreview = {
                             'id': response,
@@ -313,6 +359,7 @@ angular
                 for (var i = 0; i < $scope.currentLinkSet.length; i++) {
                     $scope.currentLinkSet[i].options = undefined;
                 }
+                $scope.positioning = undefined;
                 $scope.noView.checked = true;
                 $scope.graphView.checked = false;
                 $scope.timelineView.checked = false;
@@ -333,6 +380,7 @@ angular
                 for (var i = 0; i < $scope.currentLinkSet.length; i++) {
                     $scope.currentLinkSet[i].options = undefined;
                 }
+                $scope.positioning = undefined;
                 $scope.noView.checked = false;
                 $scope.graphView.checked = true;
                 $scope.timelineView.checked = false;
@@ -466,7 +514,7 @@ angular
             var labels = [];
             for (var i = 0; i < $scope.currentLinkSet.length; i++) {
                 var linkLabel = {
-                    "name": $scope.currentLinkSet[i].name,
+                    "linkLabel": $scope.currentLinkSet[i].linkLabel,
                     // Change this later to an array if more options are needed
                     "options": $scope.currentLinkSet[i].options
                 };
@@ -502,7 +550,7 @@ angular
                     $scope.currentLinkSet = [];
                     for (var j = 0; j < $scope.linkSets[i].linkLabels.length; j++) {
                         var linkLabel = $scope.linkSets[i].linkLabels[j];
-                        $scope.addLabelToLinkSet(linkLabel.name, linkLabel.options);
+                        $scope.addLabelToLinkSet(linkLabel.linkLabel, linkLabel.options);
                     }
                     selectedSet = $scope.linkSets[i];
                     break;
@@ -550,7 +598,7 @@ angular
                 if ($scope.selectedTargetsLabel[i] === name) {
                     $scope.selectedTargetsLabel.splice(i, 1);
                     break;
-                    }
+                }
             }
         };
 
@@ -638,7 +686,7 @@ angular
             if (nameAlreadyUsed) {
                 $rootScope.addAlert({type: 'danger', msg: 'A label with this name already exists!'});
             } else {
-                var link = {name: labelName,
+                var link = {linkLabel: labelName,
                             id: $scope.labelLinkSetIdCounter++,
                             options: positioning};
                 $scope.currentLinkSet.push(link);
@@ -664,14 +712,6 @@ angular
                     $scope.currentLinkSet.splice(i, 1);
                 }
             }
-        };
-
-        $scope.loadPreloadedScheme = function (preloadedScheme) {
-            $scope.name = "Copy of " + preloadedScheme.name;
-            $scope.targets = preloadedScheme.targetTypes;
-            $scope.labelSets = preloadedScheme.labelSets;
-            $scope.linkSets = preloadedScheme.linkSets;
-            $scope.loadScheme = true;
         };
 
         // Upload scheme defined in XML or json document
@@ -763,10 +803,7 @@ angular
                     }
                 }
                 try {
-                    $scope.name = "Copy of " + scheme.name;
-                    $scope.labelSets = scheme.labelSets;
-                    $scope.linkSets = scheme.linkSets;
-                    $scope.targets = scheme.targetTypes;
+                    $scope.setSchemeProperties(scheme);
                 } catch (ex) {
                     $rootScope.addAlert({type: 'danger', msg: 'The selected file does not contain a valid annotation scheme. Reason: ' + ex});
                 }

@@ -69,14 +69,8 @@ public class AnnotationFacadeRESTTest extends BaseTest {
         docRESTService.addDocumentToProjectREST(doc);
         this.doc = doc;
     }
-    
-    // TODO fix this
-    // Tests have been disabled due to time reasons because the 
-    // @GeneratedValue(strategy = GenerationType.AUTO) in BaseEntity
-    // has been changed to GenerationType.IDENTITY. Persisting does not create
-    // an id while persisting
-    
-//    @Test
+
+    @Test
     public void testScenario1() {
         Annotation anno = TestDataProvider.getAnnotation1();
         anno.setUser(user);
@@ -97,7 +91,7 @@ public class AnnotationFacadeRESTTest extends BaseTest {
         assertTrue(lResp2.getStatus() == 200);
     }
     
-//    @Test
+    @Test
     public void voidTestBrokenAnno1() {
         Annotation anno = TestDataProvider.getAnnotation2();
         Response resp = annoRESTService.create(anno);
@@ -106,7 +100,7 @@ public class AnnotationFacadeRESTTest extends BaseTest {
         assertNull(resp.getEntity());
     }
     
-//    @Test
+    @Test
     public void voidTestBrokenAnno2() {
         Annotation anno = TestDataProvider.getAnnotation2();
         anno.setUser(user);
@@ -116,7 +110,7 @@ public class AnnotationFacadeRESTTest extends BaseTest {
         assertNull(resp.getEntity());
     }
     
-//    @Test
+    @Test
     public void voidTestBrokenAnno3() {
         Annotation anno = TestDataProvider.getAnnotation2();
         anno.setUser(user);

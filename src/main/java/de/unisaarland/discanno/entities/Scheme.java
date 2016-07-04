@@ -106,7 +106,7 @@ public class Scheme extends BaseEntity {
             optional = true)
     private Users creator;
     
-	@JsonView({View.Scheme.class})
+    @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.EAGER)
     @JoinTable(name="SCHEME_VISELEMENTS", 

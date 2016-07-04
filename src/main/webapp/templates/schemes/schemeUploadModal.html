@@ -46,7 +46,7 @@ and open the template in the editor.
                             </div>
                             <button class="btn btn-success btn-sm" 
                                     type="button"
-                                    ng-click="loadPreloadedScheme(preloadedScheme);"
+                                    ng-click="loadPreloadedScheme(preloadedScheme)"
                                     ng-disabled="preloadedScheme === undefined"
                                     id="sb_loadbutton">
                                 Load scheme
@@ -286,10 +286,10 @@ and open the template in the editor.
                                         {{linkSet.endType}}
                                     </td>
                                     <td>
-                                        <div ng-repeat="label in linkSet.linkLabels" style="inline-box-align: ">
-                                            <p>{{label.name}}
-                                                <span ng-show="label.options !== undefined">[{{label.options}}]</span>
-                                            </p>
+                                        <div ng-repeat="label in linkSet.linkLabels" style="inline-box-align: initial">
+                                            <p>{{label.linkLabel}}</p>
+                                            <span ng-show="label.options !== undefined">{{label.options}}</span>
+
                                         </div>
                                     </td>
                                     <td>
@@ -453,7 +453,7 @@ and open the template in the editor.
                                 <tbody>
                                     <tr ng-repeat="label in this.currentLinkSet">
                                         <td class="tableRowWithGlyph">
-                                            <label class="sb_normalText">{{label.name}}</label>
+                                            <label class="sb_normalText">{{label.linkLabel}}</label>
                                             <label class="sb_normalText" ng-show="label.options !== undefined">[{{label.options}}]</label>
                                         </td>
                                         <td>

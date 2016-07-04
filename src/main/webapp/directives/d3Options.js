@@ -338,7 +338,14 @@ angular
                                     }
                                 })
                                 .text(function (d) {
-                                    return d.toString(width / 30);
+                                    var text;
+                                    if (d.options != undefined && d.options.length > 0) {
+                                        text = d.toStringWithOptionsString(width / 30);
+                                    } else {
+                                        text = d.toString(width / 30);
+                                    }
+
+                                    return text;
                                 })
                                 .on("click", function (d) {
                                     $scope.$apply(function () {

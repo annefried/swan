@@ -181,7 +181,7 @@ angular
                             for (var k = 0; k < label.linkSets.length; k++) {
                                 const setId = label.linkSets[k].id;
                                 const labelSet = this.linkLabels[source.tType.tag][target.tType.tag][setId];
-                                const inkLabel = new AnnotationLabel(label.label.id, label.label.linkLabel, label.label.options, setId);
+                                const linkLabel = new AnnotationLabel(label.label.id, label.label.linkLabel, label.label.options, setId);
                                 annotationLink.setLabel(labelSet, linkLabel);
                             }
                         }
@@ -226,21 +226,21 @@ angular
                     // Annotation
                     if (this.selectedNode.type === AnnoType.Annotation) {
                         labelTemplate = {
-							id: label.id,
+                            id: label.id,
                             labelId: label.tag,
                             labelSet: [{
-                                    id: labelSet.id
-                                }]
+                                id: labelSet.id
+                            }]
                         };
                         
                         url = labeled ? 'swan/annotations/addlabel/' : 'swan/annotations/removelabel/';
                     } else { // Link
                         labelTemplate = {
-							id: label.id,
+                            id: label.id,
                             linkLabel: label.tag,
                             linkSet: [{
-                                    id: labelSet.id
-                                }]
+                                id: labelSet.id
+                            }]
                         };
                         
                         url = labeled ? 'swan/links/addlabel/' : 'swan/links/removelabel/';
@@ -622,8 +622,8 @@ angular
             };
             //Read all data from the commited scheme
             this.readSchemes = function () {
-				$scope.graph = {
-                	"show": false,
+                $scope.graph = {
+                    "show": false,
                     "isOpen": false
                 };
                 $scope.timeline = {
@@ -711,9 +711,8 @@ angular
                         var tag = linkLabel.linkLabel;
                         if (tag === undefined) {
                             tag = "UndefTag";
-						}
-						var annotationLabel = new AnnotationLabel(linkLabel.id, tag, linkLabel.options, linkSet.id);
-                        var annotationLabel = new AnnotationLabel(tag, linkSet.id);
+                        }
+                        var annotationLabel = new AnnotationLabel(linkLabel.id, tag, linkLabel.options, linkSet.id);
                         linkLabelSet.addLabel(annotationLabel);
                     }
                 }

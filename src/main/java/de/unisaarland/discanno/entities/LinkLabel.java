@@ -46,7 +46,7 @@ public class LinkLabel extends BaseEntity {
     @JsonView({ View.Links.class, View.Scheme.class })
     private String linkLabel;
     
-    @JsonView({ View.Links.class, View.Schemes.class })
+    @JsonView({ View.Links.class, View.Scheme.class })
     @ElementCollection(targetClass = LinkLabelOpts.class)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "LINKLABEL_OPTIONS")
