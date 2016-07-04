@@ -1754,9 +1754,15 @@ angular
                 };
 
                 $scope.jumpToSelection = function(jumpFunction) {
+                    var jumpTarget;
+                    if ($scope.selection.type === "Link") {
+                        jumpTarget = $scope.selection.source;
+                    } else {
+                        jumpTarget = $scope.selection;
+                    }
                     for (var annoID in formAnnotations) {
                         var annotation = formAnnotations[annoID];
-                        if (annotation.annotation === $scope.selection) {
+                        if (annotation.annotation === jumpTarget) {
                             // Use first word in Anno, since first box might not have a coordinate
                             const firstWord = annotation.annotationBoxes[0].formWords[0];
                             if (firstWord.x === 0 && firstWord.y === 0) {
