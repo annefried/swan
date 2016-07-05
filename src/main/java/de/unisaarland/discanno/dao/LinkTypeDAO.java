@@ -18,9 +18,9 @@ import javax.ejb.TransactionAttributeType;
 @Stateless
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class LinkTypeDAO extends BaseEntityDAO<LinkType> {
-    
+
     public LinkTypeDAO() {
         super(LinkType.class);
     }
-    
+
 }

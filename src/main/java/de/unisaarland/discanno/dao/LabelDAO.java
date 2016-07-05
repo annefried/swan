@@ -10,7 +10,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-/**
+/**git
  * This DAO (Data Access Object) provides all CRUD operations for labels.
  *
  * @author Timo Guehring
