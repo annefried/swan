@@ -165,7 +165,7 @@ and open the template in the editor.
                 <hr/>
                 
                 <div class="row">
-                    <!-- Target Types -->
+                    <!-- Span Types -->
                     <div class="form-group col-lg-7">
                         <div class="form-group" >
                             <label>
@@ -173,14 +173,14 @@ and open the template in the editor.
                             </label>
                             <table class="listingTable">
                                 <tbody>
-                                    <tr ng-repeat="target in this.targets">
+                                    <tr ng-repeat="spanType in this.spanTypes">
                                         <td class="tableRowWithGlyph">
-                                            {{target}}
+                                            {{spanType}}
                                         </td>
                                         <td>
                                             <span class="glyphicon glyphicon-remove"
                                                   style="color:red;" 
-                                                  ng-click="removeTargeType(target)">
+                                                  ng-click="removeSpanType(spanType)">
                                             </span>
                                         </td>
                                     </tr>  
@@ -188,14 +188,15 @@ and open the template in the editor.
                             </table>
                         </div>
                         <div class="input-group col-lg-6 sb_inputName">
-                            <input type="text" ng-model="targetType" 
+                            <input type="text" ng-model="spanType"
                                    class="form-control input-sm" 
                                    placeholder="Enter type name...">
                             <span class="input-group-btn">
                                 <button class="btn btn-default btn-sm" 
-                                        type="button"  id="span-types-input"
-                                        ng-disabled="disableTextInputButton(targetType)"
-                                        ng-click="addTargetType(targetType)">
+                                        type="button"
+                                        id="span-types-input"
+                                        ng-disabled="disableTextInputButton(spanType)"
+                                        ng-click="addSpanType(spanType)">
                                     Add
                                 </button>
                             </span>
@@ -232,8 +233,8 @@ and open the template in the editor.
                                         {{labelSet.exclusive}}
                                     </td>
                                     <td>
-                                        <p ng-repeat="target in labelSet.appliesToTargetTypes">
-                                            {{target}}
+                                        <p ng-repeat="spanType in labelSet.appliesToSpanTypes">
+                                            {{spanType}}
                                         </p>
                                     </td>
                                     <td>
@@ -264,10 +265,10 @@ and open the template in the editor.
                                 Name
                             </th>
                             <th class="col-md-1">
-                                Start type
+                                Start s. type
                             </th>
                             <th class="col-md-1">
-                                End type
+                                End s. type
                             </th>
                             <th class="col-md-1">
                                 Labels
@@ -280,14 +281,14 @@ and open the template in the editor.
                                         {{linkSet.name}}
                                     </td>
                                     <td>
-                                        {{linkSet.startType}}
+                                        {{linkSet.startSpanType}}
                                     </td>
                                     <td>
-                                        {{linkSet.endType}}
+                                        {{linkSet.endSpanType}}
                                     </td>
                                     <td>
                                         <div ng-repeat="label in linkSet.linkLabels" style="inline-box-align: initial">
-                                            <p>{{label.linkLabel}}</p>
+                                            <p>{{label.name}}</p>
                                             <span ng-show="label.options !== undefined">{{label.options}}</span>
 
                                         </div>
@@ -338,14 +339,14 @@ and open the template in the editor.
                             </label>
                             <table class="listingTable form-group">
                                 <tbody>
-                                    <tr ng-repeat="target in this.selectedTargetsLabel">
+                                    <tr ng-repeat="spanType in this.selectedTargetsLabel">
                                         <td class="tableRowWithGlyph">
-                                            {{target}}
+                                            {{spanType}}
                                         </td>
                                         <td>
                                             <span class="glyphicon glyphicon-remove"
                                                   style="color:red;"
-                                                  ng-click="removeTargetTypeLabel(target)">
+                                                  ng-click="removeSpanTypeLabel(spanType)">
                                             </span>
                                         </td>
                                     </tr>  
@@ -360,9 +361,9 @@ and open the template in the editor.
                                     </span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li ng-repeat="target in this.targets| filter:selectedTargetsLabelFilter">
-                                        <a ng-click="addTargetTypeLabel(target);">
-                                            {{target}}
+                                    <li ng-repeat="spanType in this.spanTypes| filter:selectedSpanTypeLabelFilter">
+                                        <a ng-click="addSpanTypeLabel(spanType)">
+                                            {{spanType}}
                                         </a>
                                     </li>
                                 </ul>
@@ -426,22 +427,22 @@ and open the template in the editor.
                         </div>
                         <div class="form-group">
                             <label class="col-xs-4">
-                                Start type:
+                                Start s. type:
                             </label>
                             <div class = "btn-group sb_margin">
                                 <select class="form-control input-sm"
-                                        ng-options="target for target in this.targets"
-                                        ng-model="startType">
+                                        ng-options="spanType for spanType in this.spanTypes"
+                                        ng-model="startSpanType">
                                 </select>
                             </div>
                             <br/>
                             <label class="col-xs-4">
-                                End type:
+                                End s. type:
                             </label>
                             <div class = "btn-group">
                                 <select class="form-control input-sm col-xs-1"
-                                        ng-options="target for target in this.targets"
-                                        ng-model="endType">
+                                        ng-options="spanType for spanType in this.spanTypes"
+                                        ng-model="endSpanType">
                                 </select>
                             </div>
                         </div>
@@ -453,7 +454,7 @@ and open the template in the editor.
                                 <tbody>
                                     <tr ng-repeat="label in this.currentLinkSet">
                                         <td class="tableRowWithGlyph">
-                                            <label class="sb_normalText">{{label.linkLabel}}</label>
+                                            <label class="sb_normalText">{{label.name}}</label>
                                             <label class="sb_normalText" ng-show="label.options !== undefined">[{{label.options}}]</label>
                                         </td>
                                         <td>

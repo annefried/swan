@@ -48,16 +48,16 @@ public class LabelSet extends BaseEntity {
     private boolean exclusive;
 
     /**
-     * Contains the targettypes which can be annotated with this label.
+     * Contains the span type which can be annotated with this label.
      */
     @JsonView({ View.Scheme.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     @JoinTable(
-        name="TARGETTYPE_LABELSET",
+        name="SPANTYPE_LABELSET",
         joinColumns={@JoinColumn(name="LABEL_SET_ID", referencedColumnName="id")},
-        inverseJoinColumns={@JoinColumn(name="TARGETTYPE", referencedColumnName="TargetType")})
-    private Set<TargetType> appliesToTargetTypes = new HashSet<>();
+        inverseJoinColumns={@JoinColumn(name="SPANTYPE", referencedColumnName="name")})
+    private Set<SpanType> appliesToSpanTypes = new HashSet<>();
     
     @JsonView({ View.Scheme.class })
     @ManyToMany(mappedBy = "labelSet",
@@ -82,16 +82,16 @@ public class LabelSet extends BaseEntity {
         this.exclusive = exclusive;
     }
 
-    public Set<TargetType> getAppliesToTargetTypes() {
-        return appliesToTargetTypes;
+    public Set<SpanType> getAppliesToSpanTypes() {
+        return appliesToSpanTypes;
     }
 
-    public void setAppliesToTargetTypes(Set<TargetType> appliesToTargetTypes) {
-        this.appliesToTargetTypes = appliesToTargetTypes;
+    public void setAppliesToSpanTypes(Set<SpanType> appliesToSpanTypes) {
+        this.appliesToSpanTypes = appliesToSpanTypes;
     }
     
-    public void addAppliesToTargetTypes(TargetType targetType) {
-        this.appliesToTargetTypes.add(targetType);
+    public void addAppliesToSpanTypes(SpanType spanType) {
+        this.appliesToSpanTypes.add(spanType);
     }
 
     public List<Label> getLabels() {

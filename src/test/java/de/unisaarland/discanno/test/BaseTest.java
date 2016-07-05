@@ -59,7 +59,7 @@ public abstract class BaseTest {
         entityClasses.add(Project.class);
         entityClasses.add(Scheme.class);
         entityClasses.add(State.class);
-        entityClasses.add(TargetType.class);
+        entityClasses.add(SpanType.class);
         entityClasses.add(TimeLogging.class);
         entityClasses.add(Users.class);
     }

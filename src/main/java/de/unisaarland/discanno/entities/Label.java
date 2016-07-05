@@ -19,8 +19,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 /**
- * The Entity Label represents a label which can be used for annotations. The
- * label name is unique and is therefore the primary key.
+ * The Entity Label represents a label which can be used for annotations.
  * 
  * The JsonIdentityInfo annotations prevents infinite recursions.
  *
@@ -30,7 +29,7 @@ import javax.persistence.ManyToMany;
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 public class Label extends BaseEntity {
     
-    private String labelId;
+    private String name;
     
     /**
      * The relationship shows to which labelsets the label belongs.
@@ -44,12 +43,12 @@ public class Label extends BaseEntity {
     private List<LabelSet> labelSet = new ArrayList();
 
     
-    public String getLabelId() {
-        return labelId;
+    public String getName() {
+        return name;
     }
 
-    public void setLabelId(String labelId) {
-        this.labelId = labelId;
+    public void setName(String labelId) {
+        this.name = labelId;
     }
     
     public List<LabelSet> getLabelSet() {
@@ -58,30 +57,6 @@ public class Label extends BaseEntity {
 
     public void addLabelSet(LabelSet labelSet) {
         this.labelSet.add(labelSet);
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Label other = (Label) obj;
-        if (!Objects.equals(this.labelId, other.labelId)) {
-            return false;
-        }
-        return true;
     }
     
 }

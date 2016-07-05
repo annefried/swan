@@ -174,13 +174,13 @@ function AnnotationObject(id, type, labels, text) {
 }
 
 //Represents a whole annotation
-function Annotation(color, id, tType) {
-    if (tType === undefined)
+function Annotation(color, id, sType) {
+    if (sType === undefined)
         AnnotationObject.call(this, id, AnnoType.Annotation);
     else
-        AnnotationObject.call(this, id, AnnoType.Annotation, tType.selectableLabels);
+        AnnotationObject.call(this, id, AnnoType.Annotation, sType.selectableLabels);
 
-    this.tType = tType;
+    this.sType = sType;
     this.color = color;
     this.words = [];
     this.notSure = false;
@@ -242,14 +242,14 @@ function Annotation(color, id, tType) {
         this.text = "";
     };
 
-    this.setTargetType = function (targetType) {
-        this.tType = targetType;
-        this.selectableLabels = targetType.selectableLabels;
+    this.setSpanType = function (spanType) {
+        this.sType = spanType;
+        this.selectableLabels = spanType.selectableLabels;
         this.activeLabels = {};
     };
 
-    this.getTargetType = function () {
-        return this.tType;
+    this.getSpanType = function () {
+        return this.sType;
     };
 
     //Return the text index where this annotation starts
@@ -371,8 +371,8 @@ function AnnotationLabel(id, tag, options, setID) {
     };
 }
 
-//Represents a setable target type
-function TargetType(id, tag) {
+// Represents a setable span type
+function SpanType(id, tag) {
     this.id = id;
     this.tag = tag;
     this.selectableLabels = {};

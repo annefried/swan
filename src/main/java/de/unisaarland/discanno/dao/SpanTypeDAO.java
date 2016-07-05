@@ -5,22 +5,22 @@
  */
 package de.unisaarland.discanno.dao;
 
-import de.unisaarland.discanno.entities.TargetType;
+import de.unisaarland.discanno.entities.SpanType;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
 /**
- * This DAO (Data Access Object) provides all CRUD operations for targettypes.
+ * This DAO (Data Access Object) provides all CRUD operations for spantypes.
  *
  * @author Timo Guehring
  */
 @Stateless
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
-public class TargetTypeDAO extends BaseEntityDAO<TargetType> {
+public class SpanTypeDAO extends BaseEntityDAO<SpanType> {
     
-    public TargetTypeDAO() {
-        super(TargetType.class);
+    public SpanTypeDAO() {
+        super(SpanType.class);
     }
     
 }

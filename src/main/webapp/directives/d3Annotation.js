@@ -28,7 +28,7 @@ angular
                 lastAdded: "=",
                 lastRemoved: "=",
                 lastSet: "=",
-                removedTarget: "=",
+                removedSpanType: "=",
                 setSelection: "&",
                 setTemp: "&",
                 getAnnotation: "&",
@@ -136,7 +136,7 @@ angular
                 }, function () {
                     $scope.formatText();
                     $scope.setLineHeights();
-                    $scope.formatTargets();
+                    $scope.formatSpanTypes();
                     $scope.formatAnnotations();
                 });
 
@@ -675,7 +675,7 @@ angular
                 }, true);
 
                 //Listens to changes to the last removed target
-                $scope.$watch('removedTarget', function (newVals) {
+                $scope.$watch('removedSpanType', function (newVals) {
                     if (newVals !== undefined) {
                         $scope.removeFormAnnotation(newVals);
                         $scope.setLineHeights();
@@ -689,7 +689,7 @@ angular
                 };
 
                 $scope.$watch('annotations', function (newVals, oldVals) {
-                    $scope.formatTargets();
+                    $scope.formatSpanTypes();
                     $scope.formatAnnotations();
                     $scope.setLineHeights();
                     $scope.render(true);
@@ -922,13 +922,13 @@ angular
                     svg.attr('height', height);
                 };
 
-                //For every target add a formatted version to the text field
-                $scope.formatTargets = function () {
+                //For every span type add a formatted version to the text field
+                $scope.formatSpanTypes = function () {
                     formAnnotations = [];
-                    for (var index in $scope.targets) {
-                        var indexTargets = $scope.targets[index];
-                        for (var targetID in indexTargets) {
-                            var target = indexTargets[targetID];
+                    for (var index in $scope.spanTypes) {
+                        var indexSpanType = $scope.spanTypes[index];
+                        for (var targetID in indexSpanType) {
+                            var target = indexSpanType[targetID];
                             $scope.addFormAnnotation(target, true);
                         }
                     }
@@ -1285,10 +1285,10 @@ angular
                             text += (set[i].tag + " ");
                         }
                     }
-                    if (d.annotation.tType === undefined) {
+                    if (d.annotation.sType === undefined) {
                         return "";
                     } else {
-                        return 'Type: ' + d.annotation.tType.tag + " | Labels: " + text;
+                        return 'Type: ' + d.annotation.sType.tag + " | Labels: " + text;
                     }
                 };
 

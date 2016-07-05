@@ -39,16 +39,16 @@ import javax.xml.bind.annotation.XmlRootElement;
         query = "SELECT DISTINCT s " +
                 "FROM Scheme s " +
                 "LEFT JOIN FETCH s.creator " +
-                "LEFT JOIN FETCH s.targetTypes " +
+                "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.labelSets " +
                 "LEFT JOIN FETCH s.linkSets " +
                 "LEFT JOIN FETCH s.projects " +
                 "WHERE s.id = :" + Scheme.PARAM_SCHEME_ID,
         hints = {
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.appliesToTargetTypes"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.appliesToSpanTypes"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.labels"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.startType"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.endType"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.startSpanType"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.endSpanType"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.linkLabels")
         }
     ),
@@ -57,7 +57,7 @@ import javax.xml.bind.annotation.XmlRootElement;
         query = "SELECT DISTINCT s " +
                 "FROM Scheme s " +
                 "LEFT JOIN FETCH s.creator " +
-                "LEFT JOIN FETCH s.targetTypes " +
+                "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.labelSets " +
                 "LEFT JOIN FETCH s.linkSets " +
                 "LEFT JOIN FETCH s.projects " +
@@ -117,10 +117,10 @@ public class Scheme extends BaseEntity {
     @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
-    @JoinTable(name="SCHEME_TARGETTYPE", 
+    @JoinTable(name="SCHEME_SPANTYPE", 
           joinColumns=@JoinColumn(name="SCHEME_ID"),
-          inverseJoinColumns=@JoinColumn(name="TARGETTYPE"))
-    private Set<TargetType> targetTypes = new HashSet();
+          inverseJoinColumns=@JoinColumn(name="SPANTYPE"))
+    private Set<SpanType> spanTypes = new HashSet();
     
     @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
@@ -169,16 +169,16 @@ public class Scheme extends BaseEntity {
         this.visElements = visElements;
     }
 
-    public Set<TargetType> getTargetTypes() {
-        return targetTypes;
+    public Set<SpanType> getSpanTypes() {
+        return spanTypes;
     }
 
-    public void setTargetTypes(Set<TargetType> targetTypes) {
-        this.targetTypes = targetTypes;
+    public void setSpanTypes(Set<SpanType> spanTypes) {
+        this.spanTypes = spanTypes;
     }
     
-    public void addTargetTypes(TargetType targetType) {
-        this.targetTypes.add(targetType);
+    public void addSpanTypes(SpanType spanType) {
+        this.spanTypes.add(spanType);
     }
 
     public List<LabelSet> getLabelSets() {

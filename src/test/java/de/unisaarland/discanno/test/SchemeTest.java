@@ -54,9 +54,9 @@ public class SchemeTest extends BaseTest {
                         == retScheme.getLinkSets().size());
         assertTrue(retScheme.getLinkSets().size() == 1);
         assertTrue(retScheme.getProjects().isEmpty());
-        assertTrue(retScheme.getTargetTypes().size()
-                    == scheme.getTargetTypes().size());
-        assertTrue(retScheme.getTargetTypes().size() == 3);
+        assertTrue(retScheme.getSpanTypes().size()
+                    == scheme.getSpanTypes().size());
+        assertTrue(retScheme.getSpanTypes().size() == 3);
         
         // Check LabelSets
         LabelSet ls1 = null;
@@ -78,7 +78,7 @@ public class SchemeTest extends BaseTest {
         assertNotNull(ls1);
         assertTrue(ls1.isExclusive());
         assertTrue(ls1.getLabels().size() == 4);
-        assertTrue(ls1.getAppliesToTargetTypes().size() == 2);
+        assertTrue(ls1.getAppliesToSpanTypes().size() == 2);
         
         Set<String> labels = convertLabelsToString(ls1.getLabels());
         Set<String> origLabels = new HashSet<>();
@@ -96,20 +96,20 @@ public class SchemeTest extends BaseTest {
         assertNotNull(ls2);
         assertTrue(ls2.isExclusive());
         assertTrue(ls2.getLabels().size() == 6);
-        assertTrue(ls2.getAppliesToTargetTypes().size() == 1);
+        assertTrue(ls2.getAppliesToSpanTypes().size() == 1);
         
         // LabelSet3
         assertNotNull(ls3);
         assertFalse(ls3.isExclusive());
         assertTrue(ls3.getLabels().size() == 4);
-        assertTrue(ls3.getAppliesToTargetTypes().size() == 1);
+        assertTrue(ls3.getAppliesToSpanTypes().size() == 1);
         
         // LinkSet
         LinkSet linkSet = retScheme.getLinkSets().get(0);
         assertNotNull(linkSet);
         assertFalse(linkSet.isAllowUnlabeledLinks());
-        assertTrue(linkSet.getStartType().getTargetType().equals("verb"));
-        assertTrue(linkSet.getEndType().getTargetType().equals("verb"));
+        assertTrue(linkSet.getStartSpanType().getName().equals("verb"));
+        assertTrue(linkSet.getEndSpanType().getName().equals("verb"));
         assertTrue(linkSet.getLinkLabels().size() == 3);
     }
     
@@ -122,14 +122,14 @@ public class SchemeTest extends BaseTest {
     private Set convertLabelsToString(List<Label> labels) {
         Set<String> set = new HashSet<>();
         for (Label l : labels) {
-            set.add(l.getLabelId());
+            set.add(l.getName());
         }
         return set;
     }
     
     private Label getLabelByString(List<Label> list, String name) {
         for (Label l : list) {
-            if (l.getLabelId().equals(name)) {
+            if (l.getName().equals(name)) {
                 return l;
             }
         }

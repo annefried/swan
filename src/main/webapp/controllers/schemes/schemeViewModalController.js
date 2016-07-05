@@ -15,8 +15,8 @@ angular
 
         $scope.loadScheme = function () {
 
-            // This is a little hack to make a deep copy of the scheme to set the
-            // projects undefined
+            // This is a little hack to make a deep copy of the scheme to delete some
+            // attributes without changing the original reference
             var scheme = JSON.parse(JSON.stringify($rootScope.currentScheme));
 
             // remove things that we don't want to display
@@ -25,61 +25,62 @@ angular
             delete scheme.projects;
 
 
-            var targetTypesSimple = [];
-            for (var j = 0; j < scheme.targetTypes.length; j++) {
-                targetTypesSimple.push(scheme.targetTypes[j].targetType);
+            var spanTypesSimple = [];
+            for (var j = 0; j < scheme.spanTypes.length; j++) {
+                spanTypesSimple.push(scheme.spanTypes[j].name);
             }
-            scheme.spanTypes = targetTypesSimple;
+            scheme.spanTypes = spanTypesSimple;
             scheme.linkTypes = scheme.linkSets;
 
             for (var j = 0; j < scheme.labelSets.length; j++) {
                 var curLabelSet = scheme.labelSets[j];
                 delete curLabelSet.id;
-                var targetTypesSimple2 = new Array();
-                for (var i = 0; i < curLabelSet.appliesToTargetTypes.length; i++) {
-                    targetTypesSimple2.push(curLabelSet.appliesToTargetTypes[i].targetType);
+                var spanTypesSimpleOfLabelSet = [];
+                for (var i = 0; i < curLabelSet.appliesToSpanTypes.length; i++) {
+                    spanTypesSimpleOfLabelSet.push(curLabelSet.appliesToSpanTypes[i].name);
                 }
-                curLabelSet.appliesToSpanTypes = targetTypesSimple2;
-                delete curLabelSet.appliesToTargetTypes;
+                curLabelSet.appliesToSpanTypes = spanTypesSimpleOfLabelSet;
+                // delete curLabelSet.appliesToSpanTypes;
 
-                var labelsSimple = new Array();
+                var labelsSimple = [];
                 for (var k = 0; k < curLabelSet.labels.length; k++) {
                     var curLabel = curLabelSet.labels[k];
-                    labelsSimple.push(curLabel.labelId);
+                    labelsSimple.push(curLabel.name);
                     delete curLabel.labelSet;
                 }
                 curLabelSet.labels = labelsSimple;
             }
             for (var j = 0; j < scheme.linkSets.length; j++) {
                 var curLinkSet = scheme.linkSets[j];
-                var linkLabelsSimple = new Array();
+                var linkLabelsSimple = [];
                 for (var k = 0; k < curLinkSet.linkLabels.length; k++) {
                     var curLabel = curLinkSet.linkLabels[k];
                 	var linkLabel = {
-                    	"name": curLabel.linkLabel,
+                    	"name": curLabel.name,
                     	"options": curLabel.options
                 	};
                 	linkLabelsSimple.push(linkLabel);
                 }
                 curLinkSet.linkLabels = linkLabelsSimple;
-                curLinkSet.startSpanType = curLinkSet.startType;
-                curLinkSet.endSpanType = curLinkSet.endType;
-                delete curLinkSet.startType;
-                delete curLinkSet.endType;
+                //curLinkSet.startSpanType = curLinkSet.startSpanType;
+                //curLinkSet.endSpanType = curLinkSet.endSpanType;
+                //delete curLinkSet.startSpanType;
+                //delete curLinkSet.endSpanType;
                 delete curLinkSet.allowUnlabeledLinks;
                 delete curLinkSet.id;
             }
 
             delete scheme.linkSets;
-            delete scheme.targetTypes;
-            function replacer(key, value) {
-                if (key === "startSpanType" || key === "endSpanType") {
-                    return value.targetType;
-                }
-                return value;
-            }
+            //delete scheme.spanTypes;
 
-            $scope.currentScheme = JSON.stringify(scheme, replacer, "\t");
+            $scope.currentScheme = JSON.stringify(scheme, $scope.replacer, "\t");
+        };
+
+        $scope.replacer = function (key, value) {
+            if (key === "startSpanType" || key === "endSpanType") {
+                return value.spanType;
+            }
+            return value;
         };
 
         $scope.submit = function () {

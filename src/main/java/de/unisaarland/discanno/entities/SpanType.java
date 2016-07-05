@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 /**
- * The entity TargetType represents different labels a target could have.
+ * The entity SpanType represents different labels a target could have.
  * 
  * The JsonIdentityInfo annotations prevents infinite recursions.
  * 
@@ -32,28 +31,27 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-public class TargetType implements Serializable {
+public class SpanType implements Serializable {
     
     private static final long serialVersionUID = 1L;
     @JsonView({ View.Scheme.class, View.Annotations.class })
     @Id
-    @Column(name = "TargetType")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String targetType;
+    private String name;
     
     @JsonIgnore
-    @ManyToMany(mappedBy = "appliesToTargetTypes",
+    @ManyToMany(mappedBy = "appliesToSpanTypes",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     private List<LabelSet> labelSets = new ArrayList<>();
 
 
-    public String getTargetType() {
-        return targetType;
+    public String getName() {
+        return name;
     }
 
-    public void setTargetType(String targetType) {
-        this.targetType = targetType;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<LabelSet> getLabelSets() {
@@ -71,7 +69,7 @@ public class TargetType implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (targetType != null ? targetType.hashCode() : 0);
+        hash += (name != null ? name.hashCode() : 0);
         return hash;
     }
 
@@ -86,8 +84,8 @@ public class TargetType implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final TargetType other = (TargetType) obj;
-        if (!Objects.equals(this.targetType, other.targetType)) {
+        final SpanType other = (SpanType) obj;
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         return true;

@@ -14,7 +14,7 @@ import de.unisaarland.discanno.entities.LinkLabel;
 import de.unisaarland.discanno.entities.LinkSet;
 import de.unisaarland.discanno.entities.Project;
 import de.unisaarland.discanno.entities.Scheme;
-import de.unisaarland.discanno.entities.TargetType;
+import de.unisaarland.discanno.entities.SpanType;
 import de.unisaarland.discanno.entities.Users;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -105,51 +105,51 @@ public class TestDataProvider {
         return listSections;
     }
     
-    public static TargetType getTargetType1() {
-        TargetType tt = new TargetType();
-        tt.setTargetType("verb");
+    public static SpanType getTargetType1() {
+        SpanType tt = new SpanType();
+        tt.setName("verb");
         return tt;
     }
     
-    public static TargetType getTargetType2() {
-        TargetType tt = new TargetType();
-        tt.setTargetType("passage");
+    public static SpanType getTargetType2() {
+        SpanType tt = new SpanType();
+        tt.setName("passage");
         return tt;
     }
     
-    public static TargetType getTargetType3() {
-        TargetType tt = new TargetType();
-        tt.setTargetType("nomen");
+    public static SpanType getTargetType3() {
+        SpanType tt = new SpanType();
+        tt.setName("nomen");
         return tt;
     }
     
     public static Label getLabel1() {
         Label label1 = new Label();
-        label1.setLabelId("STATE");
+        label1.setName("STATE");
         return label1;
     }
     
     public static Label getLabel2() {
         Label label2 = new Label();
-        label2.setLabelId("EVENT");
+        label2.setName("EVENT");
         return label2;
     }
     
     public static Label getLabel3() {
         Label label3 = new Label();
-        label3.setLabelId("GENERIC");
+        label3.setName("GENERIC");
         return label3;
     }
     
     public static Label getLabel4() {
         Label label4 = new Label();
-        label4.setLabelId("OTHER");
+        label4.setName("OTHER");
         return label4;
     }
     
     public static LinkLabel getLinkLabel1() {
         LinkLabel linkLabel1 = new LinkLabel();
-        linkLabel1.setLinkLabel("before");
+        linkLabel1.setName("before");
         return linkLabel1;
     }
     
@@ -165,8 +165,8 @@ public class TestDataProvider {
         LabelSet labelSet1 = new LabelSet();
         labelSet1.setName("LabelSet1");
         labelSet1.setExclusive(true);
-        labelSet1.addAppliesToTargetTypes(getTargetType1());
-        labelSet1.addAppliesToTargetTypes(getTargetType2());
+        labelSet1.addAppliesToSpanTypes(getTargetType1());
+        labelSet1.addAppliesToSpanTypes(getTargetType2());
         labelSet1.setLabels(listLabel1);
         
         return labelSet1;
@@ -182,12 +182,12 @@ public class TestDataProvider {
         Label label9 = new Label();
         Label label10 = new Label();
         
-        label5.setLabelId("NARRATIVE");
-        label6.setLabelId("REPORT");
-        label7.setLabelId("INFORMATION");
-        label8.setLabelId("DESCRIPTION");
-        label9.setLabelId("ARGUMENT/COMMENTARY");
-        label10.setLabelId("OTHER");
+        label5.setName("NARRATIVE");
+        label6.setName("REPORT");
+        label7.setName("INFORMATION");
+        label8.setName("DESCRIPTION");
+        label9.setName("ARGUMENT/COMMENTARY");
+        label10.setName("OTHER");
         
         List<Label> listLabel2 = new ArrayList();
         listLabel2.add(label5);
@@ -200,7 +200,7 @@ public class TestDataProvider {
         LabelSet labelSet2 = new LabelSet();
         labelSet2.setName("LabelSet2");
         labelSet2.setExclusive(true);
-        labelSet2.addAppliesToTargetTypes(getTargetType2());
+        labelSet2.addAppliesToSpanTypes(getTargetType2());
         labelSet2.setLabels(listLabel2);
         
         return labelSet2;
@@ -214,10 +214,10 @@ public class TestDataProvider {
         Label label13 = new Label();
         Label label14 = new Label();
         
-        label11.setLabelId("Actual");
-        label12.setLabelId("Modalized");
-        label13.setLabelId("Negated");
-        label14.setLabelId("OTHER");
+        label11.setName("Actual");
+        label12.setName("Modalized");
+        label13.setName("Negated");
+        label14.setName("OTHER");
         
         List<Label> listLabel3 = new ArrayList();
         listLabel3.add(label11);
@@ -228,7 +228,7 @@ public class TestDataProvider {
         LabelSet labelSet3 = new LabelSet();
         labelSet3.setName("LabelSet3");
         labelSet3.setExclusive(false);
-        labelSet3.addAppliesToTargetTypes(getTargetType1());
+        labelSet3.addAppliesToSpanTypes(getTargetType1());
         labelSet3.setLabels(listLabel3);
         
         return labelSet3;
@@ -240,8 +240,8 @@ public class TestDataProvider {
         LinkLabel linkLabel2 = new LinkLabel();
         LinkLabel linkLabel3 = new LinkLabel();
         
-        linkLabel2.setLinkLabel("after");
-        linkLabel3.setLinkLabel("overlap");
+        linkLabel2.setName("after");
+        linkLabel3.setName("overlap");
         
         List<LinkLabel> listLinkLabel1 = new ArrayList();
         listLinkLabel1.add(getLinkLabel1());
@@ -250,8 +250,8 @@ public class TestDataProvider {
         
         LinkSet linkSet = new LinkSet();
         linkSet.setAllowUnlabeledLinks(false);
-        linkSet.setStartType(getTargetType1());
-        linkSet.setEndType(getTargetType1());
+        linkSet.setStartSpanType(getTargetType1());
+        linkSet.setEndSpanType(getTargetType1());
         linkSet.setLinkLabels(listLinkLabel1);
         
         return linkSet;
@@ -264,9 +264,9 @@ public class TestDataProvider {
         scheme.addLabelSets(getLabelSet2());
         scheme.addLabelSets(getLabelSet3());
         scheme.addLinkSet(getLinkSet1());
-        scheme.addTargetTypes(getTargetType1());
-        scheme.addTargetTypes(getTargetType2());
-        scheme.addTargetTypes(getTargetType3());
+        scheme.addSpanTypes(getTargetType1());
+        scheme.addSpanTypes(getTargetType2());
+        scheme.addSpanTypes(getTargetType3());
 
         return scheme;
     }
@@ -334,7 +334,7 @@ public class TestDataProvider {
         Annotation anno = new Annotation();
         int idx = 0;
         
-        anno.setTargetType(getTargetType1());
+        anno.setSpanType(getTargetType1());
         anno.setStart(SECTIONS_1.get(idx).start);
         anno.setEnd(SECTIONS_1.get(idx).end);
         anno.setText(SECTIONS_1.get(idx).text);
@@ -348,7 +348,7 @@ public class TestDataProvider {
         Annotation anno = new Annotation();
         int idx = 4;
         
-        anno.setTargetType(getTargetType2());
+        anno.setSpanType(getTargetType2());
         anno.setStart(SECTIONS_1.get(idx).start);
         anno.setEnd(SECTIONS_1.get(idx).end);
         anno.setText(SECTIONS_1.get(idx).text);
@@ -364,7 +364,7 @@ public class TestDataProvider {
         {
             int idx = 5;
             Annotation anno = new Annotation();
-            anno.setTargetType(getTargetType1());
+            anno.setSpanType(getTargetType1());
             anno.setStart(SECTIONS_1.get(idx).start);
             anno.setEnd(SECTIONS_1.get(idx).end);
             anno.setText(SECTIONS_1.get(idx).text);
@@ -374,7 +374,7 @@ public class TestDataProvider {
         {
             int idx = 6;
             Annotation anno = new Annotation();
-            anno.setTargetType(getTargetType2());
+            anno.setSpanType(getTargetType2());
             anno.setStart(SECTIONS_1.get(idx).start);
             anno.setEnd(SECTIONS_1.get(idx).end);
             anno.setText(SECTIONS_1.get(idx).text);
@@ -384,7 +384,7 @@ public class TestDataProvider {
         {
             int idx = 20;
             Annotation anno = new Annotation();
-            anno.setTargetType(getTargetType2());
+            anno.setSpanType(getTargetType2());
             anno.setStart(SECTIONS_1.get(idx).start);
             anno.setEnd(SECTIONS_1.get(idx).end);
             anno.setText(SECTIONS_1.get(idx).text);
@@ -394,7 +394,7 @@ public class TestDataProvider {
         {
             int idx = 28;
             Annotation anno = new Annotation();
-            anno.setTargetType(getTargetType2());
+            anno.setSpanType(getTargetType2());
             anno.setStart(SECTIONS_1.get(idx).start);
             anno.setEnd(SECTIONS_1.get(idx).end);
             anno.setText(SECTIONS_1.get(idx).text);
@@ -404,7 +404,7 @@ public class TestDataProvider {
         {
             int idx = 42;
             Annotation anno = new Annotation();
-            anno.setTargetType(getTargetType3());
+            anno.setSpanType(getTargetType3());
             anno.setStart(SECTIONS_1.get(idx).start);
             anno.setEnd(SECTIONS_1.get(idx).end);
             anno.setText(SECTIONS_1.get(idx).text);
@@ -414,7 +414,7 @@ public class TestDataProvider {
         {
             int idx = 43;
             Annotation anno = new Annotation();
-            anno.setTargetType(getTargetType1());
+            anno.setSpanType(getTargetType1());
             anno.setStart(SECTIONS_1.get(idx).start);
             anno.setEnd(SECTIONS_1.get(idx).end);
             anno.setText(SECTIONS_1.get(idx).text);
@@ -424,7 +424,7 @@ public class TestDataProvider {
         {
             int idx = 67;
             Annotation anno = new Annotation();
-            anno.setTargetType(getTargetType1());
+            anno.setSpanType(getTargetType1());
             anno.setStart(SECTIONS_1.get(idx).start);
             anno.setEnd(SECTIONS_1.get(idx).end);
             anno.setText(SECTIONS_1.get(idx).text);
@@ -434,7 +434,7 @@ public class TestDataProvider {
         {
             int idx = 69;
             Annotation anno = new Annotation();
-            anno.setTargetType(getTargetType1());
+            anno.setSpanType(getTargetType1());
             anno.setStart(SECTIONS_1.get(idx).start);
             anno.setEnd(SECTIONS_1.get(idx).end);
             anno.setText(SECTIONS_1.get(idx).text);
@@ -444,7 +444,7 @@ public class TestDataProvider {
         {
             int idx = 70;
             Annotation anno = new Annotation();
-            anno.setTargetType(getTargetType1());
+            anno.setSpanType(getTargetType1());
             anno.setStart(SECTIONS_1.get(idx).start);
             anno.setEnd(SECTIONS_1.get(idx).end);
             anno.setText(SECTIONS_1.get(idx).text);
@@ -454,7 +454,7 @@ public class TestDataProvider {
         {
             int idx = 72;
             Annotation anno = new Annotation();
-            anno.setTargetType(getTargetType1());
+            anno.setSpanType(getTargetType1());
             anno.setStart(SECTIONS_1.get(idx).start);
             anno.setEnd(SECTIONS_1.get(idx).end);
             anno.setText(SECTIONS_1.get(idx).text);

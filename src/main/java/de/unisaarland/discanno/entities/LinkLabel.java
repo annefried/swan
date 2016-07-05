@@ -44,7 +44,7 @@ public class LinkLabel extends BaseEntity {
     }
     
     @JsonView({ View.Links.class, View.Scheme.class })
-    private String linkLabel;
+    private String name;
     
     @JsonView({ View.Links.class, View.Scheme.class })
     @ElementCollection(targetClass = LinkLabelOpts.class)
@@ -65,12 +65,12 @@ public class LinkLabel extends BaseEntity {
     private List<LinkSet> linkSet = new ArrayList();
 
     
-    public String getLinkLabel() {
-        return linkLabel;
+    public String getName() {
+        return name;
     }
 
-    public void setLinkLabel(String linkLabel) {
-        this.linkLabel = linkLabel;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Set<LinkLabelOpts> getOptions() {

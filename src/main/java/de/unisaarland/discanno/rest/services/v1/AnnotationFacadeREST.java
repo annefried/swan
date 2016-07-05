@@ -14,7 +14,7 @@ import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.Annotation;
 import de.unisaarland.discanno.entities.BooleanHelper;
 import de.unisaarland.discanno.entities.Label;
-import de.unisaarland.discanno.entities.TargetType;
+import de.unisaarland.discanno.entities.SpanType;
 import de.unisaarland.discanno.rest.view.View;
 import java.util.List;
 import java.util.logging.Level;
@@ -162,7 +162,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     @POST
     @Path("/changett/{annoId}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response changeTargetTypeREST(@PathParam("annoId") Long annoId, TargetType targetType) {
+    public Response changeTargetTypeREST(@PathParam("annoId") Long annoId, SpanType targetType) {
         
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
