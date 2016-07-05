@@ -85,7 +85,7 @@ public class Service {
     LabelSetDAO labelSetDAO;
     
     @EJB
-    TargetTypeDAO targetTypeDAO;
+    SpanTypeDAO targetTypeDAO;
     
     @EJB
     EmailProvider emailProvider;
@@ -168,11 +168,11 @@ public class Service {
             entity.setDocument(doc);
             updateDocument(doc, user);
 
-            TargetType targetType = (TargetType) targetTypeDAO.find(entity.getTargetType().getTargetType(), false);
-            entity.setTargetType(targetType);
+            SpanType targetType = (SpanType) targetTypeDAO.find(entity.getSpanType().getName(), false);
+            entity.setSpanType(targetType);
 
             for (LabelLabelSetMap m : entity.getLabelMap()) {
-                Label newLabel = (Label) labelDAO.find(m.getLabel().getLabelId(), false);
+                Label newLabel = (Label) labelDAO.find(m.getLabel().getName(), false);
 
                 Set<LabelSet> labelSets = new HashSet<>();
                 for (LabelSet ls : m.getLabelSets()) {
@@ -241,37 +241,37 @@ public class Service {
             }
             entity.setProjects(projects);
 
-            Map<String, TargetType> ttMap = new HashMap<>();
-            Set<TargetType> targetTypes = new HashSet<>();
-            for (TargetType t : entity.getTargetTypes()) {
+            Map<String, SpanType> ttMap = new HashMap<>();
+            Set<SpanType> targetTypes = new HashSet<>();
+            for (SpanType t : entity.getSpanTypes()) {
 
-                TargetType targetType = (TargetType) targetTypeDAO.find(t.getTargetType(), true);
+                SpanType targetType = (SpanType) targetTypeDAO.find(t.getName(), true);
 
                 if (targetType == null) {
                     targetTypes.add(t);
-                    ttMap.put(t.getTargetType(), t);
+                    ttMap.put(t.getName(), t);
                 } else {
                     targetTypes.add(targetType);
-                    ttMap.put(targetType.getTargetType(), targetType);
+                    ttMap.put(targetType.getName(), targetType);
                 }
             }
 
             if (targetTypes.isEmpty()) {
-                throw new CreateException("Service: No TargetTypes declared.");
+                throw new CreateException("Service: No span types declared.");
             }
 
-            entity.setTargetTypes(targetTypes);
+            entity.setSpanTypes(targetTypes);
 
             List<LabelSet> labelSets = new ArrayList<>();
             for (LabelSet ls : entity.getLabelSets()) {
                 labelSets.add(ls);
 
-                Set<TargetType> targetTypesLs = new HashSet<>();
-                for (TargetType t : ls.getAppliesToTargetTypes()) {
-                    targetTypesLs.add(ttMap.get(t.getTargetType()));
+                Set<SpanType> targetTypesLs = new HashSet<>();
+                for (SpanType t : ls.getAppliesToSpanTypes()) {
+                    targetTypesLs.add(ttMap.get(t.getName()));
                     t.addLabelSets(ls);
                 }
-                ls.setAppliesToTargetTypes(targetTypesLs);
+                ls.setAppliesToSpanTypes(targetTypesLs);
 
                 for (Label l : ls.getLabels()) {
                     l.addLabelSet(ls);
@@ -283,13 +283,13 @@ public class Service {
             for (LinkSet ls : entity.getLinkSets()) {
                 linkSets.add(ls);
 
-                TargetType st = ttMap.get(ls.getStartType().getTargetType());
-                if (st == null) throw new CreateException("Service: start type null.");
-                ls.setStartType(st);
+                SpanType st = ttMap.get(ls.getStartSpanType().getName());
+                if (st == null) throw new CreateException("Service: start span type null.");
+                ls.setStartSpanType(st);
 
-                TargetType et = ttMap.get(ls.getEndType().getTargetType());
-                if (et == null) throw new CreateException("Service: end type null.");
-                ls.setEndType(et);
+                SpanType et = ttMap.get(ls.getEndSpanType().getName());
+                if (et == null) throw new CreateException("Service: end span type null.");
+                ls.setEndSpanType(et);
                 
                 for (LinkLabel ll : ls.getLinkLabels()) {
                     ll.addLinkSet(ls);
@@ -337,7 +337,7 @@ public class Service {
             entity.setAnnotation2(anno2);
 
             for (LinkLabelLinkSetMap m : entity.getLabelMap()) {
-                LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(m.getLabel().getLinkLabel(), false);
+                LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(m.getLabel().getName(), false);
 
                 Set<LinkSet> linkSets = new HashSet<>();
                 for (LinkSet ls : m.getLinkSets()) {
@@ -658,11 +658,11 @@ public class Service {
             a.setNotSure(false);
             a.setUser(null);
             
-            if (a.getTargetType() == null) {
+            if (a.getSpanType() == null) {
                 throw new CreateException("Service: No targetype specified!");
             } else {
-                TargetType tt = (TargetType) targetTypeDAO.find(a.getTargetType().getTargetType(), false);
-                a.setTargetType(tt);
+                SpanType tt = (SpanType) targetTypeDAO.find(a.getSpanType().getName(), false);
+                a.setSpanType(tt);
             }
             if (mapStart.get(a.getStart()) == null) {
                 throw new CreateException(
@@ -750,15 +750,15 @@ public class Service {
         }
     }
     
-    public Annotation changeTargetType(Long annoId, TargetType targetType) throws CreateException {
+    public Annotation changeTargetType(Long annoId, SpanType targetType) throws CreateException {
 
         try {
             Annotation anno = (Annotation) annotationDAO.find(annoId, false);
             updateDocument(anno.getDocument(), anno.getUser());
 
-            targetType = (TargetType) targetTypeDAO.find(targetType.getTargetType(), false);
+            targetType = (SpanType) targetTypeDAO.find(targetType.getName(), false);
 
-            anno.setTargetType(targetType);
+            anno.setSpanType(targetType);
 
             // Delete all links connected to the Annotation
             List<Link> linkList = linkDAO.getAllLinksByAnnoId(annoId);

@@ -78,7 +78,7 @@ and open the template in the editor.
                                                last-added="annotation.lastAdded"
                                                last-removed="annotation.lastRemoved"
                                                last-set="annotation.lastSet"
-                                               removed-target="annotation.lastRemovedTarget"
+                                               removed-span-type="annotation.lastRemovedSpanType"
                                                set-selection="annotation.setSelected(item)"
                                                add-annotation="annotation.addAnnotation(item, words)"
                                                set-temp="annotation.setTemporaryAnnotation(item)" 
@@ -178,15 +178,15 @@ and open the template in the editor.
                                 <d3-options data="annotation.annotationText"
                                             selection="annotation.selectedNode"
                                             labels="annotation.labelTable"
-                                            target-types="annotation.targetTypes"
+                                            span-types="annotation.spanTypes"
                                             temp-anno="annotation.tempAnno"
                                             set-selection="annotation.setSelected(item)"
                                             set-label="annotation.setSelectedLabel(label, set)"
                                             remove-annotation="annotation.removeAnnotation(item)"
                                             remove-target="annotation.removeTarget(item)"
                                             remove-link="annotation.removeLink(item)"
-                                            set-type="annotation.setSelectedTargetType(item)"
-                                            set-type-and-add="annotation.setSelectedTargetTypeAndAdd(item)"
+                                            set-type="annotation.setSelectedSpanType(item)"
+                                            set-type-and-add="annotation.setSelectedSpanTypeAndAdd(item)"
                                             set-annotation-not-sure="annotation.setAnnotationNotSure(item,bool)">
                                 </d3-options>
                             </div>

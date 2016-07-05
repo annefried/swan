@@ -39,11 +39,11 @@ angular
          */
         $scope.validateTargets = function (targets, projectId, currFileName) {
             const scheme = $rootScope.currScheme;
-            const tTypeMap = $scope.getTargetTypeMap(scheme);
+            const sTypeMap = $scope.getSpanTypeMap(scheme);
             for (var i = 0; i < targets.targets.length; i++) {
-                var target = targets.targets[i];
-                if (tTypeMap[target.type] === undefined) {
-                    throw "Target type \'" + target.type.toString() + "\'" +
+                var spanType = targets.targets[i];
+                if (sTypeMap[spanType.type] === undefined) {
+                    throw "Span type \'" + spanType.type.toString() + "\'" +
                             " in file \'" + currFileName + "\'" +
                             " not defined in scheme.";
                 }
@@ -51,19 +51,19 @@ angular
         };
         
         /**
-         * Returns a map which includes all target types to the given scheme.
+         * Returns a map which includes all span types to the given scheme.
          * The map provides constant access for validation purposes.
          * 
          * @param {type} scheme
-         * @returns {type} tTypeMap
+         * @returns {type} sTypeMap
          */
-        $scope.getTargetTypeMap = function (scheme) {
-            var tTypeMap = {};
-            for (var i = 0; i < scheme.targetTypes.length; i++) {
-                var tType = scheme.targetTypes[i].targetType;
-                tTypeMap[tType] = tType;
+        $scope.getSpanTypeMap = function (scheme) {
+            var sTypeMap = {};
+            for (var i = 0; i < scheme.spanTypes.length; i++) {
+                var sType = scheme.spanTypes[i].name;
+                sTypeMap[sType] = sType;
             }
-            return tTypeMap;
+            return sTypeMap;
         };
 
         $scope.submit = function () {
@@ -88,8 +88,8 @@ angular
                             'id': null,
                             'start': targets.targets[i].begin,
                             'end': targets.targets[i].end,
-                            'targetType': {
-                                'targetType': targets.targets[i].type
+                            'spanType': {
+                                'name': targets.targets[i].type
                             },
                             'user': null,
                             'document': null,
@@ -130,7 +130,7 @@ angular
                         };
                     }(curFileName), function (response) {
                         if (response.status >= 400)
-                            $rootScope.addAlert({type: 'danger', msg: "The start or end spans of target do not match the text."});
+                            $rootScope.addAlert({type: 'danger', msg: "The start or end spans of the target does not match the text."});
                     });
                 }
 

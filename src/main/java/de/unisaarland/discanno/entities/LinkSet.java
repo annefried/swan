@@ -35,13 +35,13 @@ public class LinkSet extends BaseEntity {
     
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
-    @JoinColumn(name = "startType_fk", nullable = false)
-    private TargetType startType;
+    @JoinColumn(name = "startSpanType_fk", nullable = false)
+    private SpanType startSpanType;
     
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
-    @JoinColumn(name = "endType_fk", nullable = false)
-    private TargetType endType;
+    @JoinColumn(name = "endSpanType_fk", nullable = false)
+    private SpanType endSpanType;
     
     @Column(name = "AllowUnlabeledLinks")
     private boolean allowUnlabeledLinks;
@@ -61,20 +61,20 @@ public class LinkSet extends BaseEntity {
         this.name = name;
     }
     
-    public TargetType getStartType() {
-        return startType;
+    public SpanType getStartSpanType() {
+        return startSpanType;
     }
 
-    public void setStartType(TargetType startType) {
-        this.startType = startType;
+    public void setStartSpanType(SpanType startSpanType) {
+        this.startSpanType = startSpanType;
     }
 
-    public TargetType getEndType() {
-        return endType;
+    public SpanType getEndSpanType() {
+        return endSpanType;
     }
 
-    public void setEndType(TargetType endType) {
-        this.endType = endType;
+    public void setEndSpanType(SpanType endSpanType) {
+        this.endSpanType = endSpanType;
     }
 
     public boolean isAllowUnlabeledLinks() {

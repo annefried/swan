@@ -98,7 +98,7 @@ public class ExportUtil {
                         dAnnot.setBegin(annotation.getStart());
                         dAnnot.setEnd(annotation.getEnd());
                         dAnnot.setAnnotatorId(u.getEmail());
-                        dAnnot.setTargetType(annotation.getTargetType().getTargetType());
+                        dAnnot.setTargetType(annotation.getSpanType().getName());
                         dAnnot.setAnnotationId(annotation.getId().toString());
                         annotsById.put(annotation.getId(), dAnnot);
                         
@@ -305,7 +305,7 @@ public class ExportUtil {
         anno.setStart(a.getStart());
         anno.setEnd(a.getEnd());
        // anno.setText(a.getText());
-        anno.setTargetType(a.getTargetType().getTargetType());
+        anno.setTargetType(a.getSpanType().getName());
         anno.setLabels(
                 convertLabelsToExportLabelSet(
                         a.getLabelMap()));
@@ -326,7 +326,7 @@ public class ExportUtil {
                 if (!setToLabelsMap.containsKey(s.getName())) {
                     setToLabelsMap.put(s.getName(), new HashSet<String>());
                 }
-                setToLabelsMap.get(s.getName()).add(m.getLabel().getLabelId());
+                setToLabelsMap.get(s.getName()).add(m.getLabel().getName());
             }
         }
 
@@ -379,7 +379,7 @@ public class ExportUtil {
                 if (!setToLabelsMap.containsKey(s.getName())) {
                     setToLabelsMap.put(s.getName(), new HashSet<String>());
                 }
-                setToLabelsMap.get(s.getName()).add(m.getLabel().getLinkLabel());
+                setToLabelsMap.get(s.getName()).add(m.getLabel().getName());
             }
         }
 

@@ -15,9 +15,9 @@
 angular
     .module('app')
     .controller('annotationController', ['$scope', '$window', '$rootScope',
-        '$http', 'tokenService', 'getAnnotationService', 'textService', 'targetService', 'linkService', 'schemeService', '$q',
+        '$http', 'tokenService', 'getAnnotationService', 'textService', 'linkService', 'schemeService', '$q',
         function ($scope, $window, $rootScope, $http, tokenService,
-                    getAnnotationService, textService, targetService, linkService, schemeService, $q) {
+                    getAnnotationService, textService, linkService, schemeService, $q) {
 
             // Reads the committed files and builds them into the used data structures
             this.init = function () {
@@ -140,8 +140,8 @@ angular
                 for (var a = 0; a < annotations.length; a++) {
                     var start = annotations[a].start;
                     var end = annotations[a].end;
-                    var targetType = this.getTargetType(annotations[a].targetType.targetType);
-                    var anno = new Annotation(color, annotations[a].id, targetType);
+                    var spanType = this.getSpanType(annotations[a].spanType.name);
+                    var anno = new Annotation(color, annotations[a].id, spanType);
                     anno.notSure = annotations[a].notSure;
                     this.findWords(start, end, anno);
                     //Add labels
@@ -149,13 +149,13 @@ angular
                         var label = annotations[a].labelMap[l];
                         for (var k = 0; k < label.labelSets.length; k++) {
                             var setId = label.labelSets[k].id;
-                            var annotationLabel = new AnnotationLabel(label.label.id, label.label.labelId, [], setId);
+                            var annotationLabel = new AnnotationLabel(label.label.id, label.label.name, [], setId);
                             var labelSet = this.labelTable[setId];
                             anno.setLabel(labelSet, annotationLabel);
                         }
                     }
 
-                    var color = this.getColor(targetType, anno);
+                    var color = this.getColor(spanType, anno);
                     anno.color = color;
                     this.annotationData[anno.id] = anno;
                 }
@@ -171,8 +171,8 @@ angular
                         var annotationLink = new AnnotationLink(link.id, source, target);
                         //Add label sets
                         if (this.linkable(source, target)) {
-                            for (var id in this.linkLabels[source.tType.tag][target.tType.tag]) {
-                                const linkSet = this.linkLabels[source.tType.tag][target.tType.tag][id];
+                            for (var id in this.linkLabels[source.sType.tag][target.sType.tag]) {
+                                const linkSet = this.linkLabels[source.sType.tag][target.sType.tag][id];
                                 annotationLink.addSelectableLabel(linkSet);
                             }
                         }
@@ -180,8 +180,8 @@ angular
                             var label = link.labelMap[j];
                             for (var k = 0; k < label.linkSets.length; k++) {
                                 const setId = label.linkSets[k].id;
-                                const labelSet = this.linkLabels[source.tType.tag][target.tType.tag][setId];
-                                const linkLabel = new AnnotationLabel(label.label.id, label.label.linkLabel, label.label.options, setId);
+                                const labelSet = this.linkLabels[source.sType.tag][target.sType.tag][setId];
+                                const linkLabel = new AnnotationLabel(label.label.id, label.label.name, label.label.options, setId);
                                 annotationLink.setLabel(labelSet, linkLabel);
                             }
                         }
@@ -211,8 +211,8 @@ angular
                         if (this.selectedNode.type === AnnoType.Annotation)
                             labelSet = this.labelTable[label.setID];
                         else {
-                            var source = this.selectedNode.source.tType.tag;
-                            var target = this.selectedNode.target.tType.tag;
+                            var source = this.selectedNode.source.sType.tag;
+                            var target = this.selectedNode.target.sType.tag;
                             labelSet = this.linkLabels[source][target][label.setID];
                         }
                     }
@@ -227,7 +227,7 @@ angular
                     if (this.selectedNode.type === AnnoType.Annotation) {
                         labelTemplate = {
                             id: label.id,
-                            labelId: label.tag,
+                            name: label.tag,
                             labelSet: [{
                                 id: labelSet.id
                             }]
@@ -237,7 +237,7 @@ angular
                     } else { // Link
                         labelTemplate = {
                             id: label.id,
-                            linkLabel: label.tag,
+                            name: label.tag,
                             linkSet: [{
                                 id: labelSet.id
                             }]
@@ -247,20 +247,20 @@ angular
                     }
                     $http.post(url + this.selectedNode.id, labelTemplate);
 
-                    this.selectedNode.color = this.getColor(this.selectedNode.tType, this.selectedNode);
+                    this.selectedNode.color = this.getColor(this.selectedNode.sType, this.selectedNode);
                     this.lastSet = this.selectedNode;
                     this.changeLinkLabel = { "link": this.selectedNode, "label": label};
                 }
             };
-            // Update an existing Anno in the db
+            // Update an existing annotation and send request
             this.updateAnno = function (newAnno) {
                 var jsonTemplate = {
                     "id": newAnno.id,
                     "user": {
                         "id": $window.sessionStorage.uId
                     },
-                    "targetType": {
-                        "targetType": newAnno.tType.tag
+                    "spanType": {
+                        "name": newAnno.sType.tag
                     },
                     "document": {
                         "id": $window.sessionStorage.docId
@@ -270,7 +270,7 @@ angular
                     "text": newAnno.text,
                     "notSure": newAnno.notSure
                 };
-                // add to db
+                // Send request
                 $http.put("swan/annotations", JSON.stringify(jsonTemplate)).then(function (object) {
                     return function (response) {
                         object.sizeIncreased = newAnno;
@@ -360,16 +360,16 @@ angular
                 }
             };
 
-            //Set target type of the currently selected object
-            this.setSelectedTargetType = function (targetType) {
+            // Set span type of the currently selected object
+            this.setSelectedSpanType = function (spanType) {
 
                 if (this.selectedNode !== null
                         && this.selectedNode !== undefined
-                        && targetType !== undefined
+                        && spanType !== undefined
                         && this.selectedNode.type === AnnoType.Annotation) {
                 	
-                    this.selectedNode.setTargetType(targetType);
-                    this.selectedNode.color = this.getColor(targetType, undefined);
+                    this.selectedNode.setSpanType(spanType);
+                    this.selectedNode.color = this.getColor(spanType, undefined);
                     this.lastSet = this.selectedNode;
                     this.lastTargeted = this.selectedNode;
                     //Check if the selected note is temporary; in this case a new annotation will be added
@@ -381,22 +381,22 @@ angular
                     this.removeConnectedLinks(this.selectedNode);
                 }
             };
-            this.setSelectedTargetTypeAndAdd = function (targetType) {
+            this.setSelectedSpanTypeAndAdd = function (spanType) {
                 if (this.selectedNode !== null
                         && this.selectedNode !== undefined
-                        && targetType !== undefined
+                        && spanType !== undefined
                         && this.selectedNode.type === AnnoType.Annotation) {
                 	
-                    if (this.selectedNode.tType !== undefined) {
+                    if (this.selectedNode.sType !== undefined) {
                     	const url = "swan/annotations/changett/" + this.selectedNode.id;
-                        $http.post(url, {'targetType': targetType.tag}).success(function (response) {
+                        $http.post(url, {'name': spanType.tag}).success(function (response) {
 
                         }).error(function (response) {
                             $rootScope.checkResponseStatusCode(response.status);
                         });
                     }
-                    this.selectedNode.setTargetType(targetType);
-                    this.selectedNode.color = this.getColor(targetType, undefined);
+                    this.selectedNode.setSpanType(spanType);
+                    this.selectedNode.color = this.getColor(spanType, undefined);
                     this.lastSet = this.selectedNode;
                     this.lastTargeted = this.selectedNode;
                     //Check if the selected note is temporary; in this case a new annotation will be added
@@ -408,10 +408,10 @@ angular
                     this.removeConnectedLinks(this.selectedNode);
                 }
             };
-            //Set target type of the temporal annotations
-            this.setTemporaryTargetType = function (targetType) {
-                this.tempAnno.setTargetType(targetType);
-                this.tempAnno.color = this.getColor(targetType, undefined);
+            // Set span type of the temporal annotations
+            this.setTemporarySpanType = function (spanType) {
+                this.tempAnno.setSpanType(spanType);
+                this.tempAnno.color = this.getColor(spanType, undefined);
                 this.addAnnotation(this.tempAnno);
                 this.tempAnno = null;
             };
@@ -435,9 +435,9 @@ angular
                     for (var v = 0; v < words.length; v++)
                         this.tempAnno.addWord(words[v]);
                     this.selectedNode = this.tempAnno;
-                    var tType = this.getOnlyTargetType();
-                    if (tType !== undefined && $rootScope.ishotkeys !== 'true')
-                        this.setTemporaryTargetType(tType);
+                    var sType = this.getOnlySpanType();
+                    if (sType !== undefined && $rootScope.ishotkeys !== 'true')
+                        this.setTemporarySpanType(sType);
                 }
             };
             //Adds a new annotation and makes a callback to the backend
@@ -448,8 +448,8 @@ angular
                     "user": {
                         "id": $window.sessionStorage.uId
                     },
-                    "targetType": {
-                        "targetType": annotation.tType.tag
+                    "spanType": {
+                        "name": annotation.sType.tag
                     },
                     "document": {
                         "id": $window.sessionStorage.docId
@@ -519,8 +519,8 @@ angular
                             'document': {
                                 'id': $window.sessionStorage.docId
                             },
-                            "targetType": {
-                                "targetType": source.type
+                            "spanType": {
+                                "name": source.type
                             },
                             "start": source.words[0].start,
                             "end": source.words[0].end,
@@ -534,8 +534,8 @@ angular
                             'document': {
                                 'id': $window.sessionStorage.docId
                             },
-                            "targetType": {
-                                "targetType": target.type
+                            "spanType": {
+                                "name": target.type
                             },
                             "start": target.words[0].start,
                             "end": target.words[0].end,
@@ -548,8 +548,8 @@ angular
                             var newId = response.data;
                             var link = new AnnotationLink(newId, source, target);
                             //Add label sets
-                            for (var id in object.linkLabels[source.tType.tag][target.tType.tag]) {
-                                var linkSet = object.linkLabels[source.tType.tag][target.tType.tag][id];
+                            for (var id in object.linkLabels[source.sType.tag][target.sType.tag]) {
+                                var linkSet = object.linkLabels[source.sType.tag][target.sType.tag][id];
                                 link.addSelectableLabel(linkSet);
                             }
 
@@ -570,18 +570,18 @@ angular
 
                 return deferred.promise;
             };
-            //Checks if two annotations are linkable depending on their target type
+            // Checks if two annotations are linkable depending on their span type
             this.linkable = function (source, target) {
                 if (this.annotationLinks !== undefined && this.annotationLinks[source.id] !== undefined) {
                     var alreadyExists = (this.annotationLinks[source.id][target.id] !== undefined)
                 } else {
                     var alreadyExists = false;
                 }
-                return this.linkLabels[source.tType.tag] !== undefined
-                        && this.linkLabels[source.tType.tag][target.tType.tag] !== undefined
+                return this.linkLabels[source.sType.tag] !== undefined
+                        && this.linkLabels[source.sType.tag][target.sType.tag] !== undefined
                         && !alreadyExists;
             };
-            //Remove a link and make a corresponding callback to the backend
+            // Remove a link and make a corresponding callback to the backend
             this.removeLink = function (link) {
 
                 if (link !== undefined) {
@@ -603,7 +603,7 @@ angular
                     });
                 }
             };
-            //Remove each link that is connected to the object
+            // Remove each link that is connected to the object
             this.removeConnectedLinks = function (object) {
 
                 //Remove all links that have the annotation as the source
@@ -641,31 +641,31 @@ angular
                     }
                 }		
 
-                this.buildTargetTypes();
+                this.buildSpanTypes();
                 this.buildLabels();
                 this.buildLinkLabels();
                 this.setAnnotationMode();
             };
-            this.buildTargetTypes = function () {
-                this.targetTypes = {};
-                for (var i = 0; i < this.scheme.targetTypes.length; i++) {
-                    var type = this.scheme.targetTypes[i];
-                    var targetType = new TargetType(i, type.targetType);
-                    this.targetTypes[targetType.tag] = targetType;
+            this.buildSpanTypes = function () {
+                this.spanTypes = {};
+                for (var i = 0; i < this.scheme.spanTypes.length; i++) {
+                    var type = this.scheme.spanTypes[i];
+                    var spanType = new SpanType(i, type.name);
+                    this.spanTypes[spanType.tag] = spanType;
                 }
             };
-            //Return as specific target type when there only this one is
+            //Return as specific span type when there only this one is
             //assignable in the whole document
-            this.getOnlyTargetType = function () {
+            this.getOnlySpanType = function () {
                 var counter = 0;
-                var targetType;
-                for (var id in this.targetTypes) {
-                    targetType = this.targetTypes[id];
+                var spanType;
+                for (var id in this.spanTypes) {
+                    spanType = this.spanTypes[id];
                     counter++;
                 }
 
                 if (counter === 1)
-                    return targetType;
+                    return spanType;
             };
             this.buildLabels = function () {
                 this.labelTable = {};
@@ -676,18 +676,18 @@ angular
                     var listLabel = labSet.labels;
                     for (var j = 0; j < listLabel.length; j++) {
                         var oLabel = listLabel[j];
-                        var annotationLabel = new AnnotationLabel(oLabel.id, oLabel.labelId, [], labSet.id);
-                        if (listLabel[j].labelId !== undefined) {
+                        var annotationLabel = new AnnotationLabel(oLabel.id, oLabel.name, [], labSet.id);
+                        if (listLabel[j].name !== undefined) {
                             labelSet.addLabel(annotationLabel);
                         }
                     }
 
-                    //Connect label set to correlating targets
-                    var applyTargets = labSet.appliesToTargetTypes;
-                    for (var a = 0; a < applyTargets.length; a++) {
-                        var tag = applyTargets[a].targetType;
-                        var targetType = this.targetTypes[tag];
-                        targetType.addSelectableLabel(labelSet);
+                    // Connect label set to correlating span types
+                    var applySpanTypes = labSet.appliesToSpanTypes;
+                    for (var a = 0; a < applySpanTypes.length; a++) {
+                        var tag = applySpanTypes[a].name;
+                        var spanType = this.spanTypes[tag];
+                        spanType.addSelectableLabel(labelSet);
                     }
 
                     this.labelTable[labelSet.id] = labelSet;
@@ -697,18 +697,18 @@ angular
                 this.linkLabels = {};
                 for (var i = 0; i < this.scheme.linkSets.length; i++) {
                     var linkSet = this.scheme.linkSets[i];
-                    var startType = linkSet.startType.targetType;
-                    var endType = linkSet.endType.targetType;
-                    if (this.linkLabels[startType] === undefined)
-                        this.linkLabels[startType] = {};
-                    if (this.linkLabels[startType][endType] === undefined)
-                        this.linkLabels[startType][endType] = {};
+                    var startSpanType = linkSet.startSpanType.name;
+                    var endSpanType = linkSet.endSpanType.name;
+                    if (this.linkLabels[startSpanType] === undefined)
+                        this.linkLabels[startSpanType] = {};
+                    if (this.linkLabels[startSpanType][endSpanType] === undefined)
+                        this.linkLabels[startSpanType][endSpanType] = {};
                     var linkLabelSet = new LabelSet(linkSet.id, linkSet.name, true);
-                    this.linkLabels[startType][endType][linkSet.id] = linkLabelSet;
+                    this.linkLabels[startSpanType][endSpanType][linkSet.id] = linkLabelSet;
                     //Add labels to set
                     for (var j = 0; j < linkSet.linkLabels.length; j++) {
                         var linkLabel = linkSet.linkLabels[j];
-                        var tag = linkLabel.linkLabel;
+                        var tag = linkLabel.name;
                         if (tag === undefined) {
                             tag = "UndefTag";
                         }
@@ -721,14 +721,14 @@ angular
             this.getAnnotation = function (id) {
                 return this.annotationData[id];
             };
-            //Sets whether every word is annotatable or only preselected targets
+            // Sets whether every word is annotatable or only preselected span types
             this.setAnnotationMode = function () {
                 //TODO: read this from scheme
                 this.annotationMode = AnnotationMode.Everything;
             };
-            //Get target type by its tag
-            this.getTargetType = function (tag) {
-                return this.targetTypes[tag];
+            //Get span type by its tag
+            this.getSpanType = function (tag) {
+                return this.spanTypes[tag];
             };
             //Checks if a character can be characterized as punctuation
             this.isPunctuation = function (string) {

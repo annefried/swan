@@ -135,7 +135,7 @@ public class ProjectsTest extends BaseTest {
         assertTrue(retAnno.getStart() == 0);
         assertTrue(retAnno.getEnd() == 3);
         assertTrue(retAnno.getLabelMap().isEmpty());
-        assertTrue(retAnno.getTargetType().getTargetType().equals("verb"));
+        assertTrue(retAnno.getSpanType().getName().equals("verb"));
         
         // Add label to annotation 1
         Label label = TestDataProvider.getLabel1();
@@ -148,7 +148,7 @@ public class ProjectsTest extends BaseTest {
         LabelLabelSetMap map = (LabelLabelSetMap) maps[0];
         
         assertTrue(mapSet.size() == 1);
-        assertTrue(map.getLabel().getLabelId().equals(label.getLabelId()));
+        assertTrue(map.getLabel().getName().equals(label.getName()));
         assertTrue(map.getLabelSets().size() == 1);
         
         // Test broken labels
@@ -181,7 +181,7 @@ public class ProjectsTest extends BaseTest {
         assertTrue(retAnno.getStart() == 65);
         assertTrue(retAnno.getEnd() == 68);
         assertTrue(retAnno.getLabelMap().isEmpty());
-        assertTrue(retAnno.getTargetType().getTargetType().equals("passage"));
+        assertTrue(retAnno.getSpanType().getName().equals("passage"));
         
         // Add label to annotation 1
         Label label = TestDataProvider.getLabel1();
@@ -194,7 +194,7 @@ public class ProjectsTest extends BaseTest {
         LabelLabelSetMap map = (LabelLabelSetMap) maps[0];
         
         assertTrue(mapSet.size() == 1);
-        assertTrue(map.getLabel().getLabelId().equals(label.getLabelId()));
+        assertTrue(map.getLabel().getName().equals(label.getName()));
         assertTrue(map.getLabelSets().size() == 1);
         
         return anno;
@@ -245,7 +245,7 @@ public class ProjectsTest extends BaseTest {
         LinkLabelLinkSetMap map = (LinkLabelLinkSetMap) maps[0];
         
         assertTrue(mapSet.size() == 1);
-        assertTrue(map.getLabel().getLinkLabel().equals(label.getLinkLabel()));
+        assertTrue(map.getLabel().getName().equals(label.getName()));
         assertTrue(map.getLinkSets().size() == 1);
         
         // Test broken label

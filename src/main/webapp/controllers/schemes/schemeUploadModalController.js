@@ -30,7 +30,7 @@ angular
             $scope.targetIdCounter = 0;
             $scope.labelLabelSetIdCounter = 0;
             $scope.labelLinkSetIdCounter = 0;
-            $scope.targets = [];
+            $scope.spanTypes = [];
             $scope.selectedTargetsLabel = [];
             $scope.linkSets = [];
             $scope.currentLabelSet = [];
@@ -60,7 +60,7 @@ angular
 
             if (scheme == null || scheme == undefined) {
                 // Do nothing
-            } else if (scheme.targetTypes == undefined) {
+            } else if (scheme.spanTypes == undefined) {
                 $http.get("swan/scheme/byid/" + scheme.id).success(function (response) {
                     const resScheme = JSOG.parse(JSON.stringify(response.scheme));
                     scheme = $scope.processScheme(resScheme);
@@ -81,29 +81,31 @@ angular
         };
 
         $scope.processScheme = function (scheme) {
-            // Target Types
-            var targetTypes = [];
-            for (var j = 0; j < scheme.targetTypes.length; j++) {
-                targetTypes.push(scheme.targetTypes[j].targetType);
+            // TODO necessary?
+
+            // Span Types
+            var spanTypes = [];
+            for (var j = 0; j < scheme.spanTypes.length; j++) {
+                spanTypes.push(scheme.spanTypes[j].name);
             }
             // Label Sets
             var labelSets = [];
             for (var j = 0; j < scheme.labelSets.length; j++) {
                 var labelSet = scheme.labelSets[j];
-                var appliesToTargetTypes = [];
-                for (var k = 0; k < labelSet.appliesToTargetTypes.length; k++) {
-                    var targetType = labelSet.appliesToTargetTypes[k];
-                    appliesToTargetTypes.push(targetType.targetType);
+                var appliesToSpanTypes = [];
+                for (var k = 0; k < labelSet.appliesToSpanTypes.length; k++) {
+                    var spanType = labelSet.appliesToSpanTypes[k];
+                    appliesToSpanTypes.push(spanType.name);
                 }
                 var labels = [];
                 for (var k = 0; k < labelSet.labels.length; k++) {
                     var label = labelSet.labels[k];
-                    labels.push(label.labelId);
+                    labels.push(label.name);
                 }
                 var labelSetTemplate = {
                     name: labelSet.name,
                     exclusive: labelSet.exclusive,
-                    appliesToTargetTypes: appliesToTargetTypes,
+                    appliesToSpanTypes: appliesToSpanTypes,
                     labels: labels
                 };
                 labelSets.push(labelSetTemplate);
@@ -112,12 +114,12 @@ angular
             var linkSets = [];
             for (var j = 0; j < scheme.linkSets.length; j++) {
                 var linkSet = scheme.linkSets[j];
-                var startType = linkSet.startType.targetType;
-                var endType = linkSet.endType.targetType;
+                var startSpanType = linkSet.startSpanType.name;
+                var endSpanType = linkSet.endSpanType.name;
                 var linkLabels = [];
                 for (var k = 0; k < linkSet.linkLabels.length; k++) {
                     var linkLabel = {
-                        linkLabel: linkSet.linkLabels[k].linkLabel,
+                        linkLabel: linkSet.linkLabels[k].name,
                         // Change this later if more options are needed
                         options: linkSet.linkLabels[k].options.length == 0
                                     ? undefined : linkSet.linkLabels[k].options[0]
@@ -126,8 +128,8 @@ angular
                 }
                 var linkSetTemplate = {
                     name: linkSet.name,
-                    startType: startType,
-                    endType: endType,
+                    startSpanType: startSpanType,
+                    endSpanType: endSpanType,
                     linkLabels: linkLabels
                 };
                 linkSets.push(linkSetTemplate);
@@ -144,7 +146,7 @@ angular
             var template = {
                 id: scheme.id,
                 name: scheme.name,
-                targetTypes: targetTypes,
+                spanTypes: spanTypes,
                 labelSets: labelSets,
                 linkSets: linkSets,
                 visElements: visElements
@@ -155,7 +157,7 @@ angular
 
         $scope.setSchemeProperties = function (scheme) {
             $scope.name = "Copy of " + scheme.name;
-            $scope.targets = scheme.targetTypes;
+            $scope.spanTypes = scheme.spanTypes;
             $scope.labelSets = scheme.labelSets;
             $scope.linkSets = scheme.linkSets;
             $scope.visElements = scheme.visElements;
@@ -198,7 +200,7 @@ angular
                     "id": null,
                     "name": $scope.name,
                     "creator": currUser,
-                    "targetTypes": $scope.targets,
+                    "spanTypes": $scope.spanTypes,
                     "labelSets": $scope.labelSets,
                     "linkSets": $scope.linkSets,
                     "projects": []
@@ -225,54 +227,54 @@ angular
                     visElements.push(graphViewTem);
                     visElements.push(timelineViewTem);
 
-                    // TargetTypes
-                    var targetTypes = [];
-                    for (var i = 0; i < file.targetTypes.length; i++) {
-                        var targetType = {
-                            targetType: file.targetTypes[i]
+                    // Span types
+                    var spanTypes = [];
+                    for (var i = 0; i < file.spanTypes.length; i++) {
+                        var spanType = {
+                            name: file.spanTypes[i]
                         };
-                        targetTypes.push(targetType);
+                        spanTypes.push(spanType);
                     }
-                    // Constructing Label Sets
+                    // Constructing label sets
                     var labelSets = [];
                     for (var i = 0; i < file.labelSets.length; i++) {
-                        // Constructing appliesToTarget
-                        var appliesToTargetTypes = [];
-                        for (var j = 0; j < file.labelSets[i].appliesToTargetTypes.length; j++) {
-                            var targetType = {
-                                targetType: file.labelSets[i].appliesToTargetTypes[j]
+                        // Constructing appliesToSpanTypes
+                        var appliesToSpanTypes = [];
+                        for (var j = 0; j < file.labelSets[i].appliesToSpanTypes.length; j++) {
+                            var spanType = {
+                                name: file.labelSets[i].appliesToSpanTypes[j]
                             };
-                            appliesToTargetTypes.push(targetType);
+                            appliesToSpanTypes.push(spanType);
                         }
                         // Construct Labels
                         var labels = [];
                         for (var j = 0; j < file.labelSets[i].labels.length; j++) {
                             var label = {
-                                "labelId": file.labelSets[i].labels[j]
+                                "name": file.labelSets[i].labels[j]
                             };
                             labels.push(label);
                         }
                         var labelSet = {
                             "name": file.labelSets[i].name,
                             "exclusive": file.labelSets[i].exclusive,
-                            "appliesToTargetTypes": appliesToTargetTypes,
+                            "appliesToSpanTypes": appliesToSpanTypes,
                             "labels": labels
                         };
                         labelSets.push(labelSet);
                     }
                     var linkSets = [];
                     for (var i = 0; i < file.linkSets.length; i++) {
-                        var startType = {
-                            targetType: file.linkSets[i].startType
+                        var startSpanType = {
+                            name: file.linkSets[i].startSpanType
                         };
-                        var endType = {
-                            targetType: file.linkSets[i].endType
+                        var endSpanType = {
+                            name: file.linkSets[i].endSpanType
                         };
                         var linkLabels = [];
                         for (var j = 0; j < file.linkSets[i].linkLabels.length; j++) {
                             var oLinkLabel = file.linkSets[i].linkLabels[j];
                             var linkLabel = {
-                                linkLabel: oLinkLabel.linkLabel,
+                                name: oLinkLabel.name,
                                 options: []
                             };
                             if (oLinkLabel.options !== undefined) {
@@ -285,8 +287,8 @@ angular
 
                         var linkSet = {
                             "name": file.linkSets[i].name,
-                            "startType": startType,
-                            "endType": endType,
+                            "startSpanType": startSpanType,
+                            "endSpanType": endSpanType,
                             "allowUnlabeledLinks": file.linkSets[i].allowUnlabeledLinks,
                             "linkLabels": linkLabels
                         };
@@ -297,7 +299,7 @@ angular
                         "name": file.name,
                         "creator": currUser,
                         "visElements": visElements,
-                        "targetTypes": targetTypes,
+                        "spanTypes": spanTypes,
                         "labelSets": labelSets,
                         "linkSets": linkSets,
                         "projects": []
@@ -428,8 +430,8 @@ angular
         $scope.disableLinkSetButton = function () {
             return $scope.nameLinkSet === undefined
                     || $scope.nameLinkSet === ''
-                    || $scope.startType === undefined
-                    || $scope.endType === undefined
+                    || $scope.startSpanType === undefined
+                    || $scope.endSpanType === undefined
                     || ($scope.timelineView.checked && $scope.linkSets.length >= 1);
         };
 
@@ -441,15 +443,15 @@ angular
             for (var i = 0; i < $scope.currentLabelSet.length; i++) {
                 labels.push($scope.currentLabelSet[i].name);
             }
-            var appliesToTargetTypes = [];
+            var appliesToSpanTypes = [];
             for (var i = 0; i < $scope.selectedTargetsLabel.length; i++) {
-                appliesToTargetTypes.push($scope.selectedTargetsLabel[i]);
+                appliesToSpanTypes.push($scope.selectedTargetsLabel[i]);
             }
             var newLabelSet = {
                 name: $scope.nameLabelSet,
                 exclusive: $scope.exclusiveLabelSet,
                 labels: labels,
-                appliesToTargetTypes: appliesToTargetTypes
+                appliesToSpanTypes: appliesToSpanTypes
             };
             var nameAlreadyUsed = false;
             for (var i = 0; i < $scope.labelSets.length; i++) {
@@ -475,7 +477,7 @@ angular
          * @param {type} name : name of label set to be edited
          */
         $scope.editLabelSet = function (name) {
-            // find label set to be edited
+            // Find label set to be edited
             var selectedSet = undefined;
             for (var i = 0; i < $scope.labelSets.length; i++) {
                 if ($scope.labelSets[i].name === name) {
@@ -486,12 +488,12 @@ angular
                     break;
                 }
             }
-            // reset editing fields
+            // Reset editing fields
             $scope.nameLabelSet = name;
             $scope.exclusiveLabelSet = $scope.labelSets[i].exclusive;
-            $scope.selectedTargetsLabel = selectedSet.appliesToTargetTypes;
+            $scope.selectedTargetsLabel = selectedSet.appliesToSpanTypes;
 
-            // remove from table
+            // Remove from table
             $scope.removeLabelSet(name);
         };
 
@@ -514,7 +516,7 @@ angular
             var labels = [];
             for (var i = 0; i < $scope.currentLinkSet.length; i++) {
                 var linkLabel = {
-                    "linkLabel": $scope.currentLinkSet[i].linkLabel,
+                    "name": $scope.currentLinkSet[i].name,
                     // Change this later to an array if more options are needed
                     "options": $scope.currentLinkSet[i].options
                 };
@@ -522,16 +524,16 @@ angular
             }
             var newLinkSet = {
                 name: $scope.nameLinkSet,
-                startType: $scope.startType,
-                endType: $scope.endType,
+                startSpanType: $scope.startSpanType,
+                endSpanType: $scope.endSpanType,
                 linkLabels: labels
             };
 
             $scope.linkSets.push(newLinkSet);
             // reset input fields
-            $scope.startType = undefined;
             $scope.nameLinkSet = undefined;
-            $scope.endType = undefined;
+            $scope.startSpanType = undefined;
+            $scope.endSpanType = undefined;
             $scope.currentLinkSet = [];
             $scope.selectedTargetsLink = [];
         };
@@ -550,7 +552,7 @@ angular
                     $scope.currentLinkSet = [];
                     for (var j = 0; j < $scope.linkSets[i].linkLabels.length; j++) {
                         var linkLabel = $scope.linkSets[i].linkLabels[j];
-                        $scope.addLabelToLinkSet(linkLabel.linkLabel, linkLabel.options);
+                        $scope.addLabelToLinkSet(linkLabel.name, linkLabel.options);
                     }
                     selectedSet = $scope.linkSets[i];
                     break;
@@ -558,8 +560,8 @@ angular
             }
             // set fields
             $scope.nameLinkSet = selectedSet.name;
-            $scope.startType = selectedSet.startType;
-            $scope.endType = selectedSet.endType;
+            $scope.startSpanType = selectedSet.startSpanType;
+            $scope.endSpanType = selectedSet.endSpanType;
 
             // remove from table while editing
             $scope.removeLinkSet(set);
@@ -578,31 +580,31 @@ angular
             }
         };
 
-        $scope.addTargetTypeLabel = function (target) {
+        $scope.addSpanTypeLabel = function (spanType) {
             var nameAlreadyUsed = false;
             for (var i = 0; i < $scope.selectedTargetsLabel.length; i++) {
-                if ($scope.selectedTargetsLabel[i] === target) {
+                if ($scope.selectedTargetsLabel[i] === spanType) {
                     nameAlreadyUsed = true;
                     break;
                 }
             }
             if (nameAlreadyUsed) {
-                $rootScope.addAlert({type: 'danger', msg: 'A target type can only be added once!'});
+                $rootScope.addAlert({type: 'danger', msg: 'A span type can only be added once!'});
             } else {
-                $scope.selectedTargetsLabel.push(target);
+                $scope.selectedTargetsLabel.push(spanType);
             }
         };
 
-        $scope.removeTargetTypeLabel = function (name) {
+        $scope.removeSpanTypeLabel = function (spanType) {
             for (var i = 0; i < $scope.selectedTargetsLabel.length; i++) {
-                if ($scope.selectedTargetsLabel[i] === name) {
+                if ($scope.selectedTargetsLabel[i] === spanType) {
                     $scope.selectedTargetsLabel.splice(i, 1);
                     break;
                 }
             }
         };
 
-        $scope.selectedTargetsLabelFilter = function (value, index, array) {
+        $scope.selectedSpanTypeLabelFilter = function (value, index, array) {
             var ret = true;
             for (var i = 0; i < $scope.selectedTargetsLabel.length; i++) {
                 if (value === $scope.selectedTargetsLabel[i]) {
@@ -612,30 +614,30 @@ angular
             return ret;
         };
 
-        $scope.addTargetType = function (targetType) {
+        $scope.addSpanType = function (spanType) {
             var nameAlreadyUsed = false;
-            for (var i = 0; i < $scope.targets.length; i++) {
-                if ($scope.targets[i] === targetType) {
+            for (var i = 0; i < $scope.spanTypes.length; i++) {
+                if ($scope.spanTypes[i] === spanType) {
                     nameAlreadyUsed = true;
                 }
             }
             if (nameAlreadyUsed) {
-                $rootScope.addAlert({type: 'danger', msg: 'A target type with this name already exists!'});
+                $rootScope.addAlert({type: 'danger', msg: 'A span type with this name already exists!'});
             } else {
-                $scope.targets.push(targetType);
-                $scope.targetType = undefined;
+                $scope.spanTypes.push(spanType);
+                $scope.spanType = undefined;
             }
         };
 
-        $scope.removeTargeType = function (name) {
-            for (var i = 0; i < $scope.targets.length; i++) {
-                if ($scope.targets[i] === name) {
-                    var label = $scope.targets[i];
-                    $scope.targets.splice(i, 1);
+        $scope.removeSpanType = function (name) {
+            for (var i = 0; i < $scope.spanTypes.length; i++) {
+                if ($scope.spanTypes[i] === name) {
+                    var label = $scope.spanTypes[i];
+                    $scope.spanTypes.splice(i, 1);
                 }
             }
-            // Remove potential tTypes in Link and Label Sets
-            for (var i = 0; i < $scope.selectedTargetsLabel.length; i++) {
+            // Remove potential span types in label sets and link types
+            for (var i = 0; i < $scope.selectedTargetsLabel.length; i++) { // TODO
                 if ($scope.selectedTargetsLabel[i] === name) {
                     $scope.selectedTargetsLabel.splice(i, 1);
                 }
@@ -643,8 +645,8 @@ angular
             var i = $scope.labelSets.length;
             while (i--) {
                 var labelSet = $scope.labelSets[i];
-                for (var j = 0; j < labelSet.appliesToTargetTypes.length; j++) {
-                    if (label === labelSet.appliesToTargetTypes[j]) {
+                for (var j = 0; j < labelSet.appliesToSpanTypes.length; j++) {
+                    if (label === labelSet.appliesToSpanTypes[j]) {
                         $scope.labelSets.splice(i, 1);
                     }
                 }
@@ -653,7 +655,7 @@ angular
             var i = $scope.linkSets.length;
             while (i--) {
                 var labelSet = $scope.linkSets[i];
-                if (labelSet.startType === label || labelSet.endType === label) {
+                if (labelSet.startSpanType === label || labelSet.endSpanType === label) {
                     $scope.linkSets.splice(i, 1);
                 }
 
@@ -686,7 +688,7 @@ angular
             if (nameAlreadyUsed) {
                 $rootScope.addAlert({type: 'danger', msg: 'A label with this name already exists!'});
             } else {
-                var link = {linkLabel: labelName,
+                var link = {name: labelName,
                             id: $scope.labelLinkSetIdCounter++,
                             options: positioning};
                 $scope.currentLinkSet.push(link);
@@ -738,58 +740,63 @@ angular
                 // Map from 'new' scheme to 'old' scheme
                 // TODO: adjust terminology in back-end at some point,
                 // then this won't be necessary any more.
-                scheme.targetTypes = scheme.spanTypes;
+                //scheme.spanTypes = scheme.spanTypes;
                 scheme.linkSets = scheme.linkTypes;
-                delete scheme.spanTypes;
+                //delete scheme.spanTypes;
                 delete scheme.linkTypes;
+                /*
                 for (var i = 0; i < scheme.labelSets.length; i++) {
-                    scheme.labelSets[i].appliesToTargetTypes = scheme.labelSets[i].appliesToSpanTypes;
+                    scheme.labelSets[i].appliesToSpanTypes = scheme.labelSets[i].appliesToSpanTypes;
                     delete scheme.labelSets[i].appliesToSpanType;
                 }
-                for (var i = 0; i < scheme.linkSets.length; i++) {
-                    scheme.linkSets[i].startType = scheme.linkSets[i].startSpanType;
-                    scheme.linkSets[i].endType = scheme.linkSets[i].endSpanType;
+                */
+
+                /*
+                for (var i = 0; i < scheme.linkSets.length; i++) { // TODO adjust
+                    scheme.linkSets[i].startSpanType = scheme.linkSets[i].startSpanType;
+                    scheme.linkSets[i].endSpanType = scheme.linkSets[i].endSpanType;
                     delete scheme.linkSets[i].startSpanType;
                     delete scheme.linkSets[i].endSpanType;
                 }
+                */
 
                 // Validate scheme
                 // TODO rename target type to span type
-                var tTypeMap = {}; // for constant access
-                for (var i = 0; i < scheme.targetTypes.length; i++) {
-                    var tType = scheme.targetTypes[i];
-                    tTypeMap[tType.toString()] = tType;
+                var sTypeMap = {}; // for constant access
+                for (var i = 0; i < scheme.spanTypes.length; i++) {
+                    var sType = scheme.spanTypes[i];
+                    sTypeMap[sType.toString()] = sType;
                 }
                 for (var i = 0; i < scheme.labelSets.length; i++) {
                     var labelSet = scheme.labelSets[i];
-                    for (var j = 0; j < labelSet.appliesToTargetTypes.length
-                            && j < labelSet.appliesToTargetTypes[j].length; j++) {
-                        if (labelSet.appliesToTargetTypes[j].length === 1) {
-                            var tType = labelSet.appliesToTargetTypes;
+                    for (var j = 0; j < labelSet.appliesToSpanTypes.length
+                            && j < labelSet.appliesToSpanTypes[j].length; j++) {
+                        if (labelSet.appliesToSpanTypes[j].length === 1) {
+                            var sType = labelSet.appliesToSpanTypes;
                         } else {
-                            var tType = labelSet.appliesToTargetTypes[j];
+                            var sType = labelSet.appliesToSpanTypes[j];
                         }
-                        if (tTypeMap[tType.toString()] === undefined) {
-                            throw "Annotation type not defined";
+                        if (sTypeMap[sType.toString()] === undefined) {
+                            throw "Span type not defined";
                         }
                     }
                 }
                 for (var i = 0; i < scheme.linkSets.length; i++) {
                     var linkSet = scheme.linkSets[i];
-                    if (tTypeMap[linkSet.startType] === undefined
-                            || tTypeMap[linkSet.endType] === undefined) {
-                        throw "Annotation type not defined";
+                    if (sTypeMap[linkSet.startSpanType] === undefined
+                            || sTypeMap[linkSet.endSpanType] === undefined) {
+                        throw "Span type not defined";
                     }
                 }
 
-                if (typeof scheme.targetTypes === 'string') {
-                    var targetType = [scheme.targetTypes];
-                    scheme.targetTypes = targetType;
+                if (typeof scheme.spanTypes === 'string') {
+                    var spanTypes = [scheme.spanTypes];
+                    scheme.spanTypes = spanTypes;
                 }
                 for (var i = 0; i < scheme.labelSets.length; i++) {
-                    if (typeof scheme.labelSets[i].appliesToTargetTypes === 'string') {
-                        var targetType = [scheme.labelSets[i].appliesToTargetTypes];
-                        scheme.labelSets[i].appliesToTargetTypes = targetType;
+                    if (typeof scheme.labelSets[i].appliesToSpanTypes === 'string') {
+                        var spanType = [scheme.labelSets[i].appliesToSpanTypes];
+                        scheme.labelSets[i].appliesToSpanTypes = spanType;
                     }
                     if (typeof scheme.labelSets[i].labels === 'string') {
                         var labels = [scheme.labelSets[i].labels];
@@ -798,8 +805,8 @@ angular
                 }
                 for (var i = 0; i < scheme.linkSets.length; i++) {
                     if (typeof scheme.linkSets[i].linkLabels === 'string') {
-                        var targetType = [scheme.linkSets[i].linkLabels];
-                        scheme.linkSets[i].linkLabels = targetType;
+                        var linkLabels = [scheme.linkSets[i].linkLabels];
+                        scheme.linkSets[i].linkLabels = linkLabels;
                     }
                 }
                 try {
@@ -813,29 +820,25 @@ angular
         };
 
         $scope.submit = function () {
-
             if ($scope.name === undefined || $scope.name.trim() === "") {
-                $scope.alerts.push({type: "warning", msg: "Please define a name for your scheme!"});
+                $scope.alerts.push({type: "warning", msg: "Please define a valid name for your scheme."});
             } else {
-                // check if scheme with this name exists
+                // Check if scheme with this name already exists
                 for (var i = 0; i < $scope.loadedSchemes.length; i++) {
                     if ($scope.loadedSchemes[i].name === $scope.name) {
                         $scope.alerts.push({type: "warning", msg: "A scheme with this name already exists."});
                         return;
                     }
                 }
-                // valid scheme name given
-                // are some annotation types defined?
-                if ($scope.targets.length === 0) {
-                    $scope.alerts.push({type: "warning", msg: "You need to define at least one Annotation Type."});
+                // Check if at least one span type is defined
+                if ($scope.spanTypes.length === 0) {
+                    $scope.alerts.push({type: "warning", msg: "You need to define at least one span type."});
                     return;
                 }
 
-                // valid, create scheme.
                 $scope.sendScheme();
                 $uibModalInstance.close();
             }
-
         };
 
         $scope.cancel = function () {
