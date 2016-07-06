@@ -26,8 +26,7 @@ import javax.persistence.ManyToMany;
 
 /**
  * The Entity LinkLabel represents a label which can be used for annotations
- * of links between sections. The label name is unique and is therefore the 
- * primary key.
+ * of links between sections.
  * 
  * The JsonIdentityInfo annotations prevents infinite recursions.
  *
@@ -53,16 +52,16 @@ public class LinkLabel extends BaseEntity {
     private Set<LinkLabelOpts> options = new HashSet<>();
     
     /**
-     * The relationship shows to which linksets the linklabel belongs.
+     * The relationship shows to which linktypes the linklabel belongs.
      */
     @JsonView({ View.Links.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     @JoinTable(
-        name="LINKLABEL_LINKSET",
+        name="LINKLABEL_LINKTYPE",
         joinColumns={@JoinColumn(name="LINKLABEL_ID", referencedColumnName="id")},
-        inverseJoinColumns={@JoinColumn(name="LINK_LABEL_SET_ID", referencedColumnName="id")})
-    private List<LinkSet> linkSet = new ArrayList();
+        inverseJoinColumns={@JoinColumn(name="LINK_TYPE_ID", referencedColumnName="id")})
+    private List<LinkType> linkType = new ArrayList();
 
     
     public String getName() {
@@ -81,12 +80,12 @@ public class LinkLabel extends BaseEntity {
         this.options = options;
     }
 
-    public List<LinkSet> getLinkSet() {
-        return linkSet;
+    public List<LinkType> getLinkType() {
+        return linkType;
     }
     
-    public void addLinkSet(LinkSet linkSet) {
-        this.linkSet.add(linkSet);
+    public void addLinkType(LinkType linkType) {
+        this.linkType.add(linkType);
     }
     
 }

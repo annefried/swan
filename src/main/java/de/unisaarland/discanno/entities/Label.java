@@ -11,7 +11,6 @@ import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -47,8 +46,8 @@ public class Label extends BaseEntity {
         return name;
     }
 
-    public void setName(String labelId) {
-        this.name = labelId;
+    public void setName(String name) {
+        this.name = name;
     }
     
     public List<LabelSet> getLabelSet() {

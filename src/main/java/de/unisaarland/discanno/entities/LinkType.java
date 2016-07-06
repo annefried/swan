@@ -27,7 +27,7 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-public class LinkSet extends BaseEntity {
+public class LinkType extends BaseEntity {
     
     @JsonView({ View.Scheme.class })
     @Column(name = "Name")
@@ -47,7 +47,7 @@ public class LinkSet extends BaseEntity {
     private boolean allowUnlabeledLinks;
     
     @JsonView({ View.Scheme.class })
-    @ManyToMany(mappedBy = "linkSet",
+    @ManyToMany(mappedBy = "linkType",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     private List<LinkLabel> linkLabels = new ArrayList<>();

@@ -1,0 +1,93 @@
+{
+	"name": "Scheme2LabelSets2LinkTypes",
+	"visElements": [
+		{
+			"visState": "hidden",
+			"visKind": "timeline"
+		},
+		{
+			"visState": "opened",
+			"visKind": "graph"
+		}
+	],
+	"spanTypes": [
+		{
+			"name": "Span1"
+		},
+		{
+			"name": "Span2"
+		}
+	],
+	"labelSets": [
+		{
+			"name": "LabelSet2",
+			"exclusive": true,
+			"appliesToSpanTypes": [
+				{
+					"name": "Span1"
+				},
+				{
+					"name": "Span2"
+				}
+			],
+			"labels": [
+				{
+					"name": "Label1"
+				},
+				{
+					"name": "Label2"
+				}
+			]
+		},
+		{
+			"name": "LabelSet1",
+			"exclusive": false,
+			"appliesToSpanTypes": [
+				{
+					"name": "Span1"
+				}
+			],
+			"labels": [
+				{
+					"name": "Label1"
+				}
+			]
+		}
+	],
+	"linkTypes": [
+		{
+			"name": "LinkType1",
+			"startSpanType": {
+				"name": "Span1"
+			},
+			"endSpanType": {
+				"name": "Span2"
+			},
+			"linkLabels": [
+				{
+					"name": "LinkLabel1",
+					"options": []
+				}
+			]
+		},
+		{
+			"name": "LinkType2",
+			"startSpanType": {
+				"name": "Span1"
+			},
+			"endSpanType": {
+				"name": "Span1"
+			},
+			"linkLabels": [
+				{
+					"name": "LinkLabel1",
+					"options": []
+				},
+				{
+					"name": "LinkLabel2",
+					"options": []
+				}
+			]
+		}
+	]
+}

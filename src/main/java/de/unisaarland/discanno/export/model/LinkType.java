@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlElement;
  * @author Timo Guehring
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-public class LinkSet {
+public class LinkType {
     
     @XmlElement(name = "link")
     private Set<Link> links = new HashSet<>();

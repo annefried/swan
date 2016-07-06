@@ -12,7 +12,7 @@ import de.unisaarland.discanno.export.model.Link;
 import de.unisaarland.discanno.export.model.Annotation;
 import de.unisaarland.discanno.export.model.AnnotationSet;
 import de.unisaarland.discanno.entities.LabelLabelSetMap;
-import de.unisaarland.discanno.entities.LinkLabelLinkSetMap;
+import de.unisaarland.discanno.entities.LinkLabelLinkTypeMap;
 import de.unisaarland.discanno.entities.Project;
 import de.unisaarland.discanno.entities.Users;
 import de.unisaarland.discanno.export.model.Label;
@@ -280,7 +280,7 @@ public class ExportUtil {
         document.setAnnotations(
                 convertAnnotationsToAnnotationSet(annotations));
         document.setLinks(
-                convertLinksToLinkSet(links));
+                convertLinksToLinkType(links));
 
         return document;
     }
@@ -305,7 +305,7 @@ public class ExportUtil {
         anno.setStart(a.getStart());
         anno.setEnd(a.getEnd());
        // anno.setText(a.getText());
-        anno.setTargetType(a.getSpanType().getName());
+        anno.setSpanType(a.getSpanType().getName());
         anno.setLabels(
                 convertLabelsToExportLabelSet(
                         a.getLabelMap()));
@@ -340,19 +340,19 @@ public class ExportUtil {
         return labels;
     }
 
-    private de.unisaarland.discanno.export.model.LinkSet convertLinksToLinkSet(List<de.unisaarland.discanno.entities.Link> links) {
+    private de.unisaarland.discanno.export.model.LinkType convertLinksToLinkType(List<de.unisaarland.discanno.entities.Link> links) {
 
-        de.unisaarland.discanno.export.model.LinkSet linkSet
-                = new de.unisaarland.discanno.export.model.LinkSet();
+        de.unisaarland.discanno.export.model.LinkType linkType
+                = new de.unisaarland.discanno.export.model.LinkType();
         Set<Link> newLinks = new HashSet<>();
 
         for (de.unisaarland.discanno.entities.Link l : links) {
             newLinks.add(
                     convertLinkToExportLink(l));
         }
-        linkSet.setLinks(newLinks);
+        linkType.setLinks(newLinks);
 
-        return linkSet;
+        return linkType;
     }
 
     private Link convertLinkToExportLink(de.unisaarland.discanno.entities.Link link) {
@@ -365,16 +365,16 @@ public class ExportUtil {
         return newLink;
     }
 
-    private Set<Label> convertLinkLabelsToExportLabelSet(Set<LinkLabelLinkSetMap> maps) {
+    private Set<Label> convertLinkLabelsToExportLabelSet(Set<LinkLabelLinkTypeMap> maps) {
 
         Set<Label> labels = new HashSet<>();
 
         // collect selected labels per LabelSet
         Map<String, Set<String>> setToLabelsMap = new HashMap<>();
 
-        for (LinkLabelLinkSetMap m : maps) {
+        for (LinkLabelLinkTypeMap m : maps) {
 
-            for (de.unisaarland.discanno.entities.LinkSet s : m.getLinkSets()) {
+            for (de.unisaarland.discanno.entities.LinkType s : m.getLinkTypes()) {
 
                 if (!setToLabelsMap.containsKey(s.getName())) {
                     setToLabelsMap.put(s.getName(), new HashSet<String>());

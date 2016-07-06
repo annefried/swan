@@ -5,22 +5,22 @@
  */
 package de.unisaarland.discanno.dao;
 
-import de.unisaarland.discanno.entities.LinkSet;
+import de.unisaarland.discanno.entities.LinkType;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
 /**
- * This DAO (Data Access Object) provides all CRUD operations for linksets.
+ * This DAO (Data Access Object) provides all CRUD operations for linktypes.
  *
  * @author Timo Guehring
  */
 @Stateless
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
-public class LinkSetDAO extends BaseEntityDAO<LinkSet> {
+public class LinkTypeDAO extends BaseEntityDAO<LinkType> {
     
-    public LinkSetDAO() {
-        super(LinkSet.class);
+    public LinkTypeDAO() {
+        super(LinkType.class);
     }
     
 }

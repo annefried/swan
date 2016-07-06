@@ -172,14 +172,14 @@ angular
                         //Add label sets
                         if (this.linkable(source, target)) {
                             for (var id in this.linkLabels[source.sType.tag][target.sType.tag]) {
-                                const linkSet = this.linkLabels[source.sType.tag][target.sType.tag][id];
-                                annotationLink.addSelectableLabel(linkSet);
+                                const linkType = this.linkLabels[source.sType.tag][target.sType.tag][id];
+                                annotationLink.addSelectableLabel(linkType);
                             }
                         }
                         for (var j = 0; j < link.labelMap.length; j++) {
                             var label = link.labelMap[j];
-                            for (var k = 0; k < label.linkSets.length; k++) {
-                                const setId = label.linkSets[k].id;
+                            for (var k = 0; k < label.linkTypes.length; k++) {
+                                const setId = label.linkTypes[k].id;
                                 const labelSet = this.linkLabels[source.sType.tag][target.sType.tag][setId];
                                 const linkLabel = new AnnotationLabel(label.label.id, label.label.name, label.label.options, setId);
                                 annotationLink.setLabel(labelSet, linkLabel);
@@ -238,7 +238,7 @@ angular
                         labelTemplate = {
                             id: label.id,
                             name: label.tag,
-                            linkSet: [{
+                            linkType: [{
                                 id: labelSet.id
                             }]
                         };
@@ -547,10 +547,10 @@ angular
                         return function (response) {
                             var newId = response.data;
                             var link = new AnnotationLink(newId, source, target);
-                            //Add label sets
+                            //Add link types
                             for (var id in object.linkLabels[source.sType.tag][target.sType.tag]) {
-                                var linkSet = object.linkLabels[source.sType.tag][target.sType.tag][id];
-                                link.addSelectableLabel(linkSet);
+                                const linkType = object.linkLabels[source.sType.tag][target.sType.tag][id];
+                                link.addSelectableLabel(linkType);
                             }
 
                             if (object.annotationLinks[source.id] === undefined)
@@ -695,24 +695,24 @@ angular
             };
             this.buildLinkLabels = function () {
                 this.linkLabels = {};
-                for (var i = 0; i < this.scheme.linkSets.length; i++) {
-                    var linkSet = this.scheme.linkSets[i];
-                    var startSpanType = linkSet.startSpanType.name;
-                    var endSpanType = linkSet.endSpanType.name;
+                for (var i = 0; i < this.scheme.linkTypes.length; i++) {
+                    var linkType = this.scheme.linkTypes[i];
+                    var startSpanType = linkType.startSpanType.name;
+                    var endSpanType = linkType.endSpanType.name;
                     if (this.linkLabels[startSpanType] === undefined)
                         this.linkLabels[startSpanType] = {};
                     if (this.linkLabels[startSpanType][endSpanType] === undefined)
                         this.linkLabels[startSpanType][endSpanType] = {};
-                    var linkLabelSet = new LabelSet(linkSet.id, linkSet.name, true);
-                    this.linkLabels[startSpanType][endSpanType][linkSet.id] = linkLabelSet;
+                    var linkLabelSet = new LabelSet(linkType.id, linkType.name, true);
+                    this.linkLabels[startSpanType][endSpanType][linkType.id] = linkLabelSet;
                     //Add labels to set
-                    for (var j = 0; j < linkSet.linkLabels.length; j++) {
-                        var linkLabel = linkSet.linkLabels[j];
+                    for (var j = 0; j < linkType.linkLabels.length; j++) {
+                        var linkLabel = linkType.linkLabels[j];
                         var tag = linkLabel.name;
                         if (tag === undefined) {
                             tag = "UndefTag";
                         }
-                        var annotationLabel = new AnnotationLabel(linkLabel.id, tag, linkLabel.options, linkSet.id);
+                        var annotationLabel = new AnnotationLabel(linkLabel.id, tag, linkLabel.options, linkType.id);
                         linkLabelSet.addLabel(annotationLabel);
                     }
                 }
