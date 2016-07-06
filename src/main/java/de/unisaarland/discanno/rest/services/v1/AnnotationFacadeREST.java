@@ -162,11 +162,11 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     @POST
     @Path("/changett/{annoId}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response changeTargetTypeREST(@PathParam("annoId") Long annoId, SpanType targetType) {
+    public Response changeSpanTypeREST(@PathParam("annoId") Long annoId, SpanType spanType) {
         
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
-            Annotation anno = service.changeTargetType(annoId, targetType);
+            Annotation anno = service.changeSpanType(annoId, spanType);
             annotationDAO.merge(anno);
             return Response.ok().build();
         } catch (SecurityException e) {

@@ -14,8 +14,8 @@ import de.unisaarland.discanno.entities.LabelLabelSetMap;
 import de.unisaarland.discanno.entities.LabelSet;
 import de.unisaarland.discanno.entities.Link;
 import de.unisaarland.discanno.entities.LinkLabel;
-import de.unisaarland.discanno.entities.LinkLabelLinkSetMap;
-import de.unisaarland.discanno.entities.LinkSet;
+import de.unisaarland.discanno.entities.LinkLabelLinkTypeMap;
+import de.unisaarland.discanno.entities.LinkType;
 
 import de.unisaarland.discanno.entities.Project;
 import de.unisaarland.discanno.entities.Scheme;
@@ -106,16 +106,16 @@ public class ProjectsTest extends BaseTest {
         testAnnotationsAndLinks(retDoc,
                                 retUser,
                                 scheme.getLabelSets().get(0),
-                                scheme.getLinkSets().get(0));
+                                scheme.getLinkTypes().get(0));
     }
     
-    public void testAnnotationsAndLinks(Document doc, Users user, LabelSet labelSet, LinkSet linkSet)
+    public void testAnnotationsAndLinks(Document doc, Users user, LabelSet labelSet, LinkType linkType)
             throws CloneNotSupportedException, CreateException {
         
         Annotation anno1 = testAddAnnotation1(doc, user, labelSet);
         Annotation anno2 = testAddAnnotation2(doc, user, labelSet);
         testAddMultipleAnnotations(doc, user, labelSet);
-        testAddLink(doc, user, linkSet, anno1, anno2);
+        testAddLink(doc, user, linkType, anno1, anno2);
     }
     
     public Annotation testAddAnnotation1(Document doc, Users user, LabelSet labelSet) throws CloneNotSupportedException, CreateException {
@@ -215,7 +215,7 @@ public class ProjectsTest extends BaseTest {
         assertTrue(retAnnos.size() == annos.size() + 2);
     }
 
-    private void testAddLink(Document doc, Users user, LinkSet linkSet, Annotation anno1, Annotation anno2) throws CreateException {
+    private void testAddLink(Document doc, Users user, LinkType linkType, Annotation anno1, Annotation anno2) throws CreateException {
 
         Link link = new Link();
         link.setAnnotation1(anno1);
@@ -236,17 +236,17 @@ public class ProjectsTest extends BaseTest {
         
         // Add label to link
         LinkLabel label = TestDataProvider.getLinkLabel1();
-        label.addLinkSet(linkSet);
+        label.addLinkType(linkType);
         persistAndFlush(label);
         service.addLinkLabelToLink(retLink.getId(), label);
         
-        Set<LinkLabelLinkSetMap> mapSet = retLink.getLabelMap();
+        Set<LinkLabelLinkTypeMap> mapSet = retLink.getLabelMap();
         Object[] maps = mapSet.toArray();
-        LinkLabelLinkSetMap map = (LinkLabelLinkSetMap) maps[0];
+        LinkLabelLinkTypeMap map = (LinkLabelLinkTypeMap) maps[0];
         
         assertTrue(mapSet.size() == 1);
         assertTrue(map.getLabel().getName().equals(label.getName()));
-        assertTrue(map.getLinkSets().size() == 1);
+        assertTrue(map.getLinkTypes().size() == 1);
         
         // Test broken label
         try {

@@ -103,7 +103,7 @@ public class Link extends BaseEntity {
     @JoinTable(name="LINK_LABELMAP", 
           joinColumns=@JoinColumn(name="LINK_ID"),
           inverseJoinColumns=@JoinColumn(name="MAP_ID"))
-    private Set<LinkLabelLinkSetMap> labelMap = new HashSet<>();
+    private Set<LinkLabelLinkTypeMap> labelMap = new HashSet<>();
 
     
     public Users getUser() {
@@ -138,33 +138,33 @@ public class Link extends BaseEntity {
         this.annotation2 = annotation2;
     }
 
-    public Set<LinkLabelLinkSetMap> getLabelMap() {
+    public Set<LinkLabelLinkTypeMap> getLabelMap() {
         return labelMap;
     }
 
-    public void setLabelMap(Set<LinkLabelLinkSetMap> labelMap) {
+    public void setLabelMap(Set<LinkLabelLinkTypeMap> labelMap) {
         this.labelMap = labelMap;
     }
 
-    public void addLabelMap(LinkLabelLinkSetMap labelMap) {
+    public void addLabelMap(LinkLabelLinkTypeMap labelMap) {
         this.labelMap.add(labelMap);
     }
     
-    public void removeLabelMap(LinkLabelLinkSetMap labelMap) {
+    public void removeLabelMap(LinkLabelLinkTypeMap labelMap) {
         if (!this.labelMap.remove(labelMap)) {
-            throw new IllegalArgumentException("Link: LinkLabelLinkSetMap does not exist");
+            throw new IllegalArgumentException("Link: LinkLabelLinkTypeMap does not exist");
         }
     }
     
-    public void removeLabel(LinkLabelLinkSetMap map, LinkSet ls) {
-        if (map.getLinkSets().contains(ls)) {
-            if (map.getLinkSets().size() == 1) {
+    public void removeLabel(LinkLabelLinkTypeMap map, LinkType lt) {
+        if (map.getLinkTypes().contains(lt)) {
+            if (map.getLinkTypes().size() == 1) {
                 this.labelMap.remove(map);
             } else {
-                map.getLinkSets().remove(ls);
+                map.getLinkTypes().remove(lt);
             }
         } else {
-            throw new IllegalArgumentException("Link: LinkSet does not correspond with LinkLabel");
+            throw new IllegalArgumentException("Link: LinkType does not correspond with LinkLabel");
         }
     }
     

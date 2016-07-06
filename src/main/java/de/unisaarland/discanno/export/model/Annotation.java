@@ -9,7 +9,6 @@ import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -18,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * @author Timo Guehring
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder={ "id", "start", "end", "targetType", "labels"})
+@XmlType(propOrder={ "id", "start", "end", "spanType", "labels"})
 public class Annotation {
     
     private Long id;
@@ -29,7 +28,7 @@ public class Annotation {
     
     //private String text;
     
-    private String targetType;
+    private String spanType;
     
     private Set<Label> labels;
 
@@ -74,12 +73,12 @@ public class Annotation {
         this.labels = labels;
     }
 
-    public String getTargetType() {
-        return targetType;
+    public String getSpanType() {
+        return spanType;
     }
 
-    public void setTargetType(String targetType) {
-        this.targetType = targetType;
+    public void setSpanType(String spanType) {
+        this.spanType = spanType;
     }
     
 }

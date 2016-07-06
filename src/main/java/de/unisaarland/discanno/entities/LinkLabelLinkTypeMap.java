@@ -16,7 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
- * The LinkLabelLinkSetMap maps LinkLabels to its corresponding LinkSets. This
+ * The LinkLabelLinkTypeMap maps LinkLabels to its corresponding LinkTypes. This
  * is used to distinguish in the frontend when one Label was chosen or should be
  * removed that the proper Label is selected for the operation when belonging to
  * multiple LabelSets.
@@ -24,7 +24,7 @@ import javax.persistence.ManyToOne;
  * @author Timo Guehring
  */
 @Entity
-public class LinkLabelLinkSetMap extends BaseEntity {
+public class LinkLabelLinkTypeMap extends BaseEntity {
 
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER,
@@ -34,10 +34,10 @@ public class LinkLabelLinkSetMap extends BaseEntity {
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     @JoinTable(
-        name="LINKLABELLINKSETMAP_LINKSET",
-        joinColumns={@JoinColumn(name="LINKLABELLINKSETMAP_ID", referencedColumnName="id")},
-        inverseJoinColumns={@JoinColumn(name="LINK_SET_ID", referencedColumnName="id")})
-    private Set<LinkSet> linkSets = new HashSet<>();
+        name="LINKLABELLINKTYPEMAP_LINKTYPE",
+        joinColumns={@JoinColumn(name="LINKLABELLINKTYPEMAP_ID", referencedColumnName="id")},
+        inverseJoinColumns={@JoinColumn(name="LINK_TYPE_ID", referencedColumnName="id")})
+    private Set<LinkType> linkTypes = new HashSet<>();
 
     
     public LinkLabel getLabel() {
@@ -48,16 +48,16 @@ public class LinkLabelLinkSetMap extends BaseEntity {
         this.label = label;
     }
 
-    public Set<LinkSet> getLinkSets() {
-        return linkSets;
+    public Set<LinkType> getLinkTypes() {
+        return linkTypes;
     }
 
-    public void setLinkSets(Set<LinkSet> linkSets) {
-        this.linkSets = linkSets;
+    public void setLinkTypes(Set<LinkType> linkTypes) {
+        this.linkTypes = linkTypes;
     }
     
-    public void addLinkSets(LinkSet linkSet) {
-        this.linkSets.add(linkSet);
+    public void addLinkTypes(LinkType linkTyp) {
+        this.linkTypes.add(linkTyp);
     }
     
 }

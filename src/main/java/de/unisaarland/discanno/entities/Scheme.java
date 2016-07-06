@@ -41,15 +41,15 @@ import javax.xml.bind.annotation.XmlRootElement;
                 "LEFT JOIN FETCH s.creator " +
                 "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.labelSets " +
-                "LEFT JOIN FETCH s.linkSets " +
+                "LEFT JOIN FETCH s.linkTypes " +
                 "LEFT JOIN FETCH s.projects " +
                 "WHERE s.id = :" + Scheme.PARAM_SCHEME_ID,
         hints = {
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.appliesToSpanTypes"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.labels"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.startSpanType"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.endSpanType"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.linkLabels")
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.startSpanType"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.endSpanType"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels")
         }
     ),
     @NamedQuery(
@@ -59,7 +59,7 @@ import javax.xml.bind.annotation.XmlRootElement;
                 "LEFT JOIN FETCH s.creator " +
                 "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.labelSets " +
-                "LEFT JOIN FETCH s.linkSets " +
+                "LEFT JOIN FETCH s.linkTypes " +
                 "LEFT JOIN FETCH s.projects " +
                     "WHERE EXISTS( " +
                             "SELECT d " +
@@ -133,10 +133,10 @@ public class Scheme extends BaseEntity {
     @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
-    @JoinTable(name="SCHEME_LINKSET", 
+    @JoinTable(name="SCHEME_LINKTYPE", 
           joinColumns=@JoinColumn(name="SCHEME_ID"),
-          inverseJoinColumns=@JoinColumn(name="LINKSET_ID"))
-    private List<LinkSet> linkSets = new ArrayList();
+          inverseJoinColumns=@JoinColumn(name="LINKTYPE_ID"))
+    private List<LinkType> linkTypes = new ArrayList();
 
     @JsonView({ View.Scheme.class, View.Schemes.class })
     @OneToMany(mappedBy = "scheme",
@@ -193,16 +193,16 @@ public class Scheme extends BaseEntity {
         this.labelSets.add(labelSet);
     }
 
-    public List<LinkSet> getLinkSets() {
-        return linkSets;
+    public List<LinkType> getLinkTypes() {
+        return linkTypes;
     }
 
-    public void setLinkSets(List<LinkSet> linksets) {
-        this.linkSets = linksets;
+    public void setLinkTypes(List<LinkType> linkTypes) {
+        this.linkTypes = linkTypes;
     }
 
-    public void addLinkSet(LinkSet linkset) {
-        this.linkSets.add(linkset);
+    public void addLinkType(LinkType linkType) {
+        this.linkTypes.add(linkType);
     }
 
     public Set<Project> getProjects() {

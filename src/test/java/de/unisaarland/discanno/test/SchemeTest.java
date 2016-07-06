@@ -8,9 +8,8 @@ package de.unisaarland.discanno.test;
 import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.entities.Label;
 import de.unisaarland.discanno.entities.LabelSet;
-import de.unisaarland.discanno.entities.LinkSet;
+import de.unisaarland.discanno.entities.LinkType;
 import de.unisaarland.discanno.entities.Scheme;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -50,9 +49,9 @@ public class SchemeTest extends BaseTest {
         assertTrue(scheme.getLabelSets().size()
                         == retScheme.getLabelSets().size());
         assertTrue(retScheme.getLabelSets().size() == 3);
-        assertTrue(scheme.getLinkSets().size()
-                        == retScheme.getLinkSets().size());
-        assertTrue(retScheme.getLinkSets().size() == 1);
+        assertTrue(scheme.getLinkTypes().size()
+                        == retScheme.getLinkTypes().size());
+        assertTrue(retScheme.getLinkTypes().size() == 1);
         assertTrue(retScheme.getProjects().isEmpty());
         assertTrue(retScheme.getSpanTypes().size()
                     == scheme.getSpanTypes().size());
@@ -104,18 +103,18 @@ public class SchemeTest extends BaseTest {
         assertTrue(ls3.getLabels().size() == 4);
         assertTrue(ls3.getAppliesToSpanTypes().size() == 1);
         
-        // LinkSet
-        LinkSet linkSet = retScheme.getLinkSets().get(0);
-        assertNotNull(linkSet);
-        assertFalse(linkSet.isAllowUnlabeledLinks());
-        assertTrue(linkSet.getStartSpanType().getName().equals("verb"));
-        assertTrue(linkSet.getEndSpanType().getName().equals("verb"));
-        assertTrue(linkSet.getLinkLabels().size() == 3);
+        // LinkType
+        LinkType linkType = retScheme.getLinkTypes().get(0);
+        assertNotNull(linkType);
+        assertFalse(linkType.isAllowUnlabeledLinks());
+        assertTrue(linkType.getStartSpanType().getName().equals("verb"));
+        assertTrue(linkType.getEndSpanType().getName().equals("verb"));
+        assertTrue(linkType.getLinkLabels().size() == 3);
     }
     
     @Test(expected = CreateException.class)
     public void testBrokenScheme() throws CreateException {
-        Scheme scheme = TestDataProvider.getSchemeWithNoTargetTypes();
+        Scheme scheme = TestDataProvider.getSchemeWithNoSpanTypes();
         service.process(scheme);
     }
     
