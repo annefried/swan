@@ -22,5 +22,6 @@ public class View {
     public static class Login {}
     public static class Tokens {}
     public static class Projects {}
+    public static class Timelogging {}
     
 }
