@@ -10,6 +10,8 @@ angular
     .controller('projectAddModalController', function ($scope, $rootScope, $http, $uibModalInstance, hotkeys) {
 
         $scope.init = function () {
+            // Available tokenization languages
+            $scope.lanaguages = [ "Unspecified", "Spanish", "English", "German", "French" ];
             $scope.loadSchemes();
         };
 
@@ -41,10 +43,11 @@ angular
             }
         };
 
-        $scope.submit = function (name, scheme) {
+        $scope.submit = function (name, scheme, lang) {
             var combine = {
-                'name': name,
-                'scheme': scheme
+                "name": name,
+                "scheme": scheme,
+                "lang": lang
             };
             $uibModalInstance.close(combine);
         };

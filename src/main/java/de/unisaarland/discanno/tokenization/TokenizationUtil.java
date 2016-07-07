@@ -3,10 +3,9 @@ package de.unisaarland.discanno.tokenization;
 import de.unisaarland.discanno.tokenization.model.Line;
 import de.unisaarland.discanno.tokenization.model.Token;
 import edu.stanford.nlp.ling.CoreLabel;
-import edu.stanford.nlp.process.CoreLabelTokenFactory;
-import edu.stanford.nlp.process.LexedTokenFactory;
-import edu.stanford.nlp.process.PTBTokenizer;
-import java.io.Reader;
+import edu.stanford.nlp.pipeline.TokenizerAnnotator;
+import edu.stanford.nlp.process.Tokenizer;
+
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,21 +14,22 @@ import java.util.regex.Pattern;
 
 public class TokenizationUtil {
 
-    private static final Pattern LINEBREAK_PATTERN = Pattern.compile("\r\n|\r|\n");
+    private static final Pattern LINEBREAK_PATTERN = Pattern.compile("\r\n|\r|\n"); // TODO refactor
     private static final String OPTIONS = "ptb3Escaping=false,normalizeParentheses=false,normalizeOtherBrackets=false";
+    private static final boolean VERBOSE = false;
 
-    public static List<Line> tokenize(String str) {
+    public static List<Line> tokenize(String str, final String language) {
         Token wsToken;
         Token wsToken2;
         String lineInSubstr;
-        StringReader reader = new StringReader(str);
-        PTBTokenizer ptbt = new PTBTokenizer(reader, new CoreLabelTokenFactory(), OPTIONS);
+        Tokenizer<CoreLabel> tokenizer = getTokenizer(str, language);
+
         Line line = new Line();
         ArrayList<Line> lines = new ArrayList<>();
         int docIdx = 0;
 
-        while (ptbt.hasNext()) {
-            CoreLabel label = (CoreLabel) ptbt.next();
+        while (tokenizer.hasNext()) {
+            CoreLabel label = tokenizer.next();
 
             while (label.beginPosition() > docIdx) {
                 String subStr = str.substring(docIdx, label.beginPosition());
@@ -118,16 +118,18 @@ public class TokenizationUtil {
         return lines;
     }
     
-    public static HashMap<String, HashMap<Integer, CoreLabel>> getTokenMap(String str) {
-        StringReader reader = new StringReader(str);
+    public static HashMap<String, HashMap<Integer, CoreLabel>> getTokenMap(String str, String language) {
+
         HashMap<Integer, CoreLabel> mapStart = new HashMap<>();
         HashMap<Integer, CoreLabel> mapEnd = new HashMap<>();
         HashMap<String, HashMap<Integer, CoreLabel>> maps = new HashMap<>();
         maps.put("start", mapStart);
         maps.put("end", mapEnd);
-        PTBTokenizer ptbt = new PTBTokenizer(reader, new CoreLabelTokenFactory(), OPTIONS);
-        while (ptbt.hasNext()) {
-            CoreLabel label = (CoreLabel) ptbt.next();
+
+        Tokenizer<CoreLabel> tokenizer = getTokenizer(str, language);
+
+        while (tokenizer.hasNext()) {
+            CoreLabel label = tokenizer.next();
             mapStart.put(label.beginPosition(), label);
             mapEnd.put(label.endPosition(), label);
         }
@@ -141,4 +143,11 @@ public class TokenizationUtil {
         token.setText(text);
         return token;
     }
+
+    private static Tokenizer<CoreLabel> getTokenizer(String text, String language) {
+        StringReader reader = new StringReader(text);
+        TokenizerAnnotator tok = new TokenizerAnnotator(VERBOSE, language, OPTIONS);
+        return tok.getTokenizer(reader);
+    }
+
 }

@@ -295,8 +295,9 @@ angular
 
                 modalInstance.result.then(function (full) {
                     var projectTemplate = {
-                        'name': full.name,
                         'id': null,
+                        'name': full.name,
+                        'tokenizationLang': full.lang,
                         'documents': [],
                         'scheme': {
                             'id': full.scheme.id
@@ -307,6 +308,7 @@ angular
                         var template = {
                             'id': response.data,
                             'name': full.name,
+                            'tokenizationLang': full.lang,
                             'scheme': projectTemplate.scheme,
                             'users': [],
                             'pms': [],

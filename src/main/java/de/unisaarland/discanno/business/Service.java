@@ -131,7 +131,8 @@ public class Service {
     public List<Line> getTokensByDocId(Long docId) {
         
         Document doc = (Document) documentDAO.find(docId, true);
-        List<Line> lines = TokenizationUtil.tokenize(doc.getText());
+        String lang = doc.getProject().getTokenizationLang().toString();
+        List<Line> lines = TokenizationUtil.tokenize(doc.getText(), lang);
         
         return lines;
     }
@@ -645,8 +646,9 @@ public class Service {
     }
     
     private void checkTargets(Document entity) throws CreateException {
-        
-        HashMap<String, HashMap<Integer, CoreLabel>> maps = TokenizationUtil.getTokenMap(entity.getText());
+
+        String lang = entity.getProject().getTokenizationLang().toString();
+        HashMap<String, HashMap<Integer, CoreLabel>> maps = TokenizationUtil.getTokenMap(entity.getText(), lang);
         HashMap<Integer, CoreLabel> mapStart = maps.get("start");
         HashMap<Integer, CoreLabel> mapEnd = maps.get("end");
         
