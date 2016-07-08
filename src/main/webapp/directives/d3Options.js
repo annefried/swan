@@ -22,8 +22,7 @@ angular
                 removeAnnotation: "&",
                 removeTarget: "&",
                 removeLink: "&",
-                setType: "&",
-                setTypeAndAdd: "&",
+                setSelectedSpanTypeAndAdd: "&",
                 setAnnotationNotSure: "&"
             },
             link: function ($scope, iElement) {
@@ -144,24 +143,25 @@ angular
                     }
                 };
 
-                $scope.setTypeHotkeys = function (e) {
-                    var a = [];
+                /**
+                 * Sets the next span type of the currently selected node.
+                 * Used for HotKeys.
+                 *
+                 * @param index
+                 */
+                $scope.setNextSpanType = function (index) {
+                    var spanTypeMap = [];
                     var i = 0;
                     for (var id in $scope.spanTypes) {
-                        var type = $scope.spanTypes[id];
-                        a[i] = type;
+                        spanTypeMap[i] = $scope.spanTypes[id];
                         i++;
                     }
-                    var type = a[e];
-                    if (type !== undefined) {
-                        $scope.setTypeAndAdd({item: type});
-                        $scope.setType({item: type});
-                    } else {
+                    var spanType = spanTypeMap[index];
+                    if (spanType === undefined) {
                         $scope.index = 0;
-                        var type = a[0];
-                        $scope.setTypeAndAdd({item: type});
-                        $scope.setType({item: type});
+                        spanType = spanTypeMap[0];
                     }
+                    $scope.setSelectedSpanTypeAndAdd({item: spanType});
                 };
 
                 $scope.setLabelHotkeys = function (e) {
@@ -190,7 +190,7 @@ angular
                                 description: 'Select next span type',
                                 callback: function () {
                                     $scope.index++;
-                                    $scope.setTypeHotkeys($scope.index);
+                                    $scope.setNextSpanType($scope.index);
                                 }
                             })
                             .add({
@@ -259,7 +259,7 @@ angular
                             })
                             .on("click", function (d) {
                                 $scope.$apply(function () {
-                                    $scope.setTypeAndAdd({item: d.value});
+                                    $scope.setSelectedSpanTypeAndAdd({item: d.value});
                                 });
                             });
                     parent.selectAll("button").each(function () {

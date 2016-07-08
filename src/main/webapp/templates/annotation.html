@@ -68,7 +68,7 @@ and open the template in the editor.
                                                on-user-change="annotation.onUserChange()"
                                                size-increased="annotation.sizeIncreased"
                                                data="annotation.annotationText"
-                                               annotations="annotation.annotationData"
+                                               annotations="annotation.annotationIdMap"
                                                targets="annotation.targets"
                                                links="annotation.annotationLinks"
                                                selection="annotation.selectedNode"
@@ -82,7 +82,7 @@ and open the template in the editor.
                                                set-selection="annotation.setSelected(item)"
                                                add-annotation="annotation.addAnnotation(item, words)"
                                                set-temp="annotation.setTemporaryAnnotation(item)" 
-                                               get-annotation="annotation.getAnnotation(item)"
+                                               get-annotation="annotation.getAnnotationById(item)"
                                                add-link="annotation.addLink(source, target)"
                                                linkable="annotation.linkable(source, target)"
                                                clear-selection="d3Anno.clearSelection()"
@@ -131,7 +131,7 @@ and open the template in the editor.
                                 <div>
                                     <div ng-controller="d3TimelineController as timeline">
                                         <d3-timeline
-                                            annotations="annotation.annotationData"
+                                            annotations="annotation.annotationIdMap"
                                             annotation-links="annotation.annotationLinks"
                                             selection="annotation.selectedNode"
                                             added-annotation="annotation.lastAdded"
@@ -156,7 +156,7 @@ and open the template in the editor.
                                                  id="anno-graph">
                                 <div>
                                     <div ng-controller="d3GraphController as graph">
-                                        <d3-graph annotations="annotation.annotationData"
+                                        <d3-graph annotations="annotation.annotationIdMap"
                                                   annotation-links="annotation.annotationLinks"
                                                   selection="annotation.selectedNode"
                                                   added-annotation="annotation.lastAdded"
@@ -185,8 +185,7 @@ and open the template in the editor.
                                             remove-annotation="annotation.removeAnnotation(item)"
                                             remove-target="annotation.removeTarget(item)"
                                             remove-link="annotation.removeLink(item)"
-                                            set-type="annotation.setSelectedSpanType(item)"
-                                            set-type-and-add="annotation.setSelectedSpanTypeAndAdd(item)"
+                                            set-selected-span-type-and-add="annotation.setSelectedSpanTypeAndAdd(item)"
                                             set-annotation-not-sure="annotation.setAnnotationNotSure(item,bool)">
                                 </d3-options>
                             </div>

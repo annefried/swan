@@ -232,7 +232,6 @@ function Annotation(color, id, sType) {
             this.words = words;
             this.text = this.text.substring(word.text.length, this.text.length);
         }
-        console.log(this)
         return word;
     };
 

@@ -160,7 +160,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     }
     
     @POST
-    @Path("/changett/{annoId}")
+    @Path("/changest/{annoId}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response changeSpanTypeREST(@PathParam("annoId") Long annoId, SpanType spanType) {
         

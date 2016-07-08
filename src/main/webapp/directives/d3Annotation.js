@@ -31,7 +31,7 @@ angular
                 removedSpanType: "=",
                 setSelection: "&",
                 setTemp: "&",
-                getAnnotation: "&",
+                getAnnotationById: "&",
                 addLink: "&",
                 linkable: "&",
                 clearSelection: "&",
