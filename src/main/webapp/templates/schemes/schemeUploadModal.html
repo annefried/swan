@@ -74,7 +74,7 @@ and open the template in the editor.
                             <input type="text" id="scheme-name-input"
                                    placeholder="Enter name..." 
                                    class="form-control sb_inputName"
-                                   ng-model="name"/>
+                                   ng-model="schemeName"/>
                         </div>
                     </div>
                 </div>
@@ -296,11 +296,11 @@ and open the template in the editor.
                                     </td>
                                     <td>
                                         <span class="glyphicon glyphicon-edit" 
-                                              ng-click="editLinkType(linkType)">
+                                              ng-click="editLinkType(linkType.name)">
                                         </span>
                                         <span class="glyphicon glyphicon-remove" 
                                               style="color:red;"
-                                              ng-click="removeLinkType(linkType)">
+                                              ng-click="removeLinkType(linkType.name)">
                                         </span>
                                     </td>
                                 </tr>
@@ -461,7 +461,7 @@ and open the template in the editor.
                                         <td>
                                             <span class="glyphicon glyphicon-remove" 
                                                   style="color:red;"
-                                                  ng-click="removeLabelFromLinkType(label.id)">
+                                                  ng-click="removeLabelFromLinkType(label.name)">
                                             </span>
                                         </td>
                                     </tr>  

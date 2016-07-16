@@ -1,0 +1,81 @@
+{
+	"name": "graphScheme",
+	"visElements": [
+		{
+			"visState": "hidden",
+			"visKind": "timeline"
+		},
+		{
+			"visState": "closed",
+			"visKind": "graph"
+		}
+	],
+	"spanTypes": [
+		{
+			"name": "verb"
+		},
+		{
+			"name": "noun"
+		}
+	],
+	"labelSets": [
+		{
+			"name": "voice",
+			"exclusive": true,
+			"appliesToSpanTypes": [
+				{
+					"name": "verb"
+				}
+			],
+			"labels": [
+				{
+					"name": "passive"
+				},
+				{
+					"name": "active"
+				}
+			]
+		},
+		{
+			"name": "number",
+			"exclusive": true,
+			"appliesToSpanTypes": [
+				{
+					"name": "verb"
+				},
+				{
+					"name": "noun"
+				}
+			],
+			"labels": [
+				{
+					"name": "singular"
+				},
+				{
+					"name": "plural"
+				}
+			]
+		}
+	],
+	"linkTypes": [
+		{
+			"name": "temporal relation",
+			"startSpanType": {
+				"name": "verb"
+			},
+			"endSpanType": {
+				"name": "verb"
+			},
+			"linkLabels": [
+				{
+					"name": "before",
+					"options": []
+				},
+				{
+					"name": "overlap",
+					"options": []
+				}
+			]
+		}
+	]
+}
