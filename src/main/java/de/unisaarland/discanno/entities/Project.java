@@ -14,6 +14,7 @@ import org.eclipse.persistence.config.QueryHints;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * The Entity Project represents a set of documents and has a unique name.
@@ -109,10 +110,17 @@ public class Project extends BaseEntity {
      */
     public static final String PARAM_ID = "id";
 
+    public static enum TokenizationLang {
+        Unspecified, Spanish, English, German, French;
+    }
 
     @JsonView({ View.Projects.class, View.Documents.class })
     @Column(name = "Name", unique = true)
     private String name;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private TokenizationLang tokenizationLang;
     
     @JsonView({ View.Projects.class })
     @OneToMany(mappedBy = "project",
@@ -157,6 +165,14 @@ public class Project extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public TokenizationLang getTokenizationLang() {
+        return tokenizationLang;
+    }
+
+    public void setTokenizationLang(TokenizationLang tokenizationLang) {
+        this.tokenizationLang = tokenizationLang;
     }
 
     public Set<Document> getDocuments() {

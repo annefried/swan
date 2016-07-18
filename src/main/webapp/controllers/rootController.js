@@ -99,6 +99,7 @@ angular
                 const template = {
                     'id': proj.id,
                     'name': proj.name,
+                    'tokenizationLang': proj.lang,
                     'users': proj.users,
                     'completed': projCompl,
                     'scheme': proj.scheme,
