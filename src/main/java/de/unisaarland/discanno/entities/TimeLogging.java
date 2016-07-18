@@ -5,7 +5,10 @@
  */
 package de.unisaarland.discanno.entities;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import de.unisaarland.discanno.TimestampAdapter;
+import de.unisaarland.discanno.rest.view.View;
+
 import java.sql.Timestamp;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,7 +29,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @NamedQueries({
     @NamedQuery(
         name = TimeLogging.QUERY_FIND_BY_USER,
-        query = "SELECT t FROM TimeLogging t WHERE t.users.id = :" + TimeLogging.PARAM_USER + " ORDER BY t.loggedat DESC")
+        query = "SELECT t " +
+                "FROM TimeLogging t " +
+                "WHERE t.users.id = :" + TimeLogging.PARAM_USER + " " +
+                "ORDER BY t.loggedat DESC"
+    )
 })
 public class TimeLogging extends BaseEntity {
 
@@ -39,7 +46,8 @@ public class TimeLogging extends BaseEntity {
      * Query parameter constant for the attribute "user".
      */
     public static final String PARAM_USER = "user";
-    
+
+    @JsonView({ View.Timelogging.class })
     @XmlJavaTypeAdapter(TimestampAdapter.class)
     @Column(name = "LoggedAt")
     private Timestamp loggedat;
@@ -47,10 +55,12 @@ public class TimeLogging extends BaseEntity {
     /**
      * Unit: minutes
      */
+    @JsonView({ View.Timelogging.class })
     @Column(name = "LoggedTime")
     private int loggedtime;
     
-    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+            fetch = FetchType.LAZY)
     @JoinColumn(name = "user_fk", nullable = false)
     private Users users;
 
