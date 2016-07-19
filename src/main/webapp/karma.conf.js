@@ -16,6 +16,7 @@ module.exports = function(config){
         'bower_components/bootstrap/dist/js/bootstrap.min.js',
         'bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js',
         'bower_components/jsog/lib/JSOG.js',
+        'bower_components/angular-clipboard/angular-clipboard.js',
 
         'other/annotationStructures.js',
         'other/xml2json.js',
@@ -26,7 +27,10 @@ module.exports = function(config){
         'controllers/*.js',
         'controllers/**/*.js',
         'directives/*.js',
-        'tests/**/*.js'
+        'tests/**/*.js',
+
+        // fixtures
+        {pattern: 'testdata/schemes/*.json', watched: true, served: true, included: false}
     ],
 
     autoWatch : true,

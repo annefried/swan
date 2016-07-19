@@ -1,0 +1,39 @@
+{
+	"name": "timelineScheme",
+	"visElements": [
+		{
+			"visState": "closed",
+			"visKind": "timeline"
+		},
+		{
+			"visState": "hidden",
+			"visKind": "graph"
+		}
+	],
+	"spanTypes": [
+		{
+			"name": "verb"
+		},
+		{
+			"name": "noun"
+		}
+	],
+	"labelSets": [
+		{
+			"name": "number",
+			"exclusive": true,
+			"appliesToSpanTypes": [
+				{
+					"name": "verb"
+				},
+				{
+					"name": "noun"
+				}
+			],
+			"labels": [
+			]
+		}
+	],
+	"linkTypes": [
+	]
+}
