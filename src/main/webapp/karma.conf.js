@@ -12,11 +12,11 @@ module.exports = function(config){
         'bower_components/angular-mocks/angular-mocks.js',
         'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-hotkeys/build/hotkeys.min.js',
+        'bower_components/angular-clipboard/angular-clipboard.js',
         'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
         'bower_components/bootstrap/dist/js/bootstrap.min.js',
         'bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js',
         'bower_components/jsog/lib/JSOG.js',
-        'bower_components/angular-clipboard/angular-clipboard.js',
 
         'other/annotationStructures.js',
         'other/xml2json.js',

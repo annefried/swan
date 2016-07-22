@@ -113,7 +113,6 @@ describe('Test schemeUploadModalController', function () {
             expect($httpBackend.flush).not.toThrow();
         });
 
-
         it('Test visualization change from Timeline to None', function() {
             $scope.noView = {
                 checked: false
@@ -569,7 +568,7 @@ describe('Test schemeUploadModalController', function () {
 
     describe('Upload tests', function () {
         function readJSON(path) {
-            var result
+            var result;
             var client = new XMLHttpRequest();
             client.open('GET', path, false);
 
@@ -577,7 +576,7 @@ describe('Test schemeUploadModalController', function () {
                 if(client.readyState == 4 && client.status == 200){
                     result = client.responseText;
                 }
-            }
+            };
 
             client.send(null);
             return result;
