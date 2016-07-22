@@ -66,4 +66,11 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
                         Collections.singletonMap(Project.PARAM_ID, projId)));
     }
 
+    public Project getProjectToAddUser(final Long projId) {
+        return firstResult(
+                executeQuery(
+                        Project.QUERY_FIND_PROJECT_TO_ADD_USER,
+                        Collections.singletonMap(Project.PARAM_ID, projId)));
+    }
+
 }

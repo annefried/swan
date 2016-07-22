@@ -76,6 +76,16 @@ import javax.validation.constraints.NotNull;
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.states"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.defaultAnnotations")
         }
+    ),
+    @NamedQuery(
+        name = Project.QUERY_FIND_PROJECT_TO_ADD_USER,
+        query = "SELECT p " +
+                "FROM Project p " +
+                "LEFT JOIN FETCH p.documents " +
+                "WHERE p.id = :" + Project.PARAM_ID,
+        hints = {
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.defaultAnnotations")
+        }
     )
 })
 public class Project extends BaseEntity {
@@ -99,6 +109,11 @@ public class Project extends BaseEntity {
      * Named query identifier for "find project to delete"
      */
     public static final String QUERY_FIND_PROJECT_TO_DELETE = "Project.QUERY_FIND_PROJECT_TO_DELETE";
+
+    /**
+     * Named query identifier for "find project to add user"
+     */
+    public static final String QUERY_FIND_PROJECT_TO_ADD_USER = "Project.QUERY_FIND_PROJECT_TO_ADD_USER";
 
     /**
      * Query parameter constant for the attribute "user".
