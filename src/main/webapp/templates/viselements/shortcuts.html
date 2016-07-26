@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<uib-accordion-group heading="Help" is-disabled="false" is-open="false" class="unselectable" id="anno-shortcuts">
+
+    <p><strong>Create annotations:</strong> select a span
+        of text or double-click on a word. Then select a Type for the annotation.
+    </p>
+    <p><strong>Adding labels:</strong> when you select an annotation,
+        appropriate label sets will be displayed in the 'Annotations' box.</p>
+    <p><strong>Adding links:</strong> select the annotation at which your link will
+        start, and drag your mouse away from the annotation. All possible
+        end notes (according to the scheme) will be highlighted. Drop your mouse
+        at one of them and release the mouse button.</p>
+    <p><strong>Viewing links:</strong> click on an annotation to view the links
+        that start or end at this annotation.
+    <p><strong>Selections:</strong> click anywhere on an empty space in the Text box
+        to unselect the currently selected annotation or link.</p>
+    <p><strong>Navigation:</strong> you can use the Graph visualization to navigate
+        through your text document by clicking on the nodes in the graph.
+        You can also go to another document by using the Project navigation box.</p>
+
+    <p><strong>Shortcuts:</strong> there are many cool shortcuts using
+        keys that will make your life much easier. Check them out! <br/><br/>
+
+        <strong>When a span annotation is selected, changing annotations:</strong>
+    <table class="table">
+        <tr>
+            <td><kbd><kbd>a</kbd></kbd></td>
+            <td>add the token on the left to the current annotation</td>
+        </tr>
+        <tr>
+            <td><kbd><kbd>s</kbd></kbd></td>
+            <td>remove the left-most token from the current span annotation</td>
+        </tr>
+        <tr>
+            <td><kbd><kbd>d</kbd></kbd></td>
+            <td>remove the right-most token from the current span annotation</td>
+        </tr>
+        <tr>
+            <td><kbd><kbd>f</kbd></kbd></td>
+            <td>add the token on the right to the current annotation</td>
+        </tr>
+    </table>
+
+    <strong>When a span annotation is selected, changing the selection:</strong>
+    <table class="table">
+        <tr>
+            <td><kbd>left</kbd> / <kbd>right</kbd></td>
+            <td>jump between annotations</td>
+        </tr>
+        <!--tr>
+            <td><kbd><kbd>?</kbd></kbd></td>
+            <td>Show all shortcuts (Shift + ?)</td>
+        </tr-->
+
+    </table>
+</uib-accordion-group>

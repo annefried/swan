@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<uib-accordion-group heading="Graph"
+                     is-open="graph.isOpen"
+                     class="unselectable"
+                     id="anno-graph">
+    <div>
+        <div ng-controller="d3GraphController as graph">
+            <d3-graph annotations="annotation.annotationIdMap"
+                      annotation-links="annotation.annotationLinks"
+                      selection="annotation.selectedNode"
+                      added-annotation="annotation.lastAdded"
+                      removed-annotation="annotation.lastRemoved"
+                      removed-link="annotation.lastRemovedLink"
+                      added-link="annotation.lastAddedLink"
+                      last-set="annotation.lastSet"
+                      last-targeted="annotation.lastTargeted"
+                      set-selection="annotation.setSelected(item)">
+            </d3-graph>
+        </div>
+    </div>
+</uib-accordion-group>

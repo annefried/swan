@@ -2,10 +2,9 @@
     margin-left: 0.5em;
 }
 
-.scroll-pane
-{
+.scroll-pane {
     overflow: scroll !important;
-    height:auto;
+    height: auto;
 /*    max-height: 400px;*/
 }
 
@@ -41,6 +40,12 @@
 
 .annotationtext {
     margin-top: 1em;
+}
+
+/* Split view for cross document linking */
+.annotationtextSplitted {
+    /* height: 40%;
+    max-height: 100px; */
 }
 
 .annotationbox {
@@ -116,11 +121,11 @@
 }
 
 .panel-body {
-    padding:5px;
+    padding: 5px;
 }
 
 .col-md-7 {
-    padding:5px;
+    padding: 5px;
 }
 
 .btn {

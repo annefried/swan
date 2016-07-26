@@ -1163,16 +1163,16 @@ angular
 
                     currentLine = firstLine;
                     //Draw the actual text by iterating through the lines
-                    var dat = []
+                    var dat = [];
                     var pos = pre;
                     for (var j = firstLine; j <= lastLine; j++) {
                     	//Safety measure:
                     	//Stop drawing if a non-existing line is reached
-                    	 if (formText[j] === undefined){
-                    	   break;
+                    	 if (formText[j] === undefined) {
+                             break;
                     	 }
                     	// Add empty line in front of first line
-                    	if(j == 0){
+                    	if(j == 0) {
                     		dat.push(undefined)
                     	}
                     	// Add line to draw
@@ -1190,9 +1190,9 @@ angular
                             .append(function (d) {
                                 var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
                                 // Handle empty lines
-                                if(d === undefined){
+                                if (d === undefined) {
                                 	text.innerHTML = ''
-                                }else{
+                                } else {
                                 	text.innerHTML = d.word.text;
                                 	d.element = text;
                                 }
@@ -1221,21 +1221,21 @@ angular
                                 pos += spacing;
                                 d.x = pos;
                                 // load previously computed lengths
-                                d.width = $scope.widthMap[d.word.text]
+                                d.width = $scope.widthMap[d.word.text];
                                 pos += d.width;
 
                                 return ~~d.x;
                             })
                             .attr("y", function (d, i) {
                             	// Handle empty lines
-                            	if (d === undefined){
+                            	if (d === undefined) {
                             		currentHeight += lineHeight;
                             	} else {
                                     //Set the height of the current word to the height of
                                     //the previous word if we are still in the same line
-                                    if (d.lY === currentLine){
+                                    if (d.lY === currentLine) {
                                         d.y = currentHeight;
-                                    }else {
+                                    } else {
                                     	//Set the height of the first word of a new line
                                     	//to the previous height + the height of that line
                                         d.y = currentHeight + d.height;
@@ -1245,7 +1245,7 @@ angular
                             	}
                                 return ~~currentHeight;
                             })
-                            .classed("annotationtext", function(d){
+                            .classed("annotationtext", function(d) {
                             	// Handle empty lines
                             	return d !== undefined;
                             })
