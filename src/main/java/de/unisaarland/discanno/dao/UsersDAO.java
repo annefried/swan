@@ -65,13 +65,22 @@ public class UsersDAO extends BaseEntityDAO<Users> {
     }
     
     /**
-     * Returns all users ascending by their email
-     * 
+     * Returns all users with their corresponding projects ascending by
+     * their email.
+     *
+     * @return List<Users>
+     */
+    public List<Users> getAllUsersWithProjectsAscending() {
+        return executeQuery(Users.QUERY_GET_ALL_USERS_WITH_PROJECTS_ASC);
+    }
+
+    /**
+     * Returns all users ascending by their email.
+     *
      * @return List<Users>
      */
     public List<Users> getAllUsersAscending() {
-        List<Users> users = executeQuery(Users.QUERY_GET_ALL_USERS_ASC);
-        return users;
+        return executeQuery(Users.QUERY_GET_ALL_USERS_ASC);
     }
     
 }

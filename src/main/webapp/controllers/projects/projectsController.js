@@ -320,7 +320,7 @@ angular
                         } else {
                             // TODO create REST interface getUser by Id
                             // Get the current user (there is no REST interface for getUser by ID)
-                            $http.get("swan/user/").success(function (response) {
+                            $http.get("swan/user/withprojects").success(function (response) {
                                 var users = JSOG.parse(JSON.stringify(response)).users;
                                 for (var i = 0; i < users.length; i++) {
                                     var u = users[i];

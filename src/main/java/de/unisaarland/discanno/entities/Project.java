@@ -75,6 +75,16 @@ import javax.persistence.*;
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.states"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.defaultAnnotations")
         }
+    ),
+    @NamedQuery(
+        name = Project.QUERY_FIND_PROJECT_TO_ADD_USER,
+        query = "SELECT p " +
+        "FROM Project p " +
+        "LEFT JOIN FETCH p.documents " +
+        "WHERE p.id = :" + Project.PARAM_ID,
+        hints = {
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.defaultAnnotations")
+        }
     )
 })
 public class Project extends BaseEntity {
@@ -88,6 +98,11 @@ public class Project extends BaseEntity {
      * Named query identifier for "find projects by user".
      */
     public static final String QUERY_FIND_PROJECTS_BY_USER = "Project.QUERY_FIND_PROJECTS_BY_USER";
+
+    /**
+     * Named query identifier for "find project to add user"
+     */
+    public static final String QUERY_FIND_PROJECT_TO_ADD_USER = "Project.QUERY_FIND_PROJECT_TO_ADD_USER";
 
     /**
      * Named query identifier for "find projects by project manager".

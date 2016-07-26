@@ -129,15 +129,16 @@ public class UserFacadeREST extends AbstractFacade<Users> {
     }
 
     @GET
+    @Path("/withprojects")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getUsers() {
+    public Response getUsersWithProjects() {
         
         try {   
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             
-            List<Users> list = usersDAO.getAllUsersAscending();
+            List<Users> list = usersDAO.getAllUsersWithProjectsAscending();
             
-            return Response.ok(mapper.writerWithView(View.Users.class)
+            return Response.ok(mapper.writerWithView(View.UsersWithProjects.class)
                                         .withRootName("users")
                                         .writeValueAsString(list))
                             .build();
@@ -148,5 +149,26 @@ public class UserFacadeREST extends AbstractFacade<Users> {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
     }
-    
+
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getUsers() {
+
+        try {
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
+
+            List<Users> list = usersDAO.getAllUsersAscending();
+
+            return Response.ok(mapper.writerWithView(View.Users.class)
+                                        .withRootName("users")
+                                        .writeValueAsString(list))
+                                .build();
+            } catch (JsonProcessingException ex) {
+                Logger.getLogger(UserFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+                return Response.serverError().build();
+            } catch (SecurityException e) {
+                return Response.status(Response.Status.FORBIDDEN).build();
+            }
+        }
+
 }
