@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<uib-accordion-group
+        heading="Project navigation"
+        is-disabled="false"
+        is-open="false"
+        class="unselectable"
+        id="anno-navigation">
+
+    <div ng-repeat="proj in this.tableProjects">
+        <label>{{proj.name}}</label>
+        <table class="table">
+            <tr ng-repeat="doc in proj.documents">
+                <td>
+                    <a ng-if="doc.id != currDoc.id"
+                       ng-click="openAnnoTool(doc.id, doc.name, proj.name, doc.completed)">
+                        {{doc.name}}
+                    </a>
+                    <a ng-if="doc.id == currDoc.id"
+                       ng-href
+                       ng-click="openAnnoTool(doc.id, doc.name, proj.name, doc.completed)"
+                       style="color: gray">
+                        {{doc.name}}
+                    </a>
+                </td>
+                <td>
+                    <span ng-hide="doc.completed === false || isUnprivileged == 'false'"
+                          class="glyphicon glyphicon-ok">
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</uib-accordion-group>

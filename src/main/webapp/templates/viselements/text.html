@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<uib-accordion-group is-disabled="true" is-open="true">
+    <uib-accordion-heading>
+        <div class="unselectable" id="anno-text">Text</div>
+    </uib-accordion-heading>
+
+    <div>
+        <d3-annotation class="d3Anno"
+                       on-user-change="annotation.onUserChange()"
+                       size-increased="annotation.sizeIncreased"
+                       data="annotation.annotationText"
+                       annotations="annotation.annotationIdMap"
+                       targets="annotation.targets"
+                       links="annotation.annotationLinks"
+                       selection="annotation.selectedNode"
+                       temp-anno="annotation.tempAnno"
+                       start-selection="d3Anno.startSelection"
+                       end-selection="d3Anno.endSelection"
+                       last-added="annotation.lastAdded"
+                       last-removed="annotation.lastRemoved"
+                       last-set="annotation.lastSet"
+                       removed-span-type="annotation.lastRemovedSpanType"
+                       set-selection="annotation.setSelected(item)"
+                       add-annotation="annotation.addAnnotation(item, words)"
+                       set-temp="annotation.setTemporaryAnnotation(item)"
+                       get-annotation="annotation.getAnnotationById(item)"
+                       add-link="annotation.addLink(source, target)"
+                       linkable="annotation.linkable(source, target)"
+                       clear-selection="d3Anno.clearSelection()"
+                       increase-selected-anno-size-right="annotation.increaseSelectedAnnoSizeRight()"
+                       increase-selected-anno-size-left="annotation.increaseSelectedAnnoSizeLeft()"
+                       decrease-selected-anno-size-right="annotation.decreaseSelectedAnnoSizeRight()"
+                       decrease-selected-anno-size-left="annotation.decreaseSelectedAnnoSizeLeft()"
+                       reset-size-increased="annotation.resetSizeIncreased()">
+        </d3-annotation>
+    </div>
+
+</uib-accordion-group>
