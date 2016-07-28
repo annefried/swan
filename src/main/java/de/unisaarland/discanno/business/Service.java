@@ -429,7 +429,7 @@ public class Service {
     public void addUserToProject(Long projId, Long userId) throws CloneNotSupportedException, CreateException {
         
         try {
-            Project proj = (Project) projectDAO.find(projId, false);
+            Project proj = (Project) projectDAO.getProjectToAddUser(projId);
             Users user =  (Users) usersDAO.find(userId, false);
 
             user.getProjects().add(proj);

@@ -18,6 +18,7 @@ public class View {
     public static class Annotations {}
     public static class Documents {}
     public static class Links {}
+    public static class UsersWithProjects {}
     public static class Users {}
     public static class Login {}
     public static class Tokens {}
