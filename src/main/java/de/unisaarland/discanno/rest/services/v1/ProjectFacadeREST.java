@@ -241,7 +241,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             Project proj = (Project) projectDAO.find(projId, false);
             
             ExportUtil exportUtil = new ExportUtil(annotationDAO, linkDAO);
-            File file = exportUtil.getExportData(proj);
+            File file = exportUtil.getExportDataXml(proj);
             
             return Response
                         .ok(FileUtils.readFileToByteArray(file))

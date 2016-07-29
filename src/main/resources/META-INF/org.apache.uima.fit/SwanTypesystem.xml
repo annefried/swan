@@ -6,13 +6,13 @@
     <vendor/>
   <types>
    <typeDescription>
-      <name>de.unisaarland.discanno.export.uimaTypes.DiscAnnotation</name>
+      <name>de.unisaarland.swan.export.uimaTypes.SwanAnnotation</name>
       <description>Annotation of one annotator.</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
-          <name>TargetType</name>
-          <description>TargetType of the annotation</description>
+          <name>SpanType</name>
+          <description>SpanType of the annotation</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
@@ -24,13 +24,13 @@
           <name>Labels</name>
           <description>Set of labels assigned to this annotation by the annotator.</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-        <elementType>de.unisaarland.discanno.export.types.Label</elementType>
+        <elementType>de.unisaarland.swan.export.uimaTypes.SwanLabel</elementType>
         </featureDescription>
       <featureDescription>
           <name>Links</name>
-          <description>Links starting at this DiscAnnotation.</description>
+          <description>Links starting at this SwanAnnotation.</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>de.unisaarland.discanno.export.types.DiscAnnoLink</elementType>
+          <elementType>de.unisaarland.swan.export.uimaTypes.SwanLink</elementType>
         </featureDescription>
         <featureDescription>
           <name>AnnotationId</name>
@@ -40,7 +40,7 @@
       </features>
     </typeDescription>
   <typeDescription>
-      <name>de.unisaarland.discanno.export.uimaTypes.DiscAnnoLabel</name>
+      <name>de.unisaarland.swan.export.uimaTypes.SwanLabel</name>
       <description>defines a label: name of label + name of LabelSet to which the labels belongs</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -57,25 +57,25 @@
       </features>
     </typeDescription>
   <typeDescription>
-      <name>de.unisaarland.discanno.export.uimaTypes.DiscAnnoLink</name>
+      <name>de.unisaarland.swan.export.uimaTypes.SwanLink</name>
       <description>Link between two annotations.</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
           <name>linkBegin</name>
-          <description>DiscAnnotation at which the link starts.</description>
-          <rangeTypeName>de.unisaarland.discanno.export.uimaTypes.DiscAnnotation</rangeTypeName>
+          <description>SwanAnnotation at which the link starts.</description>
+          <rangeTypeName>de.unisaarland.swan.export.uimaTypes.SwanAnnotation</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>linkEnd</name>
-          <description>DiscAnnotation at which the link ends.</description>
-          <rangeTypeName>de.unisaarland.discanno.export.uimaTypes.DiscAnnotation</rangeTypeName>
+          <description>SwanAnnotation at which the link ends.</description>
+          <rangeTypeName>de.unisaarland.swan.export.uimaTypes.SwanAnnotation</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>Labels</name>
           <description>labels assigned to the link.</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>de.unisaarland.discanno.export.types.Label</elementType>
+          <elementType>de.unisaarland.swan.export.uimaTypes.SwanLabel</elementType>
         </featureDescription>
         <featureDescription>
           <name>AnnotatorId</name>
