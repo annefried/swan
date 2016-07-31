@@ -1,6 +1,6 @@
 
-/* First created by JCasGen Mon Mar 21 16:29:37 CET 2016 */
-package de.unisaarland.discanno.export.uimaTypes;
+/* First created by JCasGen Thu Jul 07 14:33:30 CEST 2016 */
+package de.unisaarland.swan.export.uimaTypes;
 
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
@@ -14,9 +14,9 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** Annotation of one annotator.
- * Updated by JCasGen Mon Mar 21 16:29:37 CET 2016
+ * Updated by JCasGen Thu Jul 07 15:25:41 CEST 2016
  * @generated */
-public class DiscAnnotation_Type extends Annotation_Type {
+public class SwanAnnotation_Type extends Annotation_Type {
   /** @generated 
    * @return the generator for this type
    */
@@ -26,47 +26,47 @@ public class DiscAnnotation_Type extends Annotation_Type {
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
-  			 if (DiscAnnotation_Type.this.useExistingInstance) {
+  			 if (SwanAnnotation_Type.this.useExistingInstance) {
   			   // Return eq fs instance if already created
-  		     FeatureStructure fs = DiscAnnotation_Type.this.jcas.getJfsFromCaddr(addr);
+  		     FeatureStructure fs = SwanAnnotation_Type.this.jcas.getJfsFromCaddr(addr);
   		     if (null == fs) {
-  		       fs = new DiscAnnotation(addr, DiscAnnotation_Type.this);
-  			   DiscAnnotation_Type.this.jcas.putJfsFromCaddr(addr, fs);
+  		       fs = new SwanAnnotation(addr, SwanAnnotation_Type.this);
+  			   SwanAnnotation_Type.this.jcas.putJfsFromCaddr(addr, fs);
   			   return fs;
   		     }
   		     return fs;
-        } else return new DiscAnnotation(addr, DiscAnnotation_Type.this);
+        } else return new SwanAnnotation(addr, SwanAnnotation_Type.this);
   	  }
     };
   /** @generated */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = DiscAnnotation.typeIndexID;
+  public final static int typeIndexID = SwanAnnotation.typeIndexID;
   /** @generated 
      @modifiable */
   @SuppressWarnings ("hiding")
-  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
+  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
  
   /** @generated */
-  final Feature casFeat_TargetType;
+  final Feature casFeat_SpanType;
   /** @generated */
-  final int     casFeatCode_TargetType;
+  final int     casFeatCode_SpanType;
   /** @generated
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public String getTargetType(int addr) {
-        if (featOkTst && casFeat_TargetType == null)
-      jcas.throwFeatMissing("TargetType", "de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_TargetType);
+  public String getSpanType(int addr) {
+        if (featOkTst && casFeat_SpanType == null)
+      jcas.throwFeatMissing("SpanType", "de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_SpanType);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setTargetType(int addr, String v) {
-        if (featOkTst && casFeat_TargetType == null)
-      jcas.throwFeatMissing("TargetType", "de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
-    ll_cas.ll_setStringValue(addr, casFeatCode_TargetType, v);}
+  public void setSpanType(int addr, String v) {
+        if (featOkTst && casFeat_SpanType == null)
+      jcas.throwFeatMissing("SpanType", "de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
+    ll_cas.ll_setStringValue(addr, casFeatCode_SpanType, v);}
     
   
  
@@ -80,7 +80,7 @@ public class DiscAnnotation_Type extends Annotation_Type {
    */ 
   public String getAnnotatorId(int addr) {
         if (featOkTst && casFeat_AnnotatorId == null)
-      jcas.throwFeatMissing("AnnotatorId", "de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
+      jcas.throwFeatMissing("AnnotatorId", "de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
     return ll_cas.ll_getStringValue(addr, casFeatCode_AnnotatorId);
   }
   /** @generated
@@ -89,7 +89,7 @@ public class DiscAnnotation_Type extends Annotation_Type {
    */    
   public void setAnnotatorId(int addr, String v) {
         if (featOkTst && casFeat_AnnotatorId == null)
-      jcas.throwFeatMissing("AnnotatorId", "de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
+      jcas.throwFeatMissing("AnnotatorId", "de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
     ll_cas.ll_setStringValue(addr, casFeatCode_AnnotatorId, v);}
     
   
@@ -104,7 +104,7 @@ public class DiscAnnotation_Type extends Annotation_Type {
    */ 
   public int getLabels(int addr) {
         if (featOkTst && casFeat_Labels == null)
-      jcas.throwFeatMissing("Labels", "de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
+      jcas.throwFeatMissing("Labels", "de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
     return ll_cas.ll_getRefValue(addr, casFeatCode_Labels);
   }
   /** @generated
@@ -113,7 +113,7 @@ public class DiscAnnotation_Type extends Annotation_Type {
    */    
   public void setLabels(int addr, int v) {
         if (featOkTst && casFeat_Labels == null)
-      jcas.throwFeatMissing("Labels", "de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
+      jcas.throwFeatMissing("Labels", "de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
     ll_cas.ll_setRefValue(addr, casFeatCode_Labels, v);}
     
   
@@ -128,7 +128,7 @@ public class DiscAnnotation_Type extends Annotation_Type {
    */ 
   public int getLinks(int addr) {
         if (featOkTst && casFeat_Links == null)
-      jcas.throwFeatMissing("Links", "de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
+      jcas.throwFeatMissing("Links", "de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
     return ll_cas.ll_getRefValue(addr, casFeatCode_Links);
   }
   /** @generated
@@ -137,7 +137,7 @@ public class DiscAnnotation_Type extends Annotation_Type {
    */    
   public void setLinks(int addr, int v) {
         if (featOkTst && casFeat_Links == null)
-      jcas.throwFeatMissing("Links", "de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
+      jcas.throwFeatMissing("Links", "de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
     ll_cas.ll_setRefValue(addr, casFeatCode_Links, v);}
     
   
@@ -152,7 +152,7 @@ public class DiscAnnotation_Type extends Annotation_Type {
    */ 
   public String getAnnotationId(int addr) {
         if (featOkTst && casFeat_AnnotationId == null)
-      jcas.throwFeatMissing("AnnotationId", "de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
+      jcas.throwFeatMissing("AnnotationId", "de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
     return ll_cas.ll_getStringValue(addr, casFeatCode_AnnotationId);
   }
   /** @generated
@@ -161,7 +161,7 @@ public class DiscAnnotation_Type extends Annotation_Type {
    */    
   public void setAnnotationId(int addr, String v) {
         if (featOkTst && casFeat_AnnotationId == null)
-      jcas.throwFeatMissing("AnnotationId", "de.unisaarland.discanno.export.uimaTypes.DiscAnnotation");
+      jcas.throwFeatMissing("AnnotationId", "de.unisaarland.swan.export.uimaTypes.SwanAnnotation");
     ll_cas.ll_setStringValue(addr, casFeatCode_AnnotationId, v);}
     
   
@@ -173,13 +173,13 @@ public class DiscAnnotation_Type extends Annotation_Type {
 	 * @param jcas JCas
 	 * @param casType Type 
 	 */
-  public DiscAnnotation_Type(JCas jcas, Type casType) {
+  public SwanAnnotation_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
  
-    casFeat_TargetType = jcas.getRequiredFeatureDE(casType, "TargetType", "uima.cas.String", featOkTst);
-    casFeatCode_TargetType  = (null == casFeat_TargetType) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_TargetType).getCode();
+    casFeat_SpanType = jcas.getRequiredFeatureDE(casType, "SpanType", "uima.cas.String", featOkTst);
+    casFeatCode_SpanType  = (null == casFeat_SpanType) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_SpanType).getCode();
 
  
     casFeat_AnnotatorId = jcas.getRequiredFeatureDE(casType, "AnnotatorId", "uima.cas.String", featOkTst);
