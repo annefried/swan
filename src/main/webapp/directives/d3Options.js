@@ -202,7 +202,8 @@ angular
                                 }
                             })
                             .add({
-                                combo: 'alt+backspace',
+                                combo: ['alt+backspace', 'del'],
+                                //combo: 'del',
                                 description: 'Deleting current selection',
                                 callback: function () {
                                     $scope.delete();
