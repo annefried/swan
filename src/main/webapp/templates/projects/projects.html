@@ -28,6 +28,7 @@ and open the template in the editor.
             <div class="table-responsive">
                 <table class="table">
 
+                    <!-- Projects thead -->
                     <thead>
                         <tr class="headDark">
                             <th class="col-md-1 vert-align" id="pe_expand_documents"></th>
@@ -37,6 +38,9 @@ and open the template in the editor.
                                 <span ng-hide="isUnprivileged === 'true'">Annotators</span>
                             </th>
                             <th class="col-md-2 vert-align">Project manager</th>
+                            <th class="col-md-2 vert-align">
+                                <span ng-hide="isUnprivileged === 'false'">Last edited document</span>
+                            </th>
                             <th class="col-md-1 vert-align">
                                 <span ng-hide="isUnprivileged === 'true'">Scheme</span>
                             </th>
@@ -51,6 +55,7 @@ and open the template in the editor.
                             </th>
                         </tr>
                     </thead>
+
                     <tbody ng-hide="loaded">
                         <tr>
                             <td>
@@ -118,13 +123,21 @@ and open the template in the editor.
                                 <p ng-hide="isUnprivileged === 'true'"
                                    class="userprogress"
                                    ng-repeat="cur in x.users">
-                                    {{cur.email}}
+                                        {{cur.email}}
                                 </p>
                             </td>
                             <td class="col-md-2 vert-align">
                                 <p ng-repeat="cur in x.pms">
                                        {{cur.email}}
                                 </p>
+                            </td>
+                            <td class="col-md-2 vert-align">
+                                <a style="cursor: pointer"
+                                   ng-href
+                                   ng-hide="x.documents.length == 0 || isUnprivileged === 'false'"
+                                   ng-click="openAnnoTool(x.lastEditedDocument.id, x.lastEditedDocument.name, x.name, x.lastEditedDocument.completed)">
+                                        {{x.lastEditedDocument.name}}
+                                </a>
                             </td>
                             <td class="col-md-1 vert-align">
                                 <a ng-hide="isUnprivileged === 'true'"
@@ -144,7 +157,8 @@ and open the template in the editor.
                             </td>
                             <td class="col-md-1 vert-align">
                                 <span class="glyphicon glyphicon-remove"
-                                        ng-hide="isUnprivileged === 'true'" style="color:red"
+                                        ng-hide="isUnprivileged === 'true'"
+                                        style="color:red"
                                         ng-click="openProjectDeleteModal(x.id)">
                                 </span>
                             </td>
@@ -166,6 +180,7 @@ and open the template in the editor.
                             <td class="col-md-1 vert-align"><b>Documents</b></td>
                             <td class="col-md-2 vert-align"><b>Filename</b></td>
                             <td class="col-md-2 vert-align"><b>Completed</b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-1 vert-align"></td>
@@ -202,6 +217,7 @@ and open the template in the editor.
                             </td>
                             <td class="col-md-2 vert-align"></td>
                             <td class="col-md-2 vert-align"></td>
+                            <td class="col-md-2 vert-align"></td>
                             <td class="col-md-1 vert-align"></td>
                             <td class="col-md-1 vert-align">
                                 <a>
@@ -235,6 +251,7 @@ and open the template in the editor.
                             <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"></td>
                             <td class="col-md-2 vert-align"></td>
+                            <td class="col-md-2 vert-align"></td>
                             <td class="col-md-1 vert-align"></td>
                             <td class="col-md-1 vert-align"></td>
                             <td class="col-md-1 vert-align"><b></b></td>
@@ -256,12 +273,15 @@ and open the template in the editor.
                             <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
+                            <td class="col-md-2 vert-align"><b></b></td>
                             <td class="col-md-1 vert-align"></td>
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-1 vert-align"><b></b></td>
                             <td class="col-md-2 vert-align" id="projects-add-button">
-                                <button class="btn btn-primary tableButton"  id="pe_addProject_button"
-                                        type="button" ng-hide="isUnprivileged === 'true'"
+                                <button class="btn btn-primary tableButton"
+                                        id="pe_addProject_button"
+                                        type="button"
+                                        ng-hide="isUnprivileged === 'true'"
                                         ng-click="openProjectAddModal()">
                                     + Project
                                 </button>
@@ -271,7 +291,6 @@ and open the template in the editor.
 
                 </table>
             </div>
-
 
 </div>
 

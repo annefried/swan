@@ -139,7 +139,7 @@ angular
             };
 
             /**
-             * Redirects to the AnnotationTool
+             * Redirects to the annotation tool.
              *
              * @param {String} docId The document id to annotate
              * @param {String} docName name
