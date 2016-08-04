@@ -10,44 +10,47 @@ and open the template in the editor.
 
 <div>
     <div>
-
-        <div>
-
-            <div class="col-md-7" ng-controller="d3AnnotationController as d3Anno" ng-mouseup="d3Anno.UpdateSelectionText()">
-
-                <div class="annotationtitle filename" id="1-anno-tool">
-                    <label class="headerinfo">Project: </label>
-                    <label class="infotitle">{{d3Anno.project}}&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <label class="headerinfo">Document: </label>
-                    <label class="infotitle">{{d3Anno.title}}</label>
-                    <label ng-hide="isUnprivileged == 'false'">&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <div style="display: inline-block;"
-                        ng-controller="annotationController as annoCon"
-                        ng-hide="isUnprivileged == 'false'">
-                        <input type="checkbox"
-                               value=""
-                               style="margin: 0px;"
-                               ng-model="completed"
-                               ng-click="annoCon.setDocCompleted()">
-                        <label>Completed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <div class="row" style="display: inline-block;">
-                            <button class="btn btn-default"
-                                    style="text-align:center; width:80px; line-height: 18px;"
-                                    ng-click="annoCon.nextDoc(-1)">
-                                <span class="glyphicon glyphicon-chevron-left pull-left"
-                                      style="display: inline-block;"></span> Previous
-                            </button>
-                            <button class="btn btn-default"
-                                    style="text-align:center; width:80px; line-height: 18px;"
-                                    ng-click="annoCon.nextDoc(1)">
-                                <span class="glyphicon glyphicon-chevron-right pull-right"
-                                      style="display: inline-block;"></span> Next
-                            </button>
+        <div class="top-bar">
+            <div class="container-title">
+                <div class="row">
+                    <div class="col-md-8" id="1-anno-tool" ng-controller="d3AnnotationController as d3Anno">
+                        <label class="headerinfo">Project: </label>
+                        <label class="infotitle">{{d3Anno.project}}&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label class="headerinfo">Document: </label>
+                        <label class="infotitle">{{d3Anno.title}}</label>
+                        <label ng-hide="isUnprivileged == 'false'">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <div style="display: inline-block;"
+                             ng-controller="annotationController as annoCon"
+                             ng-hide="isUnprivileged == 'false'" align="right">
+                            <input type="checkbox"
+                                   value=""
+                                   style="margin: 0px;"
+                                   ng-model="completed"
+                                   ng-click="annoCon.setDocCompleted()">
+                            <label>Completed</label>
                         </div>
                     </div>
+                    <div class="col-md-4" ng-controller="annotationController as annoCon"
+                         ng-hide="isUnprivileged == 'false'" align="right">
+                        <button class="btn btn-default"
+                                style="text-align:center; width:100px; line-height: 18px;"
+                                ng-click="annoCon.nextDoc(-1)">
+                                    <span class="glyphicon glyphicon-chevron-left pull-left"
+                                          style="display: inline-block;"></span> Previous
+                        </button>
+                        <button class="btn btn-default"
+                                style="text-align:center; width:100px; line-height: 18px;"
+                                ng-click="annoCon.nextDoc(1)">
+                                    <span class="glyphicon glyphicon-chevron-right pull-right"
+                                          style="display: inline-block;"></span> Next
+                        </button>
+                    </div>
                 </div>
+           </div>
+         </div>
 
-                <hr class="featurette-divider">
+        <div>
+            <div class="col-md-7" ng-controller="d3AnnotationController as d3Anno" ng-mouseup="d3Anno.UpdateSelectionText()">
 
                 <div class="annotationfield">
                     <uib-alert ng-repeat="alert in alerts"
