@@ -9,7 +9,7 @@ Its key features are:
 Check out the [GitHub Wiki](https://github.com/annefried/swan/wiki) for more information on functionality and setup!
 
 Want to try it out?
-Find our web demo [here](http://discanno.coli.uni-saarland.de).
+Find our web demo [here](http://swan.coli.uni-saarland.de).
 
 
 ## Technologies
