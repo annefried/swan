@@ -94,7 +94,9 @@ angular
                 for(var p = 0; p < projComplAdmin.length; p++) projComplAdmin[p] = 0;
                 var documents = [];
 
-                const projComplUser = $scope.buildDocuments(proj, documents, projComplAdmin);
+                const retVal = $scope.buildDocuments(proj, documents, projComplAdmin);
+                const lastEditedDocument = retVal.lastEditedDocument;
+                const projComplUser = retVal.projComplUser;
                 const projCompl = $scope.isUnprivileged === 'true' ? projComplUser : projComplAdmin;
                 const template = {
                     'id': proj.id,
@@ -107,7 +109,8 @@ angular
                     'documents': documents,
                     'pms': proj.projectManager,
                     'watchingUsers': proj.watchingUsers,
-                    'isWatching': $rootScope.containsUser(proj.watchingUsers, currUser)
+                    'isWatching': $rootScope.containsUser(proj.watchingUsers, currUser),
+                    'lastEditedDocument': lastEditedDocument
                 };
                 
                 $rootScope.tableProjects.push(template);
@@ -121,6 +124,7 @@ angular
             // the progress bars.
             const userIdIndexMap = $rootScope.getUserIdIndexMap(proj.users);
             var projComplUser = 0;
+            var lastEditedDocComp = { lastEditedDocument: null, lastEdit: -1 };
 
             for (var j = 0; j < proj.documents.length; j++) {
 
@@ -163,6 +167,10 @@ angular
                     }
                     docCompl = states[usrPos].completed;
                     lastEdit = states[usrPos].lastEdit;
+
+                    if (lastEdit > lastEditedDocComp.lastEdit) {
+                        lastEditedDocComp = { lastEditedDocument: doc, lastEdit: lastEdit };
+                    }
                 }
                 // role: admin/ project manager
                 else {
@@ -191,7 +199,7 @@ angular
             // Sort the documents alphabetically
             documents.sort($rootScope.compareDocumentsByName);
 
-            return projComplUser;
+            return {lastEditedDocument: lastEditedDocComp.lastEditedDocument, projComplUser: projComplUser};
         };
 
         $rootScope.getUserIdIndexMap = function (users) {
