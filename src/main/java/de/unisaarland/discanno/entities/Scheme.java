@@ -39,17 +39,17 @@ import javax.xml.bind.annotation.XmlRootElement;
         query = "SELECT DISTINCT s " +
                 "FROM Scheme s " +
                 "LEFT JOIN FETCH s.creator " +
-                "LEFT JOIN FETCH s.targetTypes " +
+                "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.labelSets " +
-                "LEFT JOIN FETCH s.linkSets " +
+                "LEFT JOIN FETCH s.linkTypes " +
                 "LEFT JOIN FETCH s.projects " +
                 "WHERE s.id = :" + Scheme.PARAM_SCHEME_ID,
         hints = {
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.appliesToTargetTypes"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.appliesToSpanTypes"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.labels"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.startType"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.endType"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkSets.linkLabels")
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.startSpanType"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.endSpanType"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels")
         }
     ),
     @NamedQuery(
@@ -57,9 +57,9 @@ import javax.xml.bind.annotation.XmlRootElement;
         query = "SELECT DISTINCT s " +
                 "FROM Scheme s " +
                 "LEFT JOIN FETCH s.creator " +
-                "LEFT JOIN FETCH s.targetTypes " +
+                "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.labelSets " +
-                "LEFT JOIN FETCH s.linkSets " +
+                "LEFT JOIN FETCH s.linkTypes " +
                 "LEFT JOIN FETCH s.projects " +
                     "WHERE EXISTS( " +
                             "SELECT d " +
@@ -107,12 +107,20 @@ public class Scheme extends BaseEntity {
     private Users creator;
     
     @JsonView({ View.Scheme.class })
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
+                fetch = FetchType.EAGER)
+    @JoinTable(name="SCHEME_VISELEMENTS", 
+          joinColumns=@JoinColumn(name="SCHEME_ID"),
+          inverseJoinColumns=@JoinColumn(name="VISELEMENT_ID"))
+    private List<VisualizationElement> visElements = new ArrayList();
+
+    @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
-    @JoinTable(name="SCHEME_TARGETTYPE", 
+    @JoinTable(name="SCHEME_SPANTYPE", 
           joinColumns=@JoinColumn(name="SCHEME_ID"),
-          inverseJoinColumns=@JoinColumn(name="TARGETTYPE"))
-    private Set<TargetType> targetTypes = new HashSet();
+          inverseJoinColumns=@JoinColumn(name="SPANTYPE"))
+    private Set<SpanType> spanTypes = new HashSet();
     
     @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
@@ -125,10 +133,10 @@ public class Scheme extends BaseEntity {
     @JsonView({ View.Scheme.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
-    @JoinTable(name="SCHEME_LINKSET", 
+    @JoinTable(name="SCHEME_LINKTYPE", 
           joinColumns=@JoinColumn(name="SCHEME_ID"),
-          inverseJoinColumns=@JoinColumn(name="LINKSET_ID"))
-    private List<LinkSet> linkSets = new ArrayList();
+          inverseJoinColumns=@JoinColumn(name="LINKTYPE_ID"))
+    private List<LinkType> linkTypes = new ArrayList();
 
     @JsonView({ View.Scheme.class, View.Schemes.class })
     @OneToMany(mappedBy = "scheme",
@@ -153,16 +161,24 @@ public class Scheme extends BaseEntity {
         this.creator = creator;
     }
 
-    public Set<TargetType> getTargetTypes() {
-        return targetTypes;
+    public List<VisualizationElement> getVisElements() {
+        return visElements;
     }
 
-    public void setTargetTypes(Set<TargetType> targetTypes) {
-        this.targetTypes = targetTypes;
+    public void setVisElements(List<VisualizationElement> visElements) {
+        this.visElements = visElements;
+    }
+
+    public Set<SpanType> getSpanTypes() {
+        return spanTypes;
+    }
+
+    public void setSpanTypes(Set<SpanType> spanTypes) {
+        this.spanTypes = spanTypes;
     }
     
-    public void addTargetTypes(TargetType targetType) {
-        this.targetTypes.add(targetType);
+    public void addSpanTypes(SpanType spanType) {
+        this.spanTypes.add(spanType);
     }
 
     public List<LabelSet> getLabelSets() {
@@ -177,16 +193,16 @@ public class Scheme extends BaseEntity {
         this.labelSets.add(labelSet);
     }
 
-    public List<LinkSet> getLinkSets() {
-        return linkSets;
+    public List<LinkType> getLinkTypes() {
+        return linkTypes;
     }
 
-    public void setLinkSets(List<LinkSet> linksets) {
-        this.linkSets = linksets;
+    public void setLinkTypes(List<LinkType> linkTypes) {
+        this.linkTypes = linkTypes;
     }
 
-    public void addLinkSet(LinkSet linkset) {
-        this.linkSets.add(linkset);
+    public void addLinkType(LinkType linkType) {
+        this.linkTypes.add(linkType);
     }
 
     public Set<Project> getProjects() {

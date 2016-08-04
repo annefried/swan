@@ -79,13 +79,13 @@ public class Service {
     LinkLabelDAO linkLabelDAO;
     
     @EJB
-    LinkSetDAO linkSetDAO;
+    LinkTypeDAO linkTypeDAO;
     
     @EJB
     LabelSetDAO labelSetDAO;
     
     @EJB
-    TargetTypeDAO targetTypeDAO;
+    SpanTypeDAO spanTypeDAO;
     
     @EJB
     EmailProvider emailProvider;
@@ -131,7 +131,8 @@ public class Service {
     public List<Line> getTokensByDocId(Long docId) {
         
         Document doc = (Document) documentDAO.find(docId, true);
-        List<Line> lines = TokenizationUtil.tokenize(doc.getText());
+        String lang = doc.getProject().getTokenizationLang().toString();
+        List<Line> lines = TokenizationUtil.tokenize(doc.getText(), lang);
         
         return lines;
     }
@@ -168,11 +169,11 @@ public class Service {
             entity.setDocument(doc);
             updateDocument(doc, user);
 
-            TargetType targetType = (TargetType) targetTypeDAO.find(entity.getTargetType().getTargetType(), false);
-            entity.setTargetType(targetType);
+            SpanType spanType = (SpanType) spanTypeDAO.find(entity.getSpanType().getName(), false);
+            entity.setSpanType(spanType);
 
             for (LabelLabelSetMap m : entity.getLabelMap()) {
-                Label newLabel = (Label) labelDAO.find(m.getLabel().getLabelId(), false);
+                Label newLabel = (Label) labelDAO.find(m.getLabel().getName(), false);
 
                 Set<LabelSet> labelSets = new HashSet<>();
                 for (LabelSet ls : m.getLabelSets()) {
@@ -241,124 +242,62 @@ public class Service {
             }
             entity.setProjects(projects);
 
-            Map<String, TargetType> ttMap = new HashMap<>();
-            Set<TargetType> targetTypes = new HashSet<>();
-            for (TargetType t : entity.getTargetTypes()) {
+            Map<String, SpanType> ttMap = new HashMap<>();
+            Set<SpanType> spanTypes = new HashSet<>();
+            for (SpanType t : entity.getSpanTypes()) {
 
-                TargetType targetType = (TargetType) targetTypeDAO.find(t.getTargetType(), true);
+                SpanType spanType = (SpanType) spanTypeDAO.find(t.getName(), true);
 
-                if (targetType == null) {
-                    targetTypes.add(t);
-                    ttMap.put(t.getTargetType(), t);
+                if (spanType == null) {
+                    spanTypes.add(t);
+                    ttMap.put(t.getName(), t);
                 } else {
-                    targetTypes.add(targetType);
-                    ttMap.put(targetType.getTargetType(), targetType);
+                    spanTypes.add(spanType);
+                    ttMap.put(spanType.getName(), spanType);
                 }
             }
 
-            if (targetTypes.isEmpty()) {
-                throw new CreateException("Service: No TargetTypes declared.");
+            if (spanTypes.isEmpty()) {
+                throw new CreateException("Service: No span types declared.");
             }
 
-            entity.setTargetTypes(targetTypes);
+            entity.setSpanTypes(spanTypes);
 
             List<LabelSet> labelSets = new ArrayList<>();
-            Map<String, Label> labelMap = new HashMap<>();
             for (LabelSet ls : entity.getLabelSets()) {
+                labelSets.add(ls);
 
-                if (ls.getId() == null) {
-                    labelSets.add(ls);
-
-                    Set<TargetType> targetTypesLs = new HashSet<>();
-                    for (TargetType t : ls.getAppliesToTargetTypes()) {
-                        targetTypesLs.add(ttMap.get(t.getTargetType()));
-                        t.addLabelSets(ls);
-                    }
-                    ls.setAppliesToTargetTypes(targetTypesLs);
-
-                    Set<Label> labels = new HashSet<>();
-                    for (Label l : ls.getLabels()) {
-
-                        Label label = (Label) labelDAO.find(l.getLabelId(), true);
-                        Label label2 = labelMap.get(l.getLabelId());
-
-                        if (label2 != null) {
-                            labels.add(label2);
-                        } else if (label == null) {
-                            labels.add(l);
-                            labelMap.put(l.getLabelId(), l);
-                        } else {
-                            labels.add(label);
-                        }
-                    }
-                    ls.setLabels(labels);
-
-                    for (Label l : ls.getLabels()) {
-                        l.addLabelSet(ls);
-                    }
-
-                } else {
-                    LabelSet labelSet = (LabelSet) labelSetDAO.find(ls.getId(), true);
-
-                    if (labelSet == null) {
-                        labelSets.add(ls);
-                    } else {
-                        labelSets.add(labelSet);
-                    }
+                Set<SpanType> spanTypesLs = new HashSet<>();
+                for (SpanType t : ls.getAppliesToSpanTypes()) {
+                    spanTypesLs.add(ttMap.get(t.getName()));
+                    t.addLabelSets(ls);
                 }
+                ls.setAppliesToSpanTypes(spanTypesLs);
 
+                for (Label l : ls.getLabels()) {
+                    l.addLabelSet(ls);
+                }
             }
             entity.setLabelSets(labelSets);
 
-            List<LinkSet> linkSets = new ArrayList<>();
-            Map<String, LinkLabel> linkLabelMap = new HashMap<>();
-            for (LinkSet ls : entity.getLinkSets()) {
+            List<LinkType> linkTypes = new ArrayList<>();
+            for (LinkType ls : entity.getLinkTypes()) {
+                linkTypes.add(ls);
 
-                if (ls.getId() == null) {
-                    linkSets.add(ls);
+                SpanType st = ttMap.get(ls.getStartSpanType().getName());
+                if (st == null) throw new CreateException("Service: start span type null.");
+                ls.setStartSpanType(st);
 
-                    TargetType st = ttMap.get(ls.getStartType().getTargetType());
-                    if (st == null) throw new CreateException("Service: start type null.");
-                    ls.setStartType(st);
-
-                    TargetType et = ttMap.get(ls.getEndType().getTargetType());
-                    if (et == null) throw new CreateException("Service: end type null.");
-                    ls.setEndType(et);
-
-                    Set<LinkLabel> labels = new HashSet<>();
-                    for (LinkLabel l : ls.getLinkLabels()) {
-
-                        LinkLabel label = (LinkLabel) linkLabelDAO.find(l.getLinkLabel(), true);
-                        LinkLabel label2 = linkLabelMap.get(l.getLinkLabel());
-
-                        if (label2 != null) {
-                            labels.add(label2);
-                        } else if (label == null) {
-                            labels.add(l);
-                            linkLabelMap.put(l.getLinkLabel(), l);
-                        } else {
-                            labels.add(label);
-                        }
-                    }
-                    ls.setLinkLabels(labels);
-
-                    for (LinkLabel l : ls.getLinkLabels()) {
-                        l.addLinkSet(ls);
-                    }
-
-                } else {
-                    LinkSet linkSet = (LinkSet) linkSetDAO.find(ls.getId(), true);
-
-                    if (linkSet == null) {
-                        linkSets.add(ls);
-                    } else {
-                        linkSets.add(linkSet);
-                    }   
+                SpanType et = ttMap.get(ls.getEndSpanType().getName());
+                if (et == null) throw new CreateException("Service: end span type null.");
+                ls.setEndSpanType(et);
+                
+                for (LinkLabel ll : ls.getLinkLabels()) {
+                    ll.addLinkType(ls);
                 }
-
             }
 
-            entity.setLinkSets(linkSets);
+            entity.setLinkTypes(linkTypes);
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -398,17 +337,17 @@ public class Service {
             }
             entity.setAnnotation2(anno2);
 
-            for (LinkLabelLinkSetMap m : entity.getLabelMap()) {
-                LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(m.getLabel().getLinkLabel(), false);
+            for (LinkLabelLinkTypeMap m : entity.getLabelMap()) {
+                LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(m.getLabel().getName(), false);
 
-                Set<LinkSet> linkSets = new HashSet<>();
-                for (LinkSet ls : m.getLinkSets()) {
-                    LinkSet newLinkSet = (LinkSet) linkSetDAO.find(ls.getId(), false);
-                    linkSets.add(newLinkSet);
+                Set<LinkType> linkTypes = new HashSet<>();
+                for (LinkType ls : m.getLinkTypes()) {
+                    LinkType newLinkType = (LinkType) linkTypeDAO.find(ls.getId(), false);
+                    linkTypes.add(newLinkType);
                 }
 
                 m.setLabel(newLabel);
-                m.setLinkSets(linkSets);
+                m.setLinkTypes(linkTypes);
             }
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
@@ -490,7 +429,7 @@ public class Service {
     public void addUserToProject(Long projId, Long userId) throws CloneNotSupportedException, CreateException {
         
         try {
-            Project proj = (Project) projectDAO.find(projId, false);
+            Project proj = (Project) projectDAO.getProjectToAddUser(projId);
             Users user =  (Users) usersDAO.find(userId, false);
 
             user.getProjects().add(proj);
@@ -557,7 +496,7 @@ public class Service {
                 throw new CreateException("Service: Adding Label to Annotation failed");
             }
 
-            Label newLabel = (Label) labelDAO.find(label.getLabelId(), false);
+            Label newLabel = (Label) labelDAO.find(label.getId(), false);
             LabelSet newLabelSet = (LabelSet) labelSetDAO.find(label.getLabelSet().get(0).getId(), false);
 
             // If LabelSet is exclusive check if this LabelSet was added already
@@ -628,24 +567,24 @@ public class Service {
         Link link = (Link) linkDAO.find(linkId, false);
         updateDocument(link.getDocument(), link.getUser());
         
-        if (label.getLinkSet().size() != 1 || label.getLinkSet().get(0) == null) {
+        if (label.getLinkType().size() != 1 || label.getLinkType().get(0) == null) {
             throw new CreateException("Service: Adding LinkLabel to Link failed.");
         }
         
         try {
-            LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(label.getLinkLabel(), false);
-            LinkSet newLinkSet = (LinkSet) linkSetDAO.find(label.getLinkSet().get(0).getId(), false);
+            LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(label.getId(), false);
+            LinkType newLinkType = (LinkType) linkTypeDAO.find(label.getLinkType().get(0).getId(), false);
 
-            for (LinkLabelLinkSetMap m : link.getLabelMap()) {
-                // Use an iterator because we may have to delete a LinkSet
-                Iterator<LinkSet> iterator = m.getLinkSets().iterator();
+            for (LinkLabelLinkTypeMap m : link.getLabelMap()) {
+                // Use an iterator because we may have to delete a LinkType
+                Iterator<LinkType> iterator = m.getLinkTypes().iterator();
                 while (iterator.hasNext()) {
-                    LinkSet ls = iterator.next();
+                    LinkType ls = iterator.next();
 
-                    if (ls.equals(newLinkSet)) {
-                        // If the size of the LinkSets corresponding to the LinkLabel
+                    if (ls.equals(newLinkType)) {
+                        // If the size of the LinkTypes corresponding to the LinkLabel
                         // is 1, we can just change the Label
-                        if (m.getLinkSets().size() == 1) {
+                        if (m.getLinkTypes().size() == 1) {
                             m.setLabel(newLabel);
                             return link;
                         } else {
@@ -655,11 +594,11 @@ public class Service {
                                 // The given LinkLabel doesn't differ from the current one
                                 return link;
                             } else {
-                                // We have to delete the current LinkSet because
-                                // it is exclusive and add another LinkLabelLinkSetMap
-                                // containing the new LinkLabel and LinkSet
+                                // We have to delete the current LinkType because
+                                // it is exclusive and add another LinkLabelLinkTypeMap
+                                // containing the new LinkLabel and LinkType
                                 iterator.remove();
-                                addNewLinkLabelLinkSetMapToLink(link, newLabel, newLinkSet);
+                                addNewLinkLabelLinkTypeMapToLink(link, newLabel, newLinkType);
                                 return link;
                             }
                         }
@@ -668,9 +607,9 @@ public class Service {
                 }
             }
 
-            // Label does not exist and a LinkLabelLinkSetMap object must be created
+            // Label does not exist and a LinkLabelLinkTypeMap object must be created
             // and added to the label
-            addNewLinkLabelLinkSetMapToLink(link, newLabel, newLinkSet);
+            addNewLinkLabelLinkTypeMapToLink(link, newLabel, newLinkType);
             return link;
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
@@ -697,18 +636,19 @@ public class Service {
      * 
      * @param link
      * @param newLabel
-     * @param newLinkSet 
+     * @param newLinkType 
      */
-    private void addNewLinkLabelLinkSetMapToLink(Link link, LinkLabel newLabel, LinkSet newLinkSet) {
-        LinkLabelLinkSetMap map = new LinkLabelLinkSetMap();
+    private void addNewLinkLabelLinkTypeMapToLink(Link link, LinkLabel newLabel, LinkType newLinkType) {
+        LinkLabelLinkTypeMap map = new LinkLabelLinkTypeMap();
         map.setLabel(newLabel);
-        map.addLinkSets(newLinkSet);
+        map.addLinkTypes(newLinkType);
         link.addLabelMap(map);
     }
     
     private void checkTargets(Document entity) throws CreateException {
-        
-        HashMap<String, HashMap<Integer, CoreLabel>> maps = TokenizationUtil.getTokenMap(entity.getText());
+
+        String lang = entity.getProject().getTokenizationLang().toString();
+        HashMap<String, HashMap<Integer, CoreLabel>> maps = TokenizationUtil.getTokenMap(entity.getText(), lang);
         HashMap<Integer, CoreLabel> mapStart = maps.get("start");
         HashMap<Integer, CoreLabel> mapEnd = maps.get("end");
         
@@ -720,11 +660,11 @@ public class Service {
             a.setNotSure(false);
             a.setUser(null);
             
-            if (a.getTargetType() == null) {
-                throw new CreateException("Service: No targetype specified!");
+            if (a.getSpanType() == null) {
+                throw new CreateException("Service: No span type specified!");
             } else {
-                TargetType tt = (TargetType) targetTypeDAO.find(a.getTargetType().getTargetType(), false);
-                a.setTargetType(tt);
+                SpanType tt = (SpanType) spanTypeDAO.find(a.getSpanType().getName(), false);
+                a.setSpanType(tt);
             }
             if (mapStart.get(a.getStart()) == null) {
                 throw new CreateException(
@@ -812,15 +752,15 @@ public class Service {
         }
     }
     
-    public Annotation changeTargetType(Long annoId, TargetType targetType) throws CreateException {
+    public Annotation changeSpanType(Long annoId, SpanType spanType) throws CreateException {
 
         try {
             Annotation anno = (Annotation) annotationDAO.find(annoId, false);
             updateDocument(anno.getDocument(), anno.getUser());
 
-            targetType = (TargetType) targetTypeDAO.find(targetType.getTargetType(), false);
+            spanType = (SpanType) spanTypeDAO.find(spanType.getName(), false);
 
-            anno.setTargetType(targetType);
+            anno.setSpanType(spanType);
 
             // Delete all links connected to the Annotation
             List<Link> linkList = linkDAO.getAllLinksByAnnoId(annoId);
@@ -1018,16 +958,16 @@ public class Service {
     
     public void removeLabelFromLink(Link link, LinkLabel label) throws CreateException {
 
-        if (label.getLinkSet().size() != 1) {
+        if (label.getLinkType().size() != 1) {
             throw new CreateException("Service: LabelSet size in Label is not 1.");
         }
         
         try {
-            LinkSet ls = label.getLinkSet().get(0);
+            LinkType ls = label.getLinkType().get(0);
 
-            for (LinkLabelLinkSetMap map : link.getLabelMap()) {
+            for (LinkLabelLinkTypeMap map : link.getLabelMap()) {
                 if (map.getLabel().equals(label)
-                        && map.getLinkSets().contains(ls)) {
+                        && map.getLinkTypes().contains(ls)) {
                     link.removeLabel(map, ls);
                     linkDAO.merge(link);
                     return;

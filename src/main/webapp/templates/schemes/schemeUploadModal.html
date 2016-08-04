@@ -30,12 +30,12 @@ and open the template in the editor.
                 <!-- 1. row -->
                 <div class="row">
                     <div class="form-group col-lg-6">
-                        <input ng-model=collapse type="checkbox" id="sb_createFromExisting">
+                        <input ng-model="collapseUpload" type="checkbox" id="sb_createFromExisting">
                         <label for="sb_createFromExisting">Create from existing scheme</label>
                     </div>
 
                     <!-- Upload scheme or select from existing schemes -->
-                    <div class="form-group col-lg-12" ng-show=collapse>
+                    <div class="form-group col-lg-12" ng-show="collapseUpload">
                         <div class="sb_left">
                             <label>Load existing scheme from database...</label>
                             <div class="sb_inputText">
@@ -46,7 +46,7 @@ and open the template in the editor.
                             </div>
                             <button class="btn btn-success btn-sm" 
                                     type="button"
-                                    ng-click="loadPreloadedScheme(preloadedScheme);"
+                                    ng-click="loadPreloadedScheme(preloadedScheme)"
                                     ng-disabled="preloadedScheme === undefined"
                                     id="sb_loadbutton">
                                 Load scheme
@@ -59,12 +59,13 @@ and open the template in the editor.
                                    ng-model="file"  
                                    name="scheme"
                                    accept=".xml,.json"
-                                   on-read-file="this.saveScheme($fileContent)"/>
+                                   on-read-file="this.uploadScheme($fileContent)"/>
                         </div>
 
                     </div>
                 </div>
                 <hr/>
+                
                 <div class="row">
                     <!-- Scheme name -->
                     <div class="form-group col-lg-9">
@@ -73,14 +74,98 @@ and open the template in the editor.
                             <input type="text" id="scheme-name-input"
                                    placeholder="Enter name..." 
                                    class="form-control sb_inputName"
-                                   ng-model="name"/>
+                                   ng-model="schemeName"/>
                         </div>
                     </div>
                 </div>
                 <hr>
-                <!-- 3. row -->
+                
+                <!-- Note: the checked HTML attributes for radio buttons do not work here -->
+                <label>Select the visualization:</label>
                 <div class="row">
-                    <!-- Target Types -->
+                    <div class="form-group" ng-init="visKind='None'">
+                        <div class="col-lg-3">
+                            <label class="radio-inline">
+                                <input type="radio"
+                                       name="optradioVis"
+                                       value="None"
+                                       ng-model="visKind"
+                                       ng-change="watchVisualizationChange(visKind)">
+                                None
+                            </label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="radio-inline">
+                                <input type="radio"
+                                       name="optradioVis"
+                                       value="Graph"
+                                       ng-model="visKind"
+                                       ng-change="watchVisualizationChange(visKind)">
+                                Graph
+                            </label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="radio-inline">
+                                <input type="radio"
+                                       name="optradioVis"
+                                       value="Timeline"
+                                       ng-model="visKind"
+                                       ng-change="watchVisualizationChange(visKind)">
+                                Timeline
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="row" ng-show="noView.checked || graphView.checked || timelineView.checked">
+                    <div class="form-group col-lg-3">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <div class="radio" ng-show="graphView.checked">
+                            <label>
+                                <input type="radio"
+                                       name="optradioGraph"
+                                       ng-model="graphView.state"
+                                       value="opened">
+                                is open
+                            </label>
+                        </div>
+                        <div class="radio" ng-show="graphView.checked">
+                            <label>
+                                <input type="radio"
+                                       name="optradioGraph"
+                                       ng-model="graphView.state"
+                                       value="closed">
+                                is closed
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <div class="radio" ng-show="timelineView.checked">
+                            <label>
+                                <input type="radio"
+                                       name="optradioTimeline"
+                                       ng-model="timelineView.state"
+                                       value="opened"
+                                       checked="checked">
+                                is open
+                            </label>
+                        </div>
+                        <div class="radio" ng-show="timelineView.checked">
+                            <label>
+                                <input type="radio"
+                                       name="optradioTimeline"
+                                       ng-model="timelineView.state"
+                                       value="closed">
+                                is closed
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                
+                <div class="row">
+                    <!-- Span Types -->
                     <div class="form-group col-lg-7">
                         <div class="form-group" >
                             <label>
@@ -88,14 +173,14 @@ and open the template in the editor.
                             </label>
                             <table class="listingTable">
                                 <tbody>
-                                    <tr ng-repeat="target in this.targets">
+                                    <tr ng-repeat="spanType in this.spanTypes">
                                         <td class="tableRowWithGlyph">
-                                            {{target}}
+                                            {{spanType.name}}
                                         </td>
                                         <td>
                                             <span class="glyphicon glyphicon-remove"
                                                   style="color:red;" 
-                                                  ng-click="removeTargeType(target)">
+                                                  ng-click="removeSpanType(spanType)">
                                             </span>
                                         </td>
                                     </tr>  
@@ -103,14 +188,16 @@ and open the template in the editor.
                             </table>
                         </div>
                         <div class="input-group col-lg-6 sb_inputName">
-                            <input type="text" ng-model="targetTypeToAdd" 
+                            <input type="text"
+                                   ng-model="spanTypeName"
                                    class="form-control input-sm" 
                                    placeholder="Enter type name...">
                             <span class="input-group-btn">
                                 <button class="btn btn-default btn-sm" 
-                                        type="button"  id="span-types-input"
-                                        ng-disabled="targetTypeToAdd === undefined"
-                                        ng-click="addTargetType(targetTypeToAdd)">
+                                        type="button"
+                                        id="span-types-input"
+                                        ng-disabled="disableTextInputButton(spanTypeName)"
+                                        ng-click="addSpanType(spanTypeName)">
                                     Add
                                 </button>
                             </span>
@@ -118,24 +205,23 @@ and open the template in the editor.
                     </div>
                 </div>
                 <hr/>
+                
                 <div class="row">
                     <div class="form-group col-lg-12" >
-                        <label>
-                            Label sets
-                        </label>
-                        <table class="form-group labelLinkSetTable table">
+                        <label>Label sets:</label>
+                        <table class="form-group labelLinkTypeTable table">
                             <thead class="headDark">
                             <th class="col-md-2">
-                                name
+                                Name
                             </th>
                             <th class="col-md-1">
-                                exclusive?
+                                Exclusive?
                             </th>
                             <th class="col-md-2">
-                                types
+                                Span types
                             </th>
                             <th class="col-md-1">
-                                labels
+                                Labels
                             </th>
                             <th class="col-md-1"/>
                             </thead>
@@ -148,13 +234,13 @@ and open the template in the editor.
                                         {{labelSet.exclusive}}
                                     </td>
                                     <td>
-                                        <p ng-repeat="target in labelSet.appliesToTargetTypes">
-                                            {{target}}
+                                        <p ng-repeat="spanType in labelSet.appliesToSpanTypes">
+                                            {{spanType.name}}
                                         </p>
                                     </td>
                                     <td>
                                         <p ng-repeat="label in labelSet.labels">
-                                            {{label}}
+                                            {{label.name}}
                                         </p>
                                     </td>
                                     <td>
@@ -170,48 +256,51 @@ and open the template in the editor.
                             </tbody>
                         </table>
                         <hr/>
-                        <label>
-                            Link sets
-                        </label>
-                        <table class="form-group labelLinkSetTable table">
+                        
+                        <!-- Depending on the setting the label text can change -->
+                        <label ng-bind="getLinkTypeHeadline()">Link types:</label>
+                        <label ng-show="timelineView.checked" class="sb_graySmalltext">When timeline is selected only one link type is allowed, the link type has to be exclusive and each link label must have one relative position assigned.</label>
+                        <table class="form-group labelLinkTypeTable table">
                             <thead class="headDark">
                             <th class="col-md-2">
-                                name
+                                Name
                             </th>
                             <th class="col-md-1">
-                                start type
+                                Start s. type
                             </th>
                             <th class="col-md-1">
-                                end type
+                                End s. type
                             </th>
-                            <th class="col-md-2">
-                                labels
+                            <th class="col-md-1">
+                                Labels
                             </th>
-                            <th class="col-md-1" />
+                            <th class="col-md-1"/>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="linkSet in linkSets">
+                                <tr ng-repeat="linkType in linkTypes">
                                     <td>
-                                        {{linkSet.name}}
+                                        {{linkType.name}}
                                     </td>
                                     <td>
-                                        {{linkSet.startType}}
+                                        {{linkType.startSpanType.name}}
                                     </td>
                                     <td>
-                                        {{linkSet.endType}}
+                                        {{linkType.endSpanType.name}}
                                     </td>
-                                    <td> 
-                                        <p ng-repeat="label in linkSet.linkLabels">
-                                            {{label}}
-                                        </p>
+                                    <td>
+                                        <div ng-repeat="label in linkType.linkLabels" style="inline-box-align: initial">
+                                            <p>{{label.name}}</p>
+                                            <span ng-show="label.options.length > 0">{{label.options}}</span>
+
+                                        </div>
                                     </td>
                                     <td>
                                         <span class="glyphicon glyphicon-edit" 
-                                              ng-click="editLinkSet(linkSet)">
+                                              ng-click="editLinkType(linkType.name)">
                                         </span>
                                         <span class="glyphicon glyphicon-remove" 
                                               style="color:red;"
-                                              ng-click="removeLinkSet(linkSet)">
+                                              ng-click="removeLinkType(linkType.name)">
                                         </span>
                                     </td>
                                 </tr>
@@ -220,7 +309,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 <hr>
-                <!-- 4. row -->
+                
                 <div class="row">
                     <!-- Label Sets -->
                     <div class="form-group col-xs-6 sb_left vr_right" id="addLabelSetsDiv">
@@ -231,7 +320,7 @@ and open the template in the editor.
                             <label>
                                 Name:
                             </label>
-                            <input type="text" placeholder="Enter name...." 
+                            <input type="text" placeholder="Enter name..." 
                                    class="form-control input-sm" 
                                    ng-model="nameLabelSet"/>
                         </div>
@@ -251,30 +340,31 @@ and open the template in the editor.
                             </label>
                             <table class="listingTable form-group">
                                 <tbody>
-                                    <tr ng-repeat="target in this.selectedTargetsLabel">
+                                    <tr ng-repeat="spanType in this.selectedSpanTypesOfLabelSet">
                                         <td class="tableRowWithGlyph">
-                                            {{target}}
+                                            {{spanType.name}}
                                         </td>
                                         <td>
                                             <span class="glyphicon glyphicon-remove"
                                                   style="color:red;"
-                                                  ng-click="removeTargetTypeLabel(target)">
+                                                  ng-click="removeSpanTypeFromLabelSet(spanType.name)">
                                             </span>
                                         </td>
                                     </tr>  
                                 </tbody>
                             </table>
-                            <div class = "btn-group">
-                                <button type = "button" class="btn btn-default dropdown-toggle btn-sm"
-                                        data-toggle = "dropdown">
+                            <div class="btn-group">
+                                <button type="button"
+                                        class="btn btn-default dropdown-toggle btn-sm"
+                                        data-toggle="dropdown">
                                     Add span type
-                                    <span class = "caret">
+                                    <span class="caret">
                                     </span>
                                 </button>
-                                <ul class = "dropdown-menu" role = "menu">
-                                    <li  ng-repeat="target in this.targets| filter:selectedTargetsLabelFilter">
-                                        <a ng-click="addTargetTypeLabel(target);">
-                                            {{target}}
+                                <ul class="dropdown-menu" role="menu">
+                                    <li ng-repeat="spanType in this.spanTypes| filter:selectedSpanTypeLabelSetFilter">
+                                        <a ng-click="addSpanTypeToLabelSet(spanType)">
+                                            {{spanType.name}}
                                         </a>
                                     </li>
                                 </ul>
@@ -286,28 +376,30 @@ and open the template in the editor.
                             </label>
                             <table class="listingTable form-group">
                                 <tbody>
-                                    <tr ng-repeat="label in this.currentLabelSet">
+                                    <tr ng-repeat="label in this.currentLabelsOfLabelSet">
                                         <td class="tableRowWithGlyph">
                                             {{label.name}}
                                         </td>
                                         <td>
                                             <span class="glyphicon glyphicon-remove"
                                                   style="color:red;"
-                                                  ng-click="removeLabelLabelSet(label.id)">
+                                                  ng-click="removeLabelFromLabelSet(label.name)">
                                             </span>
                                         </td>
                                     </tr>  
                                 </tbody>
                             </table>
                             <div class="input-group col-lg-6">
-                                <input type="text" ng-model="labelToAddLabelSet"
+                                <input type="text" ng-model="labelName"
                                        class="form-control input-sm col-md-1"
                                        placeholder="Enter name...">
+                            </div>
+                            <div>
                                 <span class="input-group-btn">
                                     <button class="btn btn-default btn-sm" type="button"
-                                            ng-disabled="labelToAddLabelSet === undefined"
-                                            ng-click="addLabelLabelSet(labelToAddLabelSet)">
-                                        Add
+                                            ng-disabled="disableTextInputButton(labelName)"
+                                            ng-click="addLabelToLabelSet(labelName)">
+                                        Add label
                                     </button>
                                 </span>
                             </div>
@@ -315,13 +407,13 @@ and open the template in the editor.
                         <div class="form-group sb_right">
                             <button type="button" class="btn btn-success"
                                     id ="sb_addLabelSetButton"
-                                    ng-disabled="nameLabelSet === undefined || nameLabelSet === '' || selectedTargetsLabel.length < 1 || currentLabelSet.length < 1"
+                                    ng-disabled="disableLabelSetButton()"
                                     ng-click="addLabelSet()">
                                 Add label set
                             </button>
                         </div>
                     </div>
-                    <!-- Link Sets -->
+                    <!-- Link Types -->
                     <div class="form-group col-xs-6 sb_right" id="scheme_add_links_div">
                         <label>
                             Add or modify link types:
@@ -330,28 +422,28 @@ and open the template in the editor.
                             <label>
                                 Name:
                             </label>
-                            <input type="text" placeholder="Enter name...." 
+                            <input type="text" placeholder="Enter name..." 
                                    class="form-control input-sm" 
-                                   ng-model="nameLinkSet"/>
+                                   ng-model="nameLinkType"/>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-4">
-                                Start type:
+                                Start s. type:
                             </label>
                             <div class = "btn-group sb_margin">
                                 <select class="form-control input-sm"
-                                        ng-options="target for target in this.targets"
-                                        ng-model="startType">
+                                        ng-options="spanType.name for spanType in this.spanTypes"
+                                        ng-model="startSpanType">
                                 </select>
                             </div>
                             <br/>
                             <label class="col-xs-4">
-                                End type:
+                                End s. type:
                             </label>
                             <div class = "btn-group">
                                 <select class="form-control input-sm col-xs-1"
-                                        ng-options="target for target in this.targets"
-                                        ng-model="endType">
+                                        ng-options="spanType.name for spanType in this.spanTypes"
+                                        ng-model="endSpanType">
                                 </select>
                             </div>
                         </div>
@@ -361,14 +453,15 @@ and open the template in the editor.
                             </label>
                             <table class="form-group listingTable">
                                 <tbody>
-                                    <tr ng-repeat="label in this.currentLinkSet">
+                                    <tr ng-repeat="label in this.currentLinkLabels">
                                         <td class="tableRowWithGlyph">
-                                            {{label.name}}
+                                            <label class="sb_normalText">{{label.name}}</label>
+                                            <label class="sb_normalText" ng-show="label.options != undefined && label.options != null && label.options.length > 0">{{label.options}}</label>
                                         </td>
                                         <td>
                                             <span class="glyphicon glyphicon-remove" 
                                                   style="color:red;"
-                                                  ng-click="removeLabelLinkSet(label.id)">
+                                                  ng-click="removeLabelFromLinkType(label.name)">
                                             </span>
                                         </td>
                                     </tr>  
@@ -376,24 +469,44 @@ and open the template in the editor.
                             </table>
                             <div class="input-group">
                                 <input type="text"
-                                       ng-model="labelToAddLinkSet"
+                                       ng-model="linkLabelName"
                                        class="form-control input-sm"
                                        placeholder="Enter name...">
+                            </div>
+                            <div>
+                                <div class="btn-group"
+                                     ng-show="timelineView.checked"
+                                     ng-model="title"
+                                     ng-init="positioningTitle = 'Choose positioning'">
+                                    
+                                    <button type="button" class="btn btn-default dropdown-toggle btn-sm"
+                                            data-toggle="dropdown">
+                                        {{positioningTitle}}
+                                        <span class="caret">
+                                        </span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li ng-model="positioning">
+                                            <a ng-click="positioning = positioningTitle = 'horizontal'">horizontal</a>
+                                            <a ng-click="positioning = positioningTitle = 'vertical'">vertical</a>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <span class="input-group-btn">
                                     <button class="btn btn-default btn-sm" 
                                             type="button"
-                                            ng-disabled="labelToAddLinkSet === undefined" 
-                                            ng-click="addLabelLinkSet(labelToAddLinkSet)">
-                                        Add
+                                            ng-disabled="disableLinkLabelButton(linkLabelName, positioning)" 
+                                            ng-click="addLabelToLinkTypeWithSingleOpt(linkLabelName, positioning)">
+                                        Add label
                                     </button>
                                 </span>
                             </div>
                         </div>
                         <div class="form-group sb_right">
-                            <button type="button" class="btn btn-success" id ="sb_addLinkSetButton"
-                                    ng-disabled="startType === undefined || endType === undefined || currentLinkSet.length < 1"
-                                    ng-click="addLinkSet()">
-                                Add link set
+                            <button type="button" class="btn btn-success" id ="sb_addLinkTypeButton"
+                                    ng-disabled="disableLinkTypeButton()"
+                                    ng-click="addLinkType()">
+                                Add link type
                             </button>
                         </div>
                     </div>

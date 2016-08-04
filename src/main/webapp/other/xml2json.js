@@ -73,7 +73,13 @@ function xml2json(xml, tab) {
             return o;
         },
         toJson: function (o, name, ind) {
-            if (name !== "root" && name !== "label" && name != "spanType" && name != "labelSet" && name != "linkType")
+            if (name !== "root"
+                    && name !== "visElement"
+                    && name !== "label"
+                    && name != "spanType"
+                    && name != "labelSet"
+                    && name != "linkType")
+
                 var json = name ? ("\"" + name + "\"") : "";
             else {
                 name = undefined;
@@ -93,7 +99,14 @@ function xml2json(xml, tab) {
                 }
                 if (name === undefined) {
                     json += ind + "\t" + arr.join(",\n" + ind + "\t") + "\n";
-                } else if (name !== "labels" && name !== "linkLabels" && name !== "appliesToSpanTypes" && name !== "linkTypes" && name !== "spanTypes" && name !== "labelSets") {
+                } else if (name !== "labels"
+                            && name !== "visElements"
+                            && name !== "linkLabels"
+                            && name !== "appliesToSpanTypes"
+                            && name !== "linkTypes"
+                            && name !== "spanTypes"
+                            && name !== "labelSets") {
+
                     json += (name ? ":" : "{") + ("\n" + ind + "\t" + arr.join(",\n" + ind + "\t") + "\n" + ind) + (name ? "" : "}");
                 } else {
 
@@ -108,8 +121,7 @@ function xml2json(xml, tab) {
             } else {
                 json += (name && ":") + o.toString();
             }
-            //console.log("toJson: " + name);
-            //console.log("returning: " + json);
+            
             return json;
         },
         innerXml: function (node) {

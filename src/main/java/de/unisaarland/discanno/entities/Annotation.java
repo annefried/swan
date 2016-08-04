@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @XmlRootElement
-@Table(uniqueConstraints={@UniqueConstraint(columnNames = { "user_fk", "document_fk", "targetType_fk", "StartS", "EndS" })})
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = { "user_fk", "document_fk", "spanType_fk", "StartS", "EndS" })})
 @NamedQueries({
     @NamedQuery(
         name = Annotation.QUERY_DELETE_BY_DOCUMENT,
@@ -86,8 +86,8 @@ public class Annotation extends BaseEntity {
     
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
-    @JoinColumn(name = "targetType_fk")
-    private TargetType targetType;
+    @JoinColumn(name = "spanType_fk")
+    private SpanType spanType;
     
     @JsonView({ View.Annotations.class, View.Links.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
@@ -128,12 +128,12 @@ public class Annotation extends BaseEntity {
         this.user = user;
     }
 
-    public TargetType getTargetType() {
-        return targetType;
+    public SpanType getSpanType() {
+        return spanType;
     }
 
-    public void setTargetType(TargetType targetType) {
-        this.targetType = targetType;
+    public void setSpanType(SpanType spanType) {
+        this.spanType = spanType;
     }
 
     public Document getDocument() {
@@ -211,7 +211,7 @@ public class Annotation extends BaseEntity {
         int hash = 7;
         hash = 29 * hash + Objects.hashCode(this.user);
         hash = 29 * hash + Objects.hashCode(this.document);
-        hash = 29 * hash + Objects.hashCode(this.targetType);
+        hash = 29 * hash + Objects.hashCode(this.spanType);
         hash = 29 * hash + this.start;
         hash = 29 * hash + this.end;
         return hash;
@@ -224,7 +224,7 @@ public class Annotation extends BaseEntity {
         }
         Annotation a = (Annotation) o;
         if(a.start == this.start && a.end == this.end && this.user.equals(a)
-                && this.document.equals(a) && this.targetType.equals(a)){
+                && this.document.equals(a) && this.spanType.equals(a)){
             return true;
         }
         return false;
@@ -243,7 +243,7 @@ public class Annotation extends BaseEntity {
         newAnno.setEnd(this.end);
         newAnno.setText(this.text);
         newAnno.setNotSure(this.notSure);
-        newAnno.setTargetType(this.targetType);
+        newAnno.setSpanType(this.spanType);
         newAnno.setUser(this.user);
         newAnno.setDocument(this.document);
         newAnno.setLabelMap(new HashSet<LabelLabelSetMap>());

@@ -9,24 +9,24 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.discanno.rest.view.View;
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 /**
  * The Entity LinkLabel represents a label which can be used for annotations
- * of links between sections. The label name is unique and is therefore the 
- * primary key.
+ * of links between sections.
  * 
  * The JsonIdentityInfo annotations prevents infinite recursions.
  *
@@ -34,68 +34,58 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-public class LinkLabel implements Serializable {
+public class LinkLabel extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
+    // horizontal and vertical are necessary options when timeline in the
+    // corresponding scheme is selected
+    public static enum LinkLabelOpts {
+        horizontal, vertical;
+    }
     
     @JsonView({ View.Links.class, View.Scheme.class })
-    @Id
-    @Column(name = "LinkLabel")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String linkLabel;
+    private String name;
+    
+    @JsonView({ View.Links.class, View.Scheme.class })
+    @ElementCollection(targetClass = LinkLabelOpts.class)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "LINKLABEL_OPTIONS")
+    private Set<LinkLabelOpts> options = new HashSet<>();
     
     /**
-     * The relationship shows to which linksets the linklabel belongs.
+     * The relationship shows to which linktypes the linklabel belongs.
      */
     @JsonView({ View.Links.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     @JoinTable(
-        name="LINKLABEL_LINKSET",
-        joinColumns={@JoinColumn(name="LINKLABEL_ID", referencedColumnName="LinkLabel")},
-        inverseJoinColumns={@JoinColumn(name="LINK_LABEL_SET_ID", referencedColumnName="id")})
-    private List<LinkSet> linkSet = new ArrayList();
+        name="LINKLABEL_LINKTYPE",
+        joinColumns={@JoinColumn(name="LINKLABEL_ID", referencedColumnName="id")},
+        inverseJoinColumns={@JoinColumn(name="LINK_TYPE_ID", referencedColumnName="id")})
+    private List<LinkType> linkType = new ArrayList();
 
     
-    public String getLinkLabel() {
-        return linkLabel;
+    public String getName() {
+        return name;
     }
 
-    public void setLinkLabel(String linkLabel) {
-        this.linkLabel = linkLabel;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public List<LinkSet> getLinkSet() {
-        return linkSet;
+    public Set<LinkLabelOpts> getOptions() {
+        return options;
+    }
+
+    public void setOptions(Set<LinkLabelOpts> options) {
+        this.options = options;
+    }
+
+    public List<LinkType> getLinkType() {
+        return linkType;
     }
     
-    public void addLinkSet(LinkSet linkSet) {
-        this.linkSet.add(linkSet);
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (linkLabel != null ? linkLabel.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the linkLabelId fields are not set
-        if (!(object instanceof LinkLabel)) {
-            return false;
-        }
-        LinkLabel other = (LinkLabel) object;
-        if ((this.linkLabel == null && other.linkLabel != null) || (this.linkLabel != null && !this.linkLabel.equals(other.linkLabel))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "de.unisaarland.discanno.entities.LinkLabel[ id=" + linkLabel + " ]";
+    public void addLinkType(LinkType linkType) {
+        this.linkType.add(linkType);
     }
     
 }

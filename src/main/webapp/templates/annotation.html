@@ -10,100 +10,66 @@ and open the template in the editor.
 
 <div>
     <div>
-
-        <div>
-
-            <div class="col-md-7" ng-controller="d3AnnotationController as d3Anno" ng-mouseup="d3Anno.UpdateSelectionText()">
-
-                <div class="annotationtitle filename" id="1-anno-tool">
-                    <label class="headerinfo">Project: </label>
-                    <label class="infotitle">{{d3Anno.project}}&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <label class="headerinfo">Document: </label>
-                    <label class="infotitle">{{d3Anno.title}}</label>
-                    <label ng-hide="isUnprivileged == 'false'">&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <div style="display: inline-block;"
-                        ng-controller="annotationController as annoCon"
-                        ng-hide="isUnprivileged == 'false'">
-                        <input type="checkbox"
-                               value=""
-                               style="margin: 0px;"
-                               ng-model="completed"
-                               ng-click="annoCon.setDocCompleted()">
-                        <label>Completed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <div class="row" style="display: inline-block;">
-                            <button class="btn btn-default"
-                                    style="text-align:center; width:80px; line-height: 18px;"
-                                    ng-click="annoCon.nextDoc(-1)">
-                                <span class="glyphicon glyphicon-chevron-left pull-left"
-                                      style="display: inline-block;"></span> Previous
-                            </button>
-                            <button class="btn btn-default"
-                                    style="text-align:center; width:80px; line-height: 18px;"
-                                    ng-click="annoCon.nextDoc(1)">
-                                <span class="glyphicon glyphicon-chevron-right pull-right"
-                                      style="display: inline-block;"></span> Next
-                            </button>
+        <div class="top-bar">
+            <div class="container-title">
+                <div class="row">
+                    <div class="col-md-8" id="1-anno-tool" ng-controller="d3AnnotationController as d3Anno">
+                        <label class="headerinfo">Project: </label>
+                        <label class="infotitle">{{d3Anno.project}}&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label class="headerinfo">Document: </label>
+                        <label class="infotitle">{{d3Anno.title}}</label>
+                        <label ng-hide="isUnprivileged == 'false'">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <div style="display: inline-block;"
+                             ng-controller="annotationController as annoCon"
+                             ng-hide="isUnprivileged == 'false'" align="right">
+                            <input type="checkbox"
+                                   value=""
+                                   style="margin: 0px;"
+                                   ng-model="completed"
+                                   ng-click="annoCon.setDocCompleted()">
+                            <label>Completed</label>
                         </div>
                     </div>
+                    <div class="col-md-4" ng-controller="annotationController as annoCon"
+                         ng-hide="isUnprivileged == 'false'" align="right">
+                        <button class="btn btn-default"
+                                style="text-align:center; width:100px; line-height: 18px;"
+                                ng-click="annoCon.nextDoc(-1)">
+                                    <span class="glyphicon glyphicon-chevron-left pull-left"
+                                          style="display: inline-block;"></span> Previous
+                        </button>
+                        <button class="btn btn-default"
+                                style="text-align:center; width:100px; line-height: 18px;"
+                                ng-click="annoCon.nextDoc(1)">
+                                    <span class="glyphicon glyphicon-chevron-right pull-right"
+                                          style="display: inline-block;"></span> Next
+                        </button>
+                    </div>
                 </div>
+           </div>
+         </div>
 
-                <hr class="featurette-divider">
+        <div>
+            <div class="col-md-7" ng-controller="d3AnnotationController as d3Anno" ng-mouseup="d3Anno.UpdateSelectionText()">
 
-                <div class="annotationfield" >
+                <div class="annotationfield">
                     <uib-alert ng-repeat="alert in alerts"
                                type="{{alert.type}}"
                                close="closeAlert($index)"
                                dismiss-on-timeout="10000">
                         {{alert.msg}}
                     </uib-alert>
+
                     <uib-accordion close-others="false">
-
-                        <uib-accordion-group is-disabled="true" is-open="true">
-                            <uib-accordion-heading>
-                                <div class="unselectable" id="anno-text">Text</div>
-                            </uib-accordion-heading>
-
-                            <div>
-                                <d3-annotation class="d3Anno"
-                                               on-user-change="annotation.onUserChange()"
-                                               size-increased="annotation.sizeIncreased"
-                                               data="annotation.annotationText"
-                                               annotations="annotation.annotationData"
-                                               targets="annotation.targets"
-                                               links="annotation.annotationLinks"
-                                               selection="annotation.selectedNode"
-                                               temp-anno="annotation.tempAnno"
-                                               start-selection="d3Anno.startSelection"
-                                               end-selection="d3Anno.endSelection"
-                                               last-added="annotation.lastAdded"
-                                               last-removed="annotation.lastRemoved"
-                                               last-set="annotation.lastSet"
-                                               removed-target="annotation.lastRemovedTarget"
-                                               set-selection="annotation.setSelected(item)"
-                                               add-annotation="annotation.addAnnotation(item, words)"
-                                               set-temp="annotation.setTemporaryAnnotation(item)" 
-                                               get-annotation="annotation.getAnnotation(item)"
-                                               add-link="annotation.addLink(source, target)"
-                                               linkable="annotation.linkable(source, target)"
-                                               clear-selection="d3Anno.clearSelection()"
-                                               increase-selected-anno-size-right="annotation.increaseSelectedAnnoSizeRight()"
-                                               increase-selected-anno-size-left="annotation.increaseSelectedAnnoSizeLeft()"
-                                               decrease-selected-anno-size-right="annotation.decreaseSelectedAnnoSizeRight()"
-                                               decrease-selected-anno-size-left="annotation.decreaseSelectedAnnoSizeLeft()"
-                                               reset-size-increased="annotation.resetSizeIncreased()">
-                                </d3-annotation>
-                            </div>
-
-                        </uib-accordion-group>
+                        <div ng-include src="'templates/viselements/text.html'"></div>
                     </uib-accordion>
-
                 </div>
             </div>
         </div>
 
         <div class="col-md-5 rightwindow">
             <div ng-class="GraphAccordion">
-                <div class="scroll-pane ">
+                <div class="scroll-pane">
                     <uib-accordion close-others="false">
                         <!-- ng-show or ng-hide does not work on uib-accordion-group
                             therefore create a div containing the uib-accordion-group -->
@@ -124,156 +90,23 @@ and open the template in the editor.
                         </div>
 
                         <!-- Timeline -->
-                        <!--                        <uib-accordion-group heading="Timeline" is-open="true" is-disabled="false" class="unselectable">
-                                                    <div>
-                                                        <div ng-controller="d3TimelineController as timeline">
-                                                            <d3-timeline
-                                                                annotations="annotation.annotationData"
-                                                                annotation-links="annotation.annotationLinks"
-                                                                selection="annotation.selectedNode"
-                                                                added-annotation="annotation.lastAdded"
-                                                                removed-annotation="annotation.lastRemoved"
-                                                                added-link="annotation.lastAddedLink"
-                                                                removed-link="annotation.lastRemovedLink"
-                                                                last-set="annotation.lastSet"
-                                                                change-link-label="annotation.changeLinkLabel"
-                                                                last-targeted="annotation.lastTargeted"
-                                                                set-selection="annotation.setSelected(item)">
-                                                            </d3-timeline>
-                                                        </div>
-                        
-                                                    </div>
-                                                </uib-accordion-group>-->
+                        <div ng-if="timeline.show">
+                            <div ng-include src="'templates/viselements/timeline.html'"></div>
+                        </div>
 
                         <!-- Graph -->
-                        <uib-accordion-group heading="Graph" is-open="false" is-disabled="status.isFirstDisabled" class="unselectable" id="anno-graph">
-                            <div>
-                                <div ng-controller="d3GraphController as graph">
-                                    <d3-graph annotations="annotation.annotationData"
-                                              annotation-links="annotation.annotationLinks"
-                                              selection="annotation.selectedNode"
-                                              added-annotation="annotation.lastAdded"
-                                              removed-annotation="annotation.lastRemoved"
-                                              removed-link="annotation.lastRemovedLink"
-                                              added-link="annotation.lastAddedLink"
-                                              last-set="annotation.lastSet"
-                                              last-targeted="annotation.lastTargeted"
-                                              set-selection="annotation.setSelected(item)">
-                                    </d3-graph>
-                                </div>
-                            </div>
-                        </uib-accordion-group>
+                        <div ng-if="graph.show">
+                            <div ng-include src="'templates/viselements/graph.html'"></div>
+                        </div>
 
                         <!-- Annotation options -->
-                        <uib-accordion-group heading="Annotations" is-disabled="false" is-open="true" class="unselectable" id="anno-options">
-                            <div ng-controller="d3OptionsController as options">
-                                <d3-options data="annotation.annotationText"
-                                            selection="annotation.selectedNode"
-                                            labels="annotation.labelTable"
-                                            target-types="annotation.targetTypes"
-                                            temp-anno="annotation.tempAnno"
-                                            set-selection="annotation.setSelected(item)"
-                                            set-label="annotation.setSelectedLabel(label, set)"
-                                            remove-annotation="annotation.removeAnnotation(item)"
-                                            remove-target="annotation.removeTarget(item)"
-                                            remove-link="annotation.removeLink(item)"
-                                            set-type="annotation.setSelectedTargetType(item)"
-                                            set-type-and-add="annotation.setSelectedTargetTypeAndAdd(item)"
-                                            set-annotation-not-sure="annotation.setAnnotationNotSure(item,bool)">
-                                </d3-options>
-                            </div>
-                        </uib-accordion-group>
+                        <div ng-include src="'templates/viselements/annotationoptions.html'"></div>
 
                         <!-- Navigation to other documents -->
-                        <uib-accordion-group
-                            heading="Project navigation"
-                            is-disabled="false"
-                            is-open="false"
-                            class="unselectable"
-                            id="anno-navigation">
-                            
-                            <div ng-repeat="proj in this.tableProjects">
-                                <label>{{proj.name}}</label>
-                                <table class="table">
-                                    <tr ng-repeat="doc in proj.documents">
-                                        <td>
-                                            <a ng-if="doc.id != currDoc.id"
-                                               ng-click="openAnnoTool(doc.id, doc.name, proj.name, doc.completed)">
-                                                {{doc.name}}
-                                            </a>
-                                            <a ng-if="doc.id == currDoc.id"
-                                               ng-href
-                                               ng-click="openAnnoTool(doc.id, doc.name, proj.name, doc.completed)"
-                                               style="color: gray">
-                                                {{doc.name}}
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <span ng-hide="doc.completed === false || isUnprivileged == 'false'"
-                                                class="glyphicon glyphicon-ok">
-                                            </span>
-                                        </td>
-                                    </tr>                                                         
-                                </table>
-                            </div>
-                        </uib-accordion-group>
+                        <div ng-include src="'templates/viselements/projectnavigation.html'"></div>
 
                         <!-- Shortcuts -->
-                        <uib-accordion-group heading="Help" is-disabled="false" is-open="false" class="unselectable" id="anno-shortcuts">
-
-                            <p><strong>Create annotations:</strong> select a span
-                                of text or double-click on a word. Then select a Type for the annotation.
-                            </p>
-                            <p><strong>Adding labels:</strong> when you select an annotation,
-                                appropriate label sets will be displayed in the 'Annotations' box.</p>
-                            <p><strong>Adding links:</strong> select the annotation at which your link will
-                                start, and drag your mouse away from the annotation. All possible
-                                end notes (according to the scheme) will be highlighted. Drop your mouse
-                                at one of them and release the mouse button.</p>
-                            <p><strong>Viewing links:</strong> click on an annotation to view the links
-                                that start or end at this annotation.
-                            <p><strong>Selections:</strong> click anywhere on an empty space in the Text box
-                                to unselect the currently selected annotation or link.</p>
-                            <p><strong>Navigation:</strong> you can use the Graph visualization to navigate
-                                through your text document by clicking on the nodes in the graph.
-                                You can also go to another document by using the Project navigation box.</p>
-
-                            <p><strong>Shortcuts:</strong> there are many cool shortcuts using
-                                keys that will make your life much easier. Check them out! <br/><br/>
-
-                                <strong>When a span annotation is selected, changing annotations:</strong>
-                            <table class="table">
-                                <tr>
-                                    <td><kbd><kbd>a</kbd></kbd></td>
-                                    <td>add the token on the left to the current annotation</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd><kbd>s</kbd></kbd></td>
-                                    <td>remove the left-most token from the current span annotation</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd><kbd>d</kbd></kbd></td>
-                                    <td>remove the right-most token from the current span annotation</td>
-                                </tr>  
-                                <tr>
-                                    <td><kbd><kbd>f</kbd></kbd></td>
-                                    <td>add the token on the right to the current annotation</td>
-                                </tr>
-                            </table>
-
-                            <strong>When a span annotation is selected, changing the selection:</strong>
-                            <table class="table">
-                                <tr>
-                                    <td><kbd>left</kbd> / <kbd>right</kbd></td>
-                                    <td>jump between annotations</td>
-                                </tr>
-                                <!--tr>
-                                    <td><kbd><kbd>?</kbd></kbd></td>
-                                    <td>Show all shortcuts (Shift + ?)</td>
-                                </tr-->
-                                
-                            </table>
-                        </uib-accordion-group>
+                        <div ng-include src="'templates/viselements/shortcuts.html'"></div>
 
                     </uib-accordion>
                 </div>

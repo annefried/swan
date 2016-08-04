@@ -7,76 +7,66 @@
 
 angular
     .module('app')
-    .controller('schemeViewModalController', function ($scope, $rootScope, $uibModalInstance) {
+    .controller('schemeViewModalController', function ($scope, $rootScope, $uibModalInstance, UtilityService) {
 
         $scope.init = function () {
             $scope.loadScheme();
         };
 
         $scope.loadScheme = function () {
+            // This is a little hack to make a deep copy of the scheme to delete some
+            // attributes without changing the original reference
+            var scheme = JSOG.parse(angular.toJson($rootScope.currentScheme));
+            $scope.simplifyScheme(scheme);
+            $scope.currentScheme = JSON.stringify(scheme, null, "\t");
+        };
 
-            // This is a little hack to make a deep copy of the scheme to set the
-            // projects undefined
-            var scheme = JSON.parse(JSON.stringify($rootScope.currentScheme));
-
-            // remove things that we don't want to display
-            delete scheme.id;
+        /**
+         * Simplifies the given scheme so that the scheme does not contain an id,
+         * creator, projects and the link types and label sets are simplified. We
+         * simplify the scheme to remove unnecessary information for the user and
+         * make it more readable.
+         *
+         * @param scheme
+         */
+        $scope.simplifyScheme = function (scheme) {
+            UtilityService.deleteIdProperty(scheme);
             delete scheme.creator;
             delete scheme.projects;
 
+            UtilityService.deleteIdProperties(scheme.visElements);
+            $scope.simplifyLabelSets(scheme.labelSets);
+            $scope.simplifyLinkTypes(scheme.linkTypes);
+        };
 
-            var targetTypesSimple = [];
-            for (var j = 0; j < scheme.targetTypes.length; j++) {
-                targetTypesSimple.push(scheme.targetTypes[j].targetType);
+        /**
+         * Simplifies the given link types so that they do not contain any ids and
+         * the link labels are simplified.
+         *
+         * @param linkTypes
+         */
+        $scope.simplifyLinkTypes = function (linkTypes) {
+            for (var j = 0; j < linkTypes.length; j++) {
+                var curLinkType = linkTypes[j];
+
+                UtilityService.deleteIdProperty(curLinkType);
+                UtilityService.deleteIdProperties(curLinkType.linkLabels);
+                delete curLinkType.allowUnlabeledLinks;
             }
-            scheme.spanTypes = targetTypesSimple;
-            scheme.linkTypes = scheme.linkSets;
+        };
 
-            for (var j = 0; j < scheme.labelSets.length; j++) {
-                var curLabelSet = scheme.labelSets[j];
-                delete curLabelSet.id;
-                var targetTypesSimple2 = new Array();
-                for (var i = 0; i < curLabelSet.appliesToTargetTypes.length; i++) {
-                    targetTypesSimple2.push(curLabelSet.appliesToTargetTypes[i].targetType);
-                }
-                curLabelSet.appliesToSpanTypes = targetTypesSimple2;
-                delete curLabelSet.appliesToTargetTypes;
-
-                var labelsSimple = new Array();
-                for (var k = 0; k < curLabelSet.labels.length; k++) {
-                    var curLabel = curLabelSet.labels[k];
-                    labelsSimple.push(curLabel.labelId);
-                    delete curLabel.labelSet;
-                }
-                curLabelSet.labels = labelsSimple;
+        /**
+         * Simplifies the given label sets so that they do not contain any ids and
+         * the span types and labels are simplified.
+         *
+         * @param labelSets
+         */
+        $scope.simplifyLabelSets = function (labelSets) {
+            for (var j = 0; j < labelSets.length; j++) {
+                var curLabelSet = labelSets[j];
+                UtilityService.deleteIdProperty(curLabelSet);
+                UtilityService.deleteIdProperties(curLabelSet.labels);
             }
-            for (var j = 0; j < scheme.linkSets.length; j++) {
-                var curLinkSet = scheme.linkSets[j];
-                var linkLabelsSimple = new Array();
-                for (var k = 0; k < curLinkSet.linkLabels.length; k++) {
-                    var curLabel = curLinkSet.linkLabels[k];
-                    curLabel.linkSet = undefined;
-                    linkLabelsSimple.push(curLabel.linkLabel);
-                }
-                curLinkSet.linkLabels = linkLabelsSimple;
-                curLinkSet.startSpanType = curLinkSet.startType;
-                curLinkSet.endSpanType = curLinkSet.endType;
-                delete curLinkSet.startType;
-                delete curLinkSet.endType;
-                delete curLinkSet.allowUnlabeledLinks;
-                delete curLinkSet.id;
-            }
-
-            delete scheme.linkSets;
-            delete scheme.targetTypes;
-            function replacer(key, value) {
-                if (key === "startSpanType" || key === "endSpanType") {
-                    return value.targetType;
-                }
-                return value;
-            }
-
-            $scope.currentScheme = JSON.stringify(scheme, replacer, "\t");
         };
 
         $scope.submit = function () {

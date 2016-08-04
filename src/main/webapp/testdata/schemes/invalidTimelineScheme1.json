@@ -1,0 +1,44 @@
+{
+	"name": "timelineScheme",
+	"visElements": [
+		{
+			"visState": "closed",
+			"visKind": "timeline"
+		},
+		{
+			"visState": "hidden",
+			"visKind": "graph"
+		}
+	],
+	"spanTypes": [
+		{
+			"name": "verb"
+		},
+		{
+			"name": "noun"
+		}
+	],
+	"labelSets": [
+	],
+	"linkTypes": [
+		{
+			"name": "temporal relation",
+			"startSpanType": {
+				"name": "verb"
+			},
+			"endSpanType": {
+				"name": "verb"
+			},
+			"linkLabels": [
+				{
+					"name": "overlap",
+					"options": []
+				},
+				{
+					"name": "before",
+					"options": []
+				}
+			]
+		}
+	]
+}

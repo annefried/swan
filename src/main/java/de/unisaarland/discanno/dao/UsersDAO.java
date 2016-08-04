@@ -5,10 +5,8 @@
  */
 package de.unisaarland.discanno.dao;
 
-import de.unisaarland.discanno.entities.Document;
 import de.unisaarland.discanno.entities.Users;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +14,6 @@ import java.util.Map;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-import javax.persistence.Query;
 
 /**
  * This DAO (Data Access Object) provides all CRUD operations for users.
@@ -65,13 +62,22 @@ public class UsersDAO extends BaseEntityDAO<Users> {
     }
     
     /**
-     * Returns all users ascending by their email
+     * Returns all users with their corresponding projects ascending by
+     * their email.
      * 
      * @return List<Users>
      */
-    public List<Users> getAllUsersAscending() {
-        List<Users> users = executeQuery(Users.QUERY_GET_ALL_USERS_ASC);
-        return users;
+    public List<Users> getAllUsersWithProjectsAscending() {
+        return executeQuery(Users.QUERY_GET_ALL_USERS_WITH_PROJECTS_ASC);
     }
-    
+
+    /**
+     * Returns all users ascending by their email.
+     *
+     * @return List<Users>
+     */
+    public List<Users> getAllUsersAscending() {
+        return executeQuery(Users.QUERY_GET_ALL_USERS_ASC);
+    }
+
 }

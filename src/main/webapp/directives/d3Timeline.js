@@ -37,20 +37,20 @@ angular
                 // Constants
                 const MARGIN = {top: -5, right: -5, bottom: -5, left: -5};
                 
-                // Upper case for comparison
-                const BEFORE_STR = "BEFORE";
-                const AFTER_STR = "AFTER";
-                const OVERLAP_STR = "OVERLAP";
+                // upper case for comparison
+                const HORIZONTAL_STR = "HORIZONTAL";
+                const VERTICAL_STR = "VERTICAL";
                 
                 const BEFORE_INT = 0;
                 const OVERLAP_INT = 1;
-                const AFTER_INT = 2;
+                const AFTER_INT = 2; // Supported but not used
                 
                 const NOT_LINKED = 0;
                 
                 const EDGE_ROUNDING = 4;
                 const BOX_HEIGHT = 20;
-                const BOX_PADDING = BOX_HEIGHT + 25; // Distance between boxes in y dimension
+                const BOX_HEIGHT_PADDING = BOX_HEIGHT + 25; // Distance between boxes in y dimension
+                const BOX_WIDTH_PADDING = 30; // Distance between boxes in x dimension
                 
                 var node;
                 var link;
@@ -77,36 +77,44 @@ angular
                 var zoomScale = 1;
                 var graph = new AnnotationGraph();
                 
+                $scope.setNodeWidth = function (node) {
+                    var labels = node.shortenLabels(maxTextSize / 2);
+                    var text = node.toString(maxTextSize);
+                    node.width = 9 * (labels.length + text.length + 2);  
+                };
+                
+                $scope.getPositioningOptionInteger = function (linkLabel) {
+                    for (var i = 0; i < linkLabel.options.length; i++) {
+                        var opt = linkLabel.options[i];
+                        if (opt.toUpperCase() === HORIZONTAL_STR) {
+                            return BEFORE_INT;
+                        } else if (opt.toUpperCase() === VERTICAL_STR) {
+                            return OVERLAP_INT;
+                        } else {
+                            throw "d3Timeline: No proper option for timeline provided.";
+                        }
+                    }
+                };
+                
                 /**
                  * Takes the first LinkLabel and returns the corresponding
                  * integer value:
-                 * BEFORE_STR -> BEFORE_INT
-                 * AFTER_STR -> AFTER_INT
-                 * OVERLAP_STR -> OVERLAP_INT
-                 * else -> undefined
+                 * HORIZONTAL -> BEFORE_INT
+                 * VERTICAL -> OVERLAP_INT
+                 * else -> throw exception
                  * 
                  * @param {type} link
-                 * @returns {Number|undefined}
+                 * @returns {Number}
                  */
                 $scope.getLinkLabel = function (link) {
                     for (var id in link.activeLabels) {
                         var label = link.activeLabels[id];
-                        if (label.length > 0) {
-                            var tag = label[0].tag.toUpperCase();
-                            if (tag === BEFORE_STR) {
-                                return BEFORE_INT;
-                            } else if (tag === AFTER_STR) {
-                                return AFTER_INT;
-                            } else if (tag === OVERLAP_STR) {
-                                return OVERLAP_INT;
-                            } else {
-                                return undefined;
-                            }
+                        if (label.length === 1) {
+                            return $scope.getPositioningOptionInteger(label[0]);
                         } else {
-                            return undefined;
+                            throw "d3Timeline: More than one label in the timeline mode is not allowed.";
                         }
                     }
-                    return undefined;
                 };
 				
                 $scope.addLabelToLink = function (link) {
@@ -288,7 +296,8 @@ angular
                     // but the chance is higher to find the desired node before
                     // iterating over all nodes but we don't expect too many nodes
                     graph.nodes.forEach(function(node) {
-                            $scope.initializeIsTargetOfProp(node);
+                        $scope.initializeIsTargetOfProp(node);
+                        $scope.setNodeWidth(node);
                     });
 					
                     graph.nodes.forEach(function (node) {
@@ -456,36 +465,25 @@ angular
                     return maxOfAll;
                 };
                 
-                $scope.initArray = function (size) {
+                $scope.initArray = function (size, defaultVal) {
                     var arr = [];
                     for (var i = 0; i < size; i++) {
-                        arr[i] = 0;
+                        arr[i] = defaultVal;
                     }
                     return arr;
                 };
-                     
-                $scope.calcNodePosition = function () {
-//                    console.log("d3Timeline calcNodePosition");
+                
+                $scope.calcWidthOffset = function (clusterMaxLinkLength, singleNodeBucket, clusterList) {
+                    var offsetMap = $scope.initArray(clusterMaxLinkLength + 2, 0);
+                    var maxWidth = 0;
                     
-                    var clusterList = $scope.clustering();
-                    var singleNodeBucket = $scope.checkSingleNodes(clusterList);
-                    var clusterMaxLinkLength = $scope.processOffsets(clusterList);
-                    
-                    var x = 0;
-                    var y = 0;
-                    
-                    // Set at first the coordinates of all nodes which have no links
+                    // Process SingleNodeBucket
                     for (var nodeId in singleNodeBucket) {
                         var node = singleNodeBucket[nodeId];
-                        node.x = x * 20;
-                        node.y = y * BOX_PADDING;
-                        y++;
+                        maxWidth = Math.max(maxWidth, node.width);
                     }
+                    offsetMap[0] = maxWidth;
                     
-                    var offset = 150; // calc dynamically longest width
-                    var map = $scope.initArray(clusterMaxLinkLength + 1);
-                    
-                    // Then set the properties of all nodes with links
                     for (var i = 0; i < clusterList.length; i++) {
                         var cluster = clusterList[i];
                         var absMin = Math.abs(cluster.stat.min); // absolute value of the min pos
@@ -494,12 +492,63 @@ angular
                             var node = cluster[nodeId];
                             if (nodeId !== "stat") {
                                 var x = node.bucketPos + absMin + 1;
-                                node.x = x === 1 ? offset : x * 160;
-                                node.y = map[x - 1] * BOX_PADDING;
-
-                                map[x - 1] = map[x - 1] + 1;
+                                offsetMap[x] = Math.max(offsetMap[x], node.width);
                             }
                         }
+                        
+                    }
+                    
+                    // Accumulate the offsets
+                    var prevWidth1 = 0;
+                    var prevWidth2 = 0;
+                    for (var i = 1; i < offsetMap.length; i++) {
+                        prevWidth2 = offsetMap[i];
+                        offsetMap[i] = offsetMap[i - 1] + prevWidth1 + i * BOX_WIDTH_PADDING;
+                        prevWidth1 = prevWidth2;
+                    }
+                    
+                    return offsetMap;
+                };
+                     
+                $scope.calcNodePosition = function () {
+//                    console.log("d3Timeline calcNodePosition");
+                    
+                    var clusterList = $scope.clustering();
+                    var singleNodeBucket = $scope.checkSingleNodes(clusterList);
+                    var clusterMaxLinkLength = $scope.processOffsets(clusterList);
+                    var offsetMapX = $scope.calcWidthOffset(clusterMaxLinkLength, singleNodeBucket, clusterList);
+                    
+                    var y = 0;
+                    // Set at first the coordinates of all nodes which have no links
+                    for (var nodeId in singleNodeBucket) {
+                        var node = singleNodeBucket[nodeId];
+                        node.x = 0;
+                        node.y = y * BOX_HEIGHT_PADDING;
+                        y++;
+                    }
+                    y = 0;
+                    
+                    
+                    // Then set the properties of all nodes with links
+                    for (var i = 0; i < clusterList.length; i++) {
+                        var cluster = clusterList[i];
+                        var absMin = Math.abs(cluster.stat.min); // absolute value of the min pos
+                        var offsetMapY = $scope.initArray(clusterMaxLinkLength + 1, y);
+                        var maxY = 0;
+                        
+                        for (var nodeId in cluster) {
+                            var node = cluster[nodeId];
+                            if (nodeId !== "stat") {
+                                var x = node.bucketPos + absMin + 1;
+                                node.x = offsetMapX[x];
+                                node.y = offsetMapY[x - 1] * BOX_HEIGHT_PADDING;
+
+                                offsetMapY[x - 1] = offsetMapY[x - 1] + 1;
+                                maxY = Math.max(maxY, offsetMapY[x - 1]);
+                            }
+                        }
+                        
+                        y = maxY;
                     }
                     
                 };
@@ -655,9 +704,6 @@ angular
 
                     node.append("rect")
                         .attr("width", function(d) { // d is an annotation
-                            var labels = d.shortenLabels(maxTextSize / 2);
-                            var text = d.toString(maxTextSize);
-                            d.width = 9 * (labels.length + text.length + 2);
                             return d.width;
                         })
                         .attr("opacity", 0.7)

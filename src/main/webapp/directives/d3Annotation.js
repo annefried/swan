@@ -28,10 +28,10 @@ angular
                 lastAdded: "=",
                 lastRemoved: "=",
                 lastSet: "=",
-                removedTarget: "=",
+                removedSpanType: "=",
                 setSelection: "&",
                 setTemp: "&",
-                getAnnotation: "&",
+                getAnnotationById: "&",
                 addLink: "&",
                 linkable: "&",
                 clearSelection: "&",
@@ -136,7 +136,7 @@ angular
                 }, function () {
                     $scope.formatText();
                     $scope.setLineHeights();
-                    $scope.formatTargets();
+                    $scope.formatSpanTypes();
                     $scope.formatAnnotations();
                 });
 
@@ -427,6 +427,20 @@ angular
                                 }
                             })
                             .add({
+                                combo: 'n',
+                                description: 'Cycle backward through outgoing links of selected annotation',
+                                callback: function () {
+                                    $scope.cycleThroughLinks(true);
+                                }
+                            })
+                            .add({
+                                combo: 'm',
+                                description: 'Cycle forward through outgoing links of selected annotation',
+                                callback: function () {
+                                    $scope.cycleThroughLinks(false);
+                                }
+                            })
+                            .add({
                                 combo: 'ctrl+c',
                                 description: 'Copy the current selected annotations text to the clipboard',
                                 callback: function () {
@@ -444,6 +458,58 @@ angular
 
                             });
                 }
+
+                // Cycle through outgoing links of the currently selected annotation
+                $scope.cycleThroughLinks = function(backwards) {
+                    if ($scope.selection === null) {
+                        return;
+                    }
+
+                    var links;
+                    if ($scope.selection.type === "Annotation") {
+                        // If current selection is an annotation, select first/last outgoing link
+                        links = $scope.getLinksAsArray($scope.selection);
+                        if (links.length > 0) {
+                            if (!backwards) {
+                                $scope.selection = links[0];
+                            } else {
+                                $scope.selection = links[links.length - 1];
+                            }
+                        }
+                    } else if ($scope.selection.type === "Link") {
+                        // If current selection is a link, select next/previous outgoing link
+                        links = $scope.getLinksAsArray($scope.selection.source);
+                        for (var i = 0; i < links.length; i++) {
+                            if (links[i] === $scope.selection) {
+                                var j;
+                                if (!backwards) {
+                                    j = i + 1;
+                                    if (j >= links.length) {
+                                        j = 0;
+                                    }
+                                } else {
+                                    j = i - 1;
+                                    if (j < 0) {
+                                        j = links.length - 1;
+                                    }
+                                }
+                                $scope.selection = links[j];
+                                break;
+                            }
+                        }
+                    }
+                };
+
+                $scope.getLinksAsArray = function(anno) {
+                    var res = [];
+                    var i = 0;
+                    for (var j in $scope.links[anno.id])
+                    {
+                        res[i] = $scope.links[anno.id][j];
+                        i++;
+                    }
+                    return res;
+                };
 
                 $scope.getAnnotationAtPosition = function (index, backwards) {
                     var a = $scope.getSortedAnnotations();
@@ -609,7 +675,7 @@ angular
                 }, true);
 
                 //Listens to changes to the last removed target
-                $scope.$watch('removedTarget', function (newVals) {
+                $scope.$watch('removedSpanType', function (newVals) {
                     if (newVals !== undefined) {
                         $scope.removeFormAnnotation(newVals);
                         $scope.setLineHeights();
@@ -623,7 +689,7 @@ angular
                 };
 
                 $scope.$watch('annotations', function (newVals, oldVals) {
-                    $scope.formatTargets();
+                    $scope.formatSpanTypes();
                     $scope.formatAnnotations();
                     $scope.setLineHeights();
                     $scope.render(true);
@@ -856,13 +922,13 @@ angular
                     svg.attr('height', height);
                 };
 
-                //For every target add a formatted version to the text field
-                $scope.formatTargets = function () {
+                //For every span type add a formatted version to the text field
+                $scope.formatSpanTypes = function () {
                     formAnnotations = [];
-                    for (var index in $scope.targets) {
-                        var indexTargets = $scope.targets[index];
-                        for (var targetID in indexTargets) {
-                            var target = indexTargets[targetID];
+                    for (var index in $scope.spanTypes) {
+                        var indexSpanType = $scope.spanTypes[index];
+                        for (var targetID in indexSpanType) {
+                            var target = indexSpanType[targetID];
                             $scope.addFormAnnotation(target, true);
                         }
                     }
@@ -1097,16 +1163,16 @@ angular
 
                     currentLine = firstLine;
                     //Draw the actual text by iterating through the lines
-                    var dat = []
+                    var dat = [];
                     var pos = pre;
                     for (var j = firstLine; j <= lastLine; j++) {
                     	//Safety measure:
                     	//Stop drawing if a non-existing line is reached
-                    	 if (formText[j] === undefined){
-                    	   break;
+                    	 if (formText[j] === undefined) {
+                             break;
                     	 }
                     	// Add empty line in front of first line
-                    	if(j == 0){
+                    	if(j == 0) {
                     		dat.push(undefined)
                     	}
                     	// Add line to draw
@@ -1124,9 +1190,9 @@ angular
                             .append(function (d) {
                                 var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
                                 // Handle empty lines
-                                if(d === undefined){
+                                if (d === undefined) {
                                 	text.innerHTML = ''
-                                }else{
+                                } else {
                                 	text.innerHTML = d.word.text;
                                 	d.element = text;
                                 }
@@ -1155,21 +1221,21 @@ angular
                                 pos += spacing;
                                 d.x = pos;
                                 // load previously computed lengths
-                                d.width = $scope.widthMap[d.word.text]
+                                d.width = $scope.widthMap[d.word.text];
                                 pos += d.width;
 
                                 return ~~d.x;
                             })
                             .attr("y", function (d, i) {
                             	// Handle empty lines
-                            	if (d === undefined){
+                            	if (d === undefined) {
                             		currentHeight += lineHeight;
                             	} else {
                                     //Set the height of the current word to the height of
                                     //the previous word if we are still in the same line
-                                    if (d.lY === currentLine){
+                                    if (d.lY === currentLine) {
                                         d.y = currentHeight;
-                                    }else {
+                                    } else {
                                     	//Set the height of the first word of a new line
                                     	//to the previous height + the height of that line
                                         d.y = currentHeight + d.height;
@@ -1179,7 +1245,7 @@ angular
                             	}
                                 return ~~currentHeight;
                             })
-                            .classed("annotationtext", function(d){
+                            .classed("annotationtext", function(d) {
                             	// Handle empty lines
                             	return d !== undefined;
                             })
@@ -1219,10 +1285,10 @@ angular
                             text += (set[i].tag + " ");
                         }
                     }
-                    if (d.annotation.tType === undefined) {
+                    if (d.annotation.sType === undefined) {
                         return "";
                     } else {
-                        return 'Type: ' + d.annotation.tType.tag + " | Labels: " + text;
+                        return 'Type: ' + d.annotation.sType.tag + " | Labels: " + text;
                     }
                 };
 
@@ -1428,7 +1494,33 @@ angular
                                     const formTarget = formAnnotations[target.id];
                                     const sourceBox = formSource.annotationBoxes[formSource.annotationBoxes.length - 1];
                                     const targetBox = formTarget.annotationBoxes[0];
-                                    //Determine the edges of the path of the link
+
+                                    // Determine the edges of the path of the link;
+                                    // if the position of one of the boxes is not yet known, estimate it
+                                    // by using the first word of the corresponding annotation
+                                    if (sourceBox.x === undefined && sourceBox.y === undefined && sourceBox.width === undefined) {
+                                        $scope.drawText(sourceBox.formWords[0].lY-10,sourceBox.formWords[0].lY+10);
+                                        $scope.drawText(minJ, maxJ);
+                                        return lineFunction(
+                                            [{"x": ~~sourceBox.formWords[0].x + sourceBox.formWords[0].width, "y": ~~sourceBox.formWords[0].y + 0.5 * wordHeight / 3},
+                                                {"x": ~~((sourceBox.formWords[0].x + sourceBox.formWords[0].width * 1.3)), "y": ~~sourceBox.formWords[0].y + 0.5 * wordHeight / 3},
+                                                {"x": ~~((sourceBox.formWords[0].x + sourceBox.formWords[0].width * 1.3)), "y": ~~targetBox.y - 1.5 * wordHeight / 3},
+                                                {"x": ~~targetBox.x + 0.5 * targetBox.width, "y": ~~targetBox.y - 1.5 * wordHeight / 3},
+                                                {"x": ~~targetBox.x + 0.5 * targetBox.width, "y": ~~targetBox.y}]
+                                        );
+                                    }
+                                    if (targetBox.x === undefined && targetBox.y === undefined && targetBox.width === undefined) {
+                                        $scope.drawText(targetBox.formWords[0].lY-10,targetBox.formWords[0].lY+10);
+                                        $scope.drawText(minJ, maxJ);
+                                        return lineFunction(
+                                            [{"x": ~~sourceBox.x + sourceBox.width, "y": ~~sourceBox.y + 0.5 * wordHeight / 3},
+                                                {"x": ~~((sourceBox.x + sourceBox.width * 1.3)), "y": ~~sourceBox.y + 0.5 * wordHeight / 3},
+                                                {"x": ~~((sourceBox.x + sourceBox.width * 1.3)), "y": ~~targetBox.formWords[0].y - 1.5 * wordHeight / 3},
+                                                {"x": ~~targetBox.formWords[0].x + 0.5 * targetBox.formWords[0].width, "y": ~~targetBox.formWords[0].y - 1.5 * wordHeight / 3},
+                                                {"x": ~~targetBox.formWords[0].x + 0.5 * targetBox.formWords[0].width, "y": ~~targetBox.formWords[0].y}]
+                                        );
+                                    }
+                                    // If both boxes are well-defined, return path between them
                                     const lineData = [{"x": ~~sourceBox.x + sourceBox.width, "y": ~~sourceBox.y + 0.5 * wordHeight / 3},
                                         {"x": ~~((sourceBox.x + sourceBox.width * 1.3)), "y": ~~sourceBox.y + 0.5 * wordHeight / 3},
                                         {"x": ~~((sourceBox.x + sourceBox.width * 1.3)), "y": ~~targetBox.y - 1.5 * wordHeight / 3},

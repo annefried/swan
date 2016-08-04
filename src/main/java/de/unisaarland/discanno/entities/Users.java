@@ -49,20 +49,29 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
         name = Users.QUERY_FIND_BY_EMAIL_AND_PASSWORD,
         query = "SELECT u " +
                 "FROM Users u " +
-                "WHERE u.email = :" + Users.PARAM_EMAIL + " AND u.password = :" + Users.PARAM_PASSWORD),
+                "WHERE u.email = :" + Users.PARAM_EMAIL + " AND u.password = :" + Users.PARAM_PASSWORD
+    ),
     @NamedQuery(
         name = Users.QUERY_FIND_BY_SESSION,
         query = "SELECT u " +
                 "FROM Users u " +
-                "WHERE u.session = :" + Users.PARAM_SESSION),
+                "WHERE u.session = :" + Users.PARAM_SESSION
+    ),
     @NamedQuery(
-        name = Users.QUERY_GET_ALL_USERS_ASC,
+        name = Users.QUERY_GET_ALL_USERS_WITH_PROJECTS_ASC,
         query = "SELECT DISTINCT u " +
                 "FROM Users u " +
                 "LEFT JOIN FETCH u.projects proj " +
                 "LEFT JOIN FETCH u.managingProjects manProj " +
                 "LEFT JOIN FETCH u.watchingProjects watProj " +
-                "ORDER BY u.email ASC")
+                "ORDER BY u.email ASC"
+    ),
+    @NamedQuery(
+            name = Users.QUERY_GET_ALL_USERS_ASC,
+            query = "SELECT DISTINCT u " +
+                    "FROM Users u " +
+                    "ORDER BY u.email ASC"
+    )
 })
 public class Users extends BaseEntity {
 
@@ -77,10 +86,15 @@ public class Users extends BaseEntity {
     public static final String QUERY_FIND_BY_SESSION = "Users.QUERY_FIND_BY_SESSION";
     
     /**
+     * Named query identifier for "get all users with projects ascending by email".
+     */
+    public static final String QUERY_GET_ALL_USERS_WITH_PROJECTS_ASC = "Users.QUERY_GET_ALL_USERS_WITH_PROJECTS_ASC";
+
+    /**
      * Named query identifier for "get all users ascending by email".
      */
     public static final String QUERY_GET_ALL_USERS_ASC = "Users.QUERY_GET_ALL_USERS_ASC";
-    
+
     /**
      * Query parameter constant for the attribute "uuid".
      */
@@ -125,7 +139,7 @@ public class Users extends BaseEntity {
     @Column(name = "CreateDate")
     private Timestamp createDate;
     
-    @JsonView({ View.Users.class })
+    @JsonView({ View.UsersWithProjects.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
             fetch = FetchType.LAZY)
     @JoinTable(
@@ -134,7 +148,7 @@ public class Users extends BaseEntity {
         inverseJoinColumns={@JoinColumn(name="PROJECT_ID", referencedColumnName="id")})
     private Set<Project> projects = new HashSet<>();
     
-    @JsonView({ View.Users.class })
+    @JsonView({ View.UsersWithProjects.class })
     @ManyToMany(mappedBy = "projectManager",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
@@ -143,7 +157,7 @@ public class Users extends BaseEntity {
     /**
      * All projects which are watched by project manager i.e. E-Mail notification.
      */
-    @JsonView({ View.Users.class })
+    @JsonView({ View.UsersWithProjects.class })
     @ManyToMany(mappedBy = "projectManager",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)

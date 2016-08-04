@@ -22,7 +22,7 @@ public class Document {
 
     private AnnotationSet annotations;
     
-    private LinkSet links;
+    private LinkType links;
     
     public AnnotationSet getAnnotations() {
         return annotations;
@@ -32,13 +32,12 @@ public class Document {
         this.annotations = annotations;
     }
 
-    public LinkSet getLinks() {
+    public LinkType getLinks() {
         return links;
     }
 
-    public void setLinks(LinkSet links) {
+    public void setLinks(LinkType links) {
         this.links = links;
     }
-
 
 }

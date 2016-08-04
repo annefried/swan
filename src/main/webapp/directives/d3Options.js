@@ -15,15 +15,14 @@ angular
                 data: "=",
                 selection: "=",
                 labels: "=",
-                targetTypes: "=",
+                spanTypes: "=",
                 tempAnno: "=",
                 setSelection: "&",
                 setLabel: "&",
                 removeAnnotation: "&",
                 removeTarget: "&",
                 removeLink: "&",
-                setType: "&",
-                setTypeAndAdd: "&",
+                setSelectedSpanTypeAndAdd: "&",
                 setAnnotationNotSure: "&"
             },
             link: function ($scope, iElement) {
@@ -40,7 +39,7 @@ angular
                         return 1;
                     return 0;
                 };
-                $scope.targetTypeComp = function (a, b) {
+                $scope.spanTypeComp = function (a, b) {
                     if (a.key < b.key)
                         return -1;
                     if (a.key > b.key)
@@ -86,9 +85,9 @@ angular
 
                     if ($scope.selection !== null && $scope.selection !== undefined) {
 
-                        // add target types if options for annotation
+                        // Add span types if options for annotation
                         if ($scope.selection.type === "Annotation") {
-                            $scope.addTargetTypes(left);
+                            $scope.addSpanTypes(left);
                         }
 
                         $scope.setNotSureOption(left);
@@ -128,7 +127,7 @@ angular
                     if ($scope.selection !== null) {
                         switch ($scope.selection.type) {
                             case "Annotation":
-                                if ($scope.selection.getTargetType() !== undefined) {
+                                if ($scope.selection.getSpanType() !== undefined) {
                                     $scope.removeAnnotation({item: $scope.selection});
                                 } else {
                                     $scope.selection.resetWords();
@@ -144,24 +143,25 @@ angular
                     }
                 };
 
-                $scope.setTypeHotkeys = function (e) {
-                    var a = [];
+                /**
+                 * Sets the next span type of the currently selected node.
+                 * Used for HotKeys.
+                 *
+                 * @param index
+                 */
+                $scope.setNextSpanType = function (index) {
+                    var spanTypeMap = [];
                     var i = 0;
-                    for (var id in $scope.targetTypes) {
-                        var type = $scope.targetTypes[id];
-                        a[i] = type;
+                    for (var id in $scope.spanTypes) {
+                        spanTypeMap[i] = $scope.spanTypes[id];
                         i++;
                     }
-                    var type = a[e];
-                    if (type !== undefined) {
-                        $scope.setTypeAndAdd({item: type});
-                        $scope.setType({item: type});
-                    } else {
+                    var spanType = spanTypeMap[index];
+                    if (spanType === undefined) {
                         $scope.index = 0;
-                        var type = a[0];
-                        $scope.setTypeAndAdd({item: type});
-                        $scope.setType({item: type});
+                        spanType = spanTypeMap[0];
                     }
+                    $scope.setSelectedSpanTypeAndAdd({item: spanType});
                 };
 
                 $scope.setLabelHotkeys = function (e) {
@@ -187,15 +187,15 @@ angular
                     hotkeys.bindTo($scope)
                             .add({
                                 combo: 'alt+t',
-                                description: 'Select next TargetType',
+                                description: 'Select next span type',
                                 callback: function () {
                                     $scope.index++;
-                                    $scope.setTypeHotkeys($scope.index);
+                                    $scope.setNextSpanType($scope.index);
                                 }
                             })
                             .add({
                                 combo: 'alt+l',
-                                description: 'Select next Label',
+                                description: 'Select next label',
                                 callback: function () {
                                     $scope.indexLabels++;
                                     $scope.setLabelHotkeys($scope.indexLabels);
@@ -203,7 +203,7 @@ angular
                             })
                             .add({
                                 combo: 'alt+backspace',
-                                description: 'Deleting current Selection',
+                                description: 'Deleting current selection',
                                 callback: function () {
                                     $scope.delete();
                                     $scope.setSelection({item: null});
@@ -214,17 +214,17 @@ angular
                 $scope.index = -1;
                 $scope.indexLabels = -1;
 
-                $scope.addTargetTypes = function (parent) {
+                $scope.addSpanTypes = function (parent) {
                     var newParent = parent.append("div");
-                    newParent.classed("targetTypesDiv", true)
+                    newParent.classed("spanTypesDiv", true)
                     newParent.append("div")
                             .text("SPAN TYPE")
                             .classed("optiontitle", true)
                             .style("font-size", "120%");
-                    // Sort target types
-                    var targetTypesAsArray = d3.entries($scope.targetTypes).sort($scope.targetTypeComp);
-                    var targetTypes = newParent.selectAll()
-                            .data(targetTypesAsArray)
+                    // Sort span types
+                    var spanTypesAsArray = d3.entries($scope.spanTypes).sort($scope.spanTypeComp);
+                    var spanTypes = newParent.selectAll()
+                            .data(spanTypesAsArray)
                             .enter()
                             .append("button")
                             .attr("id", function (d) {
@@ -236,15 +236,15 @@ angular
                             .classed("btn btn-default btn-xs", true)
                             // TODO: create utility function for the two functions below
                             .classed("btn-default", function (d) {
-                                var tType = $scope.selection.tType;
-                                if (tType !== undefined && tType === d.value) {
+                                var sType = $scope.selection.sType;
+                                if (sType !== undefined && sType === d.value) {
                                     return false;
                                 }
                                 return true;
                             })
                             .classed("btn-primary", function (d) {
-                                var tType = $scope.selection.tType;
-                                if (tType !== undefined && tType === d.value) {
+                                var sType = $scope.selection.sType;
+                                if (sType !== undefined && sType === d.value) {
                                     return true;
                                 }
                                 return false;
@@ -259,7 +259,7 @@ angular
                             })
                             .on("click", function (d) {
                                 $scope.$apply(function () {
-                                    $scope.setTypeAndAdd({item: d.value});
+                                    $scope.setSelectedSpanTypeAndAdd({item: d.value});
                                 });
                             });
                     parent.selectAll("button").each(function () {
@@ -288,7 +288,7 @@ angular
                             parent.append("p").text("LINK TYPE")
                                     .classed("optiontitle", true)
                                     .style("font-size", "110%");
-                            parent.classed("targetTypesDiv", true);
+                            parent.classed("spanTypesDiv", true);
                         }
                         parent.append("p")
                                 .text(function () {
@@ -338,7 +338,14 @@ angular
                                     }
                                 })
                                 .text(function (d) {
-                                    return d.toString(width / 30);
+                                    var text;
+                                    if (d.options != undefined && d.options.length > 0) {
+                                        text = d.toStringWithOptionsString(width / 30);
+                                    } else {
+                                        text = d.toString(width / 30);
+                                    }
+
+                                    return text;
                                 })
                                 .on("click", function (d) {
                                     $scope.$apply(function () {
@@ -368,8 +375,8 @@ angular
                                     }
                                 })
                                 .attr("disabled", function () {
-                                    var tType = $scope.selection.tType;
-                                    if (tType === undefined) {
+                                    var sType = $scope.selection.sType;
+                                    if (sType === undefined) {
                                         return "true";
                                     }
                                     if (!$scope.isAnnotator) {
@@ -387,8 +394,8 @@ angular
                                 .text("not sure")
                                 .classed("checkboxLabel", true)
                                 .classed("checkboxLabelDisabled", function () {
-                                    var tType = $scope.selection.tType;
-                                    if (tType === undefined) {
+                                    var sType = $scope.selection.sType;
+                                    if (sType === undefined) {
                                         return true;
                                     }
                                 });

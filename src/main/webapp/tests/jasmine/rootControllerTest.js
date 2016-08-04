@@ -93,7 +93,7 @@ describe('Test rootController', function () {
 
             expect(alert.type).toEqual('danger');
             expect(alert.msg).toEqual('No server connection.');
-            
+
         });
 
         it('Test checkResponseStatusCode with status code: 600', function () {
@@ -259,36 +259,36 @@ describe('Test rootController', function () {
 
             // Test documents
             var doc0 = resultDocs[0];
-            expect(doc0.id).toEqual(5);
-            expect(doc0.name).toEqual('John Lock');
-            expect(doc0.completed).toBeFalsy();
-            expect(doc0.lastEdit).toEqual(1463320311347);
+            expect(doc0.id).toEqual(1);
+            expect(doc0.name).toEqual('Doc1');
+            expect(doc0.completed).toBeTruthy();
+            expect(doc0.lastEdit).toEqual(1463320311346);
             expect(doc0.states.length).toEqual(3);
-            expect(doc0.states[0]).toEqual(states2[0]);
-            expect(doc0.states[1]).toEqual(states2[1]);
-            expect(doc0.states[2]).toEqual(states2[2]);
+            expect(doc0.states[0]).toEqual(states1[0]);
+            expect(doc0.states[1]).toEqual(states1[2]);
+            expect(doc0.states[2]).toEqual(states1[1]);
 
             var doc1 = resultDocs[1];
-            expect(doc1.id).toEqual(1);
-            expect(doc1.name).toEqual('Doc1');
-            expect(doc1.completed).toBeTruthy();
-            expect(doc1.lastEdit).toEqual(1463320311346);
+            expect(doc1.id).toEqual(169);
+            expect(doc1.name).toEqual('Greek History');
+            expect(doc1.completed).toBeFalsy();
+            expect(doc1.lastEdit).toEqual(1463320311345);
             expect(doc1.states.length).toEqual(3);
-            expect(doc1.states[0]).toEqual(states1[0]);
-            expect(doc1.states[1]).toEqual(states1[2]);
-            expect(doc1.states[2]).toEqual(states1[1]);
+            expect(doc1.states[0]).toEqual(states3[2]);
+            expect(doc1.states[1]).toEqual(states3[1]);
+            expect(doc1.states[2]).toEqual(states3[0]);
 
             var doc2 = resultDocs[2];
-            expect(doc2.id).toEqual(169);
-            expect(doc2.name).toEqual('Greek History');
+            expect(doc2.id).toEqual(5);
+            expect(doc2.name).toEqual('John Lock');
             expect(doc2.completed).toBeFalsy();
-            expect(doc2.lastEdit).toEqual(1463320311345);
+            expect(doc2.lastEdit).toEqual(1463320311347);
             expect(doc2.states.length).toEqual(3);
-            expect(doc2.states[0]).toEqual(states3[2]);
-            expect(doc2.states[1]).toEqual(states3[1]);
-            expect(doc2.states[2]).toEqual(states3[0]);
+            expect(doc2.states[0]).toEqual(states2[0]);
+            expect(doc2.states[1]).toEqual(states2[1]);
+            expect(doc2.states[2]).toEqual(states2[2]);
         });
-        
+
         it('Test buildDocuments with empty documents', function () {
             var users = [
                 {id: 0},
@@ -693,7 +693,7 @@ describe('Test rootController', function () {
                 {id: 1},
                 {id: 3}
             ];
-            
+
             var userIdIndexMap = $rootScope.getUserIdIndexMap(users);
 
             expect(Object.keys(userIdIndexMap).length).toEqual(3);

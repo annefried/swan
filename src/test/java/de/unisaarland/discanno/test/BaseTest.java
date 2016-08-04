@@ -54,12 +54,12 @@ public abstract class BaseTest {
         entityClasses.add(LabelSet.class);
         entityClasses.add(Link.class);
         entityClasses.add(LinkLabel.class);
-        entityClasses.add(LinkLabelLinkSetMap.class);
-        entityClasses.add(LinkSet.class);
+        entityClasses.add(LinkLabelLinkTypeMap.class);
+        entityClasses.add(LinkType.class);
         entityClasses.add(Project.class);
         entityClasses.add(Scheme.class);
         entityClasses.add(State.class);
-        entityClasses.add(TargetType.class);
+        entityClasses.add(SpanType.class);
         entityClasses.add(TimeLogging.class);
         entityClasses.add(Users.class);
     }

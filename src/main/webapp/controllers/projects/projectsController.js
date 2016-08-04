@@ -139,7 +139,7 @@ angular
             };
 
             /**
-             * Redirects to the AnnotationTool
+             * Redirects to the annotation tool.
              *
              * @param {String} docId The document id to annotate
              * @param {String} docName name
@@ -295,8 +295,9 @@ angular
 
                 modalInstance.result.then(function (full) {
                     var projectTemplate = {
-                        'name': full.name,
                         'id': null,
+                        'name': full.name,
+                        'tokenizationLang': full.lang,
                         'documents': [],
                         'scheme': {
                             'id': full.scheme.id
@@ -307,6 +308,7 @@ angular
                         var template = {
                             'id': response.data,
                             'name': full.name,
+                            'tokenizationLang': full.lang,
                             'scheme': projectTemplate.scheme,
                             'users': [],
                             'pms': [],
@@ -320,7 +322,7 @@ angular
                         } else {
                             // TODO create REST interface getUser by Id
                             // Get the current user (there is no REST interface for getUser by ID)
-                            $http.get("swan/user/").success(function (response) {
+                            $http.get("swan/user/withprojects").success(function (response) {
                                 var users = JSOG.parse(JSON.stringify(response)).users;
                                 for (var i = 0; i < users.length; i++) {
                                     var u = users[i];

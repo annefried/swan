@@ -65,7 +65,7 @@ angular.module('app')
                 }
             }
         })
-        .factory('targetService', function ($http) {
+        .factory('targetService', function ($http) { // TODO never used?
             return  {
                 getTargets: function (uId, docId) {
                     // Async

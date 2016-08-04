@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<uib-accordion-group heading="Annotations" is-disabled="false" is-open="true" class="unselectable" id="anno-options">
+    <div ng-controller="d3OptionsController as options">
+        <d3-options data="annotation.annotationText"
+                    selection="annotation.selectedNode"
+                    labels="annotation.labelTable"
+                    span-types="annotation.spanTypes"
+                    temp-anno="annotation.tempAnno"
+                    set-selection="annotation.setSelected(item)"
+                    set-label="annotation.setSelectedLabel(label, set)"
+                    remove-annotation="annotation.removeAnnotation(item)"
+                    remove-target="annotation.removeTarget(item)"
+                    remove-link="annotation.removeLink(item)"
+                    set-selected-span-type-and-add="annotation.setSelectedSpanTypeAndAdd(item)"
+                    set-annotation-not-sure="annotation.setAnnotationNotSure(item,bool)">
+        </d3-options>
+    </div>
+</uib-accordion-group>

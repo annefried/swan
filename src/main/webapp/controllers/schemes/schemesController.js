@@ -88,8 +88,8 @@ angular
                     'projects': newProjects,
                     'tableIndex': $scope.schemeCounter
                 };
-                this.tableSchemes.push(schemePreview);
 
+                this.tableSchemes.push(schemePreview);
             }
 
             $rootScope.tableSchemes = this.tableSchemes;
@@ -165,7 +165,7 @@ angular
             var modalInstance = null;
 
             var scheme = $rootScope.schemesTable[name];
-            if (scheme.targetTypes === undefined) {
+            if (scheme.spanTypes === undefined) {
                 $http.get("swan/scheme/byid/" + scheme.id).success(function (response) {
                     scheme = response.scheme;
                     $rootScope.currentScheme = scheme;

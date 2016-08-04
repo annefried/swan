@@ -174,13 +174,13 @@ function AnnotationObject(id, type, labels, text) {
 }
 
 //Represents a whole annotation
-function Annotation(color, id, tType) {
-    if (tType === undefined)
+function Annotation(color, id, sType) {
+    if (sType === undefined)
         AnnotationObject.call(this, id, AnnoType.Annotation);
     else
-        AnnotationObject.call(this, id, AnnoType.Annotation, tType.selectableLabels);
+        AnnotationObject.call(this, id, AnnoType.Annotation, sType.selectableLabels);
 
-    this.tType = tType;
+    this.sType = sType;
     this.color = color;
     this.words = [];
     this.notSure = false;
@@ -232,7 +232,6 @@ function Annotation(color, id, tType) {
             this.words = words;
             this.text = this.text.substring(word.text.length, this.text.length);
         }
-        console.log(this)
         return word;
     };
 
@@ -242,14 +241,14 @@ function Annotation(color, id, tType) {
         this.text = "";
     };
 
-    this.setTargetType = function (targetType) {
-        this.tType = targetType;
-        this.selectableLabels = targetType.selectableLabels;
+    this.setSpanType = function (spanType) {
+        this.sType = spanType;
+        this.selectableLabels = spanType.selectableLabels;
         this.activeLabels = {};
     };
 
-    this.getTargetType = function () {
-        return this.tType;
+    this.getSpanType = function () {
+        return this.sType;
     };
 
     //Return the text index where this annotation starts
@@ -328,20 +327,51 @@ function AnnotationColor(name, num, shades, back, line) {
 }
 
 //Represents the label of an annotation
-function AnnotationLabel(tag, setID) {
+function AnnotationLabel(id, tag, options, setID) {
+    this.id = id;
     this.tag = tag;
+    this.options = options;
     this.setID = setID;
 
     this.toString = function (maxSize) {
-        if (this.tag.length <= maxSize)
+        if (this.tag.length <= maxSize) {
             return this.tag;
+        } 
 
         return this.tag.substring(0, maxSize - 3) + "...";
     };
+
+    this.toStringWithOptionsString = function (maxSize) {
+        var text = this.tag;
+        // If the label text is already too long
+        if (text.length >= maxSize) {
+            // If only one option is defined, only take the first character
+            if (this.options.length === 1) {
+                text = text.substring(0, maxSize - 3) + "..." + "[" + this.options[0][0] + "]";
+            }
+            // If more options are defined, take the first character of the first option
+            // and short the others with "..."
+            else {
+                text = text.substring(0, maxSize - 3) + "..." + "[" + this.options[0][0] + ",...]";
+            }
+        } else {
+            if (this.options.length > 0) {
+                var optText = this.options.toString();
+                if (text.length + optText.length >= maxSize) {
+                    text += "[" + optText;
+                    text = text.substring(0, maxSize - 3) + "...]";
+                } else {
+                    text += "[" + optText + "]";
+                }
+            }
+        }
+
+        return text;
+    };
 }
 
-//Represents a setable target type
-function TargetType(id, tag) {
+// Represents a setable span type
+function SpanType(id, tag) {
     this.id = id;
     this.tag = tag;
     this.selectableLabels = {};

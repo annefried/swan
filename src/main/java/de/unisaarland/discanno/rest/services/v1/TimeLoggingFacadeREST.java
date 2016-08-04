@@ -12,6 +12,8 @@ import de.unisaarland.discanno.business.Service;
 import de.unisaarland.discanno.dao.TimeLoggingDAO;
 import de.unisaarland.discanno.dao.UsersDAO;
 import de.unisaarland.discanno.entities.TimeLogging;
+import de.unisaarland.discanno.rest.view.View;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,7 +78,7 @@ public class TimeLoggingFacadeREST extends AbstractFacade<TimeLogging> {
 
             List<TimeLogging> list = timeLoggingDAO.getAllTimeLoggingByUserId(id);
 
-            return Response.ok(mapper.writer()
+            return Response.ok(mapper.writerWithView(View.Timelogging.class)
                                         .withRootName("timelogging")
                                         .writeValueAsString(list))
                             .build();

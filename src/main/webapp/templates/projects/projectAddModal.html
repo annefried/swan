@@ -26,7 +26,16 @@ and open the template in the editor.
                 </div>
                 <div class="form-group">
                     <label for="sel1">Annotation scheme:</label>
-                    <select data-ng-model="selectedOption" ng-options="scheme as scheme.name for scheme in this.schemes">
+                    <select
+                            data-ng-model="selectedOption"
+                            ng-options="scheme as scheme.name for scheme in this.schemes">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="toklanguage">Tokenization language:</label>
+                    <select
+                            data-ng-model="selectedTokLang"
+                            ng-options="language as language for language in this.lanaguages">
                     </select>
                 </div>
             </div>
@@ -34,8 +43,8 @@ and open the template in the editor.
                 <button type="button"
                         id="pe_createProjectButton"
                         class="btn btn-primary"
-                        ng-disabled="!vm.name || !selectedOption || $scope.hasError(vm.name)"
-                        ng-click="submit(vm.name, selectedOption)">
+                        ng-disabled="!vm.name || !selectedOption || !selectedTokLang || $scope.hasError(vm.name)"
+                        ng-click="submit(vm.name, selectedOption, selectedTokLang)">
                     Submit
                 </button>
             </div>
