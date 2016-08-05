@@ -36,6 +36,9 @@ Find our web demo [here](http://swan.coli.uni-saarland.de).
     * h2 as local testing database
     * JaCoCo for report generation
 
+## Screenshot
+![A SWAN screenshot](https://raw.githubusercontent.com/wiki/annefried/swan/images/swan_example.png)
+
 ## Contact
 We are happy to hear from you!
 If you love SWAN, send us an email.
