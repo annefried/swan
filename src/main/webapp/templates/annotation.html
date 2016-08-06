@@ -53,13 +53,6 @@ and open the template in the editor.
             <div class="col-md-7" ng-controller="d3AnnotationController as d3Anno" ng-mouseup="d3Anno.UpdateSelectionText()">
 
                 <div class="annotationfield">
-                    <uib-alert ng-repeat="alert in alerts"
-                               type="{{alert.type}}"
-                               close="closeAlert($index)"
-                               dismiss-on-timeout="10000">
-                        {{alert.msg}}
-                    </uib-alert>
-
                     <uib-accordion close-others="false">
                         <div ng-include src="'templates/viselements/text.html'"></div>
                     </uib-accordion>
@@ -68,6 +61,14 @@ and open the template in the editor.
         </div>
 
         <div class="col-md-5 rightwindow">
+
+            <uib-alert ng-repeat="alert in alerts"
+                       type="{{alert.type}}"
+                       close="closeAlert($index)"
+                       dismiss-on-timeout="10000">
+                {{alert.msg}}
+            </uib-alert>
+
             <div ng-class="GraphAccordion">
                 <div class="scroll-pane">
                     <uib-accordion close-others="false">
