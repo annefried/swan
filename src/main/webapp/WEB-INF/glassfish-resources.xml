@@ -36,7 +36,7 @@
                           max-connection-usage-count="0"
                           max-pool-size="32"
                           max-wait-time-in-millis="60000"
-                          name="discannoPool"
+                          name="swanPool"
                           non-transactional-connections="false"
                           pool-resize-quantity="2"
                           res-type="javax.sql.DataSource"
@@ -46,13 +46,13 @@
                           wrap-jdbc-objects="false">
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="5432"/>
-        <property name="databaseName" value="discanno"/>
+        <property name="databaseName" value="swan"/>
         <property name="User" value="postgres"/>
         <property name="Password" value="postgres"/>
         <!-- Does not work, no idea -->
         <!--<property name="connectionAttributes" value="create=true" />-->
-        <property name="URL" value="jdbc:postgresql://localhost:5432/discanno"/>
+        <property name="URL" value="jdbc:postgresql://localhost:5432/swan"/>
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="jdbc/DiscAnno" object-type="user" pool-name="discannoPool"/>
+    <jdbc-resource enabled="true" jndi-name="jdbc/Swan" object-type="user" pool-name="swanPool"/>
 </resources>

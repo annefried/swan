@@ -1575,7 +1575,7 @@ SELECT pg_catalog.setval('timelogging_id_seq', 1, false);
 INSERT INTO users (id, createdate, email, lastname, password, prename, role, session) VALUES (3, '2016-04-12 11:46:40.677', 'admin@web.de', 'Wish', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'Timo', 'admin', 'd4f352f4d13443642123a859e192');
 INSERT INTO users (id, createdate, email, lastname, password, prename, role, session) VALUES (5, '2016-04-15 18:25:32.724', 'coli3@web.de', 'Wish', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'Coli3', 'annotator', NULL);
 INSERT INTO users (id, createdate, email, lastname, password, prename, role, session) VALUES (4, '2016-04-15 18:25:13.029', 'coli2@web.de', 'Wish', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'Coli2', 'annotator', NULL);
-INSERT INTO users (id, createdate, email, lastname, password, prename, role, session) VALUES (1, '2016-04-07 13:23:41.881986', 'admin@discanno.de', 'DiscAnno', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'Admin', 'admin', NULL);
+INSERT INTO users (id, createdate, email, lastname, password, prename, role, session) VALUES (1, '2016-04-07 13:23:41.881986', 'admin@swan.de', 'SWAN', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'Admin', 'admin', NULL);
 INSERT INTO users (id, createdate, email, lastname, password, prename, role, session) VALUES (2, '2016-04-07 13:25:18.716', 'coli@web.de', 'Wish', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'Timo', 'annotator', NULL);
 INSERT INTO users (id, createdate, email, lastname, password, prename, role, session) VALUES (6, '2016-05-06 15:44:43.621', 'manager@web.de', 'manager@web.de', '-2d8bd2605ef266f054a2b774af60ffdd9534c9edec5cba71', 'manager', 'projectmanager', 'd0c6fa4f7c0422e75c94c1b8ecad');
 
