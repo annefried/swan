@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
-    <name>DiscAnnoTypesystem</name>
+    <name>SWANTypeSystem</name>
     <description/>
     <version>1.0</version>
     <vendor/>
   <types>
    <typeDescription>
-      <name>de.unisaarland.swan.export.uimaTypes.SwanAnnotation</name>
+      <name>de.unisaarland.swan.export.model.uima.SwanAnnotation</name>
       <description>Annotation of one annotator.</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -24,13 +24,13 @@
           <name>Labels</name>
           <description>Set of labels assigned to this annotation by the annotator.</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-        <elementType>de.unisaarland.swan.export.uimaTypes.SwanLabel</elementType>
+        <elementType>de.unisaarland.swan.export.model.uima.SwanLabel</elementType>
         </featureDescription>
       <featureDescription>
           <name>Links</name>
           <description>Links starting at this SwanAnnotation.</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>de.unisaarland.swan.export.uimaTypes.SwanLink</elementType>
+          <elementType>de.unisaarland.swan.export.model.uima.SwanLink</elementType>
         </featureDescription>
         <featureDescription>
           <name>AnnotationId</name>
@@ -40,7 +40,7 @@
       </features>
     </typeDescription>
   <typeDescription>
-      <name>de.unisaarland.swan.export.uimaTypes.SwanLabel</name>
+      <name>de.unisaarland.swan.export.model.uima.SwanLabel</name>
       <description>defines a label: name of label + name of LabelSet to which the labels belongs</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -57,25 +57,25 @@
       </features>
     </typeDescription>
   <typeDescription>
-      <name>de.unisaarland.swan.export.uimaTypes.SwanLink</name>
+      <name>de.unisaarland.swan.export.model.uima.SwanLink</name>
       <description>Link between two annotations.</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
           <name>linkBegin</name>
           <description>SwanAnnotation at which the link starts.</description>
-          <rangeTypeName>de.unisaarland.swan.export.uimaTypes.SwanAnnotation</rangeTypeName>
+          <rangeTypeName>de.unisaarland.swan.export.model.uima.SwanAnnotation</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>linkEnd</name>
           <description>SwanAnnotation at which the link ends.</description>
-          <rangeTypeName>de.unisaarland.swan.export.uimaTypes.SwanAnnotation</rangeTypeName>
+          <rangeTypeName>de.unisaarland.swan.export.model.uima.SwanAnnotation</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>Labels</name>
           <description>labels assigned to the link.</description>
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>de.unisaarland.swan.export.uimaTypes.SwanLabel</elementType>
+          <elementType>de.unisaarland.swan.export.model.uima.SwanLabel</elementType>
         </featureDescription>
         <featureDescription>
           <name>AnnotatorId</name>

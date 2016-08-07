@@ -1076,7 +1076,7 @@ angular
                 new AnnotationColor("Blue", 0, blueShades, "#072540", undefined),
                 new AnnotationColor("Violet", 0, violetShades, "#795A8F", undefined),
                 new AnnotationColor("Green", 0, greenShades, "#67a754", undefined)
-//                    new AnnotationColor("Cyan", 0, undefined, "#154747", undefined), // TODO https://github.com/annefried/discanno/issues/70
+//                    new AnnotationColor("Cyan", 0, undefined, "#154747", undefined), // TODO https://github.com/annefried/swan/issues/70
 //                    new AnnotationColor("Yellow", 0, undefined, "#BE3803", undefined),
 //                    new AnnotationColor("Brown", 0, undefined, "#533631", undefined),
 //                    new AnnotationColor("Orange", 0, undefined, "#AA3935", undefined),
