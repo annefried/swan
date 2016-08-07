@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="DiscAnnoPU" transaction-type="JTA">
+  <persistence-unit name="SwanPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>java:app/jdbc/DiscAnno</jta-data-source>
-    <class>de.unisaarland.discanno.entities.Annotation</class>
+    <jta-data-source>java:app/jdbc/Swan</jta-data-source>
+    <class>de.unisaarland.swan.entities.Annotation</class>
     <!-- Include MappedSuperClass because of an Eclipse bug:
     	https://bugs.eclipse.org/bugs/show_bug.cgi?id=361042 -->
-    <class>de.unisaarland.discanno.entities.BaseEntity</class>
-    <class>de.unisaarland.discanno.entities.Scheme</class>
-    <class>de.unisaarland.discanno.entities.LabelSet</class>
-    <class>de.unisaarland.discanno.entities.Link</class>
-    <class>de.unisaarland.discanno.entities.LinkLabel</class>
-    <class>de.unisaarland.discanno.entities.Document</class>
-    <class>de.unisaarland.discanno.entities.Project</class>
-    <class>de.unisaarland.discanno.entities.LabelLabelSetMap</class>
-    <class>de.unisaarland.discanno.entities.Label</class>
-    <class>de.unisaarland.discanno.entities.State</class>
-    <class>de.unisaarland.discanno.entities.TimeLogging</class>
-    <class>de.unisaarland.discanno.entities.Users</class>
-    <class>de.unisaarland.discanno.entities.VisualizationElement</class>
-    <class>de.unisaarland.discanno.entities.SpanType</class>
-    <class>de.unisaarland.discanno.entities.LinkType</class>
-    <class>de.unisaarland.discanno.entities.LinkLabelLinkTypeMap</class>
+    <class>de.unisaarland.swan.entities.BaseEntity</class>
+    <class>de.unisaarland.swan.entities.Scheme</class>
+    <class>de.unisaarland.swan.entities.LabelSet</class>
+    <class>de.unisaarland.swan.entities.Link</class>
+    <class>de.unisaarland.swan.entities.LinkLabel</class>
+    <class>de.unisaarland.swan.entities.Document</class>
+    <class>de.unisaarland.swan.entities.Project</class>
+    <class>de.unisaarland.swan.entities.LabelLabelSetMap</class>
+    <class>de.unisaarland.swan.entities.Label</class>
+    <class>de.unisaarland.swan.entities.State</class>
+    <class>de.unisaarland.swan.entities.TimeLogging</class>
+    <class>de.unisaarland.swan.entities.Users</class>
+    <class>de.unisaarland.swan.entities.VisualizationElement</class>
+    <class>de.unisaarland.swan.entities.SpanType</class>
+    <class>de.unisaarland.swan.entities.LinkType</class>
+    <class>de.unisaarland.swan.entities.LinkLabelLinkTypeMap</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
