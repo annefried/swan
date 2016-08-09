@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<root>
+	<name>timelineScheme</name>
+	<visElements>
+        <visElement>
+		    <visState>closed</visState>
+		    <visKind>timeline</visKind>
+        </visElement>
+        <visElement>
+		    <visState>hidden</visState>
+		    <visKind>graph</visKind>
+        </visElement>
+	</visElements>
+	<spanTypes>
+		<spanType name="verb"/>
+		<spanType name="noun"/>
+	</spanTypes>
+	<labelSets>
+        <labelSet>
+		    <name>number</name>
+		    <exclusive>true</exclusive>
+            <appliesToSpanTypes>
+			    <spanType name="verb"/>
+			    <spanType name="noun"/>
+		    </appliesToSpanTypes>
+		    <labels>
+			    <label name="plural"/>
+			    <label name="singular"/>
+		    </labels>
+        </labelSet>
+        <labelSet>
+		    <name>voice</name>
+		    <exclusive>true</exclusive>
+            <appliesToSpanTypes>
+			    <spanType name="verb"/>
+		    </appliesToSpanTypes>
+		    <labels>
+			    <label name="active"/>
+			    <label name="passive"/>
+		    </labels>
+        </labelSet>
+	</labelSets>
+	<linkTypes>
+        <linkType>
+		    <name>temporal relation</name>
+		    <startSpanType name="verb"/>
+		    <endSpanType name="verb"/>
+		    <linkLabels>
+			    <label>
+			    	<name>overlap</name>
+			    	<options>
+			    		<option>vertical</option>
+			    	</options>
+			    </label>
+			    <label>
+			    	<name>before</name>
+			    	<options>
+			    		<option>horizontal</option>
+			    	</options>
+			    </label>
+		    </linkLabels>
+        </linkType>
+	</linkTypes>
+</root>

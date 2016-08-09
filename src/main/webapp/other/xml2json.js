@@ -5,6 +5,10 @@
  */
 'use strict';
 
+function replaceAll(str, find, replace) {
+    return str.split(find).join(replace);
+}
+
 /**
  *
  * @param {type} xml The XML to be parsed
@@ -15,10 +19,10 @@ function xml2json(xml, tab) {
     var X = {
         toObj: function (xml) {
             var o = {};
-            if (xml.nodeType == 1) {   // element node ..
-                if (xml.attributes.length)   // element with attributes  ..
+            if (xml.nodeType == 1) {   // element node ...
+                if (xml.attributes.length)   // element with attributes ...
                     for (var i = 0; i < xml.attributes.length; i++)
-                        o["@" + xml.attributes[i].nodeName] = (xml.attributes[i].nodeValue || "").toString();
+                        o[xml.attributes[i].nodeName] = (xml.attributes[i].nodeValue || "").toString();
                 if (xml.firstChild) { // element has child nodes ..
                     var textChild = 0, cdataChild = 0, hasElementChild = false;
                     for (var n = xml.firstChild; n; n = n.nextSibling) {
@@ -30,19 +34,19 @@ function xml2json(xml, tab) {
                             cdataChild++; // cdata section node
                     }
                     if (hasElementChild) {
-                        if (textChild < 2 && cdataChild < 2) { // structured element with evtl. a single text or/and cdata node ..
+                        if (textChild < 2 && cdataChild < 2) { // structured element with evtl. a single text or/and cdata node ...
                             X.removeWhite(xml);
                             for (var n = xml.firstChild; n; n = n.nextSibling) {
                                 if (n.nodeType == 3)  // text node
                                     o["#text"] = X.escape(n.nodeValue);
                                 else if (n.nodeType == 4)  // cdata node
                                     o["#cdata"] = X.escape(n.nodeValue);
-                                else if (o[n.nodeName]) {  // multiple occurence of element ..
+                                else if (o[n.nodeName]) {  // multiple occurence of element ...
                                     if (o[n.nodeName] instanceof Array)
                                         o[n.nodeName][o[n.nodeName].length] = X.toObj(n);
                                     else
                                         o[n.nodeName] = [o[n.nodeName], X.toObj(n)];
-                                } else  // first occurence of element..
+                                } else  // first occurence of element ...
                                     o[n.nodeName] = X.toObj(n);
                             }
                         } else { // mixed content
@@ -76,9 +80,10 @@ function xml2json(xml, tab) {
             if (name !== "root"
                     && name !== "visElement"
                     && name !== "label"
-                    && name != "spanType"
-                    && name != "labelSet"
-                    && name != "linkType")
+                    && name !== "spanType"
+                    && name !== "labelSet"
+                    && name !== "linkType"
+                    && name !== "option")
 
                 var json = name ? ("\"" + name + "\"") : "";
             else {
@@ -99,13 +104,32 @@ function xml2json(xml, tab) {
                 }
                 if (name === undefined) {
                     json += ind + "\t" + arr.join(",\n" + ind + "\t") + "\n";
+                } else if (name === "labels"
+                            || name === "visElements"
+                            || name === "linkLabels"
+                            || name === "appliesToSpanTypes"
+                            || name === "linkTypes"
+                            || name === "spanTypes"
+                            || name === "labelSets") {
+
+                    json += ":[{" + ("\n" + ind + "\t" + ((arr.length === 1) ? arr[0] : arr.join("},{\n" + ind + "\t")) + "\n" + ind) + "}]";
+                } else if (name === "options") {
+                    json += ":[" + ("\n" + ind + "\t" + ((arr.length === 1) ? arr[0] : arr.join("},{\n" + ind + "\t")) + "\n" + ind) + "]";
+                } else if (name === "startSpanType"
+                            || name === "endSpanType") {
+
+                    if (arr.length !== 1) {
+                        throw "xml2json: startSpanType or endSpanType attribute not valid.";
+                    }
+                    json += ": {" + ("\n" + ind + "\t" + arr[0]  + "\n" + ind) + "}";
                 } else if (name !== "labels"
                             && name !== "visElements"
                             && name !== "linkLabels"
                             && name !== "appliesToSpanTypes"
                             && name !== "linkTypes"
                             && name !== "spanTypes"
-                            && name !== "labelSets") {
+                            && name !== "labelSets"
+                            && name !== "options") {
 
                     json += (name ? ":" : "{") + ("\n" + ind + "\t" + arr.join(",\n" + ind + "\t") + "\n" + ind) + (name ? "" : "}");
                 } else {
@@ -125,7 +149,7 @@ function xml2json(xml, tab) {
             return json;
         },
         innerXml: function (node) {
-            var s = ""
+            var s = "";
             if ("innerHTML" in node)
                 s = node.innerHTML;
             else {
@@ -183,6 +207,8 @@ function xml2json(xml, tab) {
     var json = X.toJson(X.toObj(X.removeWhite(xml)), xml.nodeName, "\t");
 
     json = "{\n" + tab + (tab ? json.replace(/\t/g, tab) : json.replace(/\t|\n/g, "")) + "\n}";
+    json = replaceAll(json, "[{{", "[{");
+    json = replaceAll(json, "}}]", "}]");
 
     return json;
 }
