@@ -28,24 +28,26 @@ public class StateDAO extends BaseEntityDAO<State> {
         super(State.class);
     }
     
-    /**
-     * Returns all states by a specific user. Just for remove
-     * purposes.
-     * 
-     * @param user
-     * @return 
-     */
-    public List<State> getAllStatesByUserId(Users user) {
-        return executeQuery(
-                    State.QUERY_FIND_BY_USER,
-                    Collections.singletonMap(State.PARAM_USER, user));
-    }
-    
+
     public State getStateByDocIdUserId(final Long docId, final Long userId, boolean nullOptional) {
         Map<String, Long> params = new HashMap<>();
         params.put(State.PARAM_DOC, docId);
         params.put(State.PARAM_USER, userId);
         return executeQuery(State.QUERY_FIND_BY_DOC_AND_USER, params, nullOptional);
+    }
+
+    /**
+     * TODO does not work, so that other entity managers and dependencies
+     * are updated and do not keep a reference.
+     *
+     * Removes all states by a user.
+     *
+     * @param user
+     */
+    public void removeAllStatesByUser(Users user) {
+        executeUpdate(
+                State.QUERY_DELETE_BY_USER,
+                Collections.singletonMap(State.PARAM_USER, user));
     }
 
     public void removeAllStatesByDocId(final Long docId) {

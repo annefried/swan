@@ -79,5 +79,16 @@ public class AnnotationDAO extends BaseEntityDAO<Annotation> {
                 Annotation.QUERY_DELETE_BY_DOCUMENT,
                 Collections.singletonMap(Annotation.PARAM_DOCUMENT, entity));
     }
+
+    /**
+     * Removes all annotations belonging to a user.
+     *
+     * @param entity
+     */
+    public void removeAllAnnotationsByUser(Users entity) {
+        executeUpdate(
+                Annotation.QUERY_DELETE_BY_USER,
+                Collections.singletonMap(Annotation.PARAM_USER, entity));
+    }
     
 }

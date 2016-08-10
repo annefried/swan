@@ -6,6 +6,7 @@
 package de.unisaarland.swan.dao;
 
 import de.unisaarland.swan.entities.Link;
+import de.unisaarland.swan.entities.Users;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -29,6 +30,8 @@ public class LinkDAO extends BaseEntityDAO<Link> {
     }
     
     /**
+     * TODO https://github.com/annefried/swan/issues/238
+     *
      * Returns all annotations by a specific annotation id. Just for remove
      * purposes.
      * 
@@ -42,17 +45,23 @@ public class LinkDAO extends BaseEntityDAO<Link> {
         return executeQuery(Link.QUERY_FIND_BY_ANNO1_AND_ANNO2, params);
     }
 
-    public void removeAllLinksByDocId(final Long docId) {
-        executeUpdate(
-                Link.QUERY_DELETE_BY_DOC_ID,
-                Collections.singletonMap(Link.PARAM_DOC_ID, docId));
-    }
-    
     public List<Link> getAllLinksByUserIdDocId(final Long userId, final Long docId) {
         Map<String, Long> params = new HashMap<>();
         params.put(Link.PARAM_DOC_ID, docId);
         params.put(Link.PARAM_USER_ID, userId);
         return executeQuery(Link.QUERY_FIND_BY_DOC_AND_USER, params);
     }
-    
+
+    public void removeAllLinksByDocId(final Long docId) {
+        executeUpdate(
+                Link.QUERY_DELETE_BY_DOC_ID,
+                Collections.singletonMap(Link.PARAM_DOC_ID, docId));
+    }
+
+    public void removeAllLinksByUser(Users user) {
+        executeUpdate(
+                Link.QUERY_DELETE_BY_USER,
+                Collections.singletonMap(Link.PARAM_USER, user));
+    }
+
 }

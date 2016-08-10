@@ -62,8 +62,13 @@ import javax.persistence.*;
                     "WHERE EXISTS( " +
                             "SELECT d " +
                             "FROM Document d " +
-                            "WHERE d.id = :" + Scheme.PARAM_DOC_ID + " AND d.project.scheme = s)",
-        hints = { }
+                            "WHERE d.id = :" + Scheme.PARAM_DOC_ID + " AND d.project.scheme = s)"
+    ),
+    @NamedQuery(
+        name = Scheme.QUERY_SET_CREATOR_NULL,
+        query = "UPDATE Scheme s " +
+                "SET s.creator = null " +
+                "WHERE s.creator = :" + Scheme.PARAM_CREATOR
     )
 })
 public class Scheme extends BaseEntity {
@@ -84,6 +89,11 @@ public class Scheme extends BaseEntity {
     public static final String QUERY_FIND_BY_DOC_ID = "Scheme.QUERY_FIND_BY_DOC_ID";
 
     /**
+     * Named query identifier for "set creator null".
+     */
+    public static final String QUERY_SET_CREATOR_NULL = "Scheme.QUERY_SET_CREATOR_NULL";
+
+    /**
      * Query parameter constant for the attribute "id".
      */
     public static final String PARAM_SCHEME_ID = "id";
@@ -93,6 +103,10 @@ public class Scheme extends BaseEntity {
      */
     public static final String PARAM_DOC_ID = "doc_id";
 
+    /**
+     * Query parameter constant for the attribute "creator".
+     */
+    public static final String PARAM_CREATOR = "creator";
 
     @JsonView({ View.Scheme.class, View.Schemes.class })
     @Column(name = "Name", unique = true)

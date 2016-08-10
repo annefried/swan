@@ -36,6 +36,12 @@ import javax.persistence.*;
         query = "DELETE " +
                 "FROM Link l " +
                 "WHERE l.document.id = :" + Link.PARAM_DOC_ID
+    ),
+    @NamedQuery(
+        name = Link.QUERY_DELETE_BY_USER,
+        query = "DELETE " +
+                "FROM Link l " +
+                "WHERE l.user = :" + Link.PARAM_USER
     )
 })
 public class Link extends BaseEntity {
@@ -54,11 +60,21 @@ public class Link extends BaseEntity {
      * Named query identifier for "delete by doc id"
      */
     public static final String QUERY_DELETE_BY_DOC_ID = "Link.QUERY_DELETE_BY_DOC_ID";
+
+    /**
+     * Named query identifier for "delete by user"
+     */
+    public static final String QUERY_DELETE_BY_USER = "Link.QUERY_DELETE_BY_USER";
     
     /**
      * Query parameter constant for the attribute "user.id".
      */
     public static final String PARAM_USER_ID = "user_id";
+
+    /**
+     * Query parameter constant for the attribute "user".
+     */
+    public static final String PARAM_USER = "user";
     
     /**
      * Query parameter constant for the attribute "document.id".

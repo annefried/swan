@@ -6,6 +6,8 @@
 package de.unisaarland.swan.dao;
 
 import de.unisaarland.swan.entities.TimeLogging;
+import de.unisaarland.swan.entities.Users;
+
 import java.util.Collections;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -28,8 +30,19 @@ public class TimeLoggingDAO extends BaseEntityDAO<TimeLogging> {
     
     public List<TimeLogging> getAllTimeLoggingByUserId(Long id) {
         return executeQuery(
-                    TimeLogging.QUERY_FIND_BY_USER,
-                    Collections.singletonMap(TimeLogging.PARAM_USER, id));
+                    TimeLogging.QUERY_FIND_BY_USER_ID,
+                    Collections.singletonMap(TimeLogging.PARAM_USER_ID, id));
+    }
+
+    /**
+     * Removes all timelogging belonging to a user.
+     *
+     * @param entity
+     */
+    public void removeAllTimeLoggingByUser(Users entity) {
+        executeUpdate(
+                TimeLogging.QUERY_DELETE_BY_USER,
+                Collections.singletonMap(TimeLogging.PARAM_USER, entity));
     }
     
 }

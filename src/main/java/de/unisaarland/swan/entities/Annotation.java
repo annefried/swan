@@ -24,14 +24,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = { "user_fk", "document_fk", "spanType_fk", "StartS", "EndS" })})
 @NamedQueries({
     @NamedQuery(
-        name = Annotation.QUERY_DELETE_BY_DOCUMENT,
-        query = "DELETE " +
-                "FROM Annotation a " +
-                "WHERE a.document = :" + Annotation.PARAM_DOCUMENT,
-        hints = {
-        }
-    ),
-    @NamedQuery(
         name = Annotation.QUERY_FIND_BY_USER,
         query = "SELECT a " +
                 "FROM Annotation a " +
@@ -42,6 +34,18 @@ import javax.xml.bind.annotation.XmlRootElement;
         query = "SELECT a1 " +
                 "FROM Annotation a1 " +
                 "WHERE a1.user.id = :" + Annotation.PARAM_USER + " AND a1.document.id = :" + Annotation.PARAM_DOCUMENT
+    ),
+    @NamedQuery(
+        name = Annotation.QUERY_DELETE_BY_DOCUMENT,
+        query = "DELETE " +
+                "FROM Annotation a " +
+                "WHERE a.document = :" + Annotation.PARAM_DOCUMENT
+    ),
+    @NamedQuery(
+        name = Annotation.QUERY_DELETE_BY_USER,
+        query = "DELETE " +
+                "FROM Annotation a " +
+                "WHERE a.user = :" + Annotation.PARAM_USER
     )
 })
 public class Annotation extends BaseEntity {
@@ -60,6 +64,11 @@ public class Annotation extends BaseEntity {
      * Named query identifier for "delete by document"
      */
     public static final String QUERY_DELETE_BY_DOCUMENT = "Annotation.QUERY_DELETE_BY_DOCUMENT";
+
+    /**
+     * Named query identifier for "delete by user"
+     */
+    public static final String QUERY_DELETE_BY_USER = "Annotation.QUERY_DELETE_BY_USER";
 
     /**
      * Query parameter constant for the attribute "document".

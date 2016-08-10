@@ -33,8 +33,8 @@ import javax.persistence.UniqueConstraint;
                 "WHERE s.document.id = :" + State.PARAM_DOC + " AND s.user.id = :" + State.PARAM_USER
     ),
     @NamedQuery(
-        name = State.QUERY_FIND_BY_USER,
-        query = "SELECT s " +
+        name = State.QUERY_DELETE_BY_USER,
+        query = "DELETE " +
                 "FROM State s " +
                 "WHERE s.user = :" + State.PARAM_USER
     ),
@@ -55,7 +55,7 @@ public class State extends BaseEntity {
     /**
      * Named query identifier for "find by user".
      */
-    public static final String QUERY_FIND_BY_USER = "State.QUERY_FIND_BY_USER";
+    public static final String QUERY_DELETE_BY_USER = "State.QUERY_DELETE_BY_USER";
 
     /**
      * Named query identifier for "delete by document".

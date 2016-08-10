@@ -28,20 +28,36 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @Entity
 @NamedQueries({
     @NamedQuery(
-        name = TimeLogging.QUERY_FIND_BY_USER,
+        name = TimeLogging.QUERY_FIND_BY_USER_ID,
         query = "SELECT t " +
                 "FROM TimeLogging t " +
-                "WHERE t.users.id = :" + TimeLogging.PARAM_USER + " " +
+                "WHERE t.users.id = :" + TimeLogging.PARAM_USER_ID + " " +
                 "ORDER BY t.loggedat DESC"
+    ),
+    @NamedQuery(
+        name = TimeLogging.QUERY_DELETE_BY_USER,
+        query = "DELETE " +
+                "FROM TimeLogging t " +
+                "WHERE t.users = :" + TimeLogging.PARAM_USER
     )
 })
 public class TimeLogging extends BaseEntity {
 
     /**
-     * Named query identifier for "find by user".
+     * Named query identifier for "find by user id".
      */
-    public static final String QUERY_FIND_BY_USER = "TimeLogging.QUERY_FIND_BY_USER";
-    
+    public static final String QUERY_FIND_BY_USER_ID = "TimeLogging.QUERY_FIND_BY_USER_ID";
+
+    /**
+     * Named query identifier for "find by user to delete".
+     */
+    public static final String QUERY_DELETE_BY_USER = "TimeLogging.QUERY_DELETE_BY_USER";
+
+    /**
+     * Query parameter constant for the attribute "user id".
+     */
+    public static final String PARAM_USER_ID = "user_id";
+
     /**
      * Query parameter constant for the attribute "user".
      */
