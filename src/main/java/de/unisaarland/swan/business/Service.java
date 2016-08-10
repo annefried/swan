@@ -853,19 +853,7 @@ public class Service {
             proj.removeUsers(user);
             user.removeProject(proj);
 
-            for (Document d : proj.getDocuments()) {
-                State state = null;
-                for (State s : d.getStates()) {
-                    if (s.getUser().getId().equals(userId)) {
-                        state = s;
-                        break;
-                    }
-                }
-                
-                stateDAO.remove(state);
-                d.removeState(state);
-                documentDAO.merge(d);
-            }
+            removeStatesFromProject(proj, user);
 
             projectDAO.merge(proj);
             usersDAO.merge(user);
@@ -991,38 +979,31 @@ public class Service {
 
     public void removeUser(Users user) throws CreateException {
         try {
-            List<TimeLogging> list = timeLoggingDAO.getAllTimeLoggingByUserId(user.getId());
-            for (TimeLogging t : list) {
-                timeLoggingDAO.remove(t);
-            }
+            timeLoggingDAO.removeAllTimeLoggingByUser(user);
+            linkDAO.removeAllLinksByUser(user);
+            annotationDAO.removeAllAnnotationsByUser(user);
+            //stateDAO.removeAllStatesByUser(user); // TODO does not work
 
-            List<Annotation> listAnno = annotationDAO.getAllAnnotationsByUserId(user);
-            for (Annotation a : listAnno) {
-                // TODO not very efficient
-                // instead create a named DELETE query
-                removeAnnotation(a);
-            }
-
-            List<State> listStates = stateDAO.getAllStatesByUserId(user);
-            for (State s : listStates) {
-                stateDAO.remove(s);
-            }
-
-            Set<Project> listManagingProjects = user.getManagingProjects();
-            for (Project p : listManagingProjects) {
+            Set<Project> setManagingProjects = user.getManagingProjects();
+            for (Project p : setManagingProjects) {
                 p.removeProjectManager(user);
                 projectDAO.merge(p);
             }
 
-            if (user.getRole().equals(Users.RoleType.projectmanager)
-                    || user.getRole().equals(Users.RoleType.admin)) {
-                List<Scheme> schemes = schemeDAO.findAll();
-                for (Scheme s : schemes) {
-                    if (s.getCreator() != null && s.getCreator().equals(user)) {
-                        s.setCreator(null);
-                    }
-                }
+            Set<Project> setWatchingUsers = user.getWatchingProjects();
+            for (Project p : setWatchingUsers) {
+                p.removeWatchingUser(user);
+                projectDAO.merge(p);
             }
+
+            Set<Project> setUsers = user.getProjects();
+            for (Project p : setUsers) {
+                removeStatesFromProject(p, user);
+                p.removeUsers(user);
+                projectDAO.merge(user);
+            }
+
+            schemeDAO.setCreatorInSchemeNull(user);
 
             usersDAO.merge(user);
             usersDAO.remove(user);
@@ -1050,6 +1031,22 @@ public class Service {
             schemeDAO.remove(scheme);
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
+        }
+    }
+
+    private void removeStatesFromProject(Project proj, Users user) {
+        for (Document d : proj.getDocuments()) {
+            State state = null;
+            for (State s : d.getStates()) {
+                if (s.getUser().equals(user)) {
+                    state = s;
+                    break;
+                }
+            }
+
+            stateDAO.remove(state);
+            d.removeState(state);
+            documentDAO.merge(d);
         }
     }
 

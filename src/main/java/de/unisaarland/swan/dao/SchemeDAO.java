@@ -6,6 +6,8 @@
 package de.unisaarland.swan.dao;
 
 import de.unisaarland.swan.entities.Scheme;
+import de.unisaarland.swan.entities.Users;
+
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -42,6 +44,12 @@ public class SchemeDAO extends BaseEntityDAO<Scheme> {
                 executeQuery(
                         Scheme.QUERY_FIND_BY_DOC_ID,
                         Collections.singletonMap(Scheme.PARAM_DOC_ID, docId)));
+    }
+
+    public void setCreatorInSchemeNull(Users user) {
+        executeUpdate(
+                Scheme.QUERY_SET_CREATOR_NULL,
+                Collections.singletonMap(Scheme.PARAM_CREATOR, user));
     }
     
 }
