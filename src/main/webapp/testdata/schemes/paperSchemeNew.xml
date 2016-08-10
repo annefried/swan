@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<root>
+	<name>ExampleScheme</name>
+	<visElements>
+        <visElement>
+		    <visState>hidden</visState>
+		    <visKind>graph</visKind>
+        </visElement>
+        <visElement>
+		    <visState>hidden</visState>
+		    <visKind>timeline</visKind>
+        </visElement>
+	</visElements>
+	<spanTypes>
+		<spanType name="Event"/>
+	</spanTypes>
+	<labelSets>
+        <labelSet>
+		    <name>EventType</name>
+		    <exclusive>false</exclusive>
+            <appliesToSpanTypes>
+			    <spanType name="Event"/>
+		    </appliesToSpanTypes>
+		    <labels>
+			    <label name="State"/>
+			    <label name="Event3"/>
+			    <label name="Generic Sentence"/>
+		    </labels>
+        </labelSet>
+	</labelSets>
+	<linkTypes>
+        <linkType>
+		    <name>Temporal relation</name>
+		    <startSpanType name="Event"/>
+		    <endSpanType name="Event"/>
+		    <linkLabels>
+			    <label>
+			    	<name>before</name>
+			    	<options></options>
+			    </label>
+			    <label>
+			    	<name>after</name>
+			    	<options></options>
+			    </label>
+			    <label>
+			    	<name>overlap</name>
+			    	<options></options>
+			    </label>
+		    </linkLabels>
+        </linkType>
+	</linkTypes>
+</root>

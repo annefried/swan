@@ -585,12 +585,6 @@ angular
                 var xml = xmlDoc.responseXML;
                 // xml2json function is in 'other' folder.
                 var content = xml2json(xmlDoc, "");
-
-                content = content.replace("[{[{", "[{");
-                content = content.replace("[{[{", "[{");
-
-                content = content.replace("}]}]", "}]");
-                content = content.replace("}]}]", "}]");
             } catch (e) {
                 content = $fileContent;
             }
@@ -606,6 +600,7 @@ angular
                     sTypeMap[sType.name] = sType;
                 }
 
+                // Validate label sets
                 for (var i = 0; i < scheme.labelSets.length; i++) {
                     var labelSet = scheme.labelSets[i];
                     for (var j = 0; j < labelSet.appliesToSpanTypes.length; j++) {
@@ -615,25 +610,59 @@ angular
                         }
                     }
 
-                    if (labelSet.appliesToSpanTypes.length === 0 ||
-                        labelSet.labels.length === 0 || labelSet.name === undefined) {
+                    if (labelSet.appliesToSpanTypes.length === 0
+                        || labelSet.labels.length === 0
+                        || labelSet.name === undefined) {
+
                         throw "Incomplete label set";
+                    }
+
+                    // Check on duplicate name
+                    var labelSetLabelNameSet = {};
+                    for (var j = 0; j < labelSet.labels.length; j++) {
+                        const label = labelSet.labels[j];
+                        if (labelSetLabelNameSet[label.name] !== undefined) {
+                            throw "Label with duplicate name: " + label.name;
+                        } else {
+                            labelSetLabelNameSet[label.name] = label.name;
+                        }
                     }
                 }
 
+                // Validate link types
                 for (var i = 0; i < scheme.linkTypes.length; i++) {
-                    var linkType = scheme.linkTypes[i];
+                    const linkType = scheme.linkTypes[i];
                     if (sTypeMap[linkType.startSpanType.name] === undefined
                         || sTypeMap[linkType.endSpanType.name] === undefined) {
+
                         throw "Span type used in link type not defined";
                     }
-                    if (linkType.startSpanType === undefined || linkType.endSpanType === undefined ||
-                        linkType.linkLabels.length === 0 || linkType.name === undefined) {
+                    if (linkType.startSpanType === undefined
+                        || linkType.endSpanType === undefined
+                        || linkType.linkLabels.length === 0
+                        || linkType.name === undefined) {
+
                         throw "Incomplete link type";
                     }
 
+                    var linkLabelNameSet = {};
+                    for (var j = 0; j < linkType.linkLabels.length; j++) {
+                        const linkLabel = linkType.linkLabels[j];
+                        if (linkLabel.name === undefined
+                            || linkLabel.options === undefined) {
+                            throw "Link label in " + linkType.name + " not valid";
+                        }
+                        // Check on duplicate name
+                        if (linkLabelNameSet[linkLabel.name] !== undefined) {
+                            throw "Link label with duplicate name: " + linkLabel.name;
+                        } else {
+                            linkLabelNameSet[linkLabel.name] = linkLabel.name;
+                        }
+                    }
+
                 }
 
+                // Validate visualization depending properties
                 for (var i = 0; i < scheme.visElements.length; i++) {
                     var visElement = scheme.visElements[i];
                     if (visElement.visKind === 'timeline' && visElement.visState != 'hidden') {
