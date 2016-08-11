@@ -222,6 +222,35 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         }
         
     }
+
+    /**
+     * Returns a list of all project names, so the frontend can check on
+     * duplicate names.
+     *
+     * @return
+     */
+    @GET
+    @Path("/names")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAllProjectNames() {
+
+        try {
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
+
+            List<String> list = projectDAO.getAllProjectNames();
+
+            return Response.ok(mapper.writer()
+                                        .withRootName("projects")
+                                        .writeValueAsString(list))
+                            .build();
+        } catch (SecurityException e) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(SchemeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.serverError().build();
+        }
+
+    }
     
     /**
      * This method returns a zip archive containing all Users annotations project
@@ -237,7 +266,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
     public Response exportProjectByProjIdAsZip(@PathParam("projId") Long projId) {
 
         try {
-            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
 
             Project proj = (Project) projectDAO.find(projId, false);
             
@@ -273,7 +302,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
     public Response exportProjectByProjIdAsXmiZip(@PathParam("projId") Long projId) {
 
         try {
-            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+            LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
 
             Project proj = (Project) projectDAO.find(projId, false);
             
