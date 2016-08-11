@@ -13,11 +13,20 @@ angular
             // Available tokenization languages
             $scope.lanaguages = [ "Unspecified", "Spanish", "English", "German", "French" ];
             $scope.loadSchemes();
+            $scope.loadNames();
         };
 
         $scope.loadSchemes = function () {
             $http.get("swan/scheme/schemes").success(function (response) {
                 $scope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
+            }).error(function (response) {
+                $rootScope.checkResponseStatusCode(response.status);
+            });
+        };
+
+        $scope.loadNames = function () {
+            $http.get("swan/project/names").success(function (response) {
+                $rootScope.names = JSOG.parse(JSON.stringify(response)).projects;
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);
             });
@@ -31,9 +40,8 @@ angular
          */
         $scope.hasError = function (name) {
             if (name) {
-                for (var i = 0; i < $rootScope.tableProjects.length; i++) {
-                    var proj = $rootScope.tableProjects[i];
-                    if (proj.name === name) {
+                for (var i = 0; i < $rootScope.names.length; i++) {
+                    if (name == $rootScope.names[i]) {
                         return true;
                     }
                 }

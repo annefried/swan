@@ -86,6 +86,11 @@ import javax.validation.constraints.NotNull;
         hints = {
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.defaultAnnotations")
         }
+    ),
+    @NamedQuery(
+        name = Project.QUERY_FIND_ALL_PROJECT_NAMES,
+        query = "SELECT p.name " +
+                "FROM Project p"
     )
 })
 public class Project extends BaseEntity {
@@ -114,6 +119,11 @@ public class Project extends BaseEntity {
      * Named query identifier for "find project to add user"
      */
     public static final String QUERY_FIND_PROJECT_TO_ADD_USER = "Project.QUERY_FIND_PROJECT_TO_ADD_USER";
+
+    /**
+     * Named query identifier for "find all project names"
+     */
+    public static final String QUERY_FIND_ALL_PROJECT_NAMES = "Project.QUERY_FIND_ALL_PROJECT_NAMES";
 
     /**
      * Query parameter constant for the attribute "user".
