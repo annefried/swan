@@ -13,6 +13,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.persistence.TypedQuery;
 
 /**
  * This DAO (Data Access Object) provides all CRUD operations for projects.
@@ -71,6 +72,11 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
                 executeQuery(
                         Project.QUERY_FIND_PROJECT_TO_ADD_USER,
                         Collections.singletonMap(Project.PARAM_ID, projId)));
+    }
+
+    public List<String> getAllProjectNames() {
+        TypedQuery<String> query = em.createNamedQuery(Project.QUERY_FIND_ALL_PROJECT_NAMES, String.class);
+        return query.getResultList();
     }
 
 }
