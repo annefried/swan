@@ -5,6 +5,7 @@ import de.unisaarland.swan.tokenization.model.Token;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.TokenizerAnnotator;
 import edu.stanford.nlp.process.Tokenizer;
+import edu.stanford.nlp.process.CoreLabelTokenFactory;
 
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -19,17 +20,25 @@ public class TokenizationUtil {
     private static final boolean VERBOSE = false;
 
     public static List<Line> tokenize(String str, final String language) {
+        if (language.equals("Characterwise")) {
+            return tokenizeCharacterwise(str);
+        } else {
+            return tokenizePTB(str, language);
+        }
+    }
+
+    private static List<Line> tokenizePTB(String str, final String language) {
         Token wsToken;
         Token wsToken2;
         String lineInSubstr;
         Tokenizer<CoreLabel> tokenizer = getTokenizer(str, language);
 
         Line line = new Line();
-        ArrayList<Line> lines = new ArrayList<>();
-        int docIdx = 0;
+        ArrayList<Line> lines = new ArrayList<>(); // The result
+        int docIdx = 0; // ???
 
         while (tokenizer.hasNext()) {
-            CoreLabel label = tokenizer.next();
+            CoreLabel label = tokenizer.next(); // Iterate over CoreLabels
 
             while (label.beginPosition() > docIdx) {
                 String subStr = str.substring(docIdx, label.beginPosition());
@@ -79,7 +88,7 @@ public class TokenizationUtil {
             docIdx = label.endPosition();
         }
 
-        if (str.length() > docIdx) {
+        if (str.length() > docIdx) { // Nachbearbeitung(???)
             String subStr = str.substring(docIdx);
             String[] linesInSubstr = subStr.split("\\r?\\n", -1);
             if (linesInSubstr.length == 1) {
@@ -144,10 +153,33 @@ public class TokenizationUtil {
         return token;
     }
 
+    private static List<Line> tokenizeCharacterwise(String str) {
+        Tokenizer<CoreLabel> tokenizer = getTokenizer(str, "Characterwise");
+        Line line = new Line();
+        ArrayList<Line> lines = new ArrayList<>();
+
+        while (tokenizer.hasNext()) {
+            CoreLabel label = tokenizer.next();
+            if (label.value().equals("\n"))  {
+                lines.add(line);
+                line = new Line();
+            } else {
+                Token token = TokenizationUtil.createToken(label.beginPosition(), label.endPosition(), label.value());
+                line.addTokens(token);
+            }
+        }
+        lines.add(line);
+        return lines;
+    }
+
     private static Tokenizer<CoreLabel> getTokenizer(String text, String language) {
-        StringReader reader = new StringReader(text);
-        TokenizerAnnotator tok = new TokenizerAnnotator(VERBOSE, language, OPTIONS);
-        return tok.getTokenizer(reader);
+        if (language.equals("Characterwise")) {
+            return new CharacterwiseTokenizer(text, new CoreLabelTokenFactory());
+        } else {
+            StringReader reader = new StringReader(text);
+            TokenizerAnnotator tok = new TokenizerAnnotator(VERBOSE, language, OPTIONS);
+            return tok.getTokenizer(reader);
+        }
     }
 
 }

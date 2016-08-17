@@ -126,7 +126,7 @@ public class Project extends BaseEntity {
     public static final String PARAM_ID = "id";
 
     public static enum TokenizationLang {
-        Unspecified, Spanish, English, German, French;
+        Whitespace, Characterwise, Spanish, English, German, French;
     }
 
     @JsonView({ View.Projects.class, View.Documents.class })
