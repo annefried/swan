@@ -11,7 +11,7 @@ angular
 
         $scope.init = function () {
             // Available tokenization languages
-            $scope.lanaguages = [ "Unspecified", "Spanish", "English", "German", "French" ];
+            $scope.lanaguages = [ "Whitespace", "Characterwise", "Spanish", "English", "German", "French" ];
             $scope.loadSchemes();
         };
 
