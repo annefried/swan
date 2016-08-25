@@ -7,7 +7,7 @@
       <http-only>true</http-only>
     </cookie-config>
   </session-config>
-  <display-name>swan</display-name>
+  <display-name>swanold</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
@@ -22,6 +22,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Jersey Web Application</servlet-name>
-    <url-pattern>/swan/*</url-pattern>
+    <url-pattern>/swanold/*</url-pattern>
   </servlet-mapping>
 </web-app>

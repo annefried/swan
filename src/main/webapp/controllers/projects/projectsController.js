@@ -112,7 +112,7 @@ angular
              * Load Schemes from backend
              */
             $scope.loadSchemes = function () {
-                var httpSchemes = $http.get("swan/scheme/schemes").success(function (response) {
+                var httpSchemes = $http.get("swanold/scheme/schemes").success(function (response) {
                     $rootScope.schemes = JSOG.parse(JSON.stringify(response)).schemes;
                 }).error(function (response) {
                     $rootScope.checkResponseStatusCode(response.status);
@@ -126,7 +126,7 @@ angular
              * @returns {String} the address for export
              */
             $scope.exportProject = function (projId) {
-                return "swan/project/export/" + projId;
+                return "swanold/project/export/" + projId;
             };
 
             /**
@@ -135,7 +135,7 @@ angular
              * @returns {String} the address for export
              */
             $scope.exportProjectXmi = function (projId) {
-                return "swan/project/exportXmi/" + projId;
+                return "swanold/project/exportXmi/" + projId;
             };
 
             /**
@@ -212,7 +212,7 @@ angular
                 }
 
                 if (proj.scheme.name === undefined) {
-                    $http.get("swan/scheme/byid/" + proj.scheme.id).success(function (response) {
+                    $http.get("swanold/scheme/byid/" + proj.scheme.id).success(function (response) {
                         proj.scheme = response.scheme;
                         $rootScope.schemes.push(proj.scheme);
                         $rootScope.currentScheme = proj.scheme;
@@ -303,7 +303,7 @@ angular
                         }
                     };
 
-                    $http.post('swan/project', JSON.stringify(projectTemplate)).then(function (response) {
+                    $http.post('swanold/project', JSON.stringify(projectTemplate)).then(function (response) {
                         var template = {
                             'id': response.data,
                             'name': full.name,
@@ -320,7 +320,7 @@ angular
                         } else {
                             // TODO create REST interface getUser by Id
                             // Get the current user (there is no REST interface for getUser by ID)
-                            $http.get("swan/user/withprojects").success(function (response) {
+                            $http.get("swanold/user/withprojects").success(function (response) {
                                 var users = JSOG.parse(JSON.stringify(response)).users;
                                 for (var i = 0; i < users.length; i++) {
                                     var u = users[i];
@@ -331,7 +331,7 @@ angular
                                 }
                                 
                                 // Add project manager to the corresponding project manager list
-                                $http.post("swan/project/addManager/" + template.id + "/" + $window.sessionStorage.uId).success(function (response) {
+                                $http.post("swanold/project/addManager/" + template.id + "/" + $window.sessionStorage.uId).success(function (response) {
                                     $rootScope.tableProjects.push(template);
                                 }).error(function (response) {
                                     $rootScope.checkResponseStatusCode(response.status);

@@ -474,7 +474,7 @@ angular
                         "linkSets": linkSets,
                         "projects": []
                     };
-                    $http.post("swan/scheme", JSON.stringify(template)).success(function (response) {
+                    $http.post("swanold/scheme", JSON.stringify(template)).success(function (response) {
                         $rootScope.schemesTable[template.name] = template;
                         var schemePreview = {
                             'id': response,
@@ -505,7 +505,7 @@ angular
         };
 
         $scope.loadSchemes = function () {
-            $http.get('swan/scheme/schemes').success(function (response) {
+            $http.get('swanold/scheme/schemes').success(function (response) {
                 var schemes = JSOG.parse(JSON.stringify(response.schemes));
                 $scope.loadedSchemes = [];
                 for (var i = 0; i < schemes.length; i++) {
@@ -527,7 +527,7 @@ angular
             if (scheme == null || scheme == undefined) {
                 // Do nothing
             } else if (scheme.targetTypes == undefined) {
-                $http.get("swan/scheme/byid/" + scheme.id).success(function (response) {
+                $http.get("swanold/scheme/byid/" + scheme.id).success(function (response) {
                     const resScheme = JSOG.parse(JSON.stringify(response.scheme));
                     scheme = $scope.processScheme(resScheme);
                     $scope.setSchemeProperties(scheme);

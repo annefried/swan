@@ -24,7 +24,7 @@ angular
         $scope.createUser = function (prename, lastname, password, email, role) {
 
             // TODO: use ui-validate before allowing to add user?
-            $http.get("swan/user").success(function (response) {
+            $http.get("swanold/user").success(function (response) {
 
                 // update the list of users
                 var res = JSOG.parse(JSON.stringify(response));
@@ -58,7 +58,7 @@ angular
                     'undone': 0
                 };
 
-                $http.post('swan/user', JSON.stringify(jsonTemplate)).then(function (response) {
+                $http.post('swanold/user', JSON.stringify(jsonTemplate)).then(function (response) {
                     user.id = response.data;
                     $uibModalInstance.close(user);
                 }, function () {

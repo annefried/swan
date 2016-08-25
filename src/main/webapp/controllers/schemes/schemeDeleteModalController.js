@@ -14,7 +14,7 @@ angular
     .controller('schemeDeleteModalController', function ($scope, $rootScope, $http, $sce, $uibModalInstance) {
 
         $scope.submit = function () {
-            $http.delete("swan/scheme/" + $rootScope.currentSchemeId).success(function (response) {
+            $http.delete("swanold/scheme/" + $rootScope.currentSchemeId).success(function (response) {
                 for (var i = 0; i < $rootScope.tableSchemes.length; i++) {
                     if ($rootScope.tableSchemes[i].id === $rootScope.currentSchemeId) {
                         $rootScope.tableSchemes.splice(i, 1);

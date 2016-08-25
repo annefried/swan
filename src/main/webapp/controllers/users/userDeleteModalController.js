@@ -10,7 +10,7 @@ angular
     .controller('userDeleteModalController', function ($scope, $rootScope, $http, $uibModalInstance) {
 
         $scope.deleteUser = function (userId) {
-            $http.delete('swan/user/' + userId).success(function () {
+            $http.delete('swanold/user/' + userId).success(function () {
                 $uibModalInstance.close(userId);
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);

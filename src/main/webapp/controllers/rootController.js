@@ -32,7 +32,7 @@ angular
         };
 
         $rootScope.redirectToLogin = function () {
-            window.location = "/swan/signin.html";
+            window.location = "/swanold/signin.html";
         };
         
         $rootScope.validateSignedInUser = function () {
@@ -57,7 +57,7 @@ angular
 
 
         $scope.logout = function () {
-            $http.post('swan/usermanagment/logout');
+            $http.post('swanold/usermanagment/logout');
             $window.sessionStorage.uId = null;
             $window.sessionStorage.prename = null;
             $window.sessionStorage.lastname = null;
@@ -70,7 +70,7 @@ angular
          */
         $rootScope.loadProjects = function () {
         	
-        	const url = "swan/project/byuser/" + $window.sessionStorage.uId;
+        	const url = "swanold/project/byuser/" + $window.sessionStorage.uId;
             
             var httpProjects = $http.get(url).success(function (response) {
             	$rootScope.projects = JSOG.parse(JSON.stringify(response)).projects;

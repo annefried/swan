@@ -12,7 +12,7 @@ angular
         // to reset password via e-mail
         $scope.resetUserPassword = function () {
             var user = {'id': $rootScope.toEdit};
-            $http.post('swan/user/reset/', user).success(function (response) {
+            $http.post('swanold/user/reset/', user).success(function (response) {
                 $rootScope.addAlert(
                     {
                         type: 'success',
@@ -28,7 +28,7 @@ angular
         // to manually reset password for user
         $scope.changePassword = function (password) {
 
-            $http.put('swan/user/' + $rootScope.toEdit, password).success(function (response) {
+            $http.put('swanold/user/' + $rootScope.toEdit, password).success(function (response) {
                 $rootScope.addAlert({type: 'success', msg: 'Password changed succesfully.'});
             }).error(function (response) {
                             $rootScope.checkResponseStatusCode(response.status);

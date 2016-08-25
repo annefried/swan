@@ -17,7 +17,7 @@ angular.module('app')
 //                    return httpCallback;
 
                     var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("GET", "swan/annotations/" + uId + "/" + docId, false); // false for synchronous request
+                    xmlHttp.open("GET", "swanold/annotations/" + uId + "/" + docId, false); // false for synchronous request
                     xmlHttp.send(null);
                     var annotations = JSOG.parse(xmlHttp.responseText);
                     return annotations.annotations;
@@ -36,7 +36,7 @@ angular.module('app')
 //                    });
                     // Sync
                     var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("GET", "swan/document/" + docId, false); // false for synchronous request
+                    xmlHttp.open("GET", "swanold/document/" + docId, false); // false for synchronous request
                     xmlHttp.send(null);
                     var text = xmlHttp.responseText;
                     var textJSON = JSOG.parse(text);
@@ -57,7 +57,7 @@ angular.module('app')
 //                    });
                     // Sync
                     var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("GET", "swan/document/tokens/" + docId, false); // false for synchronous request
+                    xmlHttp.open("GET", "swanold/document/tokens/" + docId, false); // false for synchronous request
                     xmlHttp.send(null);
                     var text = xmlHttp.responseText;
                     var textJSON = JSOG.parse(text);
@@ -84,7 +84,7 @@ angular.module('app')
 //                    });
                     // Sync
                     var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("GET", "swan/annotations/" + uId + "/" + docId, false); // false for synchronous request
+                    xmlHttp.open("GET", "swanold/annotations/" + uId + "/" + docId, false); // false for synchronous request
                     xmlHttp.send(null);
                     var targetJSON = JSOG.parse(xmlHttp.responseText);
                     var targets = [];
@@ -110,7 +110,7 @@ angular.module('app')
 //                    });
                     // Sync
                     var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("GET", "swan/links/" + uId + "/" + docId, false); // false for synchronous request
+                    xmlHttp.open("GET", "swanold/links/" + uId + "/" + docId, false); // false for synchronous request
                     xmlHttp.send(null);
                     var linkJSON = JSOG.parse(xmlHttp.responseText).links;
                     return linkJSON;
@@ -128,7 +128,7 @@ angular.module('app')
 //                    });
                     // Sync
                     var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("GET", "swan/scheme/" + docId, false); // false for synchronous request
+                    xmlHttp.open("GET", "swanold/scheme/" + docId, false); // false for synchronous request
                     xmlHttp.send(null);
                     var schemeJSON = JSOG.parse(xmlHttp.responseText).scheme;
                     return schemeJSON;
@@ -139,7 +139,7 @@ angular.module('app')
             return {
                 getScheme: function (schemeId) {
                     var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("GET", "swan/scheme/byid/" + schemeId, false); // false for synchronous request
+                    xmlHttp.open("GET", "swanold/scheme/byid/" + schemeId, false); // false for synchronous request
                     xmlHttp.send(null);
                     var schemeJSON = JSOG.parse(xmlHttp.responseText).scheme;
                     return schemeJSON;
@@ -149,7 +149,7 @@ angular.module('app')
         .factory('projectService', function ($window, $http) {
             return {
                 getScheme: function (docId) {
-                    var httpProjects = $http.get("swan/project/byuser/" + $window.sessionStorage.uId);
+                    var httpProjects = $http.get("swanold/project/byuser/" + $window.sessionStorage.uId);
                     return httpProjects;
                 }
             }

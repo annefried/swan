@@ -232,7 +232,7 @@ angular
                                 }]
                         };
                         
-                        url = labeled ? 'swan/annotations/addlabel/' : 'swan/annotations/removelabel/';
+                        url = labeled ? 'swanold/annotations/addlabel/' : 'swanold/annotations/removelabel/';
                     } else { // Link
                         labelTemplate = {
                             linkLabel: label.tag,
@@ -241,7 +241,7 @@ angular
                                 }]
                         };
                         
-                        url = labeled ? 'swan/links/addlabel/' : 'swan/links/removelabel/';
+                        url = labeled ? 'swanold/links/addlabel/' : 'swanold/links/removelabel/';
                     }
                     $http.post(url + this.selectedNode.id, labelTemplate);
 
@@ -269,7 +269,7 @@ angular
                     "notSure": newAnno.notSure
                 };
                 // add to db
-                $http.put("swan/annotations", JSON.stringify(jsonTemplate)).then(function (object) {
+                $http.put("swanold/annotations", JSON.stringify(jsonTemplate)).then(function (object) {
                     return function (response) {
                         object.sizeIncreased = newAnno;
                     };
@@ -386,7 +386,7 @@ angular
                         && this.selectedNode.type === AnnoType.Annotation) {
                 	
                     if (this.selectedNode.tType !== undefined) {
-                    	const url = "swan/annotations/changett/" + this.selectedNode.id;
+                    	const url = "swanold/annotations/changett/" + this.selectedNode.id;
                         $http.post(url, {'targetType': targetType.tag}).success(function (response) {
 
                         }).error(function (response) {
@@ -458,7 +458,7 @@ angular
                     "notSure": false
                 };
                 // add to db
-                $http.post("swan/annotations", JSON.stringify(jsonTemplate)).then(function (object) {
+                $http.post("swanold/annotations", JSON.stringify(jsonTemplate)).then(function (object) {
                     return function (response) {
                         var newId = response.data;
                         object.lastAdded = annotation;
@@ -478,7 +478,7 @@ angular
                     this.lastRemoved = annotation;
                 } else {
                     var annoCtrl = this;
-                    $http.delete("swan/annotations/" + annotation.id).then(function (object) {
+                    $http.delete("swanold/annotations/" + annotation.id).then(function (object) {
                         return function (response) {
                             object.removeConnectedLinks(annotation);
                             annoCtrl.lastRemoved = annotation;
@@ -541,7 +541,7 @@ angular
                         },
                         "labelMap": []
                     };
-                    $http.post("swan/links", JSON.stringify(jsonTemplate)).then(function (object) {
+                    $http.post("swanold/links", JSON.stringify(jsonTemplate)).then(function (object) {
                         return function (response) {
                             var newId = response.data;
                             var link = new AnnotationLink(newId, source, target);
@@ -583,7 +583,7 @@ angular
             this.removeLink = function (link) {
 
                 if (link !== undefined) {
-                    $http.delete("swan/links/" + link.id).then(function (object) {
+                    $http.delete("swanold/links/" + link.id).then(function (object) {
                         return function (response) {
                             var source = link.source;
                             var target = link.target;
@@ -882,7 +882,7 @@ angular
                 var payloadJson = JSON.stringify(payload);
                 var docUser = $window.sessionStorage.docId + '/' + $window.sessionStorage.uId;
 
-                $http.post("swan/document/" + docUser, payloadJson).success(function (response) {
+                $http.post("swanold/document/" + docUser, payloadJson).success(function (response) {
                     $window.sessionStorage.completed = $scope.completed;
                     $rootScope.currDoc.completed = $scope.completed;
                     if ($scope.completed) {
@@ -903,7 +903,7 @@ angular
                 };
                 $http({
                     method: 'POST',
-                    url: 'swan/annotations/notsure/' + anno.id,
+                    url: 'swanold/annotations/notsure/' + anno.id,
                     data: JSON.stringify(payload),
                     headers: {'Content-Type': 'application/json'}
                 }).success(function (response) {
