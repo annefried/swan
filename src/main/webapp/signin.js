@@ -17,7 +17,7 @@ angular
         $scope.login = function (credentials) {
             $http({
                 method: 'POST',
-                url: 'swan/usermanagment/login',
+                url: 'swanold/usermanagment/login',
                 data: $.param({email: credentials.username, password: credentials.password}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (response) {
@@ -29,7 +29,7 @@ angular
                 $window.sessionStorage.isAnnotator = (response.user.role === 'annotator');
                 $window.sessionStorage.h = 'false';
 
-                window.location = "/swan/#/dashboard";
+                window.location = "/swanold/#/dashboard";
             }).error(function (response) {
                 $scope.wrong = 'false';
             });
