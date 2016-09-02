@@ -319,7 +319,7 @@ angular
                         }
                         this.selectedNode.updatedWords.push(word);
                     }
-                    if (word !== undefined && word.text === " ") {
+                    if (word !== undefined && this.isWhitespace(word.text)) {
                         this.increaseSelectedAnnoSizeRight(oldStart);
                         return;
                     }
@@ -330,7 +330,7 @@ angular
                     }
                 }
             };
-            
+
             this.increaseSelectedAnnoSizeLeft = function (oldStart, oldEnd) {
                 if (this.selectedNode !== null
                         && this.selectedNode !== undefined
@@ -346,7 +346,7 @@ angular
                         }
                         this.selectedNode.updatedWords.push(word);
                     }
-                    if (word !== undefined && word.text === " ") {
+                    if (word !== undefined && this.isWhitespace(word.text)) {
                         this.increaseSelectedAnnoSizeLeft(oldStart);
                         return;
                     }
@@ -358,7 +358,11 @@ angular
                 }
 
             };
-            
+
+            this.isWhitespace = function(str) {
+                return $.trim(str) === "";
+            };
+
             // Decrease size of currently selected node by one word
             this.decreaseSelectedAnnoSizeRight = function () {
                 if (this.selectedNode !== null

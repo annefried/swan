@@ -15,13 +15,11 @@ public class CharacterwiseTokenizer implements Tokenizer<CoreLabel> {
     private String text;
     private int index;
     private CoreLabelTokenFactory factory;
-    //private boolean insertWhitespace;
 
     public CharacterwiseTokenizer(String txt, CoreLabelTokenFactory fact) {
         this.text = txt;
         this.index = 0;
         this.factory = fact;
-        //this.insertWhitespace = false;
     }
 
     public List<CoreLabel> tokenize() {
@@ -45,32 +43,23 @@ public class CharacterwiseTokenizer implements Tokenizer<CoreLabel> {
     }
 
     public CoreLabel next() {
-        /*if (insertWhitespace) {
-            insertWhitespace = false;
-            if (!peek().value().equals("\n")) {
-                CoreLabel tok = factory.makeToken(" ", index, 1);
-                index++;
-                return tok;
-            }
-        }
-
-        insertWhitespace = true;*/
         int codePoint = text.codePointAt(index);
         int width = Character.charCount(codePoint);
 
         String curText = text.substring(index, index+width);
-        if (curText.equals(" ")) { // Ignore whitespace
-            index = index + width;
-            return next();
-        } else {
-            CoreLabel tok = factory.makeToken(curText, index, width);
-            index = index + width;
-            return tok;
-        }
+        CoreLabel tok = factory.makeToken(curText, index, width);
+
+        index = index + width;
+        return tok;
     }
 
     public CoreLabel peek() {
-        CoreLabel tok = factory.makeToken(text.substring(index, index+1), index, index+1);
+        int codePoint = text.codePointAt(index);
+        int width = Character.charCount(codePoint);
+
+        String curText = text.substring(index, index+width);
+        CoreLabel tok = factory.makeToken(curText, index, width);
+
         return tok;
     }
 
