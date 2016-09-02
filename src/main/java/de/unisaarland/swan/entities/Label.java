@@ -11,11 +11,7 @@ import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.swan.rest.view.View;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 /**
  * The Entity Label represents a label which can be used for annotations.
@@ -26,9 +22,8 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-public class Label extends BaseEntity {
-    
-    private String name;
+public class Label extends ColorableBaseEntity {
+
     
     /**
      * The relationship shows to which labelsets the label belongs.
@@ -41,14 +36,6 @@ public class Label extends BaseEntity {
         inverseJoinColumns={@JoinColumn(name="LABEL_SET_ID", referencedColumnName="id")})
     private List<LabelSet> labelSet = new ArrayList();
 
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
     
     public List<LabelSet> getLabelSet() {
         return labelSet;

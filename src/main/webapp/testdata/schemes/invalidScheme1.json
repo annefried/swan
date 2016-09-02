@@ -34,7 +34,8 @@
 				{
 					"name": "singular"
 				}
-			]
+			],
+			"labelMenuStyle": "list"
 		}
 	],
 	"linkTypes": [
@@ -59,7 +60,9 @@
 						"horizontal"
 					]
 				}
-			]
+			],
+			"linkLabelMenuStyle": "list",
+			"undirected": false
 		}
 	]
 }

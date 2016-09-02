@@ -92,7 +92,8 @@ public class Annotation extends BaseEntity {
                 fetch = FetchType.LAZY)
     @JoinColumn(name = "document_fk")
     private Document document;
-    
+
+    @JsonView({ View.Annotations.class})
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     @JoinColumn(name = "spanType_fk")

@@ -22,6 +22,9 @@
     <class>de.unisaarland.swan.entities.SpanType</class>
     <class>de.unisaarland.swan.entities.LinkType</class>
     <class>de.unisaarland.swan.entities.LinkLabelLinkTypeMap</class>
+    <class>de.unisaarland.swan.entities.ColorScheme</class>
+    <class>de.unisaarland.swan.entities.ColorEntityMatcher</class>
+    <class>de.unisaarland.swan.entities.ColorableBaseEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

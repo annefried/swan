@@ -275,6 +275,7 @@ angular
                         "id": $window.sessionStorage.uId
                     },
                     "spanType": {
+                        "id": newAnno.sType.id,
                         "name": newAnno.sType.tag
                     },
                     "document": {
@@ -420,7 +421,7 @@ angular
                         return;
                     } else if (this.selectedNode.sType !== undefined) {
                     	const url = "swan/annotations/changest/" + this.selectedNode.id;
-                        $http.post(url, {'name': spanType.tag}).success(function (response) {
+                        $http.post(url, {'id': spanType.id, 'name': spanType.tag}).success(function (response) {
 
                         }).error(function (response) {
                             $rootScope.checkResponseStatusCode(response.status);
@@ -446,7 +447,7 @@ angular
                 this.tempAnno.setSpanType(spanType);
                 this.tempAnno.color = this.getColor(spanType, undefined);
                 this.addAnnotation(this.tempAnno);
-                this.tempAnno = null;
+                this.tempAnnpostwordo = null;
             };
             
             /**
@@ -486,6 +487,7 @@ angular
                         "id": $window.sessionStorage.uId
                     },
                     "spanType": {
+                        "id": annotation.sType.id,
                         "name": annotation.sType.tag
                     },
                     "document": {
@@ -559,6 +561,7 @@ angular
                                 'id': $window.sessionStorage.docId
                             },
                             "spanType": {
+                                //"id": source.sType.id
                                 "name": source.type
                             },
                             "start": source.words[0].start,
@@ -574,6 +577,7 @@ angular
                                 'id': $window.sessionStorage.docId
                             },
                             "spanType": {
+                                //"id": target.sType.id
                                 "name": target.type
                             },
                             "start": target.words[0].start,
@@ -694,7 +698,7 @@ angular
                 this.spanTypes = {};
                 for (var i = 0; i < this.scheme.spanTypes.length; i++) {
                     var type = this.scheme.spanTypes[i];
-                    var spanType = new SpanType(i, type.name);
+                    var spanType = new SpanType(type.id, type.name);
                     this.spanTypes[spanType.tag] = spanType;
                 }
             };

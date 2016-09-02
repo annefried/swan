@@ -2,12 +2,12 @@
 	"name": "graphScheme",
 	"visElements": [
 		{
-			"visState": "hidden",
-			"visKind": "timeline"
-		},
-		{
 			"visState": "closed",
 			"visKind": "graph"
+		},
+		{
+			"visState": "hidden",
+			"visKind": "timeline"
 		}
 	],
 	"spanTypes": [
@@ -34,7 +34,8 @@
 				{
 					"name": "active"
 				}
-			]
+			],
+			"labelMenuStyle": "list"
 		},
 		{
 			"name": "number",
@@ -54,7 +55,8 @@
 				{
 					"name": "plural"
 				}
-			]
+			],
+			"labelMenuStyle": "list"
 		}
 	],
 	"linkTypes": [
@@ -75,7 +77,9 @@
 					"name": "overlap",
 					"options": []
 				}
-			]
+			],
+			"linkLabelMenuStyle": "list",
+			"undirected": false
 		}
 	]
 }

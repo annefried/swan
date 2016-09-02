@@ -14,13 +14,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -34,18 +28,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-public class LabelSet extends BaseEntity {
+public class LabelSet extends ColorableBaseEntity {
 
-    @JsonView({ View.Scheme.class })
-    @Column(name = "Name")
-    private String name;
-    
+    public static enum LabelMenuStyle {
+        list, dropdown;
+    }
+
     /**
      * Determines whether an annotation refers to several labels or one.
      */
     @JsonView({ View.Scheme.class })
     @Column(name = "Exclusive")
     private boolean exclusive;
+
+    /**
+     * Determines whether the labels should be displayed as dropdown menu or list
+     */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "LabelMenuStyle")
+    private LabelMenuStyle labelMenuStyle;
 
     /**
      * Contains the span type which can be annotated with this label.
@@ -56,23 +57,14 @@ public class LabelSet extends BaseEntity {
     @JoinTable(
         name="SPANTYPE_LABELSET",
         joinColumns={@JoinColumn(name="LABEL_SET_ID", referencedColumnName="id")},
-        inverseJoinColumns={@JoinColumn(name="SPANTYPE", referencedColumnName="name")})
-    private Set<SpanType> appliesToSpanTypes = new HashSet<>();
+        inverseJoinColumns={@JoinColumn(name="SPANTYPE_ID", referencedColumnName="id")})
+    private List<SpanType> appliesToSpanTypes = new ArrayList<>();
     
     @JsonView({ View.Scheme.class })
     @ManyToMany(mappedBy = "labelSet",
-                cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.EAGER)
     private List<Label> labels = new ArrayList<>();
-    
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public boolean isExclusive() {
         return exclusive;
@@ -82,13 +74,11 @@ public class LabelSet extends BaseEntity {
         this.exclusive = exclusive;
     }
 
-    public Set<SpanType> getAppliesToSpanTypes() {
+    public List<SpanType> getAppliesToSpanTypes() {
         return appliesToSpanTypes;
     }
 
-    public void setAppliesToSpanTypes(Set<SpanType> appliesToSpanTypes) {
-        this.appliesToSpanTypes = appliesToSpanTypes;
-    }
+    public void setAppliesToSpanTypes(List<SpanType> appliesToSpanTypes) { this.appliesToSpanTypes = appliesToSpanTypes; }
     
     public void addAppliesToSpanTypes(SpanType spanType) {
         this.appliesToSpanTypes.add(spanType);
@@ -101,5 +91,9 @@ public class LabelSet extends BaseEntity {
     public void setLabels(List<Label> labels) {
         this.labels = labels;
     }
+
+    public LabelMenuStyle getLabelMenuStyle() { return labelMenuStyle; }
+
+    public void setLabelMenuStyl(LabelMenuStyle labelMenuStyle) { this.labelMenuStyle = labelMenuStyle; }
     
 }

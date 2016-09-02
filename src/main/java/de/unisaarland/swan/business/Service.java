@@ -171,11 +171,11 @@ public class Service {
             entity.setDocument(doc);
             updateDocument(doc, user);
 
-            SpanType spanType = (SpanType) spanTypeDAO.find(entity.getSpanType().getName(), false);
+            SpanType spanType = (SpanType) spanTypeDAO.find(entity.getSpanType().getId(), false);
             entity.setSpanType(spanType);
 
             for (LabelLabelSetMap m : entity.getLabelMap()) {
-                Label newLabel = (Label) labelDAO.find(m.getLabel().getName(), false);
+                Label newLabel = (Label) labelDAO.find(m.getLabel().getId(), false);
 
                 Set<LabelSet> labelSets = new HashSet<>();
                 for (LabelSet ls : m.getLabelSets()) {
@@ -244,19 +244,11 @@ public class Service {
             }
             entity.setProjects(projects);
 
-            Map<String, SpanType> ttMap = new HashMap<>();
-            Set<SpanType> spanTypes = new HashSet<>();
+            Map<String, SpanType> spanTypeMap = new HashMap<>();
+            List<SpanType> spanTypes = new ArrayList<>();
             for (SpanType t : entity.getSpanTypes()) {
-
-                SpanType spanType = (SpanType) spanTypeDAO.find(t.getName(), true);
-
-                if (spanType == null) {
-                    spanTypes.add(t);
-                    ttMap.put(t.getName(), t);
-                } else {
-                    spanTypes.add(spanType);
-                    ttMap.put(spanType.getName(), spanType);
-                }
+                spanTypes.add(t);
+                spanTypeMap.put(t.getName(), t);
             }
 
             if (spanTypes.isEmpty()) {
@@ -265,41 +257,101 @@ public class Service {
 
             entity.setSpanTypes(spanTypes);
 
+            Map<String, LabelSet> labelSetMap = new HashMap<>();
+            Map<String, Map<String, Label>> labelSetLabelMap = new HashMap<>();
+
             List<LabelSet> labelSets = new ArrayList<>();
             for (LabelSet ls : entity.getLabelSets()) {
                 labelSets.add(ls);
+                labelSetMap.put(ls.getName(), ls);
+                labelSetLabelMap.put(ls.getName(), new HashMap<String, Label>());
 
-                Set<SpanType> spanTypesLs = new HashSet<>();
+                List<SpanType> spanTypesLs = new ArrayList<>();
                 for (SpanType t : ls.getAppliesToSpanTypes()) {
-                    spanTypesLs.add(ttMap.get(t.getName()));
+                    spanTypesLs.add(spanTypeMap.get(t.getName()));
                     t.addLabelSets(ls);
                 }
                 ls.setAppliesToSpanTypes(spanTypesLs);
 
                 for (Label l : ls.getLabels()) {
+                    labelSetLabelMap.get(ls.getName()).put(l.getName(), l);
                     l.addLabelSet(ls);
                 }
             }
             entity.setLabelSets(labelSets);
 
+            Map<String, LinkType> linkTypeMap = new HashMap<>();
+            Map<String, Map<String, LinkLabel>> linkTypeLabelMap = new HashMap<>();
+
             List<LinkType> linkTypes = new ArrayList<>();
-            for (LinkType ls : entity.getLinkTypes()) {
-                linkTypes.add(ls);
+            for (LinkType lt : entity.getLinkTypes()) {
+                linkTypes.add(lt);
+                linkTypeMap.put(lt.getName(), lt);
+                linkTypeLabelMap.put(lt.getName(), new HashMap<String, LinkLabel>());
 
-                SpanType st = ttMap.get(ls.getStartSpanType().getName());
+                SpanType st = spanTypeMap.get(lt.getStartSpanType().getName());
                 if (st == null) throw new CreateException("Service: start span type null.");
-                ls.setStartSpanType(st);
+                lt.setStartSpanType(st);
 
-                SpanType et = ttMap.get(ls.getEndSpanType().getName());
+                SpanType et = spanTypeMap.get(lt.getEndSpanType().getName());
                 if (et == null) throw new CreateException("Service: end span type null.");
-                ls.setEndSpanType(et);
+                lt.setEndSpanType(et);
                 
-                for (LinkLabel ll : ls.getLinkLabels()) {
-                    ll.addLinkType(ls);
+                for (LinkLabel ll : lt.getLinkLabels()) {
+                    linkTypeLabelMap.get(lt.getName()).put(ll.getName(), ll);
+                    ll.addLinkType(lt);
                 }
             }
 
             entity.setLinkTypes(linkTypes);
+
+            ColorScheme colorScheme = entity.getColorScheme();
+
+            List<ColorEntityMatcher> spanTypeColors = new ArrayList<>();
+            for (ColorEntityMatcher spanTypeCEM : colorScheme.getSpanTypeColors()) {
+                SpanType st = spanTypeMap.get(spanTypeCEM.getEntity().getName());
+                spanTypeCEM.setEntity(st);
+                spanTypeColors.add(spanTypeCEM);
+            }
+            colorScheme.setSpanTypeColors(spanTypeColors);
+
+            List<ColorEntityMatcher> labelSetColors = new ArrayList<>();
+            for (ColorEntityMatcher labelSetCEM : colorScheme.getLabelSetColors()) {
+                LabelSet ls = labelSetMap.get(labelSetCEM.getEntity().getName());
+                labelSetCEM.setEntity(ls);
+                labelSetColors.add(labelSetCEM);
+            }
+            colorScheme.setLabelSetColors(labelSetColors);
+
+            List<ColorEntityMatcher> linkTypeColors = new ArrayList<>();
+            for (ColorEntityMatcher linkTypeCEM : colorScheme.getLinkTypeColors()) {
+                LinkType lt = linkTypeMap.get(linkTypeCEM.getEntity().getName());
+                linkTypeCEM.setEntity(lt);
+                linkTypeColors.add(linkTypeCEM);
+            }
+            colorScheme.setLinkTypeColors(linkTypeColors);
+
+            List<ColorEntityMatcher> labelColors = new ArrayList<>();
+            for (ColorEntityMatcher labelCEM : colorScheme.getLabelColors()) {
+                ColorableBaseEntity cbe = labelCEM.getEntity();
+                String nameLabelSet = cbe.getNameParentSet();
+                Label l = labelSetLabelMap.get(nameLabelSet).get(cbe.getName());
+                labelCEM.setEntity(l);
+                labelColors.add(labelCEM);
+            }
+            colorScheme.setLabelColors(labelColors);
+
+            List<ColorEntityMatcher> linkLabelColors = new ArrayList<>();
+            for (ColorEntityMatcher linkLabelCEM : colorScheme.getLinkLabelColors()) {
+                String nameLinkType = linkLabelCEM.getEntity().getNameParentSet();
+                LinkLabel ll = linkTypeLabelMap.get(nameLinkType).get(linkLabelCEM.getEntity().getName());
+                linkLabelCEM.setEntity(ll);
+                linkLabelColors.add(linkLabelCEM);
+            }
+            colorScheme.setLinkLabelColors(linkLabelColors);
+
+            entity.setColorScheme(colorScheme);
+
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -340,7 +392,7 @@ public class Service {
             entity.setAnnotation2(anno2);
 
             for (LinkLabelLinkTypeMap m : entity.getLabelMap()) {
-                LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(m.getLabel().getName(), false);
+                LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(m.getLabel().getId(), false);
 
                 Set<LinkType> linkTypes = new HashSet<>();
                 for (LinkType ls : m.getLinkTypes()) {
@@ -665,7 +717,7 @@ public class Service {
             if (a.getSpanType() == null) {
                 throw new CreateException("Service: No span type specified!");
             } else {
-                SpanType tt = (SpanType) spanTypeDAO.find(a.getSpanType().getName(), false);
+                SpanType tt = (SpanType) spanTypeDAO.find(a.getSpanType().getId(), false);
                 a.setSpanType(tt);
             }
             if (mapStart.get(a.getStart()) == null) {
@@ -760,7 +812,7 @@ public class Service {
             Annotation anno = (Annotation) annotationDAO.find(annoId, false);
             updateDocument(anno.getDocument(), anno.getUser());
 
-            spanType = (SpanType) spanTypeDAO.find(spanType.getName(), false);
+            spanType = (SpanType) spanTypeDAO.find(spanType.getId(), false);
 
             anno.setSpanType(spanType);
 

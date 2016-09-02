@@ -34,16 +34,14 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-public class LinkLabel extends BaseEntity {
+public class LinkLabel extends ColorableBaseEntity {
 
     // horizontal and vertical are necessary options when timeline in the
     // corresponding scheme is selected
     public static enum LinkLabelOpts {
         horizontal, vertical;
     }
-    
-    @JsonView({ View.Links.class, View.Scheme.class })
-    private String name;
+
     
     @JsonView({ View.Links.class, View.Scheme.class })
     @ElementCollection(targetClass = LinkLabelOpts.class)
@@ -63,18 +61,7 @@ public class LinkLabel extends BaseEntity {
         inverseJoinColumns={@JoinColumn(name="LINK_TYPE_ID", referencedColumnName="id")})
     private List<LinkType> linkType = new ArrayList();
 
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<LinkLabelOpts> getOptions() {
-        return options;
-    }
+    public Set<LinkLabelOpts> getOptions() { return options; }
 
     public void setOptions(Set<LinkLabelOpts> options) {
         this.options = options;
