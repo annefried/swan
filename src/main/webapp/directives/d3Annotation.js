@@ -1498,6 +1498,18 @@ angular
                                     // Determine the edges of the path of the link;
                                     // if the position of one of the boxes is not yet known, estimate it
                                     // by using the first word of the corresponding annotation
+                                    if (sourceBox.x === undefined && sourceBox.y === undefined && sourceBox.width === undefined
+                                            && targetBox.x === undefined && targetBox.y === undefined && targetBox.width === undefined) {
+                                        $scope.drawText(sourceBox.formWords[0].lY-10,sourceBox.formWords[0].lY+10);
+                                        $scope.drawText(minJ, maxJ);
+                                        return lineFunction(
+                                            [{"x": ~~sourceBox.formWords[0].x + sourceBox.formWords[0].width, "y": ~~sourceBox.formWords[0].y + 0.5 * wordHeight / 3},
+                                                {"x": ~~((sourceBox.formWords[0].x + sourceBox.formWords[0].width * 1.3)), "y": ~~sourceBox.formWords[0].y + 0.5 * wordHeight / 3},
+                                                {"x": ~~((sourceBox.formWords[0].x + sourceBox.formWords[0].width * 1.3)), "y": ~~targetBox.y - 1.5 * wordHeight / 3},
+                                                {"x": ~~targetBox.formWords[0].x + 0.5 * targetBox.formWords[0].width, "y": ~~targetBox.formWords[0].y - 1.5 * wordHeight / 3},
+                                                {"x": ~~targetBox.formWords[0].x + 0.5 * targetBox.formWords[0].width, "y": ~~targetBox.formWords[0].y}]
+                                        );
+                                    }
                                     if (sourceBox.x === undefined && sourceBox.y === undefined && sourceBox.width === undefined) {
                                         $scope.drawText(sourceBox.formWords[0].lY-10,sourceBox.formWords[0].lY+10);
                                         $scope.drawText(minJ, maxJ);
