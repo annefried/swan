@@ -1,5 +1,8 @@
 package de.unisaarland.swan.export.model.xml.scheme;
 
+import de.unisaarland.swan.entities.*;
+import de.unisaarland.swan.entities.LabelSet;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.ArrayList;
@@ -19,7 +22,11 @@ public class LinkType {
 
     private boolean allowUnlabeledLinks;
 
+    private boolean undirected;
+
     private List<LinkLabel> linkLabels = new ArrayList<>();
+
+    private de.unisaarland.swan.entities.LinkType.LinkLabelMenuStyle linkLabelMenuStyle;
 
 
     public String getName() {
@@ -54,12 +61,24 @@ public class LinkType {
         this.allowUnlabeledLinks = allowUnlabeledLinks;
     }
 
+    public boolean isUndirected() { return undirected; }
+
+    public void setUndirected(boolean undirected) { this.undirected = undirected; }
+
     public List<LinkLabel> getLinkLabels() {
         return linkLabels;
     }
 
     public void setLinkLabels(List<LinkLabel> linkLabels) {
         this.linkLabels = linkLabels;
+    }
+
+    public de.unisaarland.swan.entities.LinkType.LinkLabelMenuStyle getLinkLabelMenuStyle() {
+        return linkLabelMenuStyle;
+    }
+
+    public void setLinkLabelMenuStyle(de.unisaarland.swan.entities.LinkType.LinkLabelMenuStyle linkLabelMenuStyle) {
+        this.linkLabelMenuStyle = linkLabelMenuStyle;
     }
 
 }

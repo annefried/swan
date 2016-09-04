@@ -2,12 +2,12 @@
 	"name": "timelineScheme",
 	"visElements": [
 		{
-			"visState": "closed",
-			"visKind": "timeline"
-		},
-		{
 			"visState": "hidden",
 			"visKind": "graph"
+		},
+		{
+			"visState": "closed",
+			"visKind": "timeline"
 		}
 	],
 	"spanTypes": [
@@ -37,7 +37,8 @@
 				{
 					"name": "singular"
 				}
-			]
+			],
+			"labelMenuStyle": "list"
 		},
 		{
 			"name": "voice",
@@ -54,7 +55,8 @@
 				{
 					"name": "passive"
 				}
-			]
+			],
+			"labelMenuStyle": "list"
 		}
 	],
 	"linkTypes": [
@@ -79,7 +81,9 @@
 						"horizontal"
 					]
 				}
-			]
+			],
+			"linkLabelMenuStyle": "list",
+			"undirected": false
 		}
 	]
 }

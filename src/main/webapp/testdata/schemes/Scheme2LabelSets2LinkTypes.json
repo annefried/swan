@@ -2,12 +2,12 @@
 	"name": "Scheme2LabelSets2LinkTypes",
 	"visElements": [
 		{
-			"visState": "hidden",
-			"visKind": "timeline"
-		},
-		{
 			"visState": "opened",
 			"visKind": "graph"
+		},
+		{
+			"visState": "hidden",
+			"visKind": "timeline"
 		}
 	],
 	"spanTypes": [
@@ -37,7 +37,8 @@
 				{
 					"name": "Label2"
 				}
-			]
+			],
+			"labelMenuStyle": "list"
 		},
 		{
 			"name": "LabelSet1",
@@ -51,7 +52,8 @@
 				{
 					"name": "Label1"
 				}
-			]
+			],
+			"labelMenuStyle": "list"
 		}
 	],
 	"linkTypes": [
@@ -68,7 +70,9 @@
 					"name": "LinkLabel1",
 					"options": []
 				}
-			]
+			],
+			"linkLabelMenuStyle": "list",
+			"undirected": false
 		},
 		{
 			"name": "LinkType2",
@@ -87,7 +91,9 @@
 					"name": "LinkLabel2",
 					"options": []
 				}
-			]
+			],
+			"linkLabelMenuStyle": "list",
+			"undirected": false
 		}
 	]
 }

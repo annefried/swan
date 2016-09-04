@@ -13,16 +13,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 /**
  * The Entity LinkLabel represents a label which can be used for annotations
@@ -34,17 +25,14 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-public class LinkLabel extends BaseEntity {
+public class LinkLabel extends ColorableBaseEntity {
 
     // horizontal and vertical are necessary options when timeline in the
     // corresponding scheme is selected
     public static enum LinkLabelOpts {
         horizontal, vertical;
     }
-    
-    @JsonView({ View.Links.class, View.Scheme.class })
-    private String name;
-    
+
     @JsonView({ View.Links.class, View.Scheme.class })
     @ElementCollection(targetClass = LinkLabelOpts.class)
     @Enumerated(EnumType.STRING)
@@ -55,37 +43,24 @@ public class LinkLabel extends BaseEntity {
      * The relationship shows to which linktypes the linklabel belongs.
      */
     @JsonView({ View.Links.class })
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     @JoinTable(
         name="LINKLABEL_LINKTYPE",
         joinColumns={@JoinColumn(name="LINKLABEL_ID", referencedColumnName="id")},
         inverseJoinColumns={@JoinColumn(name="LINK_TYPE_ID", referencedColumnName="id")})
-    private List<LinkType> linkType = new ArrayList();
+    private LinkType linkType;
 
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<LinkLabelOpts> getOptions() {
-        return options;
-    }
+    public Set<LinkLabelOpts> getOptions() { return options; }
 
     public void setOptions(Set<LinkLabelOpts> options) {
         this.options = options;
     }
 
-    public List<LinkType> getLinkType() {
+    public LinkType getLinkType() {
         return linkType;
     }
     
-    public void addLinkType(LinkType linkType) {
-        this.linkType.add(linkType);
-    }
+    public void setLinkType(LinkType linkType) { this.linkType = linkType; }
     
 }

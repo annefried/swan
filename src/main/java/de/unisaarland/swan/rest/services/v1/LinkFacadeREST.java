@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.unisaarland.swan.LoginUtil;
 import de.unisaarland.swan.business.Service;
 import de.unisaarland.swan.dao.LinkDAO;
+import de.unisaarland.swan.dao.LinkLabelDAO;
 import de.unisaarland.swan.dao.UsersDAO;
 import de.unisaarland.swan.entities.Link;
 import de.unisaarland.swan.entities.LinkLabel;
@@ -49,10 +50,9 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
     
     @EJB
     UsersDAO usersDAO;
-    
+
     @EJB
     LinkDAO linkDAO;
-    
     
     @POST
     @Consumes({MediaType.APPLICATION_JSON})

@@ -171,21 +171,16 @@ public class Service {
             entity.setDocument(doc);
             updateDocument(doc, user);
 
-            SpanType spanType = (SpanType) spanTypeDAO.find(entity.getSpanType().getName(), false);
+            SpanType spanType = (SpanType) spanTypeDAO.find(entity.getSpanType().getId(), false);
             entity.setSpanType(spanType);
 
-            for (LabelLabelSetMap m : entity.getLabelMap()) {
-                Label newLabel = (Label) labelDAO.find(m.getLabel().getName(), false);
-
-                Set<LabelSet> labelSets = new HashSet<>();
-                for (LabelSet ls : m.getLabelSets()) {
-                    LabelSet newLabelSet = (LabelSet) labelSetDAO.find(ls.getId(), false);
-                    labelSets.add(newLabelSet);
-                }
-
-                m.setLabel(newLabel);
-                m.setLabelSets(labelSets);
+            Set<Label> labels = new HashSet<>();
+            for (Label l : entity.getLabels()) {
+                Label newLabel = (Label) labelDAO.find(l.getId(), false);
+                labels.add(newLabel);
             }
+            entity.setLabels(labels);
+
         } catch (NullPointerException | NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -244,19 +239,11 @@ public class Service {
             }
             entity.setProjects(projects);
 
-            Map<String, SpanType> ttMap = new HashMap<>();
-            Set<SpanType> spanTypes = new HashSet<>();
+            Map<String, SpanType> spanTypeMap = new HashMap<>();
+            List<SpanType> spanTypes = new ArrayList<>();
             for (SpanType t : entity.getSpanTypes()) {
-
-                SpanType spanType = (SpanType) spanTypeDAO.find(t.getName(), true);
-
-                if (spanType == null) {
-                    spanTypes.add(t);
-                    ttMap.put(t.getName(), t);
-                } else {
-                    spanTypes.add(spanType);
-                    ttMap.put(spanType.getName(), spanType);
-                }
+                spanTypes.add(t);
+                spanTypeMap.put(t.getName(), t);
             }
 
             if (spanTypes.isEmpty()) {
@@ -265,41 +252,101 @@ public class Service {
 
             entity.setSpanTypes(spanTypes);
 
+            Map<String, LabelSet> labelSetMap = new HashMap<>();
+            Map<String, Map<String, Label>> labelSetLabelMap = new HashMap<>();
+
             List<LabelSet> labelSets = new ArrayList<>();
             for (LabelSet ls : entity.getLabelSets()) {
                 labelSets.add(ls);
+                labelSetMap.put(ls.getName(), ls);
+                labelSetLabelMap.put(ls.getName(), new HashMap<String, Label>());
 
-                Set<SpanType> spanTypesLs = new HashSet<>();
+                List<SpanType> spanTypesLs = new ArrayList<>();
                 for (SpanType t : ls.getAppliesToSpanTypes()) {
-                    spanTypesLs.add(ttMap.get(t.getName()));
+                    spanTypesLs.add(spanTypeMap.get(t.getName()));
                     t.addLabelSets(ls);
                 }
                 ls.setAppliesToSpanTypes(spanTypesLs);
 
                 for (Label l : ls.getLabels()) {
-                    l.addLabelSet(ls);
+                    labelSetLabelMap.get(ls.getName()).put(l.getName(), l);
+                    l.setLabelSet(ls);
                 }
             }
             entity.setLabelSets(labelSets);
 
+            Map<String, LinkType> linkTypeMap = new HashMap<>();
+            Map<String, Map<String, LinkLabel>> linkTypeLabelMap = new HashMap<>();
+
             List<LinkType> linkTypes = new ArrayList<>();
-            for (LinkType ls : entity.getLinkTypes()) {
-                linkTypes.add(ls);
+            for (LinkType lt : entity.getLinkTypes()) {
+                linkTypes.add(lt);
+                linkTypeMap.put(lt.getName(), lt);
+                linkTypeLabelMap.put(lt.getName(), new HashMap<String, LinkLabel>());
 
-                SpanType st = ttMap.get(ls.getStartSpanType().getName());
+                SpanType st = spanTypeMap.get(lt.getStartSpanType().getName());
                 if (st == null) throw new CreateException("Service: start span type null.");
-                ls.setStartSpanType(st);
+                lt.setStartSpanType(st);
 
-                SpanType et = ttMap.get(ls.getEndSpanType().getName());
+                SpanType et = spanTypeMap.get(lt.getEndSpanType().getName());
                 if (et == null) throw new CreateException("Service: end span type null.");
-                ls.setEndSpanType(et);
+                lt.setEndSpanType(et);
                 
-                for (LinkLabel ll : ls.getLinkLabels()) {
-                    ll.addLinkType(ls);
+                for (LinkLabel ll : lt.getLinkLabels()) {
+                    linkTypeLabelMap.get(lt.getName()).put(ll.getName(), ll);
+                    ll.setLinkType(lt);
                 }
             }
 
             entity.setLinkTypes(linkTypes);
+
+            ColorScheme colorScheme = entity.getColorScheme();
+
+            List<ColorEntityMatcher> spanTypeColors = new ArrayList<>();
+            for (ColorEntityMatcher spanTypeCEM : colorScheme.getSpanTypeColors()) {
+                SpanType st = spanTypeMap.get(spanTypeCEM.getEntity().getName());
+                spanTypeCEM.setEntity(st);
+                spanTypeColors.add(spanTypeCEM);
+            }
+            colorScheme.setSpanTypeColors(spanTypeColors);
+
+            List<ColorEntityMatcher> labelSetColors = new ArrayList<>();
+            for (ColorEntityMatcher labelSetCEM : colorScheme.getLabelSetColors()) {
+                LabelSet ls = labelSetMap.get(labelSetCEM.getEntity().getName());
+                labelSetCEM.setEntity(ls);
+                labelSetColors.add(labelSetCEM);
+            }
+            colorScheme.setLabelSetColors(labelSetColors);
+
+            List<ColorEntityMatcher> linkTypeColors = new ArrayList<>();
+            for (ColorEntityMatcher linkTypeCEM : colorScheme.getLinkTypeColors()) {
+                LinkType lt = linkTypeMap.get(linkTypeCEM.getEntity().getName());
+                linkTypeCEM.setEntity(lt);
+                linkTypeColors.add(linkTypeCEM);
+            }
+            colorScheme.setLinkTypeColors(linkTypeColors);
+
+            List<ColorEntityMatcher> labelColors = new ArrayList<>();
+            for (ColorEntityMatcher labelCEM : colorScheme.getLabelColors()) {
+                ColorableBaseEntity cbe = labelCEM.getEntity();
+                String nameLabelSet = cbe.getNameParentSet();
+                Label l = labelSetLabelMap.get(nameLabelSet).get(cbe.getName());
+                labelCEM.setEntity(l);
+                labelColors.add(labelCEM);
+            }
+            colorScheme.setLabelColors(labelColors);
+
+            List<ColorEntityMatcher> linkLabelColors = new ArrayList<>();
+            for (ColorEntityMatcher linkLabelCEM : colorScheme.getLinkLabelColors()) {
+                String nameLinkType = linkLabelCEM.getEntity().getNameParentSet();
+                LinkLabel ll = linkTypeLabelMap.get(nameLinkType).get(linkLabelCEM.getEntity().getName());
+                linkLabelCEM.setEntity(ll);
+                linkLabelColors.add(linkLabelCEM);
+            }
+            colorScheme.setLinkLabelColors(linkLabelColors);
+
+            entity.setColorScheme(colorScheme);
+
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -339,18 +386,13 @@ public class Service {
             }
             entity.setAnnotation2(anno2);
 
-            for (LinkLabelLinkTypeMap m : entity.getLabelMap()) {
-                LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(m.getLabel().getName(), false);
-
-                Set<LinkType> linkTypes = new HashSet<>();
-                for (LinkType ls : m.getLinkTypes()) {
-                    LinkType newLinkType = (LinkType) linkTypeDAO.find(ls.getId(), false);
-                    linkTypes.add(newLinkType);
-                }
-
-                m.setLabel(newLabel);
-                m.setLinkTypes(linkTypes);
+            Set<LinkLabel> linkLabels = new HashSet<>();
+            for (LinkLabel l : entity.getLinkLabels()) {
+                LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(l.getId(), false);
+                linkLabels.add(newLabel);
             }
+            entity.setLinkLabels(linkLabels);
+
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -494,70 +536,37 @@ public class Service {
             Annotation anno = (Annotation) annotationDAO.find(annoId, false);
             updateDocument(anno.getDocument(), anno.getUser());
 
-            if (label.getLabelSet().size() != 1 || label.getLabelSet().get(0) == null) {
+            if (label.getLabelSet() == null) {
                 throw new CreateException("Service: Adding Label to Annotation failed");
             }
 
             Label newLabel = (Label) labelDAO.find(label.getId(), false);
-            LabelSet newLabelSet = (LabelSet) labelSetDAO.find(label.getLabelSet().get(0).getId(), false);
+            LabelSet newLabelSet = (LabelSet) labelSetDAO.find(label.getLabelSet().getId(), false);
 
             // If LabelSet is exclusive check if this LabelSet was added already
             if (newLabelSet.isExclusive()) {
-                for (LabelLabelSetMap m : anno.getLabelMap()) {
-                    // Use an iterator because we may have to delete a LabelSet
-                    Iterator<LabelSet> iterator = m.getLabelSets().iterator();
-                    while (iterator.hasNext()) {
-                        LabelSet ls = iterator.next();
+                Iterator<Label> iterator = anno.getLabels().iterator();
+                while (iterator.hasNext()) {
+                    Label l = iterator.next();
 
-                        if (ls.equals(newLabelSet)) {
-                            // If the size of the LabelSets corresponding to the Label
-                            // is 1, we can just change the Label
-                            if (m.getLabelSets().size() == 1) {
-                                m.setLabel(newLabel);
-                                return anno;
-                            } else {
-                                // Check if the new Label is really different from
-                                // the current Label
-                                if (m.getLabel().equals(newLabel)) {
-                                    // The given Label doesn't differ from the current one
-                                    return anno;
-                                } else {
-                                    // We have to delete the current LabelSet because
-                                    // it is exclusive and add another LabelLabelSetMap
-                                    // containing the new Label and LabelSet
-                                    iterator.remove();
-                                    addNewLabelLabelSetMapToAnnotation(anno, newLabel, newLabelSet);
-                                    return anno;
-                                }
-                            }
-
-                        }
+                    if (l.equals(newLabel)) {
+                        // The given Label doesn't differ from the current one
+                        return anno;
                     }
-                }
 
-                addNewLabelLabelSetMapToAnnotation(anno, newLabel, newLabelSet);
-                return anno;
-            } else {
+                    LabelSet ls = l.getLabelSet();
+                    if (ls.equals(newLabelSet)) {
+                        iterator.remove();
 
-                for (LabelLabelSetMap m : anno.getLabelMap()) {
-                    if (m.getLabel().equals(newLabel)) {
-                        for (LabelSet ls : m.getLabelSets()) {
-                            if (ls.equals(newLabelSet)) {
-                                // Already exist
-                                return anno;
-                            }
-                        }
-
-                        m.addLabelSets(newLabelSet);
+                        anno.addLabel(newLabel);
                         return anno;
                     }
                 }
-
-                // Label does not exist and a LabelLabelSetMap object must be created
-                // and added to the label
-                addNewLabelLabelSetMapToAnnotation(anno, newLabel, newLabelSet);
-                return anno;
             }
+
+            anno.addLabel(newLabel);
+            return anno;
+
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
@@ -567,84 +576,43 @@ public class Service {
     public Link addLinkLabelToLink(Long linkId, LinkLabel label) throws CreateException {
 
         Link link = (Link) linkDAO.find(linkId, false);
+
         updateDocument(link.getDocument(), link.getUser());
         
-        if (label.getLinkType().size() != 1 || label.getLinkType().get(0) == null) {
+        if (label.getLinkType() == null) {
             throw new CreateException("Service: Adding LinkLabel to Link failed.");
         }
         
         try {
             LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(label.getId(), false);
-            LinkType newLinkType = (LinkType) linkTypeDAO.find(label.getLinkType().get(0).getId(), false);
+            LinkType newLinkType = (LinkType) linkTypeDAO.find(newLabel.getLinkType().getId(), false);
 
-            for (LinkLabelLinkTypeMap m : link.getLabelMap()) {
-                // Use an iterator because we may have to delete a LinkType
-                Iterator<LinkType> iterator = m.getLinkTypes().iterator();
-                while (iterator.hasNext()) {
-                    LinkType ls = iterator.next();
+            Iterator<LinkLabel> iterator = link.getLinkLabels().iterator();
+            while (iterator.hasNext()) {
+                LinkLabel l = iterator.next();
 
-                    if (ls.equals(newLinkType)) {
-                        // If the size of the LinkTypes corresponding to the LinkLabel
-                        // is 1, we can just change the Label
-                        if (m.getLinkTypes().size() == 1) {
-                            m.setLabel(newLabel);
-                            return link;
-                        } else {
-                            // Check if the new LinkLabel is really different from
-                            // the current LinkLabel
-                            if (m.getLabel().equals(newLabel)) {
-                                // The given LinkLabel doesn't differ from the current one
-                                return link;
-                            } else {
-                                // We have to delete the current LinkType because
-                                // it is exclusive and add another LinkLabelLinkTypeMap
-                                // containing the new LinkLabel and LinkType
-                                iterator.remove();
-                                addNewLinkLabelLinkTypeMapToLink(link, newLabel, newLinkType);
-                                return link;
-                            }
-                        }
+                if (l.equals(newLabel)) {
+                    // The given LinkLabel doesn't differ from the current one
+                    return link;
+                }
 
-                    }
+                LinkType lt = l.getLinkType();
+                if (lt.equals(newLinkType)) {
+                    // current LinkLabel needs to be removed
+                    iterator.remove();
+
+                    link.addLabel(newLabel);
+                    return link;
                 }
             }
 
-            // Label does not exist and a LinkLabelLinkTypeMap object must be created
-            // and added to the label
-            addNewLinkLabelLinkTypeMapToLink(link, newLabel, newLinkType);
+            link.addLabel(newLabel);
             return link;
+
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
         
-    }
-    
-    /**
-     * Helper method to add a new Label to an Annotation.
-     * 
-     * @param anno
-     * @param Label
-     * @param labelSet 
-     */
-    private void addNewLabelLabelSetMapToAnnotation(Annotation anno, Label Label, LabelSet labelSet) {
-        LabelLabelSetMap map = new LabelLabelSetMap();
-        map.setLabel(Label);
-        map.addLabelSets(labelSet);
-        anno.addLabelMap(map);
-    }
-    
-    /**
-     * Helper method to add a new LinkLabel to a Link.
-     * 
-     * @param link
-     * @param newLabel
-     * @param newLinkType 
-     */
-    private void addNewLinkLabelLinkTypeMapToLink(Link link, LinkLabel newLabel, LinkType newLinkType) {
-        LinkLabelLinkTypeMap map = new LinkLabelLinkTypeMap();
-        map.setLabel(newLabel);
-        map.addLinkTypes(newLinkType);
-        link.addLabelMap(map);
     }
     
     private void checkTargets(Document entity) throws CreateException {
@@ -658,14 +626,14 @@ public class Service {
         // so set all attributes to null or empty sets except
         for (Annotation a : entity.getDefaultAnnotations()) {
             a.setDocument(entity);
-            a.setLabelMap(new HashSet<LabelLabelSetMap>());
+            a.setLabels(new HashSet<Label>());
             a.setNotSure(false);
             a.setUser(null);
             
             if (a.getSpanType() == null) {
                 throw new CreateException("Service: No span type specified!");
             } else {
-                SpanType tt = (SpanType) spanTypeDAO.find(a.getSpanType().getName(), false);
+                SpanType tt = (SpanType) spanTypeDAO.find(a.getSpanType().getId(), false);
                 a.setSpanType(tt);
             }
             if (mapStart.get(a.getStart()) == null) {
@@ -760,7 +728,7 @@ public class Service {
             Annotation anno = (Annotation) annotationDAO.find(annoId, false);
             updateDocument(anno.getDocument(), anno.getUser());
 
-            spanType = (SpanType) spanTypeDAO.find(spanType.getName(), false);
+            spanType = (SpanType) spanTypeDAO.find(spanType.getId(), false);
 
             anno.setSpanType(spanType);
 
@@ -832,17 +800,20 @@ public class Service {
         // It is necessary to create a ConcurrentModification safe set
         // because removeDocument() deletes the current document from
         // the document set in project to be properly deleted
-        CopyOnWriteArraySet<Document> set = Utility.convertSet(entity.getDocuments());
-        
-        for (Document d : set) {
-            removeDocument(d);
+        try {
+            CopyOnWriteArraySet<Document> set = Utility.convertSet(entity.getDocuments());
+            for (Document d : set) {
+                removeDocument(d);
+            }
+
+            Scheme scheme = entity.getScheme();
+            scheme.getProjects().remove(entity);
+
+            schemeDAO.merge(scheme);
+            projectDAO.remove(entity);
+        } catch (NullPointerException e) {
+            throw new CreateException("The project to be deleted does not exist.");
         }
-        
-        Scheme scheme = entity.getScheme();
-        scheme.getProjects().remove(entity);
-        
-        schemeDAO.merge(scheme);
-        projectDAO.remove(entity);
     }
     
     public void removeUserFromProject(Long projId, Long userId) throws CreateException {
@@ -934,47 +905,31 @@ public class Service {
      * @param label 
      */
     public void removeLabelFromAnnotation(Annotation anno, Label label) throws CreateException {
-        
-        if (label.getLabelSet().size() != 1) {
-            throw new CreateException("Service: LabelSet size in Label is not 1.");
-        }
-        
-        LabelSet ls = label.getLabelSet().get(0);
-        
-        for (LabelLabelSetMap map : anno.getLabelMap()) {
-            if (map.getLabel().equals(label)
-                    && map.getLabelSets().contains(ls)) {
-                anno.removeLabel(map, ls);
-                annotationDAO.merge(anno);
-                return;
-            }
+
+        Set<Label> labels = anno.getLabels();
+
+        if (!labels.contains(label)) {
+            throw new CreateException("Service: Label does not exist in Annotation.");
         }
 
-        throw new CreateException("Service: Label does not exist in Annotation.");
+        anno.removeLabel(label);
+        annotationDAO.merge(anno);
+        return;
+
     }
     
     public void removeLabelFromLink(Link link, LinkLabel label) throws CreateException {
 
-        if (label.getLinkType().size() != 1) {
-            throw new CreateException("Service: LabelSet size in Label is not 1.");
-        }
-        
-        try {
-            LinkType ls = label.getLinkType().get(0);
+        Set<LinkLabel> labels = link.getLinkLabels();
 
-            for (LinkLabelLinkTypeMap map : link.getLabelMap()) {
-                if (map.getLabel().equals(label)
-                        && map.getLinkTypes().contains(ls)) {
-                    link.removeLabel(map, ls);
-                    linkDAO.merge(link);
-                    return;
-                }
-            }
-        } catch (NoResultException e) {
-            throw new CreateException(e.getMessage());
+        if (!labels.contains(label)) {
+            throw new CreateException("Service: LinkLabel does not exist in Link.");
         }
 
-        throw new CreateException("Service: LinkLabel does not exist in Link.");
+        link.removeLabel(label);
+        linkDAO.merge(link);
+        return;
+
     }
 
     public void removeUser(Users user) throws CreateException {

@@ -5,12 +5,7 @@
  */
 package de.unisaarland.swan.test;
 
-import de.unisaarland.swan.entities.Annotation;
-import de.unisaarland.swan.entities.Document;
-import de.unisaarland.swan.entities.Label;
-import de.unisaarland.swan.entities.Project;
-import de.unisaarland.swan.entities.Scheme;
-import de.unisaarland.swan.entities.Users;
+import de.unisaarland.swan.entities.*;
 import de.unisaarland.swan.rest.services.v1.AnnotationFacadeREST;
 import de.unisaarland.swan.rest.services.v1.DocumentFacadeREST;
 import de.unisaarland.swan.rest.services.v1.ProjectFacadeREST;
@@ -72,6 +67,11 @@ public class AnnotationFacadeRESTTest extends BaseTest {
     @Test
     public void testScenario1() {
         Annotation anno = TestDataProvider.getAnnotation1();
+
+        SpanType spanType = anno.getSpanType();
+        persistAndFlush(spanType);
+        anno.setSpanType(spanType);
+
         anno.setUser(user);
         anno.setDocument(doc);
         Response resp = annoRESTService.create(anno);

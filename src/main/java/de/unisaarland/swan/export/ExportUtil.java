@@ -140,7 +140,7 @@ public class ExportUtil {
         dAnnot.setAnnotationId(annotation.getId().toString());
         annotsById.put(annotation.getId(), dAnnot);
 
-        Set<Label> labels = convertLabelsToExportLabelSet(annotation.getLabelMap());
+        Set<Label> labels = convertLabelsToExportLabelSet(annotation.getLabels());
         FSList list = createLabelList(jCas, labels);
 
         dAnnot.setLabels(list);
@@ -154,7 +154,7 @@ public class ExportUtil {
         dLink.setLinkEnd(annotsById.get(link.getAnnotation2().getId()));
         dLink.setAnnotatorId(link.getUser().getEmail());
 
-        Set<Label> labels = convertLinkLabelsToExportLabelSet(link.getLabelMap());
+        Set<Label> labels = convertLinkLabelsToExportLabelSet(link.getLinkLabels());
         FSList list = createLabelList(jCas, labels);
 
         dLink.setLabels(list);
@@ -341,25 +341,25 @@ public class ExportUtil {
         anno.setSpanType(a.getSpanType().getName());
         anno.setLabels(
                 convertLabelsToExportLabelSet(
-                        a.getLabelMap()));
+                        a.getLabels()));
         return anno;
     }
 
-    private Set<Label> convertLabelsToExportLabelSet(Set<LabelLabelSetMap> maps) {
+    private Set<Label> convertLabelsToExportLabelSet(Set<de.unisaarland.swan.entities.Label> labelEntities) {
         Set<Label> labels = new HashSet<>();
+
 
         // collect selected labels per LabelSet
         Map<String, Set<String>> setToLabelsMap = new HashMap<>();
 
-        for (LabelLabelSetMap m : maps) {
+        for (de.unisaarland.swan.entities.Label l : labelEntities) {
+            de.unisaarland.swan.entities.LabelSet s = l.getLabelSet();
 
-            for (de.unisaarland.swan.entities.LabelSet s : m.getLabelSets()) {
-
-                if (!setToLabelsMap.containsKey(s.getName())) {
-                    setToLabelsMap.put(s.getName(), new HashSet<String>());
-                }
-                setToLabelsMap.get(s.getName()).add(m.getLabel().getName());
+            if (!setToLabelsMap.containsKey(s.getName())) {
+                setToLabelsMap.put(s.getName(), new HashSet<String>());
             }
+            setToLabelsMap.get(s.getName()).add(l.getName());
+
         }
 
         // TODO duplicate code
@@ -394,25 +394,24 @@ public class ExportUtil {
         newLink.setTo(link.getAnnotation2().getId());
         newLink.setLabels(
                 convertLinkLabelsToExportLabelSet(
-                        link.getLabelMap()));
+                        link.getLinkLabels()));
         return newLink;
     }
 
-    private Set<Label> convertLinkLabelsToExportLabelSet(Set<LinkLabelLinkTypeMap> maps) {
+    private Set<Label> convertLinkLabelsToExportLabelSet(Set<de.unisaarland.swan.entities.LinkLabel> linkLabels) {
         Set<Label> labels = new HashSet<>();
 
         // collect selected labels per LabelSet
         Map<String, Set<String>> setToLabelsMap = new HashMap<>();
 
-        for (LinkLabelLinkTypeMap m : maps) {
+        for (de.unisaarland.swan.entities.LinkLabel l : linkLabels) {
 
-            for (de.unisaarland.swan.entities.LinkType s : m.getLinkTypes()) {
-
-                if (!setToLabelsMap.containsKey(s.getName())) {
-                    setToLabelsMap.put(s.getName(), new HashSet<String>());
-                }
-                setToLabelsMap.get(s.getName()).add(m.getLabel().getName());
+            de.unisaarland.swan.entities.LinkType s = l.getLinkType();
+            if (!setToLabelsMap.containsKey(s.getName())) {
+                setToLabelsMap.put(s.getName(), new HashSet<String>());
             }
+            setToLabelsMap.get(s.getName()).add(l.getName());
+
         }
 
         // TODO duplicate code

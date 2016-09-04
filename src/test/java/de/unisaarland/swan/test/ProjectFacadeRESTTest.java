@@ -180,7 +180,7 @@ public class ProjectFacadeRESTTest extends BaseTest {
             byte[] zipByteArray = (byte[]) resp.getEntity();
             fos.write(zipByteArray);
             ZipFile zipFile = new ZipFile(file);
-            assertTrue(zipFile.size() == 1);
+            assertTrue(zipFile.size() == 2);
         } catch (IOException | NullPointerException e) {
             fail("Problem generating zip file.");
         }

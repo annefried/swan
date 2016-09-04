@@ -22,6 +22,7 @@
 		{
 			"name": "number",
 			"exclusive": true,
+			"labelMenuStyle": "list",
 			"appliesToSpanTypes": [
 				{
 					"name": "verb"
@@ -42,6 +43,7 @@
 		{
 			"name": "voice",
 			"exclusive": true,
+			"labelMenuStyle": "list",
 			"appliesToSpanTypes": [
 				{
 					"name": "verb"
@@ -79,7 +81,9 @@
 						"horizontal"
 					]
 				}
-			]
+			],
+			"linkLabelMenuStyle": "list",
+			"undirected": false
 		}
 	]
 }
