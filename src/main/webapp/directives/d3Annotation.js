@@ -1217,7 +1217,8 @@ angular
                             	}
                                 if (d.lX === 0)
                                     pos = pre;
-                                var spacing = ($scope.$parent.isPunctuation(d.word.text) || d.word.text === " ") ? 0 : wordSpacing;
+                                //var spacing = ($scope.$parent.isPunctuation(d.word.text) || d.word.text === " ") ? 0 : wordSpacing;
+                                var spacing = ($scope.$parent.isPunctuation(d.word.text) || $scope.isWhitespace(d.word.text)) ? 0 : wordSpacing;
                                 pos += spacing;
                                 d.x = pos;
                                 // load previously computed lengths
@@ -1255,6 +1256,10 @@ angular
                                     $scope.drawEverything();
                                 }
                             });
+                };
+
+                $scope.isWhitespace = function(str) {
+                    return $.trim(str) === "";
                 };
 
                 $scope.applyLink = function (d) {
@@ -1324,14 +1329,18 @@ angular
                                 .attr("height", wordHeight / 3)
                                 .attr("width", function (d) {
                                     var width = 0;
+                                    var leftEdge;
+                                    var rightEdge;
                                     for (var i = 0; i < d.formWords.length; i++) {
                                         var formWord = d.formWords[i];
-                                        if (formWord.width === 0)
-                                            width += wordSpacing;
-                                        else
-                                        	// load previously computed lengths
-                                            width += $scope.widthMap[formWord.word.text];
+                                        if (leftEdge === undefined || formWord.x < leftEdge) {
+                                            leftEdge = formWord.x;
+                                        }
+                                        if (rightEdge === undefined || (formWord.x + formWord.width) > rightEdge) {
+                                            rightEdge = formWord.x + formWord.width;
+                                        }
                                     }
+                                    width = rightEdge - leftEdge;
 
                                     d.width = width;
                                     return ~~d.width;
