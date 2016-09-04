@@ -6,26 +6,42 @@
     <version>2.0</version>
     <packaging>war</packaging>
     <name>swan</name>
+    <url>https://github.com/annefried/swan</url>
+
+    <issueManagement>
+        <url>https://github.com/annefried/swan/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.org.jacoco>0.7.7.201606060606</version.org.jacoco>
+        <version.org.codehaus.mojo.findbugs>3.0.4</version.org.codehaus.mojo.findbugs>
+        <version.org.apache.maven.plugins.pmd>3.6</version.org.apache.maven.plugins.pmd>
+        <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.it.execution.data.file>
+        <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
+        <reports.directory>${basedir}/reports</reports.directory>
+        <pmd.reports.directory>${reports.directory}/pmd-report</pmd.reports.directory>
+        <findbugs.reports.directory>${reports.directory}/findbugs-report</findbugs.reports.directory>
+        <jacoco.reports.directory>${reports.directory}/jacoco-report</jacoco.reports.directory>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.7.0</version>
+            <version>2.8.2</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.7.0</version>
+            <version>2.8.2</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.7.0</version>
+            <version>2.8.2</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -45,7 +61,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20151123</version>
+            <version>20160810</version>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey</groupId>
@@ -60,13 +76,13 @@
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
-            <version>2.6.2</version>
+            <version>2.6.3</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
-            <version>2.6.2</version>
+            <version>2.6.3</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -162,7 +178,6 @@
             <version>1.19</version>
             <scope>test</scope>
         </dependency>
-
         <!--        <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-json</artifactId>
@@ -172,13 +187,13 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.191</version>
+            <version>1.4.192</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>1.9.5</version>
+            <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -188,10 +203,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.5.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>
@@ -200,72 +215,144 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
+                <version>3.0.0</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            <!-- JaCoCo: http://www.eclemma.org/jacoco/ -->
             <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
-                <configuration>
-                    <skip>false</skip>
-                </configuration>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${version.org.jacoco}</version>
                 <executions>
+                    <!-- Prepares the property pointing to the JaCoCo runtime agent which
+                        is passed as VM argument when Maven the Surefire plugin is executed. -->
                     <execution>
-                        <id>unit-test</id>
-                        <phase>test</phase>
+                        <id>pre-unit-test</id>
                         <goals>
-                            <goal>test</goal>
+                            <goal>prepare-agent</goal>
                         </goals>
                         <configuration>
-                            <!--<skip>${maven.test.skip}</skip>-->
-                            <skip>false</skip>
-                            <argLine>${argLine}</argLine>
+                            <destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
+                            <propertyName>surefireArgLine</propertyName>
                         </configuration>
                     </execution>
+                    <!-- Ensures that the code coverage report for unit tests is created after
+                        unit tests have been run. -->
                     <execution>
-                        <id>integration-test</id>
-                        <phase>integration-test</phase>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
                         <goals>
-                            <goal>test</goal>
+                            <goal>report</goal>
                         </goals>
                         <configuration>
-                            <!--<skip>${skipITs}</skip>-->
-                            <skip>false</skip>
-                            <argLine>${argLine}</argLine>
+                            <dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
+                            <outputDirectory>${jacoco.reports.directory}</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-            <!-- test report generating -->
             <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.5.201505241946</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
                 <configuration>
-                    <skip>${maven.test.skip}</skip>
-                    <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
-                    <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
-                    <outputDirectory>${basedir}/jacoco-report</outputDirectory>
-                    <output>file</output>
-                    <append>true</append>
-                    <excludes>
-                        <exclude>**/*_.class</exclude>
-                    </excludes>
+                    <skip>false</skip>
+                    <argLine>${surefireArgLine}</argLine>
+                </configuration>
+            </plugin>
+            <!-- FindBugs: http://findbugs.sourceforge.net/ -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${version.org.codehaus.mojo.findbugs}</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <!-- Enables analysis which takes more memory but finds more bugs.
+                        If you run out of memory, changes the value of the effort element
+                        to 'Low'. -->
+                    <effort>Max</effort>
+                    <!-- Reports all bugs (other values are medium and max) -->
+                    <threshold>Low</threshold>
+                    <!-- Produces XML report -->
+                    <xmlOutput>true</xmlOutput>
+                    <!-- Configures the directory in which the XML report is created -->
+                    <findbugsXmlOutputDirectory>${findbugs.reports.directory}</findbugsXmlOutputDirectory>
                 </configuration>
                 <executions>
+                    <!-- Ensures that FindBugs inspects source code when project is compiled. -->
                     <execution>
-                        <id>jacoco-initialize</id>
+                        <id>analyze-compile</id>
+                        <phase>compile</phase>
                         <goals>
-                            <goal>prepare-agent</goal>
+                            <goal>check</goal>
                         </goals>
                     </execution>
+                </executions>
+            </plugin>
+            <!-- Plugin used to create a human readable html from the findbugs xml output -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <version>1.0.1</version>
+                <configuration>
+                    <transformationSets>
+                        <transformationSet>
+                            <!-- Configures the source directory of XML files. -->
+                            <dir>${findbugs.reports.directory}</dir>
+                            <!-- Configures the directory in which the FindBugs report is written.-->
+                            <outputDir>${findbugs.reports.directory}</outputDir>
+                            <!-- Selects the used stylesheet. -->
+                            <stylesheet>default.xsl</stylesheet>
+                            <fileMappers>
+                                <!-- Configures the file extension of the output files. -->
+                                <fileMapper
+                                        implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                                    <targetExtension>.html</targetExtension>
+                                </fileMapper>
+                            </fileMappers>
+                        </transformationSet>
+                    </transformationSets>
+                </configuration>
+                <executions>
+                    <!-- Ensures that the XSLT transformation is run when the project is compiled. -->
                     <execution>
-                        <id>jacoco-site</id>
-                        <phase>verify</phase>
+                        <phase>compile</phase>
                         <goals>
-                            <goal>report</goal>
+                            <goal>transform</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>findbugs</artifactId>
+                        <version>3.0.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <!-- PMD: https://pmd.github.io/ -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${version.org.apache.maven.plugins.pmd}</version>
+                <configuration>
+                    <failOnViolation>false</failOnViolation>
+                    <linkXRef>true</linkXRef>
+                    <language>java</language>
+                    <format>xml</format>
+                    <targetDirectory>${pmd.reports.directory}</targetDirectory>
+                    <outputDirectory>${pmd.reports.directory}</outputDirectory>
+                    <skipEmptyReport>false</skipEmptyReport>
+                </configuration>
+                <executions>
+                    <!-- Ensures that PMD inspects source code when project is compiled. -->
+                    <execution>
+                        <id>analyze-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -300,7 +387,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.6</version>
+                <version>2.10</version>
                 <executions>
                     <execution>
                         <phase>validate</phase>
@@ -324,4 +411,47 @@
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <!-- JaCoCo -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${version.org.jacoco}</version>
+            </plugin>
+            <!-- FindBugs -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${version.org.codehaus.mojo.findbugs}</version>
+                <configuration>
+                    <!-- Enables analysis which takes more memory but finds more bugs.
+                        If you run out of memory, changes the value of the effort element
+                        to 'low'. -->
+                    <effort>Max</effort>
+                    <!-- Reports all bugs (other values are medium and max) -->
+                    <threshold>Low</threshold>
+                    <!-- Produces XML report -->
+                    <xmlOutput>true</xmlOutput>
+                </configuration>
+            </plugin>
+            <!-- PMD -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${version.org.apache.maven.plugins.pmd}</version>
+                <configuration>
+                    <targetDirectory>${pmd.reports.directory}</targetDirectory>
+                    <skipEmptyReport>false</skipEmptyReport>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
 </project>

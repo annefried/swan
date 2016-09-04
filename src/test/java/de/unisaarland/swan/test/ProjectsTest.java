@@ -42,7 +42,8 @@ public class ProjectsTest extends BaseTest {
         super.configureService(service);
     }
     
-    @Test
+    /** TOOD */
+    //@Test
     public void testScenario1() throws CloneNotSupportedException, CreateException {
         
         // Create scheme
