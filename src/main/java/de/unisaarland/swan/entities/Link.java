@@ -116,10 +116,10 @@ public class Link extends BaseEntity {
     
     @JsonView({ View.Links.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
-    @JoinTable(name="LINK_LABELMAP", 
+    @JoinTable(name="LINK_LINKLABEL",
           joinColumns=@JoinColumn(name="LINK_ID"),
-          inverseJoinColumns=@JoinColumn(name="MAP_ID"))
-    private Set<LinkLabelLinkTypeMap> labelMap = new HashSet<>();
+          inverseJoinColumns=@JoinColumn(name="LINKLABEL_ID"))
+    private Set<LinkLabel> linkLabels = new HashSet<>();
 
     
     public Users getUser() {
@@ -154,34 +154,18 @@ public class Link extends BaseEntity {
         this.annotation2 = annotation2;
     }
 
-    public Set<LinkLabelLinkTypeMap> getLabelMap() {
-        return labelMap;
+    public Set<LinkLabel> getLinkLabels() {
+        return linkLabels;
     }
 
-    public void setLabelMap(Set<LinkLabelLinkTypeMap> labelMap) {
-        this.labelMap = labelMap;
+    public void setLinkLabels(Set<LinkLabel> linkLabels) {
+        this.linkLabels = linkLabels;
     }
 
-    public void addLabelMap(LinkLabelLinkTypeMap labelMap) {
-        this.labelMap.add(labelMap);
+    public void addLabel(LinkLabel linkLabel) {
+        this.linkLabels.add(linkLabel);
     }
     
-    public void removeLabelMap(LinkLabelLinkTypeMap labelMap) {
-        if (!this.labelMap.remove(labelMap)) {
-            throw new IllegalArgumentException("Link: LinkLabelLinkTypeMap does not exist");
-        }
-    }
-    
-    public void removeLabel(LinkLabelLinkTypeMap map, LinkType lt) {
-        if (map.getLinkTypes().contains(lt)) {
-            if (map.getLinkTypes().size() == 1) {
-                this.labelMap.remove(map);
-            } else {
-                map.getLinkTypes().remove(lt);
-            }
-        } else {
-            throw new IllegalArgumentException("Link: LinkType does not correspond with LinkLabel");
-        }
-    }
+    public void removeLabel(LinkLabel linkLabel) { this.linkLabels.remove(linkLabel); }
     
 }

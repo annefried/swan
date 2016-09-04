@@ -31,7 +31,8 @@
 				{
 					"name": "singular"
 				}
-			]
+			],
+			"labelMenuStyle": "list"
 		}
 	],
 	"linkTypes": [

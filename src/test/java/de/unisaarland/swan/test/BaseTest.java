@@ -45,11 +45,9 @@ public abstract class BaseTest {
         entityClasses.add(Annotation.class);
         entityClasses.add(Document.class);
         entityClasses.add(Label.class);
-        entityClasses.add(LabelLabelSetMap.class);
         entityClasses.add(LabelSet.class);
         entityClasses.add(Link.class);
         entityClasses.add(LinkLabel.class);
-        entityClasses.add(LinkLabelLinkTypeMap.class);
         entityClasses.add(LinkType.class);
         entityClasses.add(Project.class);
         entityClasses.add(Scheme.class);

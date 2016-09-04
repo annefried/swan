@@ -41,6 +41,7 @@ import javax.persistence.*;
                 "LEFT JOIN FETCH s.labelSets " +
                 "LEFT JOIN FETCH s.linkTypes " +
                 "LEFT JOIN FETCH s.projects " +
+                "LEFT JOIN FETCH s.colorScheme " +
                 "WHERE s.id = :" + Scheme.PARAM_SCHEME_ID,
         hints = {
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.appliesToSpanTypes"),
@@ -59,6 +60,7 @@ import javax.persistence.*;
                 "LEFT JOIN FETCH s.labelSets " +
                 "LEFT JOIN FETCH s.linkTypes " +
                 "LEFT JOIN FETCH s.projects " +
+                "LEFT JOIN FETCH s.colorScheme " +
                     "WHERE EXISTS( " +
                             "SELECT d " +
                             "FROM Document d " +
@@ -126,16 +128,31 @@ public class Scheme extends BaseEntity {
           inverseJoinColumns=@JoinColumn(name="VISELEMENT_ID"))
     private List<VisualizationElement> visElements = new ArrayList();
 
+    public ColorScheme getColorScheme() {
+     return colorScheme;
+     }
+
+    public void setColorScheme(ColorScheme colorScheme) {
+     this.colorScheme = colorScheme;
+     }
+
     @JsonView({ View.Scheme.class })
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+    @OneToOne(optional=false, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
+            fetch = FetchType.LAZY)
+    @JoinColumn(name="COLORSCHEME_ID", unique=true)
+    private ColorScheme colorScheme;
+
+
+    @JsonView({ View.Scheme.class })
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.LAZY)
     @JoinTable(name="SCHEME_SPANTYPE", 
           joinColumns=@JoinColumn(name="SCHEME_ID"),
           inverseJoinColumns=@JoinColumn(name="SPANTYPE"))
-    private Set<SpanType> spanTypes = new HashSet();
+    private List<SpanType> spanTypes = new ArrayList();
     
     @JsonView({ View.Scheme.class })
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.LAZY)
     @JoinTable(name="SCHEME_LABELSET", 
           joinColumns=@JoinColumn(name="SCHEME_ID"),
@@ -143,7 +160,7 @@ public class Scheme extends BaseEntity {
     private List<LabelSet> labelSets = new ArrayList();
     
     @JsonView({ View.Scheme.class })
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.LAZY)
     @JoinTable(name="SCHEME_LINKTYPE", 
           joinColumns=@JoinColumn(name="SCHEME_ID"),
@@ -155,8 +172,7 @@ public class Scheme extends BaseEntity {
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     private Set<Project> projects = new HashSet();
-    
-    
+
     public String getName() {
         return name;
     }
@@ -181,11 +197,11 @@ public class Scheme extends BaseEntity {
         this.visElements = visElements;
     }
 
-    public Set<SpanType> getSpanTypes() {
+    public List<SpanType> getSpanTypes() {
         return spanTypes;
     }
 
-    public void setSpanTypes(Set<SpanType> spanTypes) {
+    public void setSpanTypes(List<SpanType> spanTypes) {
         this.spanTypes = spanTypes;
     }
     
