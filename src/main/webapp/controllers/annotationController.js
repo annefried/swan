@@ -139,21 +139,20 @@ angular
                 //Assign actual word(tokens) to the annotations
                 var annotations = this.annotations;
                 for (var a = 0; a < annotations.length; a++) {
-                    var start = annotations[a].start;
-                    var end = annotations[a].end;
-                    var spanType = this.getSpanType(annotations[a].spanType.name);
-                    var anno = new Annotation(color, annotations[a].id, spanType);
-                    anno.notSure = annotations[a].notSure;
+                    var annotation = annotations[a];
+                    var start = annotation.start;
+                    var end = annotation.end;
+                    var spanType = this.getSpanType(annotation.spanType.name);
+                    var anno = new Annotation(color, annotation.id, spanType);
+                    anno.notSure = annotation.notSure;
                     this.findWords(start, end, anno);
                     //Add labels
-                    for (var l = 0; l < annotations[a].labelMap.length; l++) {
-                        var label = annotations[a].labelMap[l];
-                        for (var k = 0; k < label.labelSets.length; k++) {
-                            var setId = label.labelSets[k].id;
-                            var annotationLabel = new AnnotationLabel(label.label.id, label.label.name, [], setId);
-                            var labelSet = this.labelTable[setId];
-                            anno.setLabel(labelSet, annotationLabel);
-                        }
+                    for (var l = 0; l < annotation.labels.length; l++) {
+                        var label = annotation.labels[l];
+                        var setId = label.labelSet.id;
+                        var annotationLabel = new AnnotationLabel(label.id, label.name, [], setId);
+                        var labelSet = this.labelTable[setId];
+                        anno.setLabel(labelSet, annotationLabel);
                     }
 
                     var color = this.getColor(spanType, anno);
@@ -178,14 +177,12 @@ angular
                                 annotationLink.addSelectableLabel(linkType);
                             }
                         }
-                        for (var j = 0; j < link.labelMap.length; j++) {
-                            var label = link.labelMap[j];
-                            for (var k = 0; k < label.linkTypes.length; k++) {
-                                const setId = label.linkTypes[k].id;
-                                const labelSet = this.linkLabels[source.sType.tag][target.sType.tag][setId];
-                                const linkLabel = new AnnotationLabel(label.label.id, label.label.name, label.label.options, setId);
-                                annotationLink.setLabel(labelSet, linkLabel);
-                            }
+                        for (var j = 0; j < link.linkLabels.length; j++) {
+                            var label = link.linkLabels[j];
+                            const setId = label.linkType.id;
+                            const labelSet = this.linkLabels[source.sType.tag][target.sType.tag][setId];
+                            const linkLabel = new AnnotationLabel(label.id, label.name, label.options, setId);
+                            annotationLink.setLabel(labelSet, linkLabel);
                         }
 
                         if (this.annotationLinks[source.id] === undefined)
@@ -226,25 +223,23 @@ angular
 
                     var labelTemplate;
                     var url;
-                    
+
                     // Annotation
                     if (this.selectedNode.type === AnnoType.Annotation) {
+                        
                         labelTemplate = {
                             id: label.id,
                             name: label.tag,
-                            labelSet: [{
-                                id: labelSet.id
-                            }]
+                            labelSet: { id: labelSet.id }
                         };
                         
                         url = labeled ? 'swan/annotations/addlabel/' : 'swan/annotations/removelabel/';
                     } else { // Link
+                        
                         labelTemplate = {
                             id: label.id,
                             name: label.tag,
-                            linkType: [{
-                                id: labelSet.id
-                            }]
+                            linkType: { id: labelSet.id }
                         };
                         
                         url = labeled ? 'swan/links/addlabel/' : 'swan/links/removelabel/';
@@ -275,6 +270,7 @@ angular
                         "id": $window.sessionStorage.uId
                     },
                     "spanType": {
+                        "id": newAnno.sType.id,
                         "name": newAnno.sType.tag
                     },
                     "document": {
@@ -424,7 +420,7 @@ angular
                         return;
                     } else if (this.selectedNode.sType !== undefined) {
                     	const url = "swan/annotations/changest/" + this.selectedNode.id;
-                        $http.post(url, {'name': spanType.tag}).success(function (response) {
+                        $http.post(url, {'id': spanType.id, 'name': spanType.tag}).success(function (response) {
 
                         }).error(function (response) {
                             $rootScope.checkResponseStatusCode(response.status);
@@ -450,7 +446,7 @@ angular
                 this.tempAnno.setSpanType(spanType);
                 this.tempAnno.color = this.getColor(spanType, undefined);
                 this.addAnnotation(this.tempAnno);
-                this.tempAnno = null;
+                this.tempAnnpostwordo = null;
             };
             
             /**
@@ -490,6 +486,7 @@ angular
                         "id": $window.sessionStorage.uId
                     },
                     "spanType": {
+                        "id": annotation.sType.id,
                         "name": annotation.sType.tag
                     },
                     "document": {
@@ -563,6 +560,7 @@ angular
                                 'id': $window.sessionStorage.docId
                             },
                             "spanType": {
+                                //"id": source.sType.id
                                 "name": source.type
                             },
                             "start": source.words[0].start,
@@ -578,13 +576,14 @@ angular
                                 'id': $window.sessionStorage.docId
                             },
                             "spanType": {
+                                //"id": target.sType.id
                                 "name": target.type
                             },
                             "start": target.words[0].start,
                             "end": target.words[0].end,
                             "text": target.words[0].text
                         },
-                        "labelMap": []
+                        "linkLabels": []
                     };
                     $http.post("swan/links", JSON.stringify(jsonTemplate)).then(function (object) {
                         return function (response) {
@@ -698,7 +697,7 @@ angular
                 this.spanTypes = {};
                 for (var i = 0; i < this.scheme.spanTypes.length; i++) {
                     var type = this.scheme.spanTypes[i];
-                    var spanType = new SpanType(i, type.name);
+                    var spanType = new SpanType(type.id, type.name);
                     this.spanTypes[spanType.tag] = spanType;
                 }
             };

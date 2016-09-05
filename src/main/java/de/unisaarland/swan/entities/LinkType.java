@@ -11,13 +11,7 @@ import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.swan.rest.view.View;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * 
@@ -27,11 +21,11 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-public class LinkType extends BaseEntity {
-    
-    @JsonView({ View.Scheme.class })
-    @Column(name = "Name")
-    private String name;
+public class LinkType extends ColorableBaseEntity {
+
+    public static enum LinkLabelMenuStyle {
+        list, dropdown;
+    }
     
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
@@ -45,21 +39,25 @@ public class LinkType extends BaseEntity {
     
     @Column(name = "AllowUnlabeledLinks")
     private boolean allowUnlabeledLinks;
+
+    /**
+     * Determines whether the linkLabels should be displayed as dropdown menu or list
+     */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "LinkLabelMenuStyle")
+    private LinkLabelMenuStyle linkLabelMenuStyle;
+
+    /**
+     * Determines whether the linkType is undirected or not
+     */
+    @Column(name = "Undirected")
+    private boolean undirected;
     
     @JsonView({ View.Scheme.class })
-    @ManyToMany(mappedBy = "linkType",
-                cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+    @OneToMany(mappedBy = "linkType",
+                cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.EAGER)
     private List<LinkLabel> linkLabels = new ArrayList<>();
-
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
     
     public SpanType getStartSpanType() {
         return startSpanType;
@@ -84,6 +82,14 @@ public class LinkType extends BaseEntity {
     public void setAllowUnlabeledLinks(boolean allowUnlabeledLinks) {
         this.allowUnlabeledLinks = allowUnlabeledLinks;
     }
+
+    public boolean isUndirected() { return undirected; }
+
+    public void setUndirected(boolean undirected) { this.undirected = undirected; }
+
+    public LinkLabelMenuStyle getLinkLabelMenuStyle() { return linkLabelMenuStyle; }
+
+    public void setLinkLabelMenuStyle(LinkLabelMenuStyle linkLabelMenuStyle) { this.linkLabelMenuStyle = linkLabelMenuStyle; }
 
     public List<LinkLabel> getLinkLabels() {
         return linkLabels;

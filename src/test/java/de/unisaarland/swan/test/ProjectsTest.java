@@ -7,24 +7,13 @@ package de.unisaarland.swan.test;
 
 import de.unisaarland.swan.Utility;
 import de.unisaarland.swan.business.Service;
-import de.unisaarland.swan.entities.Annotation;
-import de.unisaarland.swan.entities.Document;
-import de.unisaarland.swan.entities.Label;
-import de.unisaarland.swan.entities.LabelLabelSetMap;
-import de.unisaarland.swan.entities.LabelSet;
-import de.unisaarland.swan.entities.Link;
-import de.unisaarland.swan.entities.LinkLabel;
-import de.unisaarland.swan.entities.LinkLabelLinkTypeMap;
-import de.unisaarland.swan.entities.LinkType;
-
-import de.unisaarland.swan.entities.Project;
-import de.unisaarland.swan.entities.Scheme;
-import de.unisaarland.swan.entities.State;
-import de.unisaarland.swan.entities.Users;
+import de.unisaarland.swan.entities.*;
 
 import java.util.List;
 import java.util.Set;
 import javax.ejb.CreateException;
+
+import edu.stanford.nlp.ie.machinereading.structure.Span;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -121,6 +110,11 @@ public class ProjectsTest extends BaseTest {
     public Annotation testAddAnnotation1(Document doc, Users user, LabelSet labelSet) throws CloneNotSupportedException, CreateException {
         
         Annotation anno = TestDataProvider.getAnnotation1();
+
+        SpanType spanType = anno.getSpanType();
+        persistAndFlush(spanType);
+        anno.setSpanType(spanType);
+
         anno.setUser(user);
         anno.setDocument(doc);
         service.process(anno);
@@ -134,22 +128,21 @@ public class ProjectsTest extends BaseTest {
         assertTrue(retAnno.getUser().getId().equals(user.getId()));
         assertTrue(retAnno.getStart() == 0);
         assertTrue(retAnno.getEnd() == 3);
-        assertTrue(retAnno.getLabelMap().isEmpty());
+        assertTrue(retAnno.getLabels().isEmpty());
         assertTrue(retAnno.getSpanType().getName().equals("verb"));
         
         // Add label to annotation 1
         Label label = TestDataProvider.getLabel1();
-        label.addLabelSet(labelSet);
+        label.setLabelSet(labelSet);
         persistAndFlush(label);
         service.addLabelToAnnotation(retAnno.getId(), label);
         
-        Set<LabelLabelSetMap> mapSet = retAnno.getLabelMap();
-        Object[] maps = mapSet.toArray();
-        LabelLabelSetMap map = (LabelLabelSetMap) maps[0];
+        Set<Label> labels = retAnno.getLabels();
+        Object[] labelsArr = labels.toArray();
+        Label newLabel = (Label) labelsArr[0];
         
-        assertTrue(mapSet.size() == 1);
-        assertTrue(map.getLabel().getName().equals(label.getName()));
-        assertTrue(map.getLabelSets().size() == 1);
+        assertTrue(labels.size() == 1);
+        assertTrue(newLabel.getName().equals(label.getName()));
         
         // Test broken labels
         try {
@@ -167,6 +160,11 @@ public class ProjectsTest extends BaseTest {
     public Annotation testAddAnnotation2(Document doc, Users user, LabelSet labelSet) throws CloneNotSupportedException, CreateException {
         
         Annotation anno = TestDataProvider.getAnnotation2();
+
+        SpanType spanType = anno.getSpanType();
+        persistAndFlush(spanType);
+        anno.setSpanType(spanType);
+
         anno.setUser(user);
         anno.setDocument(doc);
         service.process(anno);
@@ -180,22 +178,21 @@ public class ProjectsTest extends BaseTest {
         assertTrue(retAnno.getUser().getId().equals(user.getId()));
         assertTrue(retAnno.getStart() == 65);
         assertTrue(retAnno.getEnd() == 68);
-        assertTrue(retAnno.getLabelMap().isEmpty());
+        assertTrue(retAnno.getLabels().isEmpty());
         assertTrue(retAnno.getSpanType().getName().equals("passage"));
         
         // Add label to annotation 1
         Label label = TestDataProvider.getLabel1();
-        label.addLabelSet(labelSet);
+        label.setLabelSet(labelSet);
         persistAndFlush(label);
         service.addLabelToAnnotation(retAnno.getId(), label);
         
-        Set<LabelLabelSetMap> mapSet = retAnno.getLabelMap();
-        Object[] maps = mapSet.toArray();
-        LabelLabelSetMap map = (LabelLabelSetMap) maps[0];
+        Set<Label> labels = retAnno.getLabels();
+        Object[] labelArr = labels.toArray();
+        Label newLabel = (Label) labelArr[0];
         
-        assertTrue(mapSet.size() == 1);
-        assertTrue(map.getLabel().getName().equals(label.getName()));
-        assertTrue(map.getLabelSets().size() == 1);
+        assertTrue(labels.size() == 1);
+        assertTrue(newLabel.getName().equals(label.getName()));
         
         return anno;
     }
@@ -205,6 +202,10 @@ public class ProjectsTest extends BaseTest {
         List<Annotation> annos = TestDataProvider.getAnnotations();
         
         for (Annotation anno : annos) {
+            SpanType spanType = anno.getSpanType();
+            persistAndFlush(spanType);
+            anno.setSpanType(spanType);
+
             anno.setUser(user);
             anno.setDocument(doc);
             service.process(anno);
@@ -230,23 +231,22 @@ public class ProjectsTest extends BaseTest {
         assertNotNull(retLink);
         assertTrue(retLink.getAnnotation1().getId().equals(anno1.getId()));
         assertTrue(retLink.getAnnotation2().getId().equals(anno2.getId()));
-        assertTrue(retLink.getLabelMap().isEmpty());
+        assertTrue(retLink.getLinkLabels().isEmpty());
         assertTrue(retLink.getUser().getId().equals(user.getId()));
         assertTrue(retLink.getDocument().getId().equals(doc.getId()));
         
         // Add label to link
         LinkLabel label = TestDataProvider.getLinkLabel1();
-        label.addLinkType(linkType);
+        label.setLinkType(linkType);
         persistAndFlush(label);
         service.addLinkLabelToLink(retLink.getId(), label);
         
-        Set<LinkLabelLinkTypeMap> mapSet = retLink.getLabelMap();
-        Object[] maps = mapSet.toArray();
-        LinkLabelLinkTypeMap map = (LinkLabelLinkTypeMap) maps[0];
+        Set<LinkLabel> labels = retLink.getLinkLabels();
+        Object[] labelArr = labels.toArray();
+        LinkLabel newLabel = (LinkLabel) labelArr[0];
         
-        assertTrue(mapSet.size() == 1);
-        assertTrue(map.getLabel().getName().equals(label.getName()));
-        assertTrue(map.getLinkTypes().size() == 1);
+        assertTrue(labels.size() == 1);
+        assertTrue(newLabel.getName().equals(label.getName()));
         
         // Test broken label
         try {

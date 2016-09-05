@@ -38,7 +38,9 @@
 					"name": "before",
 					"options": []
 				}
-			]
+			],
+			"linkLabelMenuStyle": "list",
+			"undirected": false
 		}
 	]
 }

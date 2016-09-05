@@ -89,7 +89,7 @@ public class SchemeTest extends BaseTest {
         assertTrue(origLabels.containsAll(labels));
         
         Label labelOther = getLabelByString(ls1.getLabels(), "OTHER");
-        assertTrue(labelOther.getLabelSet().size() == 1);
+        assertTrue(labelOther.getLabelSet() != null);
         
         // LabelSet2
         assertNotNull(ls2);
