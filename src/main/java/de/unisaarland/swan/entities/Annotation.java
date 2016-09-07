@@ -8,9 +8,7 @@ package de.unisaarland.swan.entities;
 import com.fasterxml.jackson.annotation.JsonView;
 import de.unisaarland.swan.rest.view.View;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -92,20 +90,21 @@ public class Annotation extends BaseEntity {
                 fetch = FetchType.LAZY)
     @JoinColumn(name = "document_fk")
     private Document document;
-    
+
+    @JsonView({ View.Annotations.class})
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     @JoinColumn(name = "spanType_fk")
     private SpanType spanType;
     
     @JsonView({ View.Annotations.class, View.Links.class })
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.EAGER)
     @JoinTable(
-        name="ANNOTATION_LABELMAP",
+        name="ANNOTATION_LABEL",
         joinColumns={@JoinColumn(name="ANNOTATION_ID", referencedColumnName="id")},
-        inverseJoinColumns={@JoinColumn(name="MAP_ID", referencedColumnName="id")})
-    private Set<LabelLabelSetMap> labelMap = new HashSet<>();
+        inverseJoinColumns={@JoinColumn(name="LABEL_ID", referencedColumnName="id")})
+    private Set<Label> labels = new HashSet<>();
     
     /**
      * "start" is a postgres keyword so use "start*" instead
@@ -177,36 +176,20 @@ public class Annotation extends BaseEntity {
         this.text = text;
     }
 
-    public Set<LabelLabelSetMap> getLabelMap() {
-        return labelMap;
+    public Set<Label> getLabels() {
+        return labels;
     }
 
-    public void setLabelMap(Set<LabelLabelSetMap> labelMap) {
-        this.labelMap = labelMap;
+    public void setLabels(Set<Label> labels) {
+        this.labels = labels;
     }
 
-    public void addLabelMap(LabelLabelSetMap labelMap) {
-        this.labelMap.add(labelMap);
+    public void addLabel(Label label) {
+        this.labels.add(label);
     }
     
-    public void removeLabelMap(LabelLabelSetMap labelMap) {
-        if (!this.labelMap.remove(labelMap)) {
-            throw new IllegalArgumentException("Annotation: LabelLabelSetMap does not exist");
-        }
-    }
-    
-    public void removeLabel(LabelLabelSetMap map, LabelSet ls) {
-        if (map.getLabelSets().contains(ls)) {
-            if (map.getLabelSets().size() == 1) {
-                this.labelMap.remove(map);
-            } else {
-                map.getLabelSets().remove(ls);
-            }
-        } else {
-            throw new IllegalArgumentException("Annotation: LabelSet does not correspond with Label");
-        }
-    }
-    
+    public void removeLabel(Label label) { this.labels.remove(label); }
+
     public boolean isNotSure() {
         return notSure;
     }
@@ -255,7 +238,7 @@ public class Annotation extends BaseEntity {
         newAnno.setSpanType(this.spanType);
         newAnno.setUser(this.user);
         newAnno.setDocument(this.document);
-        newAnno.setLabelMap(new HashSet<LabelLabelSetMap>());
+        newAnno.setLabels(new HashSet<Label>());
         
         return newAnno;
     }

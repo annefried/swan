@@ -19,7 +19,8 @@
 		<labelSet>
 		    <name>voice</name>
 		    <exclusive>true</exclusive>
-            <appliesToSpanTypes>
+		    <labelMenuStyle>list</labelMenuStyle>
+            	    <appliesToSpanTypes>
 			    <spanType name="verb"/>
 		    </appliesToSpanTypes>
 		    <labels>
@@ -30,7 +31,8 @@
         <labelSet>
 		    <name>number</name>
 		    <exclusive>true</exclusive>
-            <appliesToSpanTypes>
+		    <labelMenuStyle>list</labelMenuStyle>
+            	    <appliesToSpanTypes>
 			    <spanType name="verb"/>
 			    <spanType name="noun"/>
 		    </appliesToSpanTypes>
@@ -45,6 +47,8 @@
 		    <name>temporal relation</name>
 		    <startSpanType name="verb"/>
 		    <endSpanType name="verb"/>
+		    <undirected>false</undirected>
+		    <linkLabelMenuStyle>list</linkLabelMenuStyle>
 		    <linkLabels>
 		    	<label>
 			    	<name>before</name>

@@ -6,16 +6,8 @@
 package de.unisaarland.swan.test;
 
 import de.unisaarland.swan.Utility;
-import de.unisaarland.swan.entities.Annotation;
-import de.unisaarland.swan.entities.Document;
-import de.unisaarland.swan.entities.Label;
-import de.unisaarland.swan.entities.LabelSet;
-import de.unisaarland.swan.entities.LinkLabel;
-import de.unisaarland.swan.entities.LinkType;
-import de.unisaarland.swan.entities.Project;
-import de.unisaarland.swan.entities.Scheme;
-import de.unisaarland.swan.entities.SpanType;
-import de.unisaarland.swan.entities.Users;
+import de.unisaarland.swan.entities.*;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -265,6 +257,7 @@ public class TestDataProvider {
         scheme.addSpanTypes(getSpanType1());
         scheme.addSpanTypes(getSpanType2());
         scheme.addSpanTypes(getSpanType3());
+        scheme.setColorScheme(new ColorScheme());
 
         return scheme;
     }
@@ -274,7 +267,8 @@ public class TestDataProvider {
         scheme.setName("Broken");
         scheme.addLabelSets(getLabelSet1());
         scheme.addLinkType(getLinkType1());
-        
+        scheme.setColorScheme(new ColorScheme());
+
         return scheme;
     }
     
@@ -300,6 +294,7 @@ public class TestDataProvider {
         Project project = new Project();
         project.setName("Project1");
         project.setScheme(getScheme1());
+        project.setTokenizationLang(Project.TokenizationLang.English);
         
         return project;
     }

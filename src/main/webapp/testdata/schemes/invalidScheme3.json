@@ -31,7 +31,8 @@
 				}
 			],
 			"labels": [
-			]
+			],
+			"labelMenuStyle": "list"
 		}
 	],
 	"linkTypes": [

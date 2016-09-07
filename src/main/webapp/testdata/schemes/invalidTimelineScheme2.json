@@ -42,7 +42,9 @@
 						"horizontal"
 					]
 				}
-			]
+			],
+			"linkLabelMenuStyle": "list",
+			"undirected": false
 		},
 		{
 			"name": "second relation",
@@ -65,7 +67,9 @@
 						"horizontal"
 					]
 				}
-			]
+			],
+			"linkLabelMenuStyle": "list",
+			"undirected": false
 		}
 	]
 }

@@ -112,6 +112,29 @@ angular
                     }
                 }
             }
+            for (var i = 0; i < $scope.labelSets.length; i++) {
+                var labelSet = $scope.labelSets[i];
+                if (labelSet.labelMenuStyle == undefined) {
+                    labelSet.labelMenuStyle = 'list';
+                }
+                for (var j = 0; j < labelSet.labels.length; j++) {
+                    var label = labelSet.labels[j];
+                    label.nameParentSet = labelSet.name;
+                }
+            }
+            for (var i = 0; i < $scope.linkTypes.length; i++) {
+                var linkType = $scope.linkTypes[i];
+                if (linkType.linkLabelMenuStyle == undefined) {
+                    linkType.linkLabelMenuStyle = 'list';
+                }
+                if (linkType.undirected == undefined) {
+                    linkType.undirected = false;
+                }
+                for (var j = 0; j < linkType.linkLabels.length; j++) {
+                    var linkLabel = linkType.linkLabels[j];
+                    linkLabel.nameParentSet = linkType.name;
+                }
+            }
             $scope.resetLabelSetInputFields();
             $scope.resetLinkTypeInputFields();
             $scope.loadScheme = true;
@@ -141,6 +164,15 @@ angular
                 visElements.push(graphViewTem);
                 visElements.push(timelineViewTem);
 
+                var colorScheme = {
+                    colorMode: 'automatic',
+                    spanTypeColors: [],
+                    labelColors: [],
+                    linkLabelColors: [],
+                    labelSetColors: [],
+                    linkTypeColors: []
+                };
+
                 var scheme = {
                     "id": null,
                     "name": $scope.schemeName,
@@ -149,7 +181,8 @@ angular
                     "spanTypes": $scope.spanTypes,
                     "labelSets": $scope.labelSets,
                     "linkTypes": $scope.linkTypes,
-                    "projects": []
+                    "projects": [],
+                    "colorScheme": colorScheme
                 };
 
                 try {
@@ -298,11 +331,26 @@ angular
             if (nameAlreadyUsed) {
                 $rootScope.addAlert({type: 'danger', msg: 'A Label set with this name is already part of this scheme.'});
             } else {
+                var labels = [];
+                for (var i = 0; i < $scope.currentLabelsOfLabelSet.length; i++) {
+                    var label = {
+                        name: $scope.currentLabelsOfLabelSet[i].name,
+                        nameParentSet: $scope.nameLabelSet
+                    };
+                    labels.push(label);
+                }
+                /**
+                for (var i = 0; i < $scope.currentLabelsOfLabelSet; i++) {
+                    $scope.currentLabelsOfLabelSet[i].nameParentSet = $scope.nameLabelSet;
+                }
+                 **/
+
                 const newLabelSet = {
                     name: $scope.nameLabelSet,
                     exclusive: $scope.exclusiveLabelSet,
-                    labels: $scope.currentLabelsOfLabelSet,
-                    appliesToSpanTypes: $scope.selectedSpanTypesOfLabelSet
+                    labels: labels,
+                    appliesToSpanTypes: $scope.selectedSpanTypesOfLabelSet,
+                    labelMenuStyle: 'list'  //display labels as dropdown menu is not yet implemented, so this is always set to list
                 };
 
                 $scope.labelSets.push(newLabelSet);
@@ -368,7 +416,8 @@ angular
                 for (var i = 0; i < $scope.currentLinkLabels.length; i++) {
                     var linkLabel = {
                         name: $scope.currentLinkLabels[i].name,
-                        options: $scope.currentLinkLabels[i].options
+                        options: $scope.currentLinkLabels[i].options,
+                        nameParentSet: $scope.nameLinkType
                     };
                     linkLabels.push(linkLabel);
                 }
@@ -376,7 +425,9 @@ angular
                     name: $scope.nameLinkType,
                     startSpanType: $scope.startSpanType,
                     endSpanType: $scope.endSpanType,
-                    linkLabels: linkLabels
+                    linkLabels: linkLabels,
+                    linkLabelMenuStyle: 'list', //display labels as dropdown menu is not yet implemented, so this is always set to 'list'
+                    undirected: false //allowing undirected links is not yet implemented, so this is always set to false for now
                 };
 
                 $scope.linkTypes.push(newLinkType);

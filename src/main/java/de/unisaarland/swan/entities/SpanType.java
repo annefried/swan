@@ -32,28 +32,13 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-public class SpanType implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
-    @JsonView({ View.Scheme.class, View.Annotations.class })
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String name;
+public class SpanType extends ColorableBaseEntity {
     
     @JsonIgnore
     @ManyToMany(mappedBy = "appliesToSpanTypes",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     private List<LabelSet> labelSets = new ArrayList<>();
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public List<LabelSet> getLabelSets() {
         return labelSets;
@@ -65,31 +50,6 @@ public class SpanType implements Serializable {
     
     public void addLabelSets(LabelSet labelSet) {
         this.labelSets.add(labelSet);
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (name != null ? name.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final SpanType other = (SpanType) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
     }
     
 }

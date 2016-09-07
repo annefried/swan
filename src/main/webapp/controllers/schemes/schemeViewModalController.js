@@ -33,11 +33,28 @@ angular
             UtilityService.deleteIdProperty(scheme);
             delete scheme.creator;
             delete scheme.projects;
+            delete scheme.colorScheme;
 
             UtilityService.deleteIdProperties(scheme.visElements);
+            $scope.simplifySpanTypes(scheme.spanTypes);
             $scope.simplifyLabelSets(scheme.labelSets);
             $scope.simplifyLinkTypes(scheme.linkTypes);
         };
+
+        /**
+         * Simplifies the given span types so that they do not contain any ids
+         * and empty fields.
+         *
+         * @param spanTypes
+         */
+        $scope.simplifySpanTypes = function (spanTypes) {
+            for (var j = 0; j < spanTypes.length; j++) {
+                var curSpanType = spanTypes[j];
+
+                UtilityService.deleteIdProperty(curSpanType);
+                delete curSpanType.nameParentSet;
+            }
+        }
 
         /**
          * Simplifies the given link types so that they do not contain any ids and
@@ -50,8 +67,22 @@ angular
                 var curLinkType = linkTypes[j];
 
                 UtilityService.deleteIdProperty(curLinkType);
-                UtilityService.deleteIdProperties(curLinkType.linkLabels);
                 delete curLinkType.allowUnlabeledLinks;
+                delete curLinkType.nameParentSet;
+
+                var startSpanType = curLinkType.startSpanType;
+                UtilityService.deleteIdProperty(startSpanType);
+                delete startSpanType.nameParentSet;
+
+                var endSpanType = curLinkType.endSpanType;
+                UtilityService.deleteIdProperty(endSpanType);
+                delete endSpanType.nameParentSet;
+                
+                for (var k = 0; k < curLinkType.linkLabels.length; k++) {
+                    var curLinkLabel = curLinkType.linkLabels[k];
+                    UtilityService.deleteIdProperty(curLinkLabel);
+                    delete curLinkLabel.nameParentSet;
+                }
             }
         };
 
@@ -65,7 +96,19 @@ angular
             for (var j = 0; j < labelSets.length; j++) {
                 var curLabelSet = labelSets[j];
                 UtilityService.deleteIdProperty(curLabelSet);
-                UtilityService.deleteIdProperties(curLabelSet.labels);
+                delete curLabelSet.nameParentSet;
+
+                for (var k = 0; k < curLabelSet.labels.length; k++) {
+                    var curLabel = curLabelSet.labels[k];
+                    UtilityService.deleteIdProperty(curLabel);
+                    delete curLabel.nameParentSet;
+                }
+
+                for (var k = 0; k < curLabelSet.appliesToSpanTypes.length; k++) {
+                    var curSpanType = curLabelSet.appliesToSpanTypes[k];
+                    UtilityService.deleteIdProperty(curSpanType);
+                    delete curSpanType.nameParentSet;
+                }
             }
         };
 

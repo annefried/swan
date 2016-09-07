@@ -21,6 +21,8 @@ public class LabelSet {
 
     private List<Label> labels = new ArrayList<>();
 
+    private de.unisaarland.swan.entities.LabelSet.LabelMenuStyle labelMenuStyle;
+
 
     public String getName() {
         return name;
@@ -52,6 +54,15 @@ public class LabelSet {
 
     public void setLabels(List<Label> labels) {
         this.labels = labels;
+    }
+
+
+    public de.unisaarland.swan.entities.LabelSet.LabelMenuStyle getLabelMenuStyle() {
+        return labelMenuStyle;
+    }
+
+    public void setLabelMenuStyle(de.unisaarland.swan.entities.LabelSet.LabelMenuStyle labelMenuStyle) {
+        this.labelMenuStyle = labelMenuStyle;
     }
 
 }
