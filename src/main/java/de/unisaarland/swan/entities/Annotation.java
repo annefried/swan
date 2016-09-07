@@ -7,6 +7,7 @@ package de.unisaarland.swan.entities;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import de.unisaarland.swan.rest.view.View;
+import org.eclipse.persistence.config.QueryHints;
 
 import java.util.*;
 import javax.persistence.*;
@@ -27,11 +28,19 @@ import javax.xml.bind.annotation.XmlRootElement;
                 "FROM Annotation a " +
                 "WHERE a.user = :" + Annotation.PARAM_USER
     ),
+    // FIXME
+    // This query triggers two more not necessary queries: LABEL_LABELSET, SPANTYPE_LABELSET
+    // Maybe the ColorableBaseEntity inheritage hierarchy is the problem.
     @NamedQuery(
         name = Annotation.QUERY_FIND_BY_USER_AND_DOC,
-        query = "SELECT a1 " +
-                "FROM Annotation a1 " +
-                "WHERE a1.user.id = :" + Annotation.PARAM_USER + " AND a1.document.id = :" + Annotation.PARAM_DOCUMENT
+        query = "SELECT a " +
+                "FROM Annotation a " +
+                "LEFT JOIN FETCH a.spanType " +
+                "LEFT JOIN FETCH a.labels " +
+                "WHERE a.user.id = :" + Annotation.PARAM_USER + " AND a.document.id = :" + Annotation.PARAM_DOCUMENT,
+        hints = {
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "a.labels.labelSet"),
+        }
     ),
     @NamedQuery(
         name = Annotation.QUERY_DELETE_BY_DOCUMENT,
@@ -78,28 +87,32 @@ public class Annotation extends BaseEntity {
      */
     public static final String PARAM_USER = "user";
     
-    @JsonView({ View.Annotations.class, View.Links.class })
+    @JsonView({ })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER,
+                fetch = FetchType.LAZY,
                 optional = true)
     @JoinColumn(name="user_fk")
     private Users user;
-    
-    @JsonView({ View.Annotations.class, View.Links.class })
+
+    /**
+     * Add here View.Links.class because it will be needed for
+     * cross document linking
+     */
+    @JsonView({ })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     @JoinColumn(name = "document_fk")
     private Document document;
 
-    @JsonView({ View.Annotations.class})
+    @JsonView({ View.Annotations.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinColumn(name = "spanType_fk")
     private SpanType spanType;
     
-    @JsonView({ View.Annotations.class, View.Links.class })
+    @JsonView({ View.Annotations.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinTable(
         name="ANNOTATION_LABEL",
         joinColumns={@JoinColumn(name="ANNOTATION_ID", referencedColumnName="id")},
@@ -188,7 +201,9 @@ public class Annotation extends BaseEntity {
         this.labels.add(label);
     }
     
-    public void removeLabel(Label label) { this.labels.remove(label); }
+    public void removeLabel(Label label) {
+        this.labels.remove(label);
+    }
 
     public boolean isNotSure() {
         return notSure;

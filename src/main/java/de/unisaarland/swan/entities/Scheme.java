@@ -20,7 +20,7 @@ import javax.persistence.*;
 /**
  * The Entity Scheme represents a scheme file which was uploaded. A scheme
  * determines how a text should be annotated.
- * 
+ *
  * @author Timo Guehring
  */
 @Entity
@@ -37,18 +37,22 @@ import javax.persistence.*;
         query = "SELECT DISTINCT s " +
                 "FROM Scheme s " +
                 "LEFT JOIN FETCH s.creator " +
+                "LEFT JOIN FETCH s.visElements " +
+                "LEFT JOIN FETCH s.colorScheme " +
                 "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.labelSets " +
                 "LEFT JOIN FETCH s.linkTypes " +
                 "LEFT JOIN FETCH s.projects " +
-                "LEFT JOIN FETCH s.colorScheme " +
                 "WHERE s.id = :" + Scheme.PARAM_SCHEME_ID,
         hints = {
+            // FIXME
+            // same problem with QUERY_FIND_BY_DOC_ID
+            //@QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.startSpanType"),
+            //@QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.endSpanType"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.appliesToSpanTypes"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.labels"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.startSpanType"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.endSpanType"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels")
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels.options")
         }
     ),
     @NamedQuery(
@@ -56,15 +60,34 @@ import javax.persistence.*;
         query = "SELECT DISTINCT s " +
                 "FROM Scheme s " +
                 "LEFT JOIN FETCH s.creator " +
+                "LEFT JOIN FETCH s.visElements " +
+                "LEFT JOIN FETCH s.colorScheme " +
                 "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.labelSets " +
                 "LEFT JOIN FETCH s.linkTypes " +
-                "LEFT JOIN FETCH s.projects " +
-                "LEFT JOIN FETCH s.colorScheme " +
-                    "WHERE EXISTS( " +
-                            "SELECT d " +
-                            "FROM Document d " +
-                            "WHERE d.id = :" + Scheme.PARAM_DOC_ID + " AND d.project.scheme = s)"
+                "WHERE EXISTS( " +
+                    "SELECT d " +
+                    "FROM Document d " +
+                    "WHERE d.id = :" + Scheme.PARAM_DOC_ID + " AND d.project.scheme = s)",
+        hints = {
+            // TODO and FIXME
+            // 1. there will be some QueryHints needed when colorSchemes are filled with data
+            // 2. Here is something wrong. This db request triggers two statements, one tries
+            // to select FROM SPANTYPE_LABELSET but the FetchType of 'labelSets' in SpanType
+            // is LAZY and there is no JsonView defined. So it should not trigger the second
+            // select statement.
+            //@QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.startSpanType"),
+            //@QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.endSpanType"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.colorScheme.spanTypeColors"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.colorScheme.labelColors"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.colorScheme.linkLabelColors"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.colorScheme.labelSetColors"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.colorScheme.linkTypeColors"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels.options"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.appliesToSpanTypes"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.labels")
+        }
     ),
     @NamedQuery(
         name = Scheme.QUERY_SET_CREATOR_NULL,
@@ -110,68 +133,60 @@ public class Scheme extends BaseEntity {
      */
     public static final String PARAM_CREATOR = "creator";
 
-    @JsonView({ View.Scheme.class, View.Schemes.class })
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class, View.Schemes.class })
     @Column(name = "Name", unique = true)
     private String name;
 
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeById.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-            fetch = FetchType.LAZY,
-            optional = true)
+                fetch = FetchType.LAZY,
+                optional = true)
     private Users creator;
-    
-    @JsonView({ View.Scheme.class })
+
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
-                fetch = FetchType.EAGER)
-    @JoinTable(name="SCHEME_VISELEMENTS", 
-          joinColumns=@JoinColumn(name="SCHEME_ID"),
-          inverseJoinColumns=@JoinColumn(name="VISELEMENT_ID"))
+                fetch = FetchType.LAZY)
+    @JoinTable(name="SCHEME_VISELEMENTS",
+                joinColumns=@JoinColumn(name="SCHEME_ID"),
+                inverseJoinColumns=@JoinColumn(name="VISELEMENT_ID"))
     private List<VisualizationElement> visElements = new ArrayList();
 
-    public ColorScheme getColorScheme() {
-     return colorScheme;
-     }
-
-    public void setColorScheme(ColorScheme colorScheme) {
-     this.colorScheme = colorScheme;
-     }
-
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class })
     @OneToOne(optional=false, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
-            fetch = FetchType.LAZY)
+                fetch = FetchType.LAZY)
     @JoinColumn(name="COLORSCHEME_ID", unique=true)
     private ColorScheme colorScheme;
 
-
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.LAZY)
-    @JoinTable(name="SCHEME_SPANTYPE", 
-          joinColumns=@JoinColumn(name="SCHEME_ID"),
-          inverseJoinColumns=@JoinColumn(name="SPANTYPE"))
+    @JoinTable(name="SCHEME_SPANTYPE",
+                joinColumns=@JoinColumn(name="SCHEME_ID"),
+                inverseJoinColumns=@JoinColumn(name="SPANTYPE"))
     private List<SpanType> spanTypes = new ArrayList();
-    
-    @JsonView({ View.Scheme.class })
+
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.LAZY)
-    @JoinTable(name="SCHEME_LABELSET", 
-          joinColumns=@JoinColumn(name="SCHEME_ID"),
-          inverseJoinColumns=@JoinColumn(name="LABELSET_ID"))
+    @JoinTable(name="SCHEME_LABELSET",
+                joinColumns=@JoinColumn(name="SCHEME_ID"),
+                inverseJoinColumns=@JoinColumn(name="LABELSET_ID"))
     private List<LabelSet> labelSets = new ArrayList();
-    
-    @JsonView({ View.Scheme.class })
+
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.LAZY)
-    @JoinTable(name="SCHEME_LINKTYPE", 
-          joinColumns=@JoinColumn(name="SCHEME_ID"),
-          inverseJoinColumns=@JoinColumn(name="LINKTYPE_ID"))
+    @JoinTable(name="SCHEME_LINKTYPE",
+                joinColumns=@JoinColumn(name="SCHEME_ID"),
+                inverseJoinColumns=@JoinColumn(name="LINKTYPE_ID"))
     private List<LinkType> linkTypes = new ArrayList();
 
-    @JsonView({ View.Scheme.class, View.Schemes.class })
+    @JsonView({ View.Schemes.class })
     @OneToMany(mappedBy = "scheme",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     private Set<Project> projects = new HashSet();
+
 
     public String getName() {
         return name;
@@ -197,6 +212,14 @@ public class Scheme extends BaseEntity {
         this.visElements = visElements;
     }
 
+    public ColorScheme getColorScheme() {
+        return colorScheme;
+    }
+
+    public void setColorScheme(ColorScheme colorScheme) {
+        this.colorScheme = colorScheme;
+    }
+
     public List<SpanType> getSpanTypes() {
         return spanTypes;
     }
@@ -204,7 +227,7 @@ public class Scheme extends BaseEntity {
     public void setSpanTypes(List<SpanType> spanTypes) {
         this.spanTypes = spanTypes;
     }
-    
+
     public void addSpanTypes(SpanType spanType) {
         this.spanTypes.add(spanType);
     }
@@ -216,7 +239,7 @@ public class Scheme extends BaseEntity {
     public void setLabelSets(List<LabelSet> labelSets) {
         this.labelSets = labelSets;
     }
-    
+
     public void addLabelSets(LabelSet labelSet) {
         this.labelSets.add(labelSet);
     }
@@ -244,5 +267,5 @@ public class Scheme extends BaseEntity {
     public void addProjects(Project project) {
         this.projects.add(project);
     }
-    
+
 }

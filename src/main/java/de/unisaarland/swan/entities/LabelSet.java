@@ -35,13 +35,14 @@ public class LabelSet extends ColorableBaseEntity {
     /**
      * Determines whether an annotation refers to several labels or one.
      */
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
     @Column(name = "Exclusive")
     private boolean exclusive;
 
     /**
      * Determines whether the labels should be displayed as dropdown menu or list
      */
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
     @Enumerated(EnumType.STRING)
     @Column(name = "LabelMenuStyle")
     private LabelMenuStyle labelMenuStyle;
@@ -49,7 +50,7 @@ public class LabelSet extends ColorableBaseEntity {
     /**
      * Contains the span type which can be annotated with this label.
      */
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     @JoinTable(
@@ -58,7 +59,7 @@ public class LabelSet extends ColorableBaseEntity {
         inverseJoinColumns={@JoinColumn(name="SPANTYPE_ID", referencedColumnName="id")})
     private List<SpanType> appliesToSpanTypes = new ArrayList<>();
     
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
     @OneToMany(mappedBy = "labelSet",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.EAGER)

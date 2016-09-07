@@ -9,8 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.swan.rest.view.View;
-import java.util.ArrayList;
-import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -24,12 +23,12 @@ import javax.persistence.*;
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 public class Label extends ColorableBaseEntity {
 
-    
     /**
      * The relationship shows to which labelsets the label belongs.
      */
-    @JsonView({ View.Annotations.class, View.Links.class })
-    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JsonView({ View.Annotations.class, View.SchemeByDocId.class })
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                fetch = FetchType.LAZY)
     @JoinTable(
         name="LABEL_LABELSET",
         joinColumns={@JoinColumn(name="LABEL_ID", referencedColumnName="id")},
@@ -41,6 +40,8 @@ public class Label extends ColorableBaseEntity {
         return labelSet;
     }
 
-    public void setLabelSet(LabelSet labelSet) { this.labelSet = labelSet; }
+    public void setLabelSet(LabelSet labelSet) {
+        this.labelSet = labelSet;
+    }
     
 }

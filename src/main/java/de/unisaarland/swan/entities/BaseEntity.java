@@ -23,7 +23,8 @@ public class BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonView({View.Annotations.class,
-        View.Scheme.class,
+        View.SchemeByDocId.class,
+        View.SchemeById.class,
         View.Schemes.class,
         View.UsersWithProjects.class,
         View.Users.class,

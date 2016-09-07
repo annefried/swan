@@ -446,7 +446,7 @@ angular
                 this.tempAnno.setSpanType(spanType);
                 this.tempAnno.color = this.getColor(spanType, undefined);
                 this.addAnnotation(this.tempAnno);
-                this.tempAnnpostwordo = null;
+                this.tempAnno = null;
             };
             
             /**

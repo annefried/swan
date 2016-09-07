@@ -915,7 +915,6 @@ public class Service {
         anno.removeLabel(label);
         annotationDAO.merge(anno);
         return;
-
     }
     
     public void removeLabelFromLink(Link link, LinkLabel label) throws CreateException {
@@ -929,7 +928,6 @@ public class Service {
         link.removeLabel(label);
         linkDAO.merge(link);
         return;
-
     }
 
     public void removeUser(Users user) throws CreateException {

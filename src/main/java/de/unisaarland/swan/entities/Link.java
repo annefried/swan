@@ -7,6 +7,7 @@ package de.unisaarland.swan.entities;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import de.unisaarland.swan.rest.view.View;
+import org.eclipse.persistence.config.QueryHints;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +23,13 @@ import javax.persistence.*;
         name = Link.QUERY_FIND_BY_DOC_AND_USER,
         query = "SELECT l " +
                 "FROM Link l " +
-                "WHERE l.document.id = :" + Link.PARAM_DOC_ID + " AND l.user.id = :" + Link.PARAM_USER_ID
+                "LEFT JOIN FETCH l.annotation1 " +
+                "LEFT JOIN FETCH l.annotation2 " +
+                "LEFT JOIN FETCH l.linkLabels " +
+                "WHERE l.document.id = :" + Link.PARAM_DOC_ID + " AND l.user.id = :" + Link.PARAM_USER_ID,
+        hints = {
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "l.linkLabels.linkType"),
+        }
     ),
     @NamedQuery(
         name = Link.QUERY_FIND_BY_ANNO1_AND_ANNO2,
@@ -90,32 +97,34 @@ public class Link extends BaseEntity {
      * Query parameter constant for the attribute "annotation2".
      */
     public static final String PARAM_ANNOTATION2 = "annotation2";
-    
-    @JsonView({ View.Links.class })
+
+    @JsonView({ })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinColumn(name="user_fk")
     private Users user;
-    
-    @JsonView({ View.Links.class })
-    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+
+    @JsonView({ })
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                fetch = FetchType.LAZY)
     @JoinColumn(name = "document_fk")
     private Document document;
     
     @JsonView({ View.Links.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinColumn(name="annotation1_fk")
     private Annotation annotation1;
     
     @JsonView({ View.Links.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinColumn(name="annotation2_fk")
     private Annotation annotation2;
     
     @JsonView({ View.Links.class })
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+                fetch = FetchType.LAZY)
     @JoinTable(name="LINK_LINKLABEL",
           joinColumns=@JoinColumn(name="LINK_ID"),
           inverseJoinColumns=@JoinColumn(name="LINKLABEL_ID"))
