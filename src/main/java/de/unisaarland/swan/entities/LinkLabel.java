@@ -9,9 +9,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.swan.rest.view.View;
-import java.util.ArrayList;
+
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -33,8 +32,8 @@ public class LinkLabel extends ColorableBaseEntity {
         horizontal, vertical;
     }
 
-    @JsonView({ View.Links.class, View.Scheme.class })
-    @ElementCollection(targetClass = LinkLabelOpts.class)
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
+    @ElementCollection(targetClass = LinkLabelOpts.class, fetch = FetchType.LAZY)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "LINKLABEL_OPTIONS")
     private Set<LinkLabelOpts> options = new HashSet<>();
@@ -44,14 +43,17 @@ public class LinkLabel extends ColorableBaseEntity {
      */
     @JsonView({ View.Links.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinTable(
         name="LINKLABEL_LINKTYPE",
         joinColumns={@JoinColumn(name="LINKLABEL_ID", referencedColumnName="id")},
         inverseJoinColumns={@JoinColumn(name="LINK_TYPE_ID", referencedColumnName="id")})
     private LinkType linkType;
 
-    public Set<LinkLabelOpts> getOptions() { return options; }
+
+    public Set<LinkLabelOpts> getOptions() {
+        return options;
+    }
 
     public void setOptions(Set<LinkLabelOpts> options) {
         this.options = options;
@@ -61,6 +63,8 @@ public class LinkLabel extends ColorableBaseEntity {
         return linkType;
     }
     
-    public void setLinkType(LinkType linkType) { this.linkType = linkType; }
+    public void setLinkType(LinkType linkType) {
+        this.linkType = linkType;
+    }
     
 }

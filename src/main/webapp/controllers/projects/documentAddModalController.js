@@ -42,7 +42,13 @@ angular
             const sTypeMap = $scope.getSpanTypeMap(scheme);
             for (var i = 0; i < targets.targets.length; i++) {
                 var spanType = targets.targets[i];
-                if (sTypeMap[spanType.type] === undefined) {
+                if (spanType.type === undefined) {
+                    throw "The targets do not contain a mandatory field 'type'";
+                } else if (spanType.begin === undefined) {
+                    throw "The targets do not contain a mandatory field 'begin'";
+                } else if (spanType.end === undefined) {
+                    throw "The targets do not contain a mandatory field 'end'";
+                } else if (sTypeMap[spanType.type] === undefined) {
                     throw "Span type \'" + spanType.type.toString() + "\'" +
                             " in file \'" + currFileName + "\'" +
                             " not defined in scheme.";
@@ -135,7 +141,8 @@ angular
                 }
 
             } catch (ex) {
-                $rootScope.addAlert({type: 'danger', msg: ex});
+                const msg = typeof ex === 'string' ? ex : ex.message;
+                $rootScope.addAlert({type: 'danger', msg: msg});
             }
 
         };

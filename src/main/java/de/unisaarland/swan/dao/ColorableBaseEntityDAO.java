@@ -15,11 +15,12 @@ import javax.ejb.TransactionAttributeType;
  *
  * @author Julia Dembowski
  */
-
 @Stateless
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class ColorableBaseEntityDAO extends BaseEntityDAO<ColorableBaseEntity> {
 
-    public ColorableBaseEntityDAO() { super(ColorableBaseEntity.class); }
+    public ColorableBaseEntityDAO() {
+        super(ColorableBaseEntity.class);
+    }
 
 }

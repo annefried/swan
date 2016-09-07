@@ -13,8 +13,9 @@ package de.unisaarland.swan.rest.view;
  */
 public class View {
     
-    public static class Schemes {}      // Multiple schemes
-    public static class Scheme {}       // Single scheme
+    public static class Schemes {}
+    public static class SchemeByDocId {}
+    public static class SchemeById {}
     public static class Annotations {}
     public static class Documents {}
     public static class Links {}

@@ -53,7 +53,8 @@ public class LinkFacadeREST extends AbstractFacade<Link> {
 
     @EJB
     LinkDAO linkDAO;
-    
+
+
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     public Response create(Link entity) {

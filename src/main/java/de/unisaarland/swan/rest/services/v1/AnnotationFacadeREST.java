@@ -54,6 +54,7 @@ public class AnnotationFacadeREST extends AbstractFacade<Annotation> {
     @EJB
     AnnotationDAO annotationDAO;
 
+
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     public Response create(Annotation entity) {

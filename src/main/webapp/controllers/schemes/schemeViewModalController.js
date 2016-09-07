@@ -52,9 +52,9 @@ angular
                 var curSpanType = spanTypes[j];
 
                 UtilityService.deleteIdProperty(curSpanType);
-                delete curSpanType.nameParentSet;
+                delete curSpanType.labelSets;
             }
-        }
+        };
 
         /**
          * Simplifies the given link types so that they do not contain any ids and

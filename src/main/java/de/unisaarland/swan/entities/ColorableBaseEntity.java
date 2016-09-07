@@ -1,5 +1,6 @@
 package de.unisaarland.swan.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 import de.unisaarland.swan.rest.view.View;
@@ -19,7 +20,10 @@ import javax.persistence.*;
 @Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public class ColorableBaseEntity extends BaseEntity {
 
-    @JsonView({ View.Scheme.class, View.Annotations.class, View.Links.class })
+    @JsonView({ View.SchemeByDocId.class,
+                View.SchemeById.class,
+                View.Annotations.class,
+                View.Links.class })
     @Column(name = "Name")
     private String name;
 
@@ -27,6 +31,7 @@ public class ColorableBaseEntity extends BaseEntity {
      * Name of Label Set or Link Type,
      * specified only for Labels and LinkLabels
      */
+    @JsonIgnore
     @Transient
     private String nameParentSet;
 
@@ -38,7 +43,9 @@ public class ColorableBaseEntity extends BaseEntity {
         this.name = name;
     }
 
-    public String getNameParentSet() { return nameParentSet; }
+    public String getNameParentSet() {
+        return nameParentSet;
+    }
 
     public void setNameParentSet(String nameParentSet) { this.nameParentSet = nameParentSet; }
 

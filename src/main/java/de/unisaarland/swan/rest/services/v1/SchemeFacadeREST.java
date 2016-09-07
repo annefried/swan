@@ -94,7 +94,7 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
 
             Scheme scheme = schemeDAO.getSchemeByDocId(docId);
 
-            return Response.ok(mapper.writerWithView(View.Scheme.class)
+            return Response.ok(mapper.writerWithView(View.SchemeByDocId.class)
                                         .withRootName("scheme")
                                         .writeValueAsString(scheme))
                             .build();
@@ -116,7 +116,7 @@ public class SchemeFacadeREST extends AbstractFacade<Scheme> {
 
             Scheme scheme = schemeDAO.find(schemeId);
 
-            return Response.ok(mapper.writerWithView(View.Scheme.class)
+            return Response.ok(mapper.writerWithView(View.SchemeById.class)
                                         .withRootName("scheme")
                                         .writeValueAsString(scheme))
                             .build();

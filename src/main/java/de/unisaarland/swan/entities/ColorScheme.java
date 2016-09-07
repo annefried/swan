@@ -26,18 +26,18 @@ public class ColorScheme extends BaseEntity {
         automatic, shaded, custom;
     }
 
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class })
     @Enumerated(EnumType.STRING)
     @Column(name = "ColorMode")
     private ColorMode colorMode;
 
-    @JsonView({ View.Scheme.class })
+    @JsonView({ })
     @OneToOne(optional=false, mappedBy="colorScheme",
             cascade = { CascadeType.PERSIST, CascadeType.MERGE },
             fetch = FetchType.LAZY)
     private Scheme scheme;
 
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
             fetch = FetchType.LAZY)
     @JoinTable(name="COLORSCHEME_SPANTYPE",
@@ -45,7 +45,7 @@ public class ColorScheme extends BaseEntity {
             inverseJoinColumns=@JoinColumn(name="COLORENTITYMATCHER_ID"))
     private List<ColorEntityMatcher> spanTypeColors = new ArrayList();
 
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
             fetch = FetchType.LAZY)
     @JoinTable(name="COLORSCHEME_LABEL",
@@ -53,7 +53,7 @@ public class ColorScheme extends BaseEntity {
             inverseJoinColumns=@JoinColumn(name="COLORENTITYMATCHER_ID"))
     private List<ColorEntityMatcher> labelColors = new ArrayList();
 
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
             fetch = FetchType.LAZY)
     @JoinTable(name="COLORSCHEME_LINKLABEL",
@@ -61,7 +61,7 @@ public class ColorScheme extends BaseEntity {
             inverseJoinColumns=@JoinColumn(name="COLORENTITYMATCHER_ID"))
     private List<ColorEntityMatcher> linkLabelColors = new ArrayList();
 
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
             fetch = FetchType.LAZY)
     @JoinTable(name="COLORSCHEME_LABELSET",
@@ -69,7 +69,7 @@ public class ColorScheme extends BaseEntity {
             inverseJoinColumns=@JoinColumn(name="COLORENTITYMATCHER_ID"))
     private List<ColorEntityMatcher> labelSetColors = new ArrayList();
 
-    @JsonView({ View.Scheme.class })
+    @JsonView({ View.SchemeByDocId.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
             fetch = FetchType.LAZY)
     @JoinTable(name="COLORSCHEME_LINKTYPE",
@@ -93,30 +93,44 @@ public class ColorScheme extends BaseEntity {
         this.scheme = scheme;
     }
 
-    public List<ColorEntityMatcher> getSpanTypeColors() { return spanTypeColors; }
+    public List<ColorEntityMatcher> getSpanTypeColors() {
+        return spanTypeColors;
+    }
 
-    public void setSpanTypeColors(List<ColorEntityMatcher> spanTypeColors) { this.spanTypeColors = spanTypeColors; }
+    public void setSpanTypeColors(List<ColorEntityMatcher> spanTypeColors) {
+        this.spanTypeColors = spanTypeColors;
+    }
 
-    public List<ColorEntityMatcher> getLabelColors() { return labelColors; }
+    public List<ColorEntityMatcher> getLabelColors() {
+        return labelColors;
+    }
 
     public void setLabelColors(List<ColorEntityMatcher> labelColors) {
         this.labelColors = labelColors;
     }
 
-    public List<ColorEntityMatcher> getLinkLabelColors() { return linkLabelColors; }
+    public List<ColorEntityMatcher> getLinkLabelColors() {
+        return linkLabelColors;
+    }
 
-    public void setLinkLabelColors(List<ColorEntityMatcher> linkLabelColors) { this.linkLabelColors = linkLabelColors; }
+    public void setLinkLabelColors(List<ColorEntityMatcher> linkLabelColors) {
+        this.linkLabelColors = linkLabelColors;
+    }
 
     public List<ColorEntityMatcher> getLabelSetColors() {
         return labelSetColors;
     }
 
-    public void setLabelSetColors(List<ColorEntityMatcher> labelSetColors) { this.labelSetColors = labelSetColors; }
+    public void setLabelSetColors(List<ColorEntityMatcher> labelSetColors) {
+        this.labelSetColors = labelSetColors;
+    }
 
     public List<ColorEntityMatcher> getLinkTypeColors() {
         return linkTypeColors;
     }
 
-    public void setLinkTypeColors(List<ColorEntityMatcher> linkTypeColors) { this.linkTypeColors = linkTypeColors; }
+    public void setLinkTypeColors(List<ColorEntityMatcher> linkTypeColors) {
+        this.linkTypeColors = linkTypeColors;
+    }
 
 }
