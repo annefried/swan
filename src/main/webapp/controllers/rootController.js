@@ -27,7 +27,7 @@ angular
             } else if (statusCode >= 400 && statusCode < 500) {
                 $rootScope.addAlert({type: 'danger', msg: 'This action is not allowed.'});
             } else if (statusCode >= 500 && statusCode < 600) {
-                $rootScope.addAlert({type: 'danger', msg: 'No server connection.'});
+                $rootScope.addAlert({type: 'danger', msg: 'No server connection or an internal server error occured.'});
             }
         };
 

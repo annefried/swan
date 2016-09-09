@@ -633,7 +633,7 @@ public class Service {
             if (a.getSpanType() == null) {
                 throw new CreateException("Service: No span type specified!");
             } else {
-                SpanType tt = (SpanType) spanTypeDAO.find(a.getSpanType().getId(), false);
+                SpanType tt = (SpanType) spanTypeDAO.getSpanTypeBySchemeAndSpanTypeId(entity.getProject(), a.getSpanType());
                 a.setSpanType(tt);
             }
             if (mapStart.get(a.getStart()) == null) {

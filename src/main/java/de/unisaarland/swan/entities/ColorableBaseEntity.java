@@ -20,6 +20,11 @@ import javax.persistence.*;
 @Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public class ColorableBaseEntity extends BaseEntity {
 
+    /**
+     * Query parameter constant for the attribute "name".
+     */
+    public static final String PARAM_NAME = "name";
+
     @JsonView({ View.SchemeByDocId.class,
                 View.SchemeById.class,
                 View.Annotations.class,

@@ -22,6 +22,11 @@ public class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Query parameter constant for the attribute "id".
+     */
+    public static final String PARAM_ID = "id";
+
     @JsonView({View.Annotations.class,
         View.SchemeByDocId.class,
         View.SchemeById.class,

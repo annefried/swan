@@ -12,10 +12,7 @@ import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 /**
  * The entity SpanType represents different labels a target could have.
@@ -26,7 +23,29 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 @JsonIdentityInfo(generator=JSOGGenerator.class)
+@NamedQueries({
+    @NamedQuery(
+        name = SpanType.QUERY_FIND_BY_SCHEME_AND_NAME,
+        query = "SELECT DISTINCT s " +
+                "FROM SpanType s " +
+                "WHERE s.name = :" + SpanType.PARAM_NAME +
+                    " AND EXISTS( " +
+                            "SELECT p " +
+                            "FROM Project p " +
+                            "WHERE p = :" + SpanType.PARAM_PROJECT + " AND s MEMBER OF p.scheme.spanTypes)"
+    )
+})
 public class SpanType extends ColorableBaseEntity {
+
+    /**
+     * Named query identifier for "find by scheme and id".
+     */
+    public static final String QUERY_FIND_BY_SCHEME_AND_NAME = "SpanType.QUERY_FIND_BY_SCHEME_AND_NAME";
+
+    /**
+     * Query parameter constant for the attribute "project".
+     */
+    public static final String PARAM_PROJECT = "project";
 
     @JsonView({ })
     @JsonIgnore

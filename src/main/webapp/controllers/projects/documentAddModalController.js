@@ -135,8 +135,14 @@ angular
                             $uibModalInstance.close();
                         };
                     }(curFileName), function (response) {
-                        if (response.status >= 400)
-                            $rootScope.addAlert({type: 'danger', msg: "The start or end spans of the target does not match the text."});
+                        if (response.status >= 400 && response.status < 500) {
+                            $rootScope.addAlert({
+                                type: 'danger',
+                                msg: "The start or end spans of the target does not match the text or another error occured."
+                            });
+                        } else {
+                            $rootScope.checkResponseStatusCode(response.status);
+                        }
                     });
                 }
 

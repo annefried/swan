@@ -43,7 +43,7 @@ import javax.persistence.*;
                 "LEFT JOIN FETCH s.labelSets " +
                 "LEFT JOIN FETCH s.linkTypes " +
                 "LEFT JOIN FETCH s.projects " +
-                "WHERE s.id = :" + Scheme.PARAM_SCHEME_ID,
+                "WHERE s.id = :" + Scheme.PARAM_ID,
         hints = {
             // FIXME
             // same problem with QUERY_FIND_BY_DOC_ID
@@ -117,11 +117,6 @@ public class Scheme extends BaseEntity {
      * Named query identifier for "set creator null".
      */
     public static final String QUERY_SET_CREATOR_NULL = "Scheme.QUERY_SET_CREATOR_NULL";
-
-    /**
-     * Query parameter constant for the attribute "id".
-     */
-    public static final String PARAM_SCHEME_ID = "id";
 
     /**
      * Query parameter constant for the attribute "doc_id".

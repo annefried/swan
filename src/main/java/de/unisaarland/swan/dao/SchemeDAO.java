@@ -36,7 +36,7 @@ public class SchemeDAO extends BaseEntityDAO<Scheme> {
         return firstResult(
                     executeQuery(
                         Scheme.QUERY_FIND_BY_ID,
-                        Collections.singletonMap(Scheme.PARAM_SCHEME_ID, schemeId)));
+                        Collections.singletonMap(Scheme.PARAM_ID, schemeId)));
     }
 
     public Scheme getSchemeByDocId(final Long docId) {

@@ -130,11 +130,6 @@ public class Project extends BaseEntity {
      */
     public static final String PARAM_USER = "user";
 
-    /**
-     * Query parameter constant for the attribute "id"
-     */
-    public static final String PARAM_ID = "id";
-
     public static enum TokenizationLang {
         Whitespace, Characterwise, Spanish, English, German, French;
     }

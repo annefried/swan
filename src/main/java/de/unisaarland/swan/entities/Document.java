@@ -41,11 +41,6 @@ public class Document extends BaseEntity {
      */
     public static final String QUERY_FIND_BY_ID = "Document.QUERY_FIND_BY_ID";
 
-    /**
-     * Query parameter constant for the attribute "id".
-     */
-    public static final String PARAM_ID = "id";
-
     @JsonView({ View.Documents.class, View.Projects.class })
     @Column(name = "Name")
     private String name;
