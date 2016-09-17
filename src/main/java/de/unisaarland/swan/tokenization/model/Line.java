@@ -15,19 +15,19 @@ import java.util.List;
  * @author Timo Guehring
  */
 public class Line {
-    
+
     @JsonIgnore
     private int lineLength;
-    
+
     private List<Token> tokens = new ArrayList<>();
 
     @JsonProperty
     public int getLineLength() {
         int length = 0;
         for (Token t : tokens) {
-            length += t.getText().length();
+			length += t.getEnd() - t.getStart();
         }
-        
+
         return length;
     }
 
@@ -38,9 +38,9 @@ public class Line {
     public void setTokens(List<Token> tokens) {
         this.tokens = tokens;
     }
-    
+
     public void addTokens(Token token) {
         this.tokens.add(token);
     }
-    
+
 }
