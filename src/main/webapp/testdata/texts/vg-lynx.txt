@@ -1,0 +1,68 @@
+From news Wed Mar  4 22:55:46 1992
+Path: uwm.edu!rpi!zaphod.mps.ohio-state.edu!cis.ohio-state.edu!ucbvax!plitvice.berkeley.edu!erc
+From: erc@plitvice.berkeley.edu (Eric Ng)
+Newsgroups: rec.games.video
+Subject: VIDEO GAME RATINGS REPORT (ATARI LYNX)
+Message-ID: <44054@ucbvax.BERKELEY.EDU>
+Date: 2 Mar 92 23:17:53 GMT
+Sender: nobody@ucbvax.BERKELEY.EDU
+Reply-To: video@irss.njit.edu
+Organization: University of California at Berkeley
+Lines: 56
+
+For information on the list format and on submitting your ratings,
+consult the article entitled `ABOUT THE VIDEO GAME RATINGS REPORT' in
+the newsgroup rec.games.video.
+
+VIDEO GAME RATINGS REPORT
+
+ATARI LYNX
+New  Distribution  Votes  Rank  Title
+      ....10251.      18   7.4  A.P.B.
+      ....01.15.      12   8.0  Awesome Golf
+      ...12241..      10   6.2  Bill & Ted's Excellent Adventure
+      ..0..250..      11   6.5  Blockout
+      ...0003110      23   7.2  Blue Lightning
+      .0011130..      32   5.6  California Games
+      ......0133      24   9.0  Checkered Flag
+      0....02023      27   8.3  Chip's Challenge
+      ..0102130.      20   6.4  Electrocop
+      ....144...       7   6.3  Fidelity Ultimate Chess Challenge
+      0....15100      19   6.9  Gates Of Zendocon
+      0..1221...      17   5.2  Gauntlet III
+      11.11111..       7   4.7  Hard Drivin'
+      ....3.33..       3   6.7  Ishido: Way Of The Stones
+      ....001231      29   8.4  Klax
+      .....4312.      10   7.1  Ms. Pac-Man
+      ...102300.      12   6.3  Ninja Gaiden
+      .....63...       6   6.3  Pac-Land
+      ...12210..      11   5.7  Paperboy
+      .....512..       7   6.7  Qix
+      ....12320.      17   6.9  Rampage
+      .....14110      17   7.5  Roadblasters
+      121311....       9   3.4  Robo-Squash
+      ......1232      18   8.6  Robotron 2084
+      .....54...       7   6.4  Rygar
+      .....02222      24   8.4  S.T.U.N. Runner
+      .....04210      12   7.8  Scrapyard Dog
+      ....2.1123       9   8.1  Shanghai
+      ....003211      26   7.8  Todd's Adventures In Slime World
+      121.121...       8   4.0  Tournament Cyberball
+      ..1331....       6   4.5  Turbo Sub
+      ...2.221..       7   6.0  Viking Child
+      ....000222      32   8.3  Warbirds
+      ...0.14120      20   7.5  Xenophobe
+      .....161..       6   7.0  Xybots
+      ..01.11131      19   7.6  Zarlor Mercenary
+
+In this report, video games have been rated on a scale of 1 to 10,
+with 10 being the best and 1 being the worst.  For each video game,
+the total number of votes, the average rating, and the vote
+distribution are shown.  New video games are indicated by an `*'
+before their entry.
+
+Mail votes to video@irss.njit.edu or ...!uunet!irss.njit.edu!video; if
+you have any questions, mail them to video-request@irss.njit.edu or
+...!uunet!irss.njit.edu!video-request.
+--
+eric ng  erc@zabriskie.berkeley.edu  ...!ucbvax!zabriskie!erc

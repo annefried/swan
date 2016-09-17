@@ -1,0 +1,67 @@
+Warlords II frequently asked questions list:  
+  
+The questions answered in this FAQ are:  
+1) Where can I download scenarios from?  
+2) Do I need the Scenario Builder to use new scenarios?  
+3) Where do I get patches?  
+4) How can I edit random maps?  
+  
+          ---------  
+  
+1) Where can I download scenarios from?  
+  
+wuarchive.wustl.edu: /pub/MSDOS_UPLOADS/games/warlords_II  
+lupan.byu.edu: /site/ibmstuff/Games/Warlords_II  
+www site - http://werple/apana.org.au/~elee/index.hmtl  
+  
+The www site tends to be faster and is less likely to be busy.  
+  
+(Of course, the quickest way to get lots of nice scenarios is to buy  
+the scenario builder, since it comes with about two dozen.)  
+  
+  
+2) Do I need the Scenario Builder to use new scenarios?  
+  
+No. All you need is the 1.11 patch.  
+  
+  
+3) Where do I get patches?  
+  
+The sites mentioned in question 1 (lupan and wuarchive) have them.  
+  
+  
+4) How can I edit random maps?  
+  
+Let's say I want to create a random scenario called "Sample":  
+(Any other name would do - but no more than *7* characters)  
+  
+i) Run WARSCEN. <Load> STAMP (say). <Save As> Sample. <Quit>.  
+(Any other scenario should do instead of STAMP.)  
+  
+ii) Run WARLORD2. Choose <Random Map>, and select desired options -   
+even a different terrain set. You can exit as soon as you get to   
+choose who is Human etc, but you will probably want to look at   
+the map first. Go ahead and look. If you don't like it - generate   
+another one. It doesn't matter whether you leave everyone as Human   
+or not at this stage. <Quit>. You don't need to save the game.  
+  
+iii) At the DOS prompt:   
+   From the Warlord2 subdirectory type:  
+      COPY ..\RANDOM\RANDOM.* ..\SAMPLE\SAMPLE.*  
+  
+(I'm sure you can figure out the corresponding commands from other   
+directories.)  
+  
+iv) Run WARSCEN. The "Sample" scenario now appears. <Load> it. It is now  
+the random map. When you save, the information on the number of cities   
+and ruins should be updated. Note that a different terrain set may look  
+a bit odd when you first load it - just move around a bit and it should  
+look OK. Change what you like, and remember to save often.  
+  
+That's it! One edited random scenario.   
+  
+   SSG _explicitly_ say not to use DOS commands to play with the files.  
+   They do this for a reason. If it stuffs up, don't blame them.   
+   Be careful - it is quite possible to create problems. You probably  
+   should back up any saved games, in case you need to reinstall.   
+  

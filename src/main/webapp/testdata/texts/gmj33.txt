@@ -1,0 +1,1353 @@
+
+*___________________________________________________________________*
+|                                        |                          |
+|  ###  #   # #####   The USEnet Edition | ISSUE #33                |
+| #     ## ##    #  .                    |                          |
+| # ##  # # #    #                       | October 24 - November 5  |
+| #   # #   #    #  .    "d70 format"    |                          |
+| #   # #   # #  #                       |                          |
+|  ###  #   #  ##                        |                          |
+|___________________________________________________________________|
+*                                                                   *
+
+
+All of the moves! All of the characters! All of the dirt,ONLY in GMJ!
+
++===================================================================+
+|#     ##### ##### ##### ##### ####   F       ###  #   # #####      |
+|#     #       #     #   #     #   #     T   #     ## ##    #       |
+|#     ###     #     #   ###   ####   R      # ##  # # #    # C     |
+|#     #       #     #   #     #  #      H   #   # #   # #  #  R    |
+|##### #####   #     #   ##### #   #  O       ###  #   #  ##    E   |
+|                                        E                       W  |
+|                                     M                             |
++===================================================================+
+** LETTER D70 ***
+
+Hello again fellow GMJ readers.  Lots going on right now here at GMJ.
+The first Electronic Print issue is finally out and we have been
+overwhelmed by the response.  For those of you who just can't afford
+the lengthy download, we have an extremely low price for a
+subscription offer.  Check out an ad this issue for all of the
+details.
+
+The main theme the last few weeks has to be the 3DO.  Panasonic
+released the $700 monster early November and it is taking off pretty
+well.  We had a chance to test this money vacuum out recently and we
+were pretty impressed.  Check out the Power Switch section this issue
+to get all of the hands on test details for the 3DO from the Game
+Masters.
+
+You Genesis players will be happy to hear that Mortal Kombat is the
+number one selling 16 bit title right now even topping the SNES
+version in sales for last month.  Why? I really don't know.  The SNES
+version is a much better translation.  I guess this just proves that
+MK's blood and gore is what makes it.
+
+You are really going to start to see expanded coverage starting this
+issue.  We are still playing around with the formats both Ansi and
+Electronic Print.  You probably noticed fact windows in our review
+section in issue #32 with a few new pieces of information like megs,
+who reviewed the game and average of reviews.  Adding to that, is our
+hyper text capsules which will be featured next to random reviews.
+These capsules will have game PREviews and tidbits of info.
+
+Don't expect to see GMJ every week anymore, we are changing to
+bi-weekly.  The reason is that we can put out a much higher quality
+issue in 2 weeks and we have reached a point where it is no longer
+necessary to come out weekly.  The Elec- tronic print version will
+stay monthly and will come out 12+ times per year.
+
+Those of you reading the Electronic Print version enjoyed some Super
+SFII art on our cover done by my sister...I'm sorry.  I really am.  I
+didn't want to do it, but Street Fighter is Street Fighter and I had
+to do it.  I promise there won't be eight SFII covers with in the next
+12 issues! While we are on the subject however, check out some
+exclusive Super Street Fighter coverage this issue: All the moves for
+every character! (and we even avoided listing those phunky character
+profiles.  You know, the ones that tell you how many hours of sleep
+Ryu gets before his hard training at the Dojo.)
+
+Hey everybody, before I let you read on, let me remind you to not buy
+any new systems until sometime in '95 when Nintendo will release their
+recently announced 64 Bit system (which by the way GMJ reported before
+ANYONE else) for under $250.....yeah right! Ok, so even if it is so
+great, and it is that inexpensive, why am I going to wait until 1995?
+Listen, if you are always waiting for the next best thing, you will
+never own anything.  I like Sega's approach.  Give us a system when
+it's ready, let us enjoy it, and release a new system when it's time.
+If I had listened to Nintendo last year trying to convince me not to
+buy a Sega CD because their more advanced CD would be here in early
+'93 and for less, I would be pretty pissed off right now.
+
+Well, that is it for now.  Enjoy our expanded coverage and additional
+sections.
+
+      -  Reny Falzarano  [Da Phunky Pheel One]
+
+
+*___________________________________________________________________*
+|                                                                   |
+|  #### #   # ####  ##### ####   %    % %%%%%  %%%%  R E V I E W S  |
+| #     #   # #   # #     #   #  %%   % %     %      R E V I E W S  |
+| ####  #   # #   # ##    #####  % %  % %%     %%%   R E V I E W S  |
+|     # #   # ####  #     # #    %  % % %         %  R E V I E W S  |
+| #   # #   # #     #     #  #   %   %% %     %   %  R E V I E W S  |
+|  ###   ###  #     ##### #   #  %    % %%%%%  %%%   R E V I E W S  |
+|___________________________________________________________________|
+*                                                                   *
+HEAD-TO-HEAD: One game reviewed on two or more platforms...!
++-------------------------------------------------------------------+
+|TITLE:         |PUBLISHER  |GAME TYPE: |SIZE: |GENESIS   70 \/     |
+| Zombies Ate   | Konami    | Adventure |08 MEG|*****%%%%%@@@@@#####|
+| My Neighbors  |           |           |      |SUPER NES 83    ^   |
+|---------------+-----------+-----------+------+--------------------|
+|MAIN REVIEW BY:                 OTHER REVIEWERS                    |
+|                                                                   |
+| The GMJ Crew            ---------- ** ---------- ** ---------- ** |
+|                                                                   |
++-------------------------------------------------------------------+
+
+Just like Mortal Kombat (but with less hype), Konami's Zombies Ate My
+Neighbors was released for the S-NES and Genesis on the same day, so
+we here at GMJ decided to run a comparison explaining the differences
+in each of the versions.  So sit back and relax, 'cause this is one
+wild ride.
+
+Both the S-Nes and Genesis versions share the same story-line; to stop
+the hordes of evil from capturing your local towns occupants.  You can
+choose to rush into action as either a guy that looks like a follower
+of Beavis and Butthead, or a pony tail wielding woman that might be
+the twin of Mindy from the tv show "Mork and Mindy".  A two player
+cooperative option is available so that you're not alone in this never
+ending fight to save your town.
+
+Zombies uses a "tongue in cheek" approach to killing the baddies,
+because the weapons you use include a water gun, weed whacker, fire
+extinguisher, apples, and other household goodies.  You fight in over
+forty levels of never ending mayhem, with some levels including a
+local mall, a school, and a maze of hedges.  The enemies in this game
+are too numerous to count because they all change according to the
+level your playing on.  This unique approach makes the game original,
+but there is no attention given to the progress of any story.  The
+only real goal is to "tag" the residents of the level before a bad guy
+kills them.  The residents are spread out all around the levels, and
+each level ends when all the people have either been saved or killed.
+
+
+S-NES version - 83
+
+The S-NES version and Genesis versions of Zombie both sport the same
+levels and the same graphics, but the S-NES uses music and sound a
+whole lot more effectively, and the control is be better on this one
+as well because of the more buttons used.  The title screen is the
+first sign that really shows the differences; the S-Nes version has
+the Zombies logo gradually morph into view, where the Genesis version
+has very little morphing.  The opening music and voices are also done
+better on the S-NES version.
+
+The play mechanics and control are a lot better on the S-NES version
+because it's full screen, while the Sega version has a two inch black
+bar running along the entire right side of the screen.  Just being
+able to see more of the screen adds to the S-NES Zombies, because you
+have more time to react to the oncoming enemies.  The graphics are
+also larger than those for the Sega version and playing them both
+right after each other really shows which is superior.
+
+Not only is the screen size a difference in the two Zombies, but the
+music, when compared to each other, is a total blowout with the
+S-NES's better sound capabilities destroying the Sega version.  Hooked
+up to a stereo system, the Zombies soundtrack booms with some house
+shaking bass and some of the better video game sounds on the market
+being used.  Real samples of screams and explosions were used to give
+a sense of realism to Zombies, while the rest of the game comes off as
+a B-movie style game with many cliches being used.
+
+Genesis version - 70
+
+The Sega version of Zombies and I got off to a bad start; I played
+Zombies on my S-NES and expected an almost identical version on the
+Sega.  I was wrong.  The programmers took a shotty approach in the
+making of the Sega version, and I was honestly disappointed with the
+whole game.  The two inch black bar is probably the thing that stands
+out most as an example of bad programming.  It takes up way to much
+room on the screen, and it's only use is to show the score, weapons
+left, and a mapping system which shows you where the citizens are; all
+of which was done on the regular screen for the S-NES.
+
+Bar aside, the graphics in this game are the same on both versions,
+with only a slight color loss on the Sega version being the
+difference.  Zombies is not compatible with the six button controller,
+which would have been ideal with this type of game.  Assigning
+multiple weapons to the top buttons could have added a lot to the game
+play.  In the area of sound, the Sega version lacks the same
+instrumental quality that the S-NES Zombies had, and the sound effects
+seemed to be shorter with a scratchy digitized sound that accompanied
+them.  I can understand how the music might be below the S-NES
+standards, but allowing the Genesis Zombies to be plagued by a huge
+bar really brought this game down.
+
+
+   Here's How They Stacked Up HEAD TO HEAD :
+
+Overall, the concept and ideas for Zombies showed a lot of originality
+on both versions, and the two player option adds a lot to the
+re-playability of this game.  But when put side to side, the S-NES
+version really outperforms the Sega Zombies in both playability and
+overall appearance.  Unlike Mortal Kombat where the Genesis version
+had the blood where the S-NES one didn't, the Sega Zombies has no
+superior qualities over it's S-NES counterpart, and people who are
+interested in buying this game will easily pick up a copy of the Super
+Nintendo version over the Sega Genesis version.
+
+
+ ___________________________________________________________________
+]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[
+] Innovative Creations                                              [
+] 29 David Road             +--- +  + +--+ +--+ +--- +--  +--       [
+] South Carver, MA 02330    |-    ++  +--+ |-++ |-   +--+ +--+      [
+] (shubert@usc.edu)         +--- +  + |    |  \ +---  --+  --+      [
+] (ace@castle.com)                 |\ /| +--+ -+- |                 [
+]                                  |   | |--|  |  |      EXPRESS    [
+]                                  |   | |  | -+- +---     MAIL     [
+]___________________________________________________________________[
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Hello all of you GMJers.  If you want to write to us letting us know
+what you think of the new version, old version, how much you hate us
+or love us, or have any video game questions that you hope to be
+published, write to us at the addresses above.  We are trying to set
+up ID's for ALL of our writers on these boards, but until we do, just
+write to the ID's above.  Everyone sees every letter.  This edition of
+Express Mail, we only selected letters strictly magazine related since
+the theme seems to be our new version.  Since some of the questions
+were really good, we thought it would be a good and simple way to
+explain exactly how everything will work.  However, keep sending your
+game questions and other such mail because next issue will resume
+regular procedures...
+
+*** Slow baud? No problem.
+I was on Prodigy and I read some promotional letters from you guys
+about the graphic version of the magazine.  I assume it is a big file
+and I only have a 2400 modem.  Is there another way to get the new
+version?
+
+H. Cavelerio
+Westford, Ma
+
+{ Phunky: Just recently we decided to give away the magazine through
+{ the mail in addition to the downloads.  All you have to do is write
+{ us on any of our boards in which we read mail.  Give us your
+{ address and we will send you the print issues monthly.
+
+*** Win-dozer
+Why is your new version only for windows? I don't have windows and I
+have been with you guys almost the whole time! Now you exclude me?
+THANKS A LOT!
+
+Norman Lewis
+Boston, Ma
+
+{ Phunky:
+{ Hey Norm, CALM DOWN! We reconfigured the whole project.  At first it
+{ was only going to be for windows, but we found some better ways of
+{ doing the mag.  Now anyone with a PC can view our mag through DOS!
+
+*** But, you aren't EGM!
+GMJ rules, don't get me wrong.  But we need some overseas coverage.  I
+want to know what's coming, when it's coming and how much it's gonna
+be!
+
+Michael Watson
+Boston, Ma
+
+{ Phunky:
+{ Mike, I guess you will be a very happy camper as you read the
+{ upcoming issue of GMJ.  We are expanding into a full coverage
+{ magazine.  Look for upcoming game lists, Japanese news, sales and
+{ rental figures and a lot more!
+
+*** Recent fan wants pictures
+I've been a follower of your mag ever since issue #23, and I've seen
+great improvements in both the layout and overall quality of the
+reviews.  Your info is out months before the other published mags, so
+I really don't have a reason to buy them anymore.  The only problem I
+see is that you can't have pictures of the games online.  Other than
+that, GMJ is my favorite video gaming mag on and it's free!! Keep up
+the good work.
+
+Ben Croxford
+Boston, Ma
+
+{ Phunky:
+{ Well Ben, your prayers have been answered.  Starting this issue, we
+{ have a monthly Electronic Print version of the Game Master Journal.
+{ We have expanded coverage, full color pictures, a professional
+{ layout and anything else you would find in those other $5 mags,
+{ except we are free, and we will be offering even more than they
+{ will, including several things that just CAN'T be done with regular
+{ print versions.
+
+.....................................................................
+:WE are the only magazine that prints ALL EMAIL sent to us that is  :
+:not vulgar or obscene.  So.. send your videogame hints, tips + Q's!:
+:                                                                   :
+:#   # #####  #   #  ###  #   # #####  ##### #   #  ###  ##### #    :
+:#   # #      #   # #   # ##  #   #    #     ## ## #   #   #   #    :
+:#   # ###    #   # ##### # # #   #    ###   # # # #####   #   #    :
+:# # # #      # # # #   # #  ##   #    #     #   # #   #   #   #    :
+: # #  #####   # #  #   # #   #   #    ##### #   # #   # ##### #####:
+:                                           ........................:
+:shubert@usc.edu       VOICE: 213-743-1341  :                       :
+:    ace@castle.com    ExpressNET: 130@1    : ONE PERSON EACH ISSUE :
+:PHUNKY1@delphi.com       WWIVnet: 130@6754 : RECEIVES a 'GMJ PACK' :
+:                                           : FREE, ONLY FROM GMJ!! :
+:     Software Creations: Anthony Shubert   :                       :
+:...........................................:.......................:
+
+ ___________________________________________________________________
+|                                                                   |
+|  ###  ##### #   # #####  ###  #####  ###   R E V I E W S          |
+| #     #     ##  # #     #       #   #                             |
+| # ##  ###   # # # ###    ###    #    ###     R E V I E W S        |
+| #   # #     #  ## #         #   #       #                         |
+|  ###  ##### #   # ##### ####  ##### ####       R E V I E W S      |
+|___________________________________________________________________|
+
++-------------------------------------------------------------------+
+|TITLE:         |PUBLISHER  |GAME TYPE: |SIZE: | AVERAGE OF REVIEWS |
+| Street Fighter| Capcom    | Fighting  |24 MEG|0                 95|
+| 2: Special CE |           |           |      |*****%%%%%@@@@@####-|
+|---------------+-----------+-----------+------+--------------------|
+|MAIN REVIEW BY:                 OTHER REVIEWERS                    |
+|                                                                   |
+| Da Phunky   95          Instigator 95 Mr. Mojo   98 Anderson   95 |
+|                                                                   |
++-------------------------------------------------------------------+
+
+Hey SFII fans, it's renew your lease on your Genesis...AGAIN! Quite
+possibly one of the most amazing feats accomplished on the Genesis so
+far is the latest version of SFII from Capcom.  Every year, you think
+that the good old Genny is just a little too outdated, but bang,
+programming hits a new level and you keep it for another year.  Games
+like SFIISCE keep Sega players happy, and the video game market going.
+
+Judging by the name, you may think it is just the Champion Edition
+standing alone, however just like on the SNES, the Turbo and Hyper
+Fighting options are included.  But unlike the SNES version, the Sega
+version packs a tournament option.
+
+When you first snag this cart of the shelf and plug it in to your
+Genesis, there is simply nothing that is going to fully prepare you
+for what you are going to experience.  Every last animation is here,
+perfectly translated to the Sega format.  Choose from any of the 12
+characters in either of their snazzy uniforms (depending what mode you
+are playing in).  The backgrounds amazingly enough look spectacular
+even in the 64 color display.  The smooth parallax scrolling,
+simulating 3D effect and the soft textured presentation of the
+characters are only a small part of this flickerless phenomenon.
+
+Anyone planning on picking this cart up, should really consider buying
+one of Sega's little 6 button controllers to go with it.  Not only
+does the controller give you true arcade control for a great price
+($20), but it is also the best available controller on the market
+priced under $40.  With the 6 button controller, this is the best
+playing version of the game yet.  Too bad this game was not made
+compatible with Sega's upcoming 4 player adapter, the tournament mode
+would have fit so perfectly.
+
+The tournament mode is a great opportunity for you and your buddies to
+get together and find out who the real champ is.  There are 2 tourney
+options.  The first one allows each person competing to select 6
+different fighters to use.  Whoever wins the most matches is obviously
+the winner.  This mode is great to show up those 1 dimensional players
+who can only use one or two characters.  The second mode, the
+Elimination Mode, allows to select from one to six characters.  You
+fight one round battles and whoever defeats all their opponents first
+wins.
+
+If speed is what you need, you will be exuberantly excited to find out
+that just like the SNES version, this version is actually faster than
+the arcade since you can choose from a total of ten speeds (no code
+necessary this version).
+
+Ahh, there had to be one downer.  The voices.  Although the music is
+pretty good the voices and sound effects were completely horrible.  A
+disappointing con since we have seen a lot of great effects and sounds
+on other previous Genny carts.  I assume this was all due to lack of
+memory.  Even at 24 meg, they ran out of room to improve on the sound,
+but that is ok because the rest of the game is near perfect.
+
+It's finally here folks.  Many thought it would never come, but it did
+and in a big way.  SFIISCE is one of the hottest carts this year on
+the Genesis with amazing graphics, control and speed.  Only thing I
+can say that is wrong with it besides the sound, is that it was based
+on the SNES version, not the arcade.  The characters are small just
+like on the SNES and they did not truly add the Turbo
+backgrounds...however, this is GENESIS!
+
+Instigator - 95
+This has to make you happy.  The Genesis finally has Street Fighter
+and deservedly so.  Capcom makes their first Genesis title and what a
+great entrance.
+
+Mr. Mojo Risin' - 98
+Since when is a Genesis game better than the SNES version? Yup, better
+is right.  The control is just too perfect.  Awesome graphics, super
+fast speed and no code necessary! Turn the volume down though.
+
+Anderson - 95
+
+ú
+What more could you ask for.  The best version of SFII yet! The new
+tournament mode is great and just thinking that this is all done on
+Genesis!
+
+
+        Here's how they stacked up HEAD TO HEAD:
+
+For some nitty gritty comparisons, you should check out our review
+last issue of the SNES version, but here are some of the points we
+came up with.
+
+o The Genesis version is just as fast with no code needed.
+o The characters are animated just as well, and graphics are just as
+  spectacular.
+o The SNES version has a much brighter and colorful appearance and
+  that is hands down a big plus.
+o The sound on the SNES version is great, the voices are ok, but the
+  both the sound and voices on the Genny version rotted!
+o The control was great on both versions.  With the 6 button
+  controller, the Genesis version played better.  Using the 3 button
+  controller, the SNES version played better.  The music was really
+  good on both version, but I have to give the SNES version the edge.
+o Both versions offer small characters, and unfinished backgrounds.
+o The Genesis version offers a great tournament mode not found on any
+  other version.
+
+
++-------------------------------------------------------------------+
+|TITLE:         |PUBLISHER  |GAME TYPE: |SIZE: | AVERAGE OF REVIEWS |
+| Ranger-X      | Sega      | Fighting  |      |0                88 |
+|               |RATING: GA |           |      |*****%%%%%@@@@@###--|
+|---------------+-----------+-----------+------+--------------------|
+|MAIN REVIEW BY:                 OTHER REVIEWERS                    |
+|                                                                   |
+| Aquarius    85          Sr. Jnx    90 Mr. Mojo   92 ---------- ** |
+|                                                                   |
++-------------------------------------------------------------------+
+
+Ranger-X represents what an older concept along with newer technology
+can create and along with it a new realm in video gaming.  Space
+shooters have been used time and time again, but Ranger-X from Gao (a
+new Sega development team) twists the idea along with a side scrolling
+shooter to make a game that is actually original in today's market.
+
+Your character is a huge metal suited figure, equipped with a standard
+blaster and a second weapon which can be switched at any time in the
+game.  This second weapon has it's own power meter which drops when
+it's being used.  An Ex-Up vehicle follows along behind you and can
+become a part of you by standing on it and pressing down to crouch
+inside the vehicle.  While on the Ex-Up you can choose what your
+second weapon is from an assortment of lasers to a flame thrower.  The
+Ex-Up automatically follows your character throughout the level, and
+with the six button controller, you can control it by using the top
+buttons.
+
+Flying is a big part of this game as your main guy can take to the air
+because of the engine hooked up to your back.  The engine is limited
+to just a few seconds of flying, but with practice, hovering in one
+place can make it so you're in the air for longer periods of time.
+Your character and the other motorized attackers all animate very
+fluidly on screen, and the amount of color and parallax scrolling on
+the levels in incredible.  Each level has you going after a series of
+targets that must be destroyed before going onto the boss encounter.
+Some levels have you going on one set path, while others like level
+two have you exploring certain areas to find the targets.
+
+The button combinations are unique in that button A makes you face
+left and let's you fire in that direction, while button C faces you
+right.  Button B uses the special weapon and up takes you to the
+skies.  The backgrounds in this game all use a tremendous amount of
+color, and the foregrounds and sprites all use color effectively.  The
+explosions are realistic looking, which is a given for a shooter style
+game.  The popular use of parallax found in the floor of the Street
+Fighter II levels can be found here in level three with a 3-D tunnel
+that looks like you're really walking past it.  This might not add
+much to the actual game, but it's great for the visual aspect of the
+game.
+
+The music is some phunky tunes that fit into this game perfectly.
+Listening to this game with a pair of headphones really adds to the
+game because it makes you feel like you're in the game.  The
+explosions shake the house literally, and the gunfire is represented
+with realistic digitized sounds.  Other newsworthy portions of this
+game include some software scaling of some enemy ships and at the
+beginning of each level a series of lines that represent building
+scales and rotates around the screen and scale toward the viewer.
+
+The downsides of Ranger-X include the very hard nature of the game and
+the awkward controls that take time to master and to feel comfortable
+with.  The good points are the great graphics and presentation of the
+levels and the overwhelming sounds that happen during the action.  The
+addition of the Ex-Up really improves the game-play of the game, and
+the bosses and enemies all seem to come at you at once.  Ranger-X has
+some great strategic levels, and is a game for the hard core gamer
+that can beat most games on hard.  Along with Gunstar Heroes, Sega
+seems to be focusing a lot of attention on action games now-a-days
+which means we'll be seeing a lot of good quality games come Christmas
+time.  Ranger-X is just superb.
+
+Aquarius-85
+I didn't have a six button controller so the controls
+weren't as precise as I would have liked them to of been.  The
+graphics were some of the best I've ever seen.  Control was just to
+damn cooky.
+
+Sr. Jnx-90
+The sights and sounds in Ranger-X just blew me away! The Ex-Up rover
+was a great idea that can be used as an option in future games.  The
+scaling lines in-between levels weren't needed, and the difficulty was
+just too hard for most gamers.  Not for the light of heart.
+
+Mr. Mojo Risin'-92
+This game just simply rocks!! Everything is perfect from the huge
+amount of colors to the great sound effects.  With a six button
+controller this game really took a turn towards the gaming elite.
+It's not every day that a game like this is released, so be sure to
+save your money for this one.
+
+
++-------------------------------------------------------------------+
+|TITLE:         |PUBLISHER  |GAME TYPE: |SIZE: | AVERAGE OF REVIEWS |
+| Gunstar Heroes| Sega      | Action    |08 MEG|0                 95|
+|               |RATING: GA |           |      |*****%%%%%@@@@@####-|
+|---------------+-----------+-----------+------+--------------------|
+|MAIN REVIEW BY:                 OTHER REVIEWERS                    |
+|                                                                   |
+| Instigator  95          Da Phunky  96 Anderson   90 The Farmer 97 |
+|                         ---------- ** ---------- ** ---------- ** |
+|                                                                   |
++-------------------------------------------------------------------+
+
+Leave all your premonitions and beliefs of what your Sega Genesis can
+do in the closet, because Sega has probably destroyed every boundary
+of what the Genesis is "supposed to do" in it's newest game, Gunstar
+Heroes.  Gunstar is in a league of it's own; never before have a
+combination of graphics, sound, game-play, software techniques, and
+overall fun been all applied to the same game with such magnitude.
+
+Gunstar Heroes is the newest side-scrolling action game to be released
+on the Genesis, and while not having the popular movie names to it or
+any flashy ad campaigns, has succeeded in mixing the perfect blend of
+non-stop action and game-play into one 8-meg cart.  The on-screen
+action can only be described as furious, with as many as ten enemies
+on screen at once, and clocked at speeds just under a weighted down
+Sonic.  Enemies come from everywhere, and attack from just about every
+point of angle on the screen.
+
+At the beginning of the game you get to choose your characters
+fighting style; either being able to fire your weapon as you run or an
+option that makes you have to stand still while you fire your weapon.
+Next, you get to choose which of the four beginning levels you'll
+start out at, and then a quick rundown on the level you chose.  From
+here on out is non-stop action that has to be seen to be believed.
+
+There are four primary weapons in Gunstar: a laser, a fire thrower, a
+seek and destroy weapon, and a flame thrower.  The weapons are spread
+out all around the levels and can be upgraded by finding and picking
+up that weapons icon.  An original idea used in this game is that the
+weapons can be mixed so that a brand new weapon is made (ie.  if you
+pick up the fire thrower and the tracking weapon, the weapon becomes a
+huge line of flame that seeks out enemies.) This new weapon set-up
+makes for some great trial and error situations where you must decide
+which weapon must be used in what situation.
+
+Scaling and rotation have never looked this good on the Sega Genesis.
+Through software techniques, almost flawless rendering of objects is
+possible.  Most of the bosses use at least some special technique in
+the way they attack or more around the screen.  One such boss is a
+series of boxes in the form of a human figure which rotates around the
+screen and has the most lifelike movements that I've ever seen in a
+box.  The rest of the graphics in this game are cartoonish in nature,
+but are done with superb color usage and some great animations.  A lot
+of detail went into the making of this game, with great shading and
+backgrounds on all of the levels, and a lot of attention in keeping
+the action intense at all points in the game.
+
+The first four levels can be beaten in any order, and doing so is no
+cake walk.  Each level has several mini-bosses and an end boss that
+makes you use all the skills of the character.  Your character can
+shoot in any direction, be it up, down, sideways, or in any diagonal
+direction.  Your character can also do a slide sweep which takes a lot
+of damage off the enemies, and a combination of a throw or a body
+slam/jump kick.  Hanging from ceilings and ledges is also possible,
+and aerial throws and combinations are also possible.  Two of the
+levels have you riding in a separate vehicle; one being in a scooter
+that can defy gravity, and the other one in a spaceship for a mini
+outer space shooter.  Game-play has never reached these heights, with
+an improvement only possible with the use of a six button capability
+not found in this game.  The levels themselves also have unique things
+to cling from and to climb on.  One level is set on an aircraft in the
+sky while another is a huge monopoly game with multiple baddies to
+beat up on.  Older twists such as reappearing bosses has also been
+used so that the boss count in this game is over fifteen guys.
+
+Games with great graphics or a lot software techniques usually end up
+having one area of the game being less than standard.  This is not
+true with Gunstar though, because the music and sounds in this game
+are THE best I've ever heard on the Genesis.  The background music
+pounds out some hard rock tunes while the on screen action is heard
+with some heart stopping explosions and non-stop gunfire.  Every
+action has it's own sound effect so your neighbors may complain that
+there's a war going on in your bedroom.
+
+One feature that I didn't mention above is that Gunstar is a two
+player game also.  After testing it out though, we found that some
+slow down was found in some levels because of it, but not enough to
+hurt the game in any way.  To add to the replay value, Gunstar has the
+perfect difficulty curve that actually affects the attacks of the
+enemies (ie.  on easy, there are several "spots" where you can stand
+when fighting a boss and not get hurt, but while on the other settings
+you can get hurt anywhere.) To me, Gunstar is almost the perfect game.
+Everything is done to perfection, with action unequaled in any
+earlier attempts at a side-scrolling action game, and that is as fun
+to watch as it is to be playing.  Hopefully, more games will be made
+with this being the game to match in overall quality and
+professionalism.  Goods news for us though, because this game is just
+screaming sequel.
+
+Phunky Pheel One-96 Wow!
+This game sets new standards for video games in general.  Not only are
+the graphics some of the best, but the sounds and playability are up
+there with other classics like Contra and Mega Man.  To bad the
+creators of this game are working on a McDonalds game and not a sequel
+to Gunstar Heroes!
+
+Anderson-90
+Gunstar Heroes shows that with a lot of programming a game can surpass
+the expectations of a system.  I couldn't believe the amount of action
+on screen at once.  The two player adaption was a great addition to a
+game that needs no improvements and has the best moves this side of
+Street Fighter.
+
+Pepperidge Farmer-97
+Perfect man, perfect! I've been playing this game non-stop ever since
+the GMJ offices got it in.  The many smiles this game gave me is worth
+the price, no prob.  One or two more levels would have made this game
+a 100.
+
+*** NEWS D70 ***
+
+GENESIS NEWZ CLIP:
+Redo it! The preliminary version of Tournament Fighters from Konami on
+the Genesis looked pathetic, however after retooling and refining
+backgrounds and animation, the Genny version is starting to look up.
+The hyped up Eternal Champions from Sega is one of the best looking
+games for the holidays.  The new texture techniques used will be
+making this one of the most impressive graphical displays on the
+Genesis EVER!
+
+*___________________________________________________________________*
+| Game Master Journal is America's #1 online source for video game  |
+| information.  We have been read on the ExpressNET, Datanet and    |
+| other independant BBS' since April 1, 1992.                       |
+|                                                                   |
+| GMJ represents our attempt to inform gamers world-wide about every|
+| aspect of videogaming, and what follows are plans for GMJ.  As we |
+| expand to the Internet, we are making a bold, new step of inform- |
+| ative journalism.  We are glad that you make this possible.       |
+|___________________________________________________________________|
+*                                                                   *
+
+** ELECTRONIC PRINT **
+
+Here is the future of GMJ: a multi-media experience that ALL gamers
+can enjoy! Anyone with a PC (or PC clone/emulator) can enjoy
+full-color, SVGA graphics AND digital stereo audio clips of your
+favorite games!
+
+GMJ Electronic Print is a series of SVGA graphic pages that can be
+either viewed on-screen with any .GIF viewer, or can be printed out
+for permanent paper storage.  Either way, it looks GREAT and is FREE
+to our BBS users that download it.  (The file is HUGE however.) If you
+cannot download GMJ-EP, you can subscribe for only $10/year - less
+than $.85 an issue!
+
+To subscribe, please make out a check to Reny Falzarano at 255 North
+Rd #31, Chelmsford Ma, 01824.  or call 508-250-4989 FAX 508-250-4020
+
+** GMJ TV? **
+
+Our readers have demanded it.  Our staff wants to do it.  It appears
+that GMJ:TV could be coming soon to a network near you! Stay tuned!
+
+                       *******************
+                       ** THE CHRONICLE **
+                       *******************
+
+...by, Da Phunky Pheel One, Ace, Sr. Jnx and others...
+
+Welcome back all to another exciting issue.
+This issue we are featuring 2 special reviews of games that appear on
+both the SNES and Genesis.  If you have trouble deciding which
+version of a game to get, GMJ will now be doing side by side
+comparisons of any game that appears on 2 or more systems.  Next
+issue you can look forward to over 15 reviews and a special
+Electronic Arts insert reviewing ALL the four way play games, as well
+as 2 3DO reviews.
+
+Macromdeia announced recently to develop a player which would allow
+Director Macintosh or Windows files to be compatible on the 3DO.
+This is the first bid to direct the 3DO as a business utility and not
+just a video game console.  Marketing the 3DO directly to compete
+with Macs and PC's would certainly strenghten the list of pros for
+the 3DO as we here at GMJ are not very convinced that the 3DO is
+strictly a video game unit.
+
+In Segaland there is many a rumor flying around about the Saturn.
+Sega may ditch the old format and hop right on to a 64 bit project
+with the same title which would be a CD based unit that would play
+Sega CD format games as well as regular Genesis titles.  Our source
+for this rumor was very bleak so that is all we can say right now.
+If we find any backbone or followup information to that story, you
+will be updated...But for what we CAN tell you right now not to
+expect this super system until late '94.  At the earliest.
+
+Any Genesis owner who feels depribed for some reason that only SNES
+players will be enjoying the horrible SFII/MK ripoff, Clayfighters
+can rejoyce.  Interplay, makers of the SNES game Clayfighters has
+singed on to the Sega 3rd party crew with a Genesis version of
+Clayfighters.
+
+Some possible last second changes to Sonic CD might be a replacement
+of the cinema scenes.  We hate to throw another rumor at you but we
+have to.  The grapevine has it that the current cinemas to Sonic CD
+will be replaced by segments of the Saturday version of the cartoon.
+As long as they don't delay the game because of this, I don't care,
+otherwise...WHY?!?!
+
+All of you Sega/health freaks (and those two things are just so
+complimantary of each other) can have fun with an upcoming excersise
+unit from the company Hearbeat.  This unit plugs into the Genesis
+control port and its directional controls are hooked up to an
+exersise bike (provided by you).  You setup a workout which will be
+interactive with a game.  The concept of the packin game (Outback
+Joey) is to go through levels and fight off bad guys while mantaining
+a certain heart rate.  There may also be an NHL game in development
+for this unique attachment...?
+
+ ___________________________________________________________________
+|                                                                   |
+| SPECIAL REPORT:                                                   |
+|                                                                   |
+|         HANDS-ON 3DO REPORT!                                      |
+|                                                                   |
+|                                                                   |
+|                                                                   |
+|___________________________________________________________________|
+
+Nearly three weeks ago the long awaited Panasonic 3DO multimedia unit
+was released nationwide for a retail of $700.  Available for our
+hands on test was one pack-in game wad Crash and Burn - a futuristic
+racing game.  For what we had been expecting, believe it or not some
+at GMJ were somewhat disappointed.  Before you decide to stop reading
+our magazine forever though, hear me out.  The scaling, graphics and
+manipulation of the objects and backgrounds was incredible, however
+the movement and interaction with the car and backgrounds was poorly
+done.  Then we thought it was not fair to judge a first title so
+strictly, and when compared to say an Altered beast or Super Mario
+World (in ratio), it is needless to say that Crash and Burn is a
+king.
+
+I was disappointed in the marketing of this unit.  Thrown in every
+video game section of every store, the 3DO is now directed as a way
+too expensive video game unit, instead of a next wave multimedia
+entertainment business and networking unit and possibly the
+replacement for VCR and alternate to an expensive PC that it is.
+Instead of packing the unit with a keyboard or control panel, the
+system is packed with a video game controller and the "bare" system
+is not fully capable of running full length full motion video discs.
+A special cartridge upgrade has to be installed.  These are all some
+major mistakes because at $700 no one is purchasing this system so
+they can play Madden football...and if they are, they got some
+problems.
+
+Ok, so you are all thinking how bad we are dogging this unit.  NO NO
+NO! Not at all.  I am convinced this will be the entertainment unit
+of the future hands down.  The possibilities of the 3DO are endless.
+We just thought that their marketing approach was all wrong.  Why
+should I spend $700 that is not loaded with some of the standard
+features it was supposed to COME with when in 9 months another 3DO
+system will be released for $500 with internal full motion
+capabilities, a keyboard, and a mouse?
+
+Let there be no mistake.  This IS the future of entertainment.  This
+is a video game system, interactive TV, fax machine, VCR and more all
+in one unit.
+
+Check out next issue where we will give you a FULL coverage report
+and review the games.
+
+
+ ___________________________________________________________________
+|  #####  #####   #####  #####  ######  ###### R                    |
+| #     # #    # #      #     # #     # #        E                  |
+| #     # #    # #      #     # #     # #          V                |
+| ####### #####  #      ####### #     # ###          I              |
+| #     # #    # #      #     # #     # #              E            |
+| #     # #    # #      #     # #     # #                W          |
+| #     # #    #  ##### #     # ######  ######             S        |
+|___________________________________________________________________|
+
+
+
++-------------------------------------------------------------------+
+|TITLE:         |PUBLISHER  |GAME TYPE: |SIZE: | AVERAGE OF REVIEWS |
+| Super Street  | Capcom    | Fighting  |88 MEG|0                 95|
+| Fighter II    |           |           |rumor!|*****%%%%%@@@@@####-|
+|---------------+-----------+-----------+------+--------------------|
+|MAIN REVIEW BY:                 OTHER REVIEWERS                    |
+|                                                                   |
+| Ace         95          ---------- ** ---------- ** ---------- ** |
+|                                                                   |
++-------------------------------------------------------------------+
+
+Lets get right to the chase gang, this is one HELL of a game! The
+game that started the craze, Street Fighter, has it's third upgrade
+now, this time with new everything! 4 new characters, redrawn
+graphics, re-sampled sounds...  it's all here! NEW MOVES TOO!
+
+Unless you have lived in a CAVE for the last 30 months, you know that
+the object of Street Fighter is to beat your foe in a
+two-out-of-three falls match.  There are SIXTEEN characters to choose
+from, each with their own fighting style.  Some throw fireballs, some
+are great with their hands while others are blazing fast.  It is up
+to you to find a character that best macthes your playing style.
+
+You play against 12 of the 16 characters when you play against the
+computer, and the first 11 are randomly selected.  The final
+character you face is M.Bison, the evil druglord/dictator of Thailand
+who has spread his evil world-wide.
+
+When someone else puts their credits in the machine, the game goes
+into a head-to-head mode.  You then must fight to stay on the machine
+because the loser goes home!
+
+One of the Game of the Year candidates, this one will blow you away!
+
+Ace - 95
+The ONLY problem I had with this game was the fact that the sounds,
+although they sound GREAT with Q-sound, are AWEFULLY DONE! This
+sounds like a NEO*GEO game! But other than that..  LOOK OUT!
+
+====================================================================
+                             WARP ZONE!
+====================================================================
+
+SUPER STREET FIGHTER MOVES:  All of the new ones BEFORE EGM,
+                             GamePro, VG + Die Hard Game Fan.
+
+NOTE: Although this LOOKS like some posts on the Internet, this is
+      NOT a 'steal', we did find these moves, these are OUR strat's
+      and all of these moves are listed correctly.  (IF not, tell
+      us, and we'll fix it!)
+
+
+====================================================================
+Cammy
+====================================================================
+Special Moves:
+Spear kick:           |  \  --o  +  kick
+                      o   o
+
+Spinning Backhand: /  |  \  +  punch
+                  o   o   o
+
+Crescent Kick:  --o  |  \  + kick
+                     o   o
+
+Pile-driving Suplex (Pileplex):  --o  +  fierce kick
+     [ THROWING DISTANCE ONLY ]
+
+Back Suplex: --o  +  fierce punch
+     [ THROWING DISTANCE ONLY ]
+
+Ariel Throw:  --o  +  medium kick
+
+Comments:
+Spear Kick: Cammy launxhes herself horizontally, close to the ground,
+at the opponent.  This is actually her worst move, but it can be used
+it combos very easily.  The only problem with it is that it has
+horrible recovery time.  This can be dealt with by doing the short
+spear kick from the limit of its range so that while your opponent is
+recovering from the block, you can be recovering from the kick.  It
+also places you at the maximum distance from the opponent.  It also
+only goes about half way across the screen before stopping.  It can
+be used to stop projectiles like Blanka and Honda, but it is best
+used as a defensive maneuver.
+
+Spinning Backhand: This looks like a quick spin followed by a guile
+backhand.  It has the capability of hitting twice, and when it does
+it does a great deal of damage.  Secondly, when Cammy is spinning on
+her heals she is invincible.  But you have to have perfect timing,
+since you are vulnerable before and after this point.  It can be used
+like Balrog's TAP to dodge fireballs, but it is more difficult to
+time.  Because you move so far forward, you will probably want to use
+the jab spinning backhand, otherwise you will end up within sweeping
+distance.  The move is fairly slow, but if used correctly, deadly.
+
+Crescent Kick: This is basically a dragon punch with her foot, and it
+is her best move.  It has a trajectory that is wider than Ken's
+fierce DP, and it is also invincible (except against Ken/Ryu's Dragon
+Punch) while going up.  The intital frames are vulnerable, though, so
+it cant be used exactly like the DP.
+
+Combos:
+    If Ken or Ryu throw a fireball, do the following...
+      Spinning Backhand, short kick, Crescent Kick (3 to 5 hit combo)
+    If Guile shows Sonic Boom or Dee Jay shows Ace rusher, do...
+      Spinning Backhand, Crescent Kick (2 to 4 hit combo)
+
+Overall:
+Cammy is one of the best new characters in the game, according to
+most people.  She has good speed and air-priority to rival Chun Li.
+She seems to be played in the same style as Chun Li, but with the
+added advantage of the uppercut-like kick.  She is great at anti-air
+defense, also.
+
+====================================================================
+T-Hawk
+====================================================================
+Special Moves:
+
+Mexican Typhoon:        full 360 degrees on joystick + punch
+(aka Phi Slamma Jamma)  (like zangief's spinning pile driver)
+
+Condor Dive:  Jump + (all three punches)
+
+Tomahawk Buster:   --o  |  \  +  punch
+                        o   o
+
+Face Smash:   --o + fierce punch
+
+Face Chop:   --o + roundhouse
+
+Throw:  medium punch
+
+
+Comments:
+Mexican Typhoon: Hawk grabs you, plams your head like a basketball,
+jumps in the air, windmills you in the air 720 degress, then slams
+you into the ground head first.  If you want to impress the hell out
+of everyone around you, this is the move to do.  It has a pretty
+decent range, about the length for dahlsim to throw.
+
+Condor Dive: T-Hawk jumps, then suddenly dives at you like dahlsim's
+yoga spear.  This move can be deceptive - try jumping back, then
+diving with the condor dive.  It has a good range, but can only be
+done on the way up, not on the way down.  It can be useful for
+countering fireballs.
+
+Tomahawk Buster: Another version of the DP, but this goes more
+diagonal and is not as quick.  It is only invincible for a very short
+time at the beginning, then the rest is vulnerable.  The fierce TB
+extends really far - farther than ken's DP - and can also hit twice
+if close enough.  It has a pretty nasty fall distance, so it can be
+risky.  But the delay when you reach the ground is minimal.
+
+Combos:
+Roundhouse neck kick- standing forward- fierce tomahawk buster.
+
+The tick standing short - into mexican typhoon seems to work, but not
+as well as Zangief's.
+
+Overall:
+T-Hawk seems to be a very versatile character.  His biggest weakness
+is his speed, but that can be made up for by his big moves.  His
+spinning leg sweep is also a nice move, and it executes faster than
+Guile's fierce trip.  His kicks have decent range - much better than
+Ken, Ryu, Zangief, and Chun Li's, i would say.  His standing forward
+is really nice - it has about a Ryu crouching roundhouse range,
+sticks out straight, and is fast.
+
+====================================================================
+Dee-Jay
+====================================================================
+Special Moves:
+
+Machine Gun Upper:   |  o  +  (punch, punch, punch...)
+                     o  |
+
+Ace Rusher:  --o  +  punch
+             (charge)
+
+Hop Step and a Kick:     o--   --o  +  kick
+                       (charge?)
+
+Dee Jay Escape:    | + roundhouse kick
+                   o
+Comments:
+Machine Gun Upper: If you hit the button once, you get a jab-like
+uppercut.  Tapping a punch button repeatedly after executin the move
+will extend the punch further.  It works well as a defensive move, as
+it will stop most characters from jumping in.  It is difficult to hit
+more than a few times, but it has been done up to four.
+
+Ace Rusher: This looks and works like guile's sonic boom, but is
+different because it has a long recovery time and his body leans way
+forward when performing it.
+
+Hop Step and a Kick: He sort of kicks, turns around, and kicks again.
+Crouching Roundhouse: This is like dahlsim's slide.  It can be used
+against someone who is jumping in at you, but unfortunately it cant
+go under fireballs.  If the timing is right, you can follow up a
+fireball with this.
+
+Combos:
+   jumping hit - standing forward - fireball
+   jumping hit - standing short - short spinning kick
+
+Overall:
+Dee Jay seems to be one of the better characters and will be
+especially useful to those who know how to use Guile.  His far
+standing fierce is a good anty-air attack, and his jump + roundhouse
+hits far enough down to hit Dahlsim's crouching fierce.  His jumps
+are his biggest flaw.  The lower part of his body hangs really low,
+which makes it hard to jump over fireballs.  Fireball traps seem to
+work very well against him, since jumping is difficult and he lacks
+any invincible move.
+
+====================================================================
+Fei Long
+====================================================================
+
+Special Moves:
+
+Triple Punch:   |  \  --o  +  punch (repeat,
+                o   o                repeat...)
+
+Flaming Vertical Kick:   o--  |   /  +  kick
+                              o  o
+
+Leaping Double Kick:   --o  +  roundhouse
+
+Flip-over throw:   --o +  roundhouse
+     [ THROWING DISTANCE ONLY ]
+
+Comments:
+Triple Punch: Doing the fireball motion once will give you a flaming
+jab.  Doing it again quickly will cause him to slide forward a bit
+and follow up with a straight punch.  A third time finishes the move
+with another punch.  He rushes at you faster than Balrog's rushing
+punches, but it is hard to get the timing right to get multiple hits.
+Practice makes perfect!
+
+Flaming Kick: He jumps into the air with his leg on fire.  The
+horizontal range is non-existant.  The height is determined by which
+kick you use.  It is a bit safer than a dragon punch because if you
+do it too soon, you might be in a defensive crouch.  If you do it too
+late, you will still be blocking.  It seems to be mainly a defensive
+move.
+
+Leaping Kick: Fei Long jumps at you with a double kick.  It does
+pretty decent damage.  Although he spends a lot of time moving
+forward with no attack out, once the attack comes out it has one hell
+of a priority.
+
+Combos:
+This combo is great against the larger characters (Zangief, Hawk)
+Jumping roundhouse, short kick, Triple punch over + over
+
+Overall:
+He has the potential to be the next anti-character, like Guile was
+for Ken/Ryu.  Use him against characters without projectiles for the
+best chance of victory.
+
+===================================================================
+Ryu
+===================================================================
+Dragon Punch: --o | \  + punch
+                  o  o
+
+   Still the superior move in the game.  Deadly, but not as damaging.
+
+Red Fireball:   o--  /  |  \  --o  +  punch
+                    o   o   o
+This is a red fireball that will burn the opponent like Dhalsim's
+yoga fire.
+
+Fireball:  | \  --o + punch
+           o  o
+
+He has a longer delay after his fireball and his hurricane kick now
+starts spinning on the way up and all the way down, following his
+jump motion.
+
+Hurricane Kick: |  / o-- + kick
+                o o
+Air Hurricane Kick: Jump then HK motion
+
+The kick still does tons of damage.  the Air HK now follows the
+motion of his normal jump (arced).  The sooner you do the HK motion
+during your jump, the higher you'll fly.
+
+====================================================================
+Ken
+====================================================================
+Changes to his DP - fierce now burns opponent and can hit 3 times.
+Jab hits once and knocks down.  His hurricane kick is also like
+Ryu's.  Does not have a flaming fireball..  but other than that, see
+Ryu.
+
+==============================================================================
+Chun Li
+==============================================================================
+Fireball:   o--   --o  +  punch
+         (charge)
+
+The new fireball.
+ONLY use in a situation where your opponent will definitely either be
+hit (like in a combo) or will have to block (such as when an opponent
+is just getting up).  The delay AFTER the fireball is even longer
+than the delay in HF and the fireball (actually, it looks like a raw
+egg being tossed) dissipates (dissapears) before crossing the screen.
+The faster the fireball, the shorter the distance.
+
+Helicopter Kick: | (charge) o + kick
+                 o          |
+
+The altered Helicopter kick
+MUCH better against opponents jumping in, as the animation sequence
+where Chun is just beginning to flip over now knocks the opponent
+down (doesn't leave them standing to retaliate).  Works great vs.
+Ken/Ryu, and Long.  Haven't tried it vs.  anyone else yet.  Her
+aerial Helicopter (where she goes into it quickly after jumping) is
+strange, but I imagine helpfull against corner traps, as it arcs in
+the path of her natural jump, and goes by kinda fast.  This is one of
+the more important positive changes made.
+
+Combos:
+jumping hit - standing fierce - fireball/lightning kick jumping neck
+fierce - standing strong - standing fierce - lightning kick jumping
+fierce - standing strong - crouching forward.
+
+
+
+==============================================================================
+Zangief
+==============================================================================
+Zangief's Power Moves:  360 spin from forward to down
+                        and back around to front and....
+
+    punch       -- old faithful, the SPD (spinning pile driver)
+    kick        -- charge throw, or CPD (charge pile driver)
+    kick (close)-- drop then flip and leap into air with them,
+                       or FPD (flip pile driver)
+
+Knee Drop:  o (hold) + fierce
+            |
+
+     No more one-hit dizzy.
+
+
+Air Throws: He has TWO air throws
+    fierce (and forward)--almost exactly like Z's old crouch strong throw,
+       but in the air.
+    roundhouse (and forward)--almost exactly like his old crouch fierce, but
+       in the air--nabs them and with no pause heaves them in the air over
+       his shoulder (doesn't look up like he did before)
+
+Throws: finally got all but one normal throw checked out.
+         Strong--simple pile driver from before.
+         Fierce--iron claw aka far+strong from older versions
+        Forward--new suplex ala fierce from older versions--heaves opponent
+                 over head, then falls back, but this time he ends up
+                 horizontal about 1 inch from the ground, and then you fall
+down.
+     Roundhouse--chin smash ala far+fierce from before
+  crouch fierce--gut wrench as older versions.
+
+
+==============================================================================
+Blanka
+==============================================================================
+Blanka Ball: o--  --o + punch
+          (charge)
+
+  Still one of the fastest moves in the game.
+
+Vertical Ball: | (charge) o + kick
+               o          |
+
+Flip Roll:  o--   --o  +  kick
+        (charge)
+
+Blanka flips back, then does a roll that has an arc to it.  If timed
+right, it can go over fireballs.
+
+He is improved in someways, DIES in others.  He now stops rolling in
+his vertical roll and goes back down at an angle so he cant be swept
+or dragon punched so easily.  Also, the timing of his rolls are such
+that, if blocked, a quick fireball will hit it on the way down.
+
+====================================================================
+Honda
+====================================================================
+Thousand Hand Slap: Punch buttons over and over
+
+   Great for corner-trapping.
+
+Banzai Drop: | (charge) o + kick
+             o          |
+
+==============================================================================
+Guile
+==============================================================================
+Sonic Boom:  o--  --o + punch
+           (charge)
+
+   An ever BETTER recovery than before!
+
+Flash Kick (aka Razor Kick):  | (charge) o + kick
+                              o          |
+
+  The range for this has been dropped a bit.  More defensive now.
+
+Mid-Air Back Breaker: --o + punch
+
+Pretty good priority.  Watch out for mis-timing..  you need to be
+almost touching to pull the move off.
+
+====================================================================
+Dhalsim
+====================================================================
+Dhalsim Disappear:
+   --o | \  + punch  OR o-- |  / + punch
+       o  o   kick          o o    kick
+
+Either forward DRP will put you in front of your foe, either backward
+will put you behind him or her.  Punch = far away, kick = near.
+
+Fireball: | \  --o + punch
+          o  o
+
+   Just as good as Ken and Ryu's!
+
+Yoga Flame: o-- / | \  --o
+               o  o  o
+
+   This hangs around for a LONG while!
+
+====================================================================
+Balrog
+====================================================================
+Buffalo Headbutt:   |   o  +  punch
+                    o   |
+               (charge)
+   Yet another variation on the DP.
+
+Charge Punch: o-- --o + punch = straight
+               (charge) kick  = uppercut
+
+Turn Around Punch: HOLD ALL 3 KICK then let go
+
+This move no longer lets you go through fireballs.
+
+Here's the bottom line:
+        Power DOWN.
+
+Against anyone w/o a fireball, Balrog will roast 'em.  Easy.
+Against anyone WITH a fireball, well, you're gonna have to work.  And
+hard.
+
+Overall, he's still a power to face.... if you use him, good luck.
+
+====================================================================
+Vega
+====================================================================
+Air Spiral:   |  o  or o +  punch
+              o   \   /
+          (charge)
+Vega jumps off the wall like he is going to do a claw dive, but then
+dives head first across the screen in mid air.  He picks the wall
+depending on where you point (up-left or up-right.)
+
+Spread Eagle: |    o +  punch
+              o    |
+            (charge)
+
+Wall Dive - Suplex: |          o  + kick, then PUNCH when near
+                    o (charge) |                     your foe.
+
+====================================================================
+Sagat
+====================================================================
+Tiger Shots:  | \  --o + punch = high Tiger Shot
+              o  o       kick  = low Tiger Shot
+
+Tiger Uppercut: --o | \  + punch
+                    o  o
+                 o
+Tiger Knee: / | /  + kick
+           o  o
+
+  About the only change is that his tiger knee now goes further.
+
+====================================================================
+Bison
+====================================================================
+Flying Dive:  |  o  +  punch
+              o  |
+          (charge)
+He jumps really high and then comes down and hits you on the head
+with his fist.
+
+Anti-Grav Kick: |  o +  kick
+                o  |
+              (charge)
+
+Still defies gravity with this jump, after it hits you can attack
+again in mid-air!
+
+Bison Torpedo :      o--    --o + punch
+(aka Psycho Chrusher) (charge)
+
+   Only hits at MOST 3 times.
+
+Scissor Kick: o--  --o + kick
+            (charge)
+
+   Always a knock-down move!
+
++-------------------------------------------------------------------+
+|                                                                   |
+| IN THE NEXT       MORE Super Street Fighter 2 tactics and tricks  |
+|    ISSUE OF...    The low-down on the Jaguar and 3DO              |
+|                                                                   |
+|   GAME MASTER     At least 6 SNES + Genesis games reviewed, AND   |
+|     JOURNAL       info, WAY BEFORE the other guys, about the      |
+|                   upcoming Winter CES this January!               |
+|                                                                   |
++-------------------------------------------------------------------+
+Producer: Anthony Shubert       Online Layout Editor: Anthony Shubert
+WWIVcolor editing by: Will Crawford    ANSI Editing by: The Last ANSI
+Head Writing Staff:                Contributors:
+  HOME SYSTEMS  Reny Falzarano       Mr. Sims, the Pepperidge Farmer,
+ HEAD REVIEWERS Instigator        Sr. Jnx, Mr. Mojo Risin', Aquarius,
+  FUTURE WAVE   Tanya Kutasz            Emax, Sai-Blade, Matrix, Shez
+  IBM GAMES     Will Crawford
+
+
+We are not affiliated with or endorsed by the followig companies:
+Nintendo of America, Sega Enterprises, Turbo Technologies (NEC),
+Atari Corp., Atari Games, SMSG, or any other videogaming company.
+
+Product names are either (c) or trademarks of their respective
+companies, and the non-marking of such product is not a challenge to
+its status.
+
+Ace's Angles, Chronicle, Express Mail, Warp Zone, and all content are
+(c) 1990, 1991, 1992, 1993 Innovative Creations
+
+:: Some ASCII/ANSI work created with use of 'TheDraw' SW program ::

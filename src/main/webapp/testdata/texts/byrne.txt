@@ -1,0 +1,485 @@
+        Chess Grandmaster Robert Byrne played the world's top-
+  ranked chess computer a game on February 11, 1990. Following is
+  a user-friendly analysis of the game, intended for low and
+  medium ranked players. The moves will be shown in long
+  algebraic.
+  K=King, Q=Queen, B=Bishop, N=Knight, R=Rook, and P=Pawn
+        The board is layed out on a grid, with the White pieces
+  horizontally layed out from A on the left, through H on the
+  right. The first rank (where the White major pieces are
+  located) is rank 1, and it goes down to 8, which is where
+  Black's major pieces are located.
+
+        For example, the initial location of the White king is
+  e1. The Black queen is initially on d8. A move of a piece is
+  indicated by giving the shorthand for the piece, followed by
+  the square it's coming from, followed by the square it ends up
+  on. So, for example, a move of the White Knight closest to the
+  King would be Ng1-f3.
+
+        Special situations: a capture is indicated by an "x"
+  instead of the usual "-". Also, the shorthand for pawns is not
+  used, so a movement of a pawn is simply indicated by giving the
+  starting square, followed by the ending square, as in e2-e4.
+
+
+        Background: Robert Byrne is a strong Grandmaster. He is
+  one of the top 100 players in the world, and in the early 70's
+  participated in a semi-final for the world championship.
+
+                    Deep Thought calculates positions at the rate
+  of 1,000,000 positions per second. This gives it a tremendous
+  ability to navigate in positions which require broad
+  calculation.
+
+  Deep Thought had White in this game:
+
+  1.c2-c4   ... In the opening, the aim of all strong players is
+  to control the center, whether by pieces or by pawns. When a
+  player has much better control of the center (the squares
+  e4,d4, e5, d5) than his opponent, he is able to use that
+  control to launch attacks on either side of the board, and his
+  opponent is cramped, and unable to match him for flexibility.
+  In this case, DT choose to advance the c pawn. This gives
+  control of the d5 square, although it does not immediately free
+  a diagonal for development of either bishop, as would have been
+  the case after 1. d2-d4 or 1. e2-e4.
+
+  1....   g7-g6 Black moves his g pawn, allowing to develop the
+  bishop on the g7 square. Such a development would place the
+  bishop on a strong diagonal.
+
+  2. Nb1-c3  White develops his knight to a strong square, from
+  where it controls the important d5 and e4 squares. In
+  conjunction with the c pawn, White now has significant control
+
+
+
+
+
+
+
+
+
+
+
+
+  of the d5 square. (Notice that had White first moved the Knight
+  out, the c pawn would have been blocked, and would have been
+  unable to participate in this battle for central squares).
+  White is delaying moving his center pawns (the e pawn or the d
+  pawn), preferring instead to see what his opponents intentions
+  are vis-a-vis pawn control of the center.
+
+  2....  Bf8-g7   Byrne likewise simply places his bishop on a
+  good diagonal, and does not commit his center pawns yet. Note
+  that Black now strongly controls dark squares, while White
+  controls light (white) squares.
+
+  3. g2-g3  White prepares to further intensify the pressure on
+  the e4 and d5 squares by putting his bishop on g2 (this process
+  of putting a bishop on the g2, g7, b2, or b7 squares nestled
+  behind a triangle of pawns is called "fianchettoing" it)
+
+  3.....   e7-e5  Black finally strikes out with a center pawn.
+  He now firmly controls the d4 square, preventing DT for the
+  moment from advancing his own d pawn. This control comes at a
+  cost, of course, since now Black no longer has the option of
+  contesting White's control of the d5 square by making a move
+  such as e7-e6, since the pawn is now advanced. Byrne's
+  strategy, well-accepted, is to attempt to defeat DT not by
+  tactics, since he has a healthy respect for the machine's
+  calculative powers, but by trying to get into positions where
+  the ability to form long-range plans based on (hopefully for
+  Byrne) locked pawn structures where the machine is at a
+  disadvantage. This is because the machine is unable to form
+  long-range positional plans.
+
+  4. Bf1-g2   White also intensifies the pressure on the squares
+  he now controls. It is certainly possible that these moves are
+  all in the opening "book" (a series of pre-programmed moves) of
+  the computer, so that it has not had to "think" by itself yet.
+
+  4....Nb8-c6  Black develops a piece, and (this is beginning to
+  sound monotonous) controls "his" dark squares. So far, so good.
+
+  5. d2-d3   White plays this seemingly meek move for two
+  reasons. First, DT wants to open a line for the potential
+  development of his queen bishop on the newly opened diagonal.
+  Second, White wants to solidify the pawn chain e2-d3-c4, and
+  reduce the possibility of Black playing the move e5-e4 at some
+  point after White has played out his king knight to the square
+  f3, which would force the knight to have to move again, and
+  White would lose time repositioning it.
+
+  5.....  f7-f5 Black plays aggressively. He increases control
+  over e4. It is at a time like this that a Grandmaster decides
+  on a long range plan. Where does each sides' chances lie?
+
+        Well, White has more control currently of queenside
+  squares (his bishop is pointing in that direction, and he has a
+
+
+
+
+
+
+
+
+
+
+
+
+  pawn on c4). Black, on the other hand, has morecontrol on the
+  kingside, and so he will try to "mix it up" there. In slow
+  moving games, it is advisable to try to mix things up in an
+  area where you have more control of squares or more pieces,
+  since the opponent will not be able to fight as strongly, due
+  to his local disadvantage.
+
+  6. e2-e3 White gets a little control bck over his d4 square,
+  but blocks in his queen bishop. He is also creating a few
+  weaknesses on light squares in the kingside area (for example,
+  were the bishop on g2 to disappear, Black could infiltrate
+  pices on these white squares which now lack pawn protection).
+
+  6.... Ng8-f6 Black develops the knight to a good square, and
+  prepares to castle.
+
+  7.Ng1-e2 ...   White develops his knight to a somewhat less-
+  influential square. Why not to f3? Well, since White is not a
+  person, but a computer, it is not really "afraid" to move to
+  f3, which would be a more active square. White, however,
+  probably "sees" that at some point Black might play the move
+  e5-e4, forcing the knight to move. This would be uncomfortable,
+  since there aren't any great squares to move to after that.
+  Also, White wants to keep the diagonal open for his king bishop
+  for as long as possible. Computers are "rewarded" in their move
+  evaluation algorithms for moves which give maximum pice
+  mobility and control of squares.
+
+  7.....  o-o  This means "castle" This is a protective move
+  which occurs once in a game for each side, and two pieces, the
+  rook and the king, move simultaneously. The advantage of such a
+  move is that the king is usually placed into greater safety,
+  and the rook is more or less mobilized. Both these concepts are
+  important in a game in which the object of the game is to mate
+  the opponents' king, and if the king stays on the e file, he is
+  likely to catch a death of cold if central lines are opened at
+  some point. It is usually better to castle sooner rather than
+  later, since later might be too late.
+                The move means the king now occupies the square
+  g8 and the rook now occupies the square f8.
+
+  8.f2-f4     White strikes at the Black control of the center
+  with this move. If Black were to capture by playing e5xf4,
+  White would capture back with e3xf4, and now the Black control
+  of the dark squares would be reduced. The disadvantage of this
+  move is that White's 'e' pawn now lacks protection by it's
+  brother, and the squares around the kingside are further
+  weakened. Black's fianchettoed king position, on the other
+  hand, is relatively safe.
+
+  8......d7-d6   Black solidifies his pawn chain, and gives the
+  'e' pawn greater support. He also opens up the diagonal for his
+  queen bishop, threatening to play Bc8-e6, contesting White's
+  control of the light squares in the center.
+
+
+
+
+
+
+
+
+
+
+
+
+
+  9. Qd1-b3?     A bad move. First, ANY move with a Queen should
+  be very carefully considered. The queen is the strongest piece
+  on the board, and radiates power wherever placed. Here, DT has
+  the right idea (to pressurize the queenside) but this idea
+  should be carried out with a pawn march, starting with Ra1-b1,
+  and then b2-b4, and b4-b5. The queen cannot do it by herself,
+  and is vulnerable to attacks by Black's minor pieces, from whom
+  she would have to retreat. DT probably wanted to threaten the
+  'b' pawn, to stop the bishop from being developed, and it was
+  also lured by the potentials resulting from a check by c4-c5.
+  Black's next move removes the check possibilities.
+
+  9.....  Kg8-h8  The king goes into the corner, a safe snuggly
+  place.
+
+  10 o-o        White castles, the king is now on g1, and the
+  rook on f1.
+
+  10..... Nc6-e7   Black repositions the knight to control d5,
+  and to prepare possible pawn control of d5 by c7-c6.
+
+  11. c4-c5     Dubious. Of course not 11.Bg2xb7, (apparently
+  winning a pawn) because of Ra8-b8, pinning the bishop against
+  the queen, and winning it next move).
+
+  11.....  c7-c6   Black establishes pawn control of d5.
+
+  12.c5xd6         With this move, White permits Black the
+  potential of pressuring his 'd' pawn, since the pawn will now
+  be on an open file.
+
+  12......   Qd8xd6  White's 'd' pawn is now attacked, and he
+  still faces an interesting problem of how to develop his queen
+  bishop.
+
+  13. f4xe5?! ....  Dubious. Deep Thought, as is the want of many
+  computers (including my Mephisto 68000xl) takes the tactical
+  way out. It doesn't realize that now BOTH the 'd' and 'e' pawns
+  can be subject to attack along the 'd' and 'e' files. And if
+  either pawn were to move up, then the square in front of the
+  other that the former controlled becomes weak. For example, if
+  White were at some point to play d3-d4, then the e4 square
+  becomes very weak. Byrne never quite gets the chance to do
+  this, however.
+
+  13...    Qd6xe5  Black's only concern is to find good squares
+  to put his queen and the knight on e7. Then, he can begin the
+  process of pressuring the 'd' and'e' pawns.
+
+  14. Ne2-f4       The knight finds a square, but it's not
+  attacking anything, really. I suspect that DT's main concern
+  was to stop Byrne from playing Bc8-e6 sometime in the next few
+  moves, which would force the White queen to move
+
+
+
+
+
+
+
+
+
+
+
+
+
+  14.....   g6-g5  This forces the knight to move away, and also
+  to be out of play for a while, but it loosens the pawn cover
+  surrounding the black king, and weakens the pawn protection of
+  the f5 pawn.
+
+  15. Nf4-h3  White thereby gains a tempo by attacking the 'g'
+  pawn, but the knight now requires a few tempos to re-deploy.
+  A human would have found it humiliating to retreat back to e2,
+  though a computer shouldn't. A benefit of the move, however, is
+  that to protect the 'g' pawn, Black must again move a pawn
+  which is part of the circumference of pawns guarding his king,
+  a further weakening. And the 'f' pawn will continue to require
+  attention.
+
+  15..... h7-h6  The light squares around the black king are now
+  pretty weak (read: not guarded by pawns anymore).
+
+  16.Bc1-d2      White makes motions to at least move his queen
+  bishop off the last rank, sort of a development. The move does
+  connect the white rooks, and premits the queen rook to
+  participate in the game.
+
+  16.......  b7-b6  If I were black, this is where I would think
+  for a while. Black has pressure on the central white pawns, but
+  he has his own weak 'f' pawn to consider also. Oneof his prime
+  concerns must be to develop the queen bishop, and also the
+  queen rook. But if Black were to move the queen bishop right
+  away, he would lose the 'b' pawn to white's queen. Black could
+  have played Qe5-c7 to protect the 'b' pawn, but he wants to
+  somehow play Bc8-e6, which would gain a tempo by attacking the
+  white queen. If he played Qe5-c7, then the bishop could never
+  move to e6. So, Black first plays b7-b6, moving the pawn to a
+  square from which it is protected by the black 'a" pawn,
+  freeing the bishop to move. A dark side of the pawn move,
+  however, is that now the White king bishop is pressing against
+  the 'c' pawn. A fresh weakness is created in Black's camp.
+
+  17. Qb3-a3!     Good move. The queen voluntarily relocates,
+  this time grabbing a nice diagonal leading to the knight on e7,
+  which finds itself soon remarkably berift of protection.
+
+  17.......  a7-a5?!   Black changes his mind. The move Bc8-e6
+  would not accomplish all that much now (though it would mean
+  that the bishop would continue to protect the 'f' pawn).
+  Instead, Black plots to play Bc8-a6, which would attack the
+  white 'd' pawn, and behind it the rook. But, now the 'b' pawn
+  is weakened, and White seizes on this fresh weakness.
+
+  18. Na4        The 'b' pawn is now attacked, and if it moves,
+  the square c5 becomes available for posting white's knight.
+
+  18.......  Rb8  The pawn must be protected, and the
+  alternatives for doing so are not great. Ra8-a6 is totally
+
+
+
+
+
+
+
+
+
+
+
+
+  awkward, Qe5-c7 gives white the chance to pile on the 'c' pawn
+  some more, by Ra1-c1. Note that Qe5-b8 would lose the knight on
+  e7 to the qhite queen, a recurrent theme in the next few moves.
+
+  19. Nh3-f2      White takes a moment to relocate the knight to
+  a better square, which protects the 'd' pawn in anticipation of
+  Black's next move. He also does not want his king quite so
+  exposed to possible checks.
+
+  19..... Bc8-a6  The bishop comes out.
+
+  20 Bd2-c3       The bishop finds an active square, and controls
+  important center squares and opposes the other bishop on the
+  long diagonal. He is also laying the foundation for a little
+  combination.
+
+  20...... Qe5-e6  The knight must be protected!
+
+  21. Bc3xa5       If Black simply recaptures the bishop by
+  b6xa5, then white plays Na4-c5, attacking the black queen and
+  the bishop on a6, and the black queen has no square to go to
+  from which she will keep protecting both the bishop on a6, and
+  the knight on e7. Therefore, one of them will fall, and white
+  will have won a pawn after the complications.
+
+  21........ Ba6xd3  In order to not come out a pawn down in the
+  'desperado' complications.
+
+  22. Nf2xd3         Surprise! White does not play Qa3xd3, which
+  seems to be necessary in order to stop Black from playing
+  Qe6xe3 WITH CHECK, followed by THEN taking the bishop on a5.
+
+  22....... b6xa5    If instead black carries out the "threat" by
+  playing Qe6xe3 check, and then b6xa5, then the sequence would
+  go  22....Qe6xe3check 23 Kg1-h1 b6xa5  24 Ra1-e1! followed by
+  Re1xe7, and White ends up a piece ahead!
+
+  23. Ra1-e1       White takes the time to protect the 'e' pawn
+  for the future. The square 'c5' is now a great spot for either
+  of White's knights.
+
+  23......   Ne7-d5   Black finally moves the accursed knight, to
+  a central square, but White's pieces find much greater scope.
+
+  24.Na4-c5 ......    Black's queen is attacked, and Black must
+  give way. Finally, Black's pawns are weaker than White's, and
+  the White bishop is very strong.
+
+  24......   Qe6-c8   The only square from which the f5 pawn is
+  still protected, but now the other knight jumps into a strong
+  square, attacking the weakend light squares on the kingside.
+
+  25. Nd3-e5         White threatens Ne5-g6 check, winning the
+  rook on f8 for only a knight. This would be a winning advantage
+
+
+
+
+
+
+
+
+
+
+
+
+  in material, since a knight is worth only 3 pawns, while a rook
+  is worth 5 pawns.
+
+  25......Rb8-b5   At first glance, this is incomprehensible,
+  since it allows White to carry out his threat of Ne5-g6 check.
+  But Black thinks he has seen further than the computer. He
+  thinks that after the knight on g6 captures the rook, when
+  black takes back with the bishop, the white knight on c5 will
+  be lost, since it will be attacked many times, and pinned to
+  the white queen. But the computer has seen further.
+
+                Incidentally, if Black had stopped Ne5-g6 in
+  other ways, he would not have had an easy game either. For
+  example, if he had played Kh8-h7 in order to control g6, then
+  Qa3-d3 would have been very sstrong, pinning the f5 pawn
+  against the black king. Kh8-g8 lets the knight in to g6 also,
+  though not as immediately seriously as in the game.
+
+  26. Ne5-g6!    White wins the rook for the knight! (Also known
+  as "winning the exchange")
+
+  26......     Kh8-h7   Kh8-g8 might have been better, although I
+  don't really know.
+
+  27. Ng6xf8   Bg7xf8   Byrne's "point" of giving up the
+  exchange. He hopes to win that c5 knight. If he does, then he
+  would have given up a rook for a knight and a bishop, an
+  advantageous scenario for him.
+
+  28. Re1-c1            White immediately protects the knight
+  again. But Black can attack it again. This is the kind of
+  situation where one is appreciative of the ability to count, as
+  taught in the 1st grade.
+
+  28........ Nf6-d7     The knight is now attacked three times,
+  and it does not seem that it can be profitably defended again.
+  But now White strikes from a different direction...
+
+  29. Bg2-h3!!          Byrne may have thought that he did not
+  need to consider this move since he can just play g5-g4, but he
+  can't. White now threatens Bh3xf5 check, followed by Bf5xd7
+  winning humongous material. The weak f5 pawn!!
+
+  29......     g5-g4    "Show me," Byrne says. The computer
+  obliges. But there was no other defense in any case.
+
+  30. Bh3xg4!!          In a blaze of glory. White renews his
+  threat of Bxf5. But what if f5xg4?
+
+  31......      f5xg4
+
+  32. Qa3-d3! check
+
+  32....... Byrne RESIGNS
+
+
+
+
+
+
+
+
+
+
+
+
+
+                If 32....Kh7-h8, then 33 Nc5xd7, followed by
+  Rf1xf8 check, winning an entire knight (an overwhelming
+  advantage)
+
+                If 32....Kh7-g8, then 33. Qd3-g6 check, and then
+  if 33....Bf8-g7, then 34. Nc5-e6 with a fast checkmate, while
+  if 33....Kg8-h8, then 34 Nc5xd7, followed by Rf1xf8 check, as
+  above
+
+                If 32....Kh7-g7, then 33. Nc5-e6 check, followed
+  by 34. Qd3xb5, and if c6xb5, then Rc1xc8, having won a whole
+  rook.
+
+
+  For more information about chess in general, and how one can
+  get a national rating and play in tournaments, you can send me
+  a msg via BBS's in New York, or through the chess conferences
+  on RIME and Internet. Also, write to the US Chess Federation
+  (U.S.C.F.) at 186 Route 9w, New Windsor, N.Y. 12550.
+  Best, Israel A. Silverman
+
+  Play chess!!!

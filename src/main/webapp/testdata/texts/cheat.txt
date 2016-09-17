@@ -1,0 +1,131 @@
+
+
+
+
+
+
+
+                                CHEAT:
+           Secret Backdoors and Debug Codes the Programmers
+                     Don't Want You to Know About
+
+
+
+
+
+
+                     By Mike Zier, Fido 1:272/169
+
+
+
+
+                              Mike Zier
+                             P.O. Box 546
+                       Smallwood, NY 12778-0546
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+** What is CHEAT?
+
+
+CHEAT is a listing of cheats for IBM/MS-DOS computer games.  Debugging
+commands, secret commands, and whatever else can enable you to cheat
+in these games.
+
+However, you won't find any level codes or trainer-style programs
+here... they aren't real cheats.
+
+
+
+** How do I load the program?
+
+
+At the command prompt (that thing that looks remotely like C:\>) type
+CHEAT and press enter.
+
+On screen instructions are given from that point on.  I hope it's
+self-explanatory....
+
+
+
+** Where do I report bugs, comments, suggestions, and
+** submissions?
+
+
+The official support BBS is The Cult of the Tentacle.  A 28.8k modem is
+online 24 hours a day to serve your gaming needs.
+
+You can also freq CHEAT from 1:272/169.
+
+
+
+** Disclaimer
+
+
+I cannot be held responsible for the results of any cheats described
+in this list.  In most cases, the game companies intended these cheats
+for internal use only, they have the chance of being destructive.
+Known limitations are listed, when possible .
+
+As for this program, if it blows up your computer, I am not
+responsible for that either.  Sorry.
+
+
+
+** Copyright statements and what-not
+
+
+This program, documentation, and all related services are (c)
+Copyright 1993-1995 Mike Zier, All rights reserved.
+
+I have no problem with the spread of the information contained within,
+but if you are using them in your own project please inform me.  You
+may NOT duplicate this work or a large percentage of it for your own
+personal gain.
+
+
+
+
+
+
+ 

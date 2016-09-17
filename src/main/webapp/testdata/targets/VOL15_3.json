@@ -1,0 +1,6051 @@
+{
+    "targets": [{
+        "end": 69,
+        "type": "Situation Entity",
+        "begin": 65
+    }, {
+        "end": 112,
+        "type": "Situation Entity",
+        "begin": 109
+    }, {
+        "end": 147,
+        "type": "Situation Entity",
+        "begin": 139
+    }, {
+        "end": 280,
+        "type": "Situation Entity",
+        "begin": 273
+    }, {
+        "end": 370,
+        "type": "Situation Entity",
+        "begin": 363
+    }, {
+        "end": 394,
+        "type": "Situation Entity",
+        "begin": 387
+    }, {
+        "end": 492,
+        "type": "Situation Entity",
+        "begin": 483
+    }, {
+        "end": 521,
+        "type": "Situation Entity",
+        "begin": 518
+    }, {
+        "end": 531,
+        "type": "Situation Entity",
+        "begin": 524
+    }, {
+        "end": 605,
+        "type": "Situation Entity",
+        "begin": 600
+    }, {
+        "end": 726,
+        "type": "Situation Entity",
+        "begin": 717
+    }, {
+        "end": 899,
+        "type": "Situation Entity",
+        "begin": 891
+    }, {
+        "end": 954,
+        "type": "Situation Entity",
+        "begin": 952
+    }, {
+        "end": 988,
+        "type": "Situation Entity",
+        "begin": 986
+    }, {
+        "end": 1060,
+        "type": "Situation Entity",
+        "begin": 1049
+    }, {
+        "end": 1169,
+        "type": "Situation Entity",
+        "begin": 1161
+    }, {
+        "end": 1277,
+        "type": "Situation Entity",
+        "begin": 1273
+    }, {
+        "end": 1360,
+        "type": "Situation Entity",
+        "begin": 1354
+    }, {
+        "end": 1405,
+        "type": "Situation Entity",
+        "begin": 1401
+    }, {
+        "end": 1480,
+        "type": "Situation Entity",
+        "begin": 1474
+    }, {
+        "end": 1624,
+        "type": "Situation Entity",
+        "begin": 1616
+    }, {
+        "end": 1631,
+        "type": "Situation Entity",
+        "begin": 1630
+    }, {
+        "end": 1691,
+        "type": "Situation Entity",
+        "begin": 1687
+    }, {
+        "end": 1762,
+        "type": "Situation Entity",
+        "begin": 1759
+    }, {
+        "end": 1823,
+        "type": "Situation Entity",
+        "begin": 1815
+    }, {
+        "end": 1864,
+        "type": "Situation Entity",
+        "begin": 1856
+    }, {
+        "end": 1908,
+        "type": "Situation Entity",
+        "begin": 1902
+    }, {
+        "end": 1940,
+        "type": "Situation Entity",
+        "begin": 1936
+    }, {
+        "end": 2004,
+        "type": "Situation Entity",
+        "begin": 2000
+    }, {
+        "end": 2067,
+        "type": "Situation Entity",
+        "begin": 2057
+    }, {
+        "end": 2129,
+        "type": "Situation Entity",
+        "begin": 2123
+    }, {
+        "end": 2141,
+        "type": "Situation Entity",
+        "begin": 2136
+    }, {
+        "end": 2358,
+        "type": "Situation Entity",
+        "begin": 2350
+    }, {
+        "end": 2392,
+        "type": "Situation Entity",
+        "begin": 2388
+    }, {
+        "end": 2498,
+        "type": "Situation Entity",
+        "begin": 2491
+    }, {
+        "end": 2590,
+        "type": "Situation Entity",
+        "begin": 2588
+    }, {
+        "end": 2672,
+        "type": "Situation Entity",
+        "begin": 2668
+    }, {
+        "end": 2677,
+        "type": "Situation Entity",
+        "begin": 2675
+    }, {
+        "end": 2735,
+        "type": "Situation Entity",
+        "begin": 2728
+    }, {
+        "end": 2747,
+        "type": "Situation Entity",
+        "begin": 2744
+    }, {
+        "end": 2775,
+        "type": "Situation Entity",
+        "begin": 2767
+    }, {
+        "end": 2799,
+        "type": "Situation Entity",
+        "begin": 2797
+    }, {
+        "end": 2856,
+        "type": "Situation Entity",
+        "begin": 2850
+    }, {
+        "end": 2919,
+        "type": "Situation Entity",
+        "begin": 2914
+    }, {
+        "end": 2949,
+        "type": "Situation Entity",
+        "begin": 2948
+    }, {
+        "end": 3050,
+        "type": "Situation Entity",
+        "begin": 3047
+    }, {
+        "end": 3066,
+        "type": "Situation Entity",
+        "begin": 3061
+    }, {
+        "end": 3128,
+        "type": "Situation Entity",
+        "begin": 3125
+    }, {
+        "end": 3194,
+        "type": "Situation Entity",
+        "begin": 3189
+    }, {
+        "end": 3267,
+        "type": "Situation Entity",
+        "begin": 3261
+    }, {
+        "end": 3387,
+        "type": "Situation Entity",
+        "begin": 3380
+    }, {
+        "end": 3429,
+        "type": "Situation Entity",
+        "begin": 3422
+    }, {
+        "end": 3475,
+        "type": "Situation Entity",
+        "begin": 3474
+    }, {
+        "end": 3496,
+        "type": "Situation Entity",
+        "begin": 3488
+    }, {
+        "end": 3605,
+        "type": "Situation Entity",
+        "begin": 3600
+    }, {
+        "end": 3628,
+        "type": "Situation Entity",
+        "begin": 3627
+    }, {
+        "end": 3674,
+        "type": "Situation Entity",
+        "begin": 3669
+    }, {
+        "end": 3696,
+        "type": "Situation Entity",
+        "begin": 3691
+    }, {
+        "end": 3775,
+        "type": "Situation Entity",
+        "begin": 3770
+    }, {
+        "end": 3812,
+        "type": "Situation Entity",
+        "begin": 3811
+    }, {
+        "end": 3860,
+        "type": "Situation Entity",
+        "begin": 3858
+    }, {
+        "end": 3943,
+        "type": "Situation Entity",
+        "begin": 3936
+    }, {
+        "end": 4026,
+        "type": "Situation Entity",
+        "begin": 4023
+    }, {
+        "end": 4098,
+        "type": "Situation Entity",
+        "begin": 4094
+    }, {
+        "end": 4126,
+        "type": "Situation Entity",
+        "begin": 4119
+    }, {
+        "end": 4186,
+        "type": "Situation Entity",
+        "begin": 4181
+    }, {
+        "end": 4222,
+        "type": "Situation Entity",
+        "begin": 4215
+    }, {
+        "end": 4230,
+        "type": "Situation Entity",
+        "begin": 4227
+    }, {
+        "end": 4279,
+        "type": "Situation Entity",
+        "begin": 4274
+    }, {
+        "end": 4328,
+        "type": "Situation Entity",
+        "begin": 4319
+    }, {
+        "end": 4377,
+        "type": "Situation Entity",
+        "begin": 4369
+    }, {
+        "end": 4434,
+        "type": "Situation Entity",
+        "begin": 4430
+    }, {
+        "end": 4533,
+        "type": "Situation Entity",
+        "begin": 4528
+    }, {
+        "end": 4605,
+        "type": "Situation Entity",
+        "begin": 4600
+    }, {
+        "end": 4696,
+        "type": "Situation Entity",
+        "begin": 4690
+    }, {
+        "end": 4703,
+        "type": "Situation Entity",
+        "begin": 4702
+    }, {
+        "end": 4733,
+        "type": "Situation Entity",
+        "begin": 4731
+    }, {
+        "end": 4839,
+        "type": "Situation Entity",
+        "begin": 4834
+    }, {
+        "end": 4863,
+        "type": "Situation Entity",
+        "begin": 4853
+    }, {
+        "end": 4885,
+        "type": "Situation Entity",
+        "begin": 4881
+    }, {
+        "end": 4952,
+        "type": "Situation Entity",
+        "begin": 4945
+    }, {
+        "end": 5012,
+        "type": "Situation Entity",
+        "begin": 5004
+    }, {
+        "end": 5039,
+        "type": "Situation Entity",
+        "begin": 5037
+    }, {
+        "end": 5077,
+        "type": "Situation Entity",
+        "begin": 5071
+    }, {
+        "end": 5110,
+        "type": "Situation Entity",
+        "begin": 5102
+    }, {
+        "end": 5182,
+        "type": "Situation Entity",
+        "begin": 5178
+    }, {
+        "end": 5219,
+        "type": "Situation Entity",
+        "begin": 5217
+    }, {
+        "end": 5344,
+        "type": "Situation Entity",
+        "begin": 5338
+    }, {
+        "end": 5411,
+        "type": "Situation Entity",
+        "begin": 5406
+    }, {
+        "end": 5473,
+        "type": "Situation Entity",
+        "begin": 5472
+    }, {
+        "end": 5521,
+        "type": "Situation Entity",
+        "begin": 5513
+    }, {
+        "end": 5559,
+        "type": "Situation Entity",
+        "begin": 5551
+    }, {
+        "end": 5618,
+        "type": "Situation Entity",
+        "begin": 5614
+    }, {
+        "end": 5733,
+        "type": "Situation Entity",
+        "begin": 5728
+    }, {
+        "end": 5759,
+        "type": "Situation Entity",
+        "begin": 5756
+    }, {
+        "end": 5868,
+        "type": "Situation Entity",
+        "begin": 5861
+    }, {
+        "end": 5888,
+        "type": "Situation Entity",
+        "begin": 5884
+    }, {
+        "end": 5965,
+        "type": "Situation Entity",
+        "begin": 5957
+    }, {
+        "end": 5984,
+        "type": "Situation Entity",
+        "begin": 5976
+    }, {
+        "end": 6047,
+        "type": "Situation Entity",
+        "begin": 6043
+    }, {
+        "end": 6252,
+        "type": "Situation Entity",
+        "begin": 6250
+    }, {
+        "end": 6281,
+        "type": "Situation Entity",
+        "begin": 6279
+    }, {
+        "end": 6480,
+        "type": "Situation Entity",
+        "begin": 6473
+    }, {
+        "end": 6493,
+        "type": "Situation Entity",
+        "begin": 6488
+    }, {
+        "end": 6539,
+        "type": "Situation Entity",
+        "begin": 6535
+    }, {
+        "end": 6598,
+        "type": "Situation Entity",
+        "begin": 6589
+    }, {
+        "end": 6663,
+        "type": "Situation Entity",
+        "begin": 6657
+    }, {
+        "end": 6726,
+        "type": "Situation Entity",
+        "begin": 6725
+    }, {
+        "end": 6739,
+        "type": "Situation Entity",
+        "begin": 6735
+    }, {
+        "end": 6782,
+        "type": "Situation Entity",
+        "begin": 6776
+    }, {
+        "end": 6824,
+        "type": "Situation Entity",
+        "begin": 6821
+    }, {
+        "end": 6877,
+        "type": "Situation Entity",
+        "begin": 6872
+    }, {
+        "end": 6913,
+        "type": "Situation Entity",
+        "begin": 6908
+    }, {
+        "end": 6942,
+        "type": "Situation Entity",
+        "begin": 6941
+    }, {
+        "end": 6997,
+        "type": "Situation Entity",
+        "begin": 6993
+    }, {
+        "end": 7107,
+        "type": "Situation Entity",
+        "begin": 7102
+    }, {
+        "end": 7160,
+        "type": "Situation Entity",
+        "begin": 7156
+    }, {
+        "end": 7277,
+        "type": "Situation Entity",
+        "begin": 7270
+    }, {
+        "end": 7330,
+        "type": "Situation Entity",
+        "begin": 7319
+    }, {
+        "end": 7399,
+        "type": "Situation Entity",
+        "begin": 7387
+    }, {
+        "end": 7406,
+        "type": "Situation Entity",
+        "begin": 7405
+    }, {
+        "end": 7433,
+        "type": "Situation Entity",
+        "begin": 7430
+    }, {
+        "end": 7501,
+        "type": "Situation Entity",
+        "begin": 7496
+    }, {
+        "end": 7598,
+        "type": "Situation Entity",
+        "begin": 7590
+    }, {
+        "end": 7623,
+        "type": "Situation Entity",
+        "begin": 7617
+    }, {
+        "end": 7667,
+        "type": "Situation Entity",
+        "begin": 7666
+    }, {
+        "end": 7719,
+        "type": "Situation Entity",
+        "begin": 7716
+    }, {
+        "end": 7781,
+        "type": "Situation Entity",
+        "begin": 7777
+    }, {
+        "end": 7846,
+        "type": "Situation Entity",
+        "begin": 7840
+    }, {
+        "end": 7926,
+        "type": "Situation Entity",
+        "begin": 7921
+    }, {
+        "end": 8021,
+        "type": "Situation Entity",
+        "begin": 8017
+    }, {
+        "end": 8054,
+        "type": "Situation Entity",
+        "begin": 8051
+    }, {
+        "end": 8115,
+        "type": "Situation Entity",
+        "begin": 8103
+    }, {
+        "end": 8129,
+        "type": "Situation Entity",
+        "begin": 8127
+    }, {
+        "end": 8195,
+        "type": "Situation Entity",
+        "begin": 8192
+    }, {
+        "end": 8248,
+        "type": "Situation Entity",
+        "begin": 8242
+    }, {
+        "end": 8311,
+        "type": "Situation Entity",
+        "begin": 8302
+    }, {
+        "end": 8511,
+        "type": "Situation Entity",
+        "begin": 8506
+    }, {
+        "end": 8561,
+        "type": "Situation Entity",
+        "begin": 8553
+    }, {
+        "end": 8629,
+        "type": "Situation Entity",
+        "begin": 8620
+    }, {
+        "end": 8654,
+        "type": "Situation Entity",
+        "begin": 8649
+    }, {
+        "end": 8701,
+        "type": "Situation Entity",
+        "begin": 8691
+    }, {
+        "end": 8800,
+        "type": "Situation Entity",
+        "begin": 8792
+    }, {
+        "end": 8835,
+        "type": "Situation Entity",
+        "begin": 8829
+    }, {
+        "end": 8861,
+        "type": "Situation Entity",
+        "begin": 8853
+    }, {
+        "end": 8940,
+        "type": "Situation Entity",
+        "begin": 8938
+    }, {
+        "end": 9037,
+        "type": "Situation Entity",
+        "begin": 9027
+    }, {
+        "end": 9045,
+        "type": "Situation Entity",
+        "begin": 9039
+    }, {
+        "end": 9105,
+        "type": "Situation Entity",
+        "begin": 9101
+    }, {
+        "end": 9220,
+        "type": "Situation Entity",
+        "begin": 9214
+    }, {
+        "end": 9288,
+        "type": "Situation Entity",
+        "begin": 9278
+    }, {
+        "end": 9377,
+        "type": "Situation Entity",
+        "begin": 9372
+    }, {
+        "end": 9419,
+        "type": "Situation Entity",
+        "begin": 9412
+    }, {
+        "end": 9603,
+        "type": "Situation Entity",
+        "begin": 9596
+    }, {
+        "end": 9654,
+        "type": "Situation Entity",
+        "begin": 9652
+    }, {
+        "end": 9673,
+        "type": "Situation Entity",
+        "begin": 9669
+    }, {
+        "end": 9782,
+        "type": "Situation Entity",
+        "begin": 9778
+    }, {
+        "end": 9792,
+        "type": "Situation Entity",
+        "begin": 9790
+    }, {
+        "end": 9898,
+        "type": "Situation Entity",
+        "begin": 9891
+    }, {
+        "end": 9916,
+        "type": "Situation Entity",
+        "begin": 9912
+    }, {
+        "end": 9943,
+        "type": "Situation Entity",
+        "begin": 9940
+    }, {
+        "end": 10068,
+        "type": "Situation Entity",
+        "begin": 10062
+    }, {
+        "end": 10098,
+        "type": "Situation Entity",
+        "begin": 10094
+    }, {
+        "end": 10119,
+        "type": "Situation Entity",
+        "begin": 10115
+    }, {
+        "end": 10147,
+        "type": "Situation Entity",
+        "begin": 10142
+    }, {
+        "end": 10187,
+        "type": "Situation Entity",
+        "begin": 10185
+    }, {
+        "end": 10307,
+        "type": "Situation Entity",
+        "begin": 10303
+    }, {
+        "end": 10332,
+        "type": "Situation Entity",
+        "begin": 10329
+    }, {
+        "end": 10353,
+        "type": "Situation Entity",
+        "begin": 10351
+    }, {
+        "end": 10462,
+        "type": "Situation Entity",
+        "begin": 10456
+    }, {
+        "end": 10529,
+        "type": "Situation Entity",
+        "begin": 10523
+    }, {
+        "end": 10579,
+        "type": "Situation Entity",
+        "begin": 10577
+    }, {
+        "end": 10606,
+        "type": "Situation Entity",
+        "begin": 10600
+    }, {
+        "end": 10715,
+        "type": "Situation Entity",
+        "begin": 10710
+    }, {
+        "end": 10725,
+        "type": "Situation Entity",
+        "begin": 10722
+    }, {
+        "end": 10745,
+        "type": "Situation Entity",
+        "begin": 10739
+    }, {
+        "end": 10763,
+        "type": "Situation Entity",
+        "begin": 10761
+    }, {
+        "end": 10788,
+        "type": "Situation Entity",
+        "begin": 10786
+    }, {
+        "end": 10821,
+        "type": "Situation Entity",
+        "begin": 10814
+    }, {
+        "end": 10896,
+        "type": "Situation Entity",
+        "begin": 10888
+    }, {
+        "end": 11063,
+        "type": "Situation Entity",
+        "begin": 11060
+    }, {
+        "end": 11149,
+        "type": "Situation Entity",
+        "begin": 11146
+    }, {
+        "end": 11237,
+        "type": "Situation Entity",
+        "begin": 11231
+    }, {
+        "end": 11270,
+        "type": "Situation Entity",
+        "begin": 11267
+    }, {
+        "end": 11301,
+        "type": "Situation Entity",
+        "begin": 11296
+    }, {
+        "end": 11335,
+        "type": "Situation Entity",
+        "begin": 11333
+    }, {
+        "end": 11353,
+        "type": "Situation Entity",
+        "begin": 11349
+    }, {
+        "end": 11458,
+        "type": "Situation Entity",
+        "begin": 11429
+    }, {
+        "end": 11469,
+        "type": "Situation Entity",
+        "begin": 11467
+    }, {
+        "end": 11492,
+        "type": "Situation Entity",
+        "begin": 11487
+    }, {
+        "end": 11506,
+        "type": "Situation Entity",
+        "begin": 11501
+    }, {
+        "end": 11521,
+        "type": "Situation Entity",
+        "begin": 11515
+    }, {
+        "end": 11582,
+        "type": "Situation Entity",
+        "begin": 11579
+    }, {
+        "end": 11614,
+        "type": "Situation Entity",
+        "begin": 11612
+    }, {
+        "end": 11632,
+        "type": "Situation Entity",
+        "begin": 11630
+    }, {
+        "end": 11668,
+        "type": "Situation Entity",
+        "begin": 11661
+    }, {
+        "end": 11696,
+        "type": "Situation Entity",
+        "begin": 11691
+    }, {
+        "end": 11709,
+        "type": "Situation Entity",
+        "begin": 11707
+    }, {
+        "end": 11739,
+        "type": "Situation Entity",
+        "begin": 11733
+    }, {
+        "end": 11777,
+        "type": "Situation Entity",
+        "begin": 11774
+    }, {
+        "end": 11844,
+        "type": "Situation Entity",
+        "begin": 11841
+    }, {
+        "end": 11901,
+        "type": "Situation Entity",
+        "begin": 11896
+    }, {
+        "end": 11932,
+        "type": "Situation Entity",
+        "begin": 11928
+    }, {
+        "end": 11959,
+        "type": "Situation Entity",
+        "begin": 11952
+    }, {
+        "end": 11968,
+        "type": "Situation Entity",
+        "begin": 11965
+    }, {
+        "end": 12006,
+        "type": "Situation Entity",
+        "begin": 12002
+    }, {
+        "end": 12125,
+        "type": "Situation Entity",
+        "begin": 12122
+    }, {
+        "end": 12149,
+        "type": "Situation Entity",
+        "begin": 12146
+    }, {
+        "end": 12194,
+        "type": "Situation Entity",
+        "begin": 12188
+    }, {
+        "end": 12284,
+        "type": "Situation Entity",
+        "begin": 12281
+    }, {
+        "end": 12385,
+        "type": "Situation Entity",
+        "begin": 12382
+    }, {
+        "end": 12416,
+        "type": "Situation Entity",
+        "begin": 12409
+    }, {
+        "end": 12421,
+        "type": "Situation Entity",
+        "begin": 12418
+    }, {
+        "end": 12450,
+        "type": "Situation Entity",
+        "begin": 12447
+    }, {
+        "end": 12488,
+        "type": "Situation Entity",
+        "begin": 12481
+    }, {
+        "end": 12518,
+        "type": "Situation Entity",
+        "begin": 12514
+    }, {
+        "end": 12566,
+        "type": "Situation Entity",
+        "begin": 12558
+    }, {
+        "end": 12581,
+        "type": "Situation Entity",
+        "begin": 12577
+    }, {
+        "end": 12615,
+        "type": "Situation Entity",
+        "begin": 12609
+    }, {
+        "end": 12640,
+        "type": "Situation Entity",
+        "begin": 12637
+    }, {
+        "end": 12668,
+        "type": "Situation Entity",
+        "begin": 12662
+    }, {
+        "end": 12704,
+        "type": "Situation Entity",
+        "begin": 12699
+    }, {
+        "end": 12715,
+        "type": "Situation Entity",
+        "begin": 12713
+    }, {
+        "end": 12786,
+        "type": "Situation Entity",
+        "begin": 12780
+    }, {
+        "end": 12813,
+        "type": "Situation Entity",
+        "begin": 12810
+    }, {
+        "end": 12958,
+        "type": "Situation Entity",
+        "begin": 12955
+    }, {
+        "end": 13033,
+        "type": "Situation Entity",
+        "begin": 13029
+    }, {
+        "end": 13098,
+        "type": "Situation Entity",
+        "begin": 13090
+    }, {
+        "end": 13131,
+        "type": "Situation Entity",
+        "begin": 13128
+    }, {
+        "end": 13164,
+        "type": "Situation Entity",
+        "begin": 13159
+    }, {
+        "end": 13176,
+        "type": "Situation Entity",
+        "begin": 13172
+    }, {
+        "end": 13203,
+        "type": "Situation Entity",
+        "begin": 13201
+    }, {
+        "end": 13255,
+        "type": "Situation Entity",
+        "begin": 13246
+    }, {
+        "end": 13307,
+        "type": "Situation Entity",
+        "begin": 13304
+    }, {
+        "end": 13348,
+        "type": "Situation Entity",
+        "begin": 13344
+    }, {
+        "end": 13402,
+        "type": "Situation Entity",
+        "begin": 13396
+    }, {
+        "end": 13503,
+        "type": "Situation Entity",
+        "begin": 13496
+    }, {
+        "end": 13525,
+        "type": "Situation Entity",
+        "begin": 13521
+    }, {
+        "end": 13564,
+        "type": "Situation Entity",
+        "begin": 13561
+    }, {
+        "end": 13704,
+        "type": "Situation Entity",
+        "begin": 13700
+    }, {
+        "end": 13769,
+        "type": "Situation Entity",
+        "begin": 13764
+    }, {
+        "end": 13799,
+        "type": "Situation Entity",
+        "begin": 13793
+    }, {
+        "end": 13834,
+        "type": "Situation Entity",
+        "begin": 13828
+    }, {
+        "end": 13853,
+        "type": "Situation Entity",
+        "begin": 13844
+    }, {
+        "end": 13877,
+        "type": "Situation Entity",
+        "begin": 13871
+    }, {
+        "end": 13914,
+        "type": "Situation Entity",
+        "begin": 13905
+    }, {
+        "end": 13965,
+        "type": "Situation Entity",
+        "begin": 13961
+    }, {
+        "end": 14003,
+        "type": "Situation Entity",
+        "begin": 13997
+    }, {
+        "end": 14061,
+        "type": "Situation Entity",
+        "begin": 14058
+    }, {
+        "end": 14142,
+        "type": "Situation Entity",
+        "begin": 14138
+    }, {
+        "end": 14164,
+        "type": "Situation Entity",
+        "begin": 14159
+    }, {
+        "end": 14266,
+        "type": "Situation Entity",
+        "begin": 14262
+    }, {
+        "end": 14347,
+        "type": "Situation Entity",
+        "begin": 14341
+    }, {
+        "end": 14380,
+        "type": "Situation Entity",
+        "begin": 14377
+    }, {
+        "end": 14458,
+        "type": "Situation Entity",
+        "begin": 14454
+    }, {
+        "end": 14513,
+        "type": "Situation Entity",
+        "begin": 14509
+    }, {
+        "end": 14561,
+        "type": "Situation Entity",
+        "begin": 14557
+    }, {
+        "end": 14586,
+        "type": "Situation Entity",
+        "begin": 14582
+    }, {
+        "end": 14704,
+        "type": "Situation Entity",
+        "begin": 14701
+    }, {
+        "end": 14739,
+        "type": "Situation Entity",
+        "begin": 14734
+    }, {
+        "end": 14753,
+        "type": "Situation Entity",
+        "begin": 14750
+    }, {
+        "end": 14762,
+        "type": "Situation Entity",
+        "begin": 14759
+    }, {
+        "end": 14833,
+        "type": "Situation Entity",
+        "begin": 14829
+    }, {
+        "end": 14880,
+        "type": "Situation Entity",
+        "begin": 14877
+    }, {
+        "end": 14933,
+        "type": "Situation Entity",
+        "begin": 14929
+    }, {
+        "end": 14963,
+        "type": "Situation Entity",
+        "begin": 14960
+    }, {
+        "end": 15002,
+        "type": "Situation Entity",
+        "begin": 14993
+    }, {
+        "end": 15030,
+        "type": "Situation Entity",
+        "begin": 15024
+    }, {
+        "end": 15055,
+        "type": "Situation Entity",
+        "begin": 15047
+    }, {
+        "end": 15065,
+        "type": "Situation Entity",
+        "begin": 15062
+    }, {
+        "end": 15092,
+        "type": "Situation Entity",
+        "begin": 15084
+    }, {
+        "end": 15134,
+        "type": "Situation Entity",
+        "begin": 15131
+    }, {
+        "end": 15180,
+        "type": "Situation Entity",
+        "begin": 15176
+    }, {
+        "end": 15235,
+        "type": "Situation Entity",
+        "begin": 15231
+    }, {
+        "end": 15312,
+        "type": "Situation Entity",
+        "begin": 15304
+    }, {
+        "end": 15367,
+        "type": "Situation Entity",
+        "begin": 15361
+    }, {
+        "end": 15427,
+        "type": "Situation Entity",
+        "begin": 15425
+    }, {
+        "end": 15531,
+        "type": "Situation Entity",
+        "begin": 15521
+    }, {
+        "end": 15557,
+        "type": "Situation Entity",
+        "begin": 15554
+    }, {
+        "end": 15568,
+        "type": "Situation Entity",
+        "begin": 15565
+    }, {
+        "end": 15594,
+        "type": "Situation Entity",
+        "begin": 15590
+    }, {
+        "end": 15625,
+        "type": "Situation Entity",
+        "begin": 15619
+    }, {
+        "end": 15666,
+        "type": "Situation Entity",
+        "begin": 15662
+    }, {
+        "end": 15711,
+        "type": "Situation Entity",
+        "begin": 15704
+    }, {
+        "end": 15720,
+        "type": "Situation Entity",
+        "begin": 15718
+    }, {
+        "end": 15756,
+        "type": "Situation Entity",
+        "begin": 15753
+    }, {
+        "end": 15780,
+        "type": "Situation Entity",
+        "begin": 15774
+    }, {
+        "end": 15834,
+        "type": "Situation Entity",
+        "begin": 15830
+    }, {
+        "end": 15874,
+        "type": "Situation Entity",
+        "begin": 15868
+    }, {
+        "end": 15894,
+        "type": "Situation Entity",
+        "begin": 15889
+    }, {
+        "end": 15953,
+        "type": "Situation Entity",
+        "begin": 15951
+    }, {
+        "end": 16131,
+        "type": "Situation Entity",
+        "begin": 16126
+    }, {
+        "end": 16151,
+        "type": "Situation Entity",
+        "begin": 16148
+    }, {
+        "end": 16251,
+        "type": "Situation Entity",
+        "begin": 16247
+    }, {
+        "end": 16285,
+        "type": "Situation Entity",
+        "begin": 16280
+    }, {
+        "end": 16296,
+        "type": "Situation Entity",
+        "begin": 16292
+    }, {
+        "end": 16330,
+        "type": "Situation Entity",
+        "begin": 16327
+    }, {
+        "end": 16395,
+        "type": "Situation Entity",
+        "begin": 16393
+    }, {
+        "end": 16461,
+        "type": "Situation Entity",
+        "begin": 16457
+    }, {
+        "end": 16481,
+        "type": "Situation Entity",
+        "begin": 16479
+    }, {
+        "end": 16537,
+        "type": "Situation Entity",
+        "begin": 16533
+    }, {
+        "end": 16553,
+        "type": "Situation Entity",
+        "begin": 16548
+    }, {
+        "end": 16579,
+        "type": "Situation Entity",
+        "begin": 16577
+    }, {
+        "end": 16632,
+        "type": "Situation Entity",
+        "begin": 16623
+    }, {
+        "end": 16684,
+        "type": "Situation Entity",
+        "begin": 16679
+    }, {
+        "end": 16721,
+        "type": "Situation Entity",
+        "begin": 16712
+    }, {
+        "end": 16768,
+        "type": "Situation Entity",
+        "begin": 16762
+    }, {
+        "end": 16781,
+        "type": "Situation Entity",
+        "begin": 16779
+    }, {
+        "end": 16825,
+        "type": "Situation Entity",
+        "begin": 16819
+    }, {
+        "end": 16896,
+        "type": "Situation Entity",
+        "begin": 16891
+    }, {
+        "end": 17044,
+        "type": "Situation Entity",
+        "begin": 17036
+    }, {
+        "end": 17094,
+        "type": "Situation Entity",
+        "begin": 17091
+    }, {
+        "end": 17121,
+        "type": "Situation Entity",
+        "begin": 17117
+    }, {
+        "end": 17127,
+        "type": "Situation Entity",
+        "begin": 17125
+    }, {
+        "end": 17167,
+        "type": "Situation Entity",
+        "begin": 17159
+    }, {
+        "end": 17203,
+        "type": "Situation Entity",
+        "begin": 17198
+    }, {
+        "end": 17225,
+        "type": "Situation Entity",
+        "begin": 17218
+    }, {
+        "end": 17277,
+        "type": "Situation Entity",
+        "begin": 17275
+    }, {
+        "end": 17362,
+        "type": "Situation Entity",
+        "begin": 17355
+    }, {
+        "end": 17375,
+        "type": "Situation Entity",
+        "begin": 17373
+    }, {
+        "end": 17419,
+        "type": "Situation Entity",
+        "begin": 17417
+    }, {
+        "end": 17475,
+        "type": "Situation Entity",
+        "begin": 17473
+    }, {
+        "end": 17514,
+        "type": "Situation Entity",
+        "begin": 17512
+    }, {
+        "end": 17551,
+        "type": "Situation Entity",
+        "begin": 17545
+    }, {
+        "end": 17566,
+        "type": "Situation Entity",
+        "begin": 17565
+    }, {
+        "end": 17625,
+        "type": "Situation Entity",
+        "begin": 17623
+    }, {
+        "end": 17676,
+        "type": "Situation Entity",
+        "begin": 17674
+    }, {
+        "end": 17703,
+        "type": "Situation Entity",
+        "begin": 17699
+    }, {
+        "end": 17724,
+        "type": "Situation Entity",
+        "begin": 17721
+    }, {
+        "end": 17810,
+        "type": "Situation Entity",
+        "begin": 17803
+    }, {
+        "end": 17843,
+        "type": "Situation Entity",
+        "begin": 17838
+    }, {
+        "end": 17868,
+        "type": "Situation Entity",
+        "begin": 17861
+    }, {
+        "end": 17999,
+        "type": "Situation Entity",
+        "begin": 17995
+    }, {
+        "end": 18051,
+        "type": "Situation Entity",
+        "begin": 18046
+    }, {
+        "end": 18071,
+        "type": "Situation Entity",
+        "begin": 18064
+    }, {
+        "end": 18094,
+        "type": "Situation Entity",
+        "begin": 18091
+    }, {
+        "end": 18109,
+        "type": "Situation Entity",
+        "begin": 18104
+    }, {
+        "end": 18137,
+        "type": "Situation Entity",
+        "begin": 18133
+    }, {
+        "end": 18140,
+        "type": "Situation Entity",
+        "begin": 18139
+    }, {
+        "end": 18158,
+        "type": "Situation Entity",
+        "begin": 18156
+    }, {
+        "end": 18190,
+        "type": "Situation Entity",
+        "begin": 18185
+    }, {
+        "end": 18215,
+        "type": "Situation Entity",
+        "begin": 18211
+    }, {
+        "end": 18222,
+        "type": "Situation Entity",
+        "begin": 18220
+    }, {
+        "end": 18244,
+        "type": "Situation Entity",
+        "begin": 18237
+    }, {
+        "end": 18259,
+        "type": "Situation Entity",
+        "begin": 18254
+    }, {
+        "end": 18266,
+        "type": "Situation Entity",
+        "begin": 18264
+    }, {
+        "end": 18293,
+        "type": "Situation Entity",
+        "begin": 18289
+    }, {
+        "end": 18319,
+        "type": "Situation Entity",
+        "begin": 18316
+    }, {
+        "end": 18328,
+        "type": "Situation Entity",
+        "begin": 18324
+    }, {
+        "end": 18387,
+        "type": "Situation Entity",
+        "begin": 18380
+    }, {
+        "end": 18437,
+        "type": "Situation Entity",
+        "begin": 18429
+    }, {
+        "end": 18487,
+        "type": "Situation Entity",
+        "begin": 18483
+    }, {
+        "end": 18595,
+        "type": "Situation Entity",
+        "begin": 18594
+    }, {
+        "end": 18607,
+        "type": "Situation Entity",
+        "begin": 18604
+    }, {
+        "end": 18679,
+        "type": "Situation Entity",
+        "begin": 18675
+    }, {
+        "end": 18783,
+        "type": "Situation Entity",
+        "begin": 18782
+    }, {
+        "end": 18843,
+        "type": "Situation Entity",
+        "begin": 18838
+    }, {
+        "end": 18874,
+        "type": "Situation Entity",
+        "begin": 18869
+    }, {
+        "end": 19028,
+        "type": "Situation Entity",
+        "begin": 19022
+    }, {
+        "end": 19076,
+        "type": "Situation Entity",
+        "begin": 19069
+    }, {
+        "end": 19125,
+        "type": "Situation Entity",
+        "begin": 19116
+    }, {
+        "end": 19170,
+        "type": "Situation Entity",
+        "begin": 19164
+    }, {
+        "end": 19203,
+        "type": "Situation Entity",
+        "begin": 19199
+    }, {
+        "end": 19235,
+        "type": "Situation Entity",
+        "begin": 19230
+    }, {
+        "end": 19329,
+        "type": "Situation Entity",
+        "begin": 19323
+    }, {
+        "end": 19389,
+        "type": "Situation Entity",
+        "begin": 19384
+    }, {
+        "end": 19431,
+        "type": "Situation Entity",
+        "begin": 19421
+    }, {
+        "end": 19469,
+        "type": "Situation Entity",
+        "begin": 19465
+    }, {
+        "end": 19492,
+        "type": "Situation Entity",
+        "begin": 19489
+    }, {
+        "end": 19545,
+        "type": "Situation Entity",
+        "begin": 19538
+    }, {
+        "end": 19553,
+        "type": "Situation Entity",
+        "begin": 19551
+    }, {
+        "end": 19594,
+        "type": "Situation Entity",
+        "begin": 19587
+    }, {
+        "end": 19706,
+        "type": "Situation Entity",
+        "begin": 19700
+    }, {
+        "end": 19761,
+        "type": "Situation Entity",
+        "begin": 19757
+    }, {
+        "end": 19852,
+        "type": "Situation Entity",
+        "begin": 19850
+    }, {
+        "end": 19893,
+        "type": "Situation Entity",
+        "begin": 19890
+    }, {
+        "end": 19926,
+        "type": "Situation Entity",
+        "begin": 19924
+    }, {
+        "end": 20007,
+        "type": "Situation Entity",
+        "begin": 20004
+    }, {
+        "end": 20122,
+        "type": "Situation Entity",
+        "begin": 20118
+    }, {
+        "end": 20149,
+        "type": "Situation Entity",
+        "begin": 20147
+    }, {
+        "end": 20160,
+        "type": "Situation Entity",
+        "begin": 20153
+    }, {
+        "end": 20209,
+        "type": "Situation Entity",
+        "begin": 20204
+    }, {
+        "end": 20244,
+        "type": "Situation Entity",
+        "begin": 20242
+    }, {
+        "end": 20275,
+        "type": "Situation Entity",
+        "begin": 20270
+    }, {
+        "end": 20331,
+        "type": "Situation Entity",
+        "begin": 20328
+    }, {
+        "end": 20376,
+        "type": "Situation Entity",
+        "begin": 20369
+    }, {
+        "end": 20410,
+        "type": "Situation Entity",
+        "begin": 20402
+    }, {
+        "end": 20462,
+        "type": "Situation Entity",
+        "begin": 20456
+    }, {
+        "end": 20551,
+        "type": "Situation Entity",
+        "begin": 20542
+    }, {
+        "end": 20622,
+        "type": "Situation Entity",
+        "begin": 20618
+    }, {
+        "end": 20642,
+        "type": "Situation Entity",
+        "begin": 20638
+    }, {
+        "end": 20695,
+        "type": "Situation Entity",
+        "begin": 20689
+    }, {
+        "end": 20720,
+        "type": "Situation Entity",
+        "begin": 20717
+    }, {
+        "end": 20867,
+        "type": "Situation Entity",
+        "begin": 20862
+    }, {
+        "end": 20921,
+        "type": "Situation Entity",
+        "begin": 20918
+    }, {
+        "end": 20944,
+        "type": "Situation Entity",
+        "begin": 20934
+    }, {
+        "end": 20967,
+        "type": "Situation Entity",
+        "begin": 20962
+    }, {
+        "end": 21007,
+        "type": "Situation Entity",
+        "begin": 21001
+    }, {
+        "end": 21037,
+        "type": "Situation Entity",
+        "begin": 21029
+    }, {
+        "end": 21064,
+        "type": "Situation Entity",
+        "begin": 21059
+    }, {
+        "end": 21117,
+        "type": "Situation Entity",
+        "begin": 21113
+    }, {
+        "end": 21232,
+        "type": "Situation Entity",
+        "begin": 21225
+    }, {
+        "end": 21252,
+        "type": "Situation Entity",
+        "begin": 21251
+    }, {
+        "end": 21366,
+        "type": "Situation Entity",
+        "begin": 21360
+    }, {
+        "end": 21437,
+        "type": "Situation Entity",
+        "begin": 21435
+    }, {
+        "end": 21561,
+        "type": "Situation Entity",
+        "begin": 21559
+    }, {
+        "end": 21604,
+        "type": "Situation Entity",
+        "begin": 21598
+    }, {
+        "end": 21645,
+        "type": "Situation Entity",
+        "begin": 21643
+    }, {
+        "end": 21750,
+        "type": "Situation Entity",
+        "begin": 21745
+    }, {
+        "end": 21791,
+        "type": "Situation Entity",
+        "begin": 21788
+    }, {
+        "end": 21843,
+        "type": "Situation Entity",
+        "begin": 21834
+    }, {
+        "end": 21942,
+        "type": "Situation Entity",
+        "begin": 21937
+    }, {
+        "end": 22006,
+        "type": "Situation Entity",
+        "begin": 21999
+    }, {
+        "end": 22056,
+        "type": "Situation Entity",
+        "begin": 22048
+    }, {
+        "end": 22129,
+        "type": "Situation Entity",
+        "begin": 22126
+    }, {
+        "end": 22217,
+        "type": "Situation Entity",
+        "begin": 22211
+    }, {
+        "end": 22284,
+        "type": "Situation Entity",
+        "begin": 22280
+    }, {
+        "end": 22371,
+        "type": "Situation Entity",
+        "begin": 22366
+    }, {
+        "end": 22424,
+        "type": "Situation Entity",
+        "begin": 22421
+    }, {
+        "end": 22460,
+        "type": "Situation Entity",
+        "begin": 22452
+    }, {
+        "end": 22497,
+        "type": "Situation Entity",
+        "begin": 22487
+    }, {
+        "end": 22547,
+        "type": "Situation Entity",
+        "begin": 22539
+    }, {
+        "end": 22585,
+        "type": "Situation Entity",
+        "begin": 22577
+    }, {
+        "end": 22676,
+        "type": "Situation Entity",
+        "begin": 22669
+    }, {
+        "end": 22767,
+        "type": "Situation Entity",
+        "begin": 22761
+    }, {
+        "end": 22868,
+        "type": "Situation Entity",
+        "begin": 22858
+    }, {
+        "end": 22938,
+        "type": "Situation Entity",
+        "begin": 22931
+    }, {
+        "end": 23120,
+        "type": "Situation Entity",
+        "begin": 23115
+    }, {
+        "end": 23151,
+        "type": "Situation Entity",
+        "begin": 23147
+    }, {
+        "end": 23232,
+        "type": "Situation Entity",
+        "begin": 23224
+    }, {
+        "end": 23281,
+        "type": "Situation Entity",
+        "begin": 23272
+    }, {
+        "end": 23314,
+        "type": "Situation Entity",
+        "begin": 23308
+    }, {
+        "end": 23351,
+        "type": "Situation Entity",
+        "begin": 23344
+    }, {
+        "end": 23390,
+        "type": "Situation Entity",
+        "begin": 23386
+    }, {
+        "end": 23411,
+        "type": "Situation Entity",
+        "begin": 23403
+    }, {
+        "end": 23503,
+        "type": "Situation Entity",
+        "begin": 23500
+    }, {
+        "end": 23561,
+        "type": "Situation Entity",
+        "begin": 23557
+    }, {
+        "end": 23624,
+        "type": "Situation Entity",
+        "begin": 23618
+    }, {
+        "end": 23682,
+        "type": "Situation Entity",
+        "begin": 23680
+    }, {
+        "end": 23785,
+        "type": "Situation Entity",
+        "begin": 23783
+    }, {
+        "end": 23865,
+        "type": "Situation Entity",
+        "begin": 23859
+    }, {
+        "end": 23895,
+        "type": "Situation Entity",
+        "begin": 23887
+    }, {
+        "end": 23912,
+        "type": "Situation Entity",
+        "begin": 23909
+    }, {
+        "end": 23964,
+        "type": "Situation Entity",
+        "begin": 23958
+    }, {
+        "end": 24036,
+        "type": "Situation Entity",
+        "begin": 24030
+    }, {
+        "end": 24078,
+        "type": "Situation Entity",
+        "begin": 24073
+    }, {
+        "end": 24147,
+        "type": "Situation Entity",
+        "begin": 24137
+    }, {
+        "end": 24189,
+        "type": "Situation Entity",
+        "begin": 24186
+    }, {
+        "end": 24265,
+        "type": "Situation Entity",
+        "begin": 24262
+    }, {
+        "end": 24355,
+        "type": "Situation Entity",
+        "begin": 24346
+    }, {
+        "end": 24409,
+        "type": "Situation Entity",
+        "begin": 24406
+    }, {
+        "end": 24428,
+        "type": "Situation Entity",
+        "begin": 24424
+    }, {
+        "end": 24531,
+        "type": "Situation Entity",
+        "begin": 24522
+    }, {
+        "end": 24648,
+        "type": "Situation Entity",
+        "begin": 24643
+    }, {
+        "end": 24660,
+        "type": "Situation Entity",
+        "begin": 24650
+    }, {
+        "end": 24681,
+        "type": "Situation Entity",
+        "begin": 24677
+    }, {
+        "end": 24774,
+        "type": "Situation Entity",
+        "begin": 24766
+    }, {
+        "end": 24968,
+        "type": "Situation Entity",
+        "begin": 24965
+    }, {
+        "end": 25004,
+        "type": "Situation Entity",
+        "begin": 25000
+    }, {
+        "end": 25079,
+        "type": "Situation Entity",
+        "begin": 25071
+    }, {
+        "end": 25111,
+        "type": "Situation Entity",
+        "begin": 25109
+    }, {
+        "end": 25184,
+        "type": "Situation Entity",
+        "begin": 25180
+    }, {
+        "end": 25275,
+        "type": "Situation Entity",
+        "begin": 25266
+    }, {
+        "end": 25373,
+        "type": "Situation Entity",
+        "begin": 25371
+    }, {
+        "end": 25390,
+        "type": "Situation Entity",
+        "begin": 25386
+    }, {
+        "end": 25524,
+        "type": "Situation Entity",
+        "begin": 25519
+    }, {
+        "end": 25570,
+        "type": "Situation Entity",
+        "begin": 25568
+    }, {
+        "end": 25587,
+        "type": "Situation Entity",
+        "begin": 25585
+    }, {
+        "end": 25630,
+        "type": "Situation Entity",
+        "begin": 25626
+    }, {
+        "end": 25650,
+        "type": "Situation Entity",
+        "begin": 25646
+    }, {
+        "end": 25710,
+        "type": "Situation Entity",
+        "begin": 25708
+    }, {
+        "end": 25840,
+        "type": "Situation Entity",
+        "begin": 25833
+    }, {
+        "end": 25883,
+        "type": "Situation Entity",
+        "begin": 25876
+    }, {
+        "end": 25937,
+        "type": "Situation Entity",
+        "begin": 25935
+    }, {
+        "end": 25952,
+        "type": "Situation Entity",
+        "begin": 25950
+    }, {
+        "end": 26027,
+        "type": "Situation Entity",
+        "begin": 26020
+    }, {
+        "end": 26059,
+        "type": "Situation Entity",
+        "begin": 26057
+    }, {
+        "end": 26141,
+        "type": "Situation Entity",
+        "begin": 26132
+    }, {
+        "end": 26183,
+        "type": "Situation Entity",
+        "begin": 26181
+    }, {
+        "end": 26264,
+        "type": "Situation Entity",
+        "begin": 26256
+    }, {
+        "end": 26304,
+        "type": "Situation Entity",
+        "begin": 26297
+    }, {
+        "end": 26385,
+        "type": "Situation Entity",
+        "begin": 26377
+    }, {
+        "end": 26416,
+        "type": "Situation Entity",
+        "begin": 26408
+    }, {
+        "end": 26469,
+        "type": "Situation Entity",
+        "begin": 26462
+    }, {
+        "end": 26550,
+        "type": "Situation Entity",
+        "begin": 26543
+    }, {
+        "end": 26590,
+        "type": "Situation Entity",
+        "begin": 26585
+    }, {
+        "end": 26639,
+        "type": "Situation Entity",
+        "begin": 26636
+    }, {
+        "end": 26646,
+        "type": "Situation Entity",
+        "begin": 26644
+    }, {
+        "end": 26676,
+        "type": "Situation Entity",
+        "begin": 26671
+    }, {
+        "end": 26713,
+        "type": "Situation Entity",
+        "begin": 26710
+    }, {
+        "end": 26771,
+        "type": "Situation Entity",
+        "begin": 26764
+    }, {
+        "end": 26827,
+        "type": "Situation Entity",
+        "begin": 26817
+    }, {
+        "end": 26856,
+        "type": "Situation Entity",
+        "begin": 26851
+    }, {
+        "end": 26885,
+        "type": "Situation Entity",
+        "begin": 26876
+    }, {
+        "end": 26944,
+        "type": "Situation Entity",
+        "begin": 26936
+    }, {
+        "end": 27001,
+        "type": "Situation Entity",
+        "begin": 26995
+    }, {
+        "end": 27083,
+        "type": "Situation Entity",
+        "begin": 27071
+    }, {
+        "end": 27162,
+        "type": "Situation Entity",
+        "begin": 27159
+    }, {
+        "end": 27183,
+        "type": "Situation Entity",
+        "begin": 27176
+    }, {
+        "end": 27210,
+        "type": "Situation Entity",
+        "begin": 27203
+    }, {
+        "end": 27282,
+        "type": "Situation Entity",
+        "begin": 27278
+    }, {
+        "end": 27358,
+        "type": "Situation Entity",
+        "begin": 27354
+    }, {
+        "end": 27432,
+        "type": "Situation Entity",
+        "begin": 27428
+    }, {
+        "end": 27479,
+        "type": "Situation Entity",
+        "begin": 27472
+    }, {
+        "end": 27491,
+        "type": "Situation Entity",
+        "begin": 27487
+    }, {
+        "end": 27524,
+        "type": "Situation Entity",
+        "begin": 27520
+    }, {
+        "end": 27557,
+        "type": "Situation Entity",
+        "begin": 27554
+    }, {
+        "end": 27608,
+        "type": "Situation Entity",
+        "begin": 27606
+    }, {
+        "end": 27760,
+        "type": "Situation Entity",
+        "begin": 27754
+    }, {
+        "end": 27790,
+        "type": "Situation Entity",
+        "begin": 27783
+    }, {
+        "end": 27849,
+        "type": "Situation Entity",
+        "begin": 27842
+    }, {
+        "end": 27866,
+        "type": "Situation Entity",
+        "begin": 27862
+    }, {
+        "end": 27907,
+        "type": "Situation Entity",
+        "begin": 27903
+    }, {
+        "end": 27926,
+        "type": "Situation Entity",
+        "begin": 27919
+    }, {
+        "end": 27952,
+        "type": "Situation Entity",
+        "begin": 27951
+    }, {
+        "end": 27963,
+        "type": "Situation Entity",
+        "begin": 27959
+    }, {
+        "end": 27996,
+        "type": "Situation Entity",
+        "begin": 27991
+    }, {
+        "end": 28055,
+        "type": "Situation Entity",
+        "begin": 28051
+    }, {
+        "end": 28075,
+        "type": "Situation Entity",
+        "begin": 28070
+    }, {
+        "end": 28104,
+        "type": "Situation Entity",
+        "begin": 28101
+    }, {
+        "end": 28126,
+        "type": "Situation Entity",
+        "begin": 28123
+    }, {
+        "end": 28148,
+        "type": "Situation Entity",
+        "begin": 28141
+    }, {
+        "end": 28160,
+        "type": "Situation Entity",
+        "begin": 28152
+    }, {
+        "end": 28181,
+        "type": "Situation Entity",
+        "begin": 28174
+    }, {
+        "end": 28202,
+        "type": "Situation Entity",
+        "begin": 28195
+    }, {
+        "end": 28238,
+        "type": "Situation Entity",
+        "begin": 28235
+    }, {
+        "end": 28263,
+        "type": "Situation Entity",
+        "begin": 28250
+    }, {
+        "end": 28308,
+        "type": "Situation Entity",
+        "begin": 28305
+    }, {
+        "end": 28323,
+        "type": "Situation Entity",
+        "begin": 28320
+    }, {
+        "end": 28358,
+        "type": "Situation Entity",
+        "begin": 28354
+    }, {
+        "end": 28418,
+        "type": "Situation Entity",
+        "begin": 28412
+    }, {
+        "end": 28441,
+        "type": "Situation Entity",
+        "begin": 28436
+    }, {
+        "end": 28473,
+        "type": "Situation Entity",
+        "begin": 28466
+    }, {
+        "end": 28491,
+        "type": "Situation Entity",
+        "begin": 28485
+    }, {
+        "end": 28515,
+        "type": "Situation Entity",
+        "begin": 28510
+    }, {
+        "end": 28559,
+        "type": "Situation Entity",
+        "begin": 28557
+    }, {
+        "end": 28588,
+        "type": "Situation Entity",
+        "begin": 28585
+    }, {
+        "end": 28685,
+        "type": "Situation Entity",
+        "begin": 28681
+    }, {
+        "end": 28751,
+        "type": "Situation Entity",
+        "begin": 28747
+    }, {
+        "end": 28787,
+        "type": "Situation Entity",
+        "begin": 28782
+    }, {
+        "end": 28818,
+        "type": "Situation Entity",
+        "begin": 28814
+    }, {
+        "end": 28848,
+        "type": "Situation Entity",
+        "begin": 28844
+    }, {
+        "end": 29017,
+        "type": "Situation Entity",
+        "begin": 29010
+    }, {
+        "end": 29069,
+        "type": "Situation Entity",
+        "begin": 29061
+    }, {
+        "end": 29132,
+        "type": "Situation Entity",
+        "begin": 29130
+    }, {
+        "end": 29291,
+        "type": "Situation Entity",
+        "begin": 29282
+    }, {
+        "end": 29369,
+        "type": "Situation Entity",
+        "begin": 29367
+    }, {
+        "end": 29514,
+        "type": "Situation Entity",
+        "begin": 29512
+    }, {
+        "end": 29629,
+        "type": "Situation Entity",
+        "begin": 29622
+    }, {
+        "end": 29699,
+        "type": "Situation Entity",
+        "begin": 29697
+    }, {
+        "end": 29743,
+        "type": "Situation Entity",
+        "begin": 29732
+    }, {
+        "end": 29828,
+        "type": "Situation Entity",
+        "begin": 29821
+    }, {
+        "end": 29903,
+        "type": "Situation Entity",
+        "begin": 29897
+    }, {
+        "end": 30033,
+        "type": "Situation Entity",
+        "begin": 30025
+    }, {
+        "end": 30107,
+        "type": "Situation Entity",
+        "begin": 30100
+    }, {
+        "end": 30117,
+        "type": "Situation Entity",
+        "begin": 30112
+    }, {
+        "end": 30181,
+        "type": "Situation Entity",
+        "begin": 30177
+    }, {
+        "end": 30250,
+        "type": "Situation Entity",
+        "begin": 30244
+    }, {
+        "end": 30466,
+        "type": "Situation Entity",
+        "begin": 30458
+    }, {
+        "end": 30523,
+        "type": "Situation Entity",
+        "begin": 30517
+    }, {
+        "end": 30570,
+        "type": "Situation Entity",
+        "begin": 30563
+    }, {
+        "end": 30585,
+        "type": "Situation Entity",
+        "begin": 30581
+    }, {
+        "end": 30627,
+        "type": "Situation Entity",
+        "begin": 30622
+    }, {
+        "end": 30669,
+        "type": "Situation Entity",
+        "begin": 30663
+    }, {
+        "end": 30708,
+        "type": "Situation Entity",
+        "begin": 30706
+    }, {
+        "end": 30750,
+        "type": "Situation Entity",
+        "begin": 30745
+    }, {
+        "end": 30810,
+        "type": "Situation Entity",
+        "begin": 30801
+    }, {
+        "end": 30866,
+        "type": "Situation Entity",
+        "begin": 30861
+    }, {
+        "end": 30907,
+        "type": "Situation Entity",
+        "begin": 30901
+    }, {
+        "end": 31018,
+        "type": "Situation Entity",
+        "begin": 31013
+    }, {
+        "end": 31093,
+        "type": "Situation Entity",
+        "begin": 31089
+    }, {
+        "end": 31168,
+        "type": "Situation Entity",
+        "begin": 31160
+    }, {
+        "end": 31270,
+        "type": "Situation Entity",
+        "begin": 31264
+    }, {
+        "end": 31281,
+        "type": "Situation Entity",
+        "begin": 31275
+    }, {
+        "end": 31308,
+        "type": "Situation Entity",
+        "begin": 31304
+    }, {
+        "end": 31319,
+        "type": "Situation Entity",
+        "begin": 31313
+    }, {
+        "end": 31374,
+        "type": "Situation Entity",
+        "begin": 31366
+    }, {
+        "end": 31398,
+        "type": "Situation Entity",
+        "begin": 31391
+    }, {
+        "end": 31447,
+        "type": "Situation Entity",
+        "begin": 31441
+    }, {
+        "end": 31580,
+        "type": "Situation Entity",
+        "begin": 31572
+    }, {
+        "end": 31630,
+        "type": "Situation Entity",
+        "begin": 31626
+    }, {
+        "end": 31721,
+        "type": "Situation Entity",
+        "begin": 31715
+    }, {
+        "end": 31844,
+        "type": "Situation Entity",
+        "begin": 31838
+    }, {
+        "end": 31882,
+        "type": "Situation Entity",
+        "begin": 31880
+    }, {
+        "end": 31964,
+        "type": "Situation Entity",
+        "begin": 31958
+    }, {
+        "end": 32012,
+        "type": "Situation Entity",
+        "begin": 32010
+    }, {
+        "end": 32052,
+        "type": "Situation Entity",
+        "begin": 32045
+    }, {
+        "end": 32074,
+        "type": "Situation Entity",
+        "begin": 32068
+    }, {
+        "end": 32087,
+        "type": "Situation Entity",
+        "begin": 32083
+    }, {
+        "end": 32104,
+        "type": "Situation Entity",
+        "begin": 32097
+    }, {
+        "end": 32122,
+        "type": "Situation Entity",
+        "begin": 32116
+    }, {
+        "end": 32170,
+        "type": "Situation Entity",
+        "begin": 32164
+    }, {
+        "end": 32230,
+        "type": "Situation Entity",
+        "begin": 32226
+    }, {
+        "end": 32249,
+        "type": "Situation Entity",
+        "begin": 32248
+    }, {
+        "end": 32282,
+        "type": "Situation Entity",
+        "begin": 32280
+    }, {
+        "end": 32359,
+        "type": "Situation Entity",
+        "begin": 32352
+    }, {
+        "end": 32424,
+        "type": "Situation Entity",
+        "begin": 32421
+    }, {
+        "end": 32612,
+        "type": "Situation Entity",
+        "begin": 32605
+    }, {
+        "end": 32688,
+        "type": "Situation Entity",
+        "begin": 32684
+    }, {
+        "end": 32725,
+        "type": "Situation Entity",
+        "begin": 32721
+    }, {
+        "end": 32815,
+        "type": "Situation Entity",
+        "begin": 32806
+    }, {
+        "end": 32849,
+        "type": "Situation Entity",
+        "begin": 32841
+    }, {
+        "end": 32912,
+        "type": "Situation Entity",
+        "begin": 32906
+    }, {
+        "end": 32941,
+        "type": "Situation Entity",
+        "begin": 32936
+    }, {
+        "end": 32999,
+        "type": "Situation Entity",
+        "begin": 32995
+    }, {
+        "end": 33036,
+        "type": "Situation Entity",
+        "begin": 33032
+    }, {
+        "end": 33081,
+        "type": "Situation Entity",
+        "begin": 33080
+    }, {
+        "end": 33125,
+        "type": "Situation Entity",
+        "begin": 33119
+    }, {
+        "end": 33215,
+        "type": "Situation Entity",
+        "begin": 33213
+    }, {
+        "end": 33279,
+        "type": "Situation Entity",
+        "begin": 33272
+    }, {
+        "end": 33330,
+        "type": "Situation Entity",
+        "begin": 33322
+    }, {
+        "end": 33503,
+        "type": "Situation Entity",
+        "begin": 33498
+    }, {
+        "end": 33571,
+        "type": "Situation Entity",
+        "begin": 33569
+    }, {
+        "end": 33626,
+        "type": "Situation Entity",
+        "begin": 33619
+    }, {
+        "end": 33650,
+        "type": "Situation Entity",
+        "begin": 33646
+    }, {
+        "end": 33789,
+        "type": "Situation Entity",
+        "begin": 33783
+    }, {
+        "end": 33848,
+        "type": "Situation Entity",
+        "begin": 33846
+    }, {
+        "end": 33864,
+        "type": "Situation Entity",
+        "begin": 33861
+    }, {
+        "end": 33996,
+        "type": "Situation Entity",
+        "begin": 33990
+    }, {
+        "end": 34076,
+        "type": "Situation Entity",
+        "begin": 34070
+    }, {
+        "end": 34164,
+        "type": "Situation Entity",
+        "begin": 34154
+    }, {
+        "end": 34234,
+        "type": "Situation Entity",
+        "begin": 34226
+    }, {
+        "end": 34247,
+        "type": "Situation Entity",
+        "begin": 34245
+    }, {
+        "end": 34306,
+        "type": "Situation Entity",
+        "begin": 34299
+    }, {
+        "end": 34413,
+        "type": "Situation Entity",
+        "begin": 34406
+    }, {
+        "end": 34482,
+        "type": "Situation Entity",
+        "begin": 34475
+    }, {
+        "end": 34486,
+        "type": "Situation Entity",
+        "begin": 34485
+    }, {
+        "end": 34527,
+        "type": "Situation Entity",
+        "begin": 34522
+    }, {
+        "end": 34556,
+        "type": "Situation Entity",
+        "begin": 34551
+    }, {
+        "end": 34582,
+        "type": "Situation Entity",
+        "begin": 34576
+    }, {
+        "end": 34602,
+        "type": "Situation Entity",
+        "begin": 34601
+    }, {
+        "end": 34634,
+        "type": "Situation Entity",
+        "begin": 34631
+    }, {
+        "end": 34657,
+        "type": "Situation Entity",
+        "begin": 34653
+    }, {
+        "end": 34688,
+        "type": "Situation Entity",
+        "begin": 34686
+    }, {
+        "end": 34804,
+        "type": "Situation Entity",
+        "begin": 34803
+    }, {
+        "end": 34829,
+        "type": "Situation Entity",
+        "begin": 34823
+    }, {
+        "end": 34839,
+        "type": "Situation Entity",
+        "begin": 34834
+    }, {
+        "end": 34904,
+        "type": "Situation Entity",
+        "begin": 34898
+    }, {
+        "end": 35007,
+        "type": "Situation Entity",
+        "begin": 35003
+    }, {
+        "end": 35072,
+        "type": "Situation Entity",
+        "begin": 35063
+    }, {
+        "end": 35092,
+        "type": "Situation Entity",
+        "begin": 35090
+    }, {
+        "end": 35165,
+        "type": "Situation Entity",
+        "begin": 35159
+    }, {
+        "end": 35183,
+        "type": "Situation Entity",
+        "begin": 35174
+    }, {
+        "end": 35215,
+        "type": "Situation Entity",
+        "begin": 35213
+    }, {
+        "end": 35285,
+        "type": "Situation Entity",
+        "begin": 35283
+    }, {
+        "end": 35349,
+        "type": "Situation Entity",
+        "begin": 35346
+    }, {
+        "end": 35451,
+        "type": "Situation Entity",
+        "begin": 35442
+    }, {
+        "end": 35561,
+        "type": "Situation Entity",
+        "begin": 35553
+    }, {
+        "end": 35614,
+        "type": "Situation Entity",
+        "begin": 35606
+    }, {
+        "end": 35664,
+        "type": "Situation Entity",
+        "begin": 35659
+    }, {
+        "end": 35682,
+        "type": "Situation Entity",
+        "begin": 35680
+    }, {
+        "end": 35739,
+        "type": "Situation Entity",
+        "begin": 35733
+    }, {
+        "end": 35754,
+        "type": "Situation Entity",
+        "begin": 35748
+    }, {
+        "end": 35793,
+        "type": "Situation Entity",
+        "begin": 35791
+    }, {
+        "end": 35818,
+        "type": "Situation Entity",
+        "begin": 35811
+    }, {
+        "end": 35942,
+        "type": "Situation Entity",
+        "begin": 35935
+    }, {
+        "end": 35950,
+        "type": "Situation Entity",
+        "begin": 35947
+    }, {
+        "end": 36017,
+        "type": "Situation Entity",
+        "begin": 36009
+    }, {
+        "end": 36143,
+        "type": "Situation Entity",
+        "begin": 36141
+    }, {
+        "end": 36289,
+        "type": "Situation Entity",
+        "begin": 36280
+    }, {
+        "end": 36351,
+        "type": "Situation Entity",
+        "begin": 36347
+    }, {
+        "end": 36378,
+        "type": "Situation Entity",
+        "begin": 36373
+    }, {
+        "end": 36450,
+        "type": "Situation Entity",
+        "begin": 36446
+    }, {
+        "end": 36506,
+        "type": "Situation Entity",
+        "begin": 36498
+    }, {
+        "end": 36618,
+        "type": "Situation Entity",
+        "begin": 36617
+    }, {
+        "end": 36833,
+        "type": "Situation Entity",
+        "begin": 36832
+    }, {
+        "end": 36869,
+        "type": "Situation Entity",
+        "begin": 36860
+    }, {
+        "end": 36907,
+        "type": "Situation Entity",
+        "begin": 36899
+    }, {
+        "end": 36931,
+        "type": "Situation Entity",
+        "begin": 36929
+    }, {
+        "end": 37002,
+        "type": "Situation Entity",
+        "begin": 36996
+    }, {
+        "end": 37164,
+        "type": "Situation Entity",
+        "begin": 37157
+    }, {
+        "end": 37203,
+        "type": "Situation Entity",
+        "begin": 37195
+    }, {
+        "end": 37221,
+        "type": "Situation Entity",
+        "begin": 37217
+    }, {
+        "end": 37467,
+        "type": "Situation Entity",
+        "begin": 37462
+    }, {
+        "end": 37494,
+        "type": "Situation Entity",
+        "begin": 37486
+    }, {
+        "end": 37561,
+        "type": "Situation Entity",
+        "begin": 37554
+    }, {
+        "end": 37593,
+        "type": "Situation Entity",
+        "begin": 37586
+    }, {
+        "end": 37642,
+        "type": "Situation Entity",
+        "begin": 37636
+    }, {
+        "end": 37671,
+        "type": "Situation Entity",
+        "begin": 37666
+    }, {
+        "end": 37726,
+        "type": "Situation Entity",
+        "begin": 37723
+    }, {
+        "end": 37744,
+        "type": "Situation Entity",
+        "begin": 37740
+    }, {
+        "end": 37779,
+        "type": "Situation Entity",
+        "begin": 37775
+    }, {
+        "end": 37817,
+        "type": "Situation Entity",
+        "begin": 37812
+    }, {
+        "end": 37848,
+        "type": "Situation Entity",
+        "begin": 37841
+    }, {
+        "end": 37892,
+        "type": "Situation Entity",
+        "begin": 37884
+    }, {
+        "end": 37990,
+        "type": "Situation Entity",
+        "begin": 37985
+    }, {
+        "end": 38016,
+        "type": "Situation Entity",
+        "begin": 38011
+    }, {
+        "end": 38038,
+        "type": "Situation Entity",
+        "begin": 38034
+    }, {
+        "end": 38072,
+        "type": "Situation Entity",
+        "begin": 38065
+    }, {
+        "end": 38108,
+        "type": "Situation Entity",
+        "begin": 38104
+    }, {
+        "end": 38204,
+        "type": "Situation Entity",
+        "begin": 38201
+    }, {
+        "end": 38249,
+        "type": "Situation Entity",
+        "begin": 38243
+    }, {
+        "end": 38274,
+        "type": "Situation Entity",
+        "begin": 38270
+    }, {
+        "end": 38312,
+        "type": "Situation Entity",
+        "begin": 38308
+    }, {
+        "end": 38394,
+        "type": "Situation Entity",
+        "begin": 38389
+    }, {
+        "end": 38439,
+        "type": "Situation Entity",
+        "begin": 38435
+    }, {
+        "end": 38476,
+        "type": "Situation Entity",
+        "begin": 38474
+    }, {
+        "end": 38538,
+        "type": "Situation Entity",
+        "begin": 38532
+    }, {
+        "end": 38550,
+        "type": "Situation Entity",
+        "begin": 38546
+    }, {
+        "end": 38600,
+        "type": "Situation Entity",
+        "begin": 38598
+    }, {
+        "end": 38716,
+        "type": "Situation Entity",
+        "begin": 38707
+    }, {
+        "end": 38832,
+        "type": "Situation Entity",
+        "begin": 38829
+    }, {
+        "end": 38893,
+        "type": "Situation Entity",
+        "begin": 38886
+    }, {
+        "end": 39078,
+        "type": "Situation Entity",
+        "begin": 39076
+    }, {
+        "end": 39147,
+        "type": "Situation Entity",
+        "begin": 39139
+    }, {
+        "end": 39188,
+        "type": "Situation Entity",
+        "begin": 39176
+    }, {
+        "end": 39234,
+        "type": "Situation Entity",
+        "begin": 39231
+    }, {
+        "end": 39268,
+        "type": "Situation Entity",
+        "begin": 39257
+    }, {
+        "end": 39296,
+        "type": "Situation Entity",
+        "begin": 39290
+    }, {
+        "end": 39331,
+        "type": "Situation Entity",
+        "begin": 39323
+    }, {
+        "end": 39377,
+        "type": "Situation Entity",
+        "begin": 39373
+    }, {
+        "end": 39429,
+        "type": "Situation Entity",
+        "begin": 39423
+    }, {
+        "end": 39512,
+        "type": "Situation Entity",
+        "begin": 39511
+    }, {
+        "end": 39579,
+        "type": "Situation Entity",
+        "begin": 39576
+    }, {
+        "end": 39618,
+        "type": "Situation Entity",
+        "begin": 39613
+    }, {
+        "end": 39685,
+        "type": "Situation Entity",
+        "begin": 39675
+    }, {
+        "end": 39694,
+        "type": "Situation Entity",
+        "begin": 39691
+    }, {
+        "end": 39732,
+        "type": "Situation Entity",
+        "begin": 39723
+    }, {
+        "end": 39781,
+        "type": "Situation Entity",
+        "begin": 39776
+    }, {
+        "end": 39794,
+        "type": "Situation Entity",
+        "begin": 39791
+    }, {
+        "end": 39855,
+        "type": "Situation Entity",
+        "begin": 39846
+    }, {
+        "end": 39902,
+        "type": "Situation Entity",
+        "begin": 39897
+    }, {
+        "end": 40032,
+        "type": "Situation Entity",
+        "begin": 40026
+    }, {
+        "end": 40093,
+        "type": "Situation Entity",
+        "begin": 40087
+    }, {
+        "end": 40206,
+        "type": "Situation Entity",
+        "begin": 40197
+    }, {
+        "end": 40282,
+        "type": "Situation Entity",
+        "begin": 40278
+    }, {
+        "end": 40337,
+        "type": "Situation Entity",
+        "begin": 40335
+    }, {
+        "end": 40378,
+        "type": "Situation Entity",
+        "begin": 40366
+    }, {
+        "end": 40461,
+        "type": "Situation Entity",
+        "begin": 40455
+    }, {
+        "end": 40497,
+        "type": "Situation Entity",
+        "begin": 40489
+    }, {
+        "end": 40599,
+        "type": "Situation Entity",
+        "begin": 40589
+    }, {
+        "end": 40645,
+        "type": "Situation Entity",
+        "begin": 40638
+    }, {
+        "end": 40740,
+        "type": "Situation Entity",
+        "begin": 40734
+    }, {
+        "end": 40795,
+        "type": "Situation Entity",
+        "begin": 40785
+    }, {
+        "end": 40826,
+        "type": "Situation Entity",
+        "begin": 40817
+    }, {
+        "end": 40849,
+        "type": "Situation Entity",
+        "begin": 40840
+    }, {
+        "end": 40890,
+        "type": "Situation Entity",
+        "begin": 40887
+    }, {
+        "end": 41040,
+        "type": "Situation Entity",
+        "begin": 41037
+    }, {
+        "end": 41121,
+        "type": "Situation Entity",
+        "begin": 41120
+    }, {
+        "end": 41187,
+        "type": "Situation Entity",
+        "begin": 41181
+    }, {
+        "end": 41220,
+        "type": "Situation Entity",
+        "begin": 41215
+    }, {
+        "end": 41286,
+        "type": "Situation Entity",
+        "begin": 41281
+    }, {
+        "end": 41372,
+        "type": "Situation Entity",
+        "begin": 41367
+    }, {
+        "end": 41411,
+        "type": "Situation Entity",
+        "begin": 41403
+    }, {
+        "end": 41450,
+        "type": "Situation Entity",
+        "begin": 41440
+    }, {
+        "end": 41530,
+        "type": "Situation Entity",
+        "begin": 41521
+    }, {
+        "end": 41642,
+        "type": "Situation Entity",
+        "begin": 41637
+    }, {
+        "end": 41688,
+        "type": "Situation Entity",
+        "begin": 41679
+    }, {
+        "end": 41748,
+        "type": "Situation Entity",
+        "begin": 41746
+    }, {
+        "end": 41781,
+        "type": "Situation Entity",
+        "begin": 41774
+    }, {
+        "end": 41793,
+        "type": "Situation Entity",
+        "begin": 41783
+    }, {
+        "end": 41883,
+        "type": "Situation Entity",
+        "begin": 41874
+    }, {
+        "end": 41897,
+        "type": "Situation Entity",
+        "begin": 41894
+    }, {
+        "end": 41983,
+        "type": "Situation Entity",
+        "begin": 41979
+    }, {
+        "end": 42058,
+        "type": "Situation Entity",
+        "begin": 42050
+    }, {
+        "end": 42107,
+        "type": "Situation Entity",
+        "begin": 42100
+    }, {
+        "end": 42140,
+        "type": "Situation Entity",
+        "begin": 42132
+    }, {
+        "end": 42194,
+        "type": "Situation Entity",
+        "begin": 42192
+    }, {
+        "end": 42245,
+        "type": "Situation Entity",
+        "begin": 42235
+    }, {
+        "end": 42294,
+        "type": "Situation Entity",
+        "begin": 42287
+    }, {
+        "end": 42319,
+        "type": "Situation Entity",
+        "begin": 42317
+    }, {
+        "end": 42355,
+        "type": "Situation Entity",
+        "begin": 42348
+    }, {
+        "end": 42426,
+        "type": "Situation Entity",
+        "begin": 42418
+    }, {
+        "end": 42470,
+        "type": "Situation Entity",
+        "begin": 42466
+    }, {
+        "end": 42517,
+        "type": "Situation Entity",
+        "begin": 42514
+    }, {
+        "end": 42548,
+        "type": "Situation Entity",
+        "begin": 42545
+    }, {
+        "end": 42611,
+        "type": "Situation Entity",
+        "begin": 42606
+    }, {
+        "end": 42659,
+        "type": "Situation Entity",
+        "begin": 42655
+    }, {
+        "end": 42711,
+        "type": "Situation Entity",
+        "begin": 42706
+    }, {
+        "end": 42811,
+        "type": "Situation Entity",
+        "begin": 42806
+    }, {
+        "end": 42884,
+        "type": "Situation Entity",
+        "begin": 42880
+    }, {
+        "end": 42963,
+        "type": "Situation Entity",
+        "begin": 42960
+    }, {
+        "end": 43118,
+        "type": "Situation Entity",
+        "begin": 43108
+    }, {
+        "end": 43173,
+        "type": "Situation Entity",
+        "begin": 43171
+    }, {
+        "end": 43202,
+        "type": "Situation Entity",
+        "begin": 43194
+    }, {
+        "end": 43254,
+        "type": "Situation Entity",
+        "begin": 43249
+    }, {
+        "end": 43356,
+        "type": "Situation Entity",
+        "begin": 43345
+    }, {
+        "end": 43377,
+        "type": "Situation Entity",
+        "begin": 43370
+    }, {
+        "end": 43476,
+        "type": "Situation Entity",
+        "begin": 43465
+    }, {
+        "end": 43552,
+        "type": "Situation Entity",
+        "begin": 43546
+    }, {
+        "end": 43593,
+        "type": "Situation Entity",
+        "begin": 43580
+    }, {
+        "end": 43630,
+        "type": "Situation Entity",
+        "begin": 43621
+    }, {
+        "end": 43817,
+        "type": "Situation Entity",
+        "begin": 43810
+    }, {
+        "end": 43824,
+        "type": "Situation Entity",
+        "begin": 43821
+    }, {
+        "end": 43856,
+        "type": "Situation Entity",
+        "begin": 43852
+    }, {
+        "end": 43867,
+        "type": "Situation Entity",
+        "begin": 43864
+    }, {
+        "end": 43916,
+        "type": "Situation Entity",
+        "begin": 43912
+    }, {
+        "end": 44007,
+        "type": "Situation Entity",
+        "begin": 44005
+    }, {
+        "end": 44031,
+        "type": "Situation Entity",
+        "begin": 44026
+    }, {
+        "end": 44071,
+        "type": "Situation Entity",
+        "begin": 44066
+    }, {
+        "end": 44114,
+        "type": "Situation Entity",
+        "begin": 44112
+    }, {
+        "end": 44176,
+        "type": "Situation Entity",
+        "begin": 44174
+    }, {
+        "end": 44195,
+        "type": "Situation Entity",
+        "begin": 44186
+    }, {
+        "end": 44232,
+        "type": "Situation Entity",
+        "begin": 44225
+    }, {
+        "end": 44271,
+        "type": "Situation Entity",
+        "begin": 44265
+    }, {
+        "end": 44391,
+        "type": "Situation Entity",
+        "begin": 44387
+    }, {
+        "end": 44410,
+        "type": "Situation Entity",
+        "begin": 44401
+    }, {
+        "end": 44468,
+        "type": "Situation Entity",
+        "begin": 44461
+    }, {
+        "end": 44607,
+        "type": "Situation Entity",
+        "begin": 44603
+    }, {
+        "end": 44632,
+        "type": "Situation Entity",
+        "begin": 44627
+    }, {
+        "end": 44681,
+        "type": "Situation Entity",
+        "begin": 44675
+    }, {
+        "end": 44786,
+        "type": "Situation Entity",
+        "begin": 44780
+    }, {
+        "end": 44866,
+        "type": "Situation Entity",
+        "begin": 44863
+    }, {
+        "end": 44904,
+        "type": "Situation Entity",
+        "begin": 44900
+    }, {
+        "end": 45035,
+        "type": "Situation Entity",
+        "begin": 45028
+    }, {
+        "end": 45080,
+        "type": "Situation Entity",
+        "begin": 45075
+    }, {
+        "end": 45132,
+        "type": "Situation Entity",
+        "begin": 45128
+    }, {
+        "end": 45172,
+        "type": "Situation Entity",
+        "begin": 45165
+    }, {
+        "end": 45224,
+        "type": "Situation Entity",
+        "begin": 45219
+    }, {
+        "end": 45308,
+        "type": "Situation Entity",
+        "begin": 45304
+    }, {
+        "end": 45355,
+        "type": "Situation Entity",
+        "begin": 45353
+    }, {
+        "end": 45423,
+        "type": "Situation Entity",
+        "begin": 45420
+    }, {
+        "end": 45482,
+        "type": "Situation Entity",
+        "begin": 45478
+    }, {
+        "end": 45565,
+        "type": "Situation Entity",
+        "begin": 45563
+    }, {
+        "end": 45626,
+        "type": "Situation Entity",
+        "begin": 45619
+    }, {
+        "end": 45665,
+        "type": "Situation Entity",
+        "begin": 45661
+    }, {
+        "end": 45774,
+        "type": "Situation Entity",
+        "begin": 45770
+    }, {
+        "end": 45804,
+        "type": "Situation Entity",
+        "begin": 45801
+    }, {
+        "end": 45825,
+        "type": "Situation Entity",
+        "begin": 45822
+    }, {
+        "end": 45927,
+        "type": "Situation Entity",
+        "begin": 45917
+    }, {
+        "end": 45965,
+        "type": "Situation Entity",
+        "begin": 45961
+    }, {
+        "end": 45978,
+        "type": "Situation Entity",
+        "begin": 45975
+    }, {
+        "end": 46101,
+        "type": "Situation Entity",
+        "begin": 46098
+    }, {
+        "end": 46138,
+        "type": "Situation Entity",
+        "begin": 46129
+    }, {
+        "end": 46195,
+        "type": "Situation Entity",
+        "begin": 46191
+    }, {
+        "end": 46223,
+        "type": "Situation Entity",
+        "begin": 46217
+    }, {
+        "end": 46285,
+        "type": "Situation Entity",
+        "begin": 46281
+    }, {
+        "end": 46324,
+        "type": "Situation Entity",
+        "begin": 46322
+    }, {
+        "end": 46366,
+        "type": "Situation Entity",
+        "begin": 46363
+    }, {
+        "end": 46393,
+        "type": "Situation Entity",
+        "begin": 46389
+    }, {
+        "end": 46506,
+        "type": "Situation Entity",
+        "begin": 46497
+    }, {
+        "end": 46628,
+        "type": "Situation Entity",
+        "begin": 46621
+    }, {
+        "end": 46773,
+        "type": "Situation Entity",
+        "begin": 46770
+    }, {
+        "end": 46819,
+        "type": "Situation Entity",
+        "begin": 46812
+    }, {
+        "end": 46924,
+        "type": "Situation Entity",
+        "begin": 46916
+    }, {
+        "end": 46968,
+        "type": "Situation Entity",
+        "begin": 46964
+    }, {
+        "end": 47013,
+        "type": "Situation Entity",
+        "begin": 47007
+    }, {
+        "end": 47074,
+        "type": "Situation Entity",
+        "begin": 47071
+    }, {
+        "end": 47126,
+        "type": "Situation Entity",
+        "begin": 47116
+    }, {
+        "end": 47152,
+        "type": "Situation Entity",
+        "begin": 47147
+    }, {
+        "end": 47176,
+        "type": "Situation Entity",
+        "begin": 47166
+    }, {
+        "end": 47259,
+        "type": "Situation Entity",
+        "begin": 47256
+    }, {
+        "end": 47306,
+        "type": "Situation Entity",
+        "begin": 47300
+    }, {
+        "end": 47427,
+        "type": "Situation Entity",
+        "begin": 47420
+    }, {
+        "end": 47460,
+        "type": "Situation Entity",
+        "begin": 47454
+    }, {
+        "end": 47476,
+        "type": "Situation Entity",
+        "begin": 47473
+    }, {
+        "end": 47500,
+        "type": "Situation Entity",
+        "begin": 47497
+    }, {
+        "end": 47532,
+        "type": "Situation Entity",
+        "begin": 47530
+    }, {
+        "end": 47586,
+        "type": "Situation Entity",
+        "begin": 47580
+    }, {
+        "end": 47609,
+        "type": "Situation Entity",
+        "begin": 47603
+    }, {
+        "end": 47681,
+        "type": "Situation Entity",
+        "begin": 47673
+    }, {
+        "end": 47702,
+        "type": "Situation Entity",
+        "begin": 47700
+    }, {
+        "end": 47748,
+        "type": "Situation Entity",
+        "begin": 47746
+    }, {
+        "end": 47873,
+        "type": "Situation Entity",
+        "begin": 47866
+    }, {
+        "end": 47893,
+        "type": "Situation Entity",
+        "begin": 47889
+    }, {
+        "end": 48119,
+        "type": "Situation Entity",
+        "begin": 48114
+    }, {
+        "end": 48135,
+        "type": "Situation Entity",
+        "begin": 48131
+    }, {
+        "end": 48240,
+        "type": "Situation Entity",
+        "begin": 48237
+    }, {
+        "end": 48286,
+        "type": "Situation Entity",
+        "begin": 48283
+    }, {
+        "end": 48363,
+        "type": "Situation Entity",
+        "begin": 48359
+    }, {
+        "end": 48466,
+        "type": "Situation Entity",
+        "begin": 48463
+    }, {
+        "end": 48507,
+        "type": "Situation Entity",
+        "begin": 48503
+    }, {
+        "end": 48536,
+        "type": "Situation Entity",
+        "begin": 48530
+    }, {
+        "end": 48601,
+        "type": "Situation Entity",
+        "begin": 48589
+    }, {
+        "end": 48695,
+        "type": "Situation Entity",
+        "begin": 48691
+    }, {
+        "end": 48775,
+        "type": "Situation Entity",
+        "begin": 48766
+    }, {
+        "end": 48827,
+        "type": "Situation Entity",
+        "begin": 48823
+    }, {
+        "end": 48914,
+        "type": "Situation Entity",
+        "begin": 48910
+    }, {
+        "end": 49044,
+        "type": "Situation Entity",
+        "begin": 49034
+    }, {
+        "end": 49111,
+        "type": "Situation Entity",
+        "begin": 49108
+    }, {
+        "end": 49155,
+        "type": "Situation Entity",
+        "begin": 49149
+    }, {
+        "end": 49265,
+        "type": "Situation Entity",
+        "begin": 49258
+    }, {
+        "end": 49313,
+        "type": "Situation Entity",
+        "begin": 49307
+    }, {
+        "end": 49339,
+        "type": "Situation Entity",
+        "begin": 49333
+    }, {
+        "end": 49516,
+        "type": "Situation Entity",
+        "begin": 49511
+    }, {
+        "end": 49649,
+        "type": "Situation Entity",
+        "begin": 49641
+    }, {
+        "end": 49710,
+        "type": "Situation Entity",
+        "begin": 49708
+    }, {
+        "end": 49779,
+        "type": "Situation Entity",
+        "begin": 49777
+    }, {
+        "end": 49882,
+        "type": "Situation Entity",
+        "begin": 49879
+    }, {
+        "end": 49968,
+        "type": "Situation Entity",
+        "begin": 49963
+    }, {
+        "end": 50064,
+        "type": "Situation Entity",
+        "begin": 50062
+    }, {
+        "end": 50120,
+        "type": "Situation Entity",
+        "begin": 50106
+    }, {
+        "end": 50154,
+        "type": "Situation Entity",
+        "begin": 50144
+    }, {
+        "end": 50239,
+        "type": "Situation Entity",
+        "begin": 50237
+    }, {
+        "end": 50288,
+        "type": "Situation Entity",
+        "begin": 50285
+    }, {
+        "end": 50332,
+        "type": "Situation Entity",
+        "begin": 50325
+    }, {
+        "end": 50411,
+        "type": "Situation Entity",
+        "begin": 50407
+    }, {
+        "end": 50584,
+        "type": "Situation Entity",
+        "begin": 50581
+    }, {
+        "end": 50703,
+        "type": "Situation Entity",
+        "begin": 50696
+    }, {
+        "end": 50821,
+        "type": "Situation Entity",
+        "begin": 50819
+    }, {
+        "end": 50869,
+        "type": "Situation Entity",
+        "begin": 50862
+    }, {
+        "end": 50918,
+        "type": "Situation Entity",
+        "begin": 50911
+    }, {
+        "end": 50966,
+        "type": "Situation Entity",
+        "begin": 50957
+    }, {
+        "end": 51023,
+        "type": "Situation Entity",
+        "begin": 51012
+    }, {
+        "end": 51079,
+        "type": "Situation Entity",
+        "begin": 51069
+    }, {
+        "end": 51128,
+        "type": "Situation Entity",
+        "begin": 51118
+    }, {
+        "end": 51151,
+        "type": "Situation Entity",
+        "begin": 51147
+    }, {
+        "end": 51255,
+        "type": "Situation Entity",
+        "begin": 51244
+    }, {
+        "end": 51311,
+        "type": "Situation Entity",
+        "begin": 51308
+    }, {
+        "end": 51403,
+        "type": "Situation Entity",
+        "begin": 51399
+    }, {
+        "end": 51515,
+        "type": "Situation Entity",
+        "begin": 51510
+    }, {
+        "end": 51576,
+        "type": "Situation Entity",
+        "begin": 51569
+    }, {
+        "end": 51619,
+        "type": "Situation Entity",
+        "begin": 51611
+    }, {
+        "end": 51727,
+        "type": "Situation Entity",
+        "begin": 51718
+    }, {
+        "end": 51832,
+        "type": "Situation Entity",
+        "begin": 51827
+    }, {
+        "end": 51936,
+        "type": "Situation Entity",
+        "begin": 51929
+    }, {
+        "end": 51981,
+        "type": "Situation Entity",
+        "begin": 51974
+    }, {
+        "end": 52045,
+        "type": "Situation Entity",
+        "begin": 52040
+    }, {
+        "end": 52142,
+        "type": "Situation Entity",
+        "begin": 52137
+    }, {
+        "end": 52189,
+        "type": "Situation Entity",
+        "begin": 52184
+    }, {
+        "end": 52256,
+        "type": "Situation Entity",
+        "begin": 52246
+    }, {
+        "end": 52268,
+        "type": "Situation Entity",
+        "begin": 52263
+    }, {
+        "end": 52309,
+        "type": "Situation Entity",
+        "begin": 52303
+    }, {
+        "end": 52342,
+        "type": "Situation Entity",
+        "begin": 52337
+    }, {
+        "end": 52387,
+        "type": "Situation Entity",
+        "begin": 52379
+    }, {
+        "end": 52403,
+        "type": "Situation Entity",
+        "begin": 52397
+    }, {
+        "end": 52460,
+        "type": "Situation Entity",
+        "begin": 52454
+    }, {
+        "end": 52572,
+        "type": "Situation Entity",
+        "begin": 52567
+    }, {
+        "end": 52606,
+        "type": "Situation Entity",
+        "begin": 52600
+    }, {
+        "end": 52635,
+        "type": "Situation Entity",
+        "begin": 52633
+    }, {
+        "end": 52673,
+        "type": "Situation Entity",
+        "begin": 52669
+    }, {
+        "end": 52728,
+        "type": "Situation Entity",
+        "begin": 52725
+    }, {
+        "end": 52807,
+        "type": "Situation Entity",
+        "begin": 52798
+    }, {
+        "end": 52828,
+        "type": "Situation Entity",
+        "begin": 52826
+    }, {
+        "end": 52919,
+        "type": "Situation Entity",
+        "begin": 52911
+    }, {
+        "end": 52957,
+        "type": "Situation Entity",
+        "begin": 52952
+    }, {
+        "end": 53021,
+        "type": "Situation Entity",
+        "begin": 53018
+    }, {
+        "end": 53048,
+        "type": "Situation Entity",
+        "begin": 53045
+    }, {
+        "end": 53099,
+        "type": "Situation Entity",
+        "begin": 53097
+    }, {
+        "end": 53155,
+        "type": "Situation Entity",
+        "begin": 53147
+    }, {
+        "end": 53246,
+        "type": "Situation Entity",
+        "begin": 53240
+    }, {
+        "end": 53306,
+        "type": "Situation Entity",
+        "begin": 53298
+    }, {
+        "end": 53360,
+        "type": "Situation Entity",
+        "begin": 53356
+    }, {
+        "end": 53401,
+        "type": "Situation Entity",
+        "begin": 53394
+    }, {
+        "end": 53464,
+        "type": "Situation Entity",
+        "begin": 53454
+    }, {
+        "end": 53587,
+        "type": "Situation Entity",
+        "begin": 53583
+    }, {
+        "end": 53682,
+        "type": "Situation Entity",
+        "begin": 53676
+    }, {
+        "end": 53755,
+        "type": "Situation Entity",
+        "begin": 53753
+    }, {
+        "end": 53814,
+        "type": "Situation Entity",
+        "begin": 53808
+    }, {
+        "end": 53861,
+        "type": "Situation Entity",
+        "begin": 53856
+    }, {
+        "end": 53930,
+        "type": "Situation Entity",
+        "begin": 53923
+    }, {
+        "end": 53979,
+        "type": "Situation Entity",
+        "begin": 53974
+    }, {
+        "end": 54020,
+        "type": "Situation Entity",
+        "begin": 54012
+    }, {
+        "end": 54078,
+        "type": "Situation Entity",
+        "begin": 54071
+    }, {
+        "end": 54100,
+        "type": "Situation Entity",
+        "begin": 54091
+    }, {
+        "end": 54166,
+        "type": "Situation Entity",
+        "begin": 54156
+    }, {
+        "end": 54317,
+        "type": "Situation Entity",
+        "begin": 54310
+    }, {
+        "end": 54513,
+        "type": "Situation Entity",
+        "begin": 54502
+    }, {
+        "end": 54647,
+        "type": "Situation Entity",
+        "begin": 54640
+    }, {
+        "end": 54725,
+        "type": "Situation Entity",
+        "begin": 54721
+    }, {
+        "end": 54857,
+        "type": "Situation Entity",
+        "begin": 54849
+    }, {
+        "end": 54912,
+        "type": "Situation Entity",
+        "begin": 54905
+    }, {
+        "end": 54951,
+        "type": "Situation Entity",
+        "begin": 54949
+    }, {
+        "end": 54982,
+        "type": "Situation Entity",
+        "begin": 54980
+    }, {
+        "end": 55019,
+        "type": "Situation Entity",
+        "begin": 55017
+    }, {
+        "end": 55099,
+        "type": "Situation Entity",
+        "begin": 55092
+    }, {
+        "end": 55137,
+        "type": "Situation Entity",
+        "begin": 55135
+    }, {
+        "end": 55157,
+        "type": "Situation Entity",
+        "begin": 55155
+    }, {
+        "end": 55260,
+        "type": "Situation Entity",
+        "begin": 55257
+    }, {
+        "end": 55309,
+        "type": "Situation Entity",
+        "begin": 55301
+    }, {
+        "end": 55333,
+        "type": "Situation Entity",
+        "begin": 55331
+    }, {
+        "end": 55432,
+        "type": "Situation Entity",
+        "begin": 55424
+    }, {
+        "end": 55586,
+        "type": "Situation Entity",
+        "begin": 55578
+    }, {
+        "end": 55699,
+        "type": "Situation Entity",
+        "begin": 55695
+    }, {
+        "end": 55749,
+        "type": "Situation Entity",
+        "begin": 55747
+    }, {
+        "end": 55778,
+        "type": "Situation Entity",
+        "begin": 55769
+    }, {
+        "end": 55819,
+        "type": "Situation Entity",
+        "begin": 55815
+    }, {
+        "end": 55856,
+        "type": "Situation Entity",
+        "begin": 55848
+    }, {
+        "end": 55943,
+        "type": "Situation Entity",
+        "begin": 55941
+    }, {
+        "end": 55999,
+        "type": "Situation Entity",
+        "begin": 55995
+    }, {
+        "end": 56030,
+        "type": "Situation Entity",
+        "begin": 56024
+    }, {
+        "end": 56055,
+        "type": "Situation Entity",
+        "begin": 56048
+    }, {
+        "end": 56141,
+        "type": "Situation Entity",
+        "begin": 56137
+    }, {
+        "end": 56151,
+        "type": "Situation Entity",
+        "begin": 56145
+    }, {
+        "end": 56181,
+        "type": "Situation Entity",
+        "begin": 56178
+    }, {
+        "end": 56210,
+        "type": "Situation Entity",
+        "begin": 56205
+    }, {
+        "end": 56243,
+        "type": "Situation Entity",
+        "begin": 56240
+    }, {
+        "end": 56264,
+        "type": "Situation Entity",
+        "begin": 56257
+    }, {
+        "end": 56309,
+        "type": "Situation Entity",
+        "begin": 56300
+    }, {
+        "end": 56325,
+        "type": "Situation Entity",
+        "begin": 56320
+    }, {
+        "end": 56379,
+        "type": "Situation Entity",
+        "begin": 56375
+    }, {
+        "end": 56502,
+        "type": "Situation Entity",
+        "begin": 56496
+    }, {
+        "end": 56677,
+        "type": "Situation Entity",
+        "begin": 56675
+    }, {
+        "end": 56692,
+        "type": "Situation Entity",
+        "begin": 56688
+    }, {
+        "end": 56757,
+        "type": "Situation Entity",
+        "begin": 56754
+    }, {
+        "end": 56773,
+        "type": "Situation Entity",
+        "begin": 56771
+    }, {
+        "end": 56858,
+        "type": "Situation Entity",
+        "begin": 56851
+    }, {
+        "end": 56894,
+        "type": "Situation Entity",
+        "begin": 56892
+    }, {
+        "end": 56923,
+        "type": "Situation Entity",
+        "begin": 56915
+    }, {
+        "end": 56994,
+        "type": "Situation Entity",
+        "begin": 56983
+    }, {
+        "end": 57039,
+        "type": "Situation Entity",
+        "begin": 57036
+    }, {
+        "end": 57093,
+        "type": "Situation Entity",
+        "begin": 57086
+    }, {
+        "end": 57156,
+        "type": "Situation Entity",
+        "begin": 57145
+    }, {
+        "end": 57171,
+        "type": "Situation Entity",
+        "begin": 57168
+    }, {
+        "end": 57194,
+        "type": "Situation Entity",
+        "begin": 57190
+    }, {
+        "end": 57212,
+        "type": "Situation Entity",
+        "begin": 57209
+    }, {
+        "end": 57256,
+        "type": "Situation Entity",
+        "begin": 57252
+    }, {
+        "end": 57296,
+        "type": "Situation Entity",
+        "begin": 57293
+    }, {
+        "end": 57384,
+        "type": "Situation Entity",
+        "begin": 57382
+    }, {
+        "end": 57443,
+        "type": "Situation Entity",
+        "begin": 57437
+    }, {
+        "end": 57454,
+        "type": "Situation Entity",
+        "begin": 57452
+    }, {
+        "end": 57492,
+        "type": "Situation Entity",
+        "begin": 57484
+    }, {
+        "end": 57540,
+        "type": "Situation Entity",
+        "begin": 57533
+    }, {
+        "end": 57639,
+        "type": "Situation Entity",
+        "begin": 57634
+    }, {
+        "end": 57727,
+        "type": "Situation Entity",
+        "begin": 57724
+    }, {
+        "end": 57805,
+        "type": "Situation Entity",
+        "begin": 57798
+    }, {
+        "end": 57823,
+        "type": "Situation Entity",
+        "begin": 57820
+    }, {
+        "end": 57926,
+        "type": "Situation Entity",
+        "begin": 57922
+    }, {
+        "end": 57952,
+        "type": "Situation Entity",
+        "begin": 57949
+    }, {
+        "end": 58007,
+        "type": "Situation Entity",
+        "begin": 58001
+    }, {
+        "end": 58058,
+        "type": "Situation Entity",
+        "begin": 58053
+    }, {
+        "end": 58155,
+        "type": "Situation Entity",
+        "begin": 58153
+    }, {
+        "end": 58201,
+        "type": "Situation Entity",
+        "begin": 58199
+    }, {
+        "end": 58223,
+        "type": "Situation Entity",
+        "begin": 58218
+    }, {
+        "end": 58282,
+        "type": "Situation Entity",
+        "begin": 58278
+    }, {
+        "end": 58335,
+        "type": "Situation Entity",
+        "begin": 58332
+    }, {
+        "end": 58353,
+        "type": "Situation Entity",
+        "begin": 58347
+    }, {
+        "end": 58369,
+        "type": "Situation Entity",
+        "begin": 58361
+    }, {
+        "end": 58402,
+        "type": "Situation Entity",
+        "begin": 58393
+    }, {
+        "end": 58417,
+        "type": "Situation Entity",
+        "begin": 58414
+    }, {
+        "end": 58487,
+        "type": "Situation Entity",
+        "begin": 58481
+    }, {
+        "end": 58520,
+        "type": "Situation Entity",
+        "begin": 58515
+    }, {
+        "end": 58552,
+        "type": "Situation Entity",
+        "begin": 58550
+    }, {
+        "end": 58562,
+        "type": "Situation Entity",
+        "begin": 58559
+    }, {
+        "end": 58605,
+        "type": "Situation Entity",
+        "begin": 58599
+    }, {
+        "end": 58644,
+        "type": "Situation Entity",
+        "begin": 58639
+    }, {
+        "end": 58659,
+        "type": "Situation Entity",
+        "begin": 58656
+    }, {
+        "end": 58699,
+        "type": "Situation Entity",
+        "begin": 58694
+    }, {
+        "end": 58716,
+        "type": "Situation Entity",
+        "begin": 58713
+    }, {
+        "end": 58760,
+        "type": "Situation Entity",
+        "begin": 58751
+    }, {
+        "end": 58787,
+        "type": "Situation Entity",
+        "begin": 58781
+    }, {
+        "end": 58851,
+        "type": "Situation Entity",
+        "begin": 58849
+    }, {
+        "end": 58883,
+        "type": "Situation Entity",
+        "begin": 58879
+    }, {
+        "end": 59087,
+        "type": "Situation Entity",
+        "begin": 59081
+    }, {
+        "end": 59155,
+        "type": "Situation Entity",
+        "begin": 59149
+    }, {
+        "end": 59302,
+        "type": "Situation Entity",
+        "begin": 59300
+    }, {
+        "end": 59355,
+        "type": "Situation Entity",
+        "begin": 59348
+    }, {
+        "end": 59424,
+        "type": "Situation Entity",
+        "begin": 59421
+    }, {
+        "end": 59476,
+        "type": "Situation Entity",
+        "begin": 59471
+    }, {
+        "end": 59603,
+        "type": "Situation Entity",
+        "begin": 59594
+    }, {
+        "end": 59672,
+        "type": "Situation Entity",
+        "begin": 59663
+    }, {
+        "end": 59696,
+        "type": "Situation Entity",
+        "begin": 59693
+    }, {
+        "end": 59723,
+        "type": "Situation Entity",
+        "begin": 59721
+    }, {
+        "end": 59819,
+        "type": "Situation Entity",
+        "begin": 59816
+    }, {
+        "end": 59894,
+        "type": "Situation Entity",
+        "begin": 59884
+    }, {
+        "end": 59962,
+        "type": "Situation Entity",
+        "begin": 59958
+    }, {
+        "end": 59986,
+        "type": "Situation Entity",
+        "begin": 59983
+    }, {
+        "end": 60034,
+        "type": "Situation Entity",
+        "begin": 60027
+    }, {
+        "end": 60078,
+        "type": "Situation Entity",
+        "begin": 60077
+    }, {
+        "end": 60160,
+        "type": "Situation Entity",
+        "begin": 60157
+    }, {
+        "end": 60190,
+        "type": "Situation Entity",
+        "begin": 60185
+    }, {
+        "end": 60273,
+        "type": "Situation Entity",
+        "begin": 60268
+    }, {
+        "end": 60384,
+        "type": "Situation Entity",
+        "begin": 60382
+    }, {
+        "end": 60465,
+        "type": "Situation Entity",
+        "begin": 60459
+    }, {
+        "end": 60556,
+        "type": "Situation Entity",
+        "begin": 60548
+    }, {
+        "end": 60602,
+        "type": "Situation Entity",
+        "begin": 60595
+    }, {
+        "end": 60700,
+        "type": "Situation Entity",
+        "begin": 60696
+    }, {
+        "end": 60755,
+        "type": "Situation Entity",
+        "begin": 60747
+    }, {
+        "end": 60793,
+        "type": "Situation Entity",
+        "begin": 60791
+    }, {
+        "end": 60831,
+        "type": "Situation Entity",
+        "begin": 60829
+    }, {
+        "end": 60899,
+        "type": "Situation Entity",
+        "begin": 60895
+    }, {
+        "end": 60937,
+        "type": "Situation Entity",
+        "begin": 60934
+    }, {
+        "end": 61006,
+        "type": "Situation Entity",
+        "begin": 61004
+    }, {
+        "end": 61054,
+        "type": "Situation Entity",
+        "begin": 61051
+    }, {
+        "end": 61205,
+        "type": "Situation Entity",
+        "begin": 61199
+    }, {
+        "end": 61249,
+        "type": "Situation Entity",
+        "begin": 61240
+    }, {
+        "end": 61276,
+        "type": "Situation Entity",
+        "begin": 61272
+    }, {
+        "end": 61366,
+        "type": "Situation Entity",
+        "begin": 61364
+    }, {
+        "end": 61419,
+        "type": "Situation Entity",
+        "begin": 61416
+    }, {
+        "end": 61467,
+        "type": "Situation Entity",
+        "begin": 61463
+    }, {
+        "end": 61503,
+        "type": "Situation Entity",
+        "begin": 61495
+    }, {
+        "end": 61538,
+        "type": "Situation Entity",
+        "begin": 61534
+    }, {
+        "end": 61674,
+        "type": "Situation Entity",
+        "begin": 61672
+    }, {
+        "end": 61730,
+        "type": "Situation Entity",
+        "begin": 61725
+    }, {
+        "end": 61901,
+        "type": "Situation Entity",
+        "begin": 61897
+    }, {
+        "end": 61961,
+        "type": "Situation Entity",
+        "begin": 61956
+    }, {
+        "end": 62048,
+        "type": "Situation Entity",
+        "begin": 62044
+    }, {
+        "end": 62061,
+        "type": "Situation Entity",
+        "begin": 62056
+    }, {
+        "end": 62126,
+        "type": "Situation Entity",
+        "begin": 62119
+    }, {
+        "end": 62181,
+        "type": "Situation Entity",
+        "begin": 62177
+    }, {
+        "end": 62202,
+        "type": "Situation Entity",
+        "begin": 62194
+    }, {
+        "end": 62237,
+        "type": "Situation Entity",
+        "begin": 62229
+    }, {
+        "end": 62255,
+        "type": "Situation Entity",
+        "begin": 62244
+    }, {
+        "end": 62276,
+        "type": "Situation Entity",
+        "begin": 62266
+    }, {
+        "end": 62326,
+        "type": "Situation Entity",
+        "begin": 62318
+    }, {
+        "end": 62427,
+        "type": "Situation Entity",
+        "begin": 62422
+    }, {
+        "end": 62483,
+        "type": "Situation Entity",
+        "begin": 62474
+    }, {
+        "end": 62600,
+        "type": "Situation Entity",
+        "begin": 62596
+    }, {
+        "end": 62673,
+        "type": "Situation Entity",
+        "begin": 62666
+    }, {
+        "end": 62708,
+        "type": "Situation Entity",
+        "begin": 62701
+    }, {
+        "end": 62753,
+        "type": "Situation Entity",
+        "begin": 62749
+    }, {
+        "end": 62771,
+        "type": "Situation Entity",
+        "begin": 62767
+    }, {
+        "end": 62808,
+        "type": "Situation Entity",
+        "begin": 62804
+    }, {
+        "end": 62882,
+        "type": "Situation Entity",
+        "begin": 62878
+    }, {
+        "end": 62942,
+        "type": "Situation Entity",
+        "begin": 62936
+    }, {
+        "end": 62970,
+        "type": "Situation Entity",
+        "begin": 62968
+    }, {
+        "end": 63053,
+        "type": "Situation Entity",
+        "begin": 63049
+    }, {
+        "end": 63088,
+        "type": "Situation Entity",
+        "begin": 63081
+    }, {
+        "end": 63158,
+        "type": "Situation Entity",
+        "begin": 63151
+    }, {
+        "end": 63194,
+        "type": "Situation Entity",
+        "begin": 63187
+    }, {
+        "end": 63221,
+        "type": "Situation Entity",
+        "begin": 63216
+    }, {
+        "end": 63280,
+        "type": "Situation Entity",
+        "begin": 63276
+    }, {
+        "end": 63299,
+        "type": "Situation Entity",
+        "begin": 63294
+    }, {
+        "end": 63350,
+        "type": "Situation Entity",
+        "begin": 63348
+    }, {
+        "end": 63389,
+        "type": "Situation Entity",
+        "begin": 63384
+    }, {
+        "end": 63410,
+        "type": "Situation Entity",
+        "begin": 63399
+    }, {
+        "end": 63549,
+        "type": "Situation Entity",
+        "begin": 63545
+    }, {
+        "end": 63631,
+        "type": "Situation Entity",
+        "begin": 63627
+    }, {
+        "end": 63656,
+        "type": "Situation Entity",
+        "begin": 63649
+    }, {
+        "end": 63682,
+        "type": "Situation Entity",
+        "begin": 63671
+    }, {
+        "end": 63824,
+        "type": "Situation Entity",
+        "begin": 63823
+    }, {
+        "end": 63948,
+        "type": "Situation Entity",
+        "begin": 63941
+    }, {
+        "end": 63982,
+        "type": "Situation Entity",
+        "begin": 63978
+    }, {
+        "end": 64012,
+        "type": "Situation Entity",
+        "begin": 64010
+    }, {
+        "end": 64073,
+        "type": "Situation Entity",
+        "begin": 64070
+    }, {
+        "end": 64088,
+        "type": "Situation Entity",
+        "begin": 64080
+    }, {
+        "end": 64175,
+        "type": "Situation Entity",
+        "begin": 64171
+    }, {
+        "end": 64239,
+        "type": "Situation Entity",
+        "begin": 64235
+    }, {
+        "end": 64283,
+        "type": "Situation Entity",
+        "begin": 64278
+    }, {
+        "end": 64357,
+        "type": "Situation Entity",
+        "begin": 64352
+    }, {
+        "end": 64544,
+        "type": "Situation Entity",
+        "begin": 64542
+    }, {
+        "end": 64661,
+        "type": "Situation Entity",
+        "begin": 64654
+    }, {
+        "end": 64702,
+        "type": "Situation Entity",
+        "begin": 64701
+    }, {
+        "end": 64705,
+        "type": "Situation Entity",
+        "begin": 64703
+    }, {
+        "end": 64748,
+        "type": "Situation Entity",
+        "begin": 64744
+    }, {
+        "end": 64870,
+        "type": "Situation Entity",
+        "begin": 64862
+    }, {
+        "end": 64911,
+        "type": "Situation Entity",
+        "begin": 64898
+    }, {
+        "end": 65013,
+        "type": "Situation Entity",
+        "begin": 65008
+    }, {
+        "end": 65066,
+        "type": "Situation Entity",
+        "begin": 65062
+    }, {
+        "end": 65176,
+        "type": "Situation Entity",
+        "begin": 65172
+    }, {
+        "end": 65245,
+        "type": "Situation Entity",
+        "begin": 65241
+    }, {
+        "end": 65280,
+        "type": "Situation Entity",
+        "begin": 65278
+    }, {
+        "end": 65290,
+        "type": "Situation Entity",
+        "begin": 65288
+    }, {
+        "end": 65545,
+        "type": "Situation Entity",
+        "begin": 65542
+    }, {
+        "end": 65582,
+        "type": "Situation Entity",
+        "begin": 65579
+    }, {
+        "end": 65634,
+        "type": "Situation Entity",
+        "begin": 65622
+    }, {
+        "end": 65708,
+        "type": "Situation Entity",
+        "begin": 65701
+    }, {
+        "end": 65830,
+        "type": "Situation Entity",
+        "begin": 65827
+    }, {
+        "end": 65870,
+        "type": "Situation Entity",
+        "begin": 65867
+    }, {
+        "end": 65888,
+        "type": "Situation Entity",
+        "begin": 65885
+    }, {
+        "end": 65961,
+        "type": "Situation Entity",
+        "begin": 65953
+    }, {
+        "end": 66031,
+        "type": "Situation Entity",
+        "begin": 66026
+    }, {
+        "end": 66067,
+        "type": "Situation Entity",
+        "begin": 66062
+    }, {
+        "end": 66119,
+        "type": "Situation Entity",
+        "begin": 66113
+    }, {
+        "end": 66154,
+        "type": "Situation Entity",
+        "begin": 66149
+    }, {
+        "end": 66234,
+        "type": "Situation Entity",
+        "begin": 66226
+    }, {
+        "end": 66346,
+        "type": "Situation Entity",
+        "begin": 66342
+    }, {
+        "end": 66386,
+        "type": "Situation Entity",
+        "begin": 66383
+    }, {
+        "end": 66420,
+        "type": "Situation Entity",
+        "begin": 66411
+    }, {
+        "end": 66630,
+        "type": "Situation Entity",
+        "begin": 66624
+    }, {
+        "end": 66687,
+        "type": "Situation Entity",
+        "begin": 66680
+    }, {
+        "end": 66715,
+        "type": "Situation Entity",
+        "begin": 66711
+    }, {
+        "end": 66756,
+        "type": "Situation Entity",
+        "begin": 66752
+    }, {
+        "end": 66797,
+        "type": "Situation Entity",
+        "begin": 66793
+    }, {
+        "end": 66874,
+        "type": "Situation Entity",
+        "begin": 66868
+    }, {
+        "end": 66966,
+        "type": "Situation Entity",
+        "begin": 66964
+    }, {
+        "end": 67057,
+        "type": "Situation Entity",
+        "begin": 67051
+    }, {
+        "end": 67111,
+        "type": "Situation Entity",
+        "begin": 67109
+    }, {
+        "end": 67150,
+        "type": "Situation Entity",
+        "begin": 67147
+    }, {
+        "end": 67228,
+        "type": "Situation Entity",
+        "begin": 67223
+    }, {
+        "end": 67371,
+        "type": "Situation Entity",
+        "begin": 67366
+    }, {
+        "end": 67417,
+        "type": "Situation Entity",
+        "begin": 67411
+    }, {
+        "end": 67441,
+        "type": "Situation Entity",
+        "begin": 67436
+    }, {
+        "end": 67484,
+        "type": "Situation Entity",
+        "begin": 67481
+    }, {
+        "end": 67535,
+        "type": "Situation Entity",
+        "begin": 67528
+    }, {
+        "end": 67594,
+        "type": "Situation Entity",
+        "begin": 67592
+    }, {
+        "end": 67658,
+        "type": "Situation Entity",
+        "begin": 67654
+    }, {
+        "end": 67691,
+        "type": "Situation Entity",
+        "begin": 67689
+    }, {
+        "end": 67746,
+        "type": "Situation Entity",
+        "begin": 67745
+    }, {
+        "end": 67801,
+        "type": "Situation Entity",
+        "begin": 67797
+    }, {
+        "end": 67819,
+        "type": "Situation Entity",
+        "begin": 67810
+    }, {
+        "end": 67860,
+        "type": "Situation Entity",
+        "begin": 67855
+    }, {
+        "end": 67961,
+        "type": "Situation Entity",
+        "begin": 67956
+    }, {
+        "end": 67991,
+        "type": "Situation Entity",
+        "begin": 67984
+    }, {
+        "end": 68034,
+        "type": "Situation Entity",
+        "begin": 68029
+    }, {
+        "end": 68057,
+        "type": "Situation Entity",
+        "begin": 68048
+    }, {
+        "end": 68167,
+        "type": "Situation Entity",
+        "begin": 68164
+    }, {
+        "end": 68206,
+        "type": "Situation Entity",
+        "begin": 68203
+    }, {
+        "end": 68242,
+        "type": "Situation Entity",
+        "begin": 68236
+    }, {
+        "end": 68289,
+        "type": "Situation Entity",
+        "begin": 68287
+    }, {
+        "end": 68330,
+        "type": "Situation Entity",
+        "begin": 68326
+    }, {
+        "end": 68358,
+        "type": "Situation Entity",
+        "begin": 68349
+    }, {
+        "end": 68396,
+        "type": "Situation Entity",
+        "begin": 68390
+    }, {
+        "end": 68431,
+        "type": "Situation Entity",
+        "begin": 68428
+    }, {
+        "end": 68474,
+        "type": "Situation Entity",
+        "begin": 68469
+    }, {
+        "end": 68577,
+        "type": "Situation Entity",
+        "begin": 68569
+    }, {
+        "end": 68602,
+        "type": "Situation Entity",
+        "begin": 68594
+    }, {
+        "end": 68617,
+        "type": "Situation Entity",
+        "begin": 68607
+    }, {
+        "end": 68659,
+        "type": "Situation Entity",
+        "begin": 68658
+    }, {
+        "end": 68720,
+        "type": "Situation Entity",
+        "begin": 68718
+    }, {
+        "end": 68759,
+        "type": "Situation Entity",
+        "begin": 68756
+    }, {
+        "end": 68784,
+        "type": "Situation Entity",
+        "begin": 68780
+    }, {
+        "end": 68853,
+        "type": "Situation Entity",
+        "begin": 68848
+    }, {
+        "end": 68876,
+        "type": "Situation Entity",
+        "begin": 68869
+    }, {
+        "end": 68956,
+        "type": "Situation Entity",
+        "begin": 68951
+    }, {
+        "end": 68971,
+        "type": "Situation Entity",
+        "begin": 68970
+    }, {
+        "end": 68988,
+        "type": "Situation Entity",
+        "begin": 68985
+    }, {
+        "end": 69021,
+        "type": "Situation Entity",
+        "begin": 69019
+    }, {
+        "end": 69123,
+        "type": "Situation Entity",
+        "begin": 69121
+    }, {
+        "end": 69210,
+        "type": "Situation Entity",
+        "begin": 69208
+    }, {
+        "end": 69228,
+        "type": "Situation Entity",
+        "begin": 69223
+    }, {
+        "end": 69328,
+        "type": "Situation Entity",
+        "begin": 69323
+    }, {
+        "end": 69432,
+        "type": "Situation Entity",
+        "begin": 69427
+    }, {
+        "end": 69456,
+        "type": "Situation Entity",
+        "begin": 69454
+    }, {
+        "end": 69517,
+        "type": "Situation Entity",
+        "begin": 69513
+    }, {
+        "end": 69539,
+        "type": "Situation Entity",
+        "begin": 69536
+    }, {
+        "end": 69584,
+        "type": "Situation Entity",
+        "begin": 69577
+    }, {
+        "end": 69650,
+        "type": "Situation Entity",
+        "begin": 69646
+    }, {
+        "end": 69713,
+        "type": "Situation Entity",
+        "begin": 69708
+    }, {
+        "end": 69828,
+        "type": "Situation Entity",
+        "begin": 69824
+    }, {
+        "end": 69880,
+        "type": "Situation Entity",
+        "begin": 69879
+    }, {
+        "end": 69908,
+        "type": "Situation Entity",
+        "begin": 69904
+    }, {
+        "end": 69917,
+        "type": "Situation Entity",
+        "begin": 69915
+    }, {
+        "end": 70007,
+        "type": "Situation Entity",
+        "begin": 69999
+    }, {
+        "end": 70051,
+        "type": "Situation Entity",
+        "begin": 70049
+    }, {
+        "end": 70083,
+        "type": "Situation Entity",
+        "begin": 70077
+    }, {
+        "end": 70114,
+        "type": "Situation Entity",
+        "begin": 70112
+    }, {
+        "end": 70168,
+        "type": "Situation Entity",
+        "begin": 70162
+    }, {
+        "end": 70235,
+        "type": "Situation Entity",
+        "begin": 70229
+    }, {
+        "end": 70305,
+        "type": "Situation Entity",
+        "begin": 70303
+    }, {
+        "end": 70382,
+        "type": "Situation Entity",
+        "begin": 70375
+    }, {
+        "end": 70453,
+        "type": "Situation Entity",
+        "begin": 70449
+    }, {
+        "end": 70503,
+        "type": "Situation Entity",
+        "begin": 70500
+    }, {
+        "end": 70547,
+        "type": "Situation Entity",
+        "begin": 70540
+    }, {
+        "end": 70617,
+        "type": "Situation Entity",
+        "begin": 70615
+    }, {
+        "end": 70688,
+        "type": "Situation Entity",
+        "begin": 70679
+    }, {
+        "end": 70727,
+        "type": "Situation Entity",
+        "begin": 70725
+    }, {
+        "end": 70756,
+        "type": "Situation Entity",
+        "begin": 70754
+    }, {
+        "end": 70827,
+        "type": "Situation Entity",
+        "begin": 70825
+    }, {
+        "end": 70855,
+        "type": "Situation Entity",
+        "begin": 70853
+    }, {
+        "end": 70887,
+        "type": "Situation Entity",
+        "begin": 70884
+    }, {
+        "end": 70992,
+        "type": "Situation Entity",
+        "begin": 70983
+    }, {
+        "end": 71034,
+        "type": "Situation Entity",
+        "begin": 71027
+    }, {
+        "end": 71150,
+        "type": "Situation Entity",
+        "begin": 71143
+    }, {
+        "end": 71166,
+        "type": "Situation Entity",
+        "begin": 71161
+    }, {
+        "end": 71206,
+        "type": "Situation Entity",
+        "begin": 71203
+    }, {
+        "end": 71247,
+        "type": "Situation Entity",
+        "begin": 71243
+    }, {
+        "end": 71332,
+        "type": "Situation Entity",
+        "begin": 71329
+    }, {
+        "end": 71384,
+        "type": "Situation Entity",
+        "begin": 71377
+    }, {
+        "end": 71406,
+        "type": "Situation Entity",
+        "begin": 71404
+    }, {
+        "end": 71572,
+        "type": "Situation Entity",
+        "begin": 71570
+    }, {
+        "end": 71623,
+        "type": "Situation Entity",
+        "begin": 71619
+    }, {
+        "end": 71711,
+        "type": "Situation Entity",
+        "begin": 71708
+    }, {
+        "end": 71738,
+        "type": "Situation Entity",
+        "begin": 71734
+    }, {
+        "end": 71782,
+        "type": "Situation Entity",
+        "begin": 71778
+    }, {
+        "end": 71841,
+        "type": "Situation Entity",
+        "begin": 71838
+    }, {
+        "end": 71893,
+        "type": "Situation Entity",
+        "begin": 71889
+    }, {
+        "end": 71915,
+        "type": "Situation Entity",
+        "begin": 71912
+    }, {
+        "end": 71965,
+        "type": "Situation Entity",
+        "begin": 71963
+    }, {
+        "end": 72046,
+        "type": "Situation Entity",
+        "begin": 72042
+    }, {
+        "end": 72080,
+        "type": "Situation Entity",
+        "begin": 72069
+    }, {
+        "end": 72091,
+        "type": "Situation Entity",
+        "begin": 72089
+    }, {
+        "end": 72206,
+        "type": "Situation Entity",
+        "begin": 72201
+    }, {
+        "end": 72260,
+        "type": "Situation Entity",
+        "begin": 72255
+    }, {
+        "end": 72303,
+        "type": "Situation Entity",
+        "begin": 72295
+    }, {
+        "end": 72363,
+        "type": "Situation Entity",
+        "begin": 72359
+    }, {
+        "end": 72475,
+        "type": "Situation Entity",
+        "begin": 72469
+    }, {
+        "end": 72524,
+        "type": "Situation Entity",
+        "begin": 72521
+    }, {
+        "end": 72641,
+        "type": "Situation Entity",
+        "begin": 72637
+    }, {
+        "end": 72753,
+        "type": "Situation Entity",
+        "begin": 72751
+    }, {
+        "end": 72811,
+        "type": "Situation Entity",
+        "begin": 72807
+    }, {
+        "end": 72849,
+        "type": "Situation Entity",
+        "begin": 72846
+    }, {
+        "end": 72872,
+        "type": "Situation Entity",
+        "begin": 72869
+    }, {
+        "end": 72932,
+        "type": "Situation Entity",
+        "begin": 72928
+    }, {
+        "end": 72952,
+        "type": "Situation Entity",
+        "begin": 72950
+    }, {
+        "end": 72982,
+        "type": "Situation Entity",
+        "begin": 72978
+    }, {
+        "end": 73001,
+        "type": "Situation Entity",
+        "begin": 72998
+    }, {
+        "end": 73054,
+        "type": "Situation Entity",
+        "begin": 73047
+    }, {
+        "end": 73065,
+        "type": "Situation Entity",
+        "begin": 73063
+    }, {
+        "end": 73159,
+        "type": "Situation Entity",
+        "begin": 73155
+    }, {
+        "end": 73210,
+        "type": "Situation Entity",
+        "begin": 73208
+    }, {
+        "end": 73247,
+        "type": "Situation Entity",
+        "begin": 73240
+    }, {
+        "end": 73273,
+        "type": "Situation Entity",
+        "begin": 73270
+    }, {
+        "end": 73309,
+        "type": "Situation Entity",
+        "begin": 73307
+    }, {
+        "end": 73338,
+        "type": "Situation Entity",
+        "begin": 73332
+    }, {
+        "end": 73367,
+        "type": "Situation Entity",
+        "begin": 73365
+    }, {
+        "end": 73417,
+        "type": "Situation Entity",
+        "begin": 73414
+    }, {
+        "end": 73500,
+        "type": "Situation Entity",
+        "begin": 73496
+    }, {
+        "end": 73564,
+        "type": "Situation Entity",
+        "begin": 73557
+    }, {
+        "end": 73616,
+        "type": "Situation Entity",
+        "begin": 73614
+    }, {
+        "end": 73686,
+        "type": "Situation Entity",
+        "begin": 73683
+    }, {
+        "end": 73763,
+        "type": "Situation Entity",
+        "begin": 73761
+    }, {
+        "end": 73794,
+        "type": "Situation Entity",
+        "begin": 73792
+    }, {
+        "end": 73840,
+        "type": "Situation Entity",
+        "begin": 73838
+    }, {
+        "end": 73909,
+        "type": "Situation Entity",
+        "begin": 73907
+    }, {
+        "end": 73961,
+        "type": "Situation Entity",
+        "begin": 73959
+    }, {
+        "end": 73974,
+        "type": "Situation Entity",
+        "begin": 73968
+    }, {
+        "end": 74029,
+        "type": "Situation Entity",
+        "begin": 74024
+    }, {
+        "end": 74210,
+        "type": "Situation Entity",
+        "begin": 74208
+    }, {
+        "end": 74295,
+        "type": "Situation Entity",
+        "begin": 74293
+    }, {
+        "end": 74318,
+        "type": "Situation Entity",
+        "begin": 74310
+    }, {
+        "end": 74383,
+        "type": "Situation Entity",
+        "begin": 74381
+    }, {
+        "end": 74407,
+        "type": "Situation Entity",
+        "begin": 74405
+    }, {
+        "end": 74456,
+        "type": "Situation Entity",
+        "begin": 74448
+    }, {
+        "end": 74517,
+        "type": "Situation Entity",
+        "begin": 74511
+    }, {
+        "end": 74598,
+        "type": "Situation Entity",
+        "begin": 74595
+    }, {
+        "end": 74622,
+        "type": "Situation Entity",
+        "begin": 74616
+    }, {
+        "end": 74727,
+        "type": "Situation Entity",
+        "begin": 74720
+    }, {
+        "end": 74795,
+        "type": "Situation Entity",
+        "begin": 74793
+    }, {
+        "end": 74874,
+        "type": "Situation Entity",
+        "begin": 74870
+    }, {
+        "end": 74950,
+        "type": "Situation Entity",
+        "begin": 74938
+    }, {
+        "end": 75089,
+        "type": "Situation Entity",
+        "begin": 75085
+    }, {
+        "end": 75113,
+        "type": "Situation Entity",
+        "begin": 75105
+    }, {
+        "end": 75188,
+        "type": "Situation Entity",
+        "begin": 75183
+    }, {
+        "end": 75267,
+        "type": "Situation Entity",
+        "begin": 75263
+    }, {
+        "end": 75455,
+        "type": "Situation Entity",
+        "begin": 75452
+    }, {
+        "end": 75463,
+        "type": "Situation Entity",
+        "begin": 75459
+    }, {
+        "end": 75535,
+        "type": "Situation Entity",
+        "begin": 75533
+    }, {
+        "end": 75598,
+        "type": "Situation Entity",
+        "begin": 75593
+    }, {
+        "end": 75622,
+        "type": "Situation Entity",
+        "begin": 75618
+    }, {
+        "end": 75679,
+        "type": "Situation Entity",
+        "begin": 75670
+    }, {
+        "end": 75701,
+        "type": "Situation Entity",
+        "begin": 75699
+    }, {
+        "end": 75726,
+        "type": "Situation Entity",
+        "begin": 75724
+    }, {
+        "end": 75778,
+        "type": "Situation Entity",
+        "begin": 75772
+    }, {
+        "end": 75981,
+        "type": "Situation Entity",
+        "begin": 75980
+    }, {
+        "end": 76074,
+        "type": "Situation Entity",
+        "begin": 76069
+    }, {
+        "end": 76160,
+        "type": "Situation Entity",
+        "begin": 76151
+    }, {
+        "end": 76177,
+        "type": "Situation Entity",
+        "begin": 76175
+    }, {
+        "end": 76266,
+        "type": "Situation Entity",
+        "begin": 76261
+    }, {
+        "end": 76334,
+        "type": "Situation Entity",
+        "begin": 76329
+    }, {
+        "end": 76414,
+        "type": "Situation Entity",
+        "begin": 76412
+    }, {
+        "end": 76487,
+        "type": "Situation Entity",
+        "begin": 76485
+    }, {
+        "end": 76530,
+        "type": "Situation Entity",
+        "begin": 76524
+    }, {
+        "end": 76601,
+        "type": "Situation Entity",
+        "begin": 76595
+    }, {
+        "end": 76632,
+        "type": "Situation Entity",
+        "begin": 76631
+    }, {
+        "end": 76765,
+        "type": "Situation Entity",
+        "begin": 76759
+    }, {
+        "end": 76782,
+        "type": "Situation Entity",
+        "begin": 76776
+    }, {
+        "end": 76798,
+        "type": "Situation Entity",
+        "begin": 76792
+    }, {
+        "end": 76907,
+        "type": "Situation Entity",
+        "begin": 76897
+    }, {
+        "end": 76941,
+        "type": "Situation Entity",
+        "begin": 76940
+    }, {
+        "end": 76992,
+        "type": "Situation Entity",
+        "begin": 76990
+    }, {
+        "end": 77139,
+        "type": "Situation Entity",
+        "begin": 77136
+    }, {
+        "end": 77202,
+        "type": "Situation Entity",
+        "begin": 77200
+    }, {
+        "end": 77263,
+        "type": "Situation Entity",
+        "begin": 77258
+    }, {
+        "end": 77296,
+        "type": "Situation Entity",
+        "begin": 77294
+    }, {
+        "end": 77393,
+        "type": "Situation Entity",
+        "begin": 77388
+    }, {
+        "end": 77484,
+        "type": "Situation Entity",
+        "begin": 77475
+    }, {
+        "end": 77780,
+        "type": "Situation Entity",
+        "begin": 77777
+    }, {
+        "end": 77873,
+        "type": "Situation Entity",
+        "begin": 77869
+    }, {
+        "end": 77949,
+        "type": "Situation Entity",
+        "begin": 77945
+    }, {
+        "end": 77967,
+        "type": "Situation Entity",
+        "begin": 77964
+    }, {
+        "end": 78012,
+        "type": "Situation Entity",
+        "begin": 78009
+    }, {
+        "end": 78065,
+        "type": "Situation Entity",
+        "begin": 78053
+    }, {
+        "end": 78140,
+        "type": "Situation Entity",
+        "begin": 78135
+    }, {
+        "end": 78211,
+        "type": "Situation Entity",
+        "begin": 78207
+    }, {
+        "end": 78302,
+        "type": "Situation Entity",
+        "begin": 78297
+    }, {
+        "end": 78363,
+        "type": "Situation Entity",
+        "begin": 78360
+    }, {
+        "end": 78401,
+        "type": "Situation Entity",
+        "begin": 78399
+    }, {
+        "end": 78441,
+        "type": "Situation Entity",
+        "begin": 78439
+    }, {
+        "end": 78487,
+        "type": "Situation Entity",
+        "begin": 78479
+    }, {
+        "end": 78546,
+        "type": "Situation Entity",
+        "begin": 78544
+    }, {
+        "end": 78617,
+        "type": "Situation Entity",
+        "begin": 78611
+    }, {
+        "end": 78680,
+        "type": "Situation Entity",
+        "begin": 78676
+    }, {
+        "end": 78702,
+        "type": "Situation Entity",
+        "begin": 78695
+    }, {
+        "end": 78734,
+        "type": "Situation Entity",
+        "begin": 78728
+    }, {
+        "end": 78782,
+        "type": "Situation Entity",
+        "begin": 78779
+    }, {
+        "end": 78833,
+        "type": "Situation Entity",
+        "begin": 78828
+    }, {
+        "end": 78884,
+        "type": "Situation Entity",
+        "begin": 78877
+    }, {
+        "end": 78955,
+        "type": "Situation Entity",
+        "begin": 78953
+    }, {
+        "end": 79024,
+        "type": "Situation Entity",
+        "begin": 79017
+    }, {
+        "end": 79064,
+        "type": "Situation Entity",
+        "begin": 79060
+    }, {
+        "end": 79144,
+        "type": "Situation Entity",
+        "begin": 79142
+    }, {
+        "end": 79223,
+        "type": "Situation Entity",
+        "begin": 79213
+    }, {
+        "end": 79243,
+        "type": "Situation Entity",
+        "begin": 79241
+    }, {
+        "end": 79264,
+        "type": "Situation Entity",
+        "begin": 79262
+    }, {
+        "end": 79299,
+        "type": "Situation Entity",
+        "begin": 79288
+    }, {
+        "end": 79396,
+        "type": "Situation Entity",
+        "begin": 79392
+    }, {
+        "end": 79428,
+        "type": "Situation Entity",
+        "begin": 79423
+    }, {
+        "end": 79504,
+        "type": "Situation Entity",
+        "begin": 79500
+    }, {
+        "end": 79600,
+        "type": "Situation Entity",
+        "begin": 79592
+    }, {
+        "end": 79624,
+        "type": "Situation Entity",
+        "begin": 79622
+    }, {
+        "end": 79657,
+        "type": "Situation Entity",
+        "begin": 79654
+    }, {
+        "end": 79718,
+        "type": "Situation Entity",
+        "begin": 79712
+    }, {
+        "end": 79770,
+        "type": "Situation Entity",
+        "begin": 79762
+    }, {
+        "end": 79805,
+        "type": "Situation Entity",
+        "begin": 79801
+    }, {
+        "end": 79861,
+        "type": "Situation Entity",
+        "begin": 79853
+    }, {
+        "end": 79881,
+        "type": "Situation Entity",
+        "begin": 79878
+    }, {
+        "end": 79947,
+        "type": "Situation Entity",
+        "begin": 79938
+    }, {
+        "end": 79962,
+        "type": "Situation Entity",
+        "begin": 79960
+    }, {
+        "end": 80102,
+        "type": "Situation Entity",
+        "begin": 80099
+    }, {
+        "end": 80143,
+        "type": "Situation Entity",
+        "begin": 80136
+    }, {
+        "end": 80220,
+        "type": "Situation Entity",
+        "begin": 80214
+    }, {
+        "end": 80333,
+        "type": "Situation Entity",
+        "begin": 80324
+    }, {
+        "end": 80418,
+        "type": "Situation Entity",
+        "begin": 80416
+    }, {
+        "end": 80502,
+        "type": "Situation Entity",
+        "begin": 80499
+    }, {
+        "end": 80530,
+        "type": "Situation Entity",
+        "begin": 80522
+    }, {
+        "end": 80594,
+        "type": "Situation Entity",
+        "begin": 80585
+    }, {
+        "end": 80667,
+        "type": "Situation Entity",
+        "begin": 80665
+    }, {
+        "end": 80709,
+        "type": "Situation Entity",
+        "begin": 80700
+    }, {
+        "end": 80875,
+        "type": "Situation Entity",
+        "begin": 80863
+    }, {
+        "end": 80981,
+        "type": "Situation Entity",
+        "begin": 80972
+    }, {
+        "end": 81027,
+        "type": "Situation Entity",
+        "begin": 81020
+    }, {
+        "end": 81087,
+        "type": "Situation Entity",
+        "begin": 81083
+    }, {
+        "end": 81105,
+        "type": "Situation Entity",
+        "begin": 81098
+    }, {
+        "end": 81156,
+        "type": "Situation Entity",
+        "begin": 81147
+    }, {
+        "end": 81195,
+        "type": "Situation Entity",
+        "begin": 81187
+    }, {
+        "end": 81339,
+        "type": "Situation Entity",
+        "begin": 81334
+    }, {
+        "end": 81412,
+        "type": "Situation Entity",
+        "begin": 81408
+    }, {
+        "end": 81502,
+        "type": "Situation Entity",
+        "begin": 81494
+    }, {
+        "end": 81556,
+        "type": "Situation Entity",
+        "begin": 81552
+    }, {
+        "end": 81586,
+        "type": "Situation Entity",
+        "begin": 81580
+    }, {
+        "end": 81628,
+        "type": "Situation Entity",
+        "begin": 81624
+    }, {
+        "end": 81656,
+        "type": "Situation Entity",
+        "begin": 81655
+    }, {
+        "end": 81743,
+        "type": "Situation Entity",
+        "begin": 81741
+    }, {
+        "end": 81764,
+        "type": "Situation Entity",
+        "begin": 81757
+    }, {
+        "end": 81827,
+        "type": "Situation Entity",
+        "begin": 81823
+    }, {
+        "end": 81864,
+        "type": "Situation Entity",
+        "begin": 81856
+    }, {
+        "end": 81883,
+        "type": "Situation Entity",
+        "begin": 81880
+    }, {
+        "end": 81930,
+        "type": "Situation Entity",
+        "begin": 81929
+    }, {
+        "end": 81964,
+        "type": "Situation Entity",
+        "begin": 81956
+    }, {
+        "end": 82004,
+        "type": "Situation Entity",
+        "begin": 81999
+    }, {
+        "end": 82062,
+        "type": "Situation Entity",
+        "begin": 82059
+    }, {
+        "end": 82073,
+        "type": "Situation Entity",
+        "begin": 82071
+    }, {
+        "end": 82086,
+        "type": "Situation Entity",
+        "begin": 82084
+    }, {
+        "end": 82112,
+        "type": "Situation Entity",
+        "begin": 82104
+    }, {
+        "end": 82209,
+        "type": "Situation Entity",
+        "begin": 82206
+    }, {
+        "end": 82294,
+        "type": "Situation Entity",
+        "begin": 82289
+    }, {
+        "end": 82312,
+        "type": "Situation Entity",
+        "begin": 82306
+    }, {
+        "end": 82419,
+        "type": "Situation Entity",
+        "begin": 82414
+    }, {
+        "end": 82434,
+        "type": "Situation Entity",
+        "begin": 82429
+    }, {
+        "end": 82635,
+        "type": "Situation Entity",
+        "begin": 82627
+    }, {
+        "end": 82665,
+        "type": "Situation Entity",
+        "begin": 82663
+    }, {
+        "end": 82818,
+        "type": "Situation Entity",
+        "begin": 82811
+    }, {
+        "end": 82876,
+        "type": "Situation Entity",
+        "begin": 82873
+    }, {
+        "end": 82948,
+        "type": "Situation Entity",
+        "begin": 82945
+    }, {
+        "end": 83029,
+        "type": "Situation Entity",
+        "begin": 83021
+    }, {
+        "end": 83064,
+        "type": "Situation Entity",
+        "begin": 83060
+    }, {
+        "end": 83098,
+        "type": "Situation Entity",
+        "begin": 83094
+    }, {
+        "end": 83186,
+        "type": "Situation Entity",
+        "begin": 83181
+    }, {
+        "end": 83205,
+        "type": "Situation Entity",
+        "begin": 83200
+    }, {
+        "end": 83256,
+        "type": "Situation Entity",
+        "begin": 83251
+    }, {
+        "end": 83345,
+        "type": "Situation Entity",
+        "begin": 83342
+    }, {
+        "end": 83386,
+        "type": "Situation Entity",
+        "begin": 83384
+    }, {
+        "end": 83423,
+        "type": "Situation Entity",
+        "begin": 83420
+    }, {
+        "end": 83483,
+        "type": "Situation Entity",
+        "begin": 83475
+    }, {
+        "end": 83521,
+        "type": "Situation Entity",
+        "begin": 83516
+    }, {
+        "end": 83567,
+        "type": "Situation Entity",
+        "begin": 83561
+    }, {
+        "end": 83625,
+        "type": "Situation Entity",
+        "begin": 83621
+    }, {
+        "end": 83675,
+        "type": "Situation Entity",
+        "begin": 83667
+    }, {
+        "end": 83761,
+        "type": "Situation Entity",
+        "begin": 83758
+    }, {
+        "end": 83800,
+        "type": "Situation Entity",
+        "begin": 83797
+    }, {
+        "end": 83847,
+        "type": "Situation Entity",
+        "begin": 83844
+    }, {
+        "end": 83882,
+        "type": "Situation Entity",
+        "begin": 83879
+    }, {
+        "end": 83938,
+        "type": "Situation Entity",
+        "begin": 83935
+    }, {
+        "end": 83977,
+        "type": "Situation Entity",
+        "begin": 83975
+    }, {
+        "end": 84089,
+        "type": "Situation Entity",
+        "begin": 84082
+    }, {
+        "end": 84104,
+        "type": "Situation Entity",
+        "begin": 84101
+    }, {
+        "end": 84134,
+        "type": "Situation Entity",
+        "begin": 84124
+    }, {
+        "end": 84240,
+        "type": "Situation Entity",
+        "begin": 84233
+    }, {
+        "end": 84435,
+        "type": "Situation Entity",
+        "begin": 84430
+    }, {
+        "end": 84501,
+        "type": "Situation Entity",
+        "begin": 84497
+    }, {
+        "end": 84538,
+        "type": "Situation Entity",
+        "begin": 84534
+    }, {
+        "end": 84572,
+        "type": "Situation Entity",
+        "begin": 84569
+    }, {
+        "end": 84618,
+        "type": "Situation Entity",
+        "begin": 84613
+    }, {
+        "end": 84637,
+        "type": "Situation Entity",
+        "begin": 84633
+    }, {
+        "end": 84698,
+        "type": "Situation Entity",
+        "begin": 84695
+    }, {
+        "end": 84736,
+        "type": "Situation Entity",
+        "begin": 84734
+    }, {
+        "end": 84854,
+        "type": "Situation Entity",
+        "begin": 84844
+    }, {
+        "end": 84892,
+        "type": "Situation Entity",
+        "begin": 84888
+    }, {
+        "end": 84918,
+        "type": "Situation Entity",
+        "begin": 84912
+    }, {
+        "end": 84958,
+        "type": "Situation Entity",
+        "begin": 84955
+    }, {
+        "end": 84996,
+        "type": "Situation Entity",
+        "begin": 84994
+    }, {
+        "end": 85111,
+        "type": "Situation Entity",
+        "begin": 85101
+    }, {
+        "end": 85272,
+        "type": "Situation Entity",
+        "begin": 85270
+    }, {
+        "end": 85321,
+        "type": "Situation Entity",
+        "begin": 85311
+    }, {
+        "end": 85391,
+        "type": "Situation Entity",
+        "begin": 85384
+    }, {
+        "end": 85422,
+        "type": "Situation Entity",
+        "begin": 85415
+    }, {
+        "end": 85446,
+        "type": "Situation Entity",
+        "begin": 85439
+    }, {
+        "end": 85595,
+        "type": "Situation Entity",
+        "begin": 85588
+    }, {
+        "end": 85876,
+        "type": "Situation Entity",
+        "begin": 85864
+    }, {
+        "end": 85995,
+        "type": "Situation Entity",
+        "begin": 85993
+    }, {
+        "end": 86049,
+        "type": "Situation Entity",
+        "begin": 86047
+    }, {
+        "end": 86093,
+        "type": "Situation Entity",
+        "begin": 86087
+    }, {
+        "end": 86119,
+        "type": "Situation Entity",
+        "begin": 86117
+    }, {
+        "end": 86141,
+        "type": "Situation Entity",
+        "begin": 86139
+    }, {
+        "end": 86162,
+        "type": "Situation Entity",
+        "begin": 86158
+    }, {
+        "end": 86179,
+        "type": "Situation Entity",
+        "begin": 86171
+    }, {
+        "end": 86282,
+        "type": "Situation Entity",
+        "begin": 86278
+    }, {
+        "end": 86324,
+        "type": "Situation Entity",
+        "begin": 86317
+    }, {
+        "end": 86392,
+        "type": "Situation Entity",
+        "begin": 86384
+    }, {
+        "end": 86445,
+        "type": "Situation Entity",
+        "begin": 86437
+    }, {
+        "end": 86506,
+        "type": "Situation Entity",
+        "begin": 86499
+    }, {
+        "end": 86548,
+        "type": "Situation Entity",
+        "begin": 86538
+    }, {
+        "end": 86575,
+        "type": "Situation Entity",
+        "begin": 86573
+    }, {
+        "end": 86705,
+        "type": "Situation Entity",
+        "begin": 86697
+    }, {
+        "end": 86769,
+        "type": "Situation Entity",
+        "begin": 86767
+    }, {
+        "end": 86887,
+        "type": "Situation Entity",
+        "begin": 86884
+    }, {
+        "end": 86917,
+        "type": "Situation Entity",
+        "begin": 86914
+    }, {
+        "end": 86955,
+        "type": "Situation Entity",
+        "begin": 86951
+    }, {
+        "end": 86994,
+        "type": "Situation Entity",
+        "begin": 86987
+    }, {
+        "end": 87070,
+        "type": "Situation Entity",
+        "begin": 87063
+    }, {
+        "end": 87103,
+        "type": "Situation Entity",
+        "begin": 87101
+    }, {
+        "end": 87157,
+        "type": "Situation Entity",
+        "begin": 87155
+    }, {
+        "end": 87224,
+        "type": "Situation Entity",
+        "begin": 87217
+    }, {
+        "end": 87267,
+        "type": "Situation Entity",
+        "begin": 87264
+    }, {
+        "end": 87405,
+        "type": "Situation Entity",
+        "begin": 87404
+    }, {
+        "end": 87526,
+        "type": "Situation Entity",
+        "begin": 87520
+    }, {
+        "end": 87576,
+        "type": "Situation Entity",
+        "begin": 87575
+    }, {
+        "end": 87675,
+        "type": "Situation Entity",
+        "begin": 87671
+    }, {
+        "end": 87791,
+        "type": "Situation Entity",
+        "begin": 87787
+    }, {
+        "end": 87881,
+        "type": "Situation Entity",
+        "begin": 87877
+    }, {
+        "end": 87883,
+        "type": "Situation Entity",
+        "begin": 87882
+    }, {
+        "end": 87921,
+        "type": "Situation Entity",
+        "begin": 87917
+    }, {
+        "end": 87984,
+        "type": "Situation Entity",
+        "begin": 87979
+    }, {
+        "end": 88032,
+        "type": "Situation Entity",
+        "begin": 88027
+    }, {
+        "end": 88086,
+        "type": "Situation Entity",
+        "begin": 88081
+    }, {
+        "end": 88150,
+        "type": "Situation Entity",
+        "begin": 88146
+    }, {
+        "end": 88218,
+        "type": "Situation Entity",
+        "begin": 88213
+    }, {
+        "end": 88256,
+        "type": "Situation Entity",
+        "begin": 88252
+    }, {
+        "end": 88289,
+        "type": "Situation Entity",
+        "begin": 88287
+    }, {
+        "end": 88368,
+        "type": "Situation Entity",
+        "begin": 88359
+    }, {
+        "end": 88444,
+        "type": "Situation Entity",
+        "begin": 88443
+    }]
+}

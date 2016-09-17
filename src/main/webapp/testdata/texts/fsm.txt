@@ -1,0 +1,285 @@
+This article was published as:
+
+"Automata Animation"
+ PC Techniques, Vol. 6, No. 1
+ Apr/May 1995, page 44
+
+What appears here is the original manuscript, as submitted to Jeff
+Duntemann. Any changes in the published version are due to Jeff's
+expert editing.
+
+       Modeling Sprite Animation Using Finite State Automata
+                     copyright 1995 Diana Gruber
+
+Finite State Automata, also known as finite state machines or FSMs,
+are a thereotical device used to describe the evolution of an object
+based on its current state and outside influences. The present state
+of the object, its history, and the forces acting upon it can be
+analyzed to determine the future state of the object. Usually, finite
+state machines are represented in terms of state transition tables.
+While theoretically interesting, in general there do not seem to
+be very many real world applications that take advantage of the
+properties of finite state automata.
+
+In this article, we will talk about finite state machines, and their
+associated diagrams, in terms of how they can be used to model sprite
+animation in a computer game. The FSM model will give us a method
+for designing the code that controls the sprite animation. The
+question that concerns us is, given the position of a sprite in the
+game and the forces acting upon the sprite, what happens next? This
+is exactly the sort of question finite state automata are well suited
+to answering, and we will see shortly how to do it.
+
+Basic Sprite Animation
+
+First, though, let's review the basic techniques of sprite animation.
+We visited this topic once before, in the June/July 1994 issue of PC
+Techniques (Breathing Life Into Your Arcade Game Sprite, page 89). In
+that article, we looked at a very simple sprite, an airplane which
+moves horizontally on a scrolling background, and occasionally
+changes speed and spins about a horizontal axis.
+
+Such a simplistic sprite would not be very interesting in a modern
+computer game. In modern games, we want to look at sprites that have
+a wider range of motion: a hero sprite, for example, who runs, jumps,
+kicks, and shoots; or an enemy robot sprite that rolls, bumps into
+walls, and emits electrical charges. In order for a game to be
+competitive in the current market, the sprite animation needs to be
+creative and sophisticated. Maintaining control of such sophisticated
+sprite action can be a challenge.
+
+My favorite technique for controlling sprite animation is through a
+combination of data structures and action functions. The data
+structures define both the nature of the sprite image, and its
+position in the game. Let's take a quick look at the data structures
+before we focus our attention on the action functions, which is where
+the real work of sprite animation takes place.
+
+The basic building block of the sprite is the sprite structure,
+which is defined like this:
+
+/* sprite structure */
+typedef struct _sprite
+{
+   char *bitmap;
+   int width;
+   int height;
+   int xoffset;
+   int yoffset;
+}  SPRITE;
+
+This structure holds the information necessary to display the
+sprite, including its width and height, the bitmap that defines
+the image, and the offset values. The offsets are used to adjust
+the position of the sprite, and are useful with things like explosions,
+which must be centered around a midpoint, rather than displayed
+from a corner.
+
+The sprite structure is a member of the object structure, which is
+defined like this:
+
+/* forward declarations */
+struct OBJstruct;
+typedef struct OBJstruct OBJ, near *OBJp;
+
+/* pointer to object action function */
+typedef void near ACTION (OBJp objp);
+typedef ACTION *ACTIONp; 
+
+/* data structure for objects */
+typedef struct OBJstruct 
+{
+  OBJp next; 
+  OBJp prev; 
+  int x;
+  int y;
+  int xspeed;
+  int max_xspeed;
+  int yspeed;
+  int direction;
+  int frame;
+  int tile_xmin;
+  int tile_xmax;
+  int tile_ymin;
+  int tile_ymax;
+
+  SPRITE *image;
+  ACTIONp action; 
+};
+
+This data structure contains all the information about a particular
+object in the game, including its position (x and y coordinates), its
+vertical and horizontal speed, the direction it is facing, the
+frame of animation (for example, which stage of a six-stage walk),
+the tile extents (how close the sprite may approach the edge of
+the screen), and a pointer to the sprite image, which was defined
+earlier. The sprite image changes as the sprite moves, and may
+represent a sprite as walking, running, or shooting, for example.
+
+Defining Action Functions
+
+The last member of the object structure is the pointer to the action
+function, which is where all the interesting work takes place. The
+action function is a function which is executed once each frame for
+each sprite. It performs several tasks. It causes the sprite to move
+(by changing the object's x and y coordinates), it checks for
+collisions, it may spawn new objects or kill off old ones, but
+most importantly, the action function determines what the object
+will do in the next frame. It does this by specifying the next
+action function.
+
+Here is an example of an action function in its simplest form:
+
+void near sprite_stand(OBJp objp)
+{
+  if (fg_kbtest(LEFT_ARROW))
+     objp->action = sprite_walk;
+}
+
+This is the action function for a sprite standing still. As you can
+see, the sprite does nothing. Its x and y coordinates do not change,
+and its sprite image does not change. Also, as long as no key is
+pressed, the sprite's action function does not change. As long as the
+sprite continues to stand still, this action function will continue
+to be called once each frame. 
+
+The state of the sprite changes from standing to walking
+when the left arrow key is pressed. When this happens, the
+sprite_stand() function is abandoned, and the sprite_walk() function
+takes over. This transition happens very simply: a pointer in the
+object structure is reassigned to point to a new action function.
+
+The difficult part in programming sprite animation is deciding what
+should go in the action functions. Since a sprite can do more
+than one thing at a time (shooting while jumping, for example), the
+programmer must make decisions about which action function should be
+called. The choice would be calling the sprite_shoot() function,
+with the jumping action being an incidental action happening within
+the shooting function, or calling the sprite_jump() function, with the
+shooting action incidentally happening within the jumping function.
+
+Action Functions As Finite State Machines
+
+As we mentioned at the beginning of this article, a finite state
+machine can be defined as an object whose past history affects its
+future behavior in a finite number of ways. This is exactly what is
+happening with the action functions. The current state of the object,
+combined with the forces and environmental variables acting upon it,
+determines the future state of the object. This can be summarized in
+the formula shown here:
+
+  current state + input + environment = action + future state
+
+Usually, finite state machines are represented by transition state
+diagrams. These simple little diagrams can be helpful in making
+decisions about what goes in an action function.  Suppose, for
+example, you have a simple sprite that does only four things: it stands
+still, it moves forward, it jumps, and it falls. These actions
+depend on the keyboard input. No input causes the sprite to stand
+still, an arrow key pressed causes the sprite to move laterally, and
+the CTRL key causes the sprite to jump. When the sprite stops
+jumping, he will fall. The transition state diagram will then look
+like this:
+
+                            inputs:
+
+             (none)     (arrow keys)   (CTRL key)
+
+state 1        1            2              3
+(standing)
+
+state 2        1            2              3
+(walking)
+
+state 3        4            3              3
+(jumping)
+
+state 4        4            4              4
+(falling)
+
+
+This state transition table easily categorizes the sprite motion for
+the simple sprite. By looking at this table, it is easy to see how
+the action functions should be constructed. Each action function
+is simply an if-else construction based on a row in the table. For
+example, the code for the sprite_stand() function would look like this:
+
+void near sprite_stand(OBJp objp)
+{
+  if (fg_kbtest(LEFT_ARROW) || fg_kbtest(RIGHT_ARROW))
+     objp->action = sprite_walk;
+  else if (fg_kbtest(CTRL))
+     objp->action = sprite_jump;
+  else
+     objp->action = sprite_stand;
+}
+
+The other functions, sprite_walk(), sprite_jump(), and sprite_fall()
+would similarly be coded by consulting the entries in the
+corresponding row in the state transition table.
+
+While the state transition table easily categorizes the sprite motion for
+a simple sprite, it unfortunately does not tell the whole story.
+Look at state 4, for example. It appears that once the sprite starts
+falling, it continues doing so indefinitely. That is no good! Our
+sprite would fall right through the floor. We need to include information
+about the environment in our finite state machine.
+
+It would be quite simple if we could simply put the environmental
+factors in another table. It would perhaps look something like this:
+
+                      environmental factors:
+
+             (floor)     (ceiling)      (wall)     (none)
+
+state 1        1            1              1         4
+(standing)
+
+state 2        2            2              1         4
+(walking)
+
+state 3        3            4              3         3
+(jumping)
+
+state 4        1            4              4         4
+(falling)
+
+From this table, it is clear if you are falling and you hit the
+floor, you must stop falling. Similarly, if you are walking and
+you are not on a floor, you must be prepared to begin falling.
+This table still does not tell the whole story, however, because
+it contains no information about the keyboard inputs.
+
+To completely tell the story of the sprite animation, you need to
+add another dimension to the state transition table. This is done
+by allowing different tables for each state. You can then compare
+environmental variables to inputs, and generate new states, as follows:
+
+
+ State 1
+(standing)
+                               inputs
+                 (no key)     (arrow key)    (CTRL key)
+environment 
+variables
+
+(none)              4            4             4
+
+(floor)             1            2             3
+
+(ceiling)           1            2             1
+
+(wall)              1            1             3
+
+
+Now we have a way to chart out the sprite action based on both
+environmental factors and keyboard inputs. A typical game will have
+perhaps dozens of action functions, each one requiring a state
+transition table. It can be time consuming to chart out all these
+tables, and in the simpler cases, it will be an unnecessary exercise.
+But in the more convoluted and difficult action functions, taking the
+time to build a state transition table can greatly aid your coding
+work. It will also eliminate bugs caused by "forgotten" inputs
+or environment variables. All possible sprite states will be accounted
+for.
+

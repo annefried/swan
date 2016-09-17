@@ -1,0 +1,256 @@
+This article was published as:
+
+"Game Size: The Forgotten Discipline"
+ PC Techniques, Vol. 6, no 3
+ Aug/Sept. 1995, page 93.
+
+What appears here is the original manuscript, as submitted to Jeff
+Duntemann. Any changes in the published version are due to Jeff's
+expert editing.
+
+
+                        Writing Smaller Games
+                     copyright 1995 Diana Gruber
+
+At a recent conference, I ran into a user of a shareware game who
+was complaining that the game wouldn't run on his ancient 80286
+computer. It was running too fast. The program, apparently, was
+written years earlier to run on an XT, and performed badly on
+anything faster. He was wondering if I had any suggestions on how
+to fix it. I didn't, but I took the opportunity to recall the good
+old days of game programming, when developers knew how to get the
+most out of those old, primitive systems.
+
+The thing that sticks in my mind the most about the early days
+of game programming was how much attention we paid to the size
+of a game. These days, all the emphasis is on speed. If a game
+fits on ten floppy disks or a CD-ROM, it isn't a problem. We
+can afford to be wasteful where size is concerned, as long as
+we have adequate speed.
+
+Do you remember when floppy disks were so expensive that games
+had to fit single 360K disk? Disk space wasn't the only problem
+back then. You couldn't count on a system having 640K bytes of
+memory, or even 512K. To reach the widest audience, a game
+had to run in 256K or less.
+
+Programming to those types of minimal configurations is becoming
+a lost art. Game programmers who remember how it was done still
+have the necessary skills. We remember how to optimize for size.
+But you don't see much written on the subject, because it is
+no longer an issue like it used to be. Still, there is no reason
+to be sloppy. Wasted space is wasted space. Even if you don't
+need to optimize for size, it still pays to know how to do it.
+And there are still occasions where optimizing for size is
+important, for example when writing code for an embedded system
+or an EPROM. 
+
+With this in mind, I am offering the following list of suggestions
+for optimizing games for size.
+
+Use C, not C++
+
+C++ is a powerful language. While you can use it without a speed
+degradation, you will most likely notice an increase in the size
+of your program. When optimizing for size, use C, stripped down
+to the bare minimum. Also, compare compilers. Some compilers
+generate smaller code than others.
+
+Check your compiler switches
+
+Most compilers give you a choice between optimizing for speed and
+optimizing for size. Choose optimizing for size, and be sure to
+turn off the debugging information. Keep an eye on things like
+stack size and heap size, and adjust as appropriate.
+
+Be careful with overlays
+
+The big problem with overlays is the number of disk accesses they can
+generate. If these are not planned carefully, your program will
+access the hard disk constantly, causing your program to run very
+slowly. However, if used correctly, overlays can be a wonderful way
+to keep a game running when RAM is low.
+
+Use the medium memory model if possible
+
+You want your data to default to near memory. You can fit a lot
+of data in a 64K segment, especially if you make heavy use of globals
+and reuseable arrays. If Windows Write can be written in medium
+model, so can your game. The small model is also good, but it is usually
+not practical to fit both code and data into 64K segments.
+
+Use the smallest integral type
+
+Don't use long integers when short integers will do. Don't use short
+integers when bytes will do. This isn't terribly important where
+individual variables are concerned, but pay careful attention to your
+arrays.
+
+Use globals
+
+These days, programmers are taught to avoid globals for stylistic
+reasons. However, they can actually be quite efficient, both in
+terms of speed and size. There is a time and a place for everything.
+If you are writing a program for a bank that 20 other programmers
+are going to work on, you should avoid using globals. If you are
+writing a game and you want to squeeze every drop of performance
+out of it, use them liberally.
+
+Use malloc() and free()
+
+This is obvious. When an object, such as a bitmap or a sound effect,
+is no longer in use, its space should be available for some other
+object to use. A variation on this is to allocate all the free memory
+at the beginning of your program, and control the use of it yourself.
+Programmers often write functions called my_malloc() and my_free()
+which simply keep track of pointers to this block of memory. However
+you choose to manage memory, be careful about fragmenting it.
+
+Reuseable arrays
+
+Allocate an array of a few thousand bytes and use it over and over.
+Temporary bitmaps, such as menu art, can go in there, along with
+sound effects, masking maps, or whatever else comes and goes
+frequently.
+
+Write lots of small functions
+
+Any time you do something more than twice, write another function
+to handle it. The overhead of using many function calls can be
+offset by the liberal use of global variables.
+
+Don't use inline functions
+
+Inline functions are the way to squeeze more speed out of a C++
+program. In some cases, class functions default to inline. This
+adds size to your program, because every occurrence of the function
+call is expanded to the whole function at compile time. 
+
+Use macros sparingly
+
+Do this for the same reason you avoid using inline functions. The
+macro substitution happens at compile time, adding size to your
+executable program. Don't avoid macros altogether, though. They can
+greatly simplify your code, and add a speed boost as well. Just
+be careful how you use them.
+
+Don't use unrolled loops
+
+Unrolled loops are a speed optimization, at the expense of program
+size. If size is a concern, roll them back up. A compromise solution
+is to use partial unrolling. For example, you can execute a
+1000-iteration loop 500 times but include the code twice within the
+loop.
+
+Don't use compiled bitmaps
+
+Compiled bitmaps are all the rage these days. Bitmap data is turned
+into assembly language instructions. They are blazingly fast, but
+add massive size overhead to the size of your program.
+
+Use itoa() instead of sprintf()
+
+There are very few times when you want formatted text output in a
+game. Usually the score will contain integers, and maybe some
+inventory or map coordinates also involve numbers. The sprintf()
+function does a nice job of converting numbers to text, but it
+also does a lot more. The unneeded code adds to the size of your
+program. If possible, avoid it and use itoa(). Similarly, use atoi()
+instead of sscanf().
+
+Don't use floating point
+
+This is a universal truth in games, and programmers will go to great
+lengths to avoid floating point math, including writing their own
+"fixed point" functions, which are integer simmulations of real number
+functions. In general, integer solutions can be found to most
+game design problems, usually without resorting to fixed point.
+For example, to turn clock ticks into seconds, you need to multiply
+by 18.2. This can be accomplished by multiplying by 182 and dividing
+by 10.
+
+Rewrite the startup code
+
+While I have never done this, some game programmers do it routinely.
+The function c0.asm can be optimized by stripping out the code you
+don't need.
+
+Compress your executable
+
+There is a freeware program called LZEXE which allows you to store
+your executable in a compressed format which is decompressed at load
+time. This saves disk space, but not RAM. The program will expand
+to fill up the same amount of RAM it required before the compression.
+There are also commercial programs that do the same job.
+
+Use repetitive music and brief sound effects
+
+Music and sound effects will eat up huge chunks of space. Plan these
+carefully. Trim them down to the bare minimum, and store them in
+RAM in reuseable arrays.
+
+Turn little files into big files
+
+Files are stored on disks in allocation units. Typically, DOS will
+alocate a unit of two 512-byte sectors on a floppy disk, or four
+sectors on a hard disk. A tiny file will fill the entire allocation
+unit, even if it is only a few bytes long. The rest of the
+allocation unit is simply unused space. On average, 512 bytes of space is
+wasted for each file on a floppy disk. That means if you have 10
+files on a floppy disk, you have approximately 5K of wasted space. So
+if you can combine your bitmaps or sound effects into larger binary
+files, you will achieve a significant savings in disk space.
+
+Use reuseable artwork
+
+If your title screen and your credit screen use the same artwork, but 
+perhaps arranged differently, you can store it in a single file and
+organize it at run time. If your title screen uses artwork from the
+game, so much the better. Recycle those files as much as possible.
+
+Strip the palette information out of PCX files
+
+If you use the same color palette throughout the game, then you
+don't need to store that information in a PCX file. The 256-color PCX
+files have 768 bytes at the end which hold the palette information.
+You can trim that off. If you have 10 PCX files all using the same
+palette, this will save you more than 7K.
+
+Use RLE bitmaps
+
+Run Length Encoding (RLE) is a simple technique for compressing
+bitmaps. It simply records the color, then the number of pixels of
+that color, in a continuous pattern starting at one corner. Depending
+on the artwork, this can save you considerable space both both in
+terms of disk space and RAM. RLE's are also very efficient in terms
+of speed. They can be displayed faster than an uncompressed bitmap,
+but not as fast as a compiled bitmap.
+
+Don't store text as graphics
+
+If you have a page of text, for example opening credits or a storyline,
+store it as character strings and display it using a bitmapped font.
+Don't store it in a PCX file, which would be very wasteful.
+
+Split your sprites
+
+If you have two sprites that are almost identical, break them up.
+For example, if you have a man with his hands up, and the same man
+with his hands down, make the man one sprite, and the hands another
+sprite. This will save quite a bit of sprite storage room, but
+it causes a slight speed degradation (you turn one blit into two blits)
+and it is also time-consuming and annoying to manipulate the artwork
+that way. If you are at the end of the development cycle, and you
+just need to squeeze a few more bytes out of your program, this is
+a good place to do it.
+
+As you can see, many of these tips are exactly the opposite of what
+you would do if you were optimizing for speed. In actual practice,
+game programmers tend to weigh their options and make decisions based
+on both size and speed. These days, the equation is skewed heavily
+toward speed, with size being a trivial factor in development
+decisions. Still, it pays to know what you are trading away when you
+make your tradeoff decisions. A good programmer will keep both size
+and speed considerations in mind when designing and developing games.
+
+

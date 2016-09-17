@@ -1,0 +1,366 @@
+                   A l o n e   i n   t h e   D a r k   3
+             ________     ________    _________      _____       _____
+            / ____  /|   /__  ___/|  /___  ___/|    / _   \     /____ \
+           / /___/ / /   |_/ /|__|/  |__/ /|__|/   / / \  /|    ____/ /|
+          / ____  / /     / //         / / /      / /  / //    /___  //
+         / /|_ / / /  ___/ //__       / / /      / /__/ //   _____/ //
+        /_/ / /_/ /  /________/|     /_/ /      /_____ //   /_____ //
+        |_|/  |_|/   |_______|/      |_|/       |_____|/    |_____|/
+
+                     W   A   L   K   -   T   H   R   U
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                                Written by:
+
+                            [ Darrell Upchurch ]
+                             [ David Mitchell ]
+                             [ Polly Robinson ]
+
+                            w/ Special Thanx to:
+                              { Mike Birket }
+                              { Mike Strauss }
+
+...............................................................................
+   ** Send any comments or questions to: <dmitch@umr.edu> or <pgr@umr.edu> **
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+1.        Enter Slaughter Gulch (a big mistake :)
+2.[opt]   Take *Gas Can* on right end of porch of the saloon
+3.        Enter the saloon
+4.        Get *Key* from center table
+5.        Get *Maraca* from stage
+6.        Get *Oil Can* in corner of saloon
+7.[opt]   Use *Gas Can* on projector
+8.        Get *Box of Matches* in small room by the bar
+9.        Walk behind bar and let the gun man shoot at you (he can't hurt you)
+10.       Search cabinet behind bar
+11.       -Get *Wood Alcohol*
+12.       -Get *Bottle*
+13.       -Get *Flask*
+14.[opt]  Throw *Bottle*
+15.[opt]  -Get *Token*
+16.[opt]  Use *Token* on left side of piano
+17.[opt]  -Get *Oil Lamp*
+18.       Push left horn behind bar
+19.       Stay there and wait for gunman to shoot all his bullets &
+          then fight him off (w/ or w/o your gun)
+20.       -Get *Ace of Diamonds*
+21.       -Get *Gold Bullet*
+22.       Fall down trap door
+23.       -Get *Oil Lamp* (if you didn't use the token on the piano)
+24.       Light your *Oil Lamp* (via using oil,matches,lamp)
+25.       Get *Cane* off wall
+26.[opt]  Read poster
+27.       'Open/Search' left keg door
+28.       Use the *maraca* to avoid the snake(s)
+29.       Climb up ladder and enter the jail cell
+30.       Kill off the gun slinger
+31.       Get *Stone*
+32.       Use *Cane* by the cell door
+33.       -Get *Cell Key*
+34.       Kill off the gun slinger again...
+35.       Throw *Stone*
+36.       -Get *Amulet*
+37.[opt]  'Put' *Wood Alcohol* in front of drunkard
+38.[opt]  -Get *Flask*
+39.       'Open/Search' Desk
+40.       -Get *Sheriff's Badge*
+41.       -Get *Bullets for a Winchester*
+42.       Use *Key* on gun cabinet
+43.       Search & -Get *Winchester*
+44.[opt]  Read posters
+45.[opt]  Open wood stove in other room & kill off really big guy
+46.       Push big cabinet in front of double doors
+47.[opt]  Open cabinet
+48.[opt]  -Get *Shotgun*
+49.       Climb rope ladder
+50.       Get *Whip*
+51.       Run under pulsing red light (when not on :)
+52.       Get *Voodoo Hangman's Rope*
+53.       Get *Cast Iron Plate*
+54.       Get *Cartridge Belt*
+55.[opt]  Use *Cast Iron Plate*
+56.[opt]  Use *Whip* on gun man to -Get *Bag Full of Gold Coins*
+57.       Use (load) *Gold Bullet* into Winchester
+58.       Use *Winchester* to shoot bad guy
+59.       -Get *Sack Full of Scorpions*
+60.       Shoot steel door with a gun of your choice
+61.       When inside, Use *Oil Lamp*
+62.       Use *Voodoo Hangman's Rope* when you can't breathe
+63.       Use *Sack Full of Scorpions* on trap door
+64.       Push lever
+65.       'Open/Search' behind trap door
+66.       -Get *A Stick of Dynamite*
+67.       -Get *A Piece of Dried Meat*
+68.       Go back around corner & kill off the two gunmen
+69.       Enter small room & Get *Gatling Gun*
+70.       Get *Flask*
+71.       Get *Short Fuse* behind barrel
+72.       Use *Short Fuse*
+73.       Dodge bullets from the gunman who closes the door
+74.       Re-open door
+75.       Use *Stick of Dynamite* on crack in wall behind barrel
+76.       Use *Box of Matches* where you placed the dynamite
+77.       Leave room & wait for wall to explode
+78.       Go back, walk thru blast hole, & stand on arrow stone
+79.       Go thru the door and down passage way & around corners
+80.       Kill another gunman
+81.       Use *Sheriff's Badge* on machine
+82.       Use the *Whip* near the machine to activate it (you will lose whip)
+83.       Go thru the newly opened door
+84.       Pick up *Flask*
+85.       Pick up *Bullets for Winchester* on end of plank
+86.       With a good running distance, run across plank to jump across
+          to other building
+87.       Use *Matches* on all the lamps (only one of them is necessary :)
+88.[opt]  Read Map on wall
+89.       Get *Sheet from Newspaper*
+90.       Use *Dried Meat* on clock
+91.       Get *Token*
+92.       Get *Night Valet* in corner
+93.       Get *Flask* by picture
+94.       Walk thru picture
+95.       'Open/Search' on bed post
+96.       Get *Arrow*
+97.       Use *Arrow* on Cupid
+98.       'Open/Search' dresser
+99.       -Get *30/30 Bullet*
+100.      -Get *Bulb*
+101.      -Get *Pearl*
+102.      Push mirror
+103.      -Get *Key*
+104.      Walk back thru picture & into hall
+105.[opt] Get *Costume Jewelry Ring*
+106.      Use *Key* on door & enter room
+107.[opt] Use *Diamond Ring*
+108.[opt] Use *Diamond* on dragon figurine
+109.[opt] -Get *Bullets for Winchester*
+110.      Get *Flask*
+111.      Get *Instruction Sheet*
+112.      Get *Diary*
+113.      Walk in front of door w/ gunman behind it on balcony
+114.      Put down *Night Valet* (watch gunman walk to his death :)
+115.      'Push' door shutter down
+116.      Walk into room & search table
+117.      -Get *Key*
+118.      Get *Shutter Release*
+119.      Get *Instruction Sheet*
+120.      Get *Flash*
+121.[opt] Look at pictures on wall behind sink
+122.      Go back to the hallway
+123.      Use *Bulb*
+124.      Use *Shutter Release* to ready flash
+125.      Use *Key* on remaining door
+126.      Go to the right to the film canister on floor
+127.      Use *Flash* while avoiding Two-headed creature (this will kill it)
+128.      Use *Token* on piano
+129.      Shoot dart board target on cabinet
+130.      Search in cabinet
+131.      -Get *Flask*
+132.      -Get *War Stick*
+133.      Prepare *Oil Lamp* (via oil,matches)
+134.      Drop down hole
+135.      Use *Lit Oil Lamp*
+136.      Run out of cave to avoid flying bats
+137.      Jump across pillars till you meet the Indian
+138.      Use *War Stick* on Indian (he will move then)
+139.      Get *Box of Cartridges*
+140.      Get *Small Key*
+141.      Continue to jump across pillars...
+142.      When at a dead-end, Use *Indian Amulet* (this will get you across)
+143.      Fight guy with throwing stars
+144.      -Get *Flask*
+145.      Kill gunman
+146.      -Get *Top Hat*
+147.      -Get *Key*
+148.      Use *Key* on left double-doors
+149.      Search book shelves
+150.      -Get *White Book*
+151.      -Get *Watch Maker's Manual*
+152.      -Get *Locked Book*
+153.[opt] Use *Small Key* (to unlock *Locked Book*)
+154.[opt] Read *Book on Navajo Traditions*
+155.      Search bust on the end wall
+156.      -Get *Pocket Watch*
+157.      Search table & -Get *Printing Plate*
+158.[opt] Light candle on table
+159.[opt] Read *White Book* standing near candle
+160.[opt] Use *Printing Plate* in mirror by table
+161.      Leave Room
+162.      Use *Pocket Watch* on other set of double-doors
+163.      Walk to guy & -Get *Story Board*
+164.      Use *Top Hat* on Abe Lincoln's Statue
+165.      -Get two *Boxes of Cartridges*
+166.      Kill strange green guy
+167.      Stand in front of stain-glass window & shoot it w/ *Winchester*
+168.      Climb up steps
+169.      Use *War Stick* on platform in middle of graveyard
+170.      Use *Ace of Spades* on O.E.J.'s grave
+171.      -Get *Message*
+172.      Search table & -Get *Oil Can*
+173.      Get *Roll of Film* off of floor
+174.      Search hutch & -Get *Bag of Pemmican*
+175.      Use *Oil Can* on fireplace & enter dance hall
+176.      Search fat man & -Get *Hammer*
+177.      Search lady & -Get *Box of Cartridges*
+178.      Walk to stage (avoid shots from violin player)
+179.      Search record player
+180.      -Get *Guitar String*
+181.      -Get *Musical Score*
+182.      -Get *Key to a Safe*
+183.      Kill guy with flowers & gun
+184.      Leave dance hall & go into kitchen
+185.      Walk behind hutch and go to hallway
+186.      Use *30/30 Bullet* on door lock
+187.      Use *Hammer* on door (to blast bullet)
+188.      Search model of train station
+189.      -Get *Blasting Cap*
+190.      -Get *Map*
+191.      -Get *Light Bulb*
+192.      Use *Guitar String* on mounting table
+193.      Use *Light Bulb*
+194.      Use *Musical Score*
+195.      Get the 3 digit combination (from *Musical Score*)
+196.      Use *Roll of Film* near mounting table on the projector
+197.      In other room, search table
+198.      -Get *Astronomy Book*
+199.      Search picture
+200.      'Open/Search' until code-entry device matches the 3 digit 
+          combination
+201.      Enter bank room
+202.      Use *Pearl* on vault
+203.      Use *Key to a Safe* on vault
+204.      Kill bank teller zombie & -Get back *Indian Amulet*
+205.      In vault, Get *Box of Cartridges*
+206.      Get *Hill Century's Money*
+207.      Open window (have fun :)
+208.      Get *McCarthy's Message* from McCarthy
+209.      Search saddle & -Get *Flask*
+210.      Search rail cart
+210.      -Get *Detonator Box* & -Get *Box of Cartridges*
+211.      Enter station
+212.      'Push' "Station" sign (to choke guy on rafters)
+213.      Get *Key*
+214.      Search pile of rails & -Get *Eye-Bolt*
+215.      Use *Eye-Bolt* on bell 3 times (to open door)
+216.      Run outside
+217.      Quickly Use *Blasting Cap* near fence
+218.      Use *Detonator Box* on opposite side near the rocks
+219.      At the water tower, lay down *Hill Century's Money* & *Key*
+220.      -Die-
+221.      Run out of cemetery & into saloon
+222.      Run up broken staircase & jump across hole in floor
+223.      Run out window & jump out onto the statue where hole in wall is
+224.      -Get *Golden Eagle*
+225.      Run between buildings to McCarthy's workshop
+226.      Go to tar barrel & dip paw in it
+227.      Go inside building next door & dip paw in "Cask of Silver Salts"
+228.      Kill werewolf outside
+229.      Run into cemetery & kill the other werewolf
+230.      Run back into tunnel where you turned into a panther
+231.      Place *Golden Eagle* in fire
+232.      -Come back to life-
+233.      Get *Soap* behind tombstone
+234.      Get *Colt Gun*
+235.      Go back to water tower
+236.      Drop your *Colt Gun*
+237.      Walk up to your double & touch him (to become one)
+238.      Get *Colt Gun* back
+239.      Walk up ladder
+240.      Fall off plank
+241.      Use *Soap* on dirty guy
+242.      -Get *Metallic Brush*
+243.      Get *Flask*
+244.      Use *Metallic Brush* on peg
+245.      Fall down trap door
+246.      Get *Engineer's Notebook*
+247.      Get *Dead Leaf*
+248.      Use *Dead Leaf* on Indian bust
+249.[opt] Read map on wall
+250.      Go up steps & kill off both bad guys (don't use your gun)
+251.      Search wall-hole & -Get *Flask*
+252       Search other wall-hole & -Get *Pick-axe*
+253.      Go into other room & Get *Sheets of Paper*
+254.      Walk across chasm (be brave and save alot :)
+255.      Kill off Pick-axe man with *Colt Gun*
+256.      Walk into next room & Kill off axe man w/ *Pick-axe*
+257.      Get *Candlestick* from pillar
+258.      Get *Water Pitcher*
+259.      Get *Jed Stone's Scratch book*
+260.      Get *Scorched Book* by lit candle
+261.      Get *Needle*
+262.      Use *Water Pitcher* on rifleman in hall
+263.      Enter elevator
+264.      Get *China Piggy Bank*
+265.      Throw *China Piggy Bank*
+266.      -Get *Microscope Glass Plate*
+267.      'Push' lever
+268.      Use *Glass Plate* on microscope
+269.      'Push' colored stones in order of micro-samples (from *Glass Plate*)
+270.      Enter next room & Search table
+271.      -Get *Vial of Poison*
+272.      Go around corner
+273.      Use *Vial of Poison* on *Needle*
+274.      Use *Vial of Poison* on distilled water
+275.      Enter jail cell when you become small
+276.      Use *Poisoned Needle* on old guy
+277.      -Get *Piece of Straw*
+278.      -Get *Key to the Goal*
+279.      Get *Bottle of Ammonia*
+280.      Use *Key to the Goal* on cell door
+281.      Use *Vial of Poison* on distilled water again
+282.      Walk behind table leg and into small hole in wall
+283.      Use straw & Run across chasm (pole-vaulting effect)
+284.      Get *Vial with a Potion*
+285.      Enter next room & quickly Use *Vial with a Potion* on "lava flow"
+286.      Get *Bucket of Glue* (don't get caught in spider web)
+287.      Step on spider
+288.      Use *Bucket of Glue*
+289.      Climb up light shaft
+290.      Quickly, Get *Hammer's Head*
+291.      Walk near hole & Throw *Hammer's Head* down hole
+292.      Get *Lead Ingot*
+293.      Push anvil out of way
+294.      -Get *Flask*
+295.      -Get *Winchester*
+296.[opt] 'Push' anvil into hole (I did it for fun :)
+297.      Enter next room & kill Mr. Cobra
+298.      -Get *Cobra's Wig*
+299.      -Get *Silver Dollar*
+300.      Get *Flask*
+301.      Use *Silver Dollar* on poster
+302.      Walk into other room
+303.      Use *Box of Matches* on crucible
+304.      Use *Lead Ingot* on crucible
+305.      Get *Scorched paper*
+306.      Get *Evil Wand with a Mineral Tip*
+307.      Get *Aztec Legend Parchment*
+308.      Get *Ammunition*
+309.      Enter tunnel & kill off big guy
+310.      -Get *Knife*
+311.      Throw *Bottle of Ammonia* against door you came in (to wake up 
+          Emily)
+312.      Use *Cobra's Wig* on hook above door & Open it
+313.      Run into the other room with the eagle statue in it
+314.      Quickly, Use the *Evil Wand with a Mineral* on the eagle statue
+315.      Get *Flask*
+316.      Run into other room
+317.      Get *Rubber Glove*
+318.      Use *Rubber Glove*
+319.      Use *Knife* on electrical wires
+320.      Use water faucet
+321.      Run back into the other room
+322.      Get *Sack of Coal*
+323.      Get on train
+324.      Use *Sack of Coal*
+325.      Use *Box of Matches*
+326.      'Push' lever
+327.      -Watch the neat ending-
+
+                  Congrats, you have just completed AITD3!
+
+...............................................................................
+
+
+
+

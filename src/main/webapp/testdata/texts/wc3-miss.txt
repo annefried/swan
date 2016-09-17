@@ -1,0 +1,434 @@
+Compiled by Colonel Aubrey "SwiftHeart" Chen & Colonel Klaus "Gremlin" 
+Weidner of TCN. 
+---------------------------------------------------------------------- 
+ 
+                           WC3 Mission Tree 
+                           ---------------- 
+ 
+                    CD1        Orsini-4 
+                                 /  \ 
+                                /    \ 
+                            Tamayo  Tamayo-2___ 
+                                \    /         \ 
+                                 \  /          | 
+                               Locanda-2       | 
+                                 /  \          | 
+                                /    \         | 
+                    CD2  Blackmane Blackmane-3 | 
+                                \    /        \| 
+                                 \  /          | 
+                                 Ariel         | 
+                                 /  \          | 
+                                /    Delius-1  | 
+                               |    /   |      | 
+                           Caliban | Delius-2_ | 
+                               |   |    |     \| 
+                                \  | Delius-3_ | 
+                                 \ |/         \| 
+                                 Torgo         | 
+                                  |            | 
+                    CD3         Torgo-2        | 
+                                  |            | 
+                                Loki-3         | 
+                                 /  \          | 
+                                / (stranded)   | 
+                               |               | 
+                            Alcor-4___________ | 
+                               |              \| 
+                    CD4      Freya             | 
+                               |               | 
+                            Freya-3___________ | 
+                               |              \| 
+                            Hyperion__________ | 
+                               |              \| 
+                            Kilrah-1__________ | 
+                               |              \| 
+                               |            Proxima 
+                               |               | 
+                               |              Sol 
+                            Kilrah-2__________ | 
+                               |              \| 
+                            Kilrah-3__________ | 
+                               |              \| 
+                            Kilrah-4           | 
+                             /   \             | 
+                            /     \            | 
+                         (win)  (lose2)     (lose1) 
+ 
+(win)  : Kilrathi surrenders. Fly home to Earth in shuttle. 
+(lose1): Ejection seat picked up by Thrakhath. Confederation defeated. 
+(lose2): No pick-up by Thrakhath. 
+ 
+Note: The numbers represent the deciding missions in that series. 
+ 
+ 
+                         WC3 Mission Analysis 
+                         -------------------- 
+Guideline: 
+ 
+Mission designation: Mission name 
+Wingman          Ship (default)                  (Kills, Cumulative) 
+  Mission content 
+Note: (Kills, Cumulative) Only includes direct winning path 
+ 
+ 
+ORSINI A001: Simple Patrol 
+Hobbes only      *Hellcat                                      (4,4) 
+  2 Darket at Nav 1 
+  2 Darket at Nav 3 
+ 
+ORSINI A002: Simple Patrol 2 
+No Flash/Flint   Arrow/*Hellcat/Thunderbolt                    (5,9) 
+  2 Darket at Nav 2 
+  1 Transport, 2 Darket at Nav 3 
+ 
+ORSINI A003: Escort Medical Cargo Transport 
+No Flash/Flint   *Arrow/Hellcat/Thunderbolt                  (10,19) 
+  2 Darket, 1 Dralthi --> Nav 2 
+  1 Corvette, 2 Darket at Nav 2 
+  2 Darket + 2 Darket at Nav 3 
+ 
+ORSINI A004: Escort Civilian Transport, Skipper Missile 
+No Flash         *Arrow/Hellcat/Thunderbolt                  (13,32) 
+  4 Darket + 2 Dralthi at Nav 1 
+  2 Dralthi, 1 Corvette + (1 Skipper) --> Nav 2 
+  2 Darket + 2 Darket at Nav 3 
+  (2 Corvette, 2 Dralthi --> Victory, if you failed to protect the 
+   transport.) 
+ 
+TAMAYO B001: Defend Victory                                  
+Maniac           *Arrow                                      (14,46) 
+  2 Darket, 1 Paktahn + 
+  2 Darket, 1 Paktahn + 
+  2 Darket, 2 Paktahn + 
+  2 Dralthi, 2 Paktahn at Victory (Weasel, Mitchel) 
+Note: Weasel bites the dust real quick. 
+ 
+TAMAYO B002: Destroy Enemy Transports 
+Hobbes&Flint  Arrow/Hellcat/*Thunderbolt/Longbow/*Excalibur  (17,63) 
+  1 Corvette, 4 Vaktoth + 4 Darket + 4 Dralthi at Nav 1 
+  4 Transport at Nav 2 
+ 
+SIMULATOR B003: Duel Flash 
+None             *Arrow                                       (0,63) 
+  1 Flash 
+Note: +1 under Ace in killscore. 
+ 
+TAMAYO C001: Same as TAMAYO B001. 
+ 
+TAMAYO C002: Same as B002, except, 
+  4 Dralthi at Nav 3 
+  2 Transport, 4 Vaktoth at Nav 4 
+ 
+TAMAYO C003: Same as TAMAYO B003. 
+ 
+LOCANDA D001: Eliminate All Enemy Presence 
+All              Arrow/*Hellcat/Thunderbolt                  (30,93) 
+  2 Vaktoth + 4 Dralthi --> Nav 2 
+  3 Darket + 4 Strakha at Nav 2 
+  1 Destroyer, 4 Dralthi + 2 Dralthi + 2 Dralthi + 2 Dralthi at Nav 3 
+  1 Fireclaw, 5 Darket at Nav 4 
+ 
+LOCANDA D002: Destroy Biomissiles 
+No Cobra/Flint   Arrow/Hellcat/*Thunderbolt                  (9,102) 
+  8 Strakha (2 at all times), 1 Destroyer, 1 Biomissile + 
+   (2 Biomissile) at Nav 1 
+ 
+LOCANDA D003: Go After Flint? (optional) 
+None             Ship you flew in LOCANDA D002              (33,135) 
+  1 Scout, 2 Vaktoth (R) 
+  1 Corvette, 3 Dralthi + 4 Darket + 4 Dralthi (R) 
+  4 Darket + 3 Dralthi (R) 
+  1 Cruiser, 4 Darket + 4 Darket + 2 Vaktoth (Flint is here) (R) 
+Note: (R) denotes random encounters. They can appear at any Nav 
+      point and are not restricted to the order listed above. 
+ 
+BLACKMANE E001: Defend Blackmane Base 
+All              Arrow/*Hellcat/Thunderbolt                 (16,151) 
+  4 Dralthi + 4 Darket + 4 Darket + 1 Bloodmist, 3 Paktahn at Base 
+ 
+BLACKMANE E002: Escort Supply Transports 
+All              Arrow/Hellcat/*Thunderbolt                 (12,163) 
+  4 Dralthi at Nav 1 
+  4 Strakha + 4 Strakha at Nav 2 (captured Terran transports) 
+Note: Beware of the captured transports. If you get too close to 
+      them, their detonations will damage your fighters severely. 
+ 
+BLACKMANE E003: Escort Weapons Transports 
+All              Arrow/Hellcat/*Thunderbolt                 (16,179) 
+  2 Sorthak + 2 Sorthak at Nav 1 
+  4 Strakha + 4 Strakha --> Nav 2 
+  2 Vaktoth + 2 Vaktoth at Nav2 (Asteroids) 
+ 
+BLACKMANE F001: Assist Evacuation, Escort Convoy 
+All              Arrow/*Hellcat/Thunderbolt 
+  1 Carrier, 8 Dralthi (2 at all times) at Nav 1 
+ 
+BLACKMANE F002: Assist Evacuation 2, Escort Convoy (Pulsar) 
+All              Arrow/Hellcat/*Thunderbolt 
+  4 Strakha at Nav 2 
+  3 Dralthi (x3) at Nav 3 
+ 
+BLACKMANE F003: Final Evacuation Assistance? 
+All              Arrow/Hellcat/*Thunderbolt 
+  3 Strakha --> Nav 1 
+  4 Strakha + 4 Strakha at Nav 1 (Asteroids, captured Terran 
+   transports) 
+Note: Beware of the captured transports. If you get too close to 
+      them, their detonations will damage your fighters severely. 
+ 
+ARIEL G001: Clear All Nav Points 
+All              Arrow/Hellcat/Thunderbolt/*Longbow         (25,204) 
+  1 Corvette, 2 Transport, 2 Strakha + 2 Strakha at Nav 1 
+  4 Strakha at Nav 2 
+  1 Carrier, 4 Darket + 4 Dralthi + 4 Darket + 1 Vaktoth at Nav 3 
+ 
+ARIEL G002: Ambush Enemy Convoy (Nebula) 
+All              *Thunderbolt/Longbow                       (34,238) 
+  1 Destroyer, 1 Transport, 4 Vaktoth + 4 Vaktoth + 4 Darket at Nav 1 
+  1 Corvette, 1 Transport, 4 Darket at Nav 2 
+  1 Destroyer, 1 Transport, 4 Vaktoth + 4 Vaktoth + 4 Darket at Nav 3 
+ 
+ARIEL G003: Escort Victory to Jump Point 
+All              Arrow/Hellcat/*Thunderbolt/Longbow         (18,256) 
+  2 Paktahn, 2 Darket --> Nav 1 
+  1 Carrier, 2 Strakha + 2 Darket + 2 Darket + 2 Darket at Nav 1 
+  1 Corvette, 4 Strakha + (1 Skipper) at Nav 2 
+ 
+CALIBAN H001: Defend Destroyers 
+All              Arrow/*Hellcat/Thunderbolt/Longbow          (7,263) 
+  2 Vaktoth, (1 Destroyer, Sheffield never loses the battle) 
+   at Nav 1 
+  1 Destroyer, 2 Vaktoth + 2 Vaktoth at Nav 2 
+ 
+CALIBAN H002: Destroy Enemy Convoy (Nebula) 
+All              Arrow/Hellcat/*Thunderbolt/Longbow         (18,281) 
+  4 Darket at Nav 1 
+  6 Dralthi + 4 Vaktoth at Nav 2 
+  2 Corvette, 1 Destroyer, 1 Scout at Nav 3 
+ 
+CALIBAN H003: Escort Victory 2 (Nebula) 
+All              Arrow/*Hellcat                             (29,310) 
+  1 Corvette, 4 Darket --> Nav 1 
+  1 Corvette, 4 Darket --> Nav 1 
+  4 Dralthi + 1 Corvette, 2 Dralthi + 4 Vaktoth + 2 Vaktoth, 
+   2 Darket + 4 Darket at Nav 1 
+ 
+DELIUS I001: Search & Destroy, Eliminate Enemy Base (Asteroids) 
+All              *Arrow/Hellcat/Thunderbolt/Longbow 
+  4 Vaktoth, 1 Asteroid Base + 2 Vaktoth (joins battle after 3rd 
+   Vaktoth is dispatched) at Nav 1 
+  3 Dralthi + 3 Dralthi at Nav 2 
+  2 Dralthi + 2 Darket at Nav 3 
+  4 Vaktoth at Nav 4 
+ 
+DELIUS I002: Destroy Inbound Enemy Ships (Asteroids) 
+All              Thunderbolt/*Longbow 
+  1 Corvette, 4 Dralthi at Nav 1 
+  4 Darket at Nav 2 
+  1 Destroyer, 2 Dralthi + 1 Corvette, 2 Vaktoth + 2 Vaktoth, 
+   1 Sorthak + 4 Dralthi at Nav 3 
+Note: Ejection => end credit. 
+ 
+DELIUS I003: Victory vs. Enemy Base (Asteroids) 
+All              *Arrow/Hellcat 
+  2 Darket --> Nav 1 
+  2 Darket --> Nav 1 
+  2 Dralthi, (1 Asteroid Base, if you could beat Victory's CS 
+   Missiles to it) 
+ 
+TORGO J001: Clear System for Behemoth 
+Flint            *Arrow                                     (28,338) 
+  2 Strakha, 2 Paktahn at Nav 1 
+  2 Vaktoth, 2 Paktahn (x5) at Nav 2 (Flash, Primate) 
+  2 Strakha, 2 Paktahn at Nav 3 (Vagabond, Styg) 
+ 
+TORGO J002: Mine Jump Points 
+All              Thunderbolt/*Longbow                       (16,354) 
+  2 Vaktoth, 2 Paktahn at Nav 1 (Asteroids) 
+  2 Vaktoth, 2 Paktahn at Nav 2 
+  2 Vaktoth, 2 Paktahn at Nav 3 
+  2 Vaktoth, 2 Paktahn at Nav 4 
+ 
+TORGO J003: Disable Tankers (Asteroids) 
+All              Arrow/*Hellcat                              (6,360) 
+  3 Tanker (disable), 2 Asteroid + 2 Asteroid + 2 Asteroid at Nav 1  
+ 
+LOKI K001: Sweep Loki VI Environ 
+All              Arrow/*Hellcat                             (34,394) 
+  1 Corvette, 4 Darket + 1 Corvette, 4 Vaktoth at Nav 1 
+  6 Dralthi + 4 Dralthi (joins battle after a certain period of time) 
+   at Nav 2 
+  6 Vaktoth + 4 Darket + 4 Strakha at Nav 3 
+ 
+LOKI K002, KA02: Cover Behemoth 
+All              Arrow/*Hellcat                             (12,406) 
+  4 Paktahn at Victory 
+  2 Corvettes + 4 Strakha + 2 Paktahn at Victory 
+ 
+LOKI K003 (--> Kilrah): Defend Behemoth (unwinnable) 
+All              Arrow/*Hellcat                              (3,409) 
+  n Paktahn at Behemoth 
+Note: Killscore depends on how many Paktahns you can dispatch in 
+      approx. 1 min 20 sec. 
+ 
+LOKI K03A (--> Kilrah): Intermission (plot advancement) 
+None             Ship you flew in KILRAH K003                (0,409) 
+  1 Destroyer, 1 Thrakhath at Victory 
+ 
+LOKI K004 (--> Kilrah): Accept Thrakhath's Challenge? 
+None             Ship you flew in KILRAH K004                (0,409) 
+  1 Destroyer, 1 Thrakhath at Victory 
+Note: Fight Thrakhath, return to Victory => end credits. 
+      Fight Thrakhath, unable to return to Victory => stranded. 
+      Ignore Thrakhath, return to Victory => ALCOR L001. 
+      Cannot eject. 
+ 
+ALCOR L001: Defend Victory, Clear All Nav Points 
+Hobbes           *Arrow                                     (50,459) 
+  3 Corvette + 1 Corvette, 4 Vaktoth + 8 Darket at Nav 1 (Sheffield) 
+  2 Vaktoth, 4 Paktahn + 6 Dralthi + 6 Dralthi + 4 Paktahn at Nav 2 
+  4 Strakha at Nav 3 
+  4 Vaktoth at Nav 4 
+  2 Sorthak + 2 Sorthak at Victory (Primate, Ragtop, Coventry) 
+Note: Drinking excessively before flying is a crime. 
+ 
+ALCOR L002: Clear Asteroid Field of Enemy Presence (Asteroids) 
+All              *Arrow/Thunderbolt/Longbow                 (38,497) 
+  3 Corvette, 1 Destroyer + 1 Corvette, 6 Darket at Nav 1 
+  4 Asteroid + 4 Strakha + 4 Strakha at Nav 2 
+  1 Destroyer, 4 Paktahn + 6 Darket + 4 Dralthi at Nav 3 
+ 
+ALCOR L003: Go After Hobbes? (optional) 
+None             *Hellcat 
+  1 Hobbes at Nav 1 
+  1 Stalker, 2 Strakha + 3 Paktahn (Vaquero, Primate) 
+Note: Vaquero dies. +3 under Ace in killscore for dispatching Hobbes 
+      and Stalker. 
+ 
+ALCOR L004, LG04: Extract Scientist from Prison 
+None             *Excalibur                                 (16,513) 
+  6 Darket at Nav 1 (space) 
+  6 Ekapshi, 4 Ground Object at Landing Zone (planet surface) 
+  4 Ekapshi, 4 Tank, 3 Ground Object at Nav 1 
+  5 Ground Object at Nav 3 
+ 
+FREYA M001: Suppress Freya Space Defenses 
+Vaquero/Maniac/Flash/Flint  All/*Longbow                    (26,539) 
+  1 Destroyer, 2 Darket + 4 Darket at Nav 1 
+  2 Corvette, 4 Dralthi at Nav 2 
+  1 Carrier, 4 Dralthi + 4 Darket + 4 Dralthi at Nav 3 
+ 
+FREYA M002, MG02: Destroy Shield Generator 
+None          *Excalibur                                    (20,559) 
+  4 Dralthi --> Nav 1 (space) 
+  4 Ekapshi at Landing Zone (planet) 
+  4 Ekapshi, 15 Ground Object --> Shield Generator 
+  4 Ekapshi, 5 Ground Object, 1 Shield Generator at Shield 
+   Generator 
+  2 Dralthi at Exit Point (space) 
+  2 Dralthi --> Victory 
+ 
+FREYA M003 (Loviatar): Destroy Inbounds at Jump Point 
+No Hobbes/Cobra  All/*Thunderbolt                           (21,580) 
+  3 Dralthi + 1 Corvette, 2 Darket + 3 Darket + 3 Darket + 
+   3 Vaktoth + 2 Vaktoth, 1 Darket + 3 Darket at Nav 1 
+ 
+HYPERION N001: Deliver Prototype T-Bomb 
+None          *Excalibur                                    (14,594) 
+  4 Dralthi --> Entry Point (space) 
+  2 Ekapshi at Landing Zone (planet) 
+  2 Ekapshi --> Fault Line 
+  2 Ekapshi, 1 Fault Line at Fault Line 
+  4 Dralthi --> Victory 
+ 
+HYPERION N002: Escort Cap Ships, Destroy Enemy Fleet 
+No Hobbes/Cobra  Arrow/*Hellcat/Excalibur                   (21,615) 
+  1 Destroyer, 2 Darket + 2 Darket + 2 Dralthi + 2 Dralthi at Nav 1 
+   (Sheffield) 
+  1 Carrier, 2 Dralthi + 2 Dralthi + 2 Paktahn + 2 Vaktoth at Nav 2 
+   (Conventry) 
+  1 Cruiser, 2 Paktahn at Nav 3 (Ajax) 
+ 
+HYPERION N003 (Freya): Defend Jump Point to Kilrah 
+No Hobbes/Cobra  All/*Excalibur                             (20,635) 
+  1 Destroyer, 4 Darket + 4 Darket + 2 Dralthi at Nav 1 
+  4 Darket at Nav 2 
+  1 Cruiser, 4 Darket at Nav 3 (Asteroids) 
+ 
+KILRAH P001: Jump Into Kilrah Home System 
+0-3 Wingmen from All except Hobbes/Cobra  *Excalibur        (35,670) 
+  2 Sorthak at Jump Point 
+  2 Corvette, 4 Darket + 4 Dralthi at Nav 1 
+  2 Corvette, 4 Dralthi + 6 Strakha at Nav 2 
+  1 Destroyer, 4 Darket + 6 Darket at Nav 3 
+Note: At least one wingman dies. Killscore no longer accessible. 
+ 
+KILRAH P002: T-Bomb Base 
+Surviving members from KILRAH P001        *Excalibur        (33,703) 
+  2 Corvette, 4 Darket + 4 Dralthi at Nav 1 
+  2 Corvette, 4 Vaktoth + 6 Strakha at Nav 2 
+  1 Destroyer, 4 Sorthak + 6 Darket at Nav 3 
+Note: At least one wingman dies. 
+ 
+KILRAH P003, PG03: T-Bomb Kilrah 
+Surviving member from KILRAH P002         *Excalibur        (38,741) 
+  1 Destroyer, 4 Paktahn + 4 Dralthi at Nav 1 
+  1 Destroyer, 4 Dralthi + 6 Strakha at Nav 2 
+  At Nav 3: 
+   -> 1 Destroyer, 3 Darket + 6 Darket (no wingman) 
+   -> n Stalker, 3 Darket + 6 Darket (wingman) 
+  At Entry: 
+   -> 1 Prince Thrakhath, (1 Hobbes), 2 Paktahn + 4 Darket (cloaked 
+      at Nav 3) 
+   -> (1 Hobbes), 4 Paktahn, 4n Sorthak (not cloaked at 
+      Nav 3) 
+  On Kilrah surface: (Kilrah-4) 
+   -> 9 Ground Object, 1 Fault Line (in Trench) 
+   -> 2n Epakshi, 9 Ground Object, 1 Fault Line (out of Trench) 
+Note: When out of Trench, cloak for your own safety. 
+ 
+PROXIMA R001: Defend Jump Point (unwinnable) 
+Flint         Arrow/Hellcat/Thunderbolt/Longbow/*Excalibur 
+  4 Darket + 4 Dralthi + 4 Vaktoth + 1 Corvette, 3 Strakha + 
+   1 Corvette, 3 Strakha + 1 Carrier, 4 Dralthi at Victory 
+Note: Victory jumps out approx. 5 mins into the battle, stay close 
+      to it. Ejection => back on Victory. 
+ 
+SOL-EARTH ORBIT R002: Defend Earth (unwinnable) 
+None          Arrow/Hellcat/Thunderbolt/Longbow/*Excalibur 
+  4 Paktahn + 4 Paktahn + 4 Vaktoth + 1 Corvette, 3 Strakha + 
+   1 Corvette, 3 Strakha + 1 Dreadnought, 4 Dralthi...(infinity) 
+   at Nav 1 (Sheffield, Coventry) 
+Note: infinity = combinations of 4 Paktahn/1 Corvette, 3 Strakha/ 
+      4 Vaktoth. Sheffield and Coventry explodes really fast.) 
+ 
+Additional notes: 
+1) <Alt>-<v> to get mission designations. 
+2) The following are not included in killscore: 
+   a) Missiles (Bio/Skipper), 
+   b) Turrets, 
+   c) Fighters parked in carriers, 
+   d) Ejected pilots, 
+   e) Ground objects, 
+   f) Disabled tankers, 
+   g) Shield generator, 
+   h) Fault lines. 
+3) Later presence of Sheffield, Coventry, and Ajax depends upon 
+   your success in the earlier missions. If they were destroyed 
+   in the early stages of the game, they would be absent in the 
+   later actions. 
+4) The number of waves of enemy fighters covering the cap ships 
+   may depend upon how fast you destroy the mother ships. 
+5) Victory's killboard is unstable. 
+ 
+Comments, questions, corrections? Please let us know. Thank you. :) 
+ 
+------------------------------------------------------------------------------ 
+    /*\-\/*\-\   Any of you ever        Colonel Aubrey "SwiftHeart" Chen 
+   (********) )  wondered how long the  of TCS CV-40 Victory 
+    \******/ /   Human-Kilrathi         swifthrt@access.mbnet.mb.ca 
+     \****/ /    conflict would've      "Currently, it's Flint-3, Rachel-1." 
+       \/_/      lasted if we WCers were to band together? :) 
+ 
+ 

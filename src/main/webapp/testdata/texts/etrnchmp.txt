@@ -1,0 +1,2283 @@
+                           ETERNAL CHAMPIONS FAQ
+                         -------------------------
+                                version 1.2
+                              by Dave Woodall
+                         Updated on: Apr 11, 1994
+                         -------------------------
+
+                                PLEASE NOTE:
+                --------------------------------------------
+               |                                            |
+               |   This document is the collective work of  |
+               |   several  individuals,   and  is  public  |
+               |   domain material.   Also, this  document  |
+               |   is intended to be printed and used as a  |
+               |   reference.  You will find  ^L  (Ctrl-L)  |
+               |   codes  (the standard  page-eject  char)  |
+               |   every so often,  noting start of pages.  |
+               |                                            |
+                --------------------------------------------
+
+                           NEW IN THIS VERSION:
+                         ------------------------
+
+  1) Updated (corrected) Overkill for Midknight's stage.
+  2) Added "@" in Moves List to denote "extra air" moves.
+  3) Updated strategies for Larcen, Midknight, Rax, Shadow, Trident.
+  4) Updated combos for Larcen, and Trident.
+  5) Added Character Guides (still need Blade and Jetta).
+
+                       ETERNAL CHAMPIONS FAQ CONTENTS:
+                     ----------------------------------
+
+  Secret Codes
+  Beginner Tips
+  Complete Moves List
+    (includes Damages, Top Moves, Offensive and Defensive Strategies)
+  Opponent Strategies
+  OverKill List
+  Character Guides
+  Miscellaneous Notes
+
+                       ETERNAL CHAMPIONS FAQ CREDITS:
+                     ----------------------------------
+  woodall@adrs1.dseg.ti.com (David Woodall)
+  ar2w+@andrew.cmu.edu (Adam K. Rixey)
+  dsuggs@dvorak.amd.com (David Suggs)
+  nbc2569@dbmsmail.dsac.dla.mil (Christopher L Schneider)
+  ryandhoz@umich.edu (Ryan D Hose)
+  adamsjd@NeXTwork.Rose-Hulman.Edu (Jason Adams)
+  jrkst20+@pitt.edu (Jonathan R Kohn)
+  davidliu@husc8.harvard.edu (David Liu)
+  libnerk@minerva.cis.yale.edu (Kelsey S. Libner)
+  dauria@cs.bu.edu (David DAuria)
+  andersen@snake17.cs.wisc.edu (Eric Andersen)
+  bc15@ellis.uchicago.edu (The Vampire Lestat)
+  stimson@leland.Stanford.EDU (Stephen F. Timson)
+  hhahn@macc.wisc.edu (Harry Hahn)
+
+                        ETERNAL CHAMPIONS SECRET CODES
+                      ----------------------------------
+
+    NOTE:  As of 4/11/94, no secret codes are publicly known.  The
+           following are the "most wished for" codes:
+
+    1) Code to disable computer cheating (using extra I.S.):
+       (or, a code to allow human cheating)
+
+    2) Code to play as the Eternal Champion:
+
+    3) Code to make Overkills always occur:
+
+    4) Code to become invincible:
+
+    This section will be updated and released as soon as any codes
+    are known.
+
+
+                       ETERNAL CHAMPIONS BEGINNER TIPS
+                     -----------------------------------
+
+  1. When just beginning, choose a well balanced character and stay with
+     him/her.  The folks on Sega's Game Play lines recommend Xavier as a
+     good starting character.
+
+  2. Go into the 1-player practice mode and set your Inner Strength to
+     "Off" (which gives you unlimited Special Move power), set the CPU
+     to 4 (the default), and set the time to "Infinite".  Cycle through
+     all the characters until you can beat them easily.  Slowly increase
+     the CPU's ability until you are at 8.
+
+  3. Now, turn your Inner Strength "On" and the time to "90 seconds".
+     Practice until you can usually win.  The difference here is that you
+     will have to rely more on normal moves, and can let the clock help
+     you in certain cases.  
+
+  4. Be willing to change your attacks!!!  If you try a particular move
+     or combo, and it fails every time (against a particular opponent),
+     don't keep doing it!!!  For instance, in some cases a leaping punch
+     will counter a leaping attack where a leaping kick won't.
+
+  5. When playing in a "Contest", keep an eye on the clock.  Try to get
+     an early advantage (in terms of damage), then mainly play in a
+     defensive mode, only taking advantage of obvious opportunities.
+     When the clock runs low (under 10 seconds), don't attack at all
+     (unless your behind) - just run and block until the clock runs out.
+
+  6. Once a move is started, it will complete unless interrupted by a
+     counter attack.  For fastest response time, prepare your next move
+     by pressing the first set of buttons before your current move is done.
+     This is especially handy when you get knocked down - you can often
+     come out of it doing a Throw.
+
+  7. Make use of your character's special abilities - like being able to
+     stun your opponent or using extra jumping abilities to avoid attacks
+     or projectiles.
+
+
+                         ETERNAL CHAMPIONS MOVE LIST
+                       -------------------------------
+  NOTES:
+
+  1) For each Special Move, I tried to figure out how much Inner Strength
+     is needed to execute the move, and how much it consumes.   I mainly
+     did this by Insulting the opponent until my I.S. was gone, then 
+     repeatedly tried executing the move until I had enough I.S. for the
+     move to be allowed.  I found out a few curious things:
+
+     a) Sometimes when your I.S. is full, executing a Special Move will not
+        drain it at all - at least the gauge doesn't change.  I suspect that
+        you can have more I.S. than the gauge shows.
+
+     b) It seems that the more I.S. you have, the more it will consume when
+        performing some moves.  Several of the moves will consume either 0.5
+        or 0.75 of the total I.S. - depending on how much you started with.
+        The numbers I have listed are when the I.S. is low (more critical).
+
+  2) Some moves can be performed by different button sequences.  In this
+     case, I only listed the simpler sequence - or put the additional
+     button sequence in parentheses.
+
+  3) Some moves will have a different name listed in parentheses - for
+     example:  Medium Kick (knee smash).  The name in parentheses is
+     the move that occurs when you use the same button sequence but
+     your character is standing next to your opponent.
+
+  4) The damages listed for the Regular Moves is the MAXIMUM damage that
+     move CAN do.  However, some moves have multiple hits and can be
+     blocked mid way through.  This will reduce the amount of damage done.
+
+  5) Once a Special Move is initiated, Special Moves are disabled until
+     the current S.M.'s attack, mode or whatever is over.
+
+  6) Special Moves marked with "*" are those that will stun or freeze the
+     opponent - making for an easy attack.
+
+  7) Regular Moves marked with "@" are those that will provide "extra air"
+     by moving up again (while in the air).  For Rax, press U + F > Y to
+     leap, then hit Y again.  Massive air time!!!
+
+  8) There is a "total damage" number listed with each Combo move.  This
+     number is also the MAXIMUM damage for the entire combo.  Usually,
+     the computer can and will start blocking during the move.  This will
+     reduce the amount of damage done.
+ 
+  9) The Top 5 moves are those that can be used very frequently for
+     effective matches, not necessarily those that do the most damage.
+
+     Legend:
+     --------------------------------------------------------------
+       CB = Charge (Hold) Back (back means away from opponent)
+        U = Up
+        D = Down
+        F = Forward (forward means toward opponent)
+        + = press buttons at the same time
+        , = press buttons sequentially
+        > = hold button(s) while pressing the next ones
+
+  BBBBBB   L         AAAAA   DDDDD    EEEEEEE                 Ratings:
+  B     B  L        A     A  D    D   E                       ---------------
+  B     B  L        A     A  D     D  E                       Speed:        2
+  BBBBBB   L        AAAAAAA  D     D  EEEE                    Endurance:    4
+  B     B  L        A     A  D     D  E                       Power:        5
+  B     B  L        A     A  D    D   E                       Recovery:     3
+  BBBBBB   LLLLLLL  A     A  DDDDD    EEEEEEE                 Defense:      3
+                                                              Equilibrium:  4
+
+
+                                 Regular Moves:
+
+    move name:                    |% damage| button presses:
+    ------------------------------+--------+---------------------------------
+    Kick (knee kick)              |  7 ( 8)| A
+    Lunge Kick (knee kick)        | 11 (11)| B
+    Spin Kick (side kick)         | 12 (14)| C
+    Jumping Side Kick             |  8     | U > A
+    Jumping Crouch Kick           | 10     | U > B
+    Jumping Spin Kick             | 13     | U > C
+    Power Spike Dive              | 14     | U + F > C
+    Crouching Kick                |  8     | D > A
+    Double Crouch Kick            | 12     | D > B
+    High Kick                     | 14     | D > C
+    Punch (double punch)          | 16 ( 9)| X
+    Reverse Punch                 | 10 (11)| Y
+    Overhead Combo Pnch (dbl pnch)| 18 (16)| Z
+    Throw                         | 20     | F > Z (or F > Y)
+    Jumping Punch                 |  7     | U > X
+    Jumping Chop                  | 10     | U > Y
+    Jumping Long Punch / Spin     | 13     | U > Z
+    Crouching Elbow Smash         | 10     | D > X
+    Crouching Double Fist Punch   | 10     | D > Y
+    Crouching Palm Thrust         | 12     | D > Z
+    Block                         |  0     | CB
+
+                                 Special Moves:
+                                                                   | IS | IS
+    move name:                    |% damage| button presses:       |used|reqd
+    -----------------------------------+---+-----------------------+----+----
+  * Stun Beam                          | 0 | CB .5, F + Z          |.75 |.75
+    Personal Shield                    | 0 | X + Y + Z             |.75 |1.0
+    Tracking Blade                     |15 | CB .5, F + X + Y      |.25 |.50
+    Straight Blade                     |15 | CB .5, F + Y + Z      |.25 |.25
+    Projectile Containment Field       | 0 | A + B                 |.25 |.50
+    Wild Fury Attack                   |20 | A + B + C             |.50 |.75
+    Backfire                           | 0 | A + C                 |.50 |.75
+    Power (I.S.) Drain                 | 0 | CB .5, F + C          |.25 |.50
+    Insult                             | 0 | X + Z                 |.25 |.50
+
+                              Blade's Top 5 Moves:
+
+    1. Power Spike Dive (U + F > C)
+    2. Tracking Blade (CB .5, F + X + Y)
+    3. Throw (F > Z)
+    4. Wild Fury Attack (A + B + C)
+    5. side kick (D > C)
+
+                               Combination Moves:
+
+    button presses:       | move name:
+    ----------------------+------------------------
+    CB .5, F + X + Y      | Tracking Blade
+    F > Z                 | Throw (while CPU is blocking)
+                          | (total damage: 20%)
+
+    CB .5, F + X + Y      | Tracking Blade
+    U + F > C             | Power Spike Dive
+    Z                     | double punch (close)
+    F                     | move in
+    F > Z                 | Throw
+                          | (total damage: 65%)
+
+    U + F > A             | Kick (while leaping)
+    F                     | move in
+    D > X                 | Crouching Elbow Smash
+    A + B + C             | Wild Fury Attack
+                          | (total damage: 38%)
+
+    U + F > C             | Power Spike Dive
+    D > B                 | Double Crouch Kick
+    F                     | move in
+    A + B + C             | Wild Fury Attack
+    CB .5, F + Z          | Stun Beam
+    F > Z                 | Throw
+                          | (total damage: 66%)
+
+    U + F > C             | Power Spike Dive
+    D > B                 | Double Crouch Kick
+    F                     | move in
+    Z                     | Overhead Combo Punch
+    CB .5, F + Z          | Stun Beam
+    F > Z                 | Throw
+                          | (total damage: 64%)
+    ----------------------+------------------------
+
+                              Offensive Strategies:
+
+    1. When standing, use Blade's arms for more damage.  When jumping or
+       crouching, use his legs and feet.
+
+    2. Stun opponents with the Stun Beam, then move in and hammer away.
+
+
+                              Defensive Strategies:
+
+    2. Use Tracking Blades (CB .5, F + X + Y) or side kicks (D > C) to
+       stop charges.
+
+
+        J  EEEEEEE  TTTTTTT  TTTTTTT   AAAAA                  Ratings:
+        J  E           T        T     A     A                 ---------------
+        J  E           T        T     A     A                 Speed:        5
+        J  EEEE        T        T     AAAAAAA                 Endurance:    2
+  J     J  E           T        T     A     A                 Power:        4
+  J     J  E           T        T     A     A                 Recovery:     3
+   JJJJJ   EEEEEEE     T        T     A     A                 Defense:      4
+                                                              Equilibrium:  3
+
+
+                                 Regular Moves:
+
+    move name:                    |% damage| button presses:
+    ------------------------------+--------+---------------------------------
+    Medium Kick (low kick)        |  5 ( 4)| A
+    Low Kick High (flurry kick)   |  8 (17)| B
+    Somersault (high kick)        | 14 (14)| C
+    Jumping Low Kick              |  6     | U > A
+    Jumping Vertical Spin Kick    |  9     | U > B
+    Jumping Medium Kick           | 10     | U > C
+    Flying Toe Kick               | 5,9,11 | U + F > A  (A, B, C)
+    Spring Back then Forward      |  4     | D > A
+    Crouching Kick                | 11     | D > C
+    Punch                         |  5 ( 4)| X
+    Palm Thrust (dbl palm thrust) |  8 (11)| Y
+    Hand Jab (uppercut)           | 10 (11)| Z
+    Throw                         | 16     | F > Z (or F > Y)
+    Jumping Chop                  |  4     | U > X
+    Jumping Punch                 |  8     | U > Y
+    Flying Spin                   | 10     | U > Z
+    Flying Double Fist Pull       |  6     | U + F > X
+  @ Ceiling Dive                  | 12     | U + F > Z
+    Flip Away                     |  5     | D > X
+    Crouching Double Fist Pull    |  9     | D > Y
+    Uppercut                      | 11     | D > Z
+    Block                         |  0     | CB
+
+                                 Special Moves:
+                                                                   | IS | IS
+    move name:                    |% damage| button presses:       |used|reqd
+    -----------------------------------+---+-----------------------+----+----
+    Flying Choke Hold                  |15 | CB .5, F + Z          |.50 |.75
+    Phase                              | 0 | X + Y + Z  (1 sec)    |.25 |.50
+    Resonate (do while Phased)         | 0 | A + C (.5 sec)        |.50 |.50
+    Ricochet Left                      |12 | D .5, U + A           |.50 |.75
+    Ricochet Right                     |12 | D .5, U + C           |.50 |.75
+    Bladerang (single hit)             |10 | CB .5, F + X          |.25 |.50
+    Bladerang (double hit)             |10 | CB .5, F + Y          |.25 |.50
+    Ceiling Grab                       | 0 | D .5, U + Y           |.25 |.75
+    Death Dive (do after Ceiling Grab) | 0 | C                     |.00 |.00
+    Moving Cork Screw (left)           | 8 | A + B                 |.25 |.50
+    Moving Cork Screw (right)          | 8 | B + C                 |.25 |.50
+    Insult                             | 0 | X + Z                 |.25 |.50
+
+                              Jetta's Top 5 Moves:
+
+    1. Phase (X + Y + Z)
+    2. Ceiling Dive (U + F > Z)
+    3. Spring Back then Forward (D > A)
+    4. Somersault (C)
+    5. Flurry Kick (close B)
+
+
+                               Combination Moves:
+
+    button presses:       | move name:
+    ----------------------+------------------------
+    U + F > C             | Flying Toe Kick 
+    D > Y                 | Crouching Double Fist Pull 
+    A + B (or B + C)      | Moving Cork Screw (left or right)
+                          | (total damage: 28%)
+
+    D > A                 | Spring Back then Forward
+    D > X                 | Flip Away
+    CB .5, F + Y          | Bladerang (double hit)
+                          | (total damage: 19%)
+
+    U + F > Z             | Ceiling Dive
+    A + B                 | Moving Cork Screw
+    B                     | flurry kick (close)
+                          | (total damage: 37%)
+
+    U + F > A             | Jumping Low Kick
+    Z                     | Hand Jab
+    F                     | move in
+    B                     | Low Kick High
+    CB .5, F + Z          | Flying Choke Hold
+                          | (total damage: 38%)
+
+    D > A                 | Spring Back then Forward
+    CB .5, F + Z          | Flying Choke Hold
+                          | (total damage: 19%)
+
+    D .5, U + Y           | Ceiling Grab
+    C                     | Death Dive
+    F > Z                 | Throw
+                          | (total damage: 16%)
+    ----------------------+------------------------
+
+
+                              Offensive Strategies:
+
+    1. When standing or jumping (straight up), use Jetta's kick moves.
+       When crouching or leaping forward, use her punch moves.
+
+    2. Phase often (and Resonate too).
+
+    3. Attack quickly, then run.  Repeat.
+
+
+                              Defensive Strategies:
+
+    1. Use Bladerangs to keep opponents away.
+
+  L         AAAAA   RRRRRR    CCCCC   EEEEEEE  N     N        Ratings:
+  L        A     A  R     R  C     C  E        NN    N        ---------------
+  L        A     A  R     R  C        E        N N   N        Speed:        3
+  L        AAAAAAA  RRRRRR   C        EEEE     N  N  N        Endurance:    4
+  L        A     A  R   R    C        E        N   N N        Power:        4
+  L        A     A  R    R   C     C  E        N    NN        Recovery:     4
+  LLLLLLL  A     A  R     R   CCCCC   EEEEEEE  N     N        Defense:      4
+                                                              Equilibrium:  2
+
+
+                                 Regular Moves:
+
+    move name:                    |% damage| button presses:
+    ------------------------------+--------+---------------------------------
+    Advancing Kick (low kick)     |  5 ( 8)| A
+    Medium Kick (high kick)       |  9 ( 8)| B
+    High Kick (low kick)          | 12 (11)| C
+    Jumping Kneel Kick            |  5     | U > A
+    Jumping High Kick             |  9     | U > B
+    Jumping Reverse Kick          | 11     | U > C
+    Flip Kick                     |  9     | U + A
+    Flying Knee Smash             |  7     | U + F > A
+    Flying Leg Jab                | 10     | U + F > B
+    Flying Toe Kick               | 12     | U + F > C
+    Grappling Hook Attack         |  6     | D > A
+    Undercut Kick                 |  8     | D > B
+    Sliding Undercut Kick         | 10     | D > C
+    Punch                         |  5     | X
+    Uppercut (straight punch)     |  8 (10)| Y
+    Straight Punch (dbl uppercut) | 12 (13)| Z
+    Throw                         | 18     | F > Z      (or F > Y)
+    Jumping Straight Punch        |  7     | U > X      (or U + F > X)
+    Jumping Low Punch             |  8     | U > Y      (or U + F > Y)
+    Jumping High Punch            | 11     | U > Z
+    Flying Knuckle Sweep          | 13     | U + F > Z
+    Crouching High Punch          |  6     | D > X
+    Crouching Hard Punch          |  9     | D > Y
+    Crouching Uppercut            | 11     | D > Z
+    Block                         |  0     | CB
+
+                                 Special Moves:
+                                                                   | IS | IS
+    move name:                    |% damage| button presses:       |used|reqd
+    -----------------------------------+---+-----------------------+----+----
+    Ceiling Crawl                      | 0 | D 1.0, U + C          |.25 |.50
+    Ceiling Drop                       |25 | D + Y (or Z)          |.00 |.00
+    Air Sweep                          |15 | A + C                 |.50 |.75
+    Long Distance Sweep                |15 | CB .5, F + Z          |.25 |.25
+    Power Sweep                        |18 | A + B + C (1.5 sec)   |.50 |.75
+    Reflect Back Projectiles           |?? | CB + X                | ?? | ??
+    Sai Throw                          |11 | CB .5, F + Y          |.25 |.50
+    Swinging Hammer Fist               |17 | X + Y + Z             |.25 |.00
+    Insult                             | 0 | X + Z                 |.25 |.50
+
+                              Larcen's Top 5 Moves:
+
+    1. Flip Kick (U + A)
+    2. Grappling Hook Attack (D > A)
+    3. Power Sweep (A + B + C)
+    4. Swinging Hammer Fist (X + Y + Z)
+    5. Sliding Undercut Kick (D > C)
+
+
+                               Combination Moves:
+
+    button presses:       | move name:
+    ----------------------+------------------------
+    U + F > B             | Flying Leg Jab
+    D > B                 | Undercut Kick
+    F                     | move in
+    U + F > C             | Flying Toe Kick
+    CB .5, F + Y          | Sai Throw
+                          | (total damage: 41%)
+
+    U + F > C             | Flying Toe Kick
+    D > B                 | Undercut Kick
+    D > B                 | Undercut Kick
+    X + Y + Z             | Swinging Hammer Fist
+                          | (total damage: 45%)
+
+    U + F > B             | Flying Leg Jab
+    Z                     | double uppercut (close)
+    A + C                 | Air Sweep
+                          | (total damage: 37%)
+
+    U + F > B             | Flying Leg Jab
+    D > B                 | Undercut Kick
+    B                     | Medium Kick
+    Z                     | Straight Punch
+                          | (total damage: 39%)
+
+    A + B + C             | Power Sweep
+    X + Y + Z             | Swinging Hammer Fist
+                          | (total damage: 35%)
+    ----------------------+------------------------
+
+                              Offensive Strategies:
+
+    1. Overall, Larcen's kicks are slightly more potent than his punches.
+       When leaping forward however, the punches are stronger.
+
+    2. Use repeated Z punches (normal and close) against male characters.
+       Use jump kicks and hit-n-run against the female.
+
+                              Defensive Strategies:
+
+    1. Use the Flip Kick (U + A) to counter aerial attacks.
+
+    2. Use the Power Sweep (A + B + C) when cornered.
+
+    3. Use Reflect Back Projectiles (CB + X) to counter flying objects.
+
+ M     M  I  DDDD    K    K  N    N  I   GGGG   H    H  TTTTTT  Ratings:
+ MM   MM  I  D   D   K   K   NN   N  I  G    G  H    H    T     ---------------
+ M M M M  I  D    D  K  K    N N  N  I  G       H    H    T     Speed:        5
+ M  M  M  I  D    D  KKK     N  N N  I  G  GGG  HHHHHH    T     Endurance:    3
+ M     M  I  D    D  K  K    N  N N  I  G    G  H    H    T     Power:        4
+ M     M  I  D   D   K   K   N   NN  I  G    G  H    H    T     Recovery:     2
+ M     M  I  DDDD    K    K  N    N  I   GGGGG  H    H    T     Defense:      4
+                                                                Equilibrium:  3
+
+
+                                 Regular Moves:
+
+    move name:                    |% damage| button presses:
+    ------------------------------+--------+---------------------------------
+    Medium Kick (high kick)       |  5 ( 7)| A
+    Advancing High Kick (pounding)|  9 ( 8)| B
+    High Kick  (high foot sweep)  |  9 (11)| C
+    Jumping High Kick             |  5     | U > A
+    Jumping Spin Kick             |  9     | U > B      (or U > C)
+    Flying Leg Jab                |  6     | U + F > A
+    Flying Spin Kick              |  9     | U + F > B
+  @ Flying Power Leg Jab          | 10     | U + F > C
+    Crouching Low Kick            |  5     | D > A
+    Back Roll Twirl Kick          |  8     | D > B
+    Tornado Attack                | 10     | D > C
+    Punch (double thrust)         |  6 (10)| X
+    Palm Strike (triple hit)      |  9 (13)| Y
+    Arm Sweep (triple combo)      | 12 (16)| Z
+    Shoulder Slam Throw           | 18     | F > Z      (or F > Y)
+    Jumping Medium Punch          |  6     | U > X
+    Jumping High Punch            | 10     | U > Y
+    Jumping Downward Arm Sweep    | 10     | U > Z
+    Flying High Punch             | 10     | U + F > X
+    Flying Boxing Punch           |  9     | U + F > Y
+    Flying Downward Thrust        | 11     | U + F > Z
+    Crouching Double Punch        |  8     | D > X
+    Crouching High Punch          |  9     | D > Y
+    Crouching Uppercut            | 11     | D > Z
+    Block                         |  0     | CB
+
+                                 Special Moves:
+                                                                   | IS | IS
+    move name:                    |% damage| button presses:       |used|reqd
+    -----------------------------------+---+-----------------------+----+----
+    Life Drain (be close)              |17 | F + X + Y + Z         |.50 |.75
+    Ceiling Ram (be close)             | 8 | D .5, U + C           |.25 |.50
+  * Bedazzle                           | 0 | X + Y + Z             |.50 |.50
+    Dispel                             | 0 | A + B + C             |.75 |.50
+    Mist Attack                        |15 | A + C                 |.50 |.75
+    Flying Wall Smash                  |13 | CB .5, F + Z          |.50 |.75
+    Overhead Stomach Punch (be close)  |18 | F + A + B + C         |.25 |.50
+    Insult                             | 0 | X + Z                 |.25 |.50
+
+                            Midknight's Top 5 Moves:
+
+    1. Tornado Attack (D > C)
+    2. Shoulder Slam Throw (F > Z)
+    3. Palm Strike (triple hit) (close Y)
+    4. Ceiling Ram (D .5, U + C)
+    5. Crouching Uppercut (D > Z)
+
+                               Combination Moves:
+
+    button presses:       | move name:
+    ----------------------+------------------------
+    U + F > A             | Flying Leg Jab 
+    Y                     | triple hit (close)
+    D > B                 | Back Roll Twirl Kick
+    CB .5, F + Z          | Flying Wall Smash
+                          | (total damage: 36%)
+
+    U + F > A             | Flying Leg Jab 
+    D > Z                 | Crouching Uppercut
+    F                     | move in
+    D > X                 | Crouching Double Punch
+                          | (total damage: 25%)
+
+    U + F > A             | Flying Leg Jab 
+    F + X + Y + Z         | Life Drain (be close)
+                          | (total damage: 24%)
+
+    U + F > A             | Flying Leg Jab 
+    D > X                 | Crouching Double Punch
+    D > C                 | Tornado Attack
+    A + C                 | Mist Attack
+                          | (total damage: 39%)
+
+    D > C                 | Tornado Attack
+    D > C                 | Tornado Attack
+    X + Y + Z             | Bedazzle
+    F > Z                 | Shoulder Slam Throw
+                          | (total damage: 38%)
+    ----------------------+------------------------
+
+
+                              Offensive Strategies:
+
+    1. Across the board, Midknight's punches are better than his kicks.
+
+    2. Keep Midknight up close where he's very deadly.  Use repeated
+       Y, Z , F > Y or F > Z when you have'em cornered.
+
+    3. Get up close fast with the Flying Wall Smash (CB .5, F + Z).
+
+
+                              Defensive Strategies:
+
+    1. Break out of an attack with the Tornado Attack (D > C).
+
+  RRRRRR    AAAAA   X     X                                   Ratings:
+  R     R  A     A   X   X                                    ---------------
+  R     R  A     A    X X                                     Speed:        3
+  RRRRRR   AAAAAAA     X                                      Endurance:    5
+  R   R    A     A    X X                                     Power:        4
+  R    R   A     A   X   X                                    Recovery:     3
+  R     R  A     A  X     X                                   Defense:      2
+                                                              Equilibrium:  4
+
+
+                                 Regular Moves:
+
+    move name:                    |% damage| button presses:
+    ------------------------------+--------+---------------------------------
+    Medium Leg Sweep (knee kick)  |  7 ( 7)| A
+    Medium Kick (hard knee kick)  |  9 (10)| B
+    Power Kick (toe pounding)     | 11 (35)| C
+    Jumping Medium Kick           |  7     | U > A
+    Jumping Reverse Kick          |  8     | U > B
+    Jumping Burners               | 11     | U > C
+    Flying Knee Smash             |  8     | U + F > A
+    Flying Leg Drive              | 10     | U + F > B
+    Flying Afterburner Drive      | 13     | U + F > C
+    Undercut Kick                 |  6     | D > A
+    Foot Sweep                    |  9     | D > B
+    Afterburner Thrust            | 12     | D > C
+    Light Punch (lght elbow smash)|  5 ( 6)| X
+    Medium Punch (med elbow smash)|  6 ( 7)| Y
+    Hard Punch (hard elbow smash) | 11 (12)| Z
+    Body Slam                     | 18     | F > Z   (or F > Y)
+    Jumping Medium Punch          |  7     | U > X
+    Jumping High Punch            |  8     | U > Y
+    Vertical Twirl                | 12     | U > Z
+    Flying Medium Jab             |  7     | U + F > X
+  @ Flying Powered High Punch     |  7     | U + F > Y
+    Flying Downward Hit           | 12     | U + F > Z
+    Crouching Medium Punch        |  5     | D > X
+    Crouching High Punch          |  6     | D > Y
+    Powered Forward Thrust        | 11     | D > Z
+    Block                         |  0     | CB
+
+                                 Special Moves:
+                                                                   | IS | IS
+    move name:                    |% damage| button presses:       |used|reqd
+    -----------------------------------+---+-----------------------+----+----
+  * Lock and Load                      |10 | A + B                 |.50 |.50
+    Air Jets                           | 5 | D .5, U + B           |.50 |.75
+    Cyber Punch                        |16 | X + Y + Z             |.25 |.50
+    Cyber Kick                         |18 | A + B + C             |.25 |.50
+    Jet Knee Smash                     |15 | CB .5, F + C          |.50 |.75
+    Overload                           |20 | A + C                 |.50 |.75
+    Turbine                            | 0 | CB .5, F + A          |.50 |.75
+    Insult                             | 0 | X + Z                 |.25 |.50
+
+                               Rax's Top 5 Moves:
+
+    1. Afterburner Thrust (D > C)
+    2. Flying Downward Hit (U + F > Z)
+    3. Lock and Load (A + B)
+    4. toe pounding (close C)
+    5. Overload (A + C)
+
+
+                               Combination Moves:
+
+    button presses:       | move name:
+    ----------------------+------------------------
+    U + F > A             | Flying Knee Smash
+    CB .5, F + A          | Turbine
+    C                     | toe pounding (close)
+                          | (total damage: 43%)
+
+    U + F > Z             | Flying Downward Hit
+    C                     | toe pounding (close)
+    A + C                 | Overload
+                          | (total damage: 67%)
+
+    U + F > B             | Flying Leg Drive
+    Y                     | Medium Punch
+    A                     | Medium Leg Sweep
+    F                     | move in
+    X + Y + Z             | Cyber Punch
+                          | (total damage: 39%)
+
+    U + F > B             | Flying Leg Drive
+    D + A                 | Undercut Kick
+    D + A                 | Undercut Kick
+    CB .5, F + C          | Jet Knee Smash
+                          | (total damage: 37%)
+    ----------------------+------------------------
+
+                              Offensive Strategies:
+
+    1. Generally, use Rax's legs more since they inflict more damage.
+
+    2. Stun or surprise opponents, get in close, then utilize the
+       "toe pounding" (C) move - 35% damage!
+
+    3. Close distances with the Jet Knee Smash (CB .5, F + C).
+
+    4. Use Rax's Undercut Kick (D > A) or Afterburner Thrust (D > C)
+       to knock your opponents down.
+
+                              Defensive Strategies:
+
+    1. Use Turbine (CB .5, F + A) to escape from being cornered.
+
+    2. Use Flying Downward Hit (U + F > Z) to counter aerial attacks
+       or to scrape someone off the ceiling.
+
+    3. Grab "extra air" (U + F > Y, then Y again) to stay out of harm's
+       way for a short time.
+
+
+   SSSSS   H     H   AAAAA   DDDDD     OOOOO   W     W        Ratings:
+  S     S  H     H  A     A  D    D   O     O  W     W        ---------------
+  S        H     H  A     A  D     D  O     O  W     W        Speed:        4
+   SSSSS   HHHHHHH  AAAAAAA  D     D  O     O  W  W  W        Endurance:    3
+        S  H     H  A     A  D     D  O     O  W  W  W        Power:        3
+  S     S  H     H  A     A  D    D   O     O  W W W W        Recovery:     2
+   SSSSS   H     H  A     A  DDDDD     OOOOO    W   W         Defense:      5
+                                                              Equilibrium:  4
+
+                                 Regular Moves:
+
+    move name:                    |% damage| button presses:
+    ------------------------------+--------+---------------------------------
+    Fast Kick (low kick)          |  3 ( 5)| A
+    Medium Kick (high kick)       |  8 ( 8)| B
+    Reverse Kick (360 kick)       | 11 (12)| C
+    Jumping High Kick             |  8     | U > A
+    Jumping Low Kick              |  4     | U > B
+    Jumping 360 Kick              | 11     | U > C
+  @ Flying Powered Twirl Kick     |  6     | U + F > A
+    Flying Leg Jab                |  9     | U + F > B
+    Flying High Kick              | 10     | U + F > C
+    Fast Undercut                 | 10     | D > A
+    360 Leg Sweep                 | 10     | D > B
+    Tumbling Attack               | 12     | D > C
+    Fast Punch (elbow smash)      |  5 ( 7)| X
+    Medium Punch (left hand punch)|  8 ( 9)| Y
+    Hard Punch (straight punch)   | 11 (11)| Z
+    Throw                         | 15     | F > Z      (or F > Y)
+    Jumping Medium Jab            | 10     | U > X      (or U + F > X)
+    Jumping High Punch            | 13     | U > Y      (or U + F > Y)
+    Jumping Low Punch             |  8     | U > Z      (or U + F > Z)
+    Crouching Fast Punch          |  4     | D > X
+    Crouching Medium Punch        | 10     | D > Y
+    Tumbling Hard Punch           | 11     | D > Z
+    Block                         |  0     | CB
+
+                                 Special Moves:
+                                                                   | IS | IS
+    move name:                    |% damage| button presses:       |used|reqd
+    -----------------------------------+---+-----------------------+----+----
+    Shadow Mode                        | 0 | A + B + C (3 sec)     |.75 |1.0
+    Twirling Fan Attack (1 twirl)      | 4 | CB .5, F + A          |.50 |.75
+    Twirling Fan Attack (2 twirls)     | 8 | CB .5, F + B          |.50 |.75
+    Twirling Fan Attack (3 twirls)     |12 | CB .5, F + C          |.50 |.75
+    High Jump Angle Kick               |12 | D .5, U + B           |.25 |.50
+    Smoke Screen (appear at opp.)      | 0 | X + Y + Z             |.25 |.50
+    Smoke Screen (appear at left)      | 0 | X + Y + Z, A + B      |.25 |.50
+    Smoke Screen (appear at right)     | 0 | X + Y + Z, B + C      |.25 |.50
+    Smoke Screen (appear at left ceil.)| 0 | X + Y + Z, X + Y      |.25 |.50
+    Smoke Screen (appear at rght ceil.)| 0 | X + Y + Z, Y + Z      |.25 |.50
+    Ninja Shuriken (slow or fast)      |11 | CB .5, F + (X or Y)   |.25 |.50
+    Ninja Knife (slow or fast)         |11 | CB .5, U + F +(X or Y)|.25 |.50
+    Ninja Smoke Bomb (slow or fast)    |11 | CB .5, D +F +(X or Y) |.25 |.50
+    Flying Mine Uzume-Bi               |18 | CB .5, F + Z          |.50 |.75
+    Flying Step Tobi Ashi (short)      | 8 | A + B                 |.25 |.50
+    Flying Step Tobi Ashi (medium)     | 8 | B + C                 |.25 |.50
+    Flying Step Tobi Ashi (super)      | 8 | A + C                 |.25 |.50
+    Insult                             | 0 | X + Z                 |.25 |.50
+
+                               Shadow's Top 5 Moves:
+
+    1. Smoke Screen (X + Y + Z)
+    2. Throw (F > Z)
+    3. Flying Mine Uzume-Bi (CB .5, F + Z)
+    4. Tumbling Attack (D > C)
+    5. Jumping Low Punch (U + F > Z)
+
+
+                               Combination Moves:
+
+    button presses:       | move name:
+    ----------------------+------------------------
+    U + F > B             | Flying Leg Jab
+    D > Y                 | Crouching Medium Punch
+    CB .5, F + C          | Twirling Fan Attack (3 twirls)
+                          | (total damage: 31%)
+
+    U + F > B             | Flying Leg Jab
+    D > Z                 | Tumbling Hard Punch
+    B                     | high kick (close)
+    CB .5, F + (X or Y)   | Ninja Shuriken (slow or fast)
+                          | (total damage: 39%)
+
+    D > Z                 | Tumbling Hard Punch
+    C                     | 360 kick (close)
+    CB .5, F + Z          | Flying Mine Uzume-Bi
+                          | (total damage: 40%)
+
+    A + B + C (3 sec)     | Shadow Mode
+    D > C                 | Tumbling Attack
+    Z                     | Hard Punch
+    F > Z                 | Throw
+                          | (total damage: 38%)
+    ----------------------+------------------------
+
+
+                              Offensive Strategies:
+
+    1. Almost without exception, Shadow's punches are better than her
+       kicks.  Many are even stronger than some of her Special Moves!!!
+
+    2. Start matches with the Shadow mode and punch quickly!!!
+
+    3. Use the Smoke Screen (X + Y + Z) followed by (X+Y) or (Y+Z) to
+       knock opponents out of the air.
+
+    4. Use Flying Mine Uzume-Bi (CB .5, F + Z) to stop a charging
+       opponent in their tracks (does well against Slash & Trident).
+
+    5. Play her using a "hit-n-run" offense.
+
+
+                              Defensive Strategies:
+
+    1. Use the Smoke Screen (X + Y + Z, ...) or Throw (F > Z) if cornered.
+
+
+   SSSSS   L         AAAAA    SSSSS   H     H                 Ratings:
+  S     S  L        A     A  S     S  H     H                 ---------------
+  S        L        A     A  S        H     H                 Speed:        3
+   SSSSS   L        AAAAAAA   SSSSS   HHHHHHH                 Endurance:    4
+        S  L        A     A        S  H     H                 Power:        5
+  S     S  L        A     A  S     S  H     H                 Recovery:     4
+   SSSSS   LLLLLLL  A     A   SSSSS   H     H                 Defense:      2
+                                                              Equilibrium:  3
+
+                                 Regular Moves:
+
+    move name:                    |% damage| button presses:
+    ------------------------------+--------+---------------------------------
+    Low Kick (knee smash)         |  6 ( 5)| A
+    High Kick (low kick)          |  8 ( 7)| B
+    Tumble Forward                | 11     | C
+    Jumping Leg Lift              |  5     | U > A
+    Jumping Leg Extend            |  8     | U > B
+    Jumping Foot Drive            | 11     | U > C
+    Flying Pounce                 |  8     | U + F > A
+    Flying Club Ram               | 10     | U + F > B  (or U + F > Y)
+    Flying Foot Drive             | 11     | U + F > C
+    Crouching Toe Jab             |  6     | D > A
+    Crouching Low Kick            |  7     | D > B
+    Crouching 360 Club Swing      | 16     | D > C     (or D > Z)
+    Upward Club Swing (lght punch)|  6 ( 5)| X
+    Downward Club Swing (med pnch)|  8 ( 9)| Y
+    Horiz Club Swing (hard punch) | 12 (11)| Z
+    Throw Straight Up             |  0     | F > Z
+    Jumping Upward Club Swing     |  6     | U > X
+    Jumping Downward Club Swing   |  8     | U > Y
+    Jumping Horizontal Club Swing | 11     | U > Z
+    Flying Claw Scratch           |  7     | U + F > X
+    Flying Overhead Club Swing    | 13     | U + F > Z
+    Crouching Finger Jab          |  6     | D > X
+    Crouching Club Jab            |  9     | D > Y
+    Block                         |  0     | CB
+
+                                 Special Moves:
+                                                                   | IS | IS
+    move name:                    |% damage| button presses:       |used|reqd
+    -----------------------------------+---+-----------------------+----+----
+    Massive Club Swing                 | 6 | X + Y + Z             |.50 |.75
+    Double Footed Swing Kick           |14 | A + C                 |.25 |.50
+    De-Claw                            |12 | CB .5, F + Z          |.25 |.50
+  * Power Thud Club Swing              | 0 | Y + Z                 |.50 |.75
+    Spinal Crush (be close)            |16 | F + Y                 |.75 |1.0
+    Running Head Butt                  |15 | CB .5, F + C          |.25 |.50
+    Bat Back Projectile                | 0 | X + Y (just bfore hit)|.25 |.50
+    Insult                             | 0 | X + Z                 |.25 |.50
+
+                              Slash's Top 5 Moves:
+
+    1. Power Thud Club Swing (Y + Z)
+    2. Flying Overhead Club Swing (U + F > Z)
+    3. Spinal Crush (F + Y)
+    4. Crouching 360 Club Swing (D > Z)
+    5. Tumble Forward (C)
+
+                               Combination Moves:
+
+    button presses:       | move name:
+    ----------------------+------------------------
+    Y + Z                 | Power Thud Club Swing
+    CB .5, F + C          | Running Head Butt
+    F + Y                 | Spinal Crush
+                          | (total damage: 31%)
+
+    U + F > C             | Flying Foot Drive
+    B                     | low kick (close)
+    Z                     | Horizontal Club Swing
+    CB .5, F + C          | Running Head Butt
+                          | (total damage: 46%)
+
+    U + F > Z             | Flying Overhead Club Swing
+    A + C                 | Double Footed Swing Kick
+    Z                     | Horizontal Club Swing
+                          | (total damage: 39%)
+
+    U + F > Z             | Flying Overhead Club Swing
+    D > B                 | Crouching Low Kick
+    D > C                 | Crouching 360 Club Swing
+    CB .5, F + Z          | De-Claw
+                          | (total damage: 46%)
+
+    U + F > C             | Flying Foot Drive
+    X + Y + Z             | Massive Club Swing
+    C                     | Tumble Forward
+    Z                     | Horizontal Club Swing
+                          | (total damage: 40%)
+    ----------------------+------------------------
+
+                              Offensive Strategies:
+
+    1. Slash's strongest feature is his club.  Use it crouching, up close,
+       leaping, etc...
+
+    2. When close execute the Spinal Crush (F + Y).
+
+    3. Stun opponents with the Power Thud (Y + Z) then move in and
+       stomp on 'em.
+
+    4. Don't try to Throw (F > Z) unless you're good at hitting the
+       opponent when he/she comes down - if you miss, you'll be tired
+       (watch Slash's tongue wag) which is just as bad as being stunned!
+
+
+                              Defensive Strategies:
+
+    1. Get out of a corner with the Running Head Butt (CB .5, F + C).
+
+  TTTTTTT  RRRRRR   I  DDDDD    EEEEEEE  N     N  TTTTTTT     Ratings:
+     T     R     R  I  D    D   E        NN    N     T        ---------------
+     T     R     R  I  D     D  E        N N   N     T        Speed:        4
+     T     RRRRRR   I  D     D  EEEEE    N  N  N     T        Endurance:    2
+     T     R   R    I  D     D  E        N   N N     T        Power:        4
+     T     R    R   I  D    D   E        N    NN     T        Recovery:     3
+     T     R     R  I  DDDDD    EEEEEEE  N     N     T        Defense:      3
+                                                              Equilibrium:  5
+
+                                 Regular Moves:
+
+    move name:                    |% damage| button presses:
+    ------------------------------+--------+---------------------------------
+    Stationary Somerslt (side kick|  6 ( 6)| A          (or D > B)
+    High Kick                     | 10     | B
+    Adv. High Kick (dbl high kick)| 14 (14)| C
+    Jumping High Kick             |  6     | U > A
+    Jumping Trident Jab           | 11     | U > B
+    Jumping Foot Jab              | 13     | U > C
+    Flying Leg Jab                |  7     | U + F > A
+    Flying Toe Drive              |  9     | U + F > B
+    Flying Double Leg Strike      | 12     | U + F > C
+    Crouching Side Kick           |  5     | D > A
+    Crouching Heel Thrust         | 11     | D > C
+    Fast Trident Jab (light punch)|  5 ( 4)| X
+    Medium Trident Jab (med punch)|  8 ( 7)| Y
+    Trident Sweep (hard punch)    |  9 ( 9)| Z
+    Leg Grab Throw                | 18     | F > Z     (or F > Y)
+    Jumping Upward Trident Sweep  |  5     | U > X
+    Jumping Downward Trident Sweep|  7     | U > Y
+    Jumping Vert. Trident Thrust  | 10     | U > Z
+    Flying Medium Punch           |  4     | U + F > X
+    Flying Upward Trident Sweep   |  8     | U + F > Y
+    Flying Downward Trident Sweep |  9     | U + F > Z
+    Crouching Hard Punch          |  3     | D > X
+    Crouching Trident Jab         |  8     | D > Y
+    Defensive Roll                | 10     | D > Z
+    Block                         |  0     | CB
+
+                                 Special Moves:
+                                                                   | IS | IS
+    move name:                    |% damage| button presses:       |used|reqd
+    -----------------------------------+---+-----------------------+----+----
+    Depth Charge Field                 | 0 | X + Y                 |.50 |.75
+    Bio-Drain Field                    | 0 | Y + Z                 |.50 |.75
+  * Bio-Stun Field                     | 0 | A + B                 |.75 |1.0
+    Repulser Field                     | 0 | B + C                 |.50 |.50
+  * Spinning Trident                   |30 | X + Y + Z             |.50 |.75
+    Sliding Spinning Trident           |11 | CB .5, F + Y          |.25 |.50
+  * Plasma Bolt                        |15 | CB .5, F + Z          |.25 |.50
+    Liquid Mode                        | 0 | A + B + C             |.25 |.50
+    Insult                             | 0 | X + Z                 |.25 |.50
+
+                             Trident's Top 5 Moves:
+
+    1. Plasma Bolt (CB .5, F + Z)
+    2. Spinning Trident (X + Y + Z)
+    3. Flying Double Leg Strike (U + F > C)
+    4. Leg Grab Throw (F > Z)
+    5. Advancing High Kick (C)
+
+                               Combination Moves:
+
+    button presses:       | move name:
+    ----------------------+------------------------
+    CB .5, F + Z          | Plasma Bolt  (this combo needs full I.S.)
+    X + Y + Z             | Spinning Trident
+    F                     | move in
+    X + Y + Z             | Spinning Trident (wait for .75 I.S.)
+    F                     | move in
+    F > Z                 | Leg Grab Throw
+                          | (total damage: 93%)
+
+    U + F > C             | Flying Double Leg Strike
+    D > Z                 | Defensive Roll
+    CB .5, F + Z          | Plasma Bolt
+    F > Z                 | Leg Grab Throw
+                          | (total damage: 55%)
+
+    U + F > A             | Flying Leg Jab
+    A + B + C             | Liquid Mode
+    X + Y + Z             | Spinning Trident
+                          | (total damage: 37%)
+
+    U + F > A             | Flying Leg Jab
+    X                     | light punch (close)
+    X + Y + Z             | Spinning Trident
+                          | (total damage: 42%)
+
+    CB .5, F + Y          | Sliding Spinning Trident
+    D > A                 | Crouching Side Kick
+    X + Y + Z             | Spinning Trident
+                          | (total damage: 46%)
+    ----------------------+------------------------
+
+
+                              Offensive Strategies:
+
+    1. In the air and on the ground, Trident's kicks rule!  Use the
+       strongest kicks (C, U + C,...) and use Z for Plasma Bolts and
+       Throws.
+
+    2. Trident has lots of ways to stun his opponent.  Pick one, then
+       follow it with a Throw (F > Z) or a Spinning Trident (X + Y + Z).
+
+
+                              Defensive Strategies:
+
+    1. Use Liquid Mode (A + B + C) to get out of a corner.
+
+  X     X   AAAAA   V     V  I  EEEEEEE  RRRRRR               Ratings:
+   X   X   A     A  V     V  I  E        R     R              ---------------
+    X X    A     A   V   V   I  E        R     R              Speed:        3
+     X     AAAAAAA   V   V   I  EEEEE    RRRRRR               Endurance:    3
+    X X    A     A    V V    I  E        R   R                Power:        4
+   X   X   A     A    V V    I  E        R    R               Recovery:     2
+  X     X  A     A     V     I  EEEEEEE  R     R              Defense:      5
+                                                              Equilibrium:  4
+
+                                 Regular Moves:
+
+    move name:                    |% damage| button presses:
+    ------------------------------+--------+---------------------------------
+    Low Kick (fist/knee combo)    |  4 ( 8)| A
+    Medium Kick (kick/cane strike)|  8 ( 9)| B
+    High Kick (double leg kick)   |  9 (10)| C
+    Jumping Double Leg Kick       |  7     | U > A    (or U + F > A)
+    Jumping High Kick             |  7     | U > B    (or U + F > B)
+    Jumping Power Kick            |  8     | U > C    (or U + F > C)
+    Fast Toe Sweep                |  4     | D > A
+    Cane Propelled Slide          |  7     | D > B
+    Powerful Toe Sweep            | 10     | D > C
+    Fast Cane Strike (triple hit) |  5 (16)| X
+    Powerful Cane Strike (sngl hit|  9 ( 8)| Y
+    Boomerang Cane Throw (cane jab| 10 (11)| Z
+    Cane Throw                    | 16     | F > Z    (or F > Y)
+    Jumping Low Cane Strike       |  6     | U > X    (or U + F > X)
+    Jumping Medium Cane Strike    |  8     | U > Y    (or U + F > Y)
+    Jumping Overhead Cane Twirl   |  9     | U > Z
+    Flying Forward Cane Attack    |  9     | U + F > Z
+    Crouching Double Cane Attack  |  6     | D > X
+    Crouching 360 Cane Attack     |  8     | D > Y
+    Crouching Combo Cane Attack   | 12     | D > Z
+    Block                         |  0     | CB
+
+                                 Special Moves:
+                                                                   | IS | IS
+    move name:                    |% damage| button presses:       |used|reqd
+    -----------------------------------+---+-----------------------+----+----
+    Dragon Trap                        |15 | CB .5, F + Z          |.50 |.75
+    Snap Back                          | 8 | CB .5, F + X          |.25 |.50
+    Identity Change                    | 0 | X + Y + Z             |.75 |.75
+  * Midas Touch                        | 0 | CB .5, F + Y          |.50 |.75
+    Attract & Smack                    |12 | A + B + C             |.50 |.75
+    Swap Spell                         | 0 | X + Y                 |.25 |.50
+    Confusion Spell                    | 0 | A + C                 |.50 |.50
+    Insult                             | 0 | X + Z                 |.25 |.50
+
+                              Xavier's Top 5 Moves:
+
+    1. Boomerang Cane Throw (Z)
+    2. Flying Forward Cane Attack (U + F > Z)
+    3. Midas Touch (CB .5, F + Y)
+    4. Cane Throw (F > Z)
+    5. Powerful Toe Sweep (D > C)
+
+
+                               Combination Moves:
+
+    button presses:       | move name:
+    ----------------------+------------------------
+    U + F > A             | Jumping Double Leg Kick
+    D > X                 | Crouching Double Cane Attack
+    D > Y                 | Crouching 360 Cane Attack
+    A + B + C             | Attract & Smack
+                          | (total damage: 33%)
+
+    U + F > C             | Jumping Power Kick
+    X                     | triple cane hit (close)
+    CB .5, F + Z          | Dragon Trap
+                          | (total damage: 28%)
+
+    U + F > C             | Jumping Power Kick
+    D > X                 | Crouching Double Cane Attack
+    Y                     | Powerful Cane Strike
+    CB .5, F + Y          | Midas Touch
+    F > Z                 | Cane Throw
+                          | (total damage: 39%)
+
+    U + F > C             | Jumping Power Kick
+    D > X                 | Crouching Double Cane Attack
+    D > C                 | Powerful Toe Sweep
+    X + Y + Z             | Identity Change
+                          | (total damage: 24%)
+    ----------------------+------------------------
+
+
+                              Offensive Strategies:
+
+    1. Xavier's cane is his strong point.  Use punching attacks to make
+       the best use of his cane.
+
+    2. Use the Flying Forward Cane Attack (U + F > Z) to counter any aerial
+       attack, or to flick opponents off the ceiling.
+
+    3. Keep opponents away with Boomerang Cane Throws (Z).  Tip:  You can
+       defeat Slash with this one key!  He will just keep walking into it.
+
+    4. Freeze opponents with the Midas Touch (CB .5, F + Y), then Throw
+       (F > Z) them.
+
+
+                              Defensive Strategies:
+
+    1. Use the Swap Spell (X + Y) to swap positions with opponent, or the
+       Confusion Spell (A + C) - if you become cornered.
+
+   CCCCC   H     H   AAAAA   M     M  PPPPPP   I   OOOOO   N     N
+  C     C  H     H  A     A  MM   MM  P     P  I  O     O  NN    N
+  C        H     H  A     A  M M M M  P     P  I  O     O  N N   N
+  C        HHHHHHH  AAAAAAA  M  M  M  PPPPPP   I  O     O  N  N  N
+  C        H     H  A     A  M     M  P        I  O     O  N   N N
+  C     C  H     H  A     A  M     M  P        I  O     O  N    NN
+   CCCCC   H     H  A     A  M     M  P        I   OOOOO   N     N
+
+
+
+
+    NOTE:  This section is included with the hope that a code is 
+           available to play the game as the Eternal Champion.
+
+
+
+
+
+                                 Regular Moves:
+
+    move name:                    |% damage| button presses:
+    ------------------------------+--------+---------------------------------
+
+
+
+
+                                 Special Moves:
+                                                                   | IS | IS
+    move name:                    |% damage| button presses:       |used|reqd
+    -----------------------------------+---+-----------------------+----+----
+
+
+
+
+                               Combination Moves:
+
+    button presses:       | move name:
+    ----------------------+------------------------
+
+
+
+
+                             Champion's Top 5 Moves:
+
+
+
+
+                              Offensive Strategies:
+
+
+
+
+                              Defensive Strategies:
+
+
+                    ETERNAL CHAMPIONS OPPONENT STRATEGIES
+                  -----------------------------------------
+
+BLADE:
+
+  1. Blade moves slowly, and has no way to travel quickly across the
+     screen.  When far, he'll usually throw a Tracking Blade or Stun
+     Beam which you can block.  Up close, he'll try a Wild Fury Attack,
+     or a Throw.
+
+  2. To beat Blade, just move in *quickly*, and attack.  But don't stay
+     too close when you've finished.  Jump away, then advance again.
+
+JETTA:
+
+  1. Jump kick her.  Usually she'll jump into it.  If she Phases, do a
+     quick jump kick.  She should run into that too.  She's also
+     susceptible to repeated throws.
+
+  2. Don't let Jetta corner you - especially when Phased.  You will get
+     pounded no matter how much you block.  If you get out of the leap
+     and hit cycle, back away and try to start it again.
+
+LARCEN:
+
+  1. Never, never leap into Larcen when he's on the ground.  He will do a
+     Flip Kick and damage you every time.  When he's in the air or on the
+     ceiling though, he's fair (and easy) game.
+
+  2. Larcen is also very quick to block, so the best way to attack him is
+     by waiting until he attacks you.  Determine how he's coming at you,
+     then go for an exposed spot.  For example, if he's coming with a 
+     punch, counter it with a sliding low kick.
+
+
+MIDKNIGHT:
+
+  1. Like Jetta, Midknight will almost always counter a leap with a leap.
+     Determine which leap is effective for your character (ie. the Flying
+     Downward Hit for Rax) and repeat.
+
+  2. Midknight will also do a lot of Flying Wall Smashes and Mist Attacks.
+     Learn to recognize the early frames of these animation sequences, and
+     jump over him when he attempts them.  He will do them when far away.
+
+RAX:
+
+  1. When far away, Rax will almost always try a Jet Knee Smash.  Learn to
+     see this one coming, and jump over it.  Otherwise, you'll be cornered
+     and prone for some pounding.  Also, when he starts his Lock and Load,
+     jump straight up, and the projectile will go into the air instead of
+     you.  If you get stunned by it, he'll jump over and do a toe pounding.
+
+  2. Rax is very strong offensively, so you can't stay too close.  Go for
+     moves where you move in quickly and strike.  Try to keep him blocking,
+     let up (block/jump back) then strike again.
+
+SHADOW:
+
+  1. Shadow is easy to beat once you figure out her pattern.  The trick is to
+     stay away from her.  Preferably on the other side of the screen.  Jump
+     over anything she throws at you.  Pretty soon, she'll get tired of
+     throwing things and will disappear.  Wait around 2 seconds and jump
+     straight up.  She should appear right next to where you were standing
+     before and attack.  The attack will miss because you're in the air.
+     Once you land, immediately throw her and/or get back to the other side
+     of the screen.
+
+  2. When she goes into a long move (like the Twirling Fan Attack) jump
+     over her and kick or throw her from behind.  Low undercut kicks are
+     also a good frontal counter for these attacks.
+
+SLASH:
+
+  1. Slash has a very easy pattern.  He'll throw a few Claws then try to
+     do a Power Thud.  Block or jump the Claws then jump at him when he
+     starts the Power Thud.  With Xavier, just press Z until he drops!
+
+  2. A Running Head Butt can be countered with a low undercut kick.
+
+  3. Trick Slash into walking towards you, then do a low undercut kick.
+
+TRIDENT:
+
+  1. Trident blocks everything (very frustrating!).  If you avoid him,
+     he'll try to stun you with Plasma Bolts.  These are easy to see
+     coming and to block (unless you're unlucky and he catches you in
+     the middle of something or in the air).
+
+  2. If cornered, Trident will either Throw you or do a Spinning Trident
+     which is very damaging.  Don't let this happen!!!
+
+  3. The best offense is to do some type of long distance special move,
+     and avoid him the rest of the time.  Sometimes a low undercut kick
+     will get through, but if not, jump back immediately!
+
+XAVIER:
+
+  1. Be careful about getting close to Xavier, because you will be
+     thrown.
+
+  2. When Xavier starts to do a spell, he will hold his cane straight up.
+     Jump forward immediately when you see this, and you will dodge the
+     spell he's fired at you.  This is usually the best time to attack.
+
+CHAMPION:
+
+  1. You have to beat the Eternal Champion 5 times.  After the first, he
+     will reincarnate himself from one of four images on the windows, and
+     you will be given about a third of your life bar restored.  These
+     matches are not timed - it's to the death - and you have to beat all
+     5 with one life (you get 2 chances).
+
+  2. Only attack the Champion when he's not flashing, and avoid or block
+     everything that he throws at you.  Stay out of range, and learn which
+     kind of leaps and advancing attacks are effective for your character.
+
+                       ETERNAL CHAMPIONS OVERKILL LIST
+                     -----------------------------------
+
+GENERAL RULES:
+
+1) Overkills only work in the fight which will cause you to win (or
+   lose) the match.
+ 
+2) Overkills only work if your last hit does more than 13% damage.
+   Consult your manual for the appropriate moves, or just use a throw.
+ 
+3) Overkills are BACKGROUND DEPENDENT.  This means every character can
+   do all the fatalities, and that every player therefore may want to
+   learn all of em.
+ 
+4) Overkills occur when the first 3 criteria are satisfied, and when the
+   loser lands on the magic spot on the background.
+ 
+**************************************************************************
+
+
+BLADE'S STAGE:
+
+  Landing Position:
+
+    The Loser must land centered at the bottom of the huge fan.
+
+  Effect:
+
+    Loser gets sucked into the fan, sliced up, leaving only a trademark
+    item behind.
+
+
+JETTA'S STAGE:
+
+  Landing Position:
+
+    The Loser must land in the middle of the gate.
+
+  Effect:
+
+    An earthquake occurs, and the loser falls into the fiery hole
+    to his/her death.
+ 
+
+LARCEN'S STAGE:
+
+  Landing Position:
+
+    The Loser must land a touch to the left or right of the ticket booth.
+
+  Effect:
+
+    The Loser gets gunned down by a passing car, then again left to
+    right, while blood flies out of the loser everytime the bullet trail
+    hits the loser.
+
+MIDKNIGHT'S STAGE:
+
+  Landing Position:
+
+    Starting from in front of the hut to the left (the shorter part),
+    finish the opponent so he/she bounces to the right and lands in front
+    of the cow.
+
+  Effect:
+
+    The helicopter will launch a missile at the loser, blowing him up
+    and leaving charcoal briquettes behind.
+
+ 
+RAX'S STAGE:
+
+  Landing Position:
+
+    The Loser must land just to the right of the dragon statue.
+
+  Effect:
+
+    Some UFO robots fly onto the scene, freezing the enemy and then
+    stattering the loser-si-cle.  Then a vacuum robot cleans up the
+    remains.
+ 
+
+SHADOW'S STAGE:
+
+  Landing Position:
+
+    The Loser must land centered on the second letter from the left.
+
+  Effect:
+
+    Loser will fly into the letter, be electrocuted with lots of blood,
+    explode, and drop an eyeball onto the ground.
+
+
+SLASH'S STAGE:
+
+  Landing Position:
+
+    The Loser must land roughly one body length away from the far left
+    or right of the background.
+
+   Effect:
+
+    The loser gets dragged off-screen by a dinosaur that you can't see
+    (yet).  The dinosaur then moves on-screen while chewing happily on
+    the loser.  Finally, a trademark item is spit out of his mouth.
+
+TRIDENT'S STAGE:
+
+  Landing Position:
+
+    The Loser must land directly below the statue in the right half of
+    the background (the statue with the water spout).  It has also been
+    seen in front of the big rock located on the left side of the area,
+    and centered in front of the sky city in the background.
+
+  Effect:
+
+    Three vines slowly wrap the loser up, then pull him/her under.
+    A big series of splashes, followed by bubbles, lead up to a pool
+    of blood where the loser fell.
+
+
+XAVIER'S STAGE:
+
+  Landing Position:
+
+    The Loser must land centered in the fire.
+
+  Effect:
+
+    The loser will be slowly burned to death, arms flailing, leaving
+    behind a skeleton.  The skull then falls to the ground.
+
+
+                            Larcen's Character Guide:
+                                by Chris Schneider
+
+  General Info:
+
+  So you want to play Larcen, eh? Excellent call. He's got a very good mix
+of speed, power, and defense. Combine that with what I think is the easiest
+throw in the game and you've just become a walking weapon. I've only got one
+combo to mention and it has become the mainstay of my Larcen arsenel. Use
+a leaping "C" kick and as soon as you hit the ground, go for a sweeping "C",
+and immediately jump forward again with a second leaping "C". Somewhere in
+the course of that flurry, you're probably going to get a shot or two (or
+three) in. Beyond that combo, I generally fight with what I call the "In 
+yo' face" style, leaping over opponents and striking as often with "C" kicks 
+and "Z" punches as possible. The opponent often has no chance to open up any 
+offense or perform any charge moves.
+
+  Your opponent can't get much off with you constantly in his
+or her face. Leap over your opponent with kicks and punches and keep the 
+pressure up when you land. Vary your attacks high and low and above all, 
+don't let up. When you throw, always use the "Y" throw. It's quicker and
+equally as effective as the "Z" one. If you get the opponent hurt and you fear
+jumping in, throw a sai. With a full IS load, you can throw 3 sais before
+needing to rest. Also, when throwing sais, it is easy to get into the air with
+a leaping kick right behind the weapon. They'll block the sai, but usually not
+the kick.
+
+  vs. Blade:
+
+  This is the epitomy of "In yo' face". Jump in from the get-go.
+You can get three easy leaping kicks because Blade will jump up. After any 
+of them, you can elect to stay on the ground and walk up to him. As soon as
+he gets up, throw him. Back off and repeat the kick/throw as necessary. 
+If he throws a tracking blade, it is usually possible to jump in and catch
+him with a leaping kick before the blade gets you, effectively killing it.
+
+  vs. Jetta:
+
+  You can bait Jetta into the air just like Blade. Just throw your
+kicks/punches early and she won't touch you. Jetta is very easy to throw, so
+exploit that. If she does her back hand spring (the one where she then jumps
+back at you) jump back and use a leaping "C". She'll jump into it every time.
+be ready to block if you can't stop that back hand spring, because her 
+favorite combo is that with a rapid series of kicks. Don't bother with the
+sais, as you'll just leave yourself open and she'll plant you. If she
+phases, wait for a second and bait her into jumping into the air, so you 
+can kick her out of it.
+
+  vs. MidKnight:
+
+  Another "In yo' face" opportunity. Throw your kicks early or he'll feed you
+his all day. If he is in the air and you're on the ground, block and throw.
+MidKnight has this real problem with projectiles. If you throw one, he'll
+immediately mist attack to dodge it. Somewhere along the line somebody thought
+it was such a good idea that he'll always do it unless he's in the air. Using
+this knowledge, just throw a sai and he'll mist up. Jump over the mist and walk
+toward it. You will not get hit, but he'll materialize right in front of you.
+Now throw. MidKnight is also easily corner trapped by Larcen using the leaping,
+sweep, leaping kick combo from above.
+
+  vs. RAX:
+
+  Watch jumping in! RAX will slam you at every opportunity. For some
+reason, RAX loves using that cyber-kick against Larcen, so watch out for
+that too. Your best bet is to jump in from long range (so you land outside 
+of RAX's throw range and can duck the cyber-kick) and sweep. He may block
+it, but you're now close enough to start in on the "In yo' face" stuff. 
+Use standing "Z" punches and occasionally jump away to launch a sai. When 
+he goes for the jet knee, jump toward him (if you can get in the air early
+enough) and use the "C" kick. You can often kick him out of the attack.
+
+  vs. Shadow:
+
+  Have fun with this, because it's where you'll get the most
+practice with the knock-back projectiles move (hold back and hit "X" when
+the weapon is almost upon you). Since Shadow is so adept at launching stars,
+use them to your advantage. Stay away from her and knock back her stars. She
+rarely blocks them. When she goes for a cartwheel-fan, jump over, chase her
+down, and throw her. If she disappears, jump up and throw. If she does her
+spinning jump (that thing where she jumps and part way up rolls into a ball
+for greater height) simply jump back and use the "C" kick. Throw the 
+occasional sai to shut up her "Coward" ranting.
+ 
+  vs. Slash:
+
+  What can I say? Slash loves to eat the leaping, sweep, leaping
+combo. Just play hard inside and he's yours. If he tries the running charge, 
+block and leaping kick him. If he uses the de-claw, knock it back. Larcen's
+speed can easily handle the ground smash by kicking Slash out of the air.
+Standing "Z" punches work great too if you work them into patterns of jumping
+over Slash.
+
+  vs. Trident:
+
+  Not as big of a problem as RAX, Trident is much easier to jump
+in on. Constantly leap over him with a barrage of kicks and standing "Z"
+punches. The occasional sweep will hit, but not that often. Frequently, when
+you go to the air, Trident will roll away, with the intent to launch a plasma
+ball. Keep leaping at him, throwing "C" kicks. The extention of the leg will
+often take him down before the plasma gets going. If he does use the plasma
+from long range, throw a sai and block. Your sai will hit him while he's
+exposed and let you block in time.
+
+  vs. Xavier:
+
+  Keep him at a distance with your sai. The only way you'll be able
+to jump in on him is from close range, so you won't be thrown. Anytime he
+uses a dragon trap or throws the cane, leap over and use a "C" kick. If it 
+connects, walk up and throw. Anytime he gears up to throw a spell, go airborne 
+and kick him while he's exposed. It is possible to use the knock back 
+projectile move on the spells, but their weaving makes it very difficult.
+When you get him off balance, proceed to the leaping, sweep, leaping kick 
+combo for what's usually a moderately easy fight.
+
+  vs. Champion #1:
+
+  Piece of cake. There's a nice little pattern that will
+work against the Champions most of the time. When you're in close, jump away
+with a kick. He'll hesitate for a moment and then follow you. As soon as you
+land, leap back in with a kick. You'll come up underneath him and get a solid
+hit. If you stay in close and keep jumping over him, hammering the whole 
+time, he won't have a chance to use his powers. Don't get too confident, 
+though. It gets much harder than this.
+
+  vs. Shark Champion:
+
+  Use him as a refueling stop. By this, I mean take your
+time and plan your shots. The Shark is pretty easy to handle if you're
+careful and you can get back another chunk of that precious health you're
+going to need against the Tiger and the Dragon. Don't throw the sais unless
+you're comfortable with jumping the fin, because that's his favorite counter.
+Don't try for those quickie throws like you can cinch in against the regular
+players, because you'll catch a weak low kick. Use the leaping out then back
+in pattern I mentioned above to shut the Shark down. 
+
+  vs. Eagle Champion:
+
+  Here's another refueling stop. The Eagle telegraphs his
+wall dive worse than RAX. It gives you plenty of time to go to the air and
+try to kick the Eagle out of it. Use hit and run tactics and throw alot of
+sais. Another quirky thing about this Champion is the repluser field. If he's
+on the left of you, you can't approach him. If he's on the right, however, 
+you can press on, albeit slowly, and get in close. Once you're in range, use
+a "Z" punch to put him down.
+   
+  vs. Tiger Champion:
+
+  Here's a rough fight. I suggest staying in the air and
+using the jumping out/jumping in pattern already mentioned. The cartwheel
+attack is hard to counter unless you use the sais. The speed of the Tiger
+is your biggest problem, though. Take your time and block his leaping attacks.
+This will leave him wide open for a throw. Keep your cool and you'll handle
+him.
+
+  vs. Dragon Champion:
+
+  Ugh. I hate this guy. I have yet to knock back one of
+his fireballs, so I can't say if it's even possible. Barring them, the other
+problem is that half-damage field he puts up. Hard to put him down when every
+punch and kick you've got does pitiful amounts of damage. If you can catch
+him in the jumping out/jumping in pattern, use it as long as you can. Your
+sais will give you some help, but don't stay that far away from him for long
+or you'll be eating fireballs. 
+
+                           Midknight's Character Guide:
+                                by Chris Schneider
+
+  General Info:
+
+  He's tremendously vicious in close when you can get the other character off
+balance. His Flying Wall Smash combined with a throw will spell fast death for
+those caught by it.  Another combo I love starts with the Tornado Attack, and
+when the opponent blocks it, hit the Ceiling Ram (repeat D > C, then U + C).
+This combo is easily modified to taste for the Stomach Punch or the Life Drain,
+but I find it easier to hit the Ceiling Ram, since you don't have to reposition
+your fingers to new buttons.
+
+  Use the strongest kick as a hop kick (grab extra air-time).  Only use the
+kicks if you suspect you're going to be hit on the way down, such as Larcen's
+backflip.  The Flying Wall Smash is generally a safe maneuver, but can cause
+trouble.  Do *not* use the mist attack. It's pretty much worthless given the
+recovery time and how much warning it gives the opponent.  Only use the Stomach
+Punch and Life Drain in a combo or on a stunned opponent.  They seem to have
+a very low strike priority.  Another good one especially against human players
+is a Flying Spin kick followed by the Back Roll Twirl kick.  Same button (B),
+but you have to block high then low to stop it.  The crouching uppercuts (Y or
+Z with D) are nice for advancing on your opponent and will take them out of the
+air if timed correctly.  And when close, use repeated Y or Z punches (or with
+F for throws).
+
+  vs. Blade:
+
+  Go to the air.  Blade is probably the worst programmed fighter in the game.
+He's easily goaded into the air and then punched before he can get a move off.
+Quickly follow this up with a throw.  If the timing is right, you will nail
+him about 90% of the time.  Catch him just as he gets back to his feet and use
+the middle punch for the throw, rather than the hardest one.  His projectiles
+are a joke, since the Flying Wall Smash will soar right under them, hitting
+the often exposed Blade.
+
+  vs. Jetta:
+
+  Go to the air.  She'll usually try to meet you, but can be batted down just
+like Blade.  The followup throw will work if timed right.  Do *not* attempt a
+Flying Wall Smash, as she tends to phase when you make your move.  By the time
+you hit, she's invulnerable to the strike.  Keep moving and use a lot of
+throws.  Good combo:  U + F > Z, then repeat Y and F > Y.  It'll probably be a
+close one.
+
+  vs. Larcen:
+
+  Don't jump in on Larcen.  He loves that backflip and it can be used against
+him.  Jump in on him, and at the peak of the jump, use one of the two strongest
+kicks.  That added elevation will throw off his timing for the flip and can
+leave him vulnerable for the throw.  If he goes for his grappling hook swing,
+simply block and throw.  The Flying Wall Smash will catch him off guard maybe
+30-40% of the time, so use it sparingly.  Larcen is also a sucker for the
+Tornado/Ceiling Ram.  If you can get him off balance, use alternating high/low
+strikes.  The computer seems to have major difficulty with Larcen on shifting
+between blocks.
+
+  vs. Rax:
+
+  Use quick aerial punches and avoid jumping in if he's on the ground.
+Inevitably, he'll start in with the jet knees.  When he does, standing block it
+and then walk forward after he bounces off.  Once he lands, you can nail the
+throw.  If he hits with the jet assisted uppercut (the one that carries him
+almost off-screen) you can score another easy throw when he lands.  Rax is also
+a major sucker for the Tornado/Ceiling Ram combo.
+
+  vs. Shadow:
+
+  Use the standard Shadow defenses.  Jump straight up when she disappears and
+throw her when you land.  If she throws projectiles, either jump or block.  If
+she cartwheels, leap over and chase her down from behind.  You can usually
+catch her and throw.  Be careful with the Flying Wall Smash, or you'll end up
+being thrown.
+
+  vs. Slash:
+
+  Use alot of Flying Wall Smashes. He seems to love being hit by them...
+When he goes for the ground smash, knock him out of the sky. If it appears
+that you'll land without a hit before he does, use one of the stronger kicks
+to give you that extra "oomph."  The Tornado Attack usually gets you a nice
+club for the effort, so use it very sparingly.
+
+  vs. Trident:
+
+  With Trident, it's a matter of beating him to the punch.  I will usually jump
+at him at the start and kick quickly.  He's very vulnerable to the throw after
+getting knocked down.  If he goes for the plasma, go for a body launch.  Don't
+worry too much about a computer controlled Trident when he uses the fields.
+He'll usually block, rather than give you the damage.  If you're not in the air
+before him, don't try to meet him.  He's not nearly as forgiving as Blade and
+Jetta.  As with any character vs Trident:  Don't get caught by the plasma, or
+you may get the insta-death combo (spinning trident followed by another
+spinning trident).
+
+  vs. Xavier:
+
+  This is the one character I hate almost as much as the Dragon Champion.
+Xavier will block just about everything you throw and hit you with that killer
+combo.  The way to deal with Xavier? Defense. Let him come to you.  He'll be
+open after a magic spell, so jump over it and strike fast.  If he jumps in,
+block and throw. If you can get behind his standing cane throw or the dragon
+trap, go for the throw. He'll fall for the tornado/ceiling ram about 50% of the
+time.  The Flying Wall Smash will tear him apart if you catch him after
+throwing a spell and leave him open for a quick throw.
+
+  vs. Champion #1:
+
+  The first champion is a good introduction to the computer's cheating.  To
+deal with him, use the two strongest kicks as hop kicks.  You can catch him
+from underneath.  Don't try to follow-up with the throw or you'll end up
+getting smacked by a few low weak kicks.  The Flying Wall Smash will work about
+35-40% of the time.  The best way to deal with him quickly is the tornado/
+ceiling ram combo, since you can hit him with it twice in quick succession
+before needing to back off for your IS to replenish.
+
+  vs. Shark Champion:
+
+  The shark loves to counter the Flying Wall Smash with the fin move.  Don't
+use it unless you're comfortable with jumping over it.  Don't jump straight up,
+rather jump over it, trying to stay in the middle of the screen.  When the
+champ pulls back together, go for a quick throw. This battle will best be
+fought in the air.
+
+  vs. Eagle Champion:
+
+  Don't try to meet his body launch with a Flying Wall Smash.  Instead, keep
+this fight in the air.  The eagle's reach is a bear to deal with, but can be
+stopped if met with aerial attacks.  Beware his vertical "sawblade" strike.
+Use a lot of hit and run, and use your Flying Wall Smash often, provided he
+isn't going for it himself.  If he begins after you've launched, you'll catch
+him flush in the stomach.  The tornado/ceiling ram is another good bet for this 
+champion.
+
+  vs. Tiger Champion:
+
+  His speed is impressive, but he's dumb.  His aerial priority is seemingly
+low, so go high often.  When he uses his cartwheel attack, body launch. You'll
+hit him every time.  When he jumps in, block and throw.  Keep up the pressure
+with hit and runs and he's yours.  Expect to trade a lot of blows though.
+
+  vs. Dragon Champion:
+
+  This is the real test of your mettle. He cheats so bad that it's very
+difficult to stop him.  His aerial priority is very high, so stay on the ground
+as best you can.  His fireballs can stop the Flying Wall Smash and he'll
+usually strike with quick weak hits if you get close.  Your best bet is to
+block as best you can and try to catch him coming down from the air with a
+Flying Wall Smash.  Quickly go for the tornado/ceiling ram and you may get it.
+Don't jump in, but try to take him out of the air with uppercuts and middle
+punches.  This will be the hardest opponent you face as Midnight.
+
+
+                             Rax's Character Guide
+                                by Dave Woodall
+
+  General Info:
+
+  Rax is one of the strongest offensive players in the game - only Trident
+can match his sheer offensive strength.  And given the slightest opening, he
+can totally devastate his opponent.  Luckily for Rax, it is impossible to
+Insult and Block at the same time.  When Insulted, immediately fire off a
+"Lock and Load", then leap over *quickly* and give'em a "Toe Pounding" (close
+C).  Instant 45% damage!  It feels soooooo good!
+
+  In most situations, use the strongest buttons - Z for punches and C for
+kicks (of course in combination with leaps, crouches, etc.).  I rarely use any
+of the others except with Special Moves.  Rax also has an amazingly fast Throw!
+
+  vs. Blade:
+
+  Blade is a major sucker for the Flying Downward Hit (U + F > Z).  You can
+easily win with this move alone, but that gets boring.  An occasional Lock and
+Load/Toe Pounding is fun, and when Blade does his Spin Kick, knock him off his
+feet with an Afterburner Thrust (D > C).  Blade's projectiles are slow moving,
+and easily avoided by pressing D.  For fun, finish him with Jet Knee Smash!
+
+  vs. Jetta:
+
+  Start every match by leaping away from Jetta.  At this point, do one of two
+things:  1) Fire off a Lock and Load and get ready to leap over for a Toe
+Pounding if it hits, or 2) Wait for her to Phase.  When she does, do a leaping
+Z (U + F > Z) and 90% of the time she will meet you in mid-air.  If all that
+fails, she will jump over to you.  At this point, IMMEDIATELY hold F and hammer
+on Z.  When she lands, you will do an instant Throw.  Follow every Throw with
+a leap back and a Lock and Load.  About 50% of the time it will succeed!
+
+  vs. Larcen:
+
+  Larcen is pretty quick defensively, which makes it hard to get many moves
+to connect.  NEVER NEVER leap in on Larcen when he's on the ground!  You will
+not ever win that encounter.  Basically, let Larcen come to you.  When he does
+the Ceiling Crawl/Drop, meet him at the top with a leaping Z.  Or, if your
+quick, fire off a Lock and Load and knock him down.  Counter the Long Distance
+Sweep or a leap with either a leaping Z or C.  Watch out for the Grappling
+Hook, because you can't block it.  If you're close when he Insults, do a quick
+Afterburner (D > C), then move in for a Throw.  Also, use the Throw if Larcen
+corners you.
+
+  vs. Midknight:
+
+  Midknight is also fairly easy - but more fun to defeat than Blade.  The
+basic moves are U + F > Z, and D > C.  He's a sucker for both.  NEVER do
+either a Lock and Load or an Overload (A + C) - he will go for his Mist
+Attack every time!  Just leap to avoid the Mist.  If he jumps in close,
+do a quick Throw.  You can also do repeated Throws if you corner him.
+
+  vs. Shadow:
+
+  Start every match with a leap away followed by a Lock and Load - most
+likely, she will begin her match with Insults!  If successful, leap over for
+a Toe Pounding, and if not, wait.  Block whatever she throws, and if she does
+the Shadow Mode, wait a second, jump straight up and press D > Z coming down.
+Counter her Twirling Fan Attack with an Afterburner (D > C), jump back and do
+a Lock and Load.
+
+  vs. Slash:
+
+  Whatever you do, don't stay close to Slash!  If you do, you're in for a
+world of hurt.  What I've found that works best is to get about 2/3 screen
+length away, and slowly move forward.  When he starts to walk, do a quick
+Afterburner (D > C), and you'll catch him off guard every time.  You can
+repeat this until you back him into a corner, then leap to the opposite
+corner and try a Lock and Load/Toe Pounding.  Overloads will sometimes get
+through, but he often bats them back.  NEVER NEVER NEVER do an Overload
+when Slash is close - if he bats it, you'll get it back!  Ouch!  Also,
+you can counter a Running Head Butt with an Afterburner (D > C).
+
+  vs. Trident:
+
+  Trident blocks everything (almost :-).  Start every match with 2 or 3
+Overloads followed by a leaping Z.  Trident has 3 ways to stun you, and
+the worst of these is the Plasma Bolt.  Don't get caught by this or you're
+dead!  To win a leap, you must beat Trident into the air, so more often
+than not, leap away from him.  If he leaps in close, do a quick Throw (hold
+F, and hammer on Z).  When he does an Advancing High kick or a Spinning
+Trident, counter with an Afterburner (D > C) - this is the only time he
+doesn't block it!  Of course, counter an Insult with a Lock and Load.
+
+  vs. Xavier:
+
+  Xavier also is very good at blocking, and if you get close, he'll throw
+you.  He is also good at avoiding Lock and Loads, so use Overloads.  Most
+of the time, they'll get through.  At this point, Xavier will do one of
+three things:  Insult, a new spell, or a leap.  Counter the first two with
+an Afterburner Thrust, or let him leap over you then leap away.  When your
+Inner Strength runs low, block Xavier's spells and wait for .75.  If you
+fire an Overload before a spell has past you, they will cancel each other,
+so wait.  Not a glamorous win, but it works.
+
+  vs. Champion #1:
+
+  Fight this one like Blade.  Do lots of leaping Z's, and don't let up on
+him.  If you do, he'll go invincible or do a Special Move.  If you do end
+up on the other side of the screen and he insults you ("Fight!"), quickly
+fire off a Lock and Load (effective about 40% of the time).  Another thing
+I've found effective against any of the Champions is if you happen to kill
+one of them right next to you, do an Overload when the next starts to pull
+himself together.
+
+  vs. Shark Champion:
+
+  Above all else, do NOT use Lock and Load or Overload!  Like Midknight, this
+one will always go into his "shark fin" attack.  Use plenty of leaping Z's,
+and stay in the air.  He seems very good at blocking Rax's undercutting kicks
+(bummer).  If he goes into the "shark fin", jump the opposite direction he's
+going and jump high.  Or use any leap followed by Y for "extra air".
+
+  vs. Eagle Champion:
+
+  Try to catch this one on the ground and do a Lock and Load / Toe Pounding
+combo.  He doesn't block the Lock and Load very well!!!  Do this twice and
+you've got 90% damage on him!  Other than that, try using well timed C kicks
+and Throws if you're cornered.
+
+  vs. Tiger Champion:
+
+  Like the first Champion, use lots of leaping Z's.  This guy reminds me of
+Jetta, and you can fight him pretty much the same way - try to stay in the
+air because you'll get pounded on the ground.  If you get attacked on the
+ground, block then Throw (if you can).
+
+  vs. Dragon Champion:
+
+  This guy reminds me of Trident with those @$)!($ fireballs.  Jump over them
+and try to get in a quick kick!  Go for the ground assault:  Afterburner
+Thrusts (D > C), Lock and Load / Toe Poundings, and Overloads.  Good Luck!
+
+                            Shadow's Character Guide
+                                by Dave Woodall
+
+  General Info:
+
+  Shadow isn't the strongest of the Eternal Champion characters, but she does
+have some awesome Special Moves.  The best of these is the Smoke Screen, since
+you can control where you reappear.  The pattern is very easy to remember:
+
+                  upper left:  X + Y      Y + Z   :upper right
+                  lower left:  A + B      B + C   :lower right
+
+Most of the time, you can catch your opponent in the air with one of the upper
+positions, and you'll damage them almost every time.  For the remainder of the
+guide, I'll just say "Smoke Screen", but this means to follow with one of the
+above re-entry positions (the uppers are best, since you appear doing a kick).
+Another useful move is the leaping A, since it will give you "extra air" and
+can get you out a close spot very quickly.
+
+  vs. Blade:
+
+  Leaping C!  That's about it.  Fighting Blade is very much like Midknight.
+Other than the leaping C, Flying Mines and Smoke Screens keep things
+interesting.  If you corner him, give him a Throw.
+
+  vs. Jetta:
+
+  Jump away at the start of every match.  Let her Phase, and do a leaping C.
+Repeat!  Most of the time, you'll meet her at the top and win.  If she jumps in
+close, do a quick throw.  You might as well, because if she does her Flurry
+Kick, you can't block it anyway!  Starting with a Shadow Mode isn't always very
+effective since she moves around so fast it's hard to catch her.  If she tries
+a Choke Hold, do a Smoke Screen and wham her from behind.
+
+  vs. Larcen:
+
+  Play defensively against Larcen.  He can hurt you in a hurry if you let him!
+Keep your distance, but counter his offensive moves.  If he does a Ceiling
+Crawl, counter with a leaping C, or a Flying Mine if you're quick.  A Smoke
+Screen can also knock him off the ceiling.  When Larcen calls you a Punk,
+throw a Flying Mine at him.  Counter a leap with a leaping Y and a Power
+Sweep with a leaping C.
+
+  vs. Midknight:
+
+  You can win with only the leaping C!!!  This fight is best kept in the air,
+because Midknight will do that annoying Wall Smash otherwise.  Don't throw
+projectiles either because he will just get all Misty.  The Smoke Screen is
+also fun, and use a Throw if you get cornered.  And don't use the Twirling
+Fan Attack - he'll jump over it and attack from behind.
+
+  vs. Rax:
+
+  The toughest for me! (maybe because Rax is my main character).  I like
+to start with a Shadow Mode, and quickly hammer away with Y and Z punches.
+Do a jump A (straight up) when he does his Jet Knee Smash (zooms across the
+screen).  If you are at one end of the playing area, he will stop right next
+to you, and you can get 2 Throws in a row! (hold F and keep hammering on Z).
+Use Smokes to catch him in the air, but don't do it when Rax is on the
+ground, or you'll get thrown.  Counter leaps with a leaping Y or Z.
+
+  vs. Slash:
+
+  Slash is a sucker for Flying Mines!  80%-90% they'll get thru - and they'll
+always get thru if you can catch him doing a Running Head Butt.  When he tries
+a Power Thud, either leap in with Z, or Smoke to the side he's on.  Starting
+with a Shadow Mode (see Trident's description) also works well.  Slash doesn't
+jump much, but if he does, leap back with C.
+
+  vs. Trident:
+
+  Start every match with a Shadow Mode, get over to him fast, and hit him
+repeatedly with Y and Z.  If you're quick, you can do about 40% damage before
+you come out of it!  Trident loves to jump, and that's a fatal mistake when
+playing against Shadow.  Do a Smoke, then appear in the upper corner that
+he's facing.  Whamo!  Flying Mines are also great if you can catch him in
+the air.  If cornered, Throw.
+
+  vs. Xavier:
+
+  Xavier is tough - he blocks everything.  Like Trident, start every match with
+a Shadow Mode.  After that, just wait for him to try a spell, and either leap
+over and kick him before he gets it off, or do a Smoke Screen and pound him
+from an upper corner.  Flying Mines only work against leaps, which he doesn't
+do very often.
+
+  vs. Champion #1:
+
+  This guy is a lot like Blade.  Use lots of leaping C's and Smoke Screens
+to keep him off balance.  If you move away from him, he'll go invincible or
+throw the 5 "power balls".  Don't give him the opportunity.
+
+   This is about as far as I've gotten with Shadow - I'll fill in more as
+I get better, or if I get some good tips that pan out.  Good luck!
+
+  vs. Shark Champion:
+
+  vs. Eagle Champion:
+
+  vs. Tiger Champion:
+
+  vs. Dragon Champion:
+
+
+                           Slash's Character Guide
+                               by David DAuria
+  General Info:
+
+     First of all, he's kind of slow.  That's o.k. since he has one main
+advantage:  the club.  The club gives him two main advantages:  A long
+reach and lots of power to damage with.
+     Now, here's some tips and tactics.  First of all, learn to do the
+ground thump.(That's y+z.  He jumps way up into the air and drives his club
+into the ground)  It maybe be the slowest stunning move in the entire game,
+but if your opponent is on the ground when you land he will be stunned.
+(Even if he blocks.  I'm not too sure how well this works on humans since
+they'll probably try to knock you out of it instead of blocking.  It may
+be possible to fake a ground thump by jumping straight up and then just
+knock them out of the sky as they try to prevent a thump that's never going
+to come)  This move is very effective when the computer is far away.(At mid
+and close range, the computer will probably knock you out of it.  This is
+especially true of Jetta and Shadow.  Their speed and jumping power make
+this quite a dangerous move to attempt so be careful with it against them)
+Another thing is that Slash is quite effective in up close battle.  Just pound
+away with your club, doing y and z shots.  What's even better up close is his
+"Batting Practice" throw.  This is probably the easy throw to get started.
+It a good idea to try to get in close for this throw, since you will be
+successful quite often.(You do have to time your swing when your opponent
+comes down.  When they're about waist high is the right time to swing for
+the fences.)  Also, it seems to do more damage than any other throw.(These
+2 factors are probably there to make up for the fact you have to time your
+swing.  BTW it's really a bad thing when you miss.  Slash becomes so suprised,
+He's stunned!)  In the air, Slash has his z club swing.  The good thing
+about this is that if you jump back and do this, you reverse directions
+and move toward your opponent.  This can suprise many an opponent and
+is quite damaging and effective.  Finally, he has his declaw move.
+He basically shoots a projectile at an opponent.  I use this to keep
+an opponent on his toes.(I'm not sure if this move can be used in a combo
+or not)
+     Now,  I'm not sure if Slash has any true combos.  It seems that hitting
+your opponent with y then z maybe a combo.  He does have the thump and throw
+combo.(Not a true combo but it is effective if timed right.)  Basically
+You stun your opponent with the thump.  You then go for his throw.(And don't
+miss it, against trident you'll probably lose if you miss)  After you
+hit him, go for another thump so that you land just after he gets up.
+(You'll stun him and get to throw him again)  Just keep this up as long
+as you can.(Of course, if you throw him or her first, then go for the thump
+when the get up trick.)
+  vs. Blade:
+  vs. Jetta:
+  vs. Larcen:
+  vs. Midknight:
+  vs. Rax:
+  vs. Shadow:
+  vs. Slash:
+  vs. Trident:
+  vs. Xavier:
+  vs. Champion #1:
+  vs. Shark Champion:
+  vs. Eagle Champion:
+  vs. Tiger Champion:
+  vs. Dragon Champion:
+
+                           Trident's Character Guide
+                                by Ryan D Hose
+
+  General Info:
+
+  Basically, he's a kicker.  Use the strongest jumping kicks (jump and C) and 
+sweeps (Down and C) for most of the moves.  But keep your finger on Z for 
+fireballs and flips.  Awesome Combo - IS must be at full strength (or off).
+Lob a fireball, and if it hits, continue.  If not, don't.  When the fireball
+connects, walk up to your dazed opponent and do a Spinning Trident (XYZ).
+Then, as soon as the person falls back, lob another fireball, which will hit.
+Walk up, and throw your opponent.  Then walk up and do a foot sweep.
+Guaranteed to take off 80% of their energy. 
+
+  vs. Blade:  Same as Midknight.
+
+  vs. Jetta:
+
+  She was hard for a while until I realized something.  If she 
+is just standing there (non-phased) you can jump towards her and do 
+either a kick (C) or hit (Z) and she'll jump into it every time.  Watch 
+out when she's phased though, just turn on the stun shield and then do 
+the jumping again.
+
+  vs. Larcen:  Same as Midknight.
+
+  vs. Midknight:
+
+  Just keep jumping at him and then try two or three sweeps.  If none of
+them knock him back, jump back and block before jumping back towards him.
+
+  vs. Rax:  Same as Midknight.
+
+  vs. Shadow:
+
+  Jump back in the very beginning and wait for her to do one of these things
+and react accordingly:
+  Throws shurkien, knife, bomb, star:  Stand and Block
+  Jumps in the air towards you: Jump back
+  Jumps in the air towards you, then goes higher for a kick:  Jump back,
+    and as she comes down, hit hard kick (C).
+  Teleports:  Wait a second, then jump straight up and hard kick (C).  Hit
+    the ground pressing down and (C) several times, then jump back.
+  Somersaults toward you:  Fireball, then combo.
+  Anything else (rare):  Back off and wait for one of these things.
+
+  vs. Slash:
+
+  Same as above, but watch out for thorns.  Also, wait to jump at him until
+he tries to do a ground pound.  You can really mess him up that way.
+
+  vs. Xavier:
+
+  Keep a jump distance away from him.  When his staff raises as he's about to
+perform a move, jump in and kick (C) him, then sweep two or three times.  The
+sweeps probably won't land, and you might get thrown, but in the end you'll
+win.  If he keeps coming at you as you stay a jump distance away, lob a
+fireball at him and then jump towards him with a kick (C).
+
+  vs. Champion #1:
+
+  Jump kicks work best. Use Jetta's pattern.
+
+  vs. Shark Champion:
+
+  Same as First, but beware the bubble he throws and the Electric Fin.
+
+  vs. Eagle Champion:  Same as Tiger.
+
+  vs. Tiger Champion:
+
+  Same as Jetta, but use fireballs sometimes too.  Stun shield is good here.
+
+  vs. Dragon Champion:
+
+  The toughest one.  Use stun a lot.  Don't try to jump kick him - he's
+too fast.
+
+
+                           Xavier's Character Guide
+                                by Jason Adams
+
+  General Info:
+
+
+  vs. Blade:
+
+  Same opening round instructions as for Jetta.  This sucker always jumps!
+His jump is too slow to get him over the Spinning Cane Attack, but if for some
+reason he does get over it, and comes in with his lightning bolt, you're in for
+a world of hurt.  You'd better block like nobody's business.  The snake does
+quite nicely against his shield.
+
+  vs. Jetta:
+
+  Ever noticed how pissed someone gets when they're going for a ceiling grab
+and you do the switch thing on them?  Very easy to cheese Jetta.  If you can
+throw her once, then you can just walk up and throw her again and again while
+she's getting up.  Always start out a first round against a computer Jetta with
+a jumping fierce punch.  She always jumps first thing first round.  Second
+round she phases first thing.  Jump in again, again with the fierce punch (to
+guard against the freak occurence of something other than her Phasing).  She'll
+block it as you're coming in.  This situation screams THROW!!!!!  That'll knock
+her out of phase.  The rest is cake.
+
+  vs. Larcen:
+
+  Can be a problem if you let him.  If he does the Ceiling Crawl a forward jump
+in conjunction with a fierce punch will dissuade him from doing anything else.
+If he is coming down the same will work, but if you're that late in doing it
+you're probably not quick enough to jump before you're hit.  The light punch
+works well on larcen, as well as the light kick.  They also work well in
+tandem.
+
+  vs. MidKnight:
+
+  Well, what can I say?  This guy's a sucker for the Spinning Cane Attack.
+I think that the fierce punch borders on cheese when fighting MidKnight.  In
+a fight with everyone's fav. vamp. stay mid-range.  Don't get close, because
+he's got the crouching double punch and a wide variety of other totally
+devastating moves from the inside.  Using Xavier I have a lot of luck throwing
+MidKnight right after he comes out of the Wall Smash.  And that's the only
+thing the Spinning Cane Attack can't stop.
+
+  vs. Rax:
+
+  Don't stand near Rax when you knock him down, or it's throw-slam city.
+Otherwise, his sliding crouching punches and kicks are best met with a medium
+crouching kick right after your block.  I don't usually use the fierce punch
+in this situation for one reason.  If the first hit knocks rax down, then he's
+gonna throw you through the second hit.  The cyber kick and punch are painfully
+obvious from the telltale sound and windup, so they're no problem to avoid.
+
+  vs. Shadow:
+
+  It's basically just a game of keep-away.  Make sure you stay clear of her at
+all times.  The standard wait a couple of seconds and then jump routine works
+when she has disappeared, but I would also say to use a jumping (fierce?)
+punch, the one that helicopters the staff above your head.  This way when she
+comes from the top corners of the screen she'll catch a staff in the legs.
+For her cartwheel thing, charge a snake in the air while jumping over her.
+If not, the Spinning Cane Attack always hits for some damage when you land.  
+
+  vs. Slash:
+
+  You don't even have to be awake during this fight!! Slash is one of the most
+pitiful players EVER DEVELOPED against someone with a long-range attack.  Using
+Xavier's Spinning Cane Attack, you shouldn't even get scratched.  He shouldn't
+get closer than a cane's length.  You can also win by just pressing Z over and
+over.  Doesn't matter, he's dead either way.
+
+  vs. Trident:
+
+  There are two big dont's against Trident:
+    1) Don't ever let him get in close.
+    2) Don't ever eat a plasma ball.
+  You can't stress these enough.  Let number two happen with a player who knows
+what he is doing and you are DOL (dead on landing).  Stay medium range so that
+a Spinning Cane Attack can cancel a fireball, but don't eat one at medium range
+or even a novice can get in and do the grand-slam.  Don't jump.  Don't rush in.  Don't do anything except press the fierce punch, jump straight up and press the
+fierce punch, or jump forward and press the fierce punch in response to
+Trident's moves.
+
+  vs. Champion #1:
+  vs. Shark Champion:
+  vs. Eagle Champion:
+  vs. Tiger Champion:
+  vs. Dragon Champion:
+
+                    ETERNAL CHAMPIONS MISCELLANEOUS NOTES
+                  -----------------------------------------
+
+  1) Yes, the computer cheats.  The most obvious form of cheating is when
+     the CPU performs Special Moves when it has NO Inner Strength.  Some
+     also believe that it cheats by blocking player attacks more effectively
+     than possible, and by "breaking through" player's valid blocks.  But
+     these are difficult to prove.  Sega only admits to I.S. cheating.
+ 

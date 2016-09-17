@@ -1,0 +1,392 @@
+From: nak@cbnews.cb.att.com (neil.a.kirby)
+Newsgroups: rec.games.programmer
+Subject: LONG: Intelligent Computer Play -> Paper
+Date: 24 Jul 91 15:08:10 GMT
+
+The following paper was given at the 1991 Computer Game Designers
+Conference.
+
+Copyright 1991 Neil Kirby
+All rights reserved.
+
+
+Intelligent Behavior Without AI:
+An Evolutionary Approach
+
+Copyright 1991 Neil Kirby
+
+Introduction
+This paper describes a way to give intelligent behavior to computer 
+operated objects.  It traces the evolutionary approach used in the "Auto" 
+program of the "Bots" family of games.  The Bots system is described to 
+provide a context, and the results of each step in the evolution are 
+discussed.  While the changes made are particular to the Auto program, 
+the method is applicable to other programs.  The fundamentals of the 
+method are:
+    1.  Analyze good and bad behaviors.
+    2.  Quantify parameters to new algorithms.
+    3.  Apply constant evolutionary pressures by repeatedly testing.
+The method has proven to be quite successful.  The Auto program has 
+progressed from hopelessly poor play to well above average play skills 
+without any formal AI methods.
+
+The Basic Approach
+The basic approach greatly resembles classical Darwinistic evolution.  
+Start with simplistic behavior, however bad.  Simple behavior is best 
+described as whatever is easiest to code.  Analyze the failures of the 
+simple methods.  If available, observe the differences between successful 
+behavior, especially that of human players, and the failures of the 
+computer players.  The most difficult step is to identify the parameters 
+that can be used to control successful behavior.  Once this has been 
+done, use regular code to allow the program to react to these parameters.  
+The process is completed by repeatedly testing in play.  The ease of fast, 
+repeated play afforded by computerization accelerates the process.  This 
+approach is easily observed in the Auto program.
+
+The Bots Family of Games
+The Auto, Aero, and Bots programs make up the Bots family of 
+multiplayer, tactical ground and air combat games.  These run under the 
+Unix System VTM operating system and are written entirely in the C 
+programming language.  Bots and Auto deal with futuristic ground combat 
+units loosely comparable to tanks while Aero deals with flying futuristic 
+aircraft.  The Bots and Aero programs are used by human players and 
+Auto is the computer managed equivalent to Bots.  The Bots family of 
+games supports but does not require team play.  
+
+Since the  Bots family are multiple player, multiple process games, events 
+are performed simultaneously.  A unit can find out the actions of other 
+units only after committing its own actions.  The events that make up a 
+turn are motion, followed by active fire, and ending with passive fire.  After 
+every ten turns, repair and resupply are made available to a unit.  The 
+manner in which a unit conducts its motion and fire are strongly 
+influenced by the construction of the unit.
+
+Building a Unit
+The units used in Bots and Auto are built according to the tastes of the 
+player running them.  A unit has six armor facings protecting its internal 
+systems from damage.  Armor is ablative; each point of damage reduces 
+the amount of armor by one.  Once a given armor facing is reduced to 
+zero, all remaining damage is applied to the internal systems.  There are a 
+number of internal systems to protect: life support, control, chassis, 
+reactor, batteries, hardpoints, weapons, and ammunition.  Each has a 
+cost and weight associated with it, forcing economic compromises to be 
+made to build a unit to meet a given cost.  The mobility of a unit is based 
+on the amount of power available and the current mass of the unit, both of 
+which can change in play.  
+
+Weapons
+There are a variety of weapons systems available, each with different 
+characteristics.  Weapons that require ammunition usually need little 
+power while power-based weapons require much more.  The lasers are 
+relatively light in mass, short-range, and power hungry.  Mortars have a 
+minimum range and require heavy ammunition, but they also have a long 
+maximum range and do not require line of sight to fire.  Autocannon inflict 
+moderate damage to moderate ranges, but they too, require a large 
+amount of moderately heavy ammunition.  Miniguns are lighter, smaller, 
+short-range versions of the autocannon.  Missiles have varying ranges 
+and warheads, but they can be shot down by point defenses, and they too, 
+are heavy.  Particle beam weapons are highly effective in a narrowly 
+focused range.  Aside from mortars, missiles, and particle beams, most 
+weapons improve as range shortens.
+
+The non-offensive weapons systems are stealth, missile defense, and 
+hardpoints.  Stealth, which is expensive,  allows a unit to approach others 
+and remain unseen.  Missile defense attempts to shoot down incoming 
+missiles.
+
+Hardpoints are mounts for optional, single-shot items.  The most common 
+hardpoint load is a jump pack.  Jump packs allow a unit to jump over 
+obstacles such as water.  They increase the mobility of a unit greatly but 
+can only be used once.  The other common hardpoint load is an anti-
+aircraft missile.
+
+Play Balance (Rock, Paper, Scissors)
+The selection of a weapon determines much about the unit.  Units with 
+long-range weapons usually require heavy ammunition.  Their great 
+weight means limited mobility.  Limited mobility implies an inability to 
+escape from units with high mobility and short-range weapons.  It is 
+axiomatic that short-range weapons require high mobility.  Therefore, 
+short-range weapons must be light to be effective.  These trade-offs are 
+required for play balance among a wide diversity of systems.  Mortar 
+units, for example, were popular on teams but few people actually wanted 
+to play them.
+
+To be successful in play, a unit must maneuver effectively, fire its 
+weapons, and evade enemy fire.  It should distribute enemy fire across 
+multiple armor facings.  If team mates are present, a unit should 
+coordinate fire among the team members to combine fire against single 
+enemy units.  If a unit takes damage, it should flee until it is repaired.  The 
+richness of detail in the Bots family of games is comparable to that of Star 
+Fleet BattlesTM.
+
+Auto units are not allowed to cheat, so the behavior code cannot access 
+information that a human player in the same situation would not have.  The 
+advantage of access to hidden data was considered at first, but has 
+proven to be unnecessary.  No Auto program was written for Aero units.  
+The success of Auto units on the ground removed all demand for an Auto 
+equivalent to Aero.
+
+The Original Algorithm
+The original algorithm for Autos was quite simple.  The closest enemy unit 
+was selected as the target.  All other units were ignored.  The Auto turned 
+to face the enemy and attempted to close.  (See Figure 1)  After 
+maneuvers were complete, the unit attempted to fire its weapons.  The fire 
+target was the closest enemy within the arc of the weapons fire.  The unit 
+would not flee if damaged.  The unit would not jump unless blocked by 
+water, buildings, or steep slopes.  
+
+Spreading Out Damage
+There were many failures with the original algorithm.  Foremost among 
+these was the propensity for the unit to lose its center forward armor and 
+take severe internal damage while the left and right forward armor facings 
+were pristine.  The solution to this problem was for the unit to shorten the 
+amount it moved to save sufficient mobility to rotate after its motion.  (See 
+Figure 2)  This rotation would bring the strongest forward armor to face 
+the closest enemy unit.  Relative bearing and the integer values of the 
+forward armor were the parameters that enabled this change, which 
+typically tripled the survival of all units.  It especially allowed units with 
+short-range weapons to close to their effective ranges.  This algorithm 
+became known as the basic closure code.
+
+
+Self Assessment
+The modified algorithm still had major problems.  During a long closure, a 
+unit would loose all three forward armor facings, continue closing, and 
+take fatal internals.  The fix involved self assessment.  Before a unit 
+started maneuvers, it would evaluate the state of its forward armor, 
+internal systems, and ammunition.  If all three forward armor facings were 
+below minimum, half of any internal system was destroyed, or if 
+ammunition was gone, then the unit would declare itself to be unfit for 
+battle and flee.  It would turn its strongest rear armor toward the closest 
+enemy and move as far away as possible.  This is just a slightly modified 
+version of the basic closure code.  If the unit had a jump pack available, it 
+would jump as far away as possible.  It would choose not to shoot power 
+based weapons to save energy for mobility.  The parameters for this 
+change were simple integer numbers: armor, systems, and ammunition 
+counts.  This change increased the long term survivability of the Auto 
+units greatly.  After it, destroying a unit often required a long chase.  In 
+rolling terrain, enemy units would simply disappear when they were 
+seriously damaged.  
+
+Battle Range
+At this point, Auto units were interesting but not threatening.  Their 
+maneuvers were highly predictable.  At point blank range a unit would 
+close to zero range and stop.  Since all motion in Bots is simultaneous, 
+human players would simply move forward and turn around, finding 
+themselves at near zero range facing the back of the Auto unit.  Fatal 
+internals for the Auto unit often soon followed.  For long-range units such 
+as mortars, and specific range units such as particle beam weapons,  
+continuos closure was especially counter-productive.  Mortar units have a 
+minimum range requirement, and care very little about range otherwise.  
+In the laser family, where closure improves damage, closure also gives 
+the advantage to the lightest and shortest ranged lasers.  The fix was to 
+establish a battle range (known as BRG) for each weapon type.  The 
+parameter used with BRG was range.
+
+BRG numbers were tuned during play.  While many weapons benefit from 
+close range, BRG was picked to balance survivability and the ability to 
+inflict damage.  Long-range units would prefer to stay at range, denying 
+short-range units any fire.  If a unit found itself too close, it would back up 
+as much as it could.  Yet backing up costs twice as much as forward 
+motion.  BRG helped to keep the long-range support units out of trouble, 
+and it helped all units survive combat with a short-range unit.  Short-range 
+units were still too predictable and easy for human players to destroy.  
+BRG was the evolutionary step that set the stage for a major milestone in 
+Auto evolution.
+
+The First Major Milestone Change: New Maneuver Code
+The problem with the maneuver code was predictability.  The new 
+maneuver code dealt with the answers to two questions:  "Where can a 
+unit go?"  and  "Where does a unit want to go?"  The first question is 
+answered by computing the mobility of a unit, which is based on its power 
+and mass.  The unit can get to roughly any point within a circle, centered 
+on the unit, of radius equal to the mobility of the unit.  When computing the 
+radius of the mobility circle, sufficient mobility is deducted from the radius 
+to provide for turns.  The second question is answered by BRG.  If the 
+target does not move, the most effective place to be is some place on a 
+circle, centered on the target, of radius BRG.  (See Figure 3)  If the two 
+circles do not intersect, the existing basic closure code is used.  If the 
+circles intersect, there are three possibilities.
+
+The first possibility is shown in Figure 4.  This is the most dangerous case 
+for the target, and the best case for the attacker.  This situation is most 
+often seen when a high mobility unit carrying short ranged weapons 
+attacks.  The unit will pick a random point on the BRG circle, move to it, 
+and turn to face the target.  For the target to evade, it must either move far 
+enough to get out of range, or it must move behind the random point on the 
+BRG circle where the attacker will appear.  Neither of these evasions is 
+easy.  The first requires good mobility, and the second requires good luck.  
+If the target does move far enough away to deny weapons fire, the 
+attacker will have more power available to move in the next turn.  
+
+The second possibility is shown in Figure 5.  This is a good case for any 
+attacker.  This situation is most often seen when a medium or high 
+mobility unit carrying medium-range weapons attacks.  The unit randomly 
+picks one of the two intersection points, moves to it, and turns to face the 
+target.  Only a target with more mobility than the attacker will be able to 
+out maneuver the attacker.  As Figure 5 moves toward Figure 4, the 
+attacker becomes nearly impossible to evade.  
+
+The third case is shown in Figure 6.  The mobility circle is inside the BRG 
+circle, which means that the attacker is too close.  This is usually the 
+case when a low mobility unit carrying long-range weapons is closer than 
+desired to  an enemy unit.  Here the unit determines if it would get farther 
+away by backing up, or by turning away, moving forward, and turning again 
+to face the target.  It chooses the way that takes it farthest away and 
+executes that maneuver.
+
+BRG and computed mobility, the parameters of the change, are combined 
+in an effective algorithm.  The effect of the first milestone change was 
+dramatic.  Attacking units were much more effective (fleeing units were 
+unaffected).  Human players could no longer destroy Auto units without 
+pause.  Close combat maneuvers became very dicey.  Novice players had 
+less than a 50% chance of winning a one-on-one duel.  In single combat, 
+Auto units played a solid, if uninspired, game and they never made stupid 
+errors.  
+
+Initial Team Play: Communications
+The team play of Autos still lacked a great deal - they fought as a mob, 
+rather than as a team.  Any unit that could see no targets would pick a 
+random patrol point on the map and head toward it.  This scattering 
+behavior was good for finding hidden enemy units, but poor for fighting 
+enemy teams.  If one unit on a team was engaged, the rest of the team 
+would ignore the combat unless they too could see the target.  Evolution 
+continued, as Auto units learned basic communications skills.  A unit that 
+could see no targets would ask its team for targeting information.  The 
+other units (Aero, Auto, and Bots) on the same team would reply with the 
+map coordinates of the targets that they could see.  These coordinates 
+could be used the next turn to plot motion.  Units that did not require line-
+of-sight to fire, such as mortars, would fire blindly on the map coordinates 
+given.  The effects of this change were two-fold.  It allowed high mobility 
+units carrying short-ranged weapons to close upon enemy units that they 
+could not see.  This meant that once an enemy unit was spotted, all 
+unoccupied Autos would head toward it, even in rolling terrain.  The 
+second effect provided mortar teams with something productive to do.  
+Communicating map coordinates proved to be an effective change.  To 
+the enemy units, it meant to expect mortar fire whenever spotted by any 
+member of the Auto team.  A particularly nasty combination was to be 
+stalked by an unseen stealth unit that was broadcasting coordinates to its 
+mortar teammates.  This change tended to keep mobs of Autos together, 
+but they still fought as a mob.
+
+The Second Major Milestone Change: Improved Team Play
+Targeting was still based on the closest enemy that could be fired at.  In 
+team play, a lone unit could distract part of a team of Autos and play Pied 
+Piper while the rest of the Piper's team destroyed the other part of the 
+Auto team.  The Piper might not survive, but while it was being destroyed, 
+multiple enemy units would be destroyed, tipping the battle against the 
+Autos.  The second milestone change increased team play.  Team play 
+was based on the concept of the team target.  The enemy unit that 
+appeared to be hurt the most would be designated as team target.  This 
+designation was based on the volume of fire an enemy had absorbed.  The 
+team target would always be the preferred target for motion control.  If the 
+team target was between the minimum and maximum effective range for 
+the weapons fired, it would be the preferred target for fire as well.  The 
+results were often devastating and occasionally quite strange.  The 
+devastating part stemmed from the fact that a single unit, often already 
+damaged, could now take all the mortar, long-range missile, autocannon, 
+and much of the short-range laser fire that an entire team could inflict.  
+The strange part would happen when an Auto unit would move directly 
+past and ignore a closer target in order to help destroy the team target.  
+But if the team target were not a viable target, each unit would fire as 
+before, usually at the closest target.
+
+Mishaps in team play were now fatal.  Teams of experts were now doing 
+well to achieve a kill ratio of 2.5:1 in favor of the experts.  Novice teams 
+required two to five times numerical superiority to win.  The parameters 
+used had been developed in earlier stages of evolution.
+
+Attack Jumps
+Evolution continued as details were refined to solve minor problems.  One 
+problem was that Autos would only use a jump pack to flee or to cross 
+water.  This meant that they would often have an unused jump pack at 
+reload time, when a new jump pack would be available.  The fix was 
+simple; units still carrying a jump pack that were near their reload time 
+would be free to jump to increase their mobility.  The parameter used was 
+the unit's turn counter, which already existed.  This change made it 
+dangerous to rely on predictions about the mobility of an Auto unit.  A fast 
+moving unit that had been moving four ranges per turn would suddenly 
+jump eight and move four more for a total of twelve ranges of motion when 
+only four were expected.
+
+Dealing With Aeros
+The final changes involved dealing with Aeros.  Bots and Autos usually 
+move one to four ranges per turn.  Aeros need to move at least ten to 
+retain airspeed, and speeds of twenty to fifty are normal.  Normal altitudes 
+for Aeros typically run from eight to twenty ranges of altitude.  The first 
+problem Aeros created was that Autos would attempt to set up motion 
+based on an Aero target.  Since the motion algorithms are optimized for 
+non-moving targets, using an Aero to set up motion was ineffective for 
+units with a short BRG.  It was ineffective for units with a long BRG if the 
+Aero was close by, since the bearing of the Aero would change 
+dramatically.  Even if perfect predictive algorithms were available, only 
+units with a long BRG have sufficient range to hurt Aeros at altitude.  The 
+important changes were range based.  All units that had a BRG of 25 or 
+higher would prefer any visible enemy Aero to all other targets for fire and 
+motion.  Units with lower BRG would ignore Aeros when plotting motion, 
+but if an Aero was somehow in acceptable range, it would be the preferred 
+fire target.  At reload time, Autos remembered if they had seen any Aeros 
+since last reload and changed their hardpoint weapons mix to prefer anti-
+aircraft missiles.  The changes decreased the survivability of Aeros 
+greatly.  Aero targets were preferred even to team targets, often with the 
+same deadly results.  The much-maligned mortar units provided greatly 
+needed flak fire.  Other less popular long BRG units gained a new role.  
+Also, the advent of the stealth anti-aircraft missile battery eased the 
+problems ground units had with Aeros.
+
+Future Evolution
+There are still several deficiencies with the Auto program.  Complex 
+terrain tends to mystify Autos, especially urban terrain and bridges.  An 
+Auto unit will occasionally present weak or down armor toward one enemy 
+while fighting another.  This single mindedness also shows up when a 
+damaged unit flees.  Motion directly away from the closest enemy, which 
+is always correct in one-on-one, can be fatal when intermixed with an 
+enemy team.
+
+Observations About The Process
+Many observations are worth examining.  The first of these is that the 
+process of analysis and synthesis is regenerative.  The initial BRG 
+change set the stage for the first milestone change (maneuver code).  
+BRG also led to min/max range, which when coupled with 
+communications led to the second milestone change (team play).  Some 
+of the other analysis that went on made it possible and more probable that 
+algorithms could be generated to improve poor behavior.
+
+Not as obvious in the paper is the fact that intensive testing helps drive 
+the process.  The entire evolutionary cycle mentioned above took place at 
+lunchtimes over the course of a year.  The testing allowed the author to 
+observe human behavior in order to model it, and it clearly showed any 
+deficiencies in the algorithms.
+
+One very hopeful point is that simple methods often suffice.  The long 
+closure code and the code for flight is simple but has proven to be very 
+effective.  The early code, which had numerous deficiencies, was still 
+interesting and fun.  Between the first and second milestone changes, 
+there was, occasionally, the semblance of team behavior by default.  If a 
+given enemy unit was the best or only target available to a team, the entire 
+team fired upon it.  In rolling terrain this would be fatal as one unit 
+encountered groups of enemy units.
+
+A final point is that the code is well behaved.  It is small, runs rapidly, and 
+is easy to follow.  The behavior control parts of the code do not require 
+any extensive calculations.  The code is short, with only two files.  In fact, 
+the Auto program has less source and a smaller executable than the Bots 
+program.  The increase in size from automation is more than offset by the 
+reduction in size gained by deleting the user interface.  The control flow of 
+the code is relatively easy to follow, and therefore easy to modify.
+
+
+Conclusions:
+The evolutionary method is a viable alternative to exploring AI 
+methodologies.  The method is universally available to programmers who 
+have sufficient time for repeated testing.  It is well suited to game 
+programs in which the computer and human players deal with the same 
+objects and information - - the programmer can model computer behavior 
+on successful human behavior.  The method fails when the programmer 
+cannot identify the keys to changing poor behavior and the default simple 
+methods are ineffective.  For the multiplayer, tactical combat games that 
+this author has written, the methods have produced effective code that is 
+fast, compact, and often pleasingly simple.
+
+    TM UNIX is a trademark of AT&T Bell Laboratories.
+    TM Star Fleet Battles is a trademark of Amarillo Design Burea.

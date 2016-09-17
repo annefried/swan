@@ -1,0 +1,1588 @@
+   ____       _____       ________     _________
+ / ____ \   /       \   /  _    _  \  |  _______|
+| |    |_| |   ___   | |  | |  | |  | | |     
+| |   ___  |  |___|  | |  | |  | |  | |  ---,
+| |  |_  | |   ___   | |  | |  | |  | |  ---'
+| |____| | |  |   |  | |  | |  | |  | | |_______
+ \______/  |__|   |__| |__| |__| |__| |_________|
+                                                
+                            ____     __    __   _____      __    __
+                          / ____ \  |  |  |  | |  __  \   |  |  |  |
+                         | |    |_| |  |  |  | | |  |  |  |  |  |  |
+                         | |   ___  |  |  |  | | |__| /   |  |  |  |
+                         | |  |_  | |  |  |  | |   _  \   |  |  |  |
+                         | |____| | |  |__|  | |  | \  \  |  |__|  |
+                          \______/   \______/  |__|  \__\  \______/
+______________________________________________________________________________
+VOLUME   1     ISSUE   1                                          MARCH   1994
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Editor and Publisher..........................................Michael Hrusecky
+
+Contributing writers...........................................Janice Hrusecky
+                                                               Matt Lucas
+
+GURU "Techies"................................................Roger "Nintendo"
+                                                              Steph Bednar
+                                                              Alex Howard
+
+------------------------------------------------------------------------------
+
+                            -EDITORS WHEREABOUTS-
+                              Michael  Hrusecky
+
+   YES, YES, YES!!!!  It's finally finished! It's 6 AM and I decided to stay
+up all night and finish the fanzine are prepare to ship off. Sitting here
+with a major headache, a half full can of Pepsi, and a lovely Dunkin Donut's
+Boston Cream donut taught me one thing about sugar-saturated food...Chocolate
+cream, vanilla cream, and soda.....aye yie yie!
+
+   This fanzine was originally going to be printed on paper and mailed out
+like a regular fanzine/prozine, but hey, I got tired of spending more for
+supplies than I gain with subscription money. This is the best way, for me,
+anyway.
+
+   With the not-so-long-ago release of the Jaguar and the Panasonic 3DO, it
+makes you wonder if the public is really ready for such high-tech mounds of
+machinery. The Genesis and Super NES are just barely showing off the climax
+of the 16-bit era, and already competition is starting for 32/64 bit
+machines.
+
+   When the Jaguar/3DO news first spread, everyone asked where Nintendo and
+Sega where in the line. The way things look, both companies are being
+incredibly smart. I think that Sega is learning from Nintendo, honestly. It
+seems estimated that only 25% of the industry is CD-ROM based. That's where
+the 3DO fails when it comes to sales.  50% to 60% is stuck in the 16-bit
+SNES/Genny zone. That's where Atari is hurting is Jaguar sales, and 15% to
+25% of the industry is still trapped in the 8-bit NES phase. (We all know
+how badly the NES is dying.)  Now putting these figures into consideration,
+if you were bringing out a new system, the obvious choice is to try to stay
+in the 16-bit area where the sales are.  With the hype Panasonic and Atari
+are pulling, the 3DO and Jaguar WILL gain popularity...but very slowly. As
+soon as the percentage of the higher "bittage" or CD-ROM industry climbs,
+that is when Sega and Nintendo will jump in that arena. Sega- possibly at
+the end of this year and Nintendo with arcade machines at the end of the year
+and a home unit next year.  At first, it seemed to look like Nintendo was
+planning a late entry as always, but in my opinion, they are right on
+schedule when it comes to sales and popularity of higher end machines.
+
+   For all younger kids reading this fanzine, it is rated MA-13. Do not
+continue reading this fanzine without adult permission! Ah what the heck,
+okay you can read the fanzine, little ones. (kidding)
+
+   You probably already paged down 1000 times already typing to see what else
+is in the fanzine. That makes it pretty much pointless to tell you what's in
+the issue. But if you haven't, make sure you at least glance at the interview
+I held with our very own Nintendo guy. You MIGHT catch something new in that
+interview I held with him at the beginning of January. Also, we want you to
+help continue that interview.  Send in any questions you have that are of
+public interest and I'll be sure to ask those questions for next issue!
+
+DEATH TO THE RATING SYSTEM!
+
+
+
+------------------------------------------------------------------------------
+
+                            ---NINTENDO EXPOSED---
+                    INTERVIEW WITH NINTENDO REPRESENTATIVE
+
+This interview was taken at the beginning of January with a personal friend
+of the family who works for Nintendo of America.  As you may find out, the
+answers to the questions are not at all like the Nintendo Reps you reach on
+the phone.  This Nintendo employee is one of only a few actual programmers/
+tech. support employees at Nintendo of America.
+
+GG: Just to start off, can you please tell all the readers your name and
+    occupation?
+
+NR: My name is Roger and I am a Nintendo representative in the programming/
+    technical support department at Nintendo of America.
+
+GG: How often do you play video games, and what is your background of
+    employment?
+
+NR: Playing and testing out video games is part ofd my job. I sit in front of
+    this screen several times a day to make sure that everything is perfect.
+    Before working for Nintendo, I had another programming and technical
+    support job at AT&T in Allentown, Pennsylvania. I was released during a
+    layoff after three or four years of working there. Next thing I know, I
+    was recommended and I found myself moving here to Washington for my big
+    break. I always *loved* to play video games.
+
+GG: Interesting. I'm sure I could just ask you the simple stuff like this for
+    the whole interview, but I REALLY want to get to the good stuff, like
+    future games, systems, and all that stuff.  Just for their reference what
+    have you done so far while being with Nintendo?
+
+NR: Probably 95% of the time I was put in the sound recording/development of
+    video games. Not a whole lot of programming goes on in the U.S. base, but
+    what ever we do, that's where I am, if I'm assigned to it.  I've been all
+    over the place, when it comes to video game sounds. I've been from "Dr.
+    Mario" for the Game Boy to "Super Mario kart" for the SNES...having at
+    least a *little* bit to do with the sound.
+
+GG: Cool. Okay, fill us in...FX Trax.
+
+NR: FX Trax is not known as that anymore. It has been renamed to Stunt Racer
+    FX and will be the next game for the SNES using the Super FX micro-
+    processor. it is scheduled for early to mid '94 and is expected to be the
+    first 32-meg cartridge for a 16-bit system!
+
+GG: Okay...Super Metroid
+
+NR: I don't have too much information right now, it's also set for mid '94 and
+    is expected to be the first 24-meg cartridge for the SNES.
+
+GG: And chance for a new Mario Adventure for ANY system out NOW?
+
+NR: No comment.
+
+GG: Well that gives it away! (laughing) Okay, here are the questions about
+    Project Reality that has been on lots of people minds for a while now.
+    First of all, is there any sign that you know of that indicates a breaking
+    up of Nintendo and Silicon Graphics? This was the major problem for
+    Nintendo in the past.
+
+NR: So far, I don't see any kind of breaking up happening. The problem Nintendo
+    had in the past...you probably mean with the Super NES CD. Nintendo
+    originally signed with Sony to develop a CD-ROM peripheral for the SNES.
+    As everyone knows, the Sega CD is a Sony product. All I will say is that a
+    nice sum of money was exchanged, and the next thing we knew, Sony is off
+    with Sega leaving Nintendo in the dust. We had a backup plan, and that was
+    with Philips Electronics. Things went perfectly well, and even high-tech
+    prototypes were finished and tested. I had the opportunity to test it
+    myself in New York City at a special conference. Suddenly Nintendo of Japan
+    scrapped the 16-bit CD-ROM add-on and went 32-bit. Philips wanted a new
+    machine altogether, but Nintendo wanted an add-on peripheral. Wham bam we
+    were back to square one again. Right now, Silicon Graphics and Nintendo
+    seem to be working together very well, and we're all pleased. The one thing
+    we do NOT like is the fact that Sega came from behind and Pearl harbored
+    us by signing with Silicon graphics as well for a future machine of their
+    own. Some fear that history's gonna repeat itself, since Sega is back in
+    the picture. If money gets exchanged again, we won't be happy campers. But
+    I will say that Nintendo DOES have a back up plan if such a thing happens.
+    No matter what, NIntendo WILL have a home system for release, weather it be
+    from SGI or not.
+
+GG: How about a release date?
+
+NR: No EXACT release date is set for the machine, but Nintendo targets a 3rd
+    quarter 1995 release.
+
+GG: Any games you know of coming out for the machine?
+
+NR: Right now, no. But SGI plans to bring out some of their current SGI games
+    found in the arcades. Don't forget that at the end of the year, SGI arcade
+    machines will be open to the public. We are talking with Argonaut right
+    now, hoping they will join the development team.  They helped develop the
+    SFX chip, anyway.
+
+GG: Cool beaners. But what the readers want is NEW information, not stuff they
+    can read in the magazines. Spill your guts!!
+
+NR: naturally, I am limited to what i can say, Mike, but I will give it a shot.
+    A SNES version of Super Street Fighter 2 is in the works, and also a MK2
+    is set for the SNES!  Right now, 5 games using the SFX chip are under
+    development, besides Stunt Racer FX.  Releases should begin in the second
+    half of the year. And the SFX chip in those games are NOT the same as the
+    chip in Star Fox. The new SFX chip is a 21 MHz processor, which helps
+    improve on the formula. Some games are Star Fox 2, which should be 32 megs
+    and 2-player simultaneous play, Power Slide, Dirt Racer, and Citadel.
+
+GG: Will you be at the Summer CES when Nintendo debuts some new hot games?
+
+NR: I wish! I never made it to a CES yet, but I plan on taking time off to get
+    a plane and head for the summer show. Not as a representative, but as any
+    other visitor.
+
+GG: Have anything else you would like to add to the interview?
+
+NR: Yeah, I want to say that I appreciate being in your fanzine. Magazines get
+    tipped to praise almost every game they review. Fanzines are honest with
+    the games they are approached with and aren't afraid to say they suck.
+    And as for your old man, I want to publicly call him a traitor (as a
+    joke). AT&T is now working with Sega to make that modem crap piece..what
+    is it..the Edge 16. Nintendo's future modem/network units in Japan will
+    kick ass. I saw the details but I won't tell them just yet.
+
+(Interview conducted by Michael Hrusecky)
+
+------------------------------------------------------------------------------
+
+             
+             PHILIPS CD-I COMES OF AGE AS A GAME MACHINE AND MORE
+             CD-I Sales on the Rise Following Infotainment Blitz
+                                 Chuck Miller
+     
+Following a successful holiday commercial blitz, Philips CD-i seems finally to
+be gathering momentum as competition heats up with other CD-based platforms
+from The 3DO Company, Sega and Commodore. Sales of CD-i players outsold other
+CD-based systems during the last quarter of '93 by as much as 18 to 1. This is
+significant in a platform that has been slow to catch on. However, 1994 looks
+like a good year for CD-i owners, especially those interested in gaming.
+                                        
+--I Like Your Figure
+  
+According to figures presented by Philips at a special press event held at the
+Winter Consumer Electronics Show (WCES), there are currently 300,000 CD-i
+units in consumers' hands. The goal for '94 is to bring the total number of
+units sold to 1,000,000! If this is reached, CD-i will be established at a
+viable growth point to insure its continued success. From the quality of titles
+shown at WCES, and based upon the newer value priced players being offered,
+this goal looks attainable. The reason for this growth is that Philips is
+finally pushing CD-i as an entertainment system, rather than as an edutainment
+and infotainment product only.
+                            
+--Like, I Dig Your Hardware, Man
+  
+The cost of CD-i ownership has just dropped significantly with two new units
+being offered by Philips and Magnavox. The Philips CD-i 220 Player, supplied
+with a wireless remote Thumbstick controller, retails for $499. The Magnavox
+unit, the CD-i 200 Player, comes with the same remote for $399. Both accept
+Philips Digital Video Cartridge (DVC) providing full screen, full motion
+video for $249.95. Offering a new level of video quality in CD-i games and
+making access to Video CD and music videos a simple affair, the DVC is a must
+have accessory. At present, 30 movies are available on CD with hundreds more
+on the way from Paramount and MGM.
+                                     
+--Being in Full Control
+
+In addition to the included remote, several other controllers are available.
+Of course, there's that large, gaudy Roller Controller designed for kids.
+However, several other devices are more worthy add-ons. New is the Touchpad, a
+joypad similar to those accompanying game consoles (it looks almost identical
+to the Gravis PC Gamepad) that is ideal for action titles. Two Touchpads can
+be used at one time for multiplayer games. Also new is the Trackerball, a
+trackball variation, and the Mouse and Mouse Pad. Still in development is a
+handy wireless remote gun controller, ideal for titles like Mad Dog McCree.
+  
+--It's All Fair Game
+  
+Of course, of greatest interest to us is the quality and quantity of game
+titles in the works. Though games for CD-i are not as plentiful as those for
+PC CD-ROM, there is still a large body of exciting titles in development with
+some presently available. Titles you can nab right now (with some set to ship
+imminently) include: Voyeur, Kether, Inca, Caesars World of Boxing, Inter-
+national Tennis Open, Escape from Cybercity, Link: The Faces of Evil, Zelda:
+The Wand of Gamelon, Mystic Midway: Rest in Pieces, Battleship, Alice in
+Wonderland, and Alien Gate. Many more titles are due to ship over the next few
+months.
+  
+--Brought to You by DVC
+  
+Several key games titles to watch for on CD-i require the new Digital Video
+Cartridge. These are: Mad Dog McCree, The 7th Guest, Space Ace, Microcosm,
+and Litil Devil. Of these games, Mad Dog, Microcosm and 7th Guest are the most
+visually stunning. The quality of the full screen, full motion video is
+unsurpassed on any CD platform at present. There is simply no comparison with
+the smoothness of movement and picture image that these CD-i titles provide.
+Yes, there is the additional cost of the DVC module, but the quality of game
+play is worth it. Besides, having the DVC will allow you to view Video CD
+movies.
+  
+--And the Titles Keep Rolling By
+  
+One other game shown in early development was Creature Shock. This title,
+featuring full 3D rendered graphics (of 3D Studio quality), was absolutely
+amazing. An action/adventure title, Creature Shock is the kind of game that
+will sell CD-i players. It looks that good! Yet, there are quality titles in
+development the DO NOT require the DVC. One in particular is Zelda's Quest.
+With the feel and game play of the original NES Legend of Zelda, this game
+will capture many gamers with its photorealistic imagery and design similarity
+to the aforementioned title. Zelda fans will find this title a must addition
+to their game library.
+ 
+--What the Future Holds
+  
+Of course, the future of CD-i, and all the new platforms, is dependent on the
+percentage of market share gained and the overall acceptance of the platform
+by consumers. Though it is next to impossible to pick a winner in the CD-based
+player market at present, I believe that CD-i has as good a chance as any of
+succeeding, and a better chance than most. Time will certainly tell. However,
+if I were to buy any system right now (CD-i, 3DO, CD32, Sega CD/CDX, or
+Jaguar), dollar-for-dollar, I would probably go for CD-i. Still, I think I'll
+wait just a bit longer and see what develops by Summer of '94 at the Summer
+Consumer Electronics Show.
+
+The previous article was taken from the Prodigy Interactive Service.
+
+
+------------------------------------------------------------------------------
+
+
+                              ATARI STRIKES BACK
+                64-bit Jaguar Unleashed on Video Gaming Public
+                                  Jeff James
+
+Once the dominant force in video gaming, Atari has had to sit on the sidelines
+and watch Sega and Nintendo fight it out for the hearts, and allowance money,
+of video gamers the world over. Now, after years of inactivity in the video
+gaming market (with the exception of the Lynx handheld), Atari returns with a
+new 64-bit video game system: the Jaguar. Using a 64-bit data bus and multiple
+RISC processors, the Jaguar leaps past current 16-bit systems.
+                                      
+--Enter the Jaguar!
+  
+According to Atari Communications Director Bob Brodie, the Jaguar ($249 retail)
+is was test marketed in 2 areas for the Christmas 1993 season: New York and San
+Francisco. Only 50,000 Jaguars will be produced for the 4th Quarter of 1993,
+with Atari planning to ramp up production dramatically in 1994. Brodie said
+that an "extraordinarily limited number" of Jaguars will be available at the
+Incredible Universe superstore in Dallas, TX. For consumers outside of those
+markets, Brodie mentioned that a limited supply of Jaguars will be made
+available via Atari's customer service department.
+
+--Tom and Jerry
+  
+So what makes the Jaguar so special? If the Jaguar's 64-bit bus is what gives
+it fast "legs," the custom graphics hardware gives the Jag it's bite. There are
+5 processors spread across 3 individual chips; the 2 most powerful are named
+"Tom" and "Jerry." Tom contains 3 processors: a 32- bit, 27 MIPS graphics
+processing unit (GPU), a bit blitter, and an object processor. Tom handles
+graphics and animation, and is able to perform complex computer animation tasks
+quickly. Jerry consists of 2 processors: a 32-bit RISC chip and a digital
+signal processor (DSP) for 16-bit, CD-quality stereo audio.
+
+--A Need for Speed
+  
+Finally, Tom and Jerry are joined by a 13.3 MHz Motorola 68000 processor which
+acts as a general purpose control processor. All of this custom graphics hard-
+ware is tied together with a 64-bit data bus, which Atari claims will support
+a data throughput of an astonishing 106.4 Megabytes per second. The combination
+of a speedy data bus with multiple RISC processors gives the Jaguar the ability
+to display 24-bit true-color images with up to 16.7 million colors. Atari also
+claims that Jaguar can perform more than 850 million pixel changes per second,
+compared to the 3DO's 64 million and 1 million each for the SNES and Genesis.
+
+--Hardware Heroics
+  
+The Jaguar also features some advanced hardware-based animation capabilities,
+comparable to those found in Panasonic's 3DO Interactive Multiplayer. Support
+is included for: texture mapping (wrapping an image on a 3D object);
+transparency (for realistic glass, smoke and fog effects); morphing (a la'
+Terminator 2); warping (for the quick twisting and distortion of objects);
+and light sourcing (for realistic shading and lighting effects). All of these
+animation capabilities combine to give the Jaguar the processing muscle to move
+and animate graphic objects smoothly and quickly.
+
+--The Packing List
+  
+The Jaguar comes with one cartridge slot; using an image compression technique
+known as "JagPEG" (a variation on the JPEG compression format), programmers can
+squeeze up to 6 Megabytes (48 Megabits) of program data onto a single Jaguar
+cartridge. Cartridge data can be loaded into the main memory of the Jaguar,
+which consists of 2 Megabytes (16 Megabits) of main system RAM. One 17-button
+controller and a cartridge game Cybermorph (developed by Attention to Detail)
+are also included. There are 2 controller ports included, and a ComLynx I/O
+port allows players to connect several Jaguars (or Atari Lynxes) for multi-
+machine, multi-player games.
+
+--The Expanding Universe (Jaguar Peripherals)
+  
+Brodie says that Atari will ship a multi-spin CD-ROM drive for the Jaguar
+"after mid-1994." The CD-ROM drive, projected to be in the $200 range, will
+offer support for music CDs, CD+Gs, Kodak Photo CDs and Jaguar CD games.
+Brodie also mentioned that a forthcoming MPEG-II cartridge would allow the
+Jaguar to support the new Video CD format, which packs 74 minutes of VHS-
+quality video on a standard compact disk. Atari also plans to introduce a
+Virtual Reality headset and a high-speed serial interface (to allow players to
+play games over standard telephone lines) in late 1994 or early 1995.
+
+--Starting Small
+  
+According to Brodie, only 4 cartridges were available and shipping for the
+Jaguar by the end of November: Cybermorph (bundled with the system), Trevor
+McFur in the Crescent Galaxy (Atari), Raiden (Imagitec Design), and Evolution:
+Dino Dudes (Imagitec Design). Tiny Toon Adventures (Atari) and Checkered Flag
+II (Rebellion Software) were to have been available before Christmas 1993. More
+titles are coming in 1994, including: Club Drive (Atari), Alien vs. Predator
+(Rebellion Software), Kasumi Ninja (Atari), Tempest 2000 (Atari), Battlezone
+2000 (Atari), Steel Talons (Atari) and Sports Games (Atari).
+
+--Bubsy, Barkley, and Brett Hull
+  
+Although the current selection of Jaguar games is decidedly sparse, several
+notable software developers have promised support for the Jaguar. ID Software
+(creator of the popular Wolfenstein-3D for MS-DOS computers) is planning to
+port their forthcoming Doom game to the Jaguar sometime in 1994. Accolade has
+announced that it will develop five games for the Jaguar in 1994, including Al
+Michaels Announces Hardball III, Brett Hull Hockey, Bubsy: Claws Encounters of
+the Furred Kind, Charles Barkley Basketball, and Jack Nicklaus Power Challenge
+Golf.
+  
+--Return to Zork, Spock
+  
+Adventure game publisher Activision is planning to bring out a version of
+Return to Zork for the Jaguar CD in 1994, with a possible conversion of
+Mechwarrior II: The Clans to follow. Interplay (developer of Battle Chess and
+Star Trek: The 25th Anniversary for MS-DOS computers) is gearing up to produce
+a CD title (possibly Battle Chess) for the Jaguar CD under the Atari label.
+     
+This list of developers is a small one, and most of the games will be released
+in mid-to-late 1994. A more difficult challenge may be convincing consumers
+that Atari is in for the long-term to support the Jaguar.
+
+--Pricing to Ponder
+  
+Although the Jaguar's $250 retail price places it well with in the price range
+of prospective SNES and Sega buyers, the addition of the $200 Jaguar CD-ROM
+drive will push the Jaguar squarely into the price range of Commodore's Amiga
+CD32 ($399) and a few hundred dollars under Panasonic's $699 REAL 3DO system.
+The CD32 has been selling strongly in the UK and Europe over the past few
+months, backed by a lengthy list of talented UK developers. And with new 3DO
+players set to arrive from Sanyo and AT&T over the coming months, market
+pressure should drive the price of a 3DO compatible system into the $500 price
+range.
+
+--CES: Brawling for Bucks and Bits
+  
+Atari announced nationwide distribution of the Jaguar at the Consumer
+Electronics Show (CES) in January. Commodore unveiled the Amiga CD32 to the
+U.S. market at the same show, and the 3DO company showed a promotional push as
+well. Phillips has repriced their CDI (Compact Disk Interactive) system to
+$499, and the two juggernauts of the video game industry, Sega and Nintendo,
+will be promoting their 16-bit video game systems. What the Genesis and Super
+NES lack in hardware specs will be more than compensated by their commanding
+market presence, for now.
+
+--Sleeping Giants
+
+As the sleeping giants of the video game industry, Sega and Nintendo aren't
+about to rest on their laurels. Both are planning to introduce new game systems
+in late 1994 or early 1995. Sega is reportedly developing a 32-bit CD-based
+game system (code-named "Saturn"), while Nintendo has joined forces with work-
+station manufacturer Silicon Graphics to begin work on an advanced game system
+with the nebulous moniker of "Project Reality." Although both systems are still
+at least a year away, they do serve as a reminder that neither company intends
+to surrender the multi-billion dollar home video game market without a fight.
+
+--Predictions
+  
+Although it's too early to tell if the Jaguar will help Atari reassume it's
+once lofty position in the video game market, the Jaguar does lay down a
+gauntlet for Sega and Nintendo to follow. Regardless of which system is
+eventually declared the "best," video game consumers will be the real winners,
+rewarded with lower prices, more powerful game systems, and new games which
+will truly take gaming "to the next level." For more information on the Jaguar,
+contact Atari at 408-745-8852.
+
+The previous article was taken from Prodigy Interactive Service.
+
+------------------------------------------------------------------------------
+
+                    THIS EDITORIAL IS RATED 'R' (READABLE)
+                Your PC Games, However, Might Be Another Story
+                                 Alan Emrich
+     
+Since 1990, Computer Gaming World has been writing editorials in its pages
+urging the industry to monitor the violence in its games. We have stressed the
+need for computer game producers to establish a voluntary "ratings system" for
+their games, labeling them on the package for sexual situation, violence,
+occult subjects, and so forth. Allow me elaborate and express my own concerns.
+
+--Big Brother is Censoring You?
+  
+Typically, the collective computer game industry chose to ignore the potential
+problem of game ratings until it became a crisis (by definition, a crisis is
+when you can't say "Let's forget the whole thing"). Literally, the hour before
+congressional hearings were to begin the major video game manufacturers
+announced a joint agreement that they would self-regulate new standards in
+rating their own products for material that might not be suited for some
+consumers (particularly young children). That didn't cancel the CSPAN circus
+with Nintendo and SEGA taking shots at each other, but the crisis, for the time
+being, has been averted.
+
+--The Great Debate
+  
+What many computer gamers with access to on-line networks such as PRODIGY have
+been arguing of late is, what are the implications vis-a-vis the First
+Amendment to the Constitution of the United States? Is this a freedom of speech
+issue? Are violent or otherwise "harmfully" explicit computer games tantamount
+to pornography? Should they be censored? Should the government regulate them as
+they do the airwaves on television and radio?
+
+The answer seems simple. Explicit computer games cannot be banned. Even if they
+were pornography (which they're not), they'd still be protected by the First
+Amendment.
+
+--Then What Do We Do With Violent Video Games?
+  
+Computer games are most akin to movie entertainment. They're not free and a
+person must make an effort to acquire and play one. Movies have long regulated
+themselves away from government censorship through the MPAA ratings systems. We
+are all familiar with PG-Rated movies, films with R-Ratings, and so forth.
+
+While some consider even that to be censorship, I don't. To me, I see it as
+input -- information to help me, the consumer, make the most informed purchase
+decision that I can for myself and my family. I see a rating as nothing but a
+3-letter review of a film's explicit content.
+
+--Who'll Stop the Reign?
+  
+Apparently, the reign of violent or other graphically explicit video and
+computer games has been noticed in the unreality that is Washington, DC.
+Typically, seeing our nation's leaders hold up a video game laser gun input
+device as something "new" and threatening made me want to laugh and cry at the
+same time. Our family's Magnavox Oddesy video game unit (can you say Pong?),
+back in the 70's, had a "gun" input device, for goodness sake! This is hardly
+a new technology. And if its effects are so detrimental, why am I writing this
+instead of planning and committing heinous acts of violence against society? I
+think I know the answer...
+
+--Knowing Fake Real from Real Real
+  
+Imagine a cartoon cat. Pick any one you like: Tom, Sylverster, Top Cat (am I
+showing my age, or what?). Now think back at some of their cartoon antics. Some
+of them were downright violent, wouldn't you say?
+  
+Now picture a household cat. Here, kitty, kitty. It plays, sleeps, meows, eats
+and does other natural feline things, right? So, a child grows up with both in
+his living room, Tom (of Tom and Jerry fame) and Fluffy, the household cat.
+  
+--Okay, so here's the $36 question:
+  
+Why is it that people don't believe that a child can suspend their disbelief
+to enjoy a cartoon? Children know how real cats behave -- that they don't talk,
+for instance, or blow up mice with bombs and guns. If a child does, it is far
+more likely to be a problem with the child than with the medium of cartoons.
+     
+Then why do people assume that when kids play games with Kung-Fu-Kick-'Em-In-
+The-Crotch action that they will grow up thinking that is how you are supposed
+to greet total strangers? Kids see others shake hands and exchange hugs, as a
+rule, not roundhouse kick total strangers on the street.
+
+--How Do You Stop the Kids from Playing Them?
+  
+What bothers me about this whole tempest in a teapot is that while, yes, the
+game producers would be acting responsibly to provide consumers some game
+rating information, there is no reason for the government to intervene. As it
+is with movies, it is the {parents} who are responsible for their child's
+upbringing, not congress. Parents must teach their children right from wrong,
+instill values in them, show them love and nurture them to be good people and
+citizens. Parents are responsible for what their kids watch and play, not
+congress. This is a private family matter, not one of the nation's future
+mental health.
+
+--Relax
+  
+I believe that a rating system for computer games would be a "good thing." It
+will help consumers (particularly parents) make informed buying decisions.
+Having congress usurp parental responsibility, however, is not a good thing.
+If congress would start treating parents as adult human beings, rather than
+entities whose votes and taxes they try to get more and more of, we could all
+take care of ourselves just fine, thank you very much.
+
+The previous article was taken from Prodigy Interactive Service.
+
+------------------------------------------------------------------------------
+              _    _  ____  _   _    _ ____
+ |||   Atari | |  / |/ ___\| | | |  / |  _ \   
+ |||         | | /  | |  __| | | | /  | |_| |
+/ | \     /| | |/ / | | |_ | | | |/ / |  _ <
+         | |_| / _  | |__| | |_| / _  | | \\\
+          \___/_/ |_|\____/ \___/_/ |_|_|  \\\
+                                            \\\
+
+My GOD we have a lot of information about the Jaguar for you all to enjoy.
+Specs, games, etc, have all come from different sources, so we do not take
+FULL credit.  But lots of this information might not be public knowledge.
+If info is inaccurate, we don't take responsibility for it.
+
+ATARI JAGUAR SPECIFICATIONS
+
+Size: 9.5" x 10" x 2.5"
+
+Display: Resolution 800 x 576 pixels max 
+         24-bit display with 16,777,216 colors simultaneously
+
+Ports: Cartridge slot/expansion port (32 bits)
+       RF video output
+       Video edge connector (video/audio output)
+       Two controller ports
+       Digital Signal Processor port
+
+Controllers: Eight-directional joypad
+             Size 6.25" x 5" x 1.6", cord 7 feet
+             Buttons A, B, and C
+             Pause and Option buttons
+             12-key keypad
+
+--THE 5 PROCESSORS SPECIFICATIONS--
+
+"Tom"--    32-bit RISC architecture
+           64 registers of 32 bits wide
+           access to all 64 bits of the system bus
+           reads 64 bits of data in one instruction
+           26.6 MIPS (million instructions per second)
+           4K bytes of SRAM
+           produces high-speed graphic effects
+
+Object processor--
+
+           64-bit RISC architecture
+           processor acting as many video architectures, such as a sprite
+           engine, a pixel-mapped display, a character-mapped system
+
+Blitter--
+           64-bit
+           DRAM memory controller
+        
+"Jerry"--
+           600,000 transistors, 144 pins
+           Digital Signal Processor
+           32 bits (32-bit registers)
+           26.6 MIPS (million instructions per second)
+           8K bytes of SRAM
+           CD-quality stereo sound (16-bit stereo)
+           
+Motorola 68000--
+
+           Rated at 13.3MHz
+           General purpose control processor
+
+Communication is performed with a high speed 64-bit data bus, rated at 106.4
+megabytes/second.  The Jaguar has two megabytes DRAM. Game cartridges can hold
+up to six megabytes (48 megabits) of compressed information. The Jaguar uses
+JagPEG, a variation of the JPEG compression format.
+
+MISC FEATURES--
+   Support for ComLynx I/O for communications with the Atari Lynx hand-held
+   game system and networked multiconsole games (on DSP port, accessible
+   by optional add-on connector)
+   
+   The two controller ports can be expanded to support Digital and analog
+   interfaces
+      
+   -Expansion port allows connection to cable TV and other networks
+   -9600 baud, RS-232 serial port (accessible with optional interface)
+
+The Jaguar is able to perform:
+
+ -High-speed scrolling
+ -Texture mapping
+ -Morphing
+ -Scaling
+ -Rotation
+ -Skewing of sprites and images
+ -Lighting and shading from multiple light sources
+ -Transparency
+ -Rendering up to 850 million one-bit pixels/second
+ -Sprites are of unlimited size
+ 
+A double speed CD-ROM drive has been announced for release in mid-1994, with
+an estimated price of $200.  It is reported that the CD-ROM drive is capable
+of transferring data continuously at 350K per second, or run at normal audio
+rates of 175K per second. Access time is 300-350 milliseconds.  Storage on a
+disc should be approx 700 megabytes (uncompressed).  The CD-ROM drive plugs
+into the Jaguar's cartridge slot on top of the machine, and offers a cart-
+ridge slot to permit playing cartridge or CD games, the cartridge port is
+accessible while using the CD-ROM drive.
+
+The Jaguar CD-ROM supports audio CDs, Karaoke CDs, CD+Graphics, and Kodak
+Photo CDs. An optional MPEG2 (Motion Picture Experts Group) compression cart-
+ridge will be available.
+
+Here's the latest list of Atari Jaguar 3rd party companies:
+     
+     Anco Software Ltd.       Maxis Software         Telegames
+     Beyond Games Inc.        Microids               Tiertex Ltd.
+     Dimension Technologies   Midnite Software Inc.  Titus Eurosoft
+     Ocean Software Ltd.      Tradewest              High Voltage Software
+     Rebellion Software       Trimark Interactive    Krisalis Software Ltd.
+     Virtual Experience       U.S. Gold Ltd.         Loriciel U.S.A.
+     Silmarils                Millenium              Park Place Productions
+     Ubi Soft                 Gremlin Software       Microprose/S. Holobyte
+     Accolade                 Virgin                 Interplay
+     21st Century Software    Activision             Id Software
+     Phalanx Software         Brainstorm             3D Games
+     All Systems Go           Argonaut Software      Euro-Soft
+     ICD Incorporated         Photosurrealism        DTMC
+     Llama Soft               V-Real Productions     Elite
+     Attention to Detail      Hand Made Software     Imagitec Design
+     
+
+GAME Developer                  Titles under development
+----------------------------------------------------------------
+  21st Century Software       - Pinball Fantasies
+  3D Games
+  Accolade                    - Al Michaels Announces Hardball
+                                Brett Hull Hockey
+                                Busby in Clawed Encounters
+                                       of the Furried Kind
+                                Charles Barkley Basketball
+                                Jack Nicholas Golf
+  Activision                  - Return to Zork CD-ROM
+  All Systems Go              - Hosenose and Booger
+                                Jukebox
+  Anco Software Ltd.          - Kick Off
+                                World Cup
+  Argonaut Software           - UNKNOWN CD-ROM
+  Atari Corp.                 - Battlezone 2000
+                                [Crescent Galaxy]
+                                Club Drive
+                                MPEG 1 and 2 carts
+                                Star Raiders 2000
+                                Tiny Toons Adventures
+                                VR Helmet
+  Atari Games Corp.
+  Attention to Detail         - Battlemorph: Cybermorph 2
+                                Blue Lightning
+                                (For Atari Corp.) [Cybermorph]
+  Brainstorm                  - [x86 Jaguar Development System]
+  Beyond Games Inc.           - Battlewheels
+                                Ultra Vortex
+  Dimension Technologies
+  DTMC
+  Eurosoft
+  Gremlin Graphics Ltd.       - Zool 2 - MORE
+  Hand Made Software          - (For Atari Corp.) Kasumi Ninja
+  High Voltage Software
+  id Software                 - Doom: Evil Unleashed
+  Imagitec Design Inc.        - [Evolution Dino-Dudes]
+                                [Raiden]
+  Interplay                   - BattleChess CD-ROM (MORE?)
+  Krisalis Software Ltd.      - Soccer Kid
+  LlamaSoft                   - (For Atari Corp.) Tempest 2000
+  Loricel S.A.
+  Maxis Software
+  Microids                    - Evidence
+                                Commando
+  Microprose                  - 3D Gunship 2000 - MORE SIMULATIONS
+  Midnite Software Inc.       - Car Wars
+                                Dungeon Depths
+  Millenium Interactive Ltd.
+  Ocean Software Ltd.
+  Park Place Productions      - UNKNOWN TITLE (American Football)
+  Phalanx                     - Phong 2000 (Space?)
+  Rebellion Software Ltd.     - (For Atari Corp.) Alien vs. Predator
+                                Checkered Flag II
+                                Dungeon
+  Silmarils                   - Robinson's Requiem
+  Telegames                   - Brutal Sports Football
+                                Casino Royale
+                                European Soccer Challenge
+                                Ultimate Brain Games - MORE?
+  Tiertex Ltd.
+  Titus
+  Tradewest                   - Double Dragon 4 - MORE
+  Trimark Interactive
+  U.S. Gold Ltd.              - Flashback
+  UBI Soft International      - Jimmy Connors Pro Tennis - MORE
+  V-Real Productions          - Arena Football
+                                Horrorscope
+  Virgin Interactive
+       Entertainment Ltd.     - UNKNOWN ("Movie title")
+  Virtual Experience          - Indiana Jags
+                                Zozziorx (MORE?)
+
+Game titles provided by Atari.
+------------------------------------------------------------------------------
+ ___      ___     _      _     ___       ___      __     _      _   _     ____
+|   \    |   |   |  \   | |   |   |    /     \  /    \  |  \   | | | |  /  ___|
+| O  |  |  O  |  | |\\  | |  |  O  |  |        |  /\  | | |\\  | | | | |  /
+|  _/  |  ___  | | | \\ | | |  ___  |  \____   | |  | | | | \\ | | | | | |
+| |    | |   | | | |  \\| | | |   | |        \ |  \/  | | |  \\| | | | |  \___
+|_|    |_|   |_| |_|   \__| |_|   |_|  \____ /  \ __ /  |_|   \__| |_|  \ ____|
+                        
+                          _______      ___        ___
+                         |______  \   |    \    /     \
+                                \  |  |  _   \ |  ___  |
+                             ___/ /   | | \  | | |   | |
+                            |___  \   | |_/  | | |___| |
+                          ______\  |  |      / |       |
+                         |_______ /   |___ /    \ ___ /
+                        
+                        
+                        GLOBAL LAUNCH  MULTIPLE BRANDS 
+                     MORE  THAN 200 TITLES IN DEVELOPMENT
+
+   The 3DO Company today announced plans to launch the 3DO Interactive Multi-
+player system worldwide in 1994 with multiple hardware manufacturers as
+partners.  At the Winter Consumer Electronics Show (WCES), 3DO said the
+library of software titles for the 3DO system continues to grow. Eighteen
+software titles are currently available in stores nationwide, more than 200
+titles are in development, and the company anticipates that more than 100 new
+titles will ship in 1994.  Twenty-three 3DO licensees showcased 43 titles at
+WCES. (See below list.) AT&T unveiled three 3DO products for U.S. distribution
+in the fall: a CD-based 3DO Interactive Multiplayer system; the VoiceSpan
+adapter that connects to any 3DO Interactive Multiplayer system, so users can
+play software titles remotely with other players while talking over regular
+telephone lines; and a 3DO Interactive Multiplayer system with built-in AT&T
+VoiceSpan capabilities.  Sanyo announced plans to release a 3DO system in
+Japan later this year, and said it is evaluating the timing of its U.S.launch.
+3DO also announced the creation of a software ratings system designed to
+provide consumers with the information they need to make informed decisions
+when purchasing software.  Titles for the 3DO system are expected to begin
+carrying the 3DO-designed ratings symbols in March 1994.
+
+"We're well positioned to set the next consumer electronics standard and 1994
+will be our year to make significant progress in reaching that goal," said
+Trip Hawkins, president and CEO, The 3DO Company. "Our mission in 1993 was to
+capture the beach; we had an ambitious set of goals and we accomplished
+everything we set out to do." The REAL 3DO Interactive Multiplayer system,
+launched by Panasonic in October 1993, is currently sold through more than
+2,000 retail outlets nationwide. 3DO anticipates that four brands of the
+CD-based system will be available by fall of this year. "Consumer response to
+3DO has been outstanding. The 'innovators' - consumers who appreciate new
+levels of performance and the interactivity provided by the 3DO system - have
+confirmed that we have a winner," Hawkins added. The CD-based 3DO system will
+be available in Europe and Japan by the summer, and multiple brands will be
+distributed through more than 30,000 retail outlets worldwide by fall.  The
+3DO Company, which formed 3DO Japan in July 1993, will open a European office
+this spring to support the growing number of European licensees.  
+
+"3DO is moving rapidly to establish a worldwide standard," Hawkins said. "Our
+licensees are confident our technology will succeed in a global market this
+year, and we're doing everything we can to support them." Underscoring the
+growing support of the software community, more than 100 companies have
+become 3DO licensees since the 3DO Interactive Multiplayer came to retail
+shelves in October 1993. "Software industry support for 3DO continues to
+build," Hawkins said. "3DO has delivered a technology and a way of doing
+business that the software industry believes in, and that's why we have the
+largest number of companies ever dedicated to a platform. With 3DO, software
+companies have the advanced technology they want to develop for and a fair
+way of doing business that allows all players to win.  "Our licensees are
+investing significant amounts of their own money in 3DO technology, which is
+a meaningful vote of confidence for the 3DO platform," Hawkins added.
+
+   The 3DO system delivers a breakthrough in audio and video realism with
+interactive software that appeals to the audiences of all ages, bridging the
+gap between video game systems and home computers. The 3DO Interactive
+Multiplayer system provides up to 50 times the graphics performance of
+standard PCs and video game systems. Designed to be a worldwide standard like
+VHS, the 3DO Interactive Multiplayer system also plays music CDs, photo CDs,
+and video CDs.  Based in Redwood City, Calif., The 3DO Company (NASDAQ:THDO)
+is backed by a unique coalition of partners from consumer electronics,
+communications, entertainment and software industries. Investors include
+Matsushita Electric Industrial Co., the world's largest manufacturer of
+consumer electronics and parent of Panasonic, National, Quasar, and Technics;
+AT&T, one the world's leading communications and computer companies; Time
+Warner, a leading media and entertainment company; Electronic Arts, the
+leading entertainment software publisher; and Silicon Valley venture capital
+firm, Kleiner Perkins Caufield & Byers.
+
+The following companies are showcasing their 3DO titles for the 3DO
+Interactive Multiplayer at the Winter Consumer Electronics Show, January 6-9,
+in Las Vegas:
+
+American Laser Games-  Who Shot Johnny Rock?
+Crystal Dyamics-    Crash 'N Burn
+                    Total Eclipse
+                    The Horde
+                    Star Control II
+                    Orion Off-Road
+Digital Pictures-   Night Trap
+Dynami-             Stellar 7: Draxon's Revenge
+Electronic Arts-    A Visit to Sesame Street: Numbers
+                    Escape from Monster Manor
+                    John Madden Football
+                    Peter Pan: A Story Painting Adventure
+                    PGA TOUR Golf
+                    Road Rash
+                    Shock Wave: Invasion Earth 2019
+                    Super Wing Commander
+                    Theme Park
+                    Twisted:The Game Show
+GameTek-            Family Feud
+Humongous Ent.-     Putt-Putt Goes to the Moon
+Intellimedia-       ESPN Baseball
+                    ESPN Football
+                    IntelliPlay Cowboy Casino
+                    Lower Your Score with Tom Kite
+Interplay-          Out of this World
+                    Battle Chess
+MCA Home Video-     Woody Woodpecker Cartoons
+MicroProse-         C.P.U. Bach
+                    Naughty Dog
+                    Way of the Warrior
+ORIGIN-             Super Wing Commander
+Paramount-          Rock, Rap 'N Roll 2
+PF.Magic-           PaTaank
+Psygnosis-          Lemmings
+ReadySoft-          Dragon's Lair
+Sanctuary Woods-    Dennis Miller That's News to Me
+Software Toolworks- 20th Century Video Almanac
+                    The San Diego Zoo Presents...The Animals!
+Spectrum Holobyte-  Star Trek: The Next Generation
+Tetragon-           Gridders
+Universal Studios-  Jurassic Park Interactive
+VideoactV-          ToonTime
+Virgin-             Demolition Man
+
+The previous article was provided by America Online.
+
+-----------------------------------------------------------------------------
+
+                                F A N Z I N E
+                              C R O S S F I R E
+ _________________________________________      ____________________________
+| Have a fanzine or newsletter that needs |    |         GAME  GURU         |
+| attention?  Send a copy to the return   |    | -FANZINE SEAL OF QUALITY-  |
+| address and you'll get to see your very |    |This marker ensures these   |
+| own name appear in here along with a    |    |fanzines are worth writing  |
+| review of your fanzine/newsletter!      |    |about. Accept no imitations |
+`-----------------------------------------'    `----------------------------'
+______________________________________________________________________________
+D I G I T A L   P R E S S|      P A R A D O X      |THE GOOD, THE BAD, AND THE
+         DP # 16         |       Issue 13 1/2      |          8-BIT
+          $1.50          |          $1.00          |     Issue #5  $1.00
+      Joe Santulli       |      Chris Johnson      |       Brian Pacula
+    44 Hunter Place      |     316 E. 11th Ave     |     33 Florence Ave.
+ Pompton Lakes, NJ 07442 |   Naperville, IL 60563  |  Mill Valley, CA 94941
+                         |                         |
+Wow, Digital Press has   |Before I begin the review|Edited and published by
+finally his the 16th ish |for this great issue of  |Brian Pacula, and ONLY
+and I can easily say they|PARADOX I will add a tiny|brian Pacula, TG, TB & T8B
+are still leading the    |bit of insult to injury. |shows a true attempt at
+competition. After plying|YES PETTIBONE, HERE'S    |what one person alone can
+the staples off the zine |ANOTHER FANZINE WITH     |do to create and distri-
+to open it, and cutting  |FACTS, SOMETHING YOU ONLY|bute a fanzine on their
+myself in 2 spots the 1st|SEEM TO HAVE A PROBLEM   |own. Your effort is truly
+thing that hit me was the|WITH WHEN I PUBLISH THEM.|applauded, Brian. This zine
+great art which Joe drew |SEXIST ARE WE? JUST A    |covers all systems and
+portraying Clay Fighters |LITTLE? GET YOUR LIFE TO-|makes key point observa-
+own larger than life "Bad|GETHER. SUPER EFFECT WAS |tions when it comes to VG
+Mr. Frosty" towering over|ONLY A FANZINE, NOT SOME-|companies pushing games or
+a pile bodies.  I knew I |THING FOR YOU TO TRY TO  |just simply being idiots
+had to investigate       |CREATE A FIGHT OVER. IF  |for doing something bad.
+further. Digital Press   |YOU WANT TO COMPLAIN     |What is written is good
+covers virtually every   |ABOUT PRINTING FACTS, YOU|reading, but the fanzine in
+corner of the Video Game |HAVE AN AWFUL LOT OF     |whole looks a bit plain.
+world, even the old Atari|PEOPLE TO COMPLAIN TOO.  |Find a way to use paper
+systems. DP knows when to|GIVE UP THE IMMATURITY,  |space wisely, cause there
+get serious, and also    |CUZ NO ONE'S LISTENING TO|is a lot of extra space.
+knows how to amuse and   |YOU ANYMORE.             |The MK2 coverage was quite
+get the interests of     |                         |readable, and should be
+gamers, as shown in      |This was my first issue  |looked into by MK2 fans.
+"Bonus Points". All games|of Paradox I've ever got-|There were 16 games re-
+reviewed in DP seem to be|ten and I was impressed  |viewed, and all used common
+well organized and to-the|right from the start. The|sense and some humor when
+-point. (Mr. Pettibone,  |cover featured SF II     |it's needed.
+DP gets VERY technical in|characters -vs- MK chara-|
+some areas, who only     |cters. Excellent job.    |The Good, the Bad, and the
+bitch to Jan when she    |There are tons of news   |8-Bit is a true example
+gets technical?) The     |and opinion columns for  |that you should not judge
+Science Lab Report was   |everyone. Most of the    |a book by its cover. There
+interesting, but I'd     |opinions hit right on the|is a lot inside for many
+rather stick to buying   |nail with my own views.  |gamers. It IS worth 
+the $20 converter instead|Do we think alike?       |checking into!
+of taking my Genesis     |(Ed note: Be afraid, be  |
+apart. The only things   |VERY afraid!) Send in yer|
+missing in DP16 were the |dollar for a sample ish  |
+Fanzine reviews? Did they|for you shall not be     |
+vanish? Ish 16 was 30    |disappointed. I click my |
+pages and well worth the |heels for you!           |
+buck-fifty. I can't wait |                         |
+for #17! Excellent work! |                         |
+------------------------------------------------------------------------------
+
+
+                             Nintendo Of America
+                         To Stay Out of CD-ROM Market
+
+Nintendo of America Inc., opting to stay out of the burgeoning CD-ROM
+entertainment market for now, said its next-generation video-game machine
+will continue to play cartridges, The Wall Street Journal reported.
+  
+The 64-bit game system, code named Project Reality, is being developed by
+Nintendo and Silicon Graphics Inc. It is set to debut in arcades during the
+fourth quarter, followed by a world-wide launch to homes next year. Nintendo
+said the home machines would be brought to market for under $250.
+
+Project Reality will replace Nintendo's current mainstay player, a 16-bit
+machine called the Super Nintendo Entertainment System. Nintendo said Project
+Reality is so powerful that it will contain five to six times the memory of
+the current 16-bit Nintendo games, allowing for superior graphics, sound and
+music.
+
+Nintendo officials said they considered using machines based on CD-ROM, as do
+their competitors 3DO Co. and Sega of America Inc., but concluded that
+cartridge-based games would run faster. The $6 billion-a-year U.S. video-game
+industry remains dominated by cartridge-based machines produced primarily by
+Nintendo and Sega.
+
+"The cartridge format is the only proven method," Peter Main, vice president
+of marketing for Nintendo of America, said in a statement. "CD-ROM, at this
+stage of the game, is too slow..." Main added that the cartridge format would
+help keep down prices so the new players can sell well in the mass market.
+
+Main indicated Nintendo would continue to evaluate CD-ROM technology, and has
+designed Project Reality to accommodate a potential CD-ROM accessory.
+
+The previous article was taken from COMPANY NEWS, Prodigy Interactive Service.
+                                   
+______________________________________________________________________________
+                                   
+                                   
+                                   
+                                   NINTENDO
+                         CODENAME: "PROJECT REALITY"
+                        TARGET SPECIFICATIONS TO DATE
+
+Nintendo has been working with Silicon Graphics Inc. secretly for several
+months before the public announcement of a 64-bit home unit.  We've all heard
+the basic specifications over and over again from magazines and such, but
+we have uncovered the specifications set for "Project Reality" effective since
+January 3rd. Keep in mind that they have drastically altered the SNES CD specs
+before (and the SNES CD was a no-show). It's possible Virtual Reality's specs
+could change as well.
+
+PHYSICAL DIMENTIONS: Undetermined
+
+VIDEO RESOLUTION: -1024 x 768 max
+                  -can display true 24-bit images
+                  -palette of 16,770,000 simultaneously
+
+PORT OPTIONS: -Cartridge based unit
+              -Cartridge port assembled to support add-on machanism(s)
+              -2 expansion slots for future add-on mechanisms
+              -2 controller ports
+              -MPEG-2 compatible
+
+CONTROLLERS: -Undetermined
+
+CPU: -64-bit RISC data path
+     -contains 7 coprocessors
+
+CLOCK SPEED: -system calculated at 100.58 MHz
+
+MEMORY: -4 megabytes of RAM (total)
+
+AUDIO: -Stereo 16-bit PCM
+       -Sampled at 44.1 KHz
+
+VIDEO OUTPUT: -RF
+              -S-video
+              -Composite Video
+              -HDTV compatible
+
+OTHER SPECIAL FEATURES: -Textured mapping, Morphing, Scaling/Rotation
+                        -Skewing (distortion)
+                        -Shading from various light sources
+                        -transparency
+                        -Unlimited sprite size
+                        -MIPS engine contains 7 coprocessors
+                        -Video exceeds NTSC and PAL standards (HDTV compatible)
+                        -Can handle over 100 MIPS and MFLOPS (floating points)
+                         in one second
+                        -Can generate over 100,000 polygons/second
+                        -Utilizes NEWLY developed on-board video/audio
+                         compression which compresses 16 megabit ROM chips
+                         (2 megabytes) into 80-96 megabit ROM chips 
+                         (10-12 megabytes)
+
+WEIGHT: -Undetermined
+
+AVAILABLE: -3rd Quarter 1995
+
+PRICE: -around $250
+
+EDITOR'S NOTE: Wow, now these are really impressive specifications. What I
+find more interesting than anything else is the new data compression that
+this unit will support. 16 meg carts (2 megabytes) can be transformed into
+80 to 90 meg carts (10-12 megabytes). That is incredible compression. But as
+we all know, Nintendo, Capcom, and other companies are using not only 16 meg
+chips, but also 20 megs, 24 megs, and in a few months, even 32 meg chips.
+A 32 meg chip (4 megabytes) can be transformed into an *AMAZING* 160 to 182
+megs!  That is 20 to 24 megabytes!  And the best part is that we only pay
+for the actual size of memory the chip holds when NOT compressed. For
+example, 16 meg games cost in the neighborhood of $65 today.  Even though
+Project Reality's 16 meg chips can hold up to 6 times the amount of a
+normal 16 meg game, we aren't charged any more because we only pay for the
+16 meg chip!  So games will easily be in the same price area as they are
+today. I can't wait!
+
+Yes Nintendo fans, Project Reality WILL BE a reality!  No and's, if's, but's,
+or or's!  We were sent a copy of a statement which shows Nintendo purchasing
+2.6 million RISC processors from NEC, and another statement showing Nintendo
+purchasing the same amount of RISC processors from Toshiba. Nintendo wouldn't
+buy all these high-tech chip for nothing, my friends!  They have something
+cooking and in the works!  No bullsh!t!
+
+------------------------------------------------------------------------------
+
+
+           --TOP TEN VIDEO GAME CHARACTERS THAT MAKE GOOD COUPLES--
+
+10) E. Honda and the fat Lady in Death Valley Rally
+
+ 9) Mario and Fox McCloud (Nintendo just loves how their own characters...
+    nevermind.)
+
+ 8) Sonic and Blanka (who knows...that animalistic instinct they have...)
+
+ 7) Sonya and Princess Zelda (bitches with attitude)
+
+ 6) Ripley and Sagat (It's the bald head thing...)
+
+ 5) Captain Hook and Ronald McDonald (yeah...he's in a game!)
+
+ 4) Little Mermaid and Aladdin
+
+ 3) Mega Man and Roll the Housekeeping Robot
+
+ 2) Barney and Grimace (ya know, that purple Hershey Kiss thing from Mc
+    Donalds)
+
+ 1) Cammy and Chun Lee
+
+______________________________________________________________________________
+        __      ______  _        _  _   ______   _          _    _____
+       |   \   |  ____| \\      // | | |  ____| \ \        / / /  ____|
+       | O  |  | |__     \\    //  | | | |__     \ \  /\  / / |  /___
+       |   /   |  __|     \\  //   | | |  __|     \ \/  \/ /   \____ \
+       | |\ \  | |____     \\//    | | | |____     \  /\  /    _____| |
+       |_| \ \_|______|_____\/_____|_|_|______|_____\/__\/_____\_____/__
+            \___________________________________________________________|
+
+ _____________________
+////YOSHI'S SAFARI\\\\\      GRAPHICS: 6     GAME PLAY: 6
+\\\\ BY: NINTENDO /////         SOUND: 5           FUN: 6
+ ---------------------
+$39.95          SHOOTER              OVERALL: 5.75
+    SUPER NINTENDO
+
+   My GOD does this game suck!  Here is a good game for the young kids, but
+   for the teens...BLAH!  It has a beginner's challenge to it, which leaves
+   the many avid players sending it back to the store that actually had the
+   guts to sell it.  Man, the S.Scope 6 is in trouble (always was),  unless
+   someone does something FAST! 
+
+   You have the honor of riding on Yoshi's back, shooting your way through
+   a countless number of bad guys and enemies,  like Koopas,  Goombas, and
+   boss characters. You cannot control Yoshi's speed or direction, you just
+   get to jump every now and then...Well whoop-de-do! Besides that, you just
+   pull on that SS6 trigger and blast the enemies. I don't know about most,
+   but I beat this game the first time playing it.  The Scope has a turbo
+   button for god sakes, anyone could win!
+
+   The graphics weren't much to speak for. There's plenty of Mode 7 keeping
+   your moves steady and smooth. And the backgrounds were somewhat colorful
+   and they consist of some such as a beach, and an underworld forest.
+
+   The sound...zzzz.  Another bad part of the game.  All you hear is some
+   reward music between stages but during the actual game, all you hear is
+   your own gun and menacing sound effects.
+
+   This one is not recommended for anyone over the age of 11, or a gamer
+   with anything better than a beginner's level. NIntendo made a nasty no-
+   no with this one.  Luckily I only rented, and this shows that ever the
+   major video game giants can make big mistakes.
+
+______________________________________________________________________________
+ 
+ _____________________
+///ROAR OF THE WOLF\\\\  GRAPHICS: 9     GAME PLAY: 8
+\\\\\BY: SUNSOFT///////     SOUND: 8           FUN: 4
+ ---------------------
+$49.99          ACTION               OVERALL: 7.25
+        GENESIS
+
+   The first thing you notice when you turn on the power is that you are
+   captivated by the sights and sounds that appear on your TV, BUT that's
+   all you get to be enchanted about cause the fun sucks.
+
+   You play as the beast and you fight your way through your palace, a snow
+   covered forest, and across the rooftops for the final showdown with 
+   Gaston.
+
+   The game play is actually fairly straight forward. You move from one end
+   of the level to the other, killing all of the enemies you encounter
+   along the way. (Really, you do!) The Beast has a nice variety of moves
+   you can choose from, such as crouching attacks, or standing.  Easy to
+   control with a few tries.
+
+   The graphics truly stand out in front of anything else.  They capture
+   the feeling of the Disney classic, for sure. And the backgrounds are
+   incredible with lots of details and color.
+
+   The sound is pretty good with nice tunes and well done grunts, groans,
+   and growls of the Beast.
+
+   The fun of the game...well, it certainly leaves something to be desired.
+   It's the only flaw that's keeping the game from a VERY nice overall
+   score.  Great game for the experts in the family.
+
+______________________________________________________________________________
+
+
+ _____________________
+//////CYBERMORPH\\\\\\\      GRAPHICS: 7     GAME PLAY: 9
+\\\\\\\BY: ATARI///////         SOUND: 6           FUN: 7
+ ---------------------
+PACK-IN     SHOOT-EM-UP               OVERALL: 7.25
+       JAGUAR
+
+   I started playing this game, and am image came to me.  I saw Star Fox in
+   the back of my mind.  Like Star Fox, CyberMorph is a giant polygon flight
+   fest with lots of strategy and action.
+
+   CM is a space craft game where you are the pilot and you must collect
+   pods filled with scientific equipment scattered all over the galaxy. You
+   fly through 5 sectors with 8 planets to get them.
+
+   The polygon graphics are not striking, but beats the crap out of Star Fox
+   in a mean way. With Star Fox, you fly in one direction...forward. In CM,
+   you fly in ANY direction giving the illusion of a "spacious" environment.
+   The smooth, fluid control is an added plus..but hey, they keypad thing
+   feels awkward.
+
+   The game play requires a nice amount of strategy, dodging, mountains,
+   neutral enemies, and hostile space crafts, Again, very nice, smooth play.
+
+   The game includes a password option after each sector, but even that is
+   tough to accomplish because of the difficulty of the game.
+
+   CM's music and sound effects are neither excellent or awful. The cool
+   title track will help set the mood the most, but during the actual game
+   play all you get are bullets, explosions, and engine roars.
+
+   CM is certainly a challenging game, and if you love strategy shoot-em-up
+   style games, you may want to check into CyberMorph for the Atari Jaguar.
+
+______________________________________________________________________________
+
+
+ _____________________
+/////////DUNE\\\\\\\\\\      GRAPHICS: 8     GAME PLAY: 8
+\\\\\\BY: VIRGIN///////         SOUND: 8           FUN: 6
+ ---------------------
+$62.99        ADVENTURE               OVERALL: 7.5
+       SEGA CD
+
+   Using a 1st person perspective you play as Paul Atreides.  The Emperor
+   has sent you and your family to the planet Arrakis (aka Dune) to mine
+   spice. With the magical powers of the spice, whoever controls the spice
+   can control the world!
+
+   The Harkonnens (evil guys) are also on the planet mining the spice. Your
+   job is to fight these men for control of Dune and help the Fremen
+   achieve their dream of turning Dune into a flourishing planet.
+
+   The action in this game is very low. With little confrontation you can
+   easily collect vital supplies and finish your mission.
+   
+   The graphics of Dune are something to see. The 3d sequences stand out
+   giving great cinematic sequences and hot textured mapping.
+
+   The sound effects and music are very good too, as they are with most
+   CD games. The music sound track has a nice variety and mixes with the
+   action well. Speech helps bring life to the game, but sounds off beat
+   at times with common words.
+
+   At times, you may end up falling asleep during the game while the game
+   unfolds.
+
+   All Virgin brought to this game was graphics and sound...the fun is not
+   great, but not too bad, either.
+
+______________________________________________________________________________
+
+
+ _____________________
+///////CLAYMATES\\\\\\\      GRAPHICS: 8     GAME PLAY: 8
+\\\\\BY: INTERPLAY/////         SOUND: 8           FUN: 8
+ ---------------------
+$ N/A            ACTION               OVERALL: 8
+       SUPER NES
+
+   Claymates is a unique sidescroller from Interplay that is quite easy to
+   get used to. Like Clay Fighter, Claymates uses actual claymation. You
+   start out as a ball of clay, and as you find other colored balls of
+   clay you turn into one of the five animals which include a mouse, cat,
+   fish, bird, and a gopher. Each animal has his own weapons and weaknesses.
+
+   The graphics are impressive at times furing the game...certainly
+   something to experience for yourself. The game is 5 levels long and they
+   are somewhat challenging. The drawback in the graphics are the back-
+   grounds. Nothing special about them. They are really basic looking.
+
+   Claymates has fun music and sound effects but I started to go a nuts
+   listening to repetitive kiddie music after a while.
+
+   Besides the backgrounds and annoying-at-times music, the game has a
+   nice future for it. You can move with reasonable agility, but the jumps
+   aren't always on target like you'd hope. Luckily for ya there are un-
+   limited continues.
+
+   The game was made with the younger gamers in mind, but Interplay does
+   not lack a good challenge. You'll find Claymates fun to play, but don't
+   expect any eye opening graphics or new programming tricks. Certainly a
+   game to rent. I'm glad I didn't buy it, to be honest.
+
+
+______________________________________________________________________________
+
+
+  ____________________
+ /WWF RAGE IN THE CAGE\      GRAPHICS: 8     GAME PLAY: 8
+ \\\\\\\\ARENA/////////         SOUND: 9           FUN: 8
+  --------------------
+$ N/A            SPORTS               OVERALL: 8.25
+        SEGA CD
+
+   Acclaim is the first company to produce a wrestling game for the Sega
+   CD. The game can be very fun if you don't mind waiting for the match to
+   start.
+
+   Basically the idea is the same as it is with any other wrestling game;
+   kick the crap out of your opponent or BE kicked. The game is very
+   similar to the SNES Royal Rumble cart. The Sega CD game gives you a
+   selection of 20 wrestlers, all with their unique finishing moves. The
+   graphics look basically the same as the cart versions, but the added
+   twist is the Full Motion Video clips.
+
+   The sound is something all video game wrestling fans have been waiting
+   for. The CD contains the theme music of each included wrestler and the
+   bumps and thuds are cool too.
+
+   If you own a previous WWF wrestling game, the controls may seem
+   familiar. But if you are new to wrestling games, hope you game some
+   extra time to practice cuz you'll need it if you want to win. A six-
+   button controller will help.
+
+   If you've played other wrestling games, there is nothing super-
+   different or noteworthy to pass on to you because it's basically the
+   same as the rest, only improved sound.
+
+   The major drawback in the game for me was the long pauses and frequent
+   breaks in the game. Isn't it typical for a Sega CD game? One good thing
+   is the option to wrestle ina  steel cage...can you reach the outside
+   before your opponent?
+
+------------------------------------------------------------------------------
+
+                            SUPER EFFECTS WRAP-UP!
+
+   I'd like to thank Mike for giving me this space to wrap up everything
+   happening in Super Effects, my old fanzine being taken over by GAME
+   GURU, with was a mailed-out fanzine.
+
+   To start off I am going to make it clear how immature Sean Pettibone is,
+   no matter how cool some think he is, or how much you like him. Remember,
+   this is MY editorial, and Mike or any other Game Guru staff member has
+   nothing to do with this article and what I may say.
+
+   Pettibone, like I said, you are obviously immature when it comes to
+   confrontation. Junk mail like you's sent means nothing, as did any of
+   your letters. You ant nothing more than the last word in ANY situation
+   and you think you are macho to try and get away with it. Not gonna work
+   sweetie.  I don't get mad OR EVEN, I just print it the way I see it. You
+   said so yourself to Mike that trying to get under everyone's skin is 
+   your goal, it's what you always do.  Well, see, that's where you're only
+   fooling yourself because you can send all the junk mail you want, all the
+   bad reviews you want and you simply CANNOT even begin to annoy any of us
+   because we know that's what you are purposely trying to do.  Nice try,
+   but you lose. Contrary to anything you think, Super Effects was a VERY
+   respected fanzine, as will Game Guru. 'Nuff said. I wouldn't complain
+   how boring you think SE#3 was cause your last fanzine was a real snoozer
+   too, to say the least.  And some others I showed the zine to thought the
+   same thing.  It's obviously not as great as you think it is.
+
+   I hear you've been trying to call me, honey.  Sorry, but I'm having an
+   affair with the milkman. Hope this doesn't hurt our relationship.
+
+   Mike run S.E? Hehe, good one P-bone. It was 50/50 down the middle for
+   issue #3. Other than that, I was running it. Chow darling, it was fun.
+   Have a splendid life, and get help for that bed wetting problem (Strange 
+   how YOU have these kinds of fliers).
+
+   Ha, and as for your claim to me taking info from magazines, yawwwn.
+   We've said all along it's all from our computer connections to Nintendo
+   IBM, AOL, Prodigy, and others. You are not one to talk about drawings
+   from magazines, because your own fanzine is FILLED with them.  That's the
+   biggest contradiction I've heard from you, and the longest one I've
+   laughed at.  In my book, YOU aren't 'for real' because you are a joke.
+   Gee are we sexist, Sean? LOTS of other fanzines print FACTUAL information
+   rather than just opinion articles.  What point is there to only TRY to
+   annoy me and no one else ever hears from you?  Like I said, the only thing
+   you are good for is a laugh. Love the way you tried to annoy me, but
+   unfortunate for you, you FAILED.
+
+   All questions unanswered for TUNE-UP have been asked in the interview
+   conducted by MIke with out Nintendo Man,  All other mail has been
+   answered privately through U.S. Mail. (TONS of letters!)
+
+   (Sigh) Well, I can't think of too much else to say right now that I
+   haven't covered in the last issue of Super Effects. I hope you all made
+   SOME use out of the Game Genie codes brought to you by Galoob.  Adios
+   people (and Sean)!
+
+______________________________________________________________________________
+
+DID YOU KNOW....
+
+- The reason the shape of the SNES           - One out of 15,000 video gamers
+  carts changed was so that the                show AT LEAST ONE sign of 
+  Game Genie "could not be used                epileptic seizure during game
+  properly?"                                   play?
+
+- Atari is suing Sega for program-           - The Jaguar's limited release
+  ming infringing on some horizon-             was more like a meow than a 
+  tal scrolling techniques Atari               mighty roar? (Ed note:Not true)
+  patented?
+                                             - Vanna White, Cindy Crawford,
+- The Jaguar is outselling the 3DO             and Christina Applegate have
+  almost 10:1?                                 X-rated GIFs circulating the
+                                               U.S?
+
+______________________________________________________________________________
+
+NINTENDO TAKES A RUN FOR THE BOARDER
+
+Nintendo fo America said it will lay off 136 workers,
+close manufacturing operations here and move hardware
+and software production for the Latin American markets
+to Mexico.
+
+In a press release, the company said Latin American
+markets have grown rapidly and the best way to serve
+those areas is to transfer manufacturing to Mexico.
+
+The company said it would have made the move even without
+NAFTA. The layoffs represent about 9% of Nintendo's 1,500
+employees in it's U.S. headquarters.
+______________________________________________________________________________
+
+SEGA TEAMS WITH MICROSOFT
+
+The Wall Street Journal reported that Sega said Microsoft will develop
+software for its next-generation game machines, an alliance bringing closer
+to reality the much heralded convergence of personal computers and video
+game machines.
+
+Microsoft will develop an original operating system for Saturn. Operating
+systems control the basic functions of computers, making them easier to use
+and to program by providing a layer of user-friendly commands between a
+computer's hardware and the user.
+
+Adding an OS to the Saturn may make it easier for game developers to write
+software for the machine. it also might give the Saturn a ability to serve
+as a so-called set-top box, a piece of hardware that someday may serve as a
+control for suchmultimedia functions as interactive television.
+
+The new alliance could pose longer-term risks for Sega. By allowing Micro-
+soft to control its operating system, Sega may be opening the door to
+erosion of its proprietary game-hardware standard; the main source of its
+huge profits.
+
+______________________________________________________________________________
+
+                              ---QUICK PICKS---
+                                 -Matt Lucas
+
+Hi, I'm Matt Lucas. Some of you may remember me from Super Effects. I used
+to write game reviews for the fanzine before it got canned. Well, now that
+the fanzine is totally different, I'm turning over a new leaf and am going
+to write even more! So that means you'll all get a double, maybe even a
+triple dose of me, Matt!  Well, this is my new opinion column. Here I will
+give you my top five video game picks to do well, and to suck. You don't have
+to agree, just read it. So here we go...
+
+                              FUTURE GOOD GAMES
+
+
+1. MEGA MAN X -(SNES)
+   This game will be one of the best games of '94. Mega man is finally brought
+to the beautiful world of 16-bit. being that this is Mega Man's first 16-bit 
+adventure, it will draw immense curiosity. Video game fans of all ages will
+love it. Great graphics, action and all new story line will make this game a
+must get, and a best seller!
+
+2. SONIC 3 -(Genesis)
+   Another chapter is added to the Sonic saga. In this one, the story is
+basically the same as number one and two. But Sonic has a new look in this
+installment. The new look makes him much more 3-dimensional and gives him and
+Tails more animations. The backgrounds are improved also. This one's a lot more
+faster and fun, so like it or not, Sonic's back again in his 3rd adventure,
+(aside from Sonic Spinball) and it will do very well.
+
+3. DRAGON'S LAIR -(Sega CD)
+   If you loved Dirk's world in the arcades years ago, you're going to love
+this one even more! Believe it or not, the new Sega CD version could be even
+better than the old laser disc classic! Everything has been translated
+exactly. No more long pauses between scenes in this one, Sega has drastically
+reduced all the problems you could possibly think of. Good job Sega!
+
+4. WWF RAGE IN THE CAGE -(Sega CD)
+   We have another Sega CD game on picks! When you first look at the action on
+this game, it looks like an exact replica of WWF Royal Rumble, but it's not
+at all!  It has excellent video animation screens and the action is even
+faster! it's very realistic too. For instance, you can't bodyslam Yokozuna.
+WWf fans aren't the only one's who'll make this one great!
+
+5. SUPER METROID- (SNES)
+   Even though very little is known about the future SNES megahit, Mike's
+friend Roger at Nintendo has told us a lot! And by the sound of it, this will
+literally be the biggest SNES game yet. it's going to be 24 megs. We'll keep
+you posted, so stay tuned!
+
+
+                              FUTURE SUCK GAMES
+
+
+1. CLAYMATES -(SNES)
+   This game is just plain stupid! Stupid story, stupid...everything! The
+graphics are good, and that's it. If you thought Clay Fighter sucked...
+nevermind. Bad job by Interplay!
+
+2. GOOFY'S HYSTERICAL HISTORY TOUR -(Genesis)
+   They got one thing right, it's goofy! I mean, what the Hell is this? He's
+a janitor in a museum and he's got to clean stuff.  Wow, fun.  Only stupid
+who buy games for the names will want this one.
+
+3. BRAM STOKER'S DRACULA -(Sega CD)
+   The movie sucked except for a couple parts, but this whole game bites! The
+only good thing about this is the occasional video animation screens, but
+that's not enough to excuse the rest of the game. I don't think that Bram
+Stoker would've wanted to make this a video game, I didn't.
+
+4. THE INCREDIBLE CRASH DUMMIES -(Genesis)
+   Another thing that shouldn't have been made into a video game. Just look
+for yourselves! The cinema screens aren't good either.
+
+5. MARIO'S TIME MACHINE -(SNES)
+   This game's a major suck-a-thon! If you're older than 8, you'll hate it.
+This will do very poorly, for it's very repetitious. If you want to learn
+something, get this game.
+
+______________________________________________________________________________
+
+SUBSCRIPTION INFORMATION:
+   GAME GURU is published whenever I feel like making it and sending it. GAME
+   GURU is absolutely free of charge, but you MAY be charged for the download
+   time onto your computer, depending on the service you are downloading from.
+   The average distribution of GAME GURU is one issue every other month. No
+   guarantees.
+
+NOTICE:
+   GAME GURU- copyright 1994 by Michael Hrusecky.  All Right Reserved.  All
+   systems, names, games, etc. are property of their respective copyrights and
+   companies are are not necessarily associated with GAME GURU.  GURU articles
+   are the opinions of their respective author and have no connection with the
+   opinions of other GURU staff members, or companies mentioned herein.
+
+   GAME GURU is compressed using PKZIP and MAY contain more than one file when
+   decompressed.  Any version of PKUNZIP will "inflate" all of GAME GURU's
+   files, which use the ASCII format.
+
+   A printed form of GAME GURU is NOT currently available.
+
+   ____       _____       ________     _________
+ / ____ \   /       \   /  _    _  \  |  _______|
+| |    |_| |   ___   | |  | |  | |  | | |     
+| |   ___  |  |___|  | |  | |  | |  | |  ---,
+| |  |_  | |   ___   | |  | |  | |  | |  ---'
+| |____| | |  |   |  | |  | |  | |  | | |_______
+ \______/  |__|   |__| |__| |__| |__| |_________|
+                                                
+                            ____     __    __   _____      __    __
+                          / ____ \  |  |  |  | |  __  \   |  |  |  |
+                         | |    |_| |  |  |  | | |  |  |  |  |  |  |
+                         | |   ___  |  |  |  | | |__| /   |  |  |  |
+                         | |  |_  | |  |  |  | |   _  \   |  |  |  |
+                         | |____| | |  |__|  | |  | \  \  |  |__|  |
+                          \______/   \______/  |__|  \__\  \______/
+
+                                    (c) 1994. All Rights Reserved.

@@ -1,0 +1,187 @@
+
+           The Complete NetHack Acronym and Abbreviation List
+          ====================================================
+
+          originally by Satoshi Asami (asami@cs.berkeley.edu),
+      with some additions by Boudewijn Wayers (kroisos@win.tue.nl)
+          and a lot by Adam Dawes (Adam@beachyhd.demon.co.uk).
+
+
+Nethack, being the addictive game that it is, obviously leaves the player
+vastly less time to write messages for newsgroups than he would otherwise
+have. As a result of this, the rec.games.roguelike.nethack newsgroup is
+full of cryptic looking acronyms and abbreviations.
+
+This spoiler contains a list of all the more popular (and some of the less
+popular) acronyms that you might find on your journey through the
+newsgroup.
+
+The following convention has become popular amongst many of the
+rec.games.roguelike.nethack inhabitants for abbreviations: the symbol used
+within the game to represent the object proceeds the abbreviation to make
+things clearer. So for example, a potion of confusion would be abbreviated
+to "!PoC". Also, a lowercase 'b' or 'c' may sometimes be added to the start
+to indicate blessed/cursed status. For example, 'b?SoG' might be used to
+indicate a blessed scroll of genocide.
+
+Good luck!
+
+
+IMHO            In My Humble Opinion
+IMNSHO          In my Not-So Humble Opinion
+YAAD            Yet Another Annoying Death
+YAFM            Yet Another Funny Message
+YASD            Yet Another Stupid Death
+YASM            Yet Another Stupid Move or Yet Another Strange Message
+YKYBPTMNW...    You Know You've Been Playing Too Much Nethack When...
+
+@WoY            Wizard of Yendor
+
+!PoB            Potion of Blindness or Potion of Booze
+!PoC            Potion of Confusion
+!PoE            Potion of Enlightenment
+!PoEH           Potion of Extra Healing
+!PoFJ           Potion of Fruit Juice
+!PoGA           Potion of Gain Ability
+!PoGE           Potion of Gain Energy
+!PoGL           Potion of Gain Level
+!PoH            Potion of Hallucination of Potion of Healing
+!PoHW           Potion of Holy Water
+!PoI            Potion of Invisibility
+!PoL            Potion of Levitation
+!PoMD           Potion of Monster Detection
+!PoOD           Potion of Object Detection
+!PoP            Potion of Paralysis
+!PoRA           Potion of Restore Ability
+!PoS            Potion of Sickness or Potion of Speed
+!PoSI           Potion of See Invisible
+!PoUW           Potion of Unholy Water
+!PoW            Potion of Water
+
+"AoC            Amulet of Change
+"AoE            Amulet of ESP
+"AoESP          Amulet of ESP
+"AoLS           Amulet of Life Saving
+"AoMB           Amulet of Magical Breathing
+"AoR            Amulet of Reflection
+"AoRS           Amulet of Restful Sleep
+"AoS            Amulet of Strangulation
+"AoY            Amulet of Yendor
+"AvP            Amulet versus Poison
+"EotA           Eye of the Aethiopica
+
+(BoH            Bag of Holding
+(BoO            Bell of Opening
+(BoT            Bag of Tricks
+(CoI            Candelabrum of Invocation
+(HoP            Horn of Plenty
+(MKoT           Master Key of Thievery
+(ML             Magic Lamp
+(MM             Magic Marker
+(MMoM           Magic Mirror of Merlin
+(MW             Magic Whistle
+(OoD            Orb of Detection
+(OoF            Orb of Fate
+(PYEC           Platinum Yendorian Express Card
+(PoW            Palantir of Westernesse
+(UH             Unicorn Horn
+
++BotD           Book of the Dead
+
+/WoC            Wand of Cancellation or Wand of Cold
+/WoCM           Wand of Create Monster
+/WoD            Wand of Death or Wand of Digging
+/WoF            Wand of Fire
+/WoL            Wand of Light or Wand of Lightning or Wand of Locking
+/WoMI           Wand of Make Invisible
+/WoMM           Wand of Magic Missile
+/WoN            Wand of Nothing
+/WoO            Wand of Opening
+/WoP            Wand of Polymorph or Wand of Probing
+/WoS            Wand of Sleep or Wand of Striking
+/WoSDD          Wand of Secret Door Detection
+/WoSM           Wand of Slow Monster or Wand of Speed Monster
+/WoT            Wand of Teleportation
+/WoUT           Wand of Undead Turning
+/WoW            Wand of Wishing
+
+=RoA            Ring of Adornment
+=RoAM           Ring of Aggravate Monster
+=RoC            Ring of Conflict
+=RoCR           Ring of Cold Resistance
+=RoFR           Ring of Fire Resistance
+=RoGS           Ring of Gain Strength
+=RoH            Ring of Hunger
+=RoI            Ring of Invisibility
+=RoID           Ring of Increase Damage
+=RoL            Ring of Levitation
+=RoP            Ring of Polymorph or Ring of Protection
+=RoPC           Ring of Polymorph Control
+=RoPR           Ring of Poison Resistance
+=RoPSC          Ring of Protection from Shape Changers
+=RoR            Ring of Regeneration
+=RoS            Ring of Searching or Ring of Stealth
+=RoSI           Ring of See Invisible
+=RoSR           Ring of Shock Resistance
+=RoT            Ring of Teleportation
+=RoTC           Ring of Teleport Control
+=RoW            Ring of Warning
+
+?SoA            Scroll of Amnesia
+?SoBP           Scroll of Blank Paper
+?SoC            Scroll of Charging
+?SoCM           Scroll of Confuse Monster or Scroll of Create Monster
+?SoDA           Scroll of Destroy Armour
+?SoEA           Scroll of Enchant Armour
+?SoEW           Scroll of Enchant Weapon
+?SoF            Scroll of Fire
+?SoFD           Scroll of Food Detection
+?SoG            Scroll of Genocide
+?SoGD           Scroll of Gold Detection
+?SoI            Scroll of Identify
+?SoL            Scroll of Light
+?SoMM           Scroll of Magic Mapping
+?SoP            Scroll of Punishment
+?SoRC           Scroll of Remove Curse
+?SoSM           Scroll of Scare Monster
+?SoT            Scroll of Teleportation or Scroll of Taming
+
+[BDSM           Black Dragon Scale Mail (or Blue Dragon Scale Mail)
+[BoL            Levitation Boots (Boots of Levitation)
+[BoS            Speed Boots (Boots of Speed)
+[BoWW           Water Walking Boots (Boots of Water Walking)
+[CoD            Cloak of Displacement
+[CoI            Cloak of Invisibility
+[CoMR           Cloak of Magic Resistance
+[CoP            Cloak of Protection
+[DMC            Dwarvish Mithril Coat
+[EC             Elven Cloak
+[EMC            Elven Mithril Coat
+[GDSM           Gray Dragon Scale Mail
+[GoD            Gauntlets of Dexterity
+[GoF            Gauntlets of Fumbling
+[GoP            Gauntlets of Power
+[HoB            Helm of Brilliance
+[HoOA           Helm of Opposite Alignment
+[HoT            Helm of Telepathy
+[MoH            Mitre of Holiness
+[SoR            Shield of Reflection
+
+*HoA            Heart of Ahriman
+*LS             LuckStone
+
+)SoA            Staff of Aesculapius
+)SoM            Sceptre of Might
+)ToM            Tsurugi of Muramasa
+
+
+Some other abbreviations that pop up from time to time:
+
+ESP             Extra-Sensory Perception
+EoB             Envoy of Balance
+GoA             Glory of Antioch
+HoE             Hand of Elbereth
+Mojo            Mjollnir
+Vorpy           Vorpal Blade
+WW              Water Walking
+

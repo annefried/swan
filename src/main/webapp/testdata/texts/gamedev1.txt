@@ -1,0 +1,266 @@
+This article was published as:
+
+"Alternative Marketing Methods:
+ Self-Publishing via Shareware and Low-Cost Retail"
+ Proceedings of the Eight Annual Computer Game Developers Conference
+ Apr. 1994
+
+Note: Some of the information in this article is old and out of date.
+
+
+                    Alternative Marketing Methods:
+          Self-publishing via Shareware and Low-Cost Retail
+                     copyright 1994 Diana Gruber
+
+So you want to be a game developer? Don't we all. Believe me, it's a
+rough business. You invest your youth and energy, you stay up all
+night programming, and you pour your heart into your creation, all
+the while hoping someday it will pay off.
+
+The problem is, while perfecting your game, and concentrating on
+every detail of optimizing your code and making your game beautiful
+and fun to play, you neglected to formulate a business plan. You
+don't know how to sell your game after you finish writing it. What do
+you do now? Do you pitch your game to a big publishing company and
+hope for the best? Do you send copies to hundreds of publishers and
+hope one of them will find it acceptable? Do you wait for weeks by
+your mailbox collecting rejection notices?
+
+I am here to tell you there is another way. You can self-publish your
+game. Self-publishing is not only within the realm of possibility, it
+is, an excellent idea. Many authors have found self-publishing games
+to be not only profitable in the long term, but highly satisfying. It
+makes you feel good to be your own boss, to control the destiny of
+your program, to make decisions yourself, and to gain respect in the
+industry as you grow and promote your products and yourself. With a
+little insight into the dynamics of the industry, it is possible to
+earn a living on games without surrendering your program to one of
+the big game publishers. It is possible to market your games
+yourself.
+
+The first, most obvious, way to self-market games is through
+shareware.  In the beginning, it was not believed that shareware was
+a viable channel for marketing games. A few of the early popular
+games did well, such as Nels Anderson's Mahjongg, but without strong
+registration incentives, most games were played and discarded without
+generating much income for the authors. That all changed when Scott
+Miller of Apogee Software invented the trilogy concept of shareware
+games. In this genre, a game, usually an adventure-arcade game, is
+broken up into "episodes". An episode typically contains about 10
+levels. The first episode is freely distributed via shareware
+channels, and the player is required to send in money to get the
+other two episodes. Scott Miller has parlayed this idea into a
+multi-million dollar company.
+
+Other registration incentives have also been tried with Apogee games.
+Cheat codes are made available in the registered versions, but not
+documented in the shareware versions. Time delays between levels also
+improve registration rates. As Scott pioneered shareware registration
+incentive techniques, other companies have followed suit with similar
+schemes.
+
+Besides registration incentives, massive distribution is necessary
+for a shareware game to be a success. The best way to ensure massive
+distribution is to have an excellent game. If your game is really
+good, your users will distribute it for you. They will upload it to
+bulletin boards, give it to their friends, pass it out at user group
+meetings, etc. Shareware vendors supplement the efforts of users to
+distribute your software. There are many kinds of shareware vendors,
+and they distribute in many channels. Some publish catalogs, some
+distribute via on-disk catalogs, some sell on CD-ROMs, and some sell
+on racks in stores. Shareware vendors are always trying to think of
+new ways to sell shareware, and you will sometimes hear of shareware
+vending machines, shareware pre-installed on new computers, magazine
+cover disks, etc. As you can see, there is no shortage of
+distribution for shareware. All distribution is not equal, though,
+and we will discuss some of the controversy surrounding the various
+distribution methods in a few minutes.
+
+When designing a shareware game, think about your audience. First of
+all, you want your users to be able to play your game right away. If
+it takes them more than 5 minutes to figure it out and get started,
+they will give up and delete it. Second, your game must be addicting.
+You want them to start playing right away, and keep playing for
+hours. In some ways, this is a rougher standard than a retail game.
+When a customer buys a retail game, they have already invested money
+in it, and they are going to take a little longer to understand the
+game and learn to play it. When they are downloading a shareware
+game, they are evaluating it, and deciding not only whether they want
+to invest more money in it, but whether they want to invest more time
+in it. With the retail game, since the money is already invested, the
+time investment is a given.
+
+It is very important these days for a shareware game to have good
+graphics. While 16-color graphics are acceptable, they will not sell
+as well as 256-color graphics. Good art is important. Good music and
+sound effects, and sound card support are also important. Shareware,
+like retail, is a competitive market. If you want your program to be
+noticed, you must make it stand out.
+
+It is less important that a shareware game run on all platforms.
+Shareware allows plenty of room for innovation. If you want to write
+a game that supports only 1 meg SVGA cards and requires 8 meg of RAM,
+you can get away with it in shareware. You will have a smaller
+audience, but you will have an audience. It is more difficult to sell
+a game with restrictive hardware requirements to a publisher.
+Publishers have their own in-house standards, and will require that
+your game must be able to run on their chosen subset of computer
+hardware. With shareware, you have the freedom to experiment,
+understanding that you also have the freedom to fail.
+
+Traditional shareware is only one way to self-publish your games. In
+recent years we have seen the emergence of rack vendors and "Low Cost
+Retail" (LCR) vendors. These are distribution outfits that will take
+your game and put it in various chain stores at a low price and give
+you a small royalty. When I say small, I mean the typical royalty
+will range from 10 cents to 60 cents per disk. It doesn't sound
+like much, but the distribution is massive, and authors are reporting
+getting excellent royalty checks from LCR vendors.
+
+The primary difference between a LCR vendor and a traditional retail
+publisher is the LCR vendor is not involved in the development of the
+program. The LCR vendor collects submissions from authors, usually
+shareware authors, and builds a product line of 2 dozen to 4 dozen
+titles. These are then placed in stores and distributed through
+several channels. The goal is to get as many titles as possible in as
+many stores as possible, and this method of distribution is becoming 
+increasingly effective.
+
+Another difference between LCR vendors and game publishers is the
+ownership of the program. With LCR vending, the programmer retains
+ownership of all the copyrights and trademarks. This works in the
+author's favor, as a game can be re-released in the future. The shelf
+life of a typical retail game is 6 months to 2 years, but an LCR game
+can continue producing income indefinitely.
+
+LCR contracts vary. Products can be shareware or non-shareware,
+exclusive or non-exclusive. Non-shareware, exclusive titles generate
+the highest royalties, non-exclusive shareware titles typically
+generate royalties in the range of 10 cents per disk.
+
+A list of some of my favorite royalty-paying rack vendors is included
+at the end of this article. If you want to submit your program to 
+LCR vendors, I suggest you study the list and contact as many of them
+as possible. Try to find LCR vendors that are appropriate to your
+product. 
+
+When designing your game, keep in mind the differences between an LCR
+product and a shareware product. The LCR customer, unlike the shareware
+user, is an impulse buyer. He is not interested in evaluating a
+product before buying it, he is interested in throwing a box in a
+shopping cart. He is more likely to buy a title that he quickly
+recognizes. In my case, I have found that solitaire card games and
+simple gambling games like slot machines sell well on the racks. Most
+impulse buyers recognize these games and won't hesitate to buy them
+for themselves, or perhaps for members of their families. Adventure
+games, puzzle games, and arcade games also sell well, but the more
+esoteric a game is, the smaller the audience it will attract.
+
+LCR games sell best when there is a screen shot of the game on the
+box. Design your games with excellent graphics, because the LCR
+vendor is going to want screen shots. It is one of the most important
+selling points of an LCR game.
+
+LCR games should not require printed manuals. They should be easy to
+play using only the online help. If your game requires a manual, you
+should either go straight retail, or you should stick with shareware.
+A printed manual is generally acknowledged to be an excellent
+registration incentive for a shareware product. Likewise, technical
+support will kill an LCR product. When you are selling a game in the
+$6 range, you are not allowing any money to cover technical support
+costs. If your game needs technical support, release it as shareware
+and make the technical support a registration incentive. Hints and
+cheats are an excellent way to get a player to register, especially
+if they are stuck half way through the 9th level of a 10 level game.
+Give them an 800 number to call to register the game, and when they
+register, tell them how to beat the level.
+
+LCR racks consist of exclusive and non-exclusive titles that are not
+shareware. That means, the author can not demand additional payment
+from the users who have bought the game in a store. However, you can
+still make money on after sales of related games. "If you liked
+Ping Pong, you are going to love Table Tennis Deluxe". Include a plug
+for your other games in your exit screen, or write a small on-disk
+catalog with a printable order form. Think in terms of maximizing
+your sales in all channels simultaneously.
+
+Since exclusive games generate the best royalties, write lots of
+these. Design your games in such a way that you can create multiple
+exclusive titles. If your game has levels, you can put 10 levels on
+one rack, and another 10 levels on a different rack. You can change
+the title and change the artwork and recycle the code to maximize
+rack coverage. Also popular are "game packs". If I write 6 solitaire
+card games, I can put 3 on one rack, and 3 on another rack, and then
+mix together one from each rack plus a new game for a third rack. The
+more games you have, the more room you have for this kind of
+marketing.
+
+Be careful with exclusive contracts. Insist on a performance
+guarantee. If a game doesn't sell, reserve the right to take it to a
+different vendor. Otherwise, an LCR vendor can tie up your game in a
+non-productive exclusive contract for years. If possible, reserve the
+right to market a program via shareware simultaneously with the LCR
+distribution. If the LCR vendor insists on no shareware version, then
+he should pay you a higher royalty. Keep in mind, whenever you give
+something away, you should get something in return.  If you sign an
+exclusive contract, you deserve an advance against royalties. Do not
+sign away a right of first refusal on future program unless the
+vendor gives you a very, very large advance. If the vendor does not
+want to pay you an advance, then reserve the right to release the
+program in some other channel.
+
+Non-royalty shareware racks still exist, and some authors find them
+profitable. Some authors have programs which are so hot, they want
+any kind of distribution they can get, and will place their games on
+any kind of rack and CD-ROM. That works for some authors, but it
+doesn't work for all of us. Many authors report that their
+registration rates from non-royalty racks are as low as 1 in 3000, or
+even worse. The problem seems to be, when people buy software in
+stores, they are not in the habit of paying more money for it. It is
+less confusing to the public if they can buy the game outright and
+not owe additional money to the author. However, this issue is still
+the subject of much controversy, and results will vary for different
+companies and different games. It is best to go into this kind of
+situation with your eyes open, and study the issues before allowing
+distribution of your shareware program on non-royalty shareware
+racks.
+
+The CD-ROM market is also controversial. Some CD-ROM manufacturers
+put a dozen or so carefully-chosen games on a disk and pay a small
+royalty to the authors. Authors report being pleased with the
+results. They report being less pleased with CD-ROMs that contain a
+"gigabyte of shareware", or hundreds of titles downloaded
+indiscriminately from bulletin boards without regard to author
+distribution requirements, current version numbers, hacks or viruses.
+This type of CD-ROM is less effective at generating registrations for
+the author because individual programs tend to get lost in the huge
+volume of software available. Also, the trilogy method doesn't work
+well when there are so many games available. Instead of registering
+to get episode 2 of Commander Keen, the user will simply start
+playing episode 1 of Duke Nukum, for example.
+
+License agreements are very important for shareware programs. When
+you release a program, it will stay released. There is no way to call
+back a program once the shareware distribution has been started.
+Therefore, it is important that you get the license agreement right
+from the beginning. Do not give away any rights that may later be
+valuable to you. In particular, do not give blanket permission for
+shareware vendors to distribute your program. Require that vendors
+get written permission before distributing in stores. In general, you
+do not want shareware vendors to sell a non-royalty shareware version
+that will compete in the same store with your royalty LCR version.
+To avoid this kind of situation, take care to reserve your rights. If
+you have questions about copyrights and distribution restrictions,
+talk to a knowledgeable attorney.
+
+In conclusion, self-publishing games through shareware and low cost
+retail is profitable and satisfying, but requires a thorough
+understanding of the market to be successful. There is room for
+innovation, and there is also potential for disaster. Your program is
+valuable, and deserves to be marketed in an optimal manner. Design
+your program to fit your marketing strategy, and choose a marketing
+channel that fits your program. Protect your rights, study what the
+other authors are doing, and talk to as many vendors as possible.
+Good luck!
+
+

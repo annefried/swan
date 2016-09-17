@@ -1,0 +1,69 @@
+Wizardry 7 character editor written by:  Huy Nguyen
+                                         6826 Roos
+                                         Houston, TX 77074
+
+Here it is! after much sleepness nights and trial and error testing,
+this is the final version of the Wizardry 7 character editor.  It allows
+modification of all the vital stats as well as inventory editing.
+
+The command-line invocation of the program is:  "w7edit filespec character"
+where "w7edit" is the name of the program, "filespec" is the filespec of
+the Wizardry 7 savefile, and "character" is the name of the character to
+edit.  Within the program, these commands are valid:
+
+1) save - saves the current savefile to disk; it replaces the file which
+          was initially loaded
+2) quit - exit without saving; all changes will be lost
+3) items - changes to the screen that allows inventory editing
+4) stats - changes to the screen that allows editing of vital stats
+5) to edit another character, enter the character name preceded by the ~ sign;
+   NOTE: the editor assumes the the character name is unique; if the
+         character name is not unique (i.e. - there is a similar substring
+         in the savefile), then you may be editing the wrong part of the
+         file (and hosing up your savefile)
+
+In the stats editing screen, enter the number corresponding to the statistics
+to modify; then, enter the new value for the statistics; I don't suggest that
+you push the statistics beyond the maximum specified in the play guide since
+I don't know the effect of such a high statistics; this means don't give
+yourself 255 strength or 255 sword skill;
+
+In the inventory editing screen, enter the number corresponding to the
+slot that you want to give yourself a new item, and then enter the number
+corresponding to the new item; you can also modify the count/charge of an
+item by entering the appropriate number; after you give yourself a new
+item, load the savefile into Wizardry 7; as soon as you load the new
+savefile, immediately drop the new item, and then pick it up again; this
+will will restore all the attributes to the item (so a sword looks like
+a sword and not a dagger); after this, you have to assay the item in order
+to recognize it; the only thing this doesn't do is set the count/charge of
+an item (if an item has magical power or can be merged); you have to set this
+via the count/charge stat in the character editor; if you don't set the
+count/charge for an item, it will be set to 0 by the editor; for magical
+items (potions, magical weapons, etc.), if the count/charge is 0, then
+you will have infinte charge on that item; if you give yourself a healing
+potion and leave the count at 0, that potion will last forever; if you give
+yourself a magical item/weapon and the count/charge is 0, then that
+item/weapon will have infinite charge; if an item is not magical
+(you can usually identify this by the identify spell), and you give it a
+nonzero count/charge, you will get strange results; that is, you can
+give yourself 10 halberds but this is not normal since you cannot merge
+2 halberds to get 2 halberds; again, I don't know the effect of something
+like this, so experiment at your own risk.
+
+
+
+DISCLAIMER: while this program has been throroughly tested, I cannot
+            guarantee it to be 100% error free; use of this program is
+            at your own risk (this means make a backup of your savefile
+            before you modify it).
+
+
+This program is public domain so you may use and distribute it without
+any registration fee; however, this file must always be distributed with
+the .EXE; while I do not require you to register this program, if you
+are feeling generous and/or want to reward all my hard work, you may
+send a little fee to the above address; it may help "persuade" me to
+work on editors for other games.
+
+

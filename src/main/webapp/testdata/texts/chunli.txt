@@ -1,0 +1,720 @@
+Newsgroups: rec.games.video
+From: rich@grebyn.com (Richard Lawrence)
+Subject: Complete Chun Li Strategy Guide: SNES SFII
+Message-ID: <1993Jan1.091240.23839@grebyn.com>
+Organization: Grebyn Timesharing
+Date: Fri, 1 Jan 1993 09:12:40 GMT
+Lines: 697
+
+This is a long posting. If you are interested, you will want to save it
+to a file for viewing ( "s <filename>" in most readers).
+
+The following is my complete strategy guide to playing Chun Li on SNES
+SFII. Hope it helps some of you out. Email addresses are at the bottom
+if you have comments.
+
+
+       The Indispensable Chun Li Strategy Guide for the SNES
+         or: How To Beat Level 7 Without Having a Hernia
+
+  This guide is the "intellectual property" (yeah, right, there's an 
+oxymoron - intellectual video game discussion) of myself. You are free 
+to distribute it, copy it, revere it, throw it away, but you can't 
+quote it without my permission. 'Course, I would always GIVE the
+permission, but that's besides the point.
+
+  Version 1.0 of this guide is being released as of 12/92 upon an 
+unsuspecting world, to help out those poor unfortunate souls who are 
+having trouble tromping the computer.
+
+Why Chun Li?
+
+  It is my opinion that Chun Li is the strongest champion in the SNES 
+version of Street Fighter II. There are several reasons for this. 
+
+  *  Great range on offensive moves - because of her jumping ability,
+     particular the "bounce off a wall" move, Chun Li can strike over a
+     great range offensively. Ken and Ryu have great offensive attacks,
+     but have to use vulnerable special moves to get around quickly.
+
+  *  Extremely fast - helps on both offense and defense, she can block
+     quickly when in trouble and turn it into an attack instantly when 
+     the opportunity arises.
+
+  *  Easy controls - no "move here, here, and here" for an attack. The
+     most difficult move she has is the Whirlwind Kick, and as we'll
+     see later, you don't even need that to be deadly.
+
+  Using Chun Li and a Capcom joystick (see next section) I can 
+consistently finish the game without loosing a battle. I've come 
+*very* close several times to completing an entire game without being 
+hit.
+  I will be releasing guides for the other characters, but Chun Li is 
+my favorite so she gets the lead role.
+
+                          A Word on Joysticks
+
+  If you are playing SFII with the default SNES control pad, you are
+a) insane and b) must have little bitty hands. My advice to ANYBODY
+looking to get enjoyment out of this game is loose the pad instantly.
+There are several full sized joysticks out there. I have looked at the
+CH Joystick, the Capcom Fighter Power Stick, and the ASCII products,
+and a few others. I decided on the Capcom product, but that doesn't
+necessarily mean it is the best for you. It had the layout I wanted,
+lots of features, and a good feel. Some may be afraid of its plastic
+construction, but believe me, I have tortured mine extensively and
+it's holding up well so far.
+  The big priority in a SFII joystick is the configuration of the
+button repeat functions. The CH stick looses here with no repeat at
+all; I recommend you avoid any such stick. You need to be able to 
+assign various auto-repeat speeds to individual buttons. Not important
+to SFII but important to shooters is the ability to have a button 
+continuously fire; the Capcom does all of the above.
+
+
+                        Description of Moves
+  Here is a brief summary of moves described in the manual, and what 
+they are good for.
+
+Shoulder Throw: <push towards opponent and hit "L">. Crucial against 
+Ken and Ryu. Note that Chun Li does *not* need to be touching the 
+character to perform a shoulder throw - she can be a little ways away. 
+Shoulder throws also work in mid-air, where they are almost 
+indefensible. Not safe to use against E. Honda.
+
+Head Stomp: <push down and any kick key>. This move is important 
+because with it you can hit other characters even when they are 
+"invincible". Examples: Blanka when he is electric, Bison/Honda when 
+in a torpedo, Dhalsim when he is stretching (you can hit any part of a 
+stretching Dhalsim with the head stomp and hurt him!). Keep the head 
+stomp in mind as your counter to any special attacks that involve the 
+opposing character directly. These special attacks generally commit 
+the character to a course of action that he must stick with for a few 
+seconds. For example, when Blanka turns on electricity, he has no 
+control over what happens until he comes out of it. This is the 
+perfect opportunity to do a flying leap and come down with a head 
+stomp. His electricity will not hurt you, and you'll damage him 
+without giving him any chance to block.
+
+Lightning leg: <push any kick key repeatedly - you should let the 
+joystick do this for you>. Note that there is a big difference in the 
+different lightning legs. The best is the medium ("A" button). The 
+Roundhouse lightning leg ("R" button) kicks very high and can be 
+countered with a properly timed punch, but it does the most damage and 
+has some specialized uses. The light lightning leg is the slowest 
+repeating and can actually be countered by waiting for the first hit 
+and timing a return punch. Stay away from it; it's useless.
+
+Whirlwind kick: <push down 2 seconds, then up and a kick key>. I 
+consider this move almost useless. You gain a second of 
+invulnerability when you are inverted, but it's easy to block and wait 
+for Chun Li to spin around at the far end of the kick, then throw her 
+as she is coming out of it. Also, this move can be difficult to 
+perform unless you set it up by "charging". Charging is when you begin 
+the movement of an attack when you are still moving from a previous 
+attack. For instance, let's say you jump straight up. Immediately 
+after hitting up, you can pull down and hold the stick, then when you 
+land you can push up and a kick and you will "instantly" launch into a 
+whirlwind kick, because you were charging it as you came down from 
+your previous jump. Charging is important in the lightning leg kicks, 
+but stay away from the Whirlwind unless you want to show off. 
+
+  There are several moves I rely on consistently in my strategies. 
+They are described here so you will be familiar with them in the text 
+afterwards.
+
+The straight up Roundhouse: Simply push up on the stick and press 
+Roundhouse kick ("R" for default configuration). Chun Li will leap 
+straight up in the air and do a sort of circular roundhouse. This kick 
+has amazing range, both left to right and vertically. Note that you 
+can time this kick so the roundhouse starts anywhere from when you 
+first jump up to when you are almost touching the ground after coming 
+down again. This kick is *very dangerous* to opponents, since it has 
+wider range than just about any other kick, and you are more or less 
+impervious if you time it correctly.
+
+The pre-charge lightning leg: From a standing position, push diagonal 
+up on the stick and Chun Li will do a spinning forward move through 
+the air. At the halfway point, press and hold a repeating kick key. 
+The kick key can be anything from a roundhouse to a light kick. Chun 
+Li will do a kick in mid-air (so if your opponent jumped at the same 
+time he will likely be hit) and when she lands will instantly launch 
+into a lightning leg. 
+   Variant: The head stomp/lightning leg: Push diagonal up to jump, 
+then immediately push DOWN on the stick, then push and hold a 
+repeating kick key. Chun Li will jump up, go into a head stomp as soon 
+as you hit the kick, and upon landing launch into a lightning leg 
+right away. The beauty of this attack is that most of the time she 
+will end up facing the opponent with the lightning leg, *even if you 
+mistimed the kick and jumped over the opponent*. In other words, if 
+you land on the wrong side with this kick, most of the time you'll be 
+covered anyway! Try it, I'm not kidding. 
+
+The wall bounce: Jump up and diagonally so as to hit the edge of
+the screen. While you are in the air, before you actually hit the 
+edge, pull the stick up and diagonally in the opposite direction of 
+the initial jump. You will hit the edge, and instead of falling 
+straight down you'll start a new jump in the opposite direction. You 
+can do this even when standing right next to a wall/edge of the 
+screen. It's an important move because it's the longest leap you can 
+make, giving you a great range of attack when you are near the edge of 
+the screen. Use it to get out of trouble if you get cornered. Vega can 
+also do this move; watch out for it.
+
+
+Ok, now that we've got the moves down (practice them on level 0 until 
+you are comfortable with them), let's look at the stages/characters. 
+The following are loosely organized from easiest to hardest. They are
+all based on Level 7 play. The computer will vary it's techniques on
+other levels; you're on your own (but they are much easier).
+
+
+1) Bonus stages: For both the brick pile and the destruction of the car, 
+the weapon of choice is the Roundhouse lightning leg. Have the button 
+held down when the screen first appears, even before you get the 
+"start". This way as soon as the round starts you'll launch into a 
+lightning leg that destroys the first section. When you see Chun Li 
+start kicking, let go of the key (she'll continue the lightning kick, 
+don't worry) and wait for her to finish the kick. For the bricks, just 
+do a diagonal forward jump and when in the air, hit and hold the 
+roundhouse lightning kick again. You'll get one quick hit from the 
+air, then you should land on top of the first level (not the very top) 
+of the pile and start pounding away. Just stand there holding the key. 
+If you didn't waste any time, you can get 27 seconds out of the bricks.
+
+For the car, after the first section is blown away, jump on top of the 
+car, run across it, fall to the ground on the other side and walk up 
+close. Then just hold down the roundhouse lightning leg again. You 
+should be able to finish the round with 22 seconds to spare.
+
+
+2) Chun Li vs. Zangief: Zangief is a pushover. Believe it or not, you 
+can completely eradicate this sucker with *one move*, the straight up 
+Roundhouse. When the round starts, wait for Zangief to walk towards 
+you (he will always take the offensive) and jump straight up in the 
+air. If he jumps in response, immediately hit the roundhouse key and 
+you'll nail him in the air (your range is better than his). If he 
+doesn't jump, wait until you are on the downward part of your jump, 
+then hit the roundhouse key. Normally you'll kick him in the face with 
+this move. You'll have to practice the timing of the downward 
+movement, but trust me, you can do play the entire round with perfect 
+scores with just this one move. The timing is tricky if he does an 
+upward kick as you are coming down, though.
+
+When you land, just repeat the above process again. You might have to 
+wait for him to walk towards you a little bit so he'll be in range for 
+the kick.
+
+Just about the only thing Zangief can do about this is block as you do 
+the roundhouse. If this happens, either jump straight up again 
+immediately and repeat the roundhouse (eventually he will miss a 
+block), or land, pull down and hit roundhouse. You'll kick sideways 
+with both legs, balanced on a hand, and usually this happens too fast 
+for him to move from his previous block to the new position. After you 
+hit him once with this, go back to the straight up and down jumps with 
+the roundhouse in the air.
+
+Against Human Zangief's: You'll still tear this guy apart, even if a 
+really good human player is in control of Zangief. Keep in mind that 
+your straight up roundhouse kick has better range than his spinning 
+clothesline, which you'll find human opponents rely on a lot. Your 
+only fear is mistiming the straight up roundhouse: if you don't get 
+the kick in, you'll land on your feet directly in front of him, and 
+that's bad news. Never tangle with Zangief in close range, even if 
+you're not going to use my tactic (it's a tick, and other players 
+might insist that you not use it). If you make an agreement not to use 
+the straight up roundhouse, use your jumping ability to jump in, hit, 
+and jump out, and if he backs you up bounce off a wall to keep from 
+being cornered.
+
+
+3) Chun Li vs. Ryu: Yeah, that's right, as a computer opponent I 
+consider Ryu totally worthless. Let me give you a template to beat 
+level 7 Ryu every time:
+
+  a) Before the round even begins, have your stick pointed towards Ryu 
+so you'll be walking towards him. As the round starts, take one or two 
+steps and then press "L" for a shoulder throw. *Computer Ryu starts 
+99.9% of the rounds by walking towards you, and will subsequently fall 
+for this throw every time*.
+
+  b) After the shoulder throw, do a pre-charge lightning leg towards 
+Ryu (jump up and diagonally towards him, hold down the Roundhouse 
+button as you jump). You'll land and promptly start pounding him, as 
+soon as he stands up from the throw. Even if he blocks you'll be 
+hurting him. As the kicks hit him, he will move slowly farther away 
+from you. Let go of the kick key after the first two hits, and wait 
+for the lightning leg to expire. 
+
+  c) if you've followed the above, Ryu will be up against the far 
+right wall right now. You have two choices. You can repeat step (b) 
+above, but if you do, you'll loose the chance for a perfect round, 
+because as you land with the lightning kick revved Ryu will strong 
+punch and hit you, although you will hit him after that. The other 
+choice is to jump towards him, and immediately pull down and hold a 
+repeating kick key. You'll head stomp him 1-2 times, then bounce off 
+the wall and backwards.
+
+Here's a generalization: after being hit with a repeat attack such as 
+the lighting leg, 95% of the time the first thing that any character 
+with a distance weapon (Ken, Ryu, Dhalsim, Guile) will do is fire that 
+weapon. In the above scenario, this would happen between (b) and (c), 
+but as Ryu is throwing his fireball, you'll be leaping through the air 
+and preparing a head stomp. This same tactic works well for all of 
+these characters, but especially Dhalsim. The key is, after a 
+successful lightning leg, jump TOWARDS the opponent to avoid his 
+subsequent distance attack, and have an offensive move prepared.
+
+If you've followed the above scenario, then after the head stomp in 
+step (c) Ryu is probably heavily damaged and you are a little ways 
+from him on the left after bouncing off the wall. He will almost 
+certainly fire a fireball. Just jump straight up in the air, and watch 
+it go by. Repeat as necessary. _Eventually_ he will tire of this and 
+come walking towards you again. When this happens, just repeat from 
+step (a). You'll kill him with the first throw or so.
+
+Human Ryu's: Any human player worth a damn is only going to fall for 
+the opening shoulder throw once or twice, and after that he'll vary 
+his opening attack. In this scenario, start the round by moving AWAY 
+from Ryu. If he fireballs, try to jump straight up, but don't worry 
+about if you can't, just let the block happen. Then look to the 
+section below for responses to typical Ryu/Ken attacks.
+
+Response to the Hurricane Kick: If Ken or Ryu goes into a Hurricane 
+kick, if you are close (1 body width) from it, go into a block right 
+away. Let it hit you a couple of times, then as he is settling to the 
+ground, push forward and hit "L" to shoulder throw him. Note: the 
+computer opponent will follow a hurricane kick with a Dragon Punch. 
+Keep the block through the Dragon Punch, then catch him on the way 
+down from the punch with a throw. *After a throw you should always go 
+on the offensive*. Do a pre-charge lightning leg kick after a throw.
+
+If you are a few steps away when Ken/Ryu starts the Hurricane kick, 
+wait until he is about 1 body width away and then hit "L" for a fierce 
+punch. It's kind of funny actually, but Chun Li's hand in this 
+configuration ends up in a very delicate location on Ken or Ryu, and 
+there's no defense for them once they are committed to the Hurricane. 
+Try it yourself. The best range on this is achieved if you push the
+stick towards the opponent right as you hit "L".
+
+Response to the Dragon Punch: See above. Block backwards, but stay in 
+the area. Wait for him to start to come down, then push forwards and 
+"L" to throw him. Go on the offensive from there. Computer Ken/Ryu's
+will almost always do more than one Dragon Punch in a row. It takes a 
+*long* time for them to recover from a Dragon Punch. If you are less 
+than three body widths away when they do a Dragon Punch, you will have 
+time to walk up, wait for him to start coming down, and Shoulder Throw.
+
+Response to the Fireball: Simple, either jump straight up (preferred) 
+or block. The dangerous ones are the slow fireballs. Crafty human 
+opponents will try to lure you into jumping straight up with a slow 
+fireball, then walk towards you while you are in the air. If this 
+happens, try to roundhouse right before you touch down again. It gets 
+them every time. To make the timing on this less crucial, stay AWAY 
+from a human Ken or Ryu on the screen. Remember to back out of being 
+cornered by using the bounce off the wall trick.
+
+Response to a jumping Ryu/Ken: A favorite trick of the computer is to 
+have Ryu/Ken jump around, and a lot of human players do this too. If 
+the computer player is jumping back and forth, just ignore it - 
+eventually he will fire a fireball instead of jumping. If he starts 
+jumping towards you (or a human player does), watch the distance that 
+he jumps. Place yourself at the position you think he will land with 
+his next jump. When he is about halfway through this jump, do a 
+standing roundhouse (just hit the "R" key). Your standing roundhouse 
+has longer range than the flying roundhouse that Ken or Ryu is 
+probably attempting. You'll hit him as he's coming down and bounce him 
+backwards.
+
+Special note: it is dangerous to try to jump diagonally away from Ken 
+or Ryu, because their fireballs travel at about the same speed as your 
+jump, and you may come down right in the middle of one. Jump straight 
+up and down when needed. You *can* do the diagonal jump, but it 
+requires precise timing. Don't tackle it until you are comfortable 
+with beating these guys.
+
+
+4) Chun Li vs. Ken: First, read the above section, especially the 
+responses to attacks. Keep in mind that Ken and Ryu are *the same 
+character*. The only difference between playing the two of them on 
+level 7 SNES is the opening - Ryu will always start by moving towards 
+you (making him easy to throw). 
+
+The best opening move against Ken is defensive; start by backing away 
+from him. It's very likely that he will launch into a Hurricane Kick. 
+Let it come, keep the block by pulling away. He will follow the 
+Hurricane with a Dragon Punch. Again, let it happen, but after he 
+starts to come down, push forward and hit "L" to throw him. You've 
+just performed step (a) from the Ryu text - just follow that template 
+and you'll be all right. 
+
+Ken is more fond of the Hurricane kick than Ryu, and also jumps more. 
+Read the "Responses to xxx" section in Ryu above - all of the 
+responses are the same for either Ken or Ryu.
+
+If you want to gamble against the computer, open the round with a 
+fierce punch. If Ken is doing a Hurricane Kick you'll nail him. Most 
+of the time otherwise he'll be jumping away and there will be no 
+effect, but there's the chance that he will throw a fireball, in which 
+case you will be nailed yourself.
+
+
+5) Chun Li vs. Dhalsim: The template for Dhalsim is very close to what 
+you do for Ryu/Ken, except for the opening - here goes:
+
+   a) First move of the round should be a diagonal jump towards 
+Dhalsim. After you've started this, Dhalsim will do one of several 
+things - he'll Yoga Fire, he'll jump straight up, or he'll do a 
+stretch attack. Any way you slice it, the attack of choice is to hit 
+the "A" button after you start the jump and hold it. You'll either 
+hit him in the air if he jumps straight up, or you'll hit him as you 
+come down in the other cases. Then you'll launch into a lightning leg 
+that will throw him backwards.
+
+   b) after you throw him backwards from the attack in (a), basically 
+repeat the same move, jump diagonally up and towards him, come down 
+with a lightning leg revved. You can use the roundhouse if you want, 
+Dhalsim doesn't seem able to counter it as others can. 
+
+   c) after step (b), Dhalsim will be up against a wall (the right 
+one). It is usually safe to just keep performing step (b), but there's 
+a chance he'll counter it. If you are after a perfect round, diagonal 
+jump towards him (quickly, after he comes out from under your 
+lightning leg) and head stomp him, then bounce off the wall. After 
+that, you can go defensive for the round and wait for him to come to 
+you. I usually prefer just finishing him off in the beginning, though.
+
+
+6) Chun Li vs. E. Honda: Honda is not really THAT hard, he's just got 
+a few special considerations compared to the other players.
+
+The basic template for Honda is to just flying leap towards him and 
+rev a lightning kick as you come in. Just like you would against other 
+characters. As with the other characters, this attack is less 
+effective when Honda is backed up against a wall - jump in and head 
+stomp him, then jump away. Keep the following in mind. 
+
+  a) Always use a regular lightning leg against Honda (the "A" key). 
+He has the timing to counter both others.
+
+  b) if Honda blocks while you are in the air (he will cross his hands 
+in front of his face), IMMEDIATELY let go of the lightning leg key and 
+pull the stick diagonally backwards from him. When you land, you will 
+still do a short lightning leg attack (from the previous revving). 
+After this kick finishes, Honda will jump towards you. If you followed 
+my instructions the timing will be perfect to jump right out from 
+underneath him, *keep the stick held diagonally backwards from him*. 
+You'll want to jump away from him to get some maneuvering room.
+
+  c) If Honda is doing a Hundred Hand Slap, you have to be just 
+outside the range of his hand when you jump in and lightning leg him. 
+This is a safe attack when properly executed (you won't get hit) but 
+if you are two far away when you jump in, you'll land in the range of 
+his hands rather then in his body, and the hands will hit you.
+
+  d) Unless you are *sure* that Honda has just been stunned, DO NOT
+ATTEMPT to Shoulder Throw him. He is unbelievably fast with the Bear 
+Hug. If you get caught in a bear hug, start pounding all the buttons 
+and swirling the joystick around (basically, spaz out). This will 
+break you out of it faster.
+
+  e) If he torpedoes (Head Butt), jump straight up and come down with a 
+head stomp. Nails him every time.
+
+  f) Again, never stand close to Honda. He will start the Hand Slap 
+and pound you. Jump in with a lightning leg revved and jump out. That 
+basic sequence will beat him 90% of the time with nothing else.
+
+Human players with Honda are usually much easier to beat than the 
+computer. Keep in mind that you have much faster jumping, your head 
+stomp is great against him, and your airborne Roundhouse has good 
+range against him. Most of the stuff above will work fine against a 
+human opponent.
+
+
+7) Chun Li vs. Guile: Guile has some tricks up his sleeve, but they 
+can all be countered. Here's a basic template.
+
+  a) First move of the round should be a straight up jump. Guile will 
+either start walking towards you, Sonic Boom, or walk backwards. MOST 
+of the time he will walk towards you, and then crouch down a few steps 
+away. It may not look like it, but he is in range of your air 
+Roundhouse kick when he is crouched down. You have to wait until you 
+are almost touching the ground again, then hit "R". You will kick him 
+in the head, sending him flying backwards.
+
+  b) immediately jump diagonally towards him. Rev the lightning leg in
+the air as you come down (you can use Roundhouse lightning legs 
+against Guile). You'll come down and start pounding him...release the 
+leg and wait for it to expire.
+
+  c) Like Dhalsim, Guile will always follow a lightning leg attack
+with a Sonic Boom to counter. The best thing to do to jump *straight 
+up*. It's very dangerous to jump towards Guile when he Sonic Bombs, 
+unlike Dhalsim/Ken/Ryu with their fireballs. The reason is that he 
+will do an immediate flash kick and nail you.
+
+General guidelines: If you can't finish him off with the opening 
+template, move out into the open, but not up against the wall. Wait 
+for Guile to approach you and jump straight up. If he kneels, start 
+with (a) above. Avoid Booms by jumping straight up and down.
+
+Sometimes Guile has a weird little sequence he follows when Chun Li 
+jumps straight up. He'll stand just outside the range of the 
+roundhouse you let loose. After you land, he'll pause a second and 
+throw a fierce punch. The trick to this is to hesitate a second after 
+landing, then jump straight up again and roundhouse. The sequence is a 
+little tricky, but luckily you won't get damaged much even if he 
+connects with his fierce.
+
+Do *not* jump diagonally in against Guile unless he has just been 
+kicked in the head or thrown back. The computer can instantly unleash 
+a Flash Kick and nail you hard. There is nothing practical you can do 
+against a Flash kick except avoid it. Like the Dragon Punch, it takes 
+a little time for him to recover after using it, and you can use the 
+opportunity to throw him.
+
+Against Human Guile's: Guile matches up well with Chun Li, so a good 
+Guile player can give you a hard time. Keep in mind that your airborne 
+Roundhouse kick has a greater range than his, and your straight up in 
+the air Roundhouse can be timed to extend farther than any of his 
+punches. Counter Flash Kicks by leaping away if close. If you're far 
+away and he Flash Kicks, try to leap towards him, catch him coming 
+down and do an Air Shoulder Throw (push towards him and hit "L"). This 
+does a lot of damage.
+
+Guile's sweep has a better range than yours, so don't go toe to toe. 
+Instead, leap straight up as he approaches and roundhouse. 
+
+
+8) Chun Li vs. Blanka: Now, Blanka can be a problem. He's fast, he has
+STRONG offensive moves, and the computer plays him pretty well. Still,
+it's possible to master the moves to beat him consistently.
+
+  Your basic pre-charge lightning kick is still an important move. In
+fact, open the round with it - when you hear "Fight!", jump diagonally
+towards Blanka, and come down with the lightning leg firing. I usually
+use the normal, but you can also use Roundhouse. It's possible that
+Blanka will jump up or towards you as his first move. If he goes up,
+you should be able to hit him with your kick. If he jump towards you,
+you'll have to react VERY quickly and switch to an air Shoulder Throw,
+otherwise you'll be hit.
+
+  Assuming you got him with the initial lightning leg, jump in and
+pound him with another, then jump in and head stomp. At that point you
+will bounce off the wall (after having head stomped him) and away.
+It's more important than usual to stay clear of Blanka. He has very
+good range on all of his close in attacks, more than just about
+anything Chun Li has except the fierce punch/lunge.
+
+  The preceding sequence should have him pretty damaged, but unlike
+most of the other characters, Blanka is very erratic in actions from
+this point on. If he starts jumping towards you, jump away, wait for
+his next jump, and time a jump towards him to hit him as he is coming
+*down* (you're reasonably safe with this move). Otherwise, move in
+and attempt a pre-charge lightning leg again. Here's some things to
+look out for:
+
+  a) If he starts jumping straight up and down, Blanka is thinking
+about a Rolling Attack. Chun Li's Head Stomp works against the Rolling
+Attack, but it's hard to time it as the Rolling Attack is so much
+faster than other character's moves. It's safest to just jump straight
+up and avoid it, or block if you have to. Remember that if you can
+punch or kick Blanka when he's in a Rolling Attack you will do more
+than normal damage. If you see him suddenly crouch down when he's far
+away from you, he's definitely about to unleash a rolling attack.
+
+  b) Blanka is hard to stun, and doesn't stay that way long when you
+do manage it. Don't trust a stun against him, and that means be careful
+with attempts at a Shoulder Throw.
+
+  c) Blanka is the only character that I recommend you stay away from
+the straight up Roundhouse. He's got too many attacks that can counter
+it.
+
+  d) Never, ever try a Whirlwind Kick against Blanka. I don't use the
+Whirlwind anyway, but Blanka will invariably time a Rolling Attack just
+right when you try the Whirlwind to pound you.
+
+
+8) Chun Li vs. Balrog: Balrog can do massive damage, but as an opponent
+he's a moron. Basically, treat Balrog the same as Zangief, that is, he
+is very susceptible to the straight up Roundhouse. Here's a typical
+sequence:
+
+   a) Start the round by jumping straight up. Balrog may rush in or
+walk in trying to punch you. Either way he'll be in range as you come
+down from the straight up jump, that's when to release your airborne
+Roundhouse. You'll hit him in the head and he'll fly backwards.
+
+  c) After hitting Balrog with a Roundhouse is the ONLY time it is
+safe to do a flying jump into him with the lightning leg. Do so now,
+use Roundhouse as the Lightning Leg. He will probably crouch down and
+block.
+
+  d) Immediately after coming out of the lightning leg Balrog will
+jump diagonally towards you. Jump straight up and Roundhouse to hit
+him as he comes in.
+
+You can beat Balrog entirely by just standing in one place and doing
+straight up Roundhouses, just like Zangief. The key is to jump up
+when he is farther away than you are used to, because he will probably
+rush in the last few steps, and you don't want to be on the ground
+when that happens. Even if he is walking he will make it into range,
+barely. Just takes a little practice to get the jump point right.
+
+It's obvious that you shouldn't get backed into a corner with Balrog.
+As with all the end bosses, if you let yourself get up against a wall,
+you may never even have a chance to jump out before you are dead.
+
+
+9) Chun Li vs. Vega: Vega requires the most precise timing of any
+character to counter, but after you learn this timing you will beat
+him very consistently. It's easy to get frustrated with him and think
+that he's impossible to beat (I did, at first), but stay with it.
+
+General guideline: When leaping away from Vega (you will do a lot of
+this) ALWAYS combine the backwards leap with a standard kick.
+
+General guideline #2: If you are staying on the ground, you are doing
+something wrong. Start jumping, it's the only way to beat Vega.
+
+  a) Vega starts every round (at least on level 7) with a leap away
+from you. Just stand there. He'll start walking towards you after the
+leap. Note that Vega is a pain to play because his move set as far as
+jumps, etc. is basically the same as yours. Here's the tricky part: as
+Vega is coming towards you, you want to wait until he is JUST close
+enough that you would hit him with a forward leap/regular kick combo.
+However, most of the time when you try this he will leap away quickly
+enough that you won't hit him. I usually leap backwards if my first
+attempt was unsuccessful - Vega will probably leap forwards directly
+after he lands, so you want to be going backwards. Wait for another
+opportunity to try again.
+
+  c) If you hit Vega with the above leap, do NOT lightning leg him.
+In fact, never Lightning leg him on just one kick. Instead, leap
+towards him a second time and try another flying standard kick. If
+you hit him again and he falls backwards, then you can try the
+lightning leg, but be aware that you will simply have to learn when
+you can and cannot use the lightning leg against Vega. You might
+want to just stick with leaping back and forth at first.
+
+  d) This is a little weird, but something to try if you can't get
+the timing right on step (a) and you're just jumping back and forth
+is to get hit once. Vega's behavior changes after he has either been
+hit or hit you. He will start bouncing off the edge of the screen
+when this has happened (just like Chun Li can) and this is a weak
+point for him. When Vega jumps backwards towards the edge of the
+screen, do NOT jump after him - if you do you'll be hit. Rather, wait
+for him to hit the edge, and start his bounce back towards you. If you
+wait until just after this bounce back towards you has started, you
+will be able to jump diagonally towards him, hit a standard kick, and
+hit him as he comes down.
+
+  e) If Vega starts climbing the cage, walk to whichever side of him
+has more maneuvering room, stop about 1 1/2 body width away from him
+on that side, and wait. You should be prepared to a diagonal jump
+away from wherever Vega is when he is on the wall. As soon as he jumps
+off the wall, jump diagonally up and away from him, simultaneously
+hitting a standard kick. You'll hit him as he comes down. He often
+does several wall-climb attacks in a row, so be prepared for another.
+
+  f) If you get Vega in a lightning leg, it's safest to just assume
+you should jump diagonally away as soon as it is completed. Let go of
+the kick button immediately after starting the lightning leg, and pull
+diagonally back on the stick. You'll finish the kick and then jump
+away. Vega has a variety of nasty counters after he comes out from
+under a lightning leg.
+
+
+10) Chun Li vs. M. Bison: The first thing to know is that the computer
+basically cheats like hell when playing Bison. Don't get frustrated
+about it. Bison is the only character left that despite a solid
+understanding of how to beat him, can still kill me with a fair
+consistency. On the other hand, I've gone double perfect rounds on
+him innumerable times, so he's not invincible.
+
+Bison is unpredictable. The only given move for ever round with him
+is the very first one: you should jump straight up in the air. If he
+does one of his "jump halfway across the screen" leaps at you, hit
+Roundhouse. Otherwise, wait until you are coming down, he will be
+walking towards you. Do a last second Roundhouse before you land to
+hit him in the head.
+
+The rest of these moves are basically reactions to various things Bison
+will attempt.
+
+  a) Against the Flaming Torpedo: Jump straight up and come down with
+a head stomp. Unfortunately, the computer will bring Bison out of
+almost all his Torpedoes _already_ blocking, so he'll probably block it.
+It beats getting hit with it, though. You'll have better success
+actually hitting him with the stomp if you try to time it so you will
+hit him just as he starts coming underneath you, rather than in the
+middle of his body.
+
+  b) STAY IN THE MIDDLE OF THE SCREEN. If you get close to the wall,
+you are toast. Once you allow Bison the beginning of a strong
+combination attack, it's basically over.
+
+  c) The air is your friend again. Do a lot of jumping. Bison is also
+susceptible to the straight up Roundhouse kick, but be aware that he
+will block a good number of them. You have to keep jumping straight up
+again and Roundhousing in the hopes you'll catch him out of a block.
+One thing that works to your advantage is that he will try a power
+punch sooner or later. If you see his hand turn electric while you are
+in the air, your Roundhouse *will* hit him. You should anticipate this
+and as soon as you hit the kick, be leaping towards him with another
+Roundhouse, which will also hit. Then decide whether to get in another
+kick (lightning leg is possible) or just jump away to the middle of the
+screen again.
+
+  d) You can beat those flying kicks that Bison does by jumping straight
+up and Roundhousing. As usual, you have better range than most of his
+stuff.
+
+  e) If you catch Bison in a lightning leg, let if fly and let go of
+the kick button. He will probably block it successfully, but as usual
+he will be knocked backwards as he blocks. He'll end up a little ways
+away from you after you come out of the leg. Almost always his
+response will be to leap in towards you with a flying kick. The response
+is to jump straight up and Roundhouse (as above), but in the special
+case of him recovering from a lightning leg, wait about a half second
+before you jump straight up. Otherwise you'll miss him with the kick, and
+he'll hit you.
+
+
+Well, that's about it, folks. I'll be writing the other characters up
+later. I may revise this document as well; send in your suggestions and
+comments to the email addresses below. Have fun playing. If you are new
+player to the game, don't expect it all to come at once. I guarantee you
+that all of the strategies here will work, but you may need to get
+comfortable with controlling Chun Li first. Also, don't expect to walk
+into an arcade and be a champion. The timing is entirely different, and
+the computer opponents are smarter.
+
+Contact me:
+
+Internet: rich@grebyn.com  rlawrenc@synoptics.com
+CI$: 71101,2272
+GEnie: R.LAWRENCE14
+
+-- 
+Rich Lawrence, Synoptics Systems Engineer  DOD#9630  rich@grebyn.com
+     '92 Seca II "Yuri"  CI$:71101,2272  GEnie:R.LAWRENCE14
+   215 years ago my government gave me certain inalienable rights.
+     Since then, they've been trying to correct their mistake.
+
+
+X-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-X
+ Another file downloaded from:                     The NIRVANAnet(tm) Seven
+
+ & the Temple of the Screaming Electron   Taipan Enigma        510/935-5845
+ Burn This Flag                           Zardoz               408/363-9766
+ realitycheck                             Poindexter Fortran   510/527-1662
+ Lies Unlimited                           Mick Freen           801/278-2699
+ The New Dork Sublime                     Biffnix              415/864-DORK
+ The Shrine                               Rif Raf              206/794-6674
+ Planet Mirth                             Simon Jester         510/786-6560
+
+                          "Raw Data for Raw Nerves"
+X-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-X

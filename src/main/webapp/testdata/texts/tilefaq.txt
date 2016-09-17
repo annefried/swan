@@ -1,0 +1,694 @@
+
+		=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		-  Tile-Based Games FAQ version 1.2  =
+		=           by Greg Taylor           -
+		-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+File     : tilefaq.12
+Home site: x2ftp.oulu.fi : pub/msdos/programming/docs
+Version  : 1.2
+Released : 4-20-95
+
+Tilefaq 1.2 Copyright 1995 Greg Taylor.  All rights reserved.
+Appendix I  Copyright 1995 Chris Palmer.  All rights reserved.
+	This document is freely redistributable provided that is
+	distributed in its entirety, with this copyright notice 
+	included verbatim.  There are no restrictions on works 
+	derived from this document.
+
+
+-------------------------
+-  I : Introduction...  -
+-------------------------
+There has been a fair response to my initial release of this file
+and there have been many requests for additional information, all of
+which I will cover in this version.
+
+This FAQ emphasizes on the style of graphics similar to those used
+in U6 and U7 by Origin.  Many of the techniques presented are aimed
+at systems with limited memory and/or speed like PCs with a 640K barrier;
+but this document also includes alternative methods and suggestions
+on how to code for less restrictive systems.  This is just a brief,
+but hopefully complete overview of one method to achieving the
+Tile-based style.  There are other methods and I'd like to hear about
+them, because much of this FAQ has been pieced together from various
+implementations of the 'Tile' graphics style.
+
+
+---------------------------------
+-  II : Multiple layered maps.  -
+---------------------------------
+This is an essential section to master because of the possibilities
+that stem from having more than one layer of map.  Almost all of your
+traditional effects can be more easily implemented with a multi-layer
+map as compared to a single layered one.
+
+One of the key considerations when doing a multi-layer map is the
+speed of your drawing routines.  Since you may be drawing each tile
+several times, the speed at which that routine performs is vital to
+producing a fast game.  These should be coded in Assembly if possible
+or if in a higher level language, should be optimized as well as
+possible.
+
+A 'SEE-THRU' tile placement routine is another important tool that
+is a major part of Tile-games.  I would separate my place-tile routine
+into two independent routines, one with 0 pixels 'SEE-THRU' and the
+other which doesn't.  This allows you to place tiles that don't have
+the need for the SEE-THRU option to be drawn faster.
+
+-----------------------------------
+-  II i : SEE-THRU Tile routines  -
+-----------------------------------
+For those who do not have a SEE-THRU routine written and are wondering
+how you write one, here's a brief overview.  Basically, when you are
+copying your tile over, copy only the non-zero pixels to the screen
+(it doesn't -have- to be zero, it can be any of the palette values, but
+zero has become a sort of standard).  And when you draw your tiles,
+color the areas which you would like to be seen thru, with the zero
+color.  Thus allowing you to lay one tile over another, without
+destroying all of the image beneath.
+
+A SEE-THRU routine is slower due to the check for the zero value,
+so it should only be used when necessary.
+
+Another 'SEE-THRU' sort of technique I've seen used is what the programmer
+termed a 'SEE-FORTH' routine.  In this one he checked the destination
+pixel and only put the pixel color where there wasn't already a pixel there
+(ie the pixel location had a value of 0).  This routine is not as useful
+in tile games, but it is a possibility that I've seen used, so I thought
+I'd mention it.
+
+
+---------------------------------
+-  II ii : The Multiple Layers  -
+---------------------------------
+I use a three-layer map and it works fairly well for all of the things
+I do in my tile games.  A fourth layer can provide even more effects
+and a two layer map is possible as well, but I find three to be the
+optimum number.
+
+I split the layers up as such...(these will be referenced to throughout
+the remainder of this text)
+
+  Layer Name - The types of tiles used in each layer...
+	  BASE    :  Grass, Dirt, Brick, Stone, Doors, Water...
+	  FRINGE  :  Trees, Rocks, Tables...
+	  OBJECT  :  Swords, Booty, People, Monsters, Keys...
+
+A sample map variable declaration with three layers might be...(C code)
+
+	#define SIZE 128
+
+	typedef struct {
+		 unsigned char base[SIZE][SIZE];
+		 unsigned char frng[SIZE][SIZE];
+		 unsigned char obj[SIZE][SIZE];
+	} maptype;
+
+Or perhaps...(to address the layers numerically) (C code)
+
+	typedef unsigned char maptype[3][SIZE][SIZE];
+
+These are drawn on the screen in the order as listed above.  The BASE
+layer is drawn first, without the use of your SEE-THRU routine (Since
+it's the base).  Then you draw the FRINGE over the BASE using your
+SEE-THRU routine.
+
+The FRINGE layer is about the most useful tool in producing powerful
+graphics easily.  A FRINGE tile might be a tree, with zero-values every
+where around the tree.  Then you could place the tree on any of the
+BASE tiles.  This allows you to have one tree drawing, but it can be
+a 'tree-on-grass' or a 'tree-on-dirt' or even a strange 'tree-in-the-
+water'.
+
+Other possible FRINGE tiles are transitions.  These are like going
+>from grass-to-dirt or dirt-to-stone.  The FRINGE layer allows you to
+draw one set of transitions, for example grass, and then use those
+to do all of your grass-to-?? transitions.  This is a nice use of the
+FRINGE layer to save you from drawing endless tiles.
+
+Tables and other non-pick-up-able objects are perfect for FRINGE, this
+way they can be placed on any BASE tile you like.  The possible uses of
+this layer of map are enormous.
+
+After drawing both of the other layers, draw your OBJECT layer.  This
+layer is where you store things that move or can be picked up, etc.
+including monsters, keys, townspeople...  This makes it easy to pick
+up and put down objects without destroying other parts of your map.
+
+
+---------------------------------------------------------
+-  III : Walkability - restricting character movement.  -
+---------------------------------------------------------
+I usually assign an attribute I call the 'walkability' to my BASE tiles.
+This provides a fast, easy, way to check whether you can/cannot move
+to a certain space, and it also helps you to control other special
+occurrences with a relative level of ease.
+
+At each position in my map arrays, I have a byte (unsigned char) value
+which serves as both the tile-index and the walkability value.  I use
+a set of 128 tiles, and split them up as such...
+
+	0-127
+	 0-63    : Normal, walkable tiles, dirt, grass etc.
+	 64-127  : Normal, unwalkable tiles, walls, etc.
+	128-255
+	 128-191 : Special tiles, group 1
+	 192-255 : Special tiles, group 2
+
+When I'm drawing the screen, I simply use the REM (or MOD) statement or
+equivalent to get the proper value, by MODing the number by 128.  This
+gives a value from 0-127, which is the actual tile-index number.  When it
+comes to checking if that tile is 'walkable', you then would divide the
+number by 64, yielding a value of 0, 1, 2, or 3...
+
+	0 : Walking is OK
+	1 : Walking is not OK
+	2 : Special thing happens when they step here - group 1
+	3 : Special thing happens when they step here - group 2
+
+
+The first two values are simply understood, but the special values might
+need some explaining...This allows you to program in special occurrences
+that happen when that space is walked on.  When it hit's a special square
+for instance, you would check through the special spots list for the x,y
+coords of the spot that triggered the special occurrence and the level map
+that it is on.  This allows an easy way to throw cool stuff into your
+game with little work.  Why it is split into two groups is so that you
+need not search ALL of your specials for that particular map at once,
+searching for the effects of that one.
+
+You will note that the WA (Walkability) value of 3 represents the section
+of tiles which are unwalkable normally (like walls etc.)  These can make
+for excellent 'secret' walls and so forth.
+
+The walkability setting can also be stored as a separate element of your
+map structure, to increase speed, at the expense of memory.  Having it
+as a separate element allows you to include many more than 4 settings
+to the rating, allowing for 'level exits' and so forth without having
+to resort to listing them as 'specials'.  The method I list above with
+the byte being split into the various categories is the most general
+compromise between, ease, speed, and memory, I have come up with; but on
+systems where memory is not much of a constraint, having walkability stored
+in a seperate element of the map structure is usually a better way to go.
+
+More mention is made to the 'Walkability' values later in the text.
+
+
+----------------------------------
+-  VI : Disappearing Roof Tiles  -
+----------------------------------
+This effect can be done using my multi-layer method by simply sectioning
+off a few of your base tiles (say 48-63 for example) as 'FLOOR' types.
+These would have another tile in memory as well as their normal tile,
+for when those floors are covered.  In general, all of the FLOOR types
+will be covered most of the time.  When drawing your screen and come
+upon a tile that is a FLOOR tile, then you'd check to see if the player
+was standing on a tile of that type...   If not, draw -only- the alternate
+'ROOF' tile which corresponds to that FLOOR tile.  If the player -is-
+standing on a FLOOR tile of that type, draw the BASE, FRINGE and OBJECT
+layers normally.  This way you can have only the roofs where the player
+is, disappear when they enter a building.  (also see Appendix I)
+
+
+------------------------------------------------
+-  V : Tilted effects, using the FRINGE Layer  -
+------------------------------------------------
+I like the 'tilted' look in my tile projects, it gives a bit more of a
+realistic flavor.  If you have the memory, the best way to achieve this
+effect is to set aside a 4th layer to your map, called the TILT layer
+or something (it can also be used for ROOF file management if you like,
+think about it :)  ).  But since most people don't have the memory for
+four map layers in memory, I'll discuss the memory-deficient method.
+
+Just draw the main portion of your tilted walls as your BASE layer
+tiles, then use the FRINGE layer to hold the extra bits that tilt off of
+the tile.  You would have to do a special check to see if the FRINGE
+layer tile in question is a tilt-result or a normal FRINGE tile, because
+of the order of drawing.  If it's a tilt-result, then you would want to
+draw the OBJECT layer and the PLAYER before drawing the tilt-result
+tile; and if not you'd follow the normal order of BASE-FRINGE-OBJ.
+
+This is where the 4th TILT layer makes like easier, for those who have
+the memory to use for it.  It allows you to skip this check and just
+draw in the normal order, since your normal FRINGE and tilt-results
+are already split up...
+
+
+------------------------------------------------
+-  VI : General comments on the OBJECT layer.  -
+------------------------------------------------
+The OBJECT layer in my projects is an array the same as the other layers
+of the map, of unsigned characters (or bytes).  These have a value of
+0 to 255, by the variable size.  I find this to be enough objects to
+cover my needs.  Each number would be an index to a particular object,
+0 meaning there's no object in that map-space.  I split the byte up into
+various object categories...for example 1-127 would be monsters and towns
+people, 128-255 for inanimate objects...whatever.  Anyway, I like to have
+an 'intelligence' (much like walkability) assigned to various groups of
+objects.
+
+These are usually broken into groups of 16, for the ease of the math to
+get the values...Below is an example break down of 'Intelligence' of
+objects (more info on this style of attribute, see the 'Walkability'
+section)...
+
+INT    Index    :   What behavior is exhibited by the Object...
+ 0      0-15    : Townspeople...wander aimlessly...
+ 1      16-31   : Townspeople/Monsters who are afraid of the character.
+ 2      32-47   : Docile Monsters, wander aimlessly until attacked, at
+		  which point their INT is switched to...3...
+ 3      48-63   : Same Docile Monster pictures, but now they're mad!
+ 4-5    64-95   : Normal monsters, they charge at a slow pace...
+ 6      96-111  : Baddie monsters, they charge right at you..
+ 7      112-127 : Projectile firing monsters...
+
+ 8      128-143 : Keys, and other door-opening things.
+ 9      144-159 : Weapon objects...
+ 10     160-175 : Armor and the like...
+ 11     176-191 : Cash, and other booty.
+ 12-13  192-223 : Normal, plain objects, like books and candles.
+ 14     224-239 : Some other Obj category...
+ 15     240-255 : Objs that hold other objs...bags, chests, backpacks.
+
+The above is just a sample chart of how you might choose to lay out
+your OBJECTS to get the most efficient use of the INT value.  I like
+using an Intelligence to keep track of behavior of OBJECTS.  Thus in
+order to do the proper things for each OBJECT I would simple have to
+check that object's INT and then do what I need to do for that OBJ.
+It's helpful...understand?  I hope so.
+
+Many large projects will find that 255 just isn't enough objects, in
+these cases, you'd be best advised to move to an array of unsigned
+short variables (short ints...16bits)  this allows for a value from
+0 to 65535.  That should be enough objects for any game I've ever
+played!
+
+
+------------------------------------------
+-  VII : Multiple OBJECTs on one space.  -
+------------------------------------------
+The question was raised when I was discussing my methods with another
+programmer, how do you handle multiple OBJECTs in one space?  I never
+really thought much about it before and just restricted OBJs to one
+per space.  The simplest method I came up with is special INT (see above
+section) values for OBJs that hold other objects.  These are things
+like bags, backpacks, treasure chests, etc.  In the example above
+this is category 15, Indexes 240-255.  The objects would have a picture
+assigned to them as normal, but they would each have an independent
+array of other OBJECTS that they hold.  Each of them could have a
+certain max set by your particular array structures.  This way, when
+you pick up those objects, -all- of the object list gets added to your
+inventory.  When there is a chest or bag on the ground you could also
+drop a number of OBJs there and have them be filed off to the independent
+array for that bag or chest.
+
+This method is a good way to incorporate a way to have multiple objects
+in one map space, without having a huge amount of additional map layers.
+It's relatively speedy, and still memory efficient.  Please note that
+the maximum number of bags and other such mult-OBJ-objects, are limited
+in number by the number of array structures that you assign to them, so
+never include more than the number that you can handle on one map.
+
+
+Often times the above method is too restrictive or doesn't match the play
+style of the game.  The alternate method is a bit more complicated and
+requires a knowledge of the use of 'linked-lists'.  If you aren't familiar
+with linked-lists, pick up nearly any intro-book for your programming
+language of choice and look up linked-lists on the index...you should find
+it.  Assuming a knowledge of linked-lists, I'll continue.
+
+Change your object layer to an array of list pointers.  Then as you place
+objects in a map-location, add a node to the list at that location.  When
+objects are removed, remove the node.  This will allow for an unlimited
+(well, memory limited) number of objects on any particular map-location.
+
+
+--------------------
+-  VIII : Cool FX  -
+--------------------
+This section discusses some random cool effects I've come across, that
+are relatively simple to implement and can really improve the 'look and
+feel' of the game.
+
+One such effect that I like doing rotating palettes.  This is good for
+flowing water in streams and smoking chimneys.  You just run a rotating
+palette which will change certain colors in a certain order which
+produces good FX without much added programming time...
+
+
+Also another cool effect is to animate your tiles, this can be done by
+an array of pictures instead of just one being assigned to a tile; and
+then incrementing thru the array during your playloop.  For example you
+might have a section of your FRINGE layer be animated tiles, one of which
+is a 'fire'.  This would rotate thru say...4 frames of a fire burning and
+smoking etc....providing a nice effect for the player.  Animating people/
+monsters is also a nice addition for a better effect.
+
+
+For those who are confident with palette manipulation routines, another
+good effect can be achieved by lightening and darkening the palette.  For
+instance, a player is in a cave, with only a torch providing the light,
+you could set up your palette so that as the tiles get further from the
+light source (the torch) the darker they are drawn.  A good way to do this
+is to make a palette of say...64 colors and then have 4 copies of that
+palette to make up your 256 color palette.  A simple shift by 64 will
+lighten or darken a whole tile.
+
+Another way to achieve this same effect, but staying with a single palette
+of 256 colors, is to create several 'reference-palette's.  Sort through
+your palette and create a cross-referenced palette for each darkness
+level you want.  Take each color on the palette and darken it the desired
+ammount, then search the palette for the best match and keep that color's
+index as the cross-reference value.  These reference palettes can all be
+calculated beforehand and stored to disk, so no real run-time slowdown is
+introduced.  When drawing a 'shaded-tile' (might be one of your settings in
+your DrawTile routine along with SEE-THRU) check the appropriate darkness
+cross-reference palette for each pixel value and draw the cross-referenced
+value to the screen.  This method is superior to the above method in that
+it allows for much more dramatic shades and colors, but it's drawback
+is that it's slower (do to the checking for -what- shade to make each
+square, the actual drawing of a shaded square is just slightly slower).
+
+Either of the above methods are good ways to do shadows and passing clouds
+overhead etc.  As alluded to in the example, they also provide a great way
+to create a 'torch-light' effect, where the tiles fade to black as they
+get further from the light source.  You could also fade to a light grey for
+a good 'fog' effect.  If you are implementing a limited-display as described
+in Appendix I of this document, you may want to combine the two algorythms
+into one, to improve efficiency.
+
+
+------------------------------------------------
+-  IX : Smooth Loading of new map sections...  -
+------------------------------------------------
+This question comes up a lot.  My way of dealing with it is splitting
+my map into a LOT of little sections within my map-file.  I load nine
+sections of that map into memory at one time....
+
+	The Map Chunks in Memory.
+	/-------+-------+-------\
+	|       |       |       |
+	|       |       |       |
+	|       |       |       |
+	+-------+-------+-------+
+	|       | Where |       |
+	|       | Player|       |
+	|       | Is... |       |
+	+-------+-------+-------+
+	|       |       |       |
+	|       |       |       |
+	|       |       |       |
+	\-------+-------+-------/
+Then when the player moves into a new section of the map, shift six
+sections of map over in memory, then load in the three new sections.
+This makes for smooth scrolling with no edges, without extremely long
+load times.
+
+Your on-disk map can be incredibly large, in fact, the only limit is the
+ammount of disk space you have (or variable addressing, that is, if you
+exceed a 4gig x 4gig map :), the in-memory map is only a little window of
+that, then the displayed map is yet another subset window in that.  On
+standard memory limit systems (like dos, 640k barrier) you can set your
+in-memory map to a fixed size.  But when you have access to variable
+ammounts of memory, it's usually best to adjust to the available memory.
+Thus calculating the dimensions of your in-memory map to conform with
+the memory available.  This way if a user has a lot of memory, they can
+benefit with load times occuring less often.  This method pleases the
+player with more memory (loads less often) but is a bit of a headache
+to code; the variable size mapsegmenting is tricky.
+
+
+-----------------------------------------
+-  IX : Portability and Speed vs. Size  -
+-----------------------------------------
+This section is more of a discussion on programming style and suggestions
+concerning that, but mention of it here may be useful for many tile-coders.
+
+When coding any project, it is generally a good idea to keep that code
+as 'portable' as possible.  This loosely put means that you code using 
+'standard' functions and routines, and try to avoid using system or 
+compiler specifics in your code.  I've run up against this head-on just 
+lately as I bought a new compiler which is 32-bit (as apposed to the
+16-bit compiler I used before), and had to go through my code and completely
+revise it to work under the new system.  One of the main problems was my
+use of the type 'int' (integer, I code in C mostly), which is 16-bit
+on some systems, but 32-bit on others.  To solve portability problems I've
+now gone to rarely, if ever, using 'int' but in it's stead use 'short'
+(a short integer, 16-bits) and 'long' (a long integer 32-bits), which are
+the same under all of the compilers I use.  
+
+Also, many languages allow you to split your code into seperate chunks or 
+in the more formal circles known as 'units' or 'packages'.  I split my
+code two ways: one section is my standard library of game functions (my
+fxlib) and the other section is the code for whatever game I'm working on.
+This way I can save myself the trouble of cut-and-pasting code and some
+of the problems that come with that, and just stick with my standard library
+for those functions.
+
+Along the lines of system specifics and segmentation of code, it is usally
+best to stuff any system-dependent code off in one library or unit, so
+that you only need to recode that one unit when porting the code to another
+compiler/system.  Examples of system-specific code are : graphics, 
+controller (mouse, keyboard, joystick), timing and of course assembly 
+(another porting problem I had...).
+
+With some extra effort spent learning about portability, you can prevent
+a *lot* of wasted time later revising code...
+
+
+SIZE versus SPEED, the endless struggle.  Though computers are getting faster
+and have more memory, size and speed are still at odds and a balance must be
+struck between them.  There are many ways of going about coding various
+parts of a game, each of which has varying size (memory used) and speed (how
+fast they go).  What each programmer must decide is what memory they must
+sacrifice in order to gain added speed, or what speed they must sacrifice
+to shrink the ammount of memory used.  The methods described in this file
+have been devised to generally strike a pretty good balance between size and
+speed, though you can go either way with them, tuning them for smaller size
+or tuning them for faster exicution.  You'll have to use your own descretion
+on what balance you want to strike, but I think that the methods in this
+faq are pretty close to the optimal 'middle-ground'.
+
+
+-------------------------------------------
+-  X : Last Minute Ideas...and thoughts.  -
+-------------------------------------------
+Well I guess that's it for this version of the FAQ.  It's not really
+laid out in the Standard Question/Answer method, but it is in reasonable
+categories to assist you in finding the info you want.  Keep in mind
+that this is just a summary of my method of Tiley-games, and thus there
+are other (probably better) methods out there.  My methods are
+continuously growing and shifting, due to questions people ask me or
+effects I see in other games, so if you've got any ideas I might be
+interested in hearing them.
+
+I've received some requests for some of my finished games using this
+method...unfortunately, like so many programmers, I have not finished
+a single Tile-RPG game.  I always get a new idea for a better way to
+do things half-way thru and start fresh...going nowhere.  But thru the
+hordes of half-projects I've developed a method that works well.  I've
+also been requested to put together a demo of my methods.  I will likely
+do such, but currently I'm very busy.  When I do write up some sample
+code, I'll post it at x2ftp.oulu.fi as well.
+
+I do have one Shareware game currently on the market, it uses a small
+offshoot of my tile-method; not nearly as complicated as the method
+presented in this file.  My current project(s) include directing a
+multi-continental (literally) game project which will be implementing
+a form of Genetic Algorhythms (Alife simulations) and the other is a
+tile-based strategy wargame (with no name yet).  This game (when I get
+it finished) will demonstrate several of the methods discussed in this
+document, amoung them : a 3-layer map, palette rotation for cool fx,
+a single directional tilt, and other neat tile-stuffs.
+
+I hope this FAQ gives a good enough summary of basic Tile-Game concepts
+to get you started/finished with your programming projects.  Have fun!
+
+I can be reached for questions/comments/additions/etc. via email at :
+
+	gtaylor@oboe.aix.calpoly.edu
+
+The latest version of this FAQ can be found at :
+
+	x2ftp.oulu.fi   pub/msdos/programming/docs/tilefaq.*
+
+
+May you code for many days and never have a bug.  -=GT=-
+
+
+----------------------------------------
+-  APPENDIX I : Limiting the display   -
+----------------------------------------
+A common problem to most tile based games is "what can the player see?".
+For example, in a dungeon setting you must be very careful to limit
+what is shown to the player or else there is just no point including
+secret doors.
+
+Map:                         Display:
+*************                *********    [ assume that S is a secret
+*...*.......*    ===>        *.......*      door and most likely looks
+*...S.......*                S.......*      like the rest of the walls ]
+*************                *********
+
+I've come up with my method of choice which anyone is free to dispute
+with me or to offer up a better solution.  This algorith is O(n) with
+a moderate constant (that is, the algorithm looks at each square only
+once and doesn't have a particularily large or small overhead).
+
+You need one extra piece of information in your map (which hasn't
+been discussed in the tileFAQ) which is opaqueness of each square.
+That is you need to be able to get a value of:
+	1 = You cannot see through this square.  This does not mean that
+	    the square is never visible just that things "behind" it won't
+	    be visible.
+	0 = You can see through this square.
+It does not matter how you store this information.  Where this algorithm
+came from I defined all my objects to have many attributes one of which
+was opaqueness.
+
+[ Editor's Note (GT) - I would implement the opaque values as a attribute
+  of each tile, thus keeping an array of opaque values (say ...
+  opaq[MAXTILES]) which is indexed by the same index as the tiles.  So
+  in checking the opaque attribute, you wouls simple have to take the
+  tile value (say ... 0..255) from the map position in question, and use
+  that value to index the opaque array.
+
+  For multiple layered maps you can just use the opaqueness of the base
+  tiles and ignore any of the higher levels.  However, to offer yourself
+  more variety in the effects, you could balance 1, 2, perhaps 3.  It's
+  also important to note that even when checking three values (BASE,
+  FRINGE, OBJECT) of opaque attriibutes, if any of them are non-opaque,
+  then the whole tile is non-opaque. ]
+
+I'll be using a standard coordinate system where the map is located
+on a cartesian plane and i'll be using (x,y) as a normal notation.
+I'm assuming that the player is at position (o_x, o_y) and that you
+want to draw the map with the player in the center of the square
+and with a radius of DELTA (that means that you want to draw DELTA*2+1
+by DELTA*2+1 tiles).
+
+For any pedantic readers: define the radius of a square as being
+the length of any orthogonal vector from the origin to the square.
+Throughout the remainder of this explanation i'll include the
+"pedantic people" comments in square brackets.  If you don't care,
+then don't read the information in square brackets.
+
+For the non-pedantic readers, we'll build successively larger squares
+starting with the squares one space from the origin.
+
+For any given point (x,y) we will approximate whether or not it is
+viewable by finding one or two points that lie on the previous square
+[Let R = radius of the square containing (x,y), find (x1,y1), (x2,y2)
+which lie on the square of radius R-1] between (x,y) and the origin.
+It turns out that the statement "one or two" points is easiest to
+implement if we always have two points.  For any point which lies in
+a horizontal, vertical or diagonal line from the origin we will simply
+use the same point twice.
+
+The one last thing that we need is a sign function (not sine).  For
+those who don't happen to know what that is
+		    |u|
+	sign(u) = -------,  for all non-zero u, let sign(0) = 0.
+		     u
+
+[ Editor's Note (GT) - The strictly defined formula as stated above is
+  not the best way to implement it in a program, because divides are
+  a slow operation.  You can reach the sign value of an integer-based
+  data-type by a simple bitshift by n-1 bits (e.g. for an 16-bit
+  integer, shift it right by 15 to get the sign bit).  Or you could
+  also implement a sign function by the following code (C) :
+		if (u>0) sign=1;
+		else if (u < 0) sign=-1;
+		else sign = 0; ]
+
+To restate, assume that we have origin (o_x, o_y) and point (x,y).
+Let (i, j) = (x - o_x, y - o_y) [be the vector from (o_x, o_y) to (i,j)]
+We can then easily calculate the two points as:
+
+	point_1 =   (-1 * sign (i) + x, -1 * sign (j) + y)
+				 { (x,-1 * sign (j) + y)     IF |j| > |i|
+	point_2 = { (-1 * sign (i) + x, y)  IF |j| < |i|
+				 { point_1 IF |j| = |i|
+
+[ point_1 is in the diagonal direction from (x,y) to (o_x,o_y) and
+  point_2 is in the horizontal/vertical direction from (x,y) to (o_x, o_y).
+  Pretty easy to prove that that statement is true and from that you
+  can convincingly assert that this provides an good O(n) determination
+  of which squares are blocked from view.
+  Notice that the definition of sign(0)=0 means that point_2 collapses to
+  point_1 if j = 0 or i = 0 which is why i've decided to always use two
+  points.  Well, that and the use of the constant 2 in the algorith,
+  see the comments after the algorithm. ]
+
+>From the calculation of those two points it because almost criminally
+easy to decide which tiles can be seen and which cannot.
+
+Let opaque be an array DELTA*2+1 by DELTA*2+1 which undefined value
+(ie: you don't have to initialize it).  Remember that DELTA is the number
+of tiles in any direction [radius of the display] that we will be drawing.
+
+Here's the pseudo-code of how to do it:
+
+{ cheat and do the case of delta=0 so that we don't have to worry
+  about any kind of special case }
+  middle = DELTA+1             { This is the middle of the display }
+  opaque[middle][middle] = 0   { delta=0 wasn't so hard :-) }
+
+  FOR delta = 1 TO DELTA DO
+    FOR each (x,y) that lie on the square of radius delta
+      Calculate the two points as described above, call them
+	p1_x, p1_y, p2_x, p2_x.
+      Make sure that (p1_x,p1_y) and (p2_x,p2_y) are on the map.
+      IF Opaque[p1_x - o_x + middle][p1_y - o_y + middle] +
+	 Opaque[p2_x - o_x + middle][p2_y - o_y + middle] >= 2     I
+      THEN
+	{ You can't see this square }
+	Opaque[x - o_x + middle][y - o_y + middle] = 1        II
+      ELSE
+	Opaque[x - o_x + middle][y - o_y + middle] = ???      III
+	{ You might want to draw the tile now if you can }
+      ENDIF
+    ENDFOR
+  ENDFOR
+
+That looks a lot more complicated than it really is.  The hardest part
+in implementing that loop is the "FOR each (x,y) that ..." line.
+If you are a little creative you can do that easily enough.
+
+On line I and II the constants 2 and 1 are used to give the algorithm a
+little flexibility.  By setting the opaqueness of unviewable squares to 1
+and requiring that both "blocking" squares to be opaque (the value 2) the
+algorithm will allow for looking "around" minor obstacles.  To make the
+routine much more strict you could use a value of 2 on line II which
+will often give more realistic displays but (IMHO) less playable
+results.
+
+If you would like a more detailed explanation of the derivation of the
+two points or something a pretty close to an actual C implementation
+(I have my first attempt at writing this appendix which was far too
+formal but did have some code with it) you can send me an email and
+politely ask me to forward it to you or if you have a web browser
+(mosaic, netscape, lynx) you could find both documents at
+
+	http://noether.math.uwaterloo.ca/~crpalmer/
+
+Any questions/comments/criticisms can be directed to me via email at:
+
+	crpalmer@undergrad.math.uwaterloo.ca
+
+
+/=====================================================================\
+| Revision History...                                                 |
+|---------------------------------------------------------------------|
+| 1.0 : Initial Release - Basic info on my method for Tiley-games.    |
+|---------------------------------------------------------------------|
+| 1.1 : Added clarifications, especially a more in depth look at      |
+|       memory structures.  Added several new methods to the list.    |
+|---------------------------------------------------------------------|
+| 1.2 : Touched it up a bit, added porting/size/speed and Appendix I. |
+\=====================================================================/
+Thanks to Gabor Torok and Scott Host, who's methods have influenced those
+in this document (as well as countless tile-based games which I've examined).
+
+

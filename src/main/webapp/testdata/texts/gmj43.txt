@@ -1,0 +1,443 @@
++==================================================================+
+|     ____                        __  __           _               |
+|    / ___| __ _ _ __ ___   ___  |  \/  | __ _ ___| |_ ___ _ __    |
+|   | |  _ / _` | '_ ` _ \ / _ \ | |\/| |/ _` / __| __/ _ \ '__|   |
+|   | |_| | (_| | | | | | |  __/ | |  | | (_| \__ \ ||  __/ |      |
+|    \____|\__,_|_| |_| |_|\___| |_|  |_|\__,_|___/\__\___|_|      |
+|                                                                  |
+|                   _                              _               |
+|                  | | ___  _   _ _ __ _ __   __ _| |              |
+|               _  | |/ _ \| | | | '__| '_ \ / _` | |              |
+|              | |_| | (_) | |_| | |  | | | | (_| | |              |
+|               \____/\___/ \__,_|_|  |_| |_|\__,_|_|              |
+|                                                                  |
++==================================================================+
+| Nintendo and Sega asks users to stop buying product _  _  _____  |
+| REVIEWS: Doom 4th episode,                         | || ||___ /  |
+| Atari to form new games group with Time Warner     | || |_ |_ \  |
+| Ace's Angles: r.g.p cool    +====================+ |__   _|__) | |
+| CRAWFORDALITY CONFIRMED!    | April 1 to April 7 |    |_||____/  |
++=============================+====================+===============+
+ IF YOU HAVE ACCESS TO Internet Relay Chat (IRC), then join the GMJ
+ Chat Channel, #GMJ.   Tuesdays at 7pm Pacific some of the GMJ Crew
+ will be available to answer your questions.  Industry insiders
+ dropping by too! [Moderated.]
+
+ Ace's Angles
+   rec.games.pinball takes GMJ with open arms
+ Express Mail
+   GMJ is cool!  We take back all of the flames!
+ NEWS FLASH
+   Atari joins with Time Warner
+   Nintendo, Sega call for product removal
+   Mortal Kombat II: Crawfordality, new hidden characters confirmed
+ PC Reviews
+   Doom, the fourth episode
+
+          ___          _        ___              _
+         / _ \        ( )      / _ \            | |
+        | |_| | ___ __|/ ___  | |_| |_ __   __ _| | ___  ___
+        |  _  |/ __/ _ \/ __| |  _  | '_ \ / _` | |/ _ \/ __|
+        | | | | (_|  __/\__ \ | | | | | | | (_| | |  __/\__ \
+        |_| |_|\___\___||___/ |_| |_|_| |_|\__, |_|\___||___/
+                                            __/ |
+                                           |___/
+   Welcome to yet another installment of the Internet's least read
+ magazine, Game Master Journal.
+   This is our last issue.  Everyone is right - we are the dregs of the
+ earth, we shouldn't litter the Net with such dribble..
+   NOT!
+   This is April 1 gang, it's time for GMJ's annual April Fools issue!'
+ But wait, before I do any of that, lets get the legal BS outta da way:
+
+     This issue of GMJ is fiction.  Nothing in it should be taken as
+     fact, as it is satire, sarcasm and other things that lawyers love
+     to take and make money with.  WE ARE KIDDING FOLKS, nothing here
+     has truth.  This changes with GMJ 44, when we return to the
+     high ethical, moral and editoral standards that everyone
+     associates with Game Master Journal.
+
+   Whew - that was tiring.  Oh!  And another thing.. this is our SECOND
+ ANNIVERSARY of being online!  Two fun years of GMJ - and here comes
+ number three.. what a way to start!  More 2nd anniversary info in our
+ next issue.  NOW THEN - let the fun begin.
+   This is our last issue, right, so, um, I won't be seeing you ever
+ again!! ARGH!
+
+ _____________________________________________________________________
+]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[
+] Innovative Creations                                                [
+] 3730 McClintock Ave #537  +--- +  + +--+ +--+ +--- +--  +--         [
+] Los Angeles, CA 90007     |-    ++  +--+ |-++ |-   +--+ +--+        [
+] (shubert@usc.edu)         +--- +  + |    |  \ +---  --+  --+        [
+]                                  |\ /| +--+ -+- |                   [
+]                                  |   | |--|  |  |                   [
+]                                  |   | |  | -+- +---                [
+]_____________________________________________________________________[
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*** We take back everything we ever said about you, GMJ
+
+ We want to apologize.  VidBits went way overboard with our 'Why GMJ
+ readers, writers and staff should be uppercutted into the Dead Pool'
+ article.  I am actually a big fan of GMJ, and started VB so I could be
+ just like you.  I'm sooooo sorry, won't happen again.
+
+ Matt Kruse, editor of VidBits magazine
+ mkruse@saunix.something.edu
+
+ [ACE: Aww, it's okay.  We knew it all along.                         ]
+
+*** We take back everything we ever said about you, GMJ, again
+
+ We want to apologize.  rec.games.pinball has been very childish with
+ our dismissal of fine editorial content found weekly in GMJ.  Please
+ come back.. no more flames, we promise.
+
+ All of the rec.games.pinball readers
+ [email address withheld to save bandwidth]
+
+ [ACE: Hey, it's okay.  We all know how r.g.p is a flame-fest.  We knew
+       it all along.                                                  ]
+
+ .....................................................................
+ :WE are the only magazine that prints ALL EMAIL sent to us that is  :
+ :not vulgar or obscene.  So.. send your videogame hints, tips + Q's!:
+ :                                                                   :
+ :#   # #####  #   #  ###  #   # #####  ##### #   #  ###  ##### #    :
+ :#   # #      #   # #   # ##  #   #    #     ## ## #   #   #   #    :
+ :#   # ###    #   # ##### # # #   #    ###   # # # #####   #   #    :
+ :# # # #      # # # #   # #  ##   #    #     #   # #   #   #   #    :
+ : # #  #####   # #  #   # #   #   #    ##### #   # #   # ##### #####:
+ :                                           ........................:
+ :shubert@usc.edu       VOICE: 213-743-1877  :                       :
+ :------------------                         :   Without email, GMJ  :
+ :tnkutasz@ugcs.caltech.edu [Arkady]         : can't work!  So tell  :
+ :ccd@panix.com             [Cue]            :   us what you think!  :
+ :                                           :                       :
+ :...........................................:.......................:
+
+      _   _ _______        ______    _____ _      ___  ____  _   _
+     | \ | | ____\ \      / / ___|  |  ___| |    / _ \/ ___|| | | |
+     |  \| |  _|  \ \ /\ / /\___ \  | |_  | |   | |_| \___ \| |_| |
+     | |\  | |___  \ V  V /  ___) | |  _| | |___|  _  |___) |  _  |
+     |_| \_|_____|  \_/\_/  |____/  |_|   |_____|_| |_|____/|_| |_|
+
+ Nintendo, Sega call for product boycot
+
+ Los Angeles, (March 32, 1994)
+   The Big Two announced today that they are removing all Genesis and
+ Super NES products from stores effective immediately.  A Nintendo
+ representative said "We cannot in good conscience allow our inferior
+ technologies to be sold with Project Reality and Saturn/32X coming so
+ soon - only 18 months away."
+   She went on to say that anyone selling the product will be fined by
+ the FTC for selling antiquated technology.
+   Sega's reps echoed Nintendo.  They also said that no more voilent
+ games would be allowed on any Sega product.. all games must fit their
+ GA rating.
+   In a related story, Nintendo signed a deal with Midway, saying that
+ MK2 will be exactly like the arcade, blood and all.  MK2 will be out
+ this summer, with MK3 hitting the SNES before the arcade, probably in
+ time for Christmas.
+
+ +-------------------------------------------------------------------+
+
+ TIME WARNER AND ATARI CORPORATION FORM NEW SOFTWARE PUBLISHING FIRM
+
+ Sunnyvale, CA (March 28, 1994)
+   Atari Corporation (ASE:ATC) today announces a collaborated software
+ firm with Time Warner, Inc.  Avid Software, Incorporated will commence
+ operations within the next 30 days and leasing space initially within
+ the excutive suites of Atari Corporation in Sunnyvale California.  A
+ development lab will be established with the Warner Bros.  Studios in
+ Southern California.  The two facilities will be linked by high
+ technolgy satellite watts services for real time software development.
+ Warner Bros.  will focus on story lines and intense animated graphics.
+ The operation in Sunnyvale will assemble the hardware-based and
+ software-based graphics engines as well as game play models and
+ prototypes.
+   The new operation is announced just months following Atari Corp's
+ successful launch of a new, high end, 64-bit gaming system dubbed the
+ Jaguar.  Avid Software will dedicate 100% of development time for the
+ first year exclusively to the Jaguar platform.  Although the core
+ development teams have been assembled for the Avid Software project,
+ executive decisions will be made by Sam Tramiel, President of Atari
+ Corporation, until a permanent executiuve staff has been selected.  A
+ panel assembeled by Time Warner will review all long range goals every
+ ninety days.
+   The first three software titles to be developed by Avid Software and
+ scheduled to be released within the fourth quarter of 1994 have also
+ been announced.  They promise a unique blend of realistic digitized
+ graphics, powerful high-definition animations, unique gaming plots and
+ topical story lines.
+
+ Games slated to be produced soon by Avid are:
+
+ HARDING FALLS(tm)--- Just outside of Portland, Oregon a small
+ unincorporated town adopts a new name; Harding Falls.  Made popular by
+ a local young girl who fought her way to the '94 Winter Games, the
+ town unites to launch a new young starlet on to a promising athletic
+ career.  Harding Falls is where it all begins.  Local challengers test
+ all of their physical savoy against each other for overall performance
+ virtues.  Players pre-select their character from an arsenol of
+ determined challengers.
+   Each stage consists of a practice session in which a complete
+ skating routine must be rehearsed.  Obstacles such as untied skates,
+ boos from the crowd and irate family members distract your performance.
+ With each small win, a weapon toward victory is awarded for use during
+ the performance levels.  Sometimes it might be deadly capped teeth.
+ Other times it may be a stick or a steel club.
+   Play against 64-bits of automated power or one-on-one with an
+ aggressive challenger by your side; either way you either win gold or
+ cry your way back to Harding Falls to try all over again. Cartridge-
+ based game features hidden secrets, multi-player action, high
+ resolution graphics and a five dollar coupon toward the purchase of
+ "The Club".
+
+
+ HOLLYWOOD STUNT SPECTACULAR(tm)--- With so many action games designed
+ to fight and kill opponents, Warner Bros.  calls upon their army or
+ stunt professionals to reveal their best kept secrets to stay alive.
+   Take a 125 level backstage studio tour through Warner Bros. hottest
+ action films such as Superman, FreeJack, Batman Returns, The Last
+ Boyscout and The Fugitive.  Race through high definition scenes of
+ your favorite films and pick up props such as breakaway chairs and
+ candy glass.  Battle friendly adversaries, but don't hurt them...
+ after all, they're really your friends.  Pick up the wrong prop as a
+ weapon and you may kill your supporting actor or actress and lose your
+ part in the greatest film ever made.
+   This fast paced, action game includes the thrills of thrillers and
+ the secrets of a great mystery.  The ultimate object is to win without
+ hurting anyone, but don't think for a moment there is no blood! One
+ player action.  Cartridge-based game includes $5 off coupon for select
+ Warner Bros. videos.
+
+
+ BOBBY BOBBIT AND FRIENDS(tm)--- Here's an animated interactive cartoon
+ for adults only! At first glance, it looks harmless enough...  Bobby
+ Bobbit is a bouncy bunny that likes to make friends.
+   Collect points by finding carrots and hidden treasures.  Unlike most
+ treasures, though, Bobby doesn't want to collect coins and tokens.  He
+ collects shears, razor blades and carving knives.  Usually Bobby's
+ friends help find treasures, but sometimes his friends get too rough
+ and Bobby must take corrective action!
+   Game includes vivid cartoon violence unlike any other you have ever
+ seen.  ONLY on the JagCD, this game is rated NC-17 for violense.
+ Let's just say it's a Saturday morning cartoon that will increase
+ attendance at Sunday Mass.
+
+ [ :: Thanks to Bob the Bozo PR of Sunnyvale for contributing :: ]
+
+ ==================================================================
+ LAST SECOND UPDATE
+ ==================================================================
+ We were handed this just as we were aboout to go to spell-check.
+
+
+ WARNING: Look for clues! You are about to be had! This may be it!
+
+ March 32, 1994 (Clue: This date doesn't exist)
+ [commented for the mentally impaired]
+ JAGUAR OWNERS EXPOSED TO BOGUS PRESS RELEASE (bogus headline)
+
+ Members dismember each other (overstated) over ethics debate -
+ alledged tainted press release blamed (not true, bogus subhead)
+
+ Allover, US-- An unnamed source (unsubstantiated) today reported that
+ users of the popular 64-bit Atari Jaguar gaming system have banned
+ together (typed online messages) in an effort to discredit the
+ infamous "bogus" press release just days before the dreaded April
+ Fools holiday is to be celebrated throughout the world (run on
+ sentence-hate 'em!).
+
+ Unlike a bug that cripples a computer until the entire system can be
+ reboot, the sinister press release causes unusual chemicals to form in
+ the brain (lions and tigers and bear a thought, oh my!).  Dr.  Ima
+ Knotheir (alias) of the Institute of Preventive Thinking (I.P.T.)
+ states that while "some (most everyone) finds some humor as the feared
+ press release propagates over the networks, clear laboratory study
+ (personal opinion) of those who are without brains indicate there is
+ no humor in anything classified as funny." Dr.  Knotheir was unable to
+ indicate a direct association of his study to the specific press
+ release that launched this one, however.
+
+ In support of the doctor's findings, Jaguar owners have launched an
+ attack against any and all bogus press release that contain
+ misinformation.  Within six weeks, a committee will be formed to
+ establish a panel that will elect a professional staff to advise a
+ supervisory board for a new team of advisors to appoint a cabinet to
+ determine whether a bogus press release may contain accurate
+ information (Government funding is anticipated).  In the interim, all
+ bogus press releases must be labeled to contain artificial ingredients
+ which have been known to cause brain activity by the I.P.T.  (huh?)
+
+ In their first official action, the Jaguars Owners Bogus Press Release
+ Action Committee has classified this bogus press release to be
+ impounded and not read.  In compliance with this declaration, the
+ following statement has been appended for your safety:
+
+                     IMPORTANT: DO NOT READ THIS!
+
+ Products named are properties of their owning companies.  Text and
+ concept (c)1994, Artisan Software.
+
+ +-------------------------------------------------------------------+
+
+ Crawfordality, new hidden characters in MK2 version 4.0
+
+ Chicago, IL (March 27, 1994)
+   Midway announced today the release of Mortal Kombat II version 4.0,
+ and yes, version 4.0 is in the title.  The game will have some very
+ minor touch-ups with 4 new characters included.
+   "We wanted to be like Capcom," said Ed Boon, programmer/designer of
+ MK2.  "After my interview with this bright young man Anthony from GMJ,
+ we decided that having many cheap upgrades would be good - just like
+ SF2."
+   The new version, already in Ottowa and in some middle-of-knowhere
+ places in the Midwest, has four new characters, and GMJ has the scoop
+ on them!
+
+   Arkady:  "After we saw Tanya [Kutasz, Futuure Wave editor of GMJ] we
+             has to put her into the game."  She flies like a vampire,
+             prowls like a cat and can cast spells (!!) on her foes.
+             She often yells out "Cause Mortal" a la Shao Khan.  You
+             get to her by Double Flawlessing 50 opponents and then
+             'DF'ing Noob Saibot, only using High Kick.
+   Clinton: "Hey, if NBA Jam could do it, why not us?"  He has a deadly
+             saxophone, throws Socks and tosses WhiteWater at times.
+             [see related WhiteWater article.]  At presstime we don't
+             know how to access him - he's cheering the Razorbacks
+             right now.
+   alt.mk:  "We mentioned the Internet guys in the closing credits, but
+             we felt that it wasn't enough."  alt.mk throws fireballs
+             like Liu Kang but the damage done varies.. if the player
+             counterattacks quickly it does much damage, if he allows
+             the flame to pass through him (or under him) it does none.
+             Finisher is like Scorpion's Toasty fatality, but instead
+             a little guy appears on the screen yelling "Hugo!"
+             Some of the Game Masters feel that he says "Yugo!", but
+             that's another story.
+   Sheng:   "Many SF2 players wonder where he is - well, HERE he is!"
+   Long      His only move is to spawn rumors and sequels.  Does damage
+             a la alt.mk, except sometimes he can morph into alt.sf2
+             Very dangerous character.
+
+   In a related story, a new fatality can be done with the Ninja
+ Girls.  If you defeat a character using only punch you can morph into
+ Cindy Crawford.. a Crawfordality.  She climbs atop your foe's
+ shoulders and goes to do a Cammy Frankenstiener, but she slips.. going
+ into a position we prefer not to mention in GMJ.  The Pepsi and MTV
+ people are pleased.
+
++-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+
+/ _______       Game Master_Journal's      _   _ _       _     _    \
+\|__   __|                | |             | \ | (_)     | |   | |   /
+/   | |_   _  ___  ___  __| | __ _ _   _  |  \| |_  __ _| |__ | |_  \
+\   | | | | |/ _ \/ __|/ _` |/ _` | | | | | . ` | |/ _` | '_ \| __| /
+/   | | |_| |  __/\__ \ (_| | (_| | |_| | | |\  | | (_| | | | | |_  \
+\   |_|___,_|____||___/\__,_|\__,_|\__, | |_| \_|_|\__, |_| |_|\__| /
+/   |_   _|  __ \ / ____|           __/ |           __/ |           \
+\     | | | |__) | |       8pm     |___/           |___/            /
+/     | | |  _  /| |       Pacific Time  +=-=-=-=-=-=-=-=-=-=-=-=-=-+
+\    _| |_| | \ \| |____   in channel    |THIS WEEK:                /
+/   |_____|_|  \_\\_____|  #GMJ          | How funny GMJ 43 was!    \
++-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+=-=-=-=-=-=-=-=-=-=-=-=-=-+
+ _____   _____   _____            _
+|  __ \ / ____| |  __ \          (_)
+| |__) | |      | |__) |_____   ___  _____      _____
+|  ___/| |      |  _  // _ \ \ / / |/ _ \ \ /\ / / __|
+| |    | |____  | | \ \  __/\ V /| |  __/\ V  V /\__ \
+|_|     \_____| |_|  \_\___| \_/ |_|\___| \_/\_/ |___/
++--------------------------------------------------------------------+
+|TITLE:       |PUBLISHER   |GAME TYPE:   |SIZE: |AVERAGE OF REVIEWS: |
+| Doom episode| id Software| Save da     |.1 MEG|                99.5|
+| 4: Heaven   |            | Bunnies     |      |*****%%%%%@@@@@#####|
+|-------------+------------+-------------+------+--------------------|
+|MAIN REVIEW BY:                 OTHER REVIEWERS                     |
+|                                                                    |
+| Arkady      99           Ace      100 ---------- ** ---------- **  |
+|                                                                    |
++--------------------------------------------------------------------+
+ Well, it's out! It's the Doom you've been waiting for - Episode 4 hits
+ the stores today.  And what a sequel! It's all that we could wish for
+ and more.
+
+ It seems that our loyal space marines are transported this time to
+ another dimension altogether, after escaping from Hell in the previous
+ episodes.  The setting this time: Heaven.  The Elysian Fields couldn't
+ be more beautiful than the graphics portrayed here - Meadows with
+ warm, fuzzy bunny rabbits and colorful butterflies fill the game,
+ along with sun-dappled forests that are home to Bambi-like deer and
+ friendly racoons.  Your Mission: make sure there's enough food for all
+ Heaven's inhabitants.  Can't have those cute little cotton tails
+ turning belly up because their bellies are empty, now can we?
+
+ The way in which you do this is by searching out the food supplies and
+ opening them up to the animals by pressing the space bar, much the
+ same as opening up doors in the last episodes.  And guess what? You're
+ linked with the animals by a psionic connection - and every time one
+ of them dies from starvation, you lose health points.  So keep your
+ eyes open for berry-filled bushes that are out of the reach of furry
+ little paws.  And make sure you get all the thorns off, too - can't
+ have bloody tracks all over the forest.  Might attract big bad nasties
+ that'd eat the bunnies and leave their heads on spikes in random
+ spots, with blood dripping down the sides.  Oh, but wait - this is
+ Heaven, after all.  No bad creatures here.  Everything's friendly.  So
+ you don't have to worry about being attacked from behind while you're
+ fulfilling your Mission.  Want to play with friends? No problem! The
+ unsavory Deathmatch option has thankfully been eliminated, leaving you
+ with the more interesting of the two choices - cooperative mode.  So
+ you all get to help save the animals.  What fun!
+
+ The graphics, as stated earlier, are far superior to the last DOOM put
+ out by id games.  Soft pastels are abundant, the animals look
+ true-to-life, and when you get that food to feed them, you actually
+ see your hand reach out and place it at their fuzzy little feet.  How
+ quaint! How exciting! How could we ever have loved the death and
+ destruction of Inferno? This episode far outreaches its predecessor in
+ all ways, and will be a pleasure to play.  It should also soothe the
+ nerves of all those activists who think that the past episodes were
+ too violent - none of that unwelcomeness here, simply good, clean,
+ pure fun.  Who wants to see cyber-demons destroyed by BFG's anyhow?
+ Not I! I give this a definite four stars, without question.  Play it,
+ enjoy it, live it.  Tips will be forthcoming on how to save Heaven's
+ wonderous creatures.  Meanwhile, enjoy!
+
+ Ace - 100
+ Happy Happy, Joy Joy!  I love you, you love me..
+
++-------------------------------------------------------------------+
+|                  We get serious again (were we ever?) with..      |
+| IN THE NEXT    * NBA Jam reviews: SNES, Genesis                   |
+|    ISSUE OF... * NBA Jam Tournament Edition Arcade Review         |
+|                * More games reviewed..                            |
+|   GAME MASTER                                                     |
+|     JOURNAL    * Scoop on Atari and Tempest 2000                  |
+|                * Fiction contest, Ace's Angles, servey + more     |
+|                                                                   |
++-------------------------------------------------------------------+
+
+Producer: Anthony Shubert       Online Layout Editor: Anthony Shubert
+Head Writing Staff:                Contributors:
+  HOME SYSTEMS  Reny Falzarano       Mr. Sims, the Pepperidge Farmer,
+ HEAD REVIEWERS Instigator                 Mr. Mojo Risin', Aquarius,
+  FUTURE WAVE   Tanya Kutasz                  Sai-Blade, Matrix, Shez
+CONTRIBUTING ED David Rubin
+
+We are not affiliated with or endorsed by the following companies:
+Nintendo of America, Sega Enterprises, Turbo Technologies (NEC),
+Atari Corp., Atari Games, SMSG, or any other company.
+
+Product names are either (c) or trademarks of their respective
+companies, and the non-marking of such product is not a challenge to
+its status.
+
+This is FICTION folks.  Sarcasm.  Enjoy.
+
+Ace's Angles, Chronicle, Express Mail, Warp Zone, and all content are
+(c) 1990, 1991, 1992, 1993, 1994 Innovative Creations
+
+:: Some ASCII/ANSI work created with use of 'TheDraw' SW program ::
+:: Some ASCII work created with use of 'Figlet' freeware program ::
+

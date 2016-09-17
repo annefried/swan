@@ -1,0 +1,939 @@
+                            Most Common Problems  
+                 Wing Commander III : Heart of the Tiger  
+ 
+                                Version 2.0 
+                                   2-1-95 
+ 
+                     Written, compiled and updated by : 
+ 
+                            Anthony L. Sommers  
+                         Assistant Project Leader  
+                        Wing Commander III QA Team  
+ 
+---------------------------------------------------------------------- 
+ 
+This has been provided as a supplement to the Wing Commander III 
+documentation. It details a number of the most common questions 
+asked and their solutions. 
+ 
+It is recommended that the Playguide, Install/Troubleshooting Guide AND 
+the README.TXT file on the CD are also read in addition to this file. 
+ 
+This file will be updated continuously and can be found on our BBS 
+(512-331-8559) or on the Internet (ftp.ea.com /pub/patches/wc3help.txt). 
+ 
+---------------------------------------------------------------------- 
+ 
+[INDEX] 
+ 
+0.0   Making a BOOT DISK for Wing Commander III 
+ 
+1.0   Movies pausing (starting and stopping) 
+ 
+2.0   Long load times 
+ 
+3.0   The "DOTS" 
+      3.1   You see "Loading Wing Commander III ......." and it returns 
+            you immediately back to the CD-ROM drive prompt 
+      3.2   Lockups at the fourth or sixth dot 
+ 
+4.0   Error messages 
+      4.1   This error may be the result of a bad CD-ROM read... 
+      4.2   A processor exception has occured. 
+            Your system may be unstable at this point. 
+      4.3   Critical error on file : ..\..\data\movies\origin_s.mve or 
+            Critical error on file : ..\..\data\movies\opening.mve 
+      4.4   Exception 13 happened :) 
+      4.5   CVMManager::getPtr () failed 
+      4.6   Write failed on file : SWAPFILE.$$$ 
+      4.7   Malloc () failed 
+      4.8   Non system disk or disk error 
+            Replace and strike a key when ready 
+      4.9   Invalid drive specification 
+ 
+5.0   Lockups 
+      5.1   Lockups after the fourth or sixth dot 
+      5.2   Lockups During opening movie, [ESC] takes you further into 
+            the game 
+      5.3   Lockup at the joystick calibration screen 
+ 
+6.0   Reboots 
+ 
+7.0   Gameplay 
+      7.1   Movies are of "poor quality" 
+      7.2   No descriptions of possible actions (Attend Briefing, etc.) 
+      7.3   TAB and ~ (afterburners) do not work in spaceflight 
+      7.4   Installation program rates machine slower than normal 
+      7.5   Crackling sounds in SVGA 
+            7.5.1   Cirrus Logic GD-542x  
+            7.5.2   Orchid Kelvin 64  
+ 
+8.0   Specific Hardware 
+      8.1   Control (keyboard, mouse, joystick) 
+            8.1.1   Flightstick Pro support 
+            8.1.2   Thrustmaster and Logitech Wingman support 
+            8.1.3   WING3.ADV compiler errors  
+            8.1.4   Programmable keyboards 
+      8.2   Video cards 
+            8.2.1   Diamond Viper VLB 
+            8.2.2   Matrox PCI 
+            8.2.3   Hercules Graphite 
+            8.2.4   Compaq QVision 
+      8.3   Sound cards 
+            8.3.1   Mozart by Oak Technologies 
+            8.3.2   Media Chips MAD 16 
+            8.3.3   Media Magic 16 (ISP16 and MAGICS20) 
+      8.4   Miscellaneous (CPUs, hard drives, SCSI host adapters, etc.) 
+            8.4.1   Cyrix 486 processors 
+            8.4.2   AMD processors 
+ 
+9.0   Patches 
+      9.1   WC3JOY.DLL, the joystick patch 
+ 
+10.0   Problem CD-ROM drivers and their updates 
+ 
+11.0   Acknowledgements 
+ 
+---------------------------------------------------------------------- 
+ 
+[0.0]   Making a BOOT DISK for Wing Commander III 
+ 
+Almost all problems can be solved by making a boot disk for Wing 
+Commander III. Regardless of the total amount of RAM and/or conventional 
+memory, processor speed/power, etc., the boot disk will set up your 
+computer specifically to run Wing Commander III. Expanded Memory 
+Managers (EMM386, QEMM386, 386MAX, NETROOM, etc.) are not needed and if 
+configured incorrectly, will often conflict with our own protected mode 
+memory manager. 
+ 
+To make a boot disk for Wing Commander III, please use the following  
+instructions : 
+ 
+1)  Place a blank disk in drive A: 
+ 
+2)  Type  C:  and press [ENTER] 
+ 
+3)  Type  FORMAT A: /S  and press [ENTER] 
+ 
+4)  Type  A:  and press [ENTER] 
+ 
+5)  Type  COPY C:\CONFIG.SYS  and press [ENTER] 
+ 
+6)  Type  COPY C:\AUTOEXEC.BAT  and press [ENTER] 
+ 
+7)  Type  EDIT A:\CONFIG.SYS  and press [ENTER] 
+ 
+8)  Different computers have different sound cards, CD-ROM drives, etc. 
+    Therefore, after the first 5 initial lines, we cannot list out the 
+    exact lines needed. However, the original lines from your hard disk 
+    CONFIG.SYS will be there, and you can try to make sure lines of the 
+    CONFIG.SYS on the boot disk read somewhat like the following : 
+ 
+        DEVICE=C:\DOS\HIMEM.SYS 
+        DOS=LOW 
+        FILES=25 
+        BUFFERS=99 
+        SHELL=C:\DOS\COMMAND.COM C:\DOS\ /P 
+        DEVICE=C:\<path>\<possible sound card drivers> 
+        DEVICE=C:\<path>\<CD-ROM drivers> 
+        DEVICE=C:\<path>\<possible mouse driver> 
+ 
+    Lines to make sure you want to remove from the CONFIG.SYS of the 
+    boot disk : 
+ 
+        DEVICE=C:\DOS\EMM386.EXE ... 
+        DEVICE=C:\WINDOWS\IFSHLP.SYS 
+        DEVICE=C:\DOS\SMARTDRV.EXE ... 
+ 
+9)  After you are finished with the CONFIG.SYS, press [ALT-F], then [X],  
+    then [Y]. You should return to the A: prompt. 
+ 
+10) Type  EDIT A:\AUTOEXEC.BAT  and press [ENTER] 
+ 
+11) Similiar to CONFIG.SYS, since different computers have different 
+    sound cards, CD-ROM drives, etc., we cannot list out the exact lines  
+    needed for the AUTOEXEC.BAT file. However, the original lines from  
+    your hard disk AUTOEXEC.BAT will be there, and you can try to make  
+    sure lines of the AUTOEXEC.BAT on the boot disk read somewhat like  
+    the following : 
+ 
+        @ECHO OFF 
+        PROMPT $p$g 
+        PATH C:\DOS 
+        C:\<path>\MSCDEX.EXE ... 
+        <possible soundcard lines (SET BLASTER=, SET SOUND=, etc.)> 
+        <possible mouse driver line (C:\DOS\MOUSE or C:\MOUSE\MOUSE)> 
+ 
+    Lines to make sure you want to remove from the AUTOEXEC.BAT of the 
+    boot disk : 
+ 
+        C:\DOS\SHARE.EXE ... 
+        C:\DOS\SMARTDRV.EXE ... 
+ 
+12) After you are finished with the CONFIG.SYS, press [ALT-F], then [X],  
+    then [Y]. You should return to the A: prompt. 
+ 
+13) Reboot your computer with the new boot disk. You may now try to  
+    install/run the game! 
+ 
+---------------------------------------------------------------------- 
+ 
+[1.0]   Movies pausing (starting and stopping) 
+ 
+The movies pause because data cannot be transferred from the CD-ROM  
+drive to our game at a sustained rate. The following may be attempted to  
+help alleviate movie pausing : 
+ 
+1)  Play the movies in VGA. There is roughly 4 times as much data in 
+    SVGA to display to the screen than in VGA. Run the installation with 
+    WC3 -I  and make sure Movie Video Mode is VGA. You may also go to 
+    the Main Terminal, under Controls/Graphics Modes/Movies and click on 
+    the box next to VGA. 
+ 
+2)  Make sure your CD-ROM driver is up to date. You will need to contact 
+    your CD-ROM drive manufacturer to see if you have the latest 
+    version. You can check the list of problem CD-ROM drivers at the end 
+    of this file to see if your driver needs to be updated. 
+ 
+3)  We test the speed of your machine and rate it according to the time 
+    it takes for certain actions to be completed (see README.TXT for 
+    more information). The benchmarks for your system are accurate. You 
+    must make sure you rate at least : 
+ 
+    0-25    for CPU Speed. Lower score = Faster processor 
+    0-12    for Video Card Speed. Lower score = Faster video card 
+    300+    for CD-ROM drive transfer rate. Higher rate = Faster CD-ROM 
+ 
+    If you do not meet any of the above requirements, you probably will 
+    experience movie pausing, even in VGA. 
+ 
+    NOTE : If the installation program specifically detects that a 
+    particular component is too slow, you will see a message that will 
+    let you know. There may not be anything that can be done about the 
+    movie pausing if you encounter one of these messages.  
+ 
+---------------------------------------------------------------------- 
+ 
+[2.0]   Long load times 
+ 
+If you are experiencing long load times (in excess of approximately 2 
+minutes), the following are suggested to help make the transition from 
+gameflow to spaceflight a little shorter : 
+ 
+1)  Check to see if you are using disk compression. If so, there may not 
+    be anything else that can be done. (Of course, suggestions 2-6 may 
+    be attempted, but may have no effect...)  
+  
+2)  The disk utilities listed below (with the exception of SCANDISK) are 
+    shipped with DOS 6.0 and above (SCANDISK is shipped with DOS 6.2 and  
+    above). Consult your DOS manual for more in-depth instructions on  
+    how to use them. 
+ 
+    It is recommended that before you play, you do the following for  
+    drive C: and the savegame drive (if it differs from drive C:) :  
+ 
+        CHKDSK C: 
+ 
+            or better, 
+ 
+        SCANDISK C: 
+ 
+    CHKDSK and SCANDISK check and repair hard disk file damage. If any  
+    damage is found, you will want to remove the C:\WC3 directory and  
+    the savegame directory (if it is different) with : 
+ 
+        DEL C:\WC3 
+        RD C:\WC3 
+ 
+    and repair any damage found according to the instructions in your  
+    DOS manual.  
+ 
+2)  Severely fragmented hard drives are a top cause of long load times. 
+    You will then need to run a defragmentation utility doing a "full 
+    optimize" for the savegame drive. For example :  
+ 
+        DEFRAG C: /F  
+ 
+4)  If enough disk space is available, try copying all 42 MB to the HD. 
+    Try lower settings if less disk space is available.  
+ 
+5)  In the CONFIG.SYS of your boot disk, use BUFFERS=99. Each buffer 
+    uses 532 bytes of conventional memory, so this will use 
+    approximately 50K.  
+ 
+6)  If you have enough memory, you may try to squeeze in a 100K 
+    SMARTDrive cache. After SMARTDRV.EXE, specify the savegame drive 
+    letter. It is DEFINITELY NOT HELPFUL to have an amount lower than 
+    100K, this will increase load times. For example :  
+  
+        C:\DOS\SMARTDRV.EXE C 100  
+  
+*7) More RAM will definitely shorten load times. 
+ 
+---------------------------------------------------------------------- 
+[3.0]   The "DOTS" 
+ 
+The "dots" signify the progress of the initialization phases of the 
+game. Here are some things to check :  
+ 
+1)  Set up a BOOT DISK! :) 
+ 
+2)  Make sure your VESA driver is current and up to date. Try "UNIVBE", 
+    or playing in VGA with "WC3 -V".  
+ 
+3)  Make sure you have a 100% compatible mouse driver. Attempt to REM 
+    out your mouse line and see if the problems persist. 
+ 
+4)  You have a clean hard disk with at least 25MB of free space (50MB 
+    if you are using disk compression).  
+ 
+5)  Check sound card settings and compatibility. Try disabling your 
+    sound card to see if that allows you to get into the game. 
+  
+6)  Make sure your CPU is 100% Intel compatible.  
+ 
+[3.1]   You see "Loading Wing Commander III ......." and it returns 
+        you immediately back to the CD-ROM drive prompt 
+ 
+Edit the AUTOEXEC.BAT file of your boot disk and type REM at the 
+beginning of your mouse driver line. You are not using a 100% compatible  
+mouse driver. Please refer to the Install Guide for more information in  
+obtaining a 100% compatible mouse driver. 
+ 
+[3.2]   Lockups at the fourth or sixth dot 
+ 
+Run the installation program with  WC3 -I  and select NONE for "Setup  
+Music Card" and "Setup Digital FX Card". If you can now get into the  
+game, either your sound card is not set up correctly or your sound card  
+is not 100% compatible with the selection you are trying to choose.  
+Please verify your sound card settings and try again. 
+ 
+We do know of a few problem sound cards that may lockup. (See section  
+8.3 below.) 
+---------------------------------------------------------------------- 
+ 
+[4.0]   Error messages 
+ 
+[4.1]   This error may be the result of a bad CD-ROM read... 
+ 
+Don't panic, you don't necessarily have a bad CD. Simply make sure  
+you're using a boot disk, and try again. If you cannot solve the problem  
+with a boot disk, see if your error message ABOVE the "This error..." is  
+listed anywhere in the Install/Troubleshooting guide, the README.TXT  
+file, or this help file. You may want to try exchanging the CDs at the  
+place of purchase to see if a new CD actually solves your problem. 
+ 
+[4.2]   A processor exception has occured. 
+        Your system may be unstable at this point. 
+ 
+1)  Make sure the line DEVICE=C:\DOS\HIMEM.SYS is in your CONFIG.SYS. 
+ 
+2)  If you have the following : 
+ 
+    Hardware   : Mitsumi CD-ROM model FX001/FX001D  
+    CONFIG.SYS : DEVICE=C:\<path>\MTMCDAE.SYS /D:MSCD001 <parameters> 
+ 
+    HOW to solve :  
+      Use the MTMCDAS.SYS driver found in the same directory. If  
+      this driver is not in the directory, look on the disks that came  
+      with the CD-ROM.  
+ 
+        DEVICE=C:\<path>\MTMCDAS.SYS /D:MSCD001 <parameters> 
+ 
+      As an alternate solution, you may try /T:S on the MTMCDAE.SYS  
+      line. Use this if the customer does not have MTMCDAS.SYS on  
+      his/her hard drive.  
+ 
+        DEVICE=C:\<path>\MTMCDAE.SYS /D:MSCD001 /T:S <parameters> 
+ 
+      Mitsumi     BBS             408-970-0761  
+                  Sales           516-752-7730   
+                  Tech Support    408-970-9699/9730  
+ 
+3)  Make sure you're using a 100% Intel compatible processor. Other 
+    processors may not be compatible with our game. 
+ 
+[4.3]   Critical error on file : ..\..\data\movies\origin_s.mve or 
+        Critical error on file : ..\..\data\movies\opening.mve 
+        after several seconds of viewing the introduction. 
+ 
+1)  If you have the following : 
+ 
+    Hardware   : Phillips LMS 206 CD-ROM drive 
+    CONFIG.SYS : DEVICE=C:\<path>\DD260.SYS /D:MVCD001 ... 
+ 
+    How to solve : 
+      Try adding the  "/F:5"  parameter to the end of the line. You may 
+      alternately try  "/F:1".  This will attempt to clear a conflict 
+      between the CD-ROM interface and the soundcard. 
+ 
+        DEVICE=C:\<path>\DD260.SYS /D:MVCD001 /F:5 ... 
+ 
+2)  If you have the following : 
+ 
+    Hardware   : Mitsumi 4x IDE CD-ROM drive and an enhanced IDE hard 
+                 drive 
+    CONFIG.SYS : DEVICE=C:\MTM\MTMCDAI.SYS /D:MTMIDE01 /P:170,15 
+ 
+    How to solve : 
+      There seems to be an incompatibility with our game, certain 
+      motherboards and this setup. We are currently researching this.  
+      There is no solution at this time. 
+ 
+3)  You may want to verify that you have the latest CD-ROM driver for 
+    your CD-ROM drive. See section 1.0 for more information. 
+ 
+[4.4]   Exception 13 happened :) 
+ 
+Make a boot disk and retry. Also please review section 6.0 which  
+discusses reboots. The same possible solutions apply to the Exception 13  
+error messages. 
+ 
+[4.5]   CVMManager::GetPtr () Requested: 397984, Available: 379932  
+ 
+    Hardware     : Generally 8 MB machines 
+    CONFIG.SYS   : DEVICE=C:\DOS\EMM386.EXE 7168 RAM 
+                   DEVICE=C:\<CD-ROM Driver> /M:<Large number>  
+    AUTOEXEC.BAT : C:\DOS\SMARTDRV.EXE <Large number>  
+                   C:\DOS\MSCDEX.EXE /E /M:<Large number>  
+ 
+    Why this occurs :  
+      You will find this error code on mission J003 on disc 3. 
+      Basically, you have just barely enough extended memory to run 
+      the game, but not enough to load the mission data. 
+ 
+    HOW to solve :  
+      You will have to load all drivers possible into conventional, and 
+      try not to use as little extended memory as possible.  
+ 
+      1)  REM out EMM386.EXE and DOS=UMB. This will load all drivers 
+          into conventional memory, freeing upper memory.  
+ 
+      2)  On the CD-ROM driver line in the CONFIG.SYS, remove the switch 
+          or lower the amount of CD-ROM buffers allocated (if this is 
+          what the /M switch for that particular driver does).  
+  
+      3)  REM out SMARTDRV.EXE from the AUTOEXEC.BAT file.  
+  
+      4)  Remove the /E switch from the MSCDEX.EXE line and lower the  
+          buffers from the number specified after the /M: to 5. 
+ 
+      5)  Use DOS=LOW in the CONFIG.SYS of your boot disk.  
+ 
+      6)  99.9% of the time, 1-5 work just fine. If 1-5 have no effect,  
+          as a last resort, re-run the installation program and disable  
+          sound for that particular mission. 
+ 
+[4.6]   Write failed on file : SWAPFILE.$$$ 
+ 
+    Hardware   : Badly fragmented hard drives  
+ 
+    Things to try : 
+ 
+    1)  Make sure you have enough free space on the drive you're trying  
+        to run the game on. You should have at least 25 MB of  
+        uncompressed space. If the hard drive is compressed, the size  
+        should move up to 50 MB. 
+  
+    2)  Make sure there are NO lost allocation units, cross- 
+        linked/truncated files, bad sectors, etc. Use SCANDISK or CHKDSK  
+        to check for the presence of file damage and repair accordingly.  
+  
+    3)  DEFRAG completely with "DEFRAG C: /F"  
+ 
+    For a more detailed explanation of using CHKDSK, SCANDISK and 
+    DEFRAG, refer to section 2.0, "Long load times," or your DOS manual. 
+ 
+[4.7]   Malloc () failed 
+ 
+This error may occur if you MANUALLY flew toward the way point. ALL (not  
+most, not some, ALL) nav points should allow you to auto-pilot to the  
+next nav allowing you to complete the nav area task. This may involve  
+killing fighters, linking with transports, mining jump buoys, etc. For  
+example :  
+ 
+    If the you must escort transports, the you MUST auto-pilot link with 
+    the transport by flying within 500 units of the transport to  
+    establish the link. The auto-pilot light will then light up, and  
+    auto-piloting is possible. PRESS "A" to autopilot to the next nav- 
+    point. 
+ 
+[4.8]   Non system disk or disk error 
+        Replace and strike a key when ready 
+ 
+This is a DOS error which means that the boot disk that you created for  
+the game does not have the DOS system files on it. You will need to : 
+ 
+1)  Restart your computer with the boot disk out of the A: drive. Go to 
+    the DOS prompt (exit Windows). 
+ 
+2)  Type  C:  and press [ENTER] 
+ 
+3)  Place the boot disk in drive A: 
+ 
+4)  Type  SYS A:  and press [ENTER] 
+ 
+5)  Reboot your computer with the disk in the drive after the SYSTEM 
+    TRANSFERRED message. 
+ 
+[4.9]   Invalid drive specification 
+ 
+Your CD-ROM drive has not loaded properly or the drive letter has  
+changed. When MSCDEX loads, it will tell you the drive letter of your  
+CD-ROM drive : 
+ 
+    DRIVE D:= MSCD001 
+ 
+---------------------------------------------------------------------- 
+ 
+[5.0]   Lockups 
+ 
+Make a boot disk and retry. 
+ 
+[5.1]   Lockups after the fourth or sixth dot 
+ 
+See section 3.2. 
+ 
+[5.2]   Lockups During opening movie, [ESC] takes you further into 
+        the game 
+ 
+You have chosen the incorrect sound card settings or have an IRQ or DMA  
+conflict with your sound card and another device in your system. Verify  
+your sound card settings are "conflict free" and re-run the installation  
+program. 
+ 
+See the Install Guide for more information. 
+ 
+If you have an SB16 and you are sure your sound card settings are 
+correct <this may not work for everyone>, but you may want to try to 
+set the low and high DMA to the same channel in the boot disk's 
+AUTOEXEC.BAT : 
+ 
+    SET BLASTER=A220 I5 D1 H5 P330 T6 
+    SET SOUND=C:\SB16 
+    C:\SB16\SBCONFIG /S  or  C:\SB16\DIAGNOSE /S 
+ 
+SBCONFIG and DIAGNOSE will dynamically set the IRQ and DMA of your  
+sound card according to the settings in the SET BLASTER line. Refer to 
+your SB16 User's Guide for more information. 
+ 
+[5.3]   Lockup at the joystick calibration screen 
+ 
+We are unsure why this happens, but with a bit of troubleshooting, we  
+should be able to find the cause : 
+ 
+1)  Make sure you have only one joystick port active. If you do not, you 
+    may have a joystick port conflict. Resolve and retry. 
+ 
+2)  Remove the joystick completely, and see if you can get into the 
+    game's installation program. Plug in the joystick after the game has 
+    been installed and calibrate from within the game. 
+ 
+3)  Try another joystick. 
+ 
+4)  If you have more than one joystick port, disable the current 
+    joystick port and the second joystick port and retry. 
+ 
+5)  Try the Wing Commander III Joystick Patch (section 9.1). 
+ 
+6)  Disable all open joystick ports and try using a speed adjustable 
+    gamecard. 
+ 
+---------------------------------------------------------------------- 
+ 
+[6.0]   Reboots 
+ 
+Reboots normally occur when going after Flint, during Behemoth mission, 
+planet ascension, switching CDs, or (R)eplaying a mission after you have 
+died or ejected. 
+ 
+The most common cause of a reboot is a video card with the S3 chipset.  
+There is a problem reinitializing the video mode when going from mission  
+to mission or from mission to movie to mission (as opposed to from  
+mission to gameflow to mission). 
+ 
+The video cards reboot if in SVGA when this occurs. We are currently  
+researching this, but a solution at this time is to go into installation  
+program with WC3 -I and set the Spaceflight Video Mode to VGA. If you  
+want to play in SVGA that is fine, but you must manually switch to SVGA  
+with ALT-3 or ALT-4. The mission MUST LOAD UP in VGA. 
+ 
+Some other possibilities : 
+ 
+1)  If you have the following : 
+ 
+    Hardware   : BUSLogic 542S SCSI Host Adapter  
+ 
+    HOW to solve :  
+      You will need to use EMM386.EXE and possibly exclude DC00-DFFF. 
+      The address range is used by the host adapter and may conflict 
+      with Wing III. You must consult your documentation for specific  
+      information on which range to exclude. For example :  
+  
+        DEVICE=C:\DOS\EMM386.EXE RAM X=DC00-DFFF  
+  
+    BusLogic        BBS                 408-492-1984   
+                    Tech Support FAX    408-492-1542  
+                    Tech Support        408-492-9090   
+                    Tech Support        408-988-7338  
+ 
+2)  If you have the following : 
+ 
+    Hardware   : PAS 16 and a SCSI CD-ROM Drive connected to the PAS 16 
+    CONFIG.SYS : DEVICE=C:\<path>\TSLCDR.SYS /D:MVCD001 /R 
+  
+    HOW to solve :  
+      You will need to download 316.EXE or 318S-MV.EXE from the  
+      MediaVision BBS to upgrade TSLCDR.SYS to version 3.16 or 3.18. 
+      316.EXE should be sufficient. 318S-MV.EXE is only needed if you  
+      have a Sony 55S or a Sanyo 94S CD-ROM drive.  
+  
+      316.EXE contains :  
+  
+        MSCDEX   EXE        25,377 02-12-93   6:00a  
+        README   DOC         1,344 10-04-93   4:04p  
+        TSLCDR   SYS        35,201 04-26-94   3:36p  
+ 
+      318S-MV.EXE contains :  
+  
+        MSCDEX   EXE        25,377 02-12-93   6:00a  
+        TSLCDR   SYS        35,425 11-11-94  10:53a  
+        README   DOC         1,372 12-06-94   4:50p  
+  
+      NOTE : MSCDEX.EXE included in this executable is version 2.21.  
+      Version 2.23 is a requirement for the game. If you do not already  
+      have Version 2.23 (it is shipped w/ DOS 6.2 and up), you will need  
+      to contact Microsoft for the latest version.  
+  
+    Media Vision    BBS             510-770-0968 14400bps  
+                    BBS             510-770-0527  
+                    General         800-684-6699  
+                    Tech Support    800-638-2807  
+ 
+---------------------------------------------------------------------- 
+ 
+[7.0]   Gameplay 
+ 
+[7.1]   Movies are of "poor quality" 
+ 
+If "streaks" are seen, either your gamma correction or monitor  
+brightness is TOO high. Adjust the brightness of your monitor and/or  
+gamma correction so that "Origin Presents" and "A Chris Roberts Game"  
+fades to complete darkness. This should lessen the "streak"ing effect.  
+ 
+[7.2]   No descriptions of possible actions (Attend Briefing, etc.) 
+ 
+A 100% Microsoft compatible mouse driver must be installed in order to  
+get gameflow descriptions (ie. Talk to Hobbes, Attend Briefing, etc.) 
+ 
+[7.3]   TAB and ~ (afterburners) do not work in spaceflight 
+ 
+The use of afterburners (TAB or ~) or slide (CAPS LOCK and /) will not  
+work when mouse flight is enabled. You will have to double-click the 
+right mouse button to afterburn, or use a joystick or the keyboard. The  
+control type can be changed in the Spaceflight Options Menu (ALT-O). 
+ 
+[7.4]   Installation program rates machine slower than normal 
+ 
+If CPU Speed is rating slower than normal, make sure that both internal  
+and external CPU caches are enabled. Also, check to see that the turbo  
+button is on. Our benchmark scale applies to Intel microprocessors.  
+Other processors tested may show a result slower than their Intel  
+counterparts. Contact the microprocessor manufacturer for a more  
+detailed explanation. 
+ 
+[7.5]   Crackling sounds in SVGA 
+ 
+In SVGA, you hear crackling/static/popping sounds from the sound card.  
+First, make sure you do not an IRQ or DMA conflict. 
+ 
+[7.5.1]   Cirrus Logic GD-542x  
+ 
+If the you have the Cirrus Logic GD-542x video card, you may download 
+542XVGA.EXE from the Cirrus Logic BBS. It upgrades the video BIOS to 
+1.41. 
+ 
+    Cirrus Logic    BBS             510-440-9080 
+                    General         510-623-8300 
+ 
+[7.5.2]   Orchid Kelvin 64  
+ 
+If you have the Orchid Kelvin 64 there is currently no solution for this  
+problem. We are in contact with Orchid working on a solution. 
+  
+    Orchid Technology BBS           510-683-0327 
+                      General       510-683-0300  
+                      Sales         800-767-2443  
+                      Tech Support  510-683-0323  
+ 
+---------------------------------------------------------------------- 
+ 
+[8.0]   Specific Hardware 
+ 
+There are several hardware specific issues that need to be addressed 
+as follows. 
+ 
+[8.1]   Control (keyboard, mouse, joystick) 
+ 
+It is very important that 100% Microsoft-compatible mouse drivers are 
+used. It has been noted that non-100% Microsoft-compatible mouse drivers 
+will cause lockups during game initialization or during the movies.  
+ 
+There is no mention how the Flightstick Pro or Thrustmaster FCS Mark I  
+is supported in the documentation for the game. They are supported as  
+follows :  
+ 
+[8.1.1]   Flightstick Pro support 
+ 
+    Coolie Hat  UP      F1 (Forward View, Toggle Cockpit On/Off)  
+    Coolie Hat  LEFT    F2 (Left View, Pan Left -it DOES pan)  
+    Coolie Hat  RIGHT   F3 (Right View, Pan Right -it DOES pan)  
+    Coolie Hat  DOWN    F4 (Rear/Turret View)  
+ 
+    Trigger             FIRE Guns  
+    Left TOP Button     Joystick Button 2  
+    Middle TOP Button   "Y" - Lock target and Match Speed  
+    Right TOP Button    Fire Missiles  
+ 
+[8.1.2]   Thrustmaster (w/o the Mark II) and Logitech Wingman support 
+ 
+    Hat                 NOT SUPPORTED  
+  
+    Trigger             FIRE Guns  
+    TOP Thumb Button    Joystick Button 2  
+    BOTTOM Thumb Button Fire Missiles  
+    Pinky Button        "Y" - Lock target and Match Speed  
+ 
+[8.1.3]   WING3.ADV compiler errors  
+ 
+    HOW to solve :  
+      Edit the WING3.ADV file and remove the ( and ) (open and close  
+      parentheses) from the lines w/ LALT and LCTL. Recompile, and it  
+      should work fine.  
+  
+      The corrections to the file are listed below :  
+ 
+    REM                WING COMMANDER THREE by ORIGIN SYSTEMS  
+    REM                   Written and Tested November 1994  
+    REM ****************************************************************  
+    REM  Base Switch Settings  
+    REM  Black Hat switch = Digital  
+    REM  Red Switch       = Digital  
+    REM  Game Settings: Regular Joystick if FCS is plugged into WCS  
+    REM  
+    GAME 1 70               REM  DIGITAL CONTINUOUS 70 MS Delay  
+    BTN UB ENT              REM  WEAPON FIRE  
+    BTN MB TAB              REM  AFTERBURNERS  
+    BTN LB Y                REM  TARGET AND MATCH SPEED  
+    BTN HU F1               REM  FRONT VIEW/COCKPIT TOGGLE  
+    BTN HR F3               REM  RIGHT VIEW  
+    BTN HD F2               REM  REAR VIEW  
+    BTN HL F4               REM  LEFT VIEW  
+    BTN 1 /U S              REM  SHIELDS VDU  
+          /M G              REM  TOGGLE GUNS  
+          /D LALT W         REM  "WHAT'S YOUR STATUS" 
+    BTN 2 /U D              REM  DAMAGE VDU  
+          /M M              REM  CONFIGURE MISSILE  
+          /D LALT A         REM  "ATTACK MY TARGET" 
+    BTN 3 /U P              REM  POWER VDU  
+          /M L              REM  LOCK TARGET  
+          /D LALT B         REM  "BREAK AND ATTACK" 
+    BTN 4 /U ]              REM  INCREASE CURRENT POWER SYSTEM 5%  
+          /M T              REM  NEXT TARGET  
+          /D LALT T         REM  RANDOM TAUNT 
+    BTN 5 /U [              REM  DECREASE CURRENT POWER SYSTEM 5%  
+          /M a              REM  AUTOPILOT  
+          /D W              REM  FULL MISSILES  
+    BTN 6 /U LCTL ]         REM  TOGGLE LOCK CURRENT SYSTEM 
+          /M E              REM  DROP DECOY  
+          /D F              REM  FULL GUNS  
+    RKR UP |                REM  NULL FUNCTION  
+    RKR DN |                REM  NULL FUNCTION  
+    THR 30 1 = - \ \ \ \    REM  THROTTLE CHARACTERS  
+    BTN MT /P /N BSP  /R =  REM  THROTTLE CONTROL FROM IDLE TO OFF  
+ 
+[8.1.3]   Programmable keyboards 
+ 
+Turn OFF the program function. (Usually FUNCTION-SUSPEND MACRO or  
+something similar. Also, REM out any lines that may install a  
+programmable keyboard device driver. 
+ 
+[8.2]   Video cards 
+ 
+Our game is having a problem with the following video cards : 
+ 
+[8.2.1]   Cirrus Logic 
+ 
+Crackling sounds in SVGA. See section 7.5.1. 
+ 
+[8.2.1]   Diamond Viper VLB 
+ 
+The VPRMODE VESA program seems to cause random pixels and screen  
+trash. This appears to only be with the VLB version of the card in  
+SVGA. We are in contact with Diamond. For now, you will need to  
+play in VGA with WC3 -V. 
+ 
+[8.2.2]   Matrox PCI 
+ 
+The Matrox PCI Windows Accelerator card seems to score poorly for  
+during video card testing (a rating of 43, when 12 is needed to play  
+the game). You will need to select VGA for Spaceflight and Movies, and  
+on some machines, the movies appear to run smoothly, on others pausing  
+is unavoidable. Contact Matrox for more information. 
+ 
+[8.2.3]   Hercules Graphite 
+ 
+To use the HERCULES Graphite video card, the following line in  
+AUTOEXEC.BAT is needed : 
+ 
+    C:\HERCULES\VESA C:\HERCULES\HG_OLD1.CRT   
+ 
+[8.2.4]   Compaq Qvision 
+ 
+We are working with Compaq on a solution for the screen trash problems  
+in SVGA with the Compaq Qvision. For now, you must play in VGA (WC3 -V). 
+ 
+    Compaq Computer Systems    BBS           713-378-1418 14400bps 
+    Compaq                     General       713-370-0670 
+    Compaq ....................T/S           800-888-5858  
+ 
+[8.3]   Sound cards 
+ 
+[8.3.1]   Mozart by Oak Technologies 
+ 
+The MOZART sound card (created by Oak Technologies) seems to lock up  
+after the "fourth" or "sixth" dot. We are currently working with Oak  
+Technologies on a solution. There is no work-around for this problem at  
+this time, you will have to play the game with NO SOUND. You can  
+recognize a Mozart sound card by spotting the following lines in the  
+configuration files : 
+ 
+    CONFIG.SYS   : DEVICE=C:\MZT\MZTINIT.SYS /A220 /I5 /D1 /G /V7 
+ 
+    AUTOEXEC.BAT : SET BLASTER=A220 I5 D1 T4 
+                   SET SOUND=C:\MZT 
+ 
+[8.3.2]   Media Chips MAD 16 
+ 
+The Media Clips MAD 16 sound card must be configured as a Sound Blaster 
+Pro. You must add a parameter which is not normally found on the M16INIT 
+line (/C). You can recognize a MAD 16 by spotting the following lines in 
+the configuration files : 
+ 
+    CONFIG.SYS   : DEVICE=C:\MAD16\CDSETUP.SYS /T:S /P:340 /I:5 
+    AUTOEXEC.BAT : SET MAD16=C:\MAD16 
+                   SET BLASTER=A220 I5 D1 T4 
+                   C:\MAD16\M16INIT /B /C 
+ 
+[8.3.3]   Media Magic 16 (ISP16 and MAGICS20) 
+ 
+Media Magic 16 sound cards (MAGICS20 and ISP16) work great with the  
+game, but in the installation program, should be set as Sound Blaster  
+Pro. Sound Blaster/Compatibles will cause lockups. The following lines  
+will appear in AUTOEXEC.BAT if the customer has any of these cards :  
+  
+    AUTOEXEC.BAT :  SET BLASTER=A220 I5 D1 T4  
+                    SET ISP16=C:\ISP16  
+                    C:\ISP16\ISPINIT /B  
+ 
+    AUTOEXEC.BAT :  SET BLASTER=A220 I5 D1 T4  
+                    SET SOUND16=C:\MAGICS20  
+                    C:\MAGICS20\SNDINIT /B  
+ 
+    AUTOEXEC.BAT :  SET BLASTER=A220 I5 D1 T4  
+                    SET SOUND16=C:\DIAMOND 
+                    C:\DIAMOND\SNDINIT /B  
+ 
+[8.4]   Miscellaneous (CPUs, hard drives, SCSI host adapters, etc.) 
+ 
+[8.4.1]   Cyrix 486 processors (DLC, SRX2, DRX2, DX, DX2) 
+ 
+If configured incorrectly, these have been found to cause random lockups 
+and Exception 13s. We are working together with Cyrix, and the most  
+common problem we have found is the processor is being used in an  
+incompatible motherboard. 
+ 
+[8.4.2]   AMD processors 
+ 
+The AMD microprocessors seem to function adequately. 
+ 
+[9.0]   Patches 
+ 
+Only one patch is available at this time for Wing Commander III. 
+ 
+[9.1]   WC3JOY.DLL, the joystick patch 
+ 
+This patch is for users who are experiencing problems with joystick  
+calibration (lockups, bad calibration, etc.) See the README.TXT of the  
+patch file for more information on how to install and use the patch. 
+ 
+To remove the patch, type  DEL C:\WC3\WC3JOY.DLL  and press [ENTER]. 
+ 
+---------------------------------------------------------------------- 
+ 
+[10.0]   Problem CD-ROM drivers and their updates 
+ 
+If you are experiencing problems with Wing Commander III (bad CD reads, 
+movie pausing, etc.) make sure your CD-ROM driver is up to date. The 
+following is a list of CD-ROM drivers we tested the game with and we 
+know that work with the game and their locations. 
+ 
+* NOTE : These may not be the latest CD-ROM drivers. You will need a 
+  driver of this version or later. 
+ 
++ This is a location where you can find the driver. It is not the 
+  original source for the driver. 
+ 
+Driver Name    Driver    Driver     Filename       Driver Location 
+               Version    Date        to DL 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ASPICD.SYS     3.13      6-10-94    N/A            Adaptec 
+                                                     BBS  408-945-7727 
+                                                     TECH 408-945-2550 
+                                                   + Creative Labs 
+                                                     BBS  405-742-6660 
+                                                     TECH 405-742-6622 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+CDMKE.SYS      4.04      12-3-93    N/A            + Reveal 
+                                                     BBS  818-704-6321 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+DD260.SYS      1.42                                MediaVision 
+                                                     BBS  510-770-0968 
+                                                     TECH 510-252-4315 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+MTMCDAE.SYS    1.17      7-14-93    CDAE.EXE or    Mitsumi 
+  or                                FX116.EXE        BBS  408-970-0761 
+MTMCDAS.SYS    1.16                                  TECH 408-970-9699 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SBCD.SYS       4.19      4-30-94    CD-DOS.EXE     Creative 
+                                                     BBS  405-742-6660 
+                                                     TECH 405-742-6622 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SLCD.SYS       1.73a                173A.EXE       Sony 
+                                                     BBS  408-955-5107 
+                                    SLCD173.EXE    MediaVision 
+                                                     BBS  510-770-0968 
+                                                     TECH 510-252-4315 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+TSLCDR.SYS     3.16      4-26-94    316.EXE        MediaVision 
+                                                     BBS  510-770-0968 
+                                                     TECH 510-252-4315 
+ 
+---------------------------------------------------------------------- 
+ 
+[11.0]   Acknowledgements 
+ 
+I would like to express thanks to the following people : 
+ 
+PS : James Flores, Kay Gilmore, Andrew Hofmann, Bill LaCoste,  
+     Jeremy Mappus, Chico Marvici, Donna Mehnert, John Moreland,  
+     Reece Thornton, Todd Wachhaus, Marie Williams 
+ 
+PD : Frank Savage, Jason Yenawine 
+ 
+all of QA, Customer Service, and the Wing III Development Team. 
+ 
+---------------------------------------------------------------------- 
+ 
+-- END OF FILE -- 
+ 

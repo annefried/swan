@@ -1,0 +1,1572 @@
+Zenobot's ST game cheats compilation (updated 
+10-24-91):
+-8©
+New entries are preceded by -*-.
+Cheats I have successfully tested are indicated by (X).
+
+
+
+Action Fighter (Firebird): get a high score and enter ZBACKDOOR on the
+high score list. Start another game and enjoy your infinite lives and energy.
+
+-*- Addictaball (Alligata): before pressing the Spacebar, type IJC and the
+screen will turn black. Hit the appropriate function key to go to any level.
+
+-*- Advanced Rugby Simulator (Codemasters): before pressing the fire button
+after scoring a try, hit F1. This takes you back to the match. Now, press
+fire and another try will be added to your score. You can repeat this until
+you're eventually tackled later on.
+
+(X) Afterburner (Activision): start the game, press Backspace to pause, type
+THUNDERBLADE. Pressing G gives you more missiles, T less missiles (huh?), N
+more lives, < down one level, > up one level.
+If you type AGES (SEGA backwards) instead, only < and > are active...
+
+(X) After The War (Dinamic): the second level access code is 101069.
+Pressing Alt, 1 and D will make you invincible on the first level.
+Pressing Alt, 1 and J will make you invincible on the second level.
+
+Archipelagos (Fanfare): when asked to select an island, choose 8421,
+then press Enter twice. You can now select any island you want!
+Archipelago 5942 is supposed to be very interesting.
+
+(X) Arkanoid (Taito/Imagine): while the game is loading, hold down Caps Lock
+and type DEATHSTAR. You can now skip levels by pushing the S key.
+
+(X) Arkanoid: Revenge Of Doh (Imagine): typing MAGENTA at the pinkish loading
+screen will let you skip levels by pressing S.
+
+-*- Army Moves (Dinamix): the code for part 2 is 101069.
+In part 1, hold down Alt 1 D for immunity, and for part 2, hold down
+Alt 1 J.
+
+Astro Marine Corps (AMC) (Dinamic): these are level codes for the Amiga
+version, they might work on the ST:
+Nostromo, Discovery, Enterprise, Dagobah, Replicant, Krull, Metropolis.
+
+Atomic Robo-Kid (Activision): on the title screen, enter TUESDAY 14TH.
+When you press the fire button, a menu will pop up from which you can choose
+infinite weapons and other neat stuff.
+
+-*- Atomino (Psygnosis): level access codes:
+Level 10 ACID, 20 ARROW, 30 EMISSION, 40 LAVA, 50 CAVE, 60 ELIXIR, 70 BONE,
+80 WOOD, 90 FOUNTAIN, and 100 GETWISE.
+
+-*- Atomix (Thalion): press Help to enter the password. Type in TIME to
+freeze the clock.
+
+-*- Awesome (Psygnosis): when you get to the screen that lets you juggle with
+your shield and weapon energy levels, move the cursor over to shield.
+If you hold down + on the keypad and press fire, you will be able to get
+all possible weapons by hitting F1 through F10.
+When you're done, pressing F6 will replenish your energy.
+
+-*- Axel's Magic Hammer (Gremlin): here's a funky "continue game" option.
+Take the disk out of the drive and hit the fire button to start the game.
+All the blocks you destroyed in the previous game are still destroyed!
+
+(X) Baal (Psyclapse): here are all the coordinates of all the jetpack
+platforms, in the order you should go to them to finish the game.
+X/Y, X being width and Y being height:
+Level 1: 31/16 (cartridge 2), 02/25, 52/30 (cartridge 3), 51/00, 24/38, 62/13,
+02/50, 64/49, 33/58 (exit to level 2).
+Level 2: 34/30, 54/12 (cartridge 4), 16/12, 00/24, 03/34, 30/47, 54/12
+(exit to level 3).
+The jetpack isn't used on level 3.
+Also, you can access the game's built-in trainer mode. Get a high score and
+enter LOVEBUNDLE.
+
+Back To The Future II (Imageworks): pause the game and type THE ONLY NEAT
+THING TO DO. The game will reset. You now have infinite lives.
+
+-*- Back To The Future III (Imageworks): type these cheats in during the story
+before the chosen level starts:
+Level 1 - ROTTEN CHEAT.
+Level 2 - LOUSY CHEAT.
+Level 3 - LOW DOWN CHEAT.
+
+Barbarian (Psygnosis): enter 04-08-59 on the keypad. You are now invincible!
+
+Barbarian II (Palace): step-by-step walk-thru:
+Level 1: left, left, right seven times, left, right, left, in the cave,
+and right. 
+Level 2: right, up, left, up, left, left, right, left three times, up,
+and left.
+Level 3: up, right, right, up, left, right, up, right, left, left, up, left,
+left, up, up, right, right, left, left, up.
+Level 4: hit the fireballs, then try to leap across. Several low chops will
+destroy it. Next is the Pit Demon; when he reaches out, use an overhead chop
+to hit his arms; repeat until death. Next, Drax himself! Wait until he pauses
+between spells, and hit him with a flying head chop! The End...
+
+Batman The Movie (Ocean): while the intro screen is displayed, hold down
+Shift and type MAJ©. The words "CHEAT MODE" should appear at the top left
+of the screen. You now have unlimited lives and you can skip to the next level
+by pressing F10...
+
+-*- Battle Valley (Hewson): type ROGER MELLIE THE MAN ON THE TELE and you
+have infinite lives.
+
+Beach Volley (Ocean): type DADDY BRACEY to activate the cheat mode, then
+hit F1 to skip levels.
+
+(X) Better Dead Than Alien (Electra): level access codes:
+level 14 - Triptych, 15 jabberwocky, 16 whimsical, 17 cornucopia, 18 punjabi,
+19 tiddly pom, 20 kewpie doll, 21 sepulchre, 22 euphemism, 23 grammarian,
+24 crossword, 25 quarantine.
+
+Beverly Hills Cop (Tynesoft): on the Select Difficulty Level screen, type
+MELLIE. You can now choose which level to start on.
+
+Bio Challenge (Delphine): press Esc to pause the game and press G to advance
+to the end of level guardian.
+
+Black Tiger (US Gold): when the game asks you for disk 2, put in a blank
+disk!! The game will work normally, except for the fact that there ain't no
+more enemies!!
+
+(X) Blood Money (Psygnosis): press F4 for Impatient then quickly hold down S.
+The screen should stay black. Now enter PONDULIX FOR PM (with the spaces).
+Each time you press a key, the border color should change slightly. Hit F4.
+During play, press HELP to toggle the cheat mode on and off. You have infinite
+lives and the cheat mode is off every time you enter a new level.
+Press these keys on the keypad for assorted goodies:
+1 gives more (blood) money to player 1, 2 gives more money to 2, 4 makes
+player 1 go to the shop, 5 makes player 2 go shopping, DELETE makes everybody
+go to the next level provided you got the dough.
+
+-*- Bloodwych (Imageworks): go through the normal buying process but when it
+comes to actually paying the creature, don't put money in the transfer slot.
+Drop in any other item instead. The creature will tell you it's a pathetic
+price but will give you what you want anyway.
+
+(X) Bombuzal (Imageworks): when reaching a new level, it's worthwhile to
+sacrifice a life to see the explosion pattern.
+When trying to detonate a pulsing bomb, pick it up; it's easier to see its
+size.
+You are invulnerable to explosions when teleporting, so use it to your
+advantage! 
+A blind droid can't activate switches.
+Here's a complete list of the level access codes:
+ROSS 8, RATT 16, LISA 24, SINK 28, DAVE 32, BIKE 36, IRON 40, BIRD 44,
+LEAD 48, TAPE 52, WEED 56, VASE 60, RING 64, PILL, 68, GIRL 72, SPOT 76,
+GOLD 80, PALM 84, OPAL 88, LOCK 92, SONG 96, SAFE 100, FIRE 104, WORM 108,
+LAMP 112, TREE 120...
+
+-*- Brat (Imageworks): level access passwords:
+level 1 BISHIGMO, 2 MIHEMOTO, 3 SASUTOZO, 4 SUMATZEE, 5 NOKITAGO, 6 ITSANONO,
+7 MOZIMATO, 8 HOZITOMO, 9 MOKITEMO, 10 ZUMOHATO, 11 CHANASTU, 12 NAGAITSU.
+
+-*- BSS Jane Seymour (Gremlin): level access codes:
+level 1 BSS, 2 JANE, 3 SEYMOUR, 4 BY, 5 DOCTOR, 6 DINOSAUR, 7 AND, 8 GREMLIN,
+9 GRAEME, 10 ROB.
+If those codes don't work, try these:
+level 2 SLUMBER, 3 INTEREST, 4 BULKHEAD, 5 SHOWROOM, 6 MUSHBASH.
+
+(X) Bubble Bobble (Firebird/Taito): hold down the fire button after losing your
+last life, and you should get another set of lives, though your score will be
+reset. More hints:
+While in the first screen, bubble the first two monsters and then fill the
+screen with hundreds of bubbles.  Bubble and burst the remaining monster and
+the remaining bubbles should turn into fruit (usually bananas), each of which
+is worth 500 points.
+Beating level 100: jump on the small platforms to collect all the green potion
+bottles. they will give you lightning bolts. Jump down alongside the wall and
+let that monster have it!! After 100 hits, he will turn into a bubble. Pop him
+and you've done it!
+
+-*- Builderland (Loriciel): level access codes:
+Level 1 BUILD1, 2 YOTTHA, 3 BEARBY, 4 OCTOPY, 5 DIABLO, 6 GOTIUS.
+
+-*- Cabal (Ocean): type SCHLIKA during the game and wait for the border to
+flash. Pressing F2 advances you one level forward.
+
+Captain Blood (Infogrames): during hyperspace, hold down the left mouse button,
+and right-click repeatedly. This will shorten the hyperspace sequence.
+And now, the complete walk-thru:
+Go see Buggol (Planet Mind 137). Land and tell him "me want vote". He will tell
+you of another Buggol called morlok who lives on planet Rosko 1. Keep talking
+until you get the coordinates. Go see Morlok. Say to him:" me not vote Morlok,
+me want Yukas president". He will give you the coordinates of a planet called
+Female 021. Go and destroy it. Come back to Rosko 1. He will now give you the
+coordinates of a planet where an Ondoyante is kept prisoner (you didn't need to
+go there, though...). Go to exterior view and destroy Rosko 1. Go back to Mind
+137, and go see the Buggol. He now dislikes you intensely, and will give you
+the coordinates of Rosko 2. Go there, and teleport the Buggol into your ship.
+Find an uninhabited planet, and teleport him there. He will say the planet is
+good-looking and, if you ask "me want know coordinates planet number = Blood",
+he will give you the coordinates to find number 2.
+Go there, land, and say you like him, and will not kill him. You must also get
+three sets of coordinates from him before disintegrating him (having made sure
+you saved the game beforehand). Now go around using this method to get the
+coordinates out of the numbers, always killing them before you move on.
+Kill the last one, and you win!
+That was the walk-thru. Now here's a trick: at the start of the game you will
+automatically be in orbit around an alien planet.  Transport down and try to
+find an alien, preferably Yuko, if it isn't Yuko, it may be best to restart the
+game as he is the key to the game. Talk to Yuko about his father, Maxon, and
+you will find he is in prison. He will also give you the coordinates for
+Croolis Ulv, where you will find another alien. While you are talking to Yuko,
+he will give you the code 1010; this always remains the same. Go to Croolis Ulv
+and you will be given the co-ordinates for Croolis Var. Go there and destroy 
+it, then go back to Croolis-Ulv. The alien will now be nice to you, keep
+talking to him and you will get the coordinates for the Forbidden planet.
+Go to the Forbidden planet (Sinox), and you will meet a guardian robot.  Give
+him the code you received from Yuko.  Now watch what happens.
+
+(X) Carrier Command (Rainbird): While in the Walrus arming menu, select nine
+Harbinger surface to surface missiles and put them in the AAV.  Select the
+Avatar Chemical Laser and place it over the missiles. Then select the pod you
+want (ACCB, Virus Bomb, Fuel) and place it in the AAV.  Then, when you've
+launched the AAV, look at it's weapons and you'll find you have BOTH missiles
+and laser!  On returning to the carrier any missiles you have left will be
+added to the ship's stores.  Carry on doing this and hundreds of missiles can
+be yours.
+Another cheat: while in the pause mode, type "GROW OLD ALONG WITH ME"
+(include the spaces). You should now see the message "Cheat mode active".
+Pressing the + key on the numeric keypad protects your Mantas and AAVS
+from missile attacks. The - key can be used to turn this off.
+Pressing the following keys in sequence: 'Help', Q, S, Control, Alternate,
+gives you a little message. Pressing the 9 on the keypad displays the current
+level. 8 displays the frame rate, 6 displays the palette.
+Returning to the title screen, press the + and - keys to view all objects in
+the game.
+
+Car-Vup (Core): get a high score and enter one of these:
+PUSSYCAT gives you 9 lives, BUMPER gives you temporary invulnerability,
+WHOOPSIE (or WHOOPS) takes you to the last level (prehistoric).
+
+Chariots Of Wrath (Impressions): hit "." on the keyboard repeatedly, and
+you'll get infinite lives. While you're in the spaceship mode, hit the function
+keys to get weapons. When you have a weapon, press * or 8 (both on the keypad)
+to power it up.
+Or, move the joystick forward when you're instructed to press Fire to start.
+You get infinite lives.
+
+Chase HQ (Ocean): as soon as the title screen has disappeared, hit the space
+bar several times at high speed until the game is through loading and the
+game starts. You should now be able to drive at 1,000 kmh, among other things.
+Or, hold down the fire button and left mouse button simultaneously, and type
+GROWLER to activate the cheat mode. Now, whenever you press "T", it resets
+the clock to 60 seconds...
+
+-*- (X) Chip's Challenge (US Gold): level access codes, all 144 of 'em!!!
+Level 1 Lesson 1 BDHP, 2 Lesson 2 JXMJ, 3 Lesson 3 ECBQ, 4 Lesson 4 YMCJ,
+5 Lesson 5 TQKB, 6 Lesson 6 WNLP, 7 Lesson 7 FXQO, 8 Lesson 8 NHAG,
+9 Nuts And Bolts KCRE, 10 Brushfire VUWS, 11 Trinity CNPE, 12 Hunt WVHI,
+13 Southpole OCKS, 14 Teleblock BDTY, 15 Elementary COZQ, 16 Cellblocked SKKK,
+17 Nice Day AJMG, 18 Castle Moat HMJL, 19 Digger MRHR, 20 Tossed Salad KGFP,
+21 Iceberg UGRW, 22 Forced Entry WZIN, 23 Blobnet HUVE, 24 Oorto Gelo UNIZ,
+25 Blink PQGV, 26 Chchchips YUYJ, 27 Go With The Flow IGGZ, 28 Ping Pong UJDD,
+29 Arctic Flow QGOL, 30 Mish Mesh BQZP, 31 Knot RYMS, 32 Scavenger Hunt PEFS,
+33 On The Rocks BQSN, 34 Cypher NQFI, 35 Lemmings VDTM, 36 Ladder NXIS,
+37 Seeing Stars VQNK, 38 Sampler BIFA, 39 Glut ICXY, 40 Floorgasborg YWFH,
+41 I.C. You GKWD, 42 Beware Of Bug LMFU, 43 Lock Block UJDP,
+44 Refraction TXHL, 45 Monsterlab OVPZ, 46 Three Doors HDQJ,
+47 Pier Seven LXPP, 48 Mugger Square JYSF, 49 Problems PPXI, 50 Dig Dirt QBDH,
+51 I Slide IGGJ, 52 The Last Laugh PPHT, 53 Traffic Cop CGNX, 54 Grail ZMGC,
+55 Potpourri SJES, 56 Deep Freeze FCJE, 57 Strange Maze UBXU,
+58 Loop Around YBLT, 59 Hidden Danger BLDM, 60 Scoundrel ZYV?, 61 Rink RMOW,
+62 Slow Mo TIGW, 63 Block Factory GOHX, 64 Spooks IJPQ, 65 Amsterdam UPUN,
+66 Victim ZIKZ, 67 Chip Mine GGJA, 68 Eeny Miny Moe RTDI, 69 Bounce City NLLY,
+70 Night Mare GCCG, 71 Corridor LAJM, 72 Blind Alley, 73 Morton QCCR,
+74 Playtime MKNH, 75 Steam MJDV, 76 Fourplex NMRH, 77 Invincible Champion FHIF,
+78 Force Square GRMO, 79 Drawn And Quartered JINU, 80 Vanishing Act EVUG,
+81 Writer's Block SCWF, 82 Socialist Action LLIO, 83 Up The Block OVPJ,
+84 Wars UVEO, 85 Telenet LEBX, 86 Suicide FLHH, 87 Cityblock YJYS,
+88 Spirals WZYV, 89 Blockbuster VCZO, 90 Playhouse OLLM, 91 Jumping Swarm JPQG,
+92 Vortex DTMI, 93 Roadsign REKF, 94 Now You See It EWCS, 95 Four Square BIFQ,
+96 Paranoia WVHY, 97 Metastable To Chaos, 98 Shrinking TKWD, 99 Catacombs XUVV,
+100 Colony QJXR, 101 Apartment RPIR, 102 Icehouse VDDU, 103 Memory PTAC,
+104 Jailer KWNL, 105 Short Circuit YNEG, 106 Kablam NXYB,
+107 Balls O Fire ECRE, 108 Block Out LIOC, 109 Torture Chamber KZQR,
+110 Chiller XBAO, 111 Time Lapse KRQJ, 112 Fortune Favours The Code NJLA,
+113 Open Question PTAS, 114 Deception JWNL, 115 Oversea Delivery EGRW,
+116 Blockbuster III HXMF, 117 The Marsh FPZT, 118 Miss Direction OSLW,
+119 Slide Step PHTY, 120 Alphabet Soup FLXP, 121 Perfect Match BPYS,
+122 Totally Fair SJUM, 123 The Prisoner YKZE, 124 Firetrap TASX,
+125 Mixed Nuts MYRT, 126 Block'N'Roll QRLD, 127 Skelzie JMWZ,
+128 All Full FTLA, 129 Lobster Trap HEAN, 130 Ice Cube XHIZ,
+131 Totally Unfair FIRD, 132 Mix Up ZYFA, 133 Blobdance TIGG, 134 Pain XPPH,
+135 Trust Me LYWO, 136 Double Maze LUZL, 137 Goldkey HPPX,
+138 Partially Post LUJT, 139 Yorkhouse VLHH, 140 Ice Death SJUK,
+141 Underground MCJE, 142 Pentagram UCRY, 143 Stripes? OKOR,
+144 Fireflies GVXQ.
+
+Chubby Gristle (Grandslam): on the title screen, type BUUURRP (Return). After
+the sampled belch, you'll notice that you have infinite lives...
+
+-*- Chuck Rock (Core): type these in on the title screen:
+ESTRANO and press Left Shift to access the Fly mode.
+FAST AIN'T THE WORD for infinite lives.
+ITS FAIRY BOWBELZ also gives infinite lives.
+LIFE IS MY DREAM for infinite lives too.
+UNCLE SAMS is yet another infinite lives cheat.
+MORTIMER and press F1 through F5 to access any level.
+TURN FRAME and press 1 through 5 to access different levels.
+
+-*- C.J.'s Elephant Antics (Codemasters): on the title screen, type in
+ITCHY ARSEHOLES to get infinite lives.
+
+Continental Circus (Virgin): for a fast grid start, do the following:
+1) when the first red light comes on, push and hold the stick up,
+2) when the second red light comes on, let go of the stick,
+3) when the green light comes on, push the stick up...
+
+-*- Crack Down (US Gold): pause the game and type SMURF. Pressing F1 will give
+player 1 infinite lives, and F2 will give player 2 infinite lives.
+Also, press P to pause, enter REVENGE OF THE MENTAL MOONMEN, press 1 to get
+999 lives, then press P to resume playing. Or enter it without spaces.
+
+Crazy Cars II (Titus): for masochists only!! Increase your speed to 204MPH
+(or is it 240MPH?), press F10 to pause the game, then press fire.
+The game slows down to a crawl, but you can still steer the car. So, by
+continually pressing fire and moving left and right, you can safely pass road
+obstructions!
+
+Cybernoid (Hewson): type RAISTLIN on the title screen, and you get infinite
+lives.
+
+Cybernoid II (Hewson): type NECRONOMICON on the title screen and you get
+infinite lives.
+
+Daley Thompson's Olympic Challenge (Ocean): type HINGSEN.J when the title
+screen appears. You should now be able to choose events by using the keypad
+or the Function keys.
+
+Damocles (Novagen): here's the quickie solution:
+Do all the preliminary stuff (land, get key, drive to office, etc...), get the
+spaceship. Fly to 12:14 and get the computer. Fly to 15:03 and buy the
+pressure suit. Fly to Snow Island, land at 03:00 and get the cupboard (there's
+a Nova trigger in it). Fly to Bare Island, land at 06:02, and go in the
+transporter on the ground floor. Keep going in the transporter until you wind
+up at 07:01, UR City on Gaea. Find the cupboard (Nova trigger inside) and go
+back the way you came.
+Fly to Metis and land at 05:06, then get the sink (or washbasin). To get it,
+walk to the table that's facing you when you come in. The wall behind the
+table will move (secret passageway!). Go in the secret room and get the sink
+(another Nova trigger).
+Fly to Gaea, go to Chaldea Metropolis, and land at 06:06. Get the gold in the
+basement. Fly to 05:08 and sell the gold. Fly to 05:06 and get the stereo
+system (Nova trigger inside). Fly to 09:02 on UR and get the Nova Bomb, in
+the basement, behind the elevator.
+Fly to Damocles and land on it (I didn't know you could do that!!). Leave the
+Nova bomb on the comet and retreat to a safe distance. Switch on the Nova
+triggers one by one. Kaboom!© You win!!
+Paul Woakes (the designer) says that there are many different ways to solve
+his game. The method described above is the fastest.
+
+Darkside (Spotlight): hold down 2, 8 and Fire for digitized pics of the
+programmers.
+
+Day Of The Viper (Accolade): this is not a hint, this is a warning.
+Every time you leave a floor or a building (via a turbolift or a shuttle),
+the program saves 2 files containing level data, one called LEVELXX.DAT, and
+one called LEVELXX.BAK. The XX stands for the level number: 01 for floor 1 in
+building 1, 06 for floor 1 in building 2, etc... (5 floors and 5 buildings for
+a total of 25 floors). So, for every level you leave, 2 files gets saved.
+If you have dumped the contents of disk 1 and 2 on a standard double-sided
+disk, you will run out of room and your game will crash nastily, destroying
+all your saves files.
+The possible solutions:
+1) Format an extended double-sided disk (80 tracks with 10 sectors is fine).
+2) From the desktop, erase the save files for the levels you won't be returning
+to (too time-consuming and silly), or...
+3) Stick it on your hard drive and sleep well at night.
+(Thanks go to The Insane 0ne from the Jungle BBS for spotting this bug.)
+
+Death Trap (Anco): get a high score and enter GIRLS. When next you play,
+you can replenish your potion pots with F6, F7, and F8.
+
+Defender Of The Crown (Cinemaware): hold down K when booting the second
+disk to get infinite knights.
+
+-*- Defender II (Arc): type RAVEN while playing, then press N to teleport
+you to the next level and I toggles invincibility on and off.
+Type GOATY to become invincible. Here's some level codes:
+LEMAC, ZIPPO, LAZER, DAFAD, MAMOG, FUNKY, and DONKY.
+
+(X) Dogs Of War (Elite): type TIMBO while playing then press F5. This switches
+off the sprite detection routine, but when you reach the end of a level, you
+won't be able to touch the object of your quest!! You're stuck!
+
+-*- Dominator (System 3): type SHAFT on the high score list for infinite lives.
+Or, type ZAE of NeXT to access a hidden game.
+
+Double Dragon (Melbourne House/Arcadia): when the title screen pops up,
+type in the followings:
+LEVEL ONE PLEASE (start on level one), LEVEL TWO PLEASE (start on level two),
+and so on until level four, THE LAST LEVEL PLEASE drops you on the last level,
+GIVE ME MORE HEALTH PLEASE (lots of energy!), I DO NOT WANT TO DIE
+(invincibility!). Just remember to say please!!!
+Also, type Neil Harding in the high-score list and something funny happens...
+Yet another one: start a 2-player game and hold down both fire buttons, then
+hit Esc like crazy until the credits go bonkers and you get infinite lives.
+
+Double Dragon II (Virgin Games): start a 2-player game and hold down both
+fire buttons, then hit Esc like crazy until the credits go bonkers and you get
+infinite lives.
+
+Dragon Breed (Activision): hold down the left mouse button and press HELP
+and UNDO while the end-of-level-boss is loading. The screen should flash
+purple and you're invincible!
+
+Dragon Ninja (Ocean) also Bad Dudes (Data East): during the game, type
+TERRIFIC. Pressing F3 gives you infinite lives and L advances you to the next
+level.
+
+Dragonscape (Software Horizons): load up and play. During level 1, press TAB
+and 2. You will be transported to Technocity. Do it again, and you will be
+sent to Iceland.
+
+Dragon's Lair (Readysoft): on the title screen, press 0 to begin play,
+then hit RETURN and enter GODIRKGO. The cheat mode should now be on.
+
+Dragon's Lair II: Time Warp (Readysoft): tired of playing the game?
+No problem!! Start the game and as soon as Dirk pops up, type MORDROC.
+The game will now play itself all the way through...
+Or, if you insist on doing it the hard way, here's how you complete the game:
+Scene 1 left, 2 down/right, 3 fire/right, 4 down/left, 5 left/up, 6 up,
+7 down/down, 8 fire/up, 9 fire, 10 up/right, 11 left/fire left, 12 down/fire,
+13 fire/left/left/fire, 14 fire/right/fire/down, 15 up/fire/fire, 16 up/fire,
+17 fire/up, 18 right, 19 down/fire/down/fire, 20 down, 21 down/right/up,
+22 right/up, 23 down/up, 24 down/left, 25 up/up, 26 left/down/up/right,
+27 fire/fire/fire, 28 right/up/up, 29 down/right, 30 fire, 31 fire,
+32 up/fire, 33 up/left/down/right, 34 up/right/fire/left, 35 up/fire, 36 down,
+37 down/fire, 38 down/left/up, 39 down/fire/fire, 40 fire/fire.
+
+Dragon Spirit (Tengen): press F9 to pause the game, type DRAGONHEAD then
+press F10. You can access any level by pressing the corresponding number key
+on the main keyboard.
+
+Drakkhen (Draconian/Exxos): during the character setup screen, type
+31415927 (press Return), SUPERVISOR (press Return). This gives you extra
+points and attributes. Here's a bunch of undocumented keys:
+F8 to toggle between 50 and 60Hz; F9 shows the game, room number and something
+in French; F10 to pause.
+
+Driller (Incentive) also Space Station Oblivion (Epyx): when you start the
+game, you're facing a small shed. Shoot it more than 20 times and you should be
+transformed into a jet.
+
+-*- Driving Force (Digital Magic): on the main menu, click on the dots of both
+"i"s of the title "Driving Force" at the top of the screen. Your vehicle
+will not leave the racetrack anymore!
+
+Dynamite Dux (Activision): quack!! Anyway, while on the title screen, type
+CHEAT and then press F1 through F6 to skip to the appropriate levels.
+Entering NUDE will take you straight to the boxing subgame.
+
+Dynasty Wars (US Gold): when the title screen appears, type CHEAT MODE.
+When playing a game press F2 to skip a level.
+
+Dyter 07 (ReLine): while the game is loading, type GIBB. While playing,
+press W to receive extra weapons, and S to top up your shields.
+
+-*- Eliminator (Hewson): type in these codes at the help screen for higher
+level access: amoeba, blooop, cheeki, doinok, enigma, slipme, geegee, handel,
+bicicle, jammin, kickong, lapdog, mikado.
+Also, here's a (very hard) way to get infinite lives:
+Type in Handel to ge to level 9 (see above). On your first life, move left into
+the water. On your 2nd life, crash into the oncoming green alien. On your 3rd li
+fe, shoot the alien and fall into the water to your right just before the
+ramp. On your last life, shoot the alien and move to the right of the middle
+track; as the ramp approaches, move toward the water. Just before you sink,
+you should hit the ramp and fly. You should now have infinite lives...
+(And you really deserve them!!!)
+
+(X) E-Motion (US Gold): on the title screen, type Moonunit. This happens to
+be the name of Frank Zappa's daughter. While playing, pressing F1 will advance
+you by one level, F2 will advance you by ten levels, F3 will send you back one
+level, and F4 will send you back ten levels.
+
+Empire Strikes Back (Domark): on the credits screen, hold down TAB and type
+VEKTORGRAFIX. Now, when you press L, you get a pic of Luke, C of C3PO, and D of
+Darth Vader. You also get infinite shields!
+Or, hold down Help and type XIFARGROTCEV. Try L, C, and D.
+
+-*- Enchanted Lands (Thalion): on the title screen, type TCB LIVES FOREVER.
+The screen should flash indicating that the cheat mode is active.
+If it doesn't, type TCB RULES FOREVER instead.
+Press keys 1 through 5 for the starting levels, F2 to go to the end-of-level
+guardian, F3 for player stats (use the up and down arrow to choose), F4 to
+kill the end-of-level guardian, and F10 to get a pink border (what?).
+
+Enduro Racer (Electric Dreams): while playing, type CHEAT. When you press T,
+you get an extra 10 seconds of racing time. When you press S, you go faster.
+When you press F, you automatically advance to the next checkpoint.
+
+-*- ESWAT (US Gold): what a sucky game!!
+Pause the game and enter JUSTIFIED ANCIENTS OF MU MU (with or without
+spaces). The border should flash and you should get 99 lives.
+
+Exolon (Hewson): type ad astra (in lowercase with space) on the high-score
+table, and you get infinite lives.
+
+-*- Exterminator (Audiogenic): when you're in the kitchen of a house, shoot
+the top half of the fridge when it opens (it only opens for a split-second,
+so you gotta be quick!). You get 275,000 points and you're warped to the next
+house!
+
+Eye Of Horus (Fanfare/Logotron): while the credits screen is showing, type
+SPAM. You now have infinite lives and you can use all the elevators, even if
+you don't have the appropriate keys.
+
+F-29 Retaliator (Ocean): enter THE DIDYMEN (or THE DIDY MEN) into the duty
+roster instead of your name. This will have no effect on the game itself.
+However, when you have completed a mission and you want to land, press Enter.
+This will make your plane land by itself! Talk about automatic pilot...
+You're also supposed to get infinite weapons...
+
+Falcon (Spectrum Holobyte): when flying a high-ranking mission, pressing Ctrl-X
+will give you 8 AIM9Ls and 500 rounds of ammo for your Vulcan.
+Or, pres Ctrl, Shift and X simultaneously.
+
+-*- Fast Lane (Artronics): pause the game by pressing F1 during qualification.
+Now, hit the Spacebar. The clock should have stopped and you should be able
+to qualify in 1st place.
+
+(X) Fernandez Must Die (Imageworks): pause the game, type SPINYNORMAN, and you
+get infinite lives!
+
+(X) Fighter-Bomber (Activision): type BUCKAROO instead of your name, and
+you will be able to try all the missions! Also, you'll be able to fly on the
+ground, and pressing Alt-D will take you to your next waypoint!
+
+Flip-It And Magnose (Imageworks): pressing F1 or F2, depending on whether
+you are Flip-It or Magnose, will give you infinite water!
+
+(X) Flood (Electronic Arts): tired of starting on Level 1? Well, enter these
+passwords to access the appropriate levels. Pressing Backspace will erase the
+current password and allow you to enter a new one.
+Level 1 FROG, 2 YEAR, 3 QUIF, 4 LONG, 5 WORD, 6 FRED, 7 WINE, 8 GRIP, 9 TRAP,
+10 THUD, 11 FRAK, 12 VINE, 13 JUMP, 14 NILL, 15 FOUR, 16 GRIT, 17 ZING,
+18 JING, 19 LIDO, 20 POOL, 21 HATE, 22 REED, 23 LIME, 24 QUID, 25 WING,
+26 FLEE, 27 GIGA, 28 HEAD, 29 LOOP, 30 SING, 31 JOUX, 32 PINK, 33 GOGO,
+34 LETS, 35 QUAD, 36 BRIL, 37 EGGS, 38 HENS, 39 NAIL, 40 SOAP, 41 FOAM,
+42 MEEK.
+
+-*- Flying Shark (Firebird) also Sky Shark (Taito): enter HSC on the high score
+list for infinite lives, KDJ for invulnerability, RLH for acid smileys,
+JGL for full firepower, and RAB for immunity.
+You MUST hold down 5 on the keypad while typing these letters in!
+Here's how you can skip levels: back up your second disk, and look at it with
+the desktop. You'll see some files called "LEVEL(number).MAP". By simply
+renaming LEVEL5.MAP (for example) into LEVEL1.MAP, you can start playing on
+level 5, and so on...
+
+Forgotten Worlds (US Gold): hold down Shift and type in ARC. Let go of Shift
+and start the game by pressing Help. Press S to go to the shop, press N to
+skip to the next level.
+
+Fusion (Electronic Arts): load it and start playing. Press ESC. Now, start a
+new game while pressing E. You should now be in the cheat mode.
+If that doesn't work, enter SWAMP THING into the high-score table, and restart
+a game while pressing E. Now, you can change levels by pressing + and -.
+Make sure you have backed up your disk before attempting the following!!
+Move the joystick diagonal up/left, press fire, then press E. You now enter
+the game editor. Pressing ESC returns you to the level selector mode
+(pressing SPACE from the level selection mode returns you to the game).
+That was the unofficial way to enter the game editor; here's the official way:
+you need two drives or a hard disk. Boot your computer, then put the Fusion
+disk in drive A and a blank disk in drive B (or C). Diskcopy A to B.
+Go to the B directory and rename QAZ.MON into FUSION.TOS. Double-click on
+FUSION.TOS to run it (you need to have Fusion in drive A to run it, otherwise
+FUSION.TOS won't run. Any modification you make to the levels will be saved
+to drive B). Type SWAMP THING into the high-score list, then press E.
++ loads next level, - loads previous level, joystick up/left while pressing
+fire and E dumps you to the level editor. Joystick up/left while pressing
+fire and S saves the level you're currently editing.
+Level editor keys: use the function and number keys to select the appropriate
+tile from the menu at the top; use the cursor keys to adjust the position of
+the tile; use Tab to put it down; use Undo if you change your mind; press A
+and use the cursor keys to adjust the tile's height, press Enter when done;
+press P to cycle through the color palette with the keypad 1/4, 2/5 and 3/6;
++ and - on the keypad are used for changing the color of the parallax level;
+press Enter when you're done adjusting the colors; pressing X lets you edit
+the exit data, + and - to select the exit, press S to set the position,
+use + and - to select which level the exit leads to, then the cursor keys to
+set the position of the entrance to that level; press W to modify the weapon
+data, + and - to flick through the weaponry, S to select the one you want,
+use + and - again to set the part number, 1 thru 9 are bomb parts, 10 are the
+fat bullets, 11 are the triple shots, 12 are the shields, and 13 is extra fuel;
+be careful not to exceed those weapon numbers; you can use the keypad to edit
+the level, 1-2-3-4-6-7-8-9 are joystick equivalents, 0 to paste, "." to cut,
++ and - to choose the tile under the pointer; use the cursor keys to display
+the six switches at the top of the screen; to test a switch, press 0 thru 5
+and the screen will zoom in on that switch and test it; press Undo to change
+it, then another number if you want, press S to set a switch.
+You can actually create a game with 40 levels!! To create a new level, go to
+the Level Select Mode and hit + beyond the last level. When creating
+additional levels, you must make sure that the last line of blocks at the top
+and bottom of the screen are raised blocks, otherwise the game will crash
+when you pass the boundary.
+
+-*- Galaxy Force (Activision): type DONKEY on the title screen then press
+F3 during the game to get to the end of the current level.
+
+Game Over II (Dynamic): the access code for the second stage is 11423.
+
+(X) Gauntlet II (U.S. Gold): You need 2 keys and 2 locked treasure chests. As
+you open the first chest, hold down the Help key, collect the treasure. Open
+the second chest while holding down Insert. An Ankh will appear and you must
+collect it. You'll hear a gong. You should now have 50,000 health points and
+32,000 reflective super-shots. The shots will vanish once you leave the level,
+and if you pick up an amulet, the counter will be reset to 10 shots.
+Here's a handy general tip: if you run out of keys and there's still some doors
+to open, don't hang around waiting for the doors to open. You're wasting
+valuable hit points! Pause the game and go do something else for 2 minutes.
+Come back and resume the game, and all the doors will open.
+
+-*- Gazza 2 (Empire): from the center circle, hold down the fire button to
+launch the ball. This should score a goal. Now, press ESC to win the game.
+
+Gemini Wing (Virgin): type in these codewords:
+Level 3 - classics, level 4 - whizzkid, level 5 - gunshots,
+level 6 - doodguyz, level 7 - d.gibson.
+
+Ghostbusters II (Activision): when the Activision logo appears, hold down
+ALTERNATE, CONTROL, S and U, then press fire. This will keep your cable from
+breaking on level 1 and give you infinite courage.
+
+Ghosts'N'Goblins (Elite): while the game displays the credits, type
+DELBOY. The screen will display CHEAT MODE ACTIVATED and Arthur will be
+invincible. Pressing F1 through F5 lets you go directly to those levels.
+But, don't fall in any bottomless pits, or you'll have to reset the computer.
+
+Ghouls'N'Ghosts (US Gold): press the fire button to start the game, then
+quickly type STEPHEN BROADHURST (or KAREN BROADHURST). The words
+"cheat mode on" should flash on the screen. Arthur is now invincible!
+
+-*- Golden Axe (Virgin Games): don't just "press any key" to start the game,
+press T for infinite lives!!
+If you play in one player mode, plug a second stick in the mouse port.
+When you're about to die, press the fire button on the other stick to continue
+with 3 more lives! Cool!!
+
+Goldrunner (Microdeal): type "Easymode" on the high-score list. Now, when you
+press F9, you skip to the next level; it also deactivates the bomb collision
+detection. If you get bored, hit F8, and the cheat mode will be disabled.
+Also, press I to go to the bonus round, press U to go to the next level.
+Or, type ATARI to go straight ot the first bonus screen.
+
+Gravity (Imageworks): when asked for a password, type WARPXX, XX being the
+digits of the desired level.
+
+Great Giana Sisters (Rainbow Arts): hold down the A, R, M, I and N keys
+to go to the next level.
+
+Gremlins II (Elite): enter SINATRA on the high-score screen and you've got
+infinite lives!
+
+(X) Gridrunner (Llamasoft): pause the game (Right-Shift) and type
+Pink-Floyd-are-gods, with the minus signs, and you now have infinite lives...
+
+Hades Nebula (Nexus): enter "MONITOR." when you're on the high-score list.
+You should now have infinitive lives.
+
+Hammerfist (Activision): type TAEHC OT TNAW I ("I want to cheat" backwards)
+on the high score list, and you'll be able to move forward one screen by
+pressing F7.
+
+Hardball (Accolade): various hints:
+Allstars are better than champs,
+Only steal if you actually hit the ball,
+Try to get a lot of runs early, as the computer team improves towards the end,
+Bunting rarely works,
+Halfway through the match, swap Laws for Wells and Wratten for Harris,
+The best pitchers are Oliver, Perez, Leary, Cook.  The others will only be
+successful for a short while,
+Never pitch fastballs to the center as they will usually result in home runs,
+Change pitchers after a few innings, because as they get tired, their
+accuracy and speed get worse.
+
+Hard Drivin' (Domark/Tengen): here's something silly to try:
+start a game, turn around and drive in the opposite direction! Go to one of
+the checkpoints, cross it, then turn around again and go back to the finish
+line. And voila! A new track record...
+In a more serious vein: drive up the first hill on the speed track. Pass the
+fork in the road. When you're in the air, shift to neutral. You should be able
+to race around the track without skidding...
+
+Hawkeye (Thalamus): when you are about to die, press Delete to advance a
+level. During the game, pause then press Help, then unpause. You should now
+have infinite lives.
+
+Helter Skelter (Audiogenic S.L.): here are the various access codes for the
+upper levels: SPIN (level 11), FLIP (21), BALL (31), GOAL (41), LEFT (51),
+TWIN (61), PLAY (71).
+Here's a way to get lots of extra lives: play a two-player game, let one of the
+players gain an extra life by picking up the tokens. That player will now last
+longer, so when the other player dies, the one with the extra life will play a
+level on his own. Complete this level, and on the next, both players will
+receive 99 extra lives.
+
+Heroes Of The Lance (SSI), just some general tips:
+arrange your party so that the first line consists of two strong warriors,
+Raistlin and Goldmoon. This allows you to use Raistlin's magic and the healing
+staff of Goldmoon without too much hassle. Save Tanis and Riverwind for the
+later levels, where the bows come in handy.
+When fighting Gully Dwarves, use Tasslehoff who is the same height as them.
+His sling stones will never miss.
+Avoid fighting Hatchlings, they're not worth it. Just turn and run when you
+meet one; when you reach an intersection move into a new path and wait a
+little. When you return, the Hatchling will have gone.
+Killing Bozaks: two methods: 1) get Raistlin to use a web, sleep or charm spell
+to stun it, then send a warrior to clobber it to death, or 2) select Flint,
+who is a dwarf; 9 out of 10 times, the Bozak's shots will go over his head;
+get close to enter melee combat, and use low thrusts to kill it.
+Spectral Minions: they're easy to kill, so use a warrior.
+Wraiths: a well-timed throw of an axe kills them every time. If you miss,
+use a sword and chest-thrust movements. Don't let it get too close to you!
+Spiders: use low thrusts to keep them at bay. If they get through your guard,
+retreat until you can turn and fight again.
+The blue and green potions restore health, red slows down monsters, and yellow
+give your characters extra confidence.
+
+-*- (X) Horror Zombies From The Crypt (Millenium): level access codes:
+Level 2 WOLFMAN, 3 HAMMER, 4 LUGOSI, 5 NOSFERATU, and 6 GARLIC.
+Or, type BOGEYEATER instead of a level access code, and you get infinite lives!
+
+(X) IK+ (System 3): pause the game after your character has been knocked down,
+and restart the game. Your player is now invincible. If you do the same thing
+to one of the computer players, it will also be invincible!
+Also, typing in the following words during play activates the appropriate
+little effect: FISH, BIRD, PERY (periscope), FREZ (freezes the action),
+PAC (He has returned!), JUMP, TOTO, STEW, SHAH.
+
+Ikari Warriors (Elite): play game, get high score, type FREERIDE and press
+Return. When the high score table is displayed next, it should say 1988 FEB
+where you entered FREERIDE, indicating that the cheat is active. Play the
+game and you should have infinite lives...
+
+(X) The Immortal (Electronic Arts): here are all the level access codes:
+Level 2 - 757fc10006f70, 3 - 6e1ec21000e10, 4 - 465fa31001eb0,
+5 - d4bfd41000eb0, 6 - bcfef51010a41, 7 - 6b10f61010ac1, 8 - e590d710178c1.
+
+Impossamole (Gremlin): play the game and get a high score, then, enter any
+of the following:
+HEINZ... ©to get 3 full power bars,
+ANNFRANK ©to top up your energy,
+LUMBAJAK ©to get bouble-length energy bars,
+OOCHOUCH ©to walk on dangerous surfaces,
+COMMANDO ©no time limit on weapons,
+JUGGLERS ©worms give double health.
+
+Indiana Jones And The Last Crusade, The Action Game (Lucasfilm/US Gold):
+type JIEHOVA (or JEHOVA) when the title screen appears. The screen will flash,
+indicating that the cheat mode is active. Press L to skip a level, press 1 or 2
+to advance to key points within each level.
+Or, type SILLYNAM on the high-score list for infinite credits.
+
+-*- (X) Infestation (Psygnosis): bring up the HUD scratch pad.
+Type I AM NOT A CHEAT (making the victory symbol with your hands is optional!),
+press Undo, then Help, then Escape (which makes you quit the game).
+When you restart, you have the elevator card, screwdriver, quarters key,
+datalink/compass, and IR scanner. Pressing Escape will show you the final
+screen. WARNING: games saved while the cheat mode is active are prone to
+malfunction, so watch out!
+
+-*- International Ice Hockey (Impulze): when your team scores a goal, press
+F1 to pause. Wait 'til the music is over, then unpause the game.
+You get more goals. Or somethin'...
+
+(X) Interphase (Imageworks): type Fenny to activate the cheat mode. You are
+dumped into a view mode similar to Starglider II's, but you can't paint...
+
+Iron Trackers (Microids): here's a few of tips for this pretty bad game:
+Select the booster for your quadracer. This will improve your overall
+performance. While racing, keep an eye out for big brown pillars on the right
+side of the screen. Drive through them to get 2,000 bonus points.
+
+Ivanhoe (Ocean): pause the game and type JC IS THE BEST (Return).
+While playing, press N to advance a level, press Delete to kill all the
+enemies on the screen, push ";" to give yourself more lives. During the bonus
+level, press Control to kill the monster.
+
+James Pond (Millenium): type MR2 and you get yourself a helmet.
+Now hit the following keys to get the different levels:
+Z level 1, X 2, C 3, V 4, B 5, N 6, M 7, "," 8, "." 9, "/" 10.
+In other words, the bottom 10 keys on the main keyboard. Clever, non?
+Pressing D will move you to the next level or kill some of the on-screen
+enemies, depending on when and where you press it.
+Pressing P will make you dance! Pressing S will make you shake!
+Pressing the following keys will give you the items indicated:
+1 top hat, 2 helmet, 3 eyepatch, 4 shades, 5 dyn'o'mite, 6 key, 7 comb, 8 gun,
+9 ammo, 0 sponge, - orchid, = gold bar, BACKSPACE urn.
+
+-*- Judge Dredd (Virgin Games): start the game and log on as DREDD.
+Then type BRUCKEN PLAYING HERO QUEST, press Return, then exit. Pressing Help
+now skips levels.
+
+-*- Jumping Jack'Son (Infogrames): level access passwords.
+Game A: level 5 KAYLEIGH, 9 ALCHEMY, 13 OCTOBERON.
+Game B: Level 5 TANGRAM, 9 INCUBUS, 13 SIRIUS.
+
+-*- Karate Kid II (Microdeal): get a high score and enter MYAGI on the list.
+While playing, pressing P advances you one level.
+
+Kid Gloves (Millenium): pause the game and type RHIANNON. If you hit F9,
+you will become invincible. If you hit the other function keys, strange things
+will happen. I wish I could tell you more, but since I hate this game and I got
+rid of it a while back...
+
+-*- The Killing Cloud (Imageworks): when asked for a mission code, type
+1 KILLING to get 28 nets and 29 PUPs.
+Here are some mission codes:
+Mission 2 AOOTOOEV, 3 255FA1E1, 4 QII8A1EK, 5 3KU6AZE3 (or 3336RWE3),
+6 XXX6G6EJ, 7 4333GWER, 8 W3Q1GWC, 9 63QTEDEX, 10 CA2FG7E2.
+Here are some different mission codes:
+Mission 2 AQQTQQEV, 3 2IPFA1EY, 4 QJK8AZEN, 5 3GH6AZCR, 6 XGH6AZCM,
+7 AFT3AZXN, 8 WEG1AZAL, 9 6EGTGDEX, 10 CWBFG7E3.
+
+Klax (Domark/Tengen): begin playing and hold down Shift (either one) and
+the Spacebar at the same time. Now press keys 1 through 4 for assorted helpful
+things like infinite credits or warping straight to level 100.
+
+The Kristal (Addictive/Cinemaware): find the beggar and donate some Skringles
+twice; accept the pommel when he offers it in thanks.
+Find Gloop, and ask him what to do, and he'll explain everything. Accept the
+invitation when he offers it.
+Go to the palace and say to the Guards:" I have an invitation."
+Walk past Nedrod and meet with the Kring. Listen to him and accept the
+Skringles he offers. Then meet with Nedrod. When he stops talking and says
+"no more questions", keep interrogating him. The 4th time you ask, he will
+give you valuable information.
+Meet with the Princess in the Palace Garden and when she asks about your
+mission, reply "it's a secret"; then type TAH for a message from the
+programmers. Accept the Ring of Belz.
+Go to the arch to the right of the green door in the town and take scroll.
+Go to Sereena's stall in the market square and buy Froodle and Frandanas.
+Eat them to boost your energy.
+Find Boris The Butler and give to charity.
+Go through the green door, through the center arch in the spaceport and board
+your ship.
+Choose the top icon for Zapminola and take off...
+
+Last Duel (CapCom): start the game, pause with F9, then hold down Help,
+left Shift, and 1. Unpause and the Function keys should take you to all the
+levels. F8 gives you 5 lives.
+
+Leatherneck (Microdeal): type in CUTHBERTNECK and then press F3. This will
+give your men protective shields.  The only thing that can kill you is your
+teammate's bullets.  F3 turns it off.
+
+LED Storm (CapCom): enter DAVID BROADHURST WANTS TO CHEAT for infinite
+lives.
+
+-*- Lemmings (Psygnosis): 2 player game access codes:
+Level 2 IJHLDKJCMJ, 3 NHLDKJADMW, 4 HLDKJINEMP, 5 LDKJAJCFMY, 6 DKJIJLLGMR,
+7 KJANLCDHMO, 8 JINLLDKIMX, 9 JAJHMDKJMJ, 10 IJHMDKJKMS, 11 NHMDKJALMP,
+12 HMDKJINMMY, 13 MDKJAJLNMR, 14 DKJIJLMOMK, 15 KJANLMDMPX, 16 JINLMDKQMQ,
+17 JAJHLFKBNT, 18 IJHLFKJCNM, 19 NHLFKJADNJ, 20 HLFKJINENS.
+
+Leonardo (Starbyte): here's a few passwords: IVANHOE, MATTERHORN, EMMENTALER.
+
+(X) The Light Corridor (Infogrames): here are all 50 level access codes:
+Level 2 5400, 3 0101, 4 3901, 5 2602, 6 9902, 7 4303, 8 9903, 9 6904, 10 3305,
+11 9305, 12 3406, 13 0407, 14 6407, 15 2008, 16 7408, 17 4709, 18, 3810,
+19 0511, 20 6811, 21 3212, 22 0213, 23 8213, 24 5014, 25 1015, 26 8215,
+27 5116, 28 0117, 29 7017, 30 5518, 31 2819, 32 9919, 33 7320, 34 2521,
+35 0622, 36 3722, 37 1223, 38 4523, 39 4124, 40 1825, 41 1926, 42 9726,
+43 5927, 44 0528, 45 7328, 46 3929, 47 3030, 48 0531, 49 8431, and 50 is 9932.
+
+-*- Line Of Fire (US Gold): when the game has loaded, press the Help key and
+a message will appear. Type WHAT A BUMMER, and you got infinite credits!
+Also, pressing keys 1 through 7 let you start on the appropriate level.
+
+-*- Logical (Rainbow Arts): type ELO WANTS followed by the level number on the
+loading screen and you'll get there.
+
+(X) Lost Patrol (Ocean): here are some playing tips:
+1) Make sure Weaver doesn't take the lead.
+2) After moving three times, rest for 30 minutes to keep morale constant.
+3) When you reach the village, choose QUESTION and HARD. Ask the old man where
+the food is. Then SEARCH AREA to find a tunnel. Send Gomez in it and 90% of the
+time, he'll come back with some goodies. (Always SEARCH AREA after an encounter
+with VCs).
+4) At the village on stilts, you have to shoot a villager then QUESTION HARD
+and ask for food. Then shoot another villager, question again, ask for food,
+then ammo, then get out.
+When you reach Du Hoc, which is your final goal, some people have suggested
+that you should turn off your computer rather than suffer an end sequence
+that has been described as "hypocritical, blood-boiling, and patronizing".
+
+-*- Lotus Esprit Turbo Challenge (Gremlin): enter player 1's name as
+ANGEL DARK, and player 2's name as HARVEST HOME for some help with the race.
+Enter P1's name as MONSTER, and P2's name as SEVENTEEN, and you can play
+a vertically scrolling shoot'em'up instead!!
+
+Mickey Mouse (Gremlin): After Mickey takes his bow, type 61315688 (or 6135688
+if the other one doesn't work) and a thin white line will flicker in the
+border. Hitting F2 opens the door to the sub-game, F3 takes you straight to
+conflict with a witch, F4 refills your water pistol, Enter (keypad) quits the
+sub-game, "." on the keypad completes the sub-game successfully.
+
+Midnight Resistance (Ocean): play the game and press F10 to pause it. Type
+OPEN THE DOOR HAL. Unpause the game, and you now have infinite energy!
+Or, pause the game, type SAMANTHA LYON, and you now have infinite everything!
+
+-*- Midwinter (Rainbird): while skiing, press S to go to sniper mode.
+Zoom your lens to maximum and you should now be invincible.
+
+-*- Narc (Ocean): you want infinite lives? Well then, do this:
+walk up to one of the trashcans and crouch down. Fire at it for about 11
+seconds, then walk into it. Voila! Repeat if unsuccesful...
+
+-*- Narco Police (Dinamix): typing in ABRIR will open doors.
+NOENEMIG will wipe out all bad guys. COMENZAR will bring them all back.
+BLAST will activate a smart bomb. MUNICON will give loads of ammo. NOAMET Z1
+(or any other Zone number) will turn off all machine guns in that zone,
+NOCAM Z1 (or any other Zone number) will turn off all cameras in that zone.
+
+Navy Moves (Dinamic): the access level to part II is 948411.
+
+-*- Navy SEALs (Ocean): get a high score and enter WOZZIE as your name.
+Start a new game. Pressing Return will advance you one level, and pressing W
+will cycle through the available weapons.
+
+(X) Nebulus (Hewson) also Tower Toppler (Epyx): when on the title screen (with
+the music playing), type Helloiamjmp. Now, you can access any tower by simply
+pressing the appropriate function key. You also get infinite lives.
+
+-*- Netherworld (Hewson): get a high score and enter UxZ158 for infinite lives.
+
+Never Mind (Psygnosis): access codes for the first 26 levels:
+0 MMMRHM, 1 AMMRHA, 2 HMMRHH, 3 VMMRHV, 4 PMMRHP, 5 GMMRHG, 6 IMMRHI,
+7 RMMRHR, 8 MAMRHW, 9 AAMRHN, 10 HAMRHZ, 11 VAMRHT, 12 HHMWHH, 13 GAMRHQ,
+14 IAMRHB, 15 RAMRHF, 16 MHMWHM, 17 AHMWHA, 18 HHMWHJ, 19 VHMWHV, 20 PHMWHP,
+21 GHMWHG ,22 IHMWHI, 23 RHMWHR, 24 MVMWHM, 25 AVMWHN.
+
+New Zealand Story (Ocean): pause the game by pressing Undo, press M and you'll
+hear a laser shot, type MOTHERFUCKENKIWIBASTARD and you'll hear a musical tone.
+Resume the game. You now have infinite lives, and you can skip to the next
+level by pressing Help.
+Also, on the title screen, press Delete, then M, then Delete, then M ,
+then type FLUFFYKIWIS to get infinite lives.
+If that doesn't work, press Delete and M only once.
+If that still doesn't work, try adding a space after FLUFFYKIWIS.
+
+-*- Night Shift (Lucasfilm): enter your name has MPICKLE in the high score
+table, and you can still go on to the next shift even if you don't finish
+the previous one. Here are the level access codes:
+(C is cherry, B is banana, L is lemon, P is pineapple, U is plum)
+level 2 CBBL, 3 BCPU, 4 PLPP, 5 PPLC, 6 CUUP, 7 CPLB, 8 PBPC, 9 PLLC, 10 LBUU,
+11 BPCU, 12 CUBU, 13 UCBP, 14 PCUB, 15 UUPP, 16 BBPB, 17 BUCU, 18 ULLU,
+19 LPCU, 20 CPPC, 21 LCPP, 22 UCLB, 23 UCCL, 24 UPLL, 25 BPPL, 26 UCCB,
+27 BCLB, 28 UBBP, 29 CUCP, 30 CCBU.
+
+Ninja Mission (Mastertronic): While playing, on entering a room, push the
+joystick in the direction of the enemy and hold the fire button. This will
+freeze them, making them a lot easier to beat up.
+
+-*- (X) Ninja Spirit (Activision): press F9, press Caps Lock, then hold down
+Control and Shift. The game will restart, you will be invincible, and the
+collision detection will be switched off.
+
+The Ninja Warriors (Virgin Games): hold down Alt and type in the following:
+Weird modes:
+CASABLANCA ©makes everything black and white
+GENESIS OF THE DALEKS   puts the screen in inverse video (chromatic mode)
+THE TERMINATOR ©makes the Ninja's body parts explode when you die
+SKIPPY ©makes the enemies bounce
+A SMALLSTEP FOR MAN ©Moon gravity mode
+EAT TO THE BEAT ©pressing Q toggles slow motion on and off
+Useful modes:
+SNOW WHITE ©dwarf ninjas
+CHEDDAS ©infinite credits
+OPEN THE POD BAY DOORS, HAL ©infinite stars
+MAY THE FORCE BE WITH YOU ©infinite energy
+WARP FACTOR ONE, MR SULU 
+©warp levels
+
+-*- Onslaught (Hewson): on the map screen, press F9 and F10 simultaneously.
+You can now edit the land. Move the cursor around the map and alter it with
+the function keys.
+
+Operation Thunderbolt (Ocean): instead of typing your name, enter WIGAN
+NINJA. Restart the game and play it. Press F7 to skip a level, but remember:
+you must rescue at least 1 hostage from both of the enemy bases to finish
+the game sucessfully!
+Also, entering SPECCY MODE on the high-score list brings on twice the amount
+of enemies.
+Meanwhile, entering EDOM TAEHC (CHEAT MODE backwards) gives you infinite
+lives, but not infinite health, so you can still die.
+And, pressing the following sequence of keys gives you the laser sight in
+1 player mode: F8 F7 F6 F5 F4 F3 F8 F1 F1 F1.
+In 2 player mode, F2 replaces the F1s...
+
+Outrun (U.S. Gold/Sega): While playing, type STARION ,then press the
+following keys:
+B - Bogus extended play ©S - Advances you to a stage
+D - Save screen picture ©T - Extra 10 seconds
+Q - Programmers information ©X - Exits the game
+
+P-47 (Firebird): enter ZEBEDEE on the high-score list. Start a game, press
+F2 to get a refill of lives, and F1 to skip to the next level.
+
+Pacland (Grandslam): while loading, type AVALON. The screen will freak out.
+This is normal. You now have infinite lives!
+Also, during round two, push the third cactus you come to, and you will be
+invincible for that round only. On round one, push the third fire hydrant,
+and the baby ghosts won't be able to harm you. In the forest, push the first
+log you find, and it will release balloons (worth extra points!). On level
+three, push the first log and it will warp you through the level!
+
+-*- Peter Beardsley's Soccer (Grandslam): when you get the ball, run with it
+while continually pressing the fire button and no one can take it from you.
+
+Platoon (Data East/Ocean): while on the title screen, type HAMBURGER-HILL.
+Pressing F1 through F3 advances you through the jungle, F4 takes you straight
+to the village. F5 activates a shield, F6 turns it off. 
+Warning: do not enter a trap door with the shield on! The game will crash.
+
+Populous (Electronic Arts): here's a bunch of access codes:
+2 JOSAMAR, 3 TIMUSLUG, 6 SWAVER, 9 BURWILCON, 10 MORINGHILL, 12 BILCEMET,
+14 WEAUHIPHAM, 17 IMMUSILL, 20 SHADTED, 22 BINOZOND, 23 SADWILLOW,
+32 SHIDIEHOLE, 33 HURTLOPLAS, 36 JOSTME, 38 SWAINGPAL, 43 NIMOUTJOB,
+44 BILADOR, 46 WEAVINPERT, 50 HOBOZJOB, 54 BINMEOUT, 58 VERYELIN,
+60 HAMINMAR, 64 SHIOZER, 65 HURTIKEING, 72 EOAELING, 75 NIMLOPILL,
+84 SHADKOPEND, 88 LOWINLOW, 91 MINOXEND, 94 SUZOGOBOY, 99 TIMQAZAL,
+103 KILLSODPAL, 108 BILOGOJOB, 113 IMMQAZT, 117 CORSODDON, 120 LOWEAT,
+126 SUZKOPLUG, 130 JOSASING, 134 SWAEAHILL, 135 KILLDIEMET, 140 RINGINGTORY,
+141 BILKOPILL, 150 BINQUEME, 154 VERYWILICK, 166 SWADEBOY, 172 BILASPIL,
+178 HOBQUET, 185 QAZCET, 191 DOUDIELUG, 198 SWAILUG, 201 NIMAORD, 208 BADPEED,
+216 LOWOUTOLD, 214 BINMPEND, 219 MININICK, 222 SUZPEME, 227 TIMMEHOLE,
+234 MORLOPPERT, 243 BUGHIPT, 251 MINEABAR, 258 JOSQAZMET, 264 EOAOXHILL,
+270 WEAVDIILL, 278 BINOXTORY, 282 HAMDIICK, 284 VERYUOND, 290 JOSSODOR,
+295 KILLQUEPIL, 302 WEAUCEPIL, 307 BUGEAOUT, 312 LOWDIDON, 317 FUTASER,
+322 JOSHIEHILL, 329 BUFIHILL, 335 ALPUSILL, 339 BUGDEHAM, 345 QAZASME,
+351 DOUQUELAS, 356 CALINGPAL, 361 BUROUTJOB, 366 WEAVTAL, 368 BADOZJOB,
+372 SHADMEOUT, 377 QAZUSDON, 383 DOUWILING, 384 SHIINGORD, 387 TIMMPHILL,
+392 EOAINCON, 399 ALPOCON, 402 HOBHIPEND, 409 QAZPEEND, 414 SUZMEICK,
+423 KILLOXLAS, 430 WEAVKOPOUT, 436 SHADYPERT, 437 COROXOUT...
+When you bring up the options screen in a Conquest game, you can enter a
+number from 0 to 32768; the program will generate a world associated with
+whatever number you type in. This gives you 128,000 worlds to choose from!!!
+
+Power Drift (Activision): select any course, except "D", and win all the
+races (in other words: finish first!!). Collect all the gold medals and you
+enter a bonus round on a secret track with the Afterburner F-14 at your
+controls!! Even better, the collision detection is turned off!!!
+If you do the same thing (finish first) on the "D" course, you enter another
+secret racetrack, but with the Super Hang-on bike at your command this time.
+No collision detection either...
+
+-*- Predator (Activision): keep on hitting F10 to get extra energy.
+
+-*- Predator II (Imageworks): press P to pause and type YOU'RE ONE UGLY MUTHA.
+You now have infinite bullets and you can press F6 to choose any weapon, and
+F8 to warp to the next level.
+
+Prophecy I: The Viking Child (Wired): here's some access codes:
+DENIS<E> to go to the forest, THE BLIZ the bridge, SHARKMAN the labyrinth,
+NYMHARSW the desert.
+
+Puffy's Saga (UBI Soft): pause the game when your health nears zero, then run
+your fingers along F1 thru F7. You'll get 2000 healths, 4 keys, 4 Goms, and
+you'll be transported to the next level.
+
+Quadralien (Logotron/Spinnaker): access codes: level 2 170961, level 3
+010655, the Core 610169. And now, some tips: once in the core, you can't quit.
+So choose droids with good lasers, Jack and Spud for example. The Quadralien
+mother is made up of 4 separate pieces grouped together and surrounded by
+Earthling boxes. The mother can only be destroyed by blowing up each box from
+a different direction. From the starting point there are three exit: north,
+east, and west. Go east and destroy the first box, return to the starting
+point, and go north to destroy the second box. You will now have both droids
+to blow the remaining boxes. Go west through the one-way force field, and get
+the other. Don't forget to keep recharging.
+
+Rainbow Islands (Ocean): here's a bunch of codes you can enter at the
+beginning of the game:
+BLRBJSBJ for fast feet, RJSBJSBR double rainbows, SSSLLRRS fast rainbows,
+BJBJBJRS first hint, LJLSLBLS second hint, and LBSJRLJL continues on all
+rounds. (LBSJRWL was a misprint, sorry...)
+Here are 3 more codes:
+RRLLBBJS makes all hidden food into money bags, R©SBSJ does the previous and
+also lets you continue on all rounds, and SRBJSLSB gives you 100 million
+points.
+These codes will work on the original coin-op. S is the start button, L is
+joystick left, R is right, J is jump, and B is make rainbows...
+I've never seen the coin-op anywhere!!
+
+Rambo III (Taito/Ocean): get on the high-score list and type RENEGADE. Pressing
+1 ,2 and 3 will drop you on the level of your choice.
+And now for some tips:
+1) When inside the 2nd building, wear your IR goggles.
+2) Don't walk in front of soldiers, since it will trigger an alarm and about
+8 soldiers will jump you!
+3) If you enter a dark room, use the glow tube.
+4) Never use a gun without a silencer.
+5) Turn off the electric door with the switch located several rooms away.
+6) The mine detector won't work without the generator.
+7) The IR goggles won't work without a battery.
+8) Watch out for IR beams, since they also trigger alarms.
+Here's a list of items you can find: arrows, silencer, first aid kit, IR
+goggles, glow tube, battery, key, mine, detector (in 2 pieces), pistol, ammo,
+rubber gloves (you never know when you can be expected to perform major
+surgery!!!)
+
+-*- Resolution 101 (Millenium): save up $6,500, then buy a light cannon
+(class 1). You can now hit targets high in the air, and inflict more damage on
+ground-based targets, 'cause you got a heavy machine gun installed free!
+
+Return Of The Jedi (Domark): enter Darth Vader on the high score list instead
+of your name. Pressing F2 will complete a stage and send you to the next one.
+
+-*- Return To Genesis (Firebird): when on the title screen, type WASP.ASM to
+activate ye olde cheat mode, then press F5 for invincibility, F4 to toggle
+between 50 and 60Hz, and Control to display program version messages.
+
+Rick Dangerous (Firebird): get a high score and type in POOKY. You'll be able
+to restart where you last died.
+
+Rings Of Medusa (Starbyte): after loading the game and typing in your name,
+enter DESOXYRIBONUKLEINSAEURE, then press Help. This will bring up a cheat
+menu full of sneaky options.
+
+Roadblasters (U.S. Gold): when the car is on the starting line, type
+LAVILLASTRANGIATO. Now you can hit the following keys:
+X - spins the car, S - goes to the next level, F - refuels the car, G - end
+game, 1 - add UZ cannon, 2 - add cruise missiles, 3 - add electro-shields,
+4 - fit nitro injectors, 0 - remove special weapons.
+
+Robocop (Ocean/Data East): press Return to pause the game, hold down Shift
+and type in ALEX MURPHY. Now, by left-clicking the mouse, you can replenish
+any lost energy.
+Or, pause the game and type BEST-KEPT-SECRET to get infinite energy.
+
+Robocop II (Ocean): when the title pic pops up, enter BAMBOOZALEM
+(or BAMBOOZULEM). You now have infinite energy! However, everything that used
+to kill you instantly still can!
+Or, enter SERIAL INTERFACE on the title pic. Press F9 to replenish energy, and
+F10 to skip a level (this might only work on the Amiga...).
+
+-*- Rock'N'Roll (Rainbow Arts): instead of entering your name, type in
+RAINBOW ARTS followed by the level you want to start on, followed by XX, followe
+d by 4 numbers that add up to the level number, followed by XX,
+followed by the level you want to start on backwards (got that?).
+For example: to get to level 9, enter 09XX2223XX90.
+Also, entering COUNTRY on the high-score list lets you access a jukebox menu
+for the in-game tunes.
+
+Rolling Thunder (U.S. Gold): On the title screen, type JIMBBBY and Return to
+get infinite energy. Press I to go to the next level.
+
+-*- Rotor (Arcana): to get all the different missions, type GAG, SLY, and AWE.
+
+(X) R*Type (Mediagenic): load the game; when you get the "insert disk 2 and
+press space" prompt, press HELP and type ME, then press the up arrow (between
+INSERT and CLR HOME). Now insert disk 2 and press space. While playing the
+game, you can become impervious to collisions (F5), impervious to enemy fire
+(F6), get infinite credits (F7), and put the orb in the control of a second
+player with a stick plugged in the mouse port (F8). Neat!
+
+-*- Saint Dragon (Storm): to get infinite lives, hold down the mouse button
+and the fire button until the game has loaded.
+Or, press Caps Lock during play, type DECAFFEINATED, then Return.
+
+-*- Savage (Firebird): level 2 password is SABATTA, level 3 is Porsche.
+
+Seven Gates Of Jambala (Thalion): on the title screen, type YICKE
+YACKE HCHNERKACKE. Hold down the left Shift key, then press 1. Let go of 1,
+then let go of Shift. The "Press space to start" line should turn blue.
+Press F1 through F5 for weapons, 1 through 7 for levels, G for gold, and F10
+to toggle the power jump on and off.
+
+-*- Shadow Dancer (US Gold): pause the game and type in GIVE ME INFINITY
+(or GIVE ME INFINITES) for infinite lives.
+
+Shadow Of The Beast (Psygnosis): here's a quick and easy way to replenish
+your energy level: hold down Left Shift, Enter and 0 (both on the keypad).
+Release Enter and 0, then press F5.
+Or, you can press the Enter key 5 times, then press F5 a couple of times.
+You can do this several times throughout the game...
+
+Shadow Warriors (Ocean): start a 2 player game by pressing 1 and 2
+together. During the game, pressing 1 or 2 will give an extra life to Player 1
+or Player 2 respectively.
+
+Shinobi (Virgin Games): pause the game and type LARSXViii (or LARSXVIII)
+to get infinite credits.
+
+(X) Sidewinder (Mastertronic), part of the Awesome Arcade Action Pak (Arcadia):
+if you look on disk 2, you will see a screen editor program. You can access a
+specific level by pressing the appropriate function key. You can save the
+changes by holding down both mouse buttons. You should back up disk 2 first,
+since the changes are permanent.
+
+(X) Silkworm (Virgin/Sales Curve): when the high-score screen pops up, press C.
+A new screen appears, called "Fat Mouse's Cheese Menu", which lists lots of
+different cheeses, except gorgonzola. Start playing a game, and enter
+GORGONZOLA. You are now in Cheese Mode!!!
+All bouncing bombs are turned into wheels of Edam, and the word "edam" pops
+up here and there. If you press C, you get extra credits...
+
+Skidz (Gremlin): play the game, press the fire button, hold down Alternate
+and C to activate the cheat mode. Time and energy will no longer be a problem.
+Or hit Alternate and M while pressing the fire button to skip levels.
+
+Sly Spy Secret Agent (Ocean): enter 007 as the code and type SHAKEN NOT
+STIRRED during the game.
+
+Solomon's Key: when the "press any key to load" prompt appears, hit Help.
+
+Sonic Boom (Activision): play the game, get a high score (good luck!), and
+type DOUGAL. Start another game. Hitting F1 will top-up your energy, F2 will
+give you a full set of droid planes, and F3 will complete the level.
+
+Sorcery + (Virgin): type GAS MASK WHEELER WANTS CHEAT and you're now
+invincible, all doors are open, the timer is stopped, and you have access
+to the "plus" part of the game.
+
+Space Ace (Readysoft): play the game and pause it. Type GODEMODEXTER, then
+press the fire button, then hit Enter. Unpause the game and continue playing
+it. When you're down to your last life, the computer takes over for you and
+completes the game!!! So, now you can invite your friends and show 'em how good
+you suddenly became at Space Ace!!!
+
+Space Harrier and Space Harrier II (Elite): if you look at disk two, you'll
+see some files called LEVEL2.DAT (for example). If you rename THEEND.DAT
+(or whatever it's called) to LEVEL1.DAT, you will see the end sequence without
+playing the game!
+
+Spherical (Rainbow Arts): single player's access codes:
+RADAGAST for level 9, YARMAK 19, ORCSLAYER 39, SKYFIRE 59, and MIRGAL 75.
+Two players' access codes:
+GHANIMA for level 9, GLIEP 19, MOURNBLADE 39, and JADWIN 59.
+
+Spidertronic (Infogrames): get a high score and enter CHEAT on the screen,
+press Return and, then, the fire button; the screen will go black; a prompt
+will appear:
+Last game level: GAME.LS0
+New game level:
+Type GAME.LS and the number of the level you wanna play. Press Return and,
+then, the fire button, and you start playing on the desired level.
+
+The Spy Who Loved Me (Domark): type MISS MONEYPENNY for infinite lives and
+infinite Q points.
+
+(X) Starglider (Rainbird): this one is complex, so pay attention!!
+Start the game, slow down completely, press F, and press Backspace. Now,
+type in the following twice: JS(Space)ARG(Backspace)S(Backspace)(Return).
+Pressing N gives you 5000 points, E reboots the disk, M stops all enemy aircraft
+, P adds an extra missile.
+
+(X) Starglider II (Rainbird): slow down completely (in other words: STOP!),
+press F5, then Delete. Type WERE ON A MISSION FROM GOD1. Now, press K whenever
+you run out of weapons and you also get infinite energy.
+Where to get what and how:
+Bouncing bombs - Castron depot, use on Projector bases only.
+Missiles - Millway depots, use on Walkers, Stompers, etc...
+Cuboids - use a lot of energy, given to you by prof Taymar.
+Neutron bomb - use on space station only.
+Cask Of Vistan Vine - get from pirates, or trade a boink at the Castron depot.
+Clutter Of Noodles ...huh, Cluster of Nodules - on beautiful downtown Dante.
+Egron Mini-Rocket - surface of Aldos or Q-Beta.
+Case Of Nuke Fuel - Aldos surface.
+Asteroid - between Apogee and Millway, in the Asteroid Belt.
+Flat Diamond - capture a Mech Whale, take it to the Questa depot, and trade
+it in for a flat diamond.
+Lump Of Mineral Rock - Q-Beta surface.
+Crate Of Castrobars - go to Enos and grab a tree, trade it in at the Castron
+depot ("Look everybody! Toothpicks!!!").
+Professor Taymar - After getting all of the above ingredients, go to Broadway.
+Make sure you have a crate of Castrobars in the hold. Cruise the surface and
+tractor-beam the first Emma 2 you see. Bring it aboard. Taymar is inside. He
+will install the Cuboid launcher and agree to go to Apogee. Take him to the
+Apogee depot. When the neutron bomb is built, take it to Q-Beta's false moon.
+If all 6 Projector Bases have been rebuilt, drop by one and blow it up. You
+will see the space station, surrounded by Mini-sentinels. Take a couple out
+with missiles. Move toward the station, and when you're directly over it,
+drop the bomb. A massive explosion follows, and you win the game!!!
+
+(X) Stargoose (Logotron/Spinaker): run your fingers on the functions keys back
+and forth several times, and you should now have infinite shields!
+
+(X) Starquake (Mandarin/Terrific): here's a list of all the teleport codes:
+FLIED, CHING, DAVRO, SOLUN, TABET, LUANG, TSOIN, KALED, ROKEA, HINDI, SOCHI,
+NICHA, BORNO, CWORE, KWANG, ADKEA.
+
+(X) Starray (Logotron/Spinnaker): here are a few playing tips:
+Concentrate on the landers. When you shoot 'em, some release bonus capsules,
+so spraying everything in sight isn't good policy. If the lander releases
+a capsule with an X on it, don't pick it up; these capsules drain part of your
+shield energy. The capsule marked P gives you penetrating lasers; these aren't
+so hot either, since they go right through everything and wipe out bases and
+bonus capsules. When shooting rectangular ships (airbuses), approach them from
+the right side since the bonus capsules always eject on the right.
+Also, turning off the sound should speed up the game, supposedly...
+
+Stormtrooper (Creation): play the game and get a high-score. Enter
+JAMES CAMERON in the high-score list. Next you play, you will notice 
+a funny looking yellow squiggle. This means you have several dozen extra
+lives. Should the squiggle disappear, press F9 to reload on lives.
+Press F10 to remove any barriers.
+
+Street Fighter (Capcom/Go!): type STREET CHEAT on the title screen and press
+Help. You get dropped on the next level.
+
+Strider (U.S. Gold): press F9 to pause the game. Hold down Help, the left
+shift button, and the 1 key on the keyboard. Release all 3 keys and press
+F10 to restart the game. Now, you can use 1 thru 5 to skip to the
+corresponding level, and F1 thru F4 to skip to the different stages within
+the level itself...
+
+-*- Strider II (US Gold): type SWIFT during the game and a small box will
+appear in the top left-hand corner of the screen with the word "cheat" and
+a smiling face in it. Pressing the Spacebar turns you into the 'bot any time
+you want, and pressing the cursor keys will give you super speed.
+
+Stryx (Psygnosis): begin a game and hold down Help, M and D simultaneously
+to replenish your energy. Press Help and P to get the door passes...
+Or, press Help and M and E to replenish your energy.
+
+Sundog (FTL/Mirrorsoft): You can get shields for 350 Cr to 400 Cr, depending
+where you are. To get them, go to the weapon store and click on the rapid heal,
+and then click on YES, then instead of clicking on the rapid heal, go right of
+it, so you are on a blank space.  Click now and you will have found a shield
+which you didn't have before in one of your carrying squares. 
+Though it says 'Shield', after one hit, it will say Shield (7).
+
+(X) Super Cars (Gremlin): to start racing in 2nd division, enter ODIE instead
+of your initials. To start racing in 1st division, enter BIGC.
+To get lotsa money, enter POOR.
+
+-*- (X) Super Cars II (Gremlin): to win every race, enter player 1's name as
+I WALK THE HILL for player 1, and INWARDS for player 2.
+You get 99 of each weapon, grade 3 armor, engine, and a battering ram.
+
+Supremacy (Virgin) or Overlord (Virgin): here's a weirdo tip for getting
+extra fuel. Get rid of your fuel by buying 2 cargo cruisers, filling them up,
+and parking them in orbit. Next, buy a Solar Sat, put it in orbit, then take
+it back down. Go to the cargo control screen and click on the scrap icon.
+Your fuel level should have risen to the top of the screen.
+You can do this on every planet against every opponent!
+
+Switchblade (Gremlin): get a high score and enter POOKY in the high score
+table. Pressing keys 1 through 5 give access to the respective levels.
+
+-*- SWIV (Storm): pause the game. Type NCC-1701 and press Return.
+The border should flash to indicate that the cheat mode is on. Unpause the
+game and you got yourself infinite lives!
+
+Teenage Mutant Hero (sheesh!) Turtles (Imageworks): here's how you get
+infinite energy. Load the game and when it asks for the correct code, enter
+8859. Then enter 1506. Now enter the correct code. While playing, press HELP
+to get infinite energy.
+
+Thrust (Firebird): from the desktop, insert the game disk. Look for the
+CHEAT.PRG icon and double-click on it. You can survive collisions by typing
+CHEAT during the game.
+
+Thunderblade (US Gold): when the grey digitized picture appears on the
+screen, type CRASH. Now, when you play a game, you can press UNDO to skip
+to the next level. You DON'T get infinite lives!!
+
+Time Machine (Activision): get a hig score and enter DIZZY. Now, you will
+have 9 lives and the ability to access all time zones. Use A and S to select
+screens in each zone.
+
+Times Of Lore (Origin): brown scroll kills all monsters on the screen, white
+scroll freezes them for a limited time (act now!), green scroll teleports (use
+only twice), white potion random energy refuel, green potion complete refuel.
+Boots of speed are in Treela, magic axe is in Lankwell.
+Save your game often! When playing at night, turn up the contrast and
+brightness settings (it won't make the game any smarter, though!).
+
+Titan (Titus): a few access codes:
+Level 10 H67JR1, 20 1R7DCG, 30 BG6W61, 40 294JBH, 50 D80N6D, and 60 9LQHVU.
+
+-*- Toki (Ocean): press Esc on the intro sequence before the dude gets
+"chimped", type POORTOKI then press F1 through F6 for the level you want.
+On level one, type in KILLER for infinite credits and the ability to pick
+levels with the function keys.
+
+Total Eclipse (Microstatus/Spotlight): general hints:
+1) examine the plane closely.
+2) To move really fast, move the joystick forward and press the forward key
+at the same time.
+3) When each treasure is picked up, your heart rate goes back to normal.
+4) Always use the F key to look forward when you get disoriented.
+5) Use the Ankhs only as a last resort, since they're more useful later on.
+6) In Illusion, use the sector names to map it out.
+
+Total Recall (Ocean): type LISTEN TO THE WHALES when the title pic appears.
+You can now absorb enemy blows without harm, but don't worry if the energy bar
+still shrinks. When you get to the taxi driving section, type JIMMY HENDRIX.
+Your JohnnyCab is now indestructible!
+If you're the type who has time to kill (haha!), leave the game on pause for
+one whole hour. When you come back to check up on your computer, the words
+"Cheat mode active" should appear on the screen. Start playing again and
+discover that you now have infinite ammo!
+
+Tower Toppler (Epyx): see Nebulus (Hewson)...
+
+Toyota Celica GT Rally (Gremlin): simply press C to finish the stage and
+go on to the next one. When you press C, your name will be put on the
+scoreboard at whichever time you pressed C: if you hit it at 1:51, the
+scoreboard will indicate that your finishing time was 1:51.
+
+Trailblazer (Mindscape/Hewson): hold down Help, I, 1 and 2, then type
+CHEAT. Now, F3 will remove gravity, F5 will change ball shape, F6 will change
+the other player's ball, and Help will produce a laugh.
+
+-*- Treasure Island Dizzy (Codemasters): when the game starts, type ICANFLY.
+And now you can! Or type EGGSONLEGS to become invincible!
+
+Turbo Outrun (US Gold): type WEARAPEEPEL while the countdown is running,
+and you get some nifty options:
+pressing T will give you extra time, B will restart the stage, N will send
+you to the next level, G uses up a credit (huh?), and D will give a new set
+of turbo boosters.
+Also, pressing 1 thru 9 will send you to the appropriate level.
+And finally, pressing F will complete the entire game!!!
+
+(X) Turrican (Innerprise/Rainbow Arts): get a high score and enter ANTIDOTE.
+This gives you infinite lives, and as the saying goes, "You'll need 'em!".
+
+-*- Turrican II (Rainbow Arts): when you get to the end of level 3 and
+confront the guardian, turn into a gyroscope and stay on the guardian's
+head. Nothing will seem to happen, except that your life counter will start
+to increase but one unit at a time. You can do this until you get 99 lives!
+
+The Untouchables (Ocean): on level 1, pause the game and type BRIDGE ROLLS.
+This will send you to level 2. To get to level 3, pause and type MAC NALLEY.
+To get to level 4, pause and type KID ZAPPING. To get to level 5, pause and
+type A NIT IN TIME.
+
+(X) Venus: The Flytrap (Gremlin): level access codes in ascending order:
+MANTIDS, CICADAS, PSYLLIDS, PIERIDS, SATYRID, LYCAENID, PYRALID, and NOCTUID.
+Cheat codes:
+JUPITER stops time, and PLUTO gives you unlimited ammo for any extra weapon
+you pick up.
+SUN, FREEPLAY, AJAR and LISTEN all do something, but I don't know what...
+
+-*- Verminator (Rainbird): go to the shop and buy a hammer. Then sell it for
+50 credits. Go up to the till (what's a till?) and you'll have bought the
+falcons for 50 credits. Sell these to make some serious dough.
+
+Veteran (Software Horizons): press Help to go to the next level!
+
+Vigilante (US Gold): get a high score and enter POOKY IS MY PAL.
+While playing, F1 increases your lives, F8 takes you to the next level.
+Or type GREEN CRYSTAL in the high-score list.
+
+(X) Virus (Firebird): hold down Enter on the keypad, and press P to pause.
+Continue holding Enter down and press O to unpause. Everything will look
+normal except for an extra bar below the altitude gauge. Pressing the
+following keys as the described effects:
+C - special F/Xs on/off,
+D - demo on/off,
+F - refuels you completely,
+L - adds one missile every time it's pressed,
+N - turns cheat off.
+
+Viz (Virgin Games): Anyway, type WHAT A LARGE SET OF BOLLOCKS on the character
+selection screen (or WITH A LARGE SET OF BOLLOCKS). You should hear a weird
+noise, and pressing 1 through 5 on the keyboard will send you to the appropriate
+ level.
+
+(X) Voyager (Ocean): in the options screen, type in WHEN THE SWEET SHOWERS OF
+APRIL FALL. You will be dumped in an editor screen where you can choose
+from a number of cheat options. Press Delete during play to reduce the number
+of enemies to destroy by ten.
+
+(X) Warhead (Activision/MPH): as a veteran FOE-57 pilot, let me pass on a few
+useful hints and tips for successfully completing the missions.
+1) Docking:
+Define one of the navig markers as a target, then get as close to it as you
+can, using autopilot mode 4. Rotate until you're facing Solbase. Switch to
+tactical display mode 1 and center Solbase in the crosshairs. If the center
+of Solbase is completely white (and I mean completely!!), you are correctly
+aligned. If you are too far to see, use the zoom feature. Fly toward Solbase,
+making sure the center stays white, and you'll dock perfectly every time!
+2) Your weapons and how to use them effectively:
+Data-gathering missiles: not a weapon. Use those to get info on any "unknown"
+you come across, including enemy missiles.
+Mass-driver cannon: use to destroy incoming missiles, especially those big
+blue and white ones the Berzerker fires!! They're Pseudo-Stellar missiles,
+and they'll kill you on contact, guaranteed or your money back!!!
+Stinger missiles: they only have an effective range of about 2,500 meters.
+Mines: not terribly useful. Try to lob them in the path of incoming ships.
+X-ray Laser mines: wowee!! These are neato!! If you have 3 or more ships
+pestering you, launch a mine at them. Usually the mine will take out all three.
+Pseudo-Stellar missiles: you only get these toward the end of the game. They
+are nasty and you should be at least 4,000 meters away from your target when
+they go off!
+3) Enemy ships and the best way to destroy them:
+Drone: a single round from your MD cannon will pulverize this joker!
+Drone Squadron: a couple of Stingers will do it.
+A-Wing: Stingers, a couple.
+C-Wing: Stingers, at least 3.
+H-wing: X-ray Laser mines, or lots of Stingers.
+Berzerker: don't even think of destroying this guy! Just blow up his Pseudo-
+Stellar missiles with your MDC, that will annoy him for sure...
+3) general stuff:
+Follow orders at all time. When Quad-jumping, always go straight to wherever
+you're supposed to go. Don't waste time. I got screwed up a couple of times
+when I came back to Solbase because I jumped to Solar orbit, then jumped to
+Solbase. I was coming back from another star system. You should select SOL G2V
+first then select Solbase (on the in-system map), then jump!
+Have fun out there!
+
+Warhawk (Firebird): after loading, press F3. When you start the game, a blue
+blob appears on the screen. Pick it up and you get infinite power.
+
+Weird Dreams (Rainbird): start a game, walk into the right-hand mirror,
+go as far as you can before finally disappearing and use the Help key to enter
+the equivalent of SOS in morse code (3 quick taps, 3 long taps, then 3 quick
+taps). You get infinite lives.
+
+-*- (X) Wings Of Death (Thalion): enter ST FOREVER on the menu screen and the
+screen should flicker red a few times. Pressing the following keys:
+F1 changes to insect, F2 changes to bat, F3 changes to eagle, F4 changes to
+dragon, F5 changes to griffin, F6 calls up a hunter, F7 calls up a destroyer,
+F8 truns on the shield, F9 turns on autofire, F10 restores energy.
+Keys 1 through 5 on the main keyboard adjust weapon strength.
+
+X-Out (Rainbow Arts): to get lotsa cash, select the smallest ship (the
+one at the top). Then,  select the weakest laser (orange with single beam)
+and place it over the shopkeeper's nose (so to speak). Hit the fire button,
+and watch your bank balance grow...
+If that don't work, try this:
+buy the biggest ship, then pick up a stationary satellite and click it on
+your money total (score). Give it to Moleb, and your money total will rise
+to 500,000.
+Also, you can buy the shield then throw it away. You get 500 credits for that.
+Repeat as needed, or until you get bored.
+
+Xybots (Tengen): get a high score and enter ALF. You get infinite lives.
+
+(X) Zany Golf (Electronic Arts): there is a hidden course on level 9 (Energy).
+To the left of the screen, you will see a mouse hole with two glowing eyes.
+When the eyes glow red, putt the ball in the hole. A new level will load.
+It's called Mystery...
+
+Zombie (UBI Soft): if you have seen Dawn Of The Dead, you already have a good
+idea on how to solve most of the puzzles. But here's some extra tips anyway:
+1) To lock up the mall to keep zombies from getting in, you need to park the
+trucks over the entrances. Get the key from the office on the 2nd floor and
+go to the 4th floor where the keys to the trucks are kept.
+2) To keep the dead zombies from coming back to un-life, lock them up in the
+freezer in the basement.
+3) before you can go play in the basement, you need a source of light. Get
+the fuses and gloves from the 3rd floor and go to it!!
+
+-*- Z-Out (Rainbow Arts): during play, hold down J and press 1 through 6 to
+skip levels, and 1 through 3 on the keypad to go to different stages.
+
+ -N©
+ This file is public domain, and is updated every 3 or 4 month.
+ If you know of any special access codes, secret passwords, or other hints
+ that you didn't see listed here, tell me about them!
+ If you own some of the games I wasn't able to test, and the cheat codes work,
+ I also want to know about it!!
+ I can be reached at the O'Mayer V BBS (213-732-0229), the Jungle BBS
+ (213-254-9534), and on GEnie (ABITTON1) in the Atari ST Roundtable,
+ Category 9 (games), Topic 22 (Zen-ST).
+ Copyright 1991 CyberSysTek ©"Woof!"
+ -N©
+  ©   "—            

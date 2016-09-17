@@ -1,0 +1,592 @@
+Date: Mon, 27 Jun 1994 21:43:13 -0400
+From: Tom Moertel <thor@telerama.lm.com>
+Subject: Collision Detection - How?
+
+Date: Mon, 4 Jul 1994 23:24:15 -0400
+Subject: Typo fixed with 2K(K-1) expansion
+
+Many people have requested copies of my collision detection code.  I 
+suspect that it's of general interest for the readers of this 
+newsgroup, so I'm posting the code here along with a discussion 
+of the techniques it uses.  Please accept my apologies for the length 
+of this posting.
+
+The code was written in C++ on a Macintosh, but I've endeavored to 
+keep the collision detection code close to ANSI C.  Porting it 
+should be a 30 minute affair.  The testing-timing harness is C++- 
+and Macintosh-specific, so it will take, say, an hour longer to 
+port that, if you feel so inclined.
+
+OVERVIEW
+
+Here's how the code works, roughly speaking.  The screen is divided 
+into "sectors," defined by a regularly-spaced grid.  All objects 
+(e.g., sprites) are placed into the appropriate sectors as determined 
+by the objects' upper-left corners.  Then the objects in each sector 
+are tested for collision with one another, taking advantage of the 
+observation that overlapping objects will usually be classified into 
+the same sector.  This isn't always the case, however, and the code 
+therefore makes well-behaved translations of the grid to ensure that 
+all collisions will be detected and that no false collisions will be 
+reported.
+
+NOTES
+
+The first thing to do when you get the code is to look at the 
+declaration of the "obj" structure.  It represents an on-screen 
+object.  For convenience's sake, I've made all my objects 30x30.  That 
+way I can define the x and y data members to be the upper-left corner 
+of an object's bounding rectangle, and when I need the lower-right, I 
+calculate it by adding 30 to x and y.  (That's the way I'd do it in a 
+shoot-'em-up, too.  Each class of objects would have a different size 
+associated with it.  E.g., for a bullet I'd add, say, 8 instead of 30 
+because they're smaller.)
+
+I keep all the objects in a linked list, where the obj_link member is 
+the link between objects.  The sector_link is especially important.  
+It is used to keep all the objects in a sector in a single linked 
+list.  That's a key to making this collision detection technique 
+work quickly.  Placing each object in its containing sector takes O(1) 
+time, with a low constant, to boot.
+
+With that in mind, here's an overview of the implementation:
+
+    iterate four times, shifting the sector grid between iterations
+        place objects into the appropriate sectors
+        for each sector
+            check for collisions among its objects
+
+You may find it interesting that I've chosen to repeat the entire 
+sectorization and per-sector collision checking process four times.  
+That's how I get around the problems associated with overlapping 
+objects that are placed into adjacent sectors.  Instead of testing for 
+collisions with objects in adjacent sectors, I just shift the entire 
+sector grid and repeat the process.  Before you accuse me of being 
+insane for this "four-shifts" business, you should know that it's 
+asymptotically 20 times faster than testing the adjacent sectors, and 
+about 40 times faster for the most common "real world" cases.  If 
+you're interested in my analysis, it's near the end of my notes. 
+Uninterested readers may feel free to skip it.
+
+A side effect of the multiple iterations is that the same collision 
+will sometimes be reported more than once.  For example, if you have 
+two objects directly on top of each other, they will both be placed in 
+the same sector and detected as having collided, regardless of how the 
+sector grid is shifted.  The result: this particular collision will be 
+reported four times.  This isn't a big concern, and there are trivial 
+ways to sidestep the issue, but I think I'd be remiss if I didn't 
+point it out.  I'd hate to have people screaming because particular 
+bullets were packing four times the expected wallop, hurling their 
+innocent spaceships into oblivion.
+
+ANALYSIS:  FOUR-SHIFTS vs. ADJACENT-SECTORS
+
+Before you begin thinking that this shift-and-repeat technique is 
+terribly inefficient, consider the alternative, checking adjacent 
+sectors.  Let's say you've got a sector in the middle of the screen; 
+call it S.  Objects in S could collide with objects in adjacent 
+sectors, so you'd have to include all eight of them in your collision 
+testing of S.  How does that affect running time?
+
+Assume that objects are randomly distributed over the screen and that 
+there are on average K objects in each sector.  Recall that to test 
+for collisions in each sector, we use a brute-force technique that 
+requires n(n-1)/2 rectangle intersection operations (check it) for n 
+objects.  Now we can compare the four-shifts method with the 
+test-adjacent-sectors method.
+
+* Four-shifts method: each sector is checked by itself, at a cost of 
+K(K-1)/2 rectangle tests, but the process is repeated 4 times.  
+Consequently, the cost to entirely check a sector is 4 * K(K-1)/2 = 
+2K(K-1) = 2K^2 - 2K.
+
+* Adjacent-sectors method: Each sector is checked only once, but its 
+eight neighboring sectors are included in the check.  Define L = 
+(1+8)K be the average number of objects in these 9 sectors.  So the 
+cost per sector is L(L-1)/2 = (9K)((9K)-1)/2 = (81K^2 - 9K)/2.
+
+Now, let's calculate the ratio of the two methods' expected 
+number of rectangle tests:
+
+            cost of adjacent-sectors   (81K^2 - 9K)/2
+        R = ------------------------ = --------------
+              cost of four-shifts         2K^2 - 2K
+
+Note that the limit of R as K -> Infinity is 20.25.  Asymptotically, 
+then, the four-shifts method is about 20 times faster than the 
+adjacent-sectors method.  Admittedly, it's unlikely you'll have an 
+infinite number of objects on the screen.  That fact begs the 
+question, how much faster is the four-shifts method for the more 
+common cases in which there are, on average, one, two, or three 
+objects in a sector? Answer: For one object, it's *much* faster; for 
+two, 38 x faster; for three, 30 x faster.
+
+The four-shifts method needs to perform *no* tests when there's only a 
+single object in a sector---a very common case.  The adjacent-sectors 
+method, on the other hand, needs an average of 36 tests to handle the 
+same situation.
+
+THE CODE
+
+Here it is.  Enjoy.  And, let me know how it works on your 
+platform.  If you port the testing-timing harness, please send me 
+the timing results.
+
+The code is broken into sections.  They are, in order:
+
+    front matter        introductory comments
+    declarations        defines constants and parameters
+    test code           testing/timing harness (Mac specific)
+    sector code         code that puts objects into sectors
+    helpers             functions that are used by intersection code
+    intersection code   uses sector and helper code to determine
+                        object intersections and, hence, collisions
+
+======= begin
+// Sector-based collision detection routines &
+// timing code.
+//
+// Tom Moertel 21-Jun-94
+//
+// Results for a 25 MHz 68040 Macintosh (not
+// exactly a screamer) and an 80 MHz PPC 601
+// Power Macintosh 8100 (this one screams):
+//
+//                          tests/s
+//   object count        -68K-  -PPC-
+//
+//        0               611   7640
+//       50               340   4020
+//      100               189   2060
+//      200                81    788
+//
+// where a "test" is defined to be a complete
+// check of all objects, determining for each
+// object whether it is involved in a collision
+// (and if it is, with what other object).
+//
+// NOTES
+//
+// For this job I made all objects 30x30, but
+// the code will work for arbitrarily-sized
+// objects, with the restriction that objects
+// are smaller than half of kSectorSize.
+//
+// This code is far from optimized.  I didn't
+// even bother to run it through a profiler.
+// With a little work, it could probably be
+// twice as fast.
+//
+// LEGAL STUFF
+//
+// Feel free to use this code in your own
+// projects, but please give me credit.
+//
+// Copyright 1994 by Tom Moertel
+// moertel@acm.org
+//
+// PORTING
+//
+// Most of the "real" code is portable C++,
+// but the testing code uses some Mac-
+// specific calls, namely Microseconds()
+// and a few graphics and windowing calls.
+// To port to the timing code to your platform,
+// redifine Clock_us() to return the current
+// state (count) of a fast internal clock in
+// microseconds.  The Macintosh drawing
+// code will automaticaly compile out on
+// non-Mac platforms, so if you want pretty
+// pictures, you'll have to roll your own.
+
+#include <iostream.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+
+#if defined(macintosh) || defined(__MWERKS__)
+#include <Types.h>
+#include <Quickdraw.h>
+#include <Windows.h>
+#include <Events.h>
+#include <Timer.h>
+#endif
+
+// define compilation parameters
+
+#if defined(__MWERKS__) || defined (__SC__)
+#define BRAIN_DEAD_INLINING     // define this to declare "hot"
+#endif                          // functions as macros instead
+                                // of C++ inline functions
+
+// define test parameters
+
+enum
+{
+    kMaxObjects     = 200,      // more than you're likely to need
+    kRectSize       = 30,       // each object is 30 x 30 pixels
+    kTBase          = 1000000L, // timing is in microseconds
+    kTestLength     = 30*kTBase,// 30 seconds per experiment
+    kCycleLength    = 50        // inner timing loop cycles 50 times
+};
+
+
+// types
+
+#if defined(powerc) || defined (__powerc)
+typedef int scalar;         // fast integer type
+#else
+typedef short scalar;       // fast integer type
+#endif
+
+// sprite object
+
+struct obj
+{
+    scalar  x, y;           // coords
+    obj*    sector_link;    // link in sector list
+    obj*    obj_link;       // link in obj list
+    // ... other members ...
+} ;
+
+
+// module-scope globals
+
+static obj      gObjects[kMaxObjects];
+static Boolean  gCollisionArray[kMaxObjects];
+
+// forward declatations
+
+static void _DetermineCollisions();
+static void _ShowLastIteration(scalar numObj);
+static void _RandomizeObjects(scalar numObj);
+static void _RunExperiment(scalar numObj, Boolean drawQ=false);
+
+//==================================================================
+// test code
+//==================================================================
+
+// returns a long representing a count of internal clock "ticks"
+
+#if defined(powerc) || defined (__powerc)
+inline long Clock_us() { return TickCount() * (kTBase/60); }
+#else
+long Clock_us()
+{
+    static UnsignedWide base;
+    static Boolean initQ = true;
+    if (initQ)
+        Microseconds(&base), initQ = false;
+    UnsignedWide x;
+    Microseconds(&x);
+    return (x.lo - base.lo);
+}
+#endif
+
+void main()
+{
+    srand((unsigned int) Clock_us());
+
+    cout << "Collision testing..." << endl;
+    
+    _RunExperiment(  0, false);
+    _RunExperiment( 50, false);
+    _RunExperiment(100, false);
+    _RunExperiment(200, true ); // draw this one
+}
+
+static void _RunExperiment(scalar numObjects, Boolean drawQ)
+{
+    if (numObjects > kMaxObjects)
+        return; // too many
+
+    cout << (int) numObjects << " objects: ";
+
+    long    endTime     = Clock_us() + kTestLength;
+    long    iterations  = 0;
+        
+    while (Clock_us() < endTime)
+    {
+        // don't count initialization time
+    
+        {
+            long t0 = Clock_us();
+            _RandomizeObjects(numObjects);
+            endTime += Clock_us() - t0;
+        }
+    
+        // test/timing loop
+        
+        scalar i;
+        for (i = 0; i < kCycleLength && Clock_us() < endTime; i++)
+            _DetermineCollisions(), iterations++;
+    }
+    
+    long totalTime = kTestLength + Clock_us() - endTime;
+    
+    if (drawQ)
+        _ShowLastIteration(numObjects); // draw results
+    
+    cout << (int) iterations << " in " << (int) totalTime
+         << " us:  ";
+        
+    float usec = totalTime;
+    float iter = iterations;
+    
+    cout.precision(2);
+    cout << usec/iter << " us/iter, "
+         << ((float)kTBase)*iter/usec << " iter/s" << endl;
+}
+
+//==================================================================
+// sector code
+//==================================================================
+
+#define CEILING_DIV(x, y) ( ((x)+(y)-1) / (y) )
+
+// define constants
+//
+// Note that to work properly, kSectorSize must be greater
+// than twice the length of the largest side of any
+// object's bounding box.  E.g., if your objects are
+// 30x30, then the sector size should be > 60 -- 64 would
+// be an excellent choice.
+
+enum {
+    kSectorSize     = 64,   // length of a sector's side in pixels
+    kLog2SectorSize =  6,   // log2(kSectorSize): for shifting
+    
+    kScreenWidth    = 640,
+    kScreenHeight   = 480,
+    
+    kNumXSectors    = CEILING_DIV(kScreenWidth, kSectorSize) + 1,
+    kNumYSectors    = CEILING_DIV(kScreenHeight, kSectorSize) + 1,
+    kNumSectors     = kNumXSectors * kNumYSectors
+} ;
+
+// define a module-scope array of linked list heads,
+// one for each sector
+
+static obj* gSectorArray[kNumXSectors][kNumYSectors];
+
+
+// call this routine to place all objects into the
+// appropriate sectors
+//
+// (assumes all objects are kept in a linked list and
+// GetMyFirstObject() returns the head of this list)
+
+extern obj* GetMyFirstObject();
+
+static void UpdateSectors(register scalar xoff, register scalar yoff)
+{
+    // reset the sectors' linked lists
+    
+    obj** theArray = (obj**) gSectorArray; // for 1-D access
+    for (scalar i = 0; i < kNumSectors; i++)
+        *theArray++ = NULL;
+    
+    // put each object in its sector's linked list.
+    
+    for (obj* o = GetMyFirstObject(); o != NULL; o = o->obj_link)
+    {
+        // get the list head for the sector in which o resides
+    
+        register obj** thisSectorListHead =
+            &gSectorArray [ (o->x + xoff) >> kLog2SectorSize ]
+                          [ (o->y + yoff) >> kLog2SectorSize ];
+        
+        // add o to this sector's linked list
+        
+        o->sector_link = *thisSectorListHead;
+        *thisSectorListHead = o;
+    }
+}
+
+
+//==================================================================
+// helpers
+//==================================================================
+
+// Draw an object (rectangle).  If the object is involved
+// in a collision, it is drawn as a rectanglular outline;
+// otherwise it's drawn as a solid gray rectangle.
+// [Macintosh specific]
+
+static void _DrawObject(obj* o, Boolean collidedQ)
+{
+#if defined(macintosh) || defined(__MWERKS__)
+
+    static Pattern myBlack = { 0xff, 0xff, 0xff, 0xff,
+                               0xff, 0xff, 0xff, 0xff };
+    static Pattern myGray  = { 0xaa, 0x55, 0xaa, 0x55,
+                               0xaa, 0x55, 0xaa, 0x55 };
+    Rect r;
+    SetRect(&r, o->x, o->y,
+            o->x + kRectSize, o->y + kRectSize);
+
+    PenPat(collidedQ ? &myBlack : &myGray);
+    
+    if (collidedQ)
+        FrameRect(&r);
+    else
+        PaintRect(&r);
+
+#endif // macintosh
+}
+
+// conciliate skeptics by showing them that the
+// code did, indeed, work properly
+// [Macintosh specific]
+
+static void _ShowLastIteration(scalar numObjects)
+{
+#if defined(macintosh) || defined(__MWERKS__)
+
+    Rect rBounds = { 0, 0, kScreenHeight, kScreenWidth };
+    OffsetRect(&rBounds, 0, GetMBarHeight());
+    WindowPtr wind = NewWindow(nil, &rBounds, "\p", true, plainDBox,
+                               WindowPtr(-1), false, 0);
+    GrafPtr savePort;
+    GetPort(&savePort);
+    SetPort(wind);
+    
+    for (scalar i = 0; i < numObjects; i++)
+        _DrawObject(&gObjects[i], gCollisionArray[i]);
+    
+    while (!Button())
+        ;
+    
+    SetPort(savePort);
+    DisposeWindow(wind);
+
+#endif // macintosh
+}
+
+static scalar _RandScalar(scalar max)
+{
+    return (((unsigned long) max) *
+            ((unsigned short) rand())) / (RAND_MAX+1);
+}
+
+static void _RandomizeObjects(scalar numObjects)
+{
+    obj* o = gObjects;
+
+    for (scalar i = 0; i < numObjects; i++, o++)
+    {
+        o->x        = _RandScalar(kScreenWidth-1);
+        o->y        = _RandScalar(kScreenHeight-1);
+        o->obj_link = o + 1;
+    }
+    
+    (--o)->obj_link = NULL;
+}
+
+
+//==================================================================
+// intersection code
+//==================================================================
+
+obj* GetMyFirstObject() { return &gObjects[0]; }
+
+// local helpers
+
+static void _ClearCollisionArray();
+static void _UpdateCollisionArray();
+
+// determine all collisions
+
+static void _DetermineCollisions()
+{
+    _ClearCollisionArray(); // erase the slate; no collisions yet
+
+    scalar shift = kSectorSize / 2;
+    
+    // We need to try four differnt "shifts" of the
+    // sector grid to detect all collisions.  Proof of
+    // why this is so is left as an excercise for the
+    // reader.  (Hint: consider an analogous 1-D case.)
+    
+    UpdateSectors(    0,     0),    _UpdateCollisionArray();
+    UpdateSectors(    0, shift),    _UpdateCollisionArray();
+    UpdateSectors(shift,     0),    _UpdateCollisionArray();
+    UpdateSectors(shift, shift),    _UpdateCollisionArray();
+}
+
+// "hot" functions that are used in inner loops
+
+#ifdef BRAIN_DEAD_INLINING
+
+#define _Abs(a) ((a) < 0 ? -(a) : (a))
+
+#define _IntersectQ(o1, o2)                     \
+            (_Abs(o1->x - o2->x) < kRectSize && \
+             _Abs(o1->y - o2->y) < kRectSize)
+#else
+
+inline scalar _Abs(scalar a)
+{
+    return a < 0 ? -a : a;
+}
+
+inline scalar _IntersectQ(obj* o1, obj* o2)
+{
+    return _Abs(o1->x - o2->x) < kRectSize &&
+           _Abs(o1->y - o2->y) < kRectSize;
+}
+
+#endif // BRAIN_DEAD_INLINING
+
+
+static void _ClearCollisionArray()
+{
+    memset(gCollisionArray, 0, sizeof(gCollisionArray));
+}
+
+static void _CalcCollisionsInSector(obj* objList);
+
+static void _UpdateCollisionArray()
+{
+    for (scalar x = 0; x < kNumXSectors; x++)
+        for (scalar y = 0; y < kNumYSectors; y++)
+            _CalcCollisionsInSector(gSectorArray[x][y]);
+}
+
+
+// We've got the head of the linked list for a 
+// sector.  Let's see if there are any objects
+// in it that are involved in collisions.
+//
+// Use the plain, old O(n^2) technique to compute
+// the collisions in this sector.  If the grid size
+// was appropriately chosen, n should be very small;
+// in many cases it will be 0 or 1, obviating
+// collision tests altogether.
+
+static void _CalcCollisionsInSector(obj* objList)
+{
+    if (objList == NULL || objList->sector_link == NULL)
+        return;
+
+    for (obj* o0 = objList; o0->sector_link; o0 = o0->sector_link)
+        for (obj* ox = o0->sector_link; ox; ox = ox->sector_link)
+            if (_IntersectQ(o0, ox))
+                gCollisionArray[ o0 - gObjects ] =
+                gCollisionArray[ ox - gObjects ] = 1;
+    
+                // Note that at this point we know object o0
+                // collided with object ox, so we could use that
+                // information to, say, determine what kind of
+                // explosion is appropriate.  Here, however, I
+                // just toss the information away.
+}
+======= end
+
+Regards,
+Tom Moertel                          Interests:  Software Engineering,
+                                                 Symbolic Mathematics,
+MSA, CSG Technologies Division                   Algorithms,
+thor@telerama.lm.com                             Itchy-Scratchy Theory.
+
+

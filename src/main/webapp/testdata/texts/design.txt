@@ -1,0 +1,372 @@
+Some Thoughts on Computer Game Design
+=========================================
+
+I've been thinking about what it is about my favorite games that
+I like...I've thought about Game Design on and off over the years,
+and have begun to pull some things together for myself. 
+
+Here's a start of a breakdown...feel free to add upon it and respond to
+individual ideas...I'd like to quote different reactions to these ideas in a
+non-profit hypermedia project I'm working on at school, and thought the life
+of these groups would have much to add. 
+
+Dave Seah
+(dis6218@ultb.isc.rit.edu, pccdaves@aol.com)
+
+--- cut here ---
+
+The Player
+
+Why do we play games? We like challenges, and we derive 
+pleasure when we overcome them. Games provide a safe context 
+in which we can express our fantasies and dreams. We achieve 
+a sense of stature and accomplishment by engaging in 
+stimulating gameplay. Computer games are no different in the 
+way they provide challenge and stimulation. As game 
+designers, though, we are responsible for designing every 
+part of every interaction within the self-contained computer 
+world. The player has to be able to find and overcome the 
+challenges we design into a game without feeling unfairly 
+constrained or manipulated. 
+
+For games in which the player plays an active role in a 
+simulated social environment, emphasize the hero qualities 
+of the character. By controlling the character throughout 
+the game, the player establishes an alter ego. That 
+joystick-controlled blip on the screen is the player, for 
+all intents and purposes. The game environment becomes the 
+world, and the player is the protagonist, with the potential 
+to become a hero. Heros are always above average in their 
+abilities, for it enables them to go forth and kick-ass in a 
+definitive manner.
+
+The protagonist must undertake some form of the hero's 
+journey. This can take the form of a developmental cycle, as 
+it is in role playing games (RPGs.) A new character in the 
+Ultima series, for example,  starts out as a naked 
+stripling, equipped with the wimpiest of weapons and armor. 
+The character grows in experience by exploring the world, 
+slaying monsters and engaging in quests. Eventually, the 
+protagonist achieves a level of ability that is truly epic. 
+The player experiences a vicarious sense of accomplishment 
+through the actions and ultimate success of his/her 
+character. 
+
+In games that emphasize manual dexterity, the hero's journey 
+is externalized. In an arcade game, the player usually 
+controls some kind of ship. The ship itself may already be 
+imbued with awesome weaponry and abilities; by surviving and 
+wreaking destruction on the computer world, the player is 
+shown to be a hero (or at least skilled) to his or her 
+peers. 
+
+A good example is the original version of Wing Commander. In 
+this game, a chalkboard kept track of how many enemy kills 
+were attributed to the player's character. It lists the 
+game's non-player characters (NPCs) ranks as well, and the 
+player could see how well he is doing as the story 
+progresses. As the player grows more experienced, he moves 
+up in the ratings. The chalkboard also makes it possible for 
+players to compare their skills with their friends. "I 
+fragged 105 furballs before I finished the game" was a 
+common boast on the computer networks. In Wing Commander II, 
+the chalkboard was moved to a less prominent area, and the 
+emphasis was placed on the wooden story line, drawing the 
+player into a simulated social environment.
+
+Game Environment
+
+As the player establishes and sets goals in the context of 
+the game, the game must respond in kind by providing some 
+kind of feedback. Without feedback, the player will feel 
+lost and impotent, trapped inside an artificial world 
+instead of participating in it. The interactive gaming 
+experience must support the actions of the player, not 
+thwart them.
+
+To maintain the illusion of a functioning, living world, the 
+game designer has to ensure that there is some minimum 
+interaction between the player's character and the simulated 
+environment. As an example, the Super Nintendo version of 
+Zelda provides lots of audio-visual feedback. As the 
+player's character walks through tall grass, a rustling 
+sound is heard, and the character's body below the waist is 
+swallowed up. When walking in a shady forest, shadows fall 
+across both the ground and the character. NPCs on the screen 
+react to the presence of the player in a variety of ways or 
+not at all. The player is drawn into the game because the 
+game environment interacts with his/her character. The high 
+level of interaction between player character and game 
+environment is enjoyable in itself.
+
+The player should also receive some kind of feedback on 
+his/her progress. In arcade games, this is accomplished with 
+some kind of indicator (score, level, etc). The player 
+ideally feels that he or she is in control at least most of 
+the time. All hell may be breaking loose, but the player 
+should know how much that is affecting his/her character. 
+The rule of thumb is that for every action, there should be 
+some kind of feedback or reaction.
+
+The game universe should have well-established conventions 
+of how things work -- its own "law of physics." If the 
+laws change, there must be a rational explanation. Arbitrary 
+changes, especially those that impact the player's 
+character, can have a negative impact on the gaming 
+experience. 
+
+Premise and Player's Expectations
+
+The player must know what to expect from the game world, 
+journey or no journey. Usually, some rudimentary explanation 
+is given to explain the game world. Ignoring purely abstract 
+games like Go or Checkers, the game designer must establish 
+both premise (story) and setting. The premise helps 
+establish an initial motivation for why the game is the way 
+it is, and the setting helps establish the tone. This can 
+take rather trivial forms, but if the scope of the story 
+matches the scope of the game, then I have no argument 
+against it. By "scope of the game", I mean the range of 
+possible associations and interactions. A complex political 
+thriller as the story and setting for a straight shoot-em-up 
+arcade game doesn't carry much credibility. Likewise, a game 
+that is based on a popular movie is asking for trouble. 
+People will carry their memories of the movie over to their 
+expectations of the game, and are setting themselves up for 
+disapointment. 
+
+For the designer's expectations of the game, it is important 
+to set the challenge clearly. You know what kind of 
+experience you want to deliver, so make that clear right up 
+front when establishing the story and setting. The premise 
+(or premises) of the game will vary wildly. If a game is 
+intended to be a visually confusing, surreal exploration of 
+the inner mind, then let it be said up front. If the game is 
+intended to be an accurate, uncompromising World War II 
+simulation of the Battle of the Bulge, then different 
+expectations are set. The designer must set these guidelines 
+explicitly, and adhere to them. The game experience should 
+fully support the premise and the player's expectations.
+
+Consider two space gaming genres: the side-scrolling 
+"shoot-em-up" (or shooter) and the space combat simulator. 
+In a classic shooter like Defender, the premise is pretty 
+simple: Destroy all the waves of attacking aliens and 
+protect your people. The gameplay is simple to understand, 
+though the game itself requires superb eye-hand coordination 
+of a level that is seldom seen today. For the gamer, the 
+premise is secondary to the nerve-racking adrenaline rush of 
+playing which is the main reason for playing. As a more 
+recent example, the space combat simulator X-Wing is based 
+on the Star Wars universe. Since it is based on the popular 
+movie, players expect a lot from the game. The premise is 
+that you are a rookie joining the Rebel Alliance. Although 
+you can jump right into the missions and just start blasting 
+TIE fighters, you are encouraged to go through the training 
+process. Animated sequences and accurate portrayal of the 
+Star Wars universe build the framework in which you play the 
+game, and an included novella sets the tone for your tour of 
+duty: You are a new recruit, and the Alliance is being 
+ruthlessly hunted down by the Imperial fleet. You are not 
+just flying any old spacecraft...you are flying an X-wing, 
+escorting a crucial shipment of grain through dangerous 
+Imperial patrols! There is a sense of an expanded game 
+universe that exists outside the confines of the game, 
+carefully reinforced with information from the mission 
+briefing screens, but the story isn't stated overtly. You 
+are not Luke Skywalker, but you know that he's out there 
+somewhere fighting the same cause. 
+
+Balancing of Goals
+
+From the initial motivation, the player can form (or be 
+informed of) several long-term goals. The default goal is to 
+win the game. Other long term goals may be to "find the 
+Golden Sword" or "Return Peace to the Land." Players will 
+formulate a number of short-term goals along the way. "To 
+find the Golden Sword, I have to talk to everyone," or "To 
+return peace to the land, I need to collect the Peace 
+Crystals." Shorter term goals might be, "To get to the 
+next level, I have to blow up all these ships," or "I have 
+to find the Power Booster if I want to survive!" Some 
+short-term goals are standing goals. These goals are always 
+on the player's mind, as they continually contribute to the 
+well-being of the character. For example, "I better not get 
+hit by enemy blaster fire, or I'll lose a ship." The game 
+designer manages the difficulty of these goals, and the 
+player juggles them.
+
+For flexibility, I like to allow flexible goal completion. 
+In other words, I like to allow some leeway in the order 
+that goals are brought to completion. There is no single 
+order that guarantees success. Putting together a structure 
+that allows this is not trivial, and it depends on the kind 
+of game. To take an old example, consider the classic Apple 
+II game, "Castle Wolfenstein." The object (long term goal) 
+of the game is to escape from a Nazi castle during WWII, 
+initially armed with nothing but a pistol. Finding the "War 
+Plans" was a secondary long-term objective. Since the game 
+begins with the player trapped in a guarded room, clad in 
+bright purple prisoner duds, the short term goal is to get 
+out of the room without getting captured or shot. As the 
+player moves from room to room, the standing goals are 
+finding uniforms, keeping stocked with ammunition, and 
+keeping the SS from getting on your tail.
+
+Balance short term with long term goals. You want short term 
+goals, punctuated by moments of sheer terror. This is part 
+of the "hero building" process. The short term goals 
+should be immediate and compelling. This can be something as 
+simple as "blow up more bad guys." Long term goals should 
+be what drives the short term goals, giving them purpose and 
+meaning. Not all games need purpose and meaning. DOOM is a 
+good example: the gameplay is so compelling that you have no 
+time to think about any long-term goals other than, 
+"survive." It is the most absorbing game of its kind on 
+any platform, in my opinion.
+
+Another aspect of goal-setting that I like is the idea of 
+open play. In the case of Castle Wolfenstein, the goal of 
+the game is to escape with the war plans. However, the 
+player can take as long as he/she wants. In fact, the player 
+can choose to use the game as an open play environment, 
+effectively creating a new game. A common game was "Nazi 
+hunting", in which players would just run around shooting 
+everyone. Other players would try to get out of the castle 
+as quickly as possible, ignoring all other aspects of the 
+game. Castle Wolfenstein did not punish the player, because 
+its structure was open enough to contain these kind of 
+alternate games. 
+
+Gameplay
+
+Part of the pleasure in a game comes from interacting with 
+it. I enjoy controlling characters on the screen, making 
+them solve problems or overcome challenges. I also derive 
+satisfaction at overcoming those challenges with skill and 
+dexterity. I set a limited goal ("solve the puzzle") and 
+then I reach it ("puzzle solved.") 
+
+The player should be able to do any action that seems 
+reasonable, given the premise of the game and the goals 
+formed based on those premises. If there is a situation in 
+which the natural response would be to run like hell, then 
+the character should be able to do just that. There should 
+be a counter or defense for every move. If you are shot at, 
+you should be able to move out of the way. If attacked, you 
+should be able to counter-attack, or at the very least be 
+allowed to escape. In the event that the player has just 
+made some horrible tactical mistake, this should be made 
+very clear so the player knows that it was "his fault." 
+There should also be the knowledge that, "there is another 
+way."
+
+The player will also want some way to gain an advantage, 
+however temporary, by changing the rules slightly. For 
+example, in the arcade game Assault, your highly-
+manueverable tank can enter "jump zones" that propel it 
+above enemy vehicles on the ground, giving the player a 
+unique advantage. Players want the biggest guns and the best 
+armor. Give them a way of earning that advantage, and then 
+give them a reason for really needing it.
+
+When placing constraints on the player's action, there must 
+be a rationale. The premise may help establish why these 
+constraints exist. If the player's magic hammer has been 
+able to smash all walls, then it has to work all the time 
+unless a "Special Wall" is encountered. The hammer must 
+react with the wall in some way, perhaps signaled by a 
+different noise or animation sequence. If something has 
+worked in the past, it should work the same way in the 
+future, unless some kind of new variable has entered into 
+the picture. Make that variable clear, but you don't have to 
+give away all its secrets.
+
+Don't forget to emphasize the heroic, epic quality of the 
+player's struggle. Explosions must be large and gratifying. 
+Climactic duels with the villian must satisfy! The player 
+wants to look good, so provide those opportunities that 
+reward dexterity, cleverness, and experience. 
+
+Japanese arcade games often reward pattern memorization. 
+Instead of providing a way out, many of the Japanese arcade 
+games rely heavily on memorization to advance. The reward is 
+for experience, not necessarily cleverness. By varying a set 
+of patterns, you can make the game more dynamic and still 
+reward memorization. For example, in Prince of Persia, 
+fighting the first few swordsmen is fairly easy if you 
+recognize a pattern in their fighting style. Later swordsmen 
+have slightly different appearances, and have different 
+patterns. I remember encountering the fat swordsman for the 
+first time and getting slaughtered when I fell in my old 
+patterns. The best patterns, in my opinion, are the ones 
+that don't rely on a fixed sequence of actions or moves. The 
+player instead recognizes of a particular tactic or set of 
+circumstances that allows him/her to act prudently, while 
+retaining flexibility in the goal-setting process. An 
+excellent example is X-Wing. A particular Imperial tactic 
+that is used over and over is the launching of TIE bombers 
+after a wave of TIE fighters. The TIE fighters are a mere 
+annoyance compared to the bombers, but the Fighters must be 
+dispatched lest they attack lightly-protected Rebel vessels. 
+Depending on distance and mission, the X-Wing pilot has to 
+react based on the experience that has been drilled into him 
+or her.
+
+Graphics and Sound 
+
+The demand for high quality graphics and sound in today's 
+oftware has advanced hundreds of times in capability 
+since the early days of personal computing. We are no longer 
+required to use our imagination to equate a blocky, low-
+resolution screen image with a rich fantasy world. Today, we 
+fully expect to see recognizable animated images, and we 
+increasingly demand music and sound. Games have become less 
+abstract and more complex, made possible by faster computers 
+and near-photorealistic graphics.
+
+The visual and audible aspects of a game should mesh 
+smoothly with all previous aspects of the game. They should 
+not be the primary focus of the game. Great graphics and 
+sound should enhance an already great gaming experience, not 
+usurp it. A mediocre game with great graphics and sound 
+becomes a "technology showcase" with limited play value. A 
+brilliantly-conceived game with poor audiovisual design 
+limits its mass appeal. 
+
+Having "good" graphics does not necessarily require 
+millions of colors and high resolutions. The graphics must 
+reflect the premise and setting of the game. They must be 
+clear, well-rendered, and stylistically consistent. Great 
+graphics will transcend the limitations of resolution and 
+color. The games from LucasArts are among my favorites. 
+Although they are seen on a 320x200, 256 color IBM-PC 
+display, the characterization and visual design stands on 
+its own. The chunky pixels and blocky graphics fade from 
+consideration because the game successfully pulls you into 
+its world.
+
+Engagement of the Senses
+
+To engage the senses is to invite the player into the game 
+world. The vicarious experience of the player must be 
+consistent in presentation and context. This is a balance 
+between all the elements discussed above: Player and 
+Environment, Story/Setting and Player Expectation, Goal-
+Setting and Gameplay, Graphics and Sound.
+
+The game designer can also exploit second- and third-order 
+experience. These are the subtler details that are not 
+immediately obvious, but nevertheless contribute to the 
+depth of the gaming experience (the term "second-order" is 
+a mathematically expression. In engineering, it distinguises 
+between a simple model and a more accurate but complex one.) 
+
+An excellent example of this is Street Fighter II. On the 
+surface, this game is just another chop-sockey kung-fu 
+fighting game. This is a simple categorization. When it was 
+first introduced, it distinguished itself from other games 
+by offering silky-smooth, state-of-the-art animation. This 
+naturally attracted players. What distinguished SF2 from 
+other "hit-the-button punch-punch-punch" games was its 
+outstanding second-order design. It wasn't enough to just 

@@ -1,0 +1,2709 @@
+(Previous maintainer: Stanley Stasiak. 
+									    
+ 
+THE DISCLAIMER: 
+#include <all_kind_of_crap_about_me_only_supplying_this_info_and_no_guarantees_ 
+against_(insert_your_favourite_stuffup_or_natural_disaster_like_flood_ 
+earthquake_alignment_of_all_solar_planets_or_invasion_of_inter_dimensional_ 
+monsters_(aka_DOOM)_)_and_no_responsibility_liability_for_any_multi_million_$$$ 
+_damage_and_stress_related_loss_of_hair_while_you_are_reaching_for_the_reset_ 
+button_and_your_boss_walks_in___blah_blah_blah____.h> 
+ 
+=============================================================================== 
+			 WOLFENSTEIN-3D and SPEAR of DESTINY 
+			 FREQUENTLY ASKED QUESTIONS. 
+					 by 
+				   Adam Williamson 
+			 (adam@scss.demon.co.uk) 
+			 [Version 4.15] 
+		  Last Revised on: Thursday 15 1994 18:37 GMT (Greenwich Mean Time) 
+ 
+******************************************************************************** 
+Note: 1) From here onwards 'Wolfenstein-3D' will be referred to as 
+	 'Wolfenstein' or 'Wolf3D', and 'Spear of Destiny' will be referred 
+	 to as 'Spear' or 'SoD', to avoid verbosity. Information about 
+	 Wolfenstein applies to Spear as well, unless differences are noted. 
+	  2) All specific names included herein are trademarks and are so 
+	 acknowledged: iD, Apogee, FormGen, Wolfenstein-3D, Spear of Destiny, 
+	 PkWare, PkUnzip, SoundBlaster, etc. (forgive if any missed out) 
+******************************************************************************** 
+ 
+	TABLE OF CONTENTS 
+ 
+0.0 About the FAQ. 
+	0.1 The Copyright Notice. 
+	0.2 Foreword. 
+	0.3 Id, Apogee vs the FAQ. 
+	0.4 How can the Wolfenstein FAQ author be contacted? 
+	0.5 How can I obtain the most recent version of the Wolfenstein FAQ? 
+	0.6 The NEW INFO coding system within the FAQ. 
+	0.7 Wolfenstein & SoD related files availability via FTP. 
+ 
+1.0 The Wolfenstein Novice Questions (The bunch that new users usually ask). 
+	1.1 What are Wolfenstein-3D and Spear of Destiny? 
+	1.2 What are the requirements to run Wolfenstein? 
+	1.3 Where can I get Wolfenstein from? 
+	1.4 How do I unpack shareware Wolfenstein? 
+	1.5 How do I install it to HD? 
+	1.6 Can I play Wolfenstein from a floppy disk? 
+	1.7 What's with the game version numbers? 
+	1.8 Are there map/graphics editors available, and where? 
+	What are they? And which files do they change? 
+	1.9 Are there different sets of ready made Wolfenstein maps/graphics files, 
+	and where? 
+	1.10 How can I CHEAT in Wolfenstein? 
+	1.11 How can I contact iD Software? 
+	1.12 I think I found an error in the FAQ. 
+	1.13 Is Wolfenstein available on any other platform than an IBM compatible? 
+	1.14 Where can I find version x.y of Wolfenstein? 
+	1.15 Where did iD get the inspiration for Wolfenstein? 
+ 
+2.0 Specific questions about the game. 
+	2.1 What do all those guards say in game? (for those with SoundBlaster 
+	or compatible) 
+	2.16 How many hits do all those enemies take? 
+	2.17 What weapons do all those enemies carry?  
+	2.2 What's the difference between the difficulty levels of the game? 
+	2.3 What are the secret rooms/doors in the game? How can I find one? 
+	2.4 What are secret levels in Wolfenstein? How can I find one? 
+	2.5 What is that funny object/sprite in the game? 
+	2.6 What is the purpose of the codes listed at the end of game stats? 
+	2.7 Are there ghosts in Wolfenstein? If so where? Can I kill them? 
+	2.8 What do other objects apart from ammo, food, etc. do? 
+	2.9 I've heard you can drink blood in Wolfenstein? Is that true? How? 
+	2.10 What is 'Death Cam'? How is it activated? 
+	2.11 What is the Jukebox feature of Wolfenstein? How is it accessed? 
+	2.12 What are those music tunes in Wolfenstein? 
+	2.13 What is that Morse code message in Wolfenstein? 
+	2.14 Are there any more cheats/hints available? 
+	2.15 The Statistics & Records Section (Numbers about the game). 
+ 
+3.0 The FLAMING Section. (You're annoyed with Wolfenstein because...) 
+	3.1 It crashes. 
+	3.2 The sounds are all screwed. 
+	3.3 You are left with a gun and 8 bullets after you die. 
+	3.4 It's too hard. 
+	3.5 It's too easy. 
+	3.6 You keep running into the walls and missing the doors. 
+	3.7 You are feeling dizzy while you play it. 
+	3.8 It never gives you 100% stats at the end of level/game. 
+	3.9 You always run out of ammo/health. 
+	3.10 You can never find any secret rooms. 
+	3.11 You can never find a secret level. 
+	3.12 You always get nuked by that big bad boss (guard) at the end. 
+	 (The strategies for defeating the bosses). 
+ 
+4.0 Map/Graphics Editors Section (If you're messing around with map/graphics 
+	files then this section is for you). 
+	4.1 Discussion of available map/graphics editors. 
+	4.2 Rules to follow when editing. 
+	4.3 Common editing errors (What not to do and what they'll produce). 
+	4.4 Map/Graphics files version conversion. 
+	4.5 Editors compatibility with the game and each other. 
+	4.6 How to make a hardcopy (printout) of the maps. 
+ 
+5.0 Wolfenstein Add-On Section. 
+	(Discussion of extra levels/graphics you can get) 
+	5.1 Extra levels. 
+	5.2 Extra graphics. 
+	5.3 Other Add-ons & Utilities. 
+ 
+6.0 Wolfenstein Bugs & Problems (known to date), 
+	and how to fix or get around them. 
+	6.1 Hardware problems. 
+	6.2 Software problems. 
+	6.3 Game specific problems. 
+ 
+7.0 Wolfenstein Spin-offs. 
+	7.01 Catacomb Abyss. 
+	7.02 Blake Stone 3D. 
+	7.03 Doom. 
+	7.04 Ken's Labyrinth. 
+	7.05 Hugo's Nitemare 3D. 
+	7.06 Doom 2. 
+	7.07 Terminator: Rampage. 
+	7.08 Corridor 7. 
+	7.09 The Fortress Of Dr. Radiaki. 
+	7.10 Operation Bodycount. 
+	7.11 Rise Of The Triad. 
+	7.12 Heretic. 
+	7.13 Duke Nukem 3: 3D. 
+	7.14 Shadow Warrior 3D. 
+	7.15 Ruins 3D. 
+	7.16 Quake. 
+ 
+8.0 Acknowledgements. 
+ 
+9.0 Revision History. 
+ 
+10.0 Future Additions To The FAQ. 
+ 
+END OF TABLE OF CONTENTS 
+------------------------------------------------------------------------------- 
+ 
+0.0 ABOUT THE FAQ. 
+ 
+0.1 THE COPYRIGHT NOTICE. 
+ 
+******************************************************************************* 
+I hereby grant the right to anyone who wishes to freely reproduce  
+WOLFENSTEIN-3D and SPEAR of DESTINY FAQ in part or in full in any electronic  
+or written form provided that the author as well as the acknowledged people  
+(Section 8.0) are given due credit.  
+ 
+Adam Williamson 
+- new maintainer of Wolfenstein-3D and Spear of Destiny FAQ 
+ 
+Date: Nov 11th, 1993. 
+******************************************************************************* 
+ 
+0.2 FOREWORD. 
+ 
+Ok, It's been a couple of years now since the first release of this FAQ. 
+Wolfenstein-3d has been out and available as shareware for over 3 years. 
+Originally I wrote the FAQ to stem the very large number of posts and questions 
+on Usenet's comp.sys.ibm.pc.games about this game. 
+I must say that I think I've been successful in conserving some bandwidth by 
+provision of this regular (most of the time) article.  
+	This FAQ will be availible on the Games Domain WWW site  
+(http://wcl-rs.bham.ac.uk /GamesDomain) and FTP site (wcl-rs.bham.ac.uk) and 
+will be posted whenever I remember (about every month) to the Internet 
+usegroups comp.sys.ibm.pc.games.action and alt.games.apogee. 
+ 
+ 
+I would like to thank all of the contributors to this FAQ. 
+ 
+0.3 Id, APOGEE VS THE FAQ. 
+ 
+Now hear this! 
+Apogee and iD Software have nothing to do with this FAQ. 
+They do not give me support with it (not counting some e-mail thanks from 
+J. Wilbur at iD Software). 
+This is NOT an official publication of either iD Software or Apogee. 
+The information contained within this article is provided 'as is' as I collect 
+it from various Usenet sources. 
+I do make an effort to check whether the information is correct at the time of 
+the post, but as usual no guarantees are provided. 
+ 
+0.4 HOW CAN THE WOLFENSTEIN FAQ AUTHOR BE CONTACTED? 
+ 
+I can be contacted via Internet e-mail at the following address:  
+adam@scss.demon.co.uk. 
+ 
+0.5 HOW CAN I OBTAIN THE MOST RECENT VERSION OF THE WOLFENSTEIN FAQ? 
+ 
+1) Drop me an e-mail (--> See Section 0.4). 
+OR  
+2) Get it from the FTP site wcl-rs.bham.ac.uk. 
+OR 
+3) This article is also reposted about every month on  
+comp.sys.ibm.pc.games.action. 
+OR 
+4) Read it on the WWW site http://wcl-rs.bham.ac.uk /GamesDomain. 
+ 
+0.6 WOLFENSTEIN & SOD RELATED FILES AVAILABILITY VIA FTP. 
+ 
+Throughout this FAQ I'll be refering to some Wolfenstein related files. 
+These can be obtained through Internet FTP archives. 
+ftp.cc.umanitoba.ca [130.179.16.24] 
+directory: 
+/pub/wolf3d 
+is the official wolf3d site. 
+ 
+****** <<<<<< (will be referred to as 'MANITOBA' from now on) >>>>>> ****** 
+ 
+I will not include any information on wolf3d related files unless they make 
+their way to one of these sites. (Nope, wuarchive.wustl.edu won't do Sorry!) 
+If you don't know how to get them there or don't want to do it yourself 
+or don't have ftp access then send them to me. I'll be happy to upload them 
+for you. 
+ 
+ 
+1.0 THE WOLFENSTEIN NOVICE QUESTIONS. 
+=============================================================================== 
+ 
+1.1 WHAT ARE WOLFENSTEIN AND SPEAR OF DESTINY ? 
+ 
+Wolfenstein-3D is a 3-dimensional action game from iD Software. 
+(distributed as shareware by Apogee). Spear of Destiny is the commercial 
+sequel of the same game that includes some enhanced graphics. 
+ 
+OBJECTIVE: Survival/Exploration 
+ 
+TYPE: Action 
+ 
+VIEW: First person 3-dimensional perspective. 
+ 
+FEATURES: Smooth scrolling gameplay and character animation. 
+	  Full 360 degrees view sweep at any angle. 
+	  VGA graphics (320x200x256), SB/SB-Pro/Adlib/Sound Src support 
+	  Mouse/Joystick/Gravis pad/Keyboard interface. 
+ 
+DIFFICULTY LEVELS: 4 
+ 
+VIOLENCE RATING: PC-13 (profound carnage - analogous to the movies' PG-13) 
+ 
+COMMENTS: Impacts visually. Highly addictive. Slighty violent. 
+ 
+STORY LINE: In Wolf3D: Basically you're a WWII allied spy imprisoned in Germany 
+		and you're trying to escape (full story included with the game). 
+		In SoD: Capture the Spear of Destiny from a Nazi stronghold. 
+ 
+AVAILABILITY: First part of Wolf3D is shareware. Extra parts can be ordered 
+		  from the distributor (more later). For Spear there is a 2-level 
+		  demo version and the full version can be obtained at your local 
+		  software store. There are now SoD: Missions 2+3 availible as well. 
+ 
+STAGES: Wolf3D: 6 episodes (parts) each containing 10 levels. 
+		The shareware version only contains episode 1. 
+		The registered version (pay $$) contains either 3 or 6 episodes. 
+		Altogether there are 10, 30 & 60 levels in the shareware and 
+		two registered versions. 
+	SoD:    1 set with 21 levels of pulse-pounding action. 
+		The demo version only contains the first 2 levels. 
+		The registered version (pay $$) contains the full 21 levels. 
+ 
+WARNING: Some people have reported being sick after playing or watching 
+	 others play (a kind of motion sickness if you like). --> See 3.7 
+ 
+1.2 WHAT ARE THE REQUIREMENTS TO RUN WOLFENSTEIN? 
+ 
+HARDWARE REQUIREMENTS: 
+	 Processor: 80286 or better (Nope won't run on XT). 
+	 Graphics:  256Kb VGA or better. 
+	 Memory:    580Kb Conventional. Also supports EMS, XMS. 
+			If EMS/XMS are available the game will use them to preload 
+			some of the graphics data. 
+	 Hard Disk: Wolf3D: Approx. 1.38Mb (Shareware version) 
+				Approx. 2.40Mb (Full 6 episodes version) 
+			SoD   : Approx. 1.24Mb (Demo version) 
+				Approx. 3.06Mb (Full 21 levels version) 
+	 (Support SB, SBPro, Adlib) 
+ 
+OPERATING SYSTEM & COMPRESSION UTILITY COMPATIBILITY 
+----------------------------------------------------------------------- 
+DOS        : 5.0, 6.0 (should be downward compatible to 3.3 but wasn't tested) 
+Other OS's : OS/2, 
+		 Windows: (Note if you've got a SB device driver 
+			   installed under Windows or a Windows TSR 
+			   like an hour chime running it may interfere 
+			   with some of Wolfenstein's digitized sounds) 
+			  Running WOLF3d/SoD under Windows isn't really recommended. 
+		 Windows NT: unknown. (anyone?) 
+		 DR-DOS 6.0 
+ 
+Compatible with: Stacker: Yes (2.0 & 3.0) 
+		 Superstor: Yes 
+		 DOS 6.0's Double Space: Yes 
+ 
+1.3 WHERE CAN I GET WOLFENSTEIN FROM? 
+ 
+You can ftp Wolf3D game from MANITOBA, locating it in /pub/wolf3d . 
+It is archived as a PkWare's ZIP file (wolf3d14.zip). 
+You can also ftp it from UWP. Look in /pub/msdos/games/id (file 1wolf14.zip). 
+(Note: ziped with PkZip v2.04g) 
+You must have PkWare's PkUnzip software to unzip the .zip file. 
+(You can obtain the pkzip/unzip software from garbo.uwasa.fi /pc/arcers 
+ filename = pkz204g.exe) 
+The archive size is approximately 750Kb. 
+There is an unpacking installation with this latest version (v1.4) of 
+Wolfenstein so there should be no problem with getting started. 
+ 
+You can also get a full version from Apogee (iD's Wolfenstein distributor). 
+Info on ordering is included in the shareware version. 
+Lately the full version has also been commercialised and should be available 
+from local software stores and other retail outlets (such as K-mart). 
+(This info is U.S only. Other countries may have had it available this way 
+ for a long time now). 
+ 
+You can ftp the demo of SoD from the same two sites (file soddemo2.zip). 
+The archive size is approximately 740Kb. 
+You can get a full version from FormGen (iD's Spear of Destiny distributor). 
+Info on ordering is included in the demo version. SoD may also be obtained 
+from your local software store. 
+ 
+1.4 HOW DO I UNPACK SHAREWARE WOLFENSTEIN? 
+ 
+You'll need PkWare's PkUnzip software (version 2.04g) to 'unzip' the file. 
+Create a spare directory, then copy the file you've obtained into it. 
+Next use pkunzip to unarchive the file. Like so: 
+ 
+	pkunzip wolf3d14.zip 
+	pkunzip soddemo2.zip 
+ 
+(Assuming your pkunzip.exe is on DOS's command path.) 
+ 
+1.5 HOW DO I INSTALL IT TO HD? 
+ 
+Through unarching the program in 1.4 above, an INSTALLATION copy of the game 
+was placed in the current directory. Just run INSTALL program supplied to 
+install a runable copy on your HD. 
+You can delete the INSTALLATION copy once a runable copy has been made 
+(to save disk space of course). 
+NOTE: Initially you'll need ~4Mb of HD space to unpack and install the game. 
+For the SoD demo, unarching the program in 1.4 above will place a runable copy 
+on your HD and you don't need to take any further installation steps. 
+ 
+1.6 CAN I PLAY IT FROM FLOPPY DISK? 
+ 
+You can play the shareware version of Wolf3D and the demo of SoD from floppy 
+disk since it's only about 1.38/1.24Mb (we're talking 3.5" High Density disk 
+here). You'll have to install it to a hard disk first and then copy it across 
+to a floppy disk. 
+The full registered versions of Wolfenstein and Spear are much too big for a 
+1.44Mb floppy (unless you have something like a 20Mb floptical disk drive :) on 
+which it would easily fit). 
+The performance of the game running from a floppy is much the same except when 
+you first load it up it takes it about a minute to load up all the graphics/map 
+info, so just wait patiently. It's a bit slower between the levels as well. 
+In the game itself there is usually no speed differential except in certain 
+parts where it brings in a page of graphics for some wall panels. You can then 
+notice a split second pause. 
+ 
+1.7 WHAT'S WITH THE VERSION NUMBERS? 
+ 
+The most current version of Wolfenstein 3D is 1.4. The newest version fixes all 
+known bugs (as did 1.1 at the time, etc.) Apart from that there is not much of 
+a difference unless it comes to map/graphics editors. --> See 1.8, 1.9 & 4.X 
+A breakdown of the versions and what the differences are is below. 
+(If you never played Wolfenstein this will sound meaningless, but then again 
+ if you NEVER played Wolfenstein then where were you this past two years? ;) 
+NOTE: There may have been some other bugs fixed between the versions which I 
+	  don't know about, so if you think you know e-mail me. 
+ 
+v1.0 - First release (05/05/92) 
+v1.1 - Fixed some secret doors map bugs (on level 7 & 8 in episode 1 there 
+	   were secret doors left out) and also some video problems (06/10/92) 
+v1.2 - Secret level elevator bug was fixed (introduced in 1.1 :( ) (06/22/92) 
+v1.3 - Was never released. 
+v1.4 - Fixed something but I forgot what. It also changed slightly the graphic 
+	   backdrop on the opening screen and other menus, changed the interior 
+	   elevator graphic and added a calibration routine in the joystick setup 
+	   menu. (12/03/92) 
+ 
+The dates next to versions are the file stamp dates of the game .exe file. 
+They are not the actual market release game dates. 
+ 
+There were other 'internal' changes between versions but they are only relevant 
+to mapping programs. --> See 4.X 
+ 
+The version numbering of Spear seems to have gone through the same routine, 
+but currently I only have info on the initial release: 
+v1.0 - First release (09/28/92) 
+v1.1 - No information available (yet? call on info) 
+v1.2 - "	"  "	" "	" 
+v1.3 - "	"  "	" "	" 
+v1.4 - Final release, changes from previous versions unknown 
+	   (01/05/93) 
+ 
+1.8 ARE THERE MAP/GRAPHICS EDITORS AVAILABLE, AND WHERE? 
+	WHAT ARE THEY? AND WHICH FILES DO THEY CHANGE? 
+ 
+Map/Graphics editors can be obtained from the same ftp site as the game. 
+ 
+No, they are not written by iD or Apogee nor supported by them. 
+(Also --> See Section 4.2) 
+ 
+READ THIS! IMPORTANT!  READ! THIS! IMPORTANT!  READ! THIS! IMPORTANT! 
+ **************************************************************************** 
+ Apogee ask that you ONLY edit registered wolf3d. The latest level editors 
+ will ONLY work on registered versions. Will FTP sites PLEASE withdraw levels 
+ and graphics capable of running on shareware wolf3d. Anything that will work 
+ on registered wolf3d/SoD, and ONLY registered, is OK. 
+ **************************************************************************** 
+Ok, continuing on... 
+ 
+You can even share with the world your own map/graphics creations for 
+Wolfenstein by uploading it to UWP in /pub/incoming/id . 
+(--> See 1.9 for a complete list of iD's directories for that site.) 
+ 
+NOTE:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+You are strictly not allowed to distribute the executable files from the 
+registered full version of the game, i.e. any .exe files. 
+Nor anything from the game for $ unless selling the game to third party 
+(Legitimate registration transfer). 
+ 
+The editors have been obtained by reverse engineering the map/graphics files 
+and producing programs that changed those files in a manner consistent with the 
+game requirements of them. 
+ 
+The editor archives are: 
+maped41.zip        map viewer/editor 
+maped42.zip        "   "      " 
+maped6.zip     "   "      " 
+wolfed21.zip       graphics viewer/editor 
+wolfm160.arj       map viewer/editor version convertor 
+ maped8.zip         map viewer/editor 
+ 
+The last one will let you convert between different versions of Wolfenstein 
+since the map encryption for 1.0 is not compatible with 1.1 and upwards 
+(and you may feel left out if you designed maps before with 1.0 and now have 
+ 1.1 or 1.4, etc. Not so! 
+ BTW: 1.1 through to 1.4 are map/graphics compatible as known to date.) 
+ 
+Also maped41[42][6]/wolfm160 will automatically detect what version of 
+Wolfenstein you have installed so you need not worry if you don't want to 
+convert maps (upgrade/downgrade (!) them). 
+ 
+All of these files include ample docs with them, if you already have them and 
+want some tips or help on their differences and shortcomings, then --> See 4.X 
+ 
+In order to make the Map editors work for Spear of Destiny, an enhanced version 
+of the .DEF files must be used. They should be obtainable in the same ftp sites 
+as the map editors (file wmapdefs.zip and others). If you can't find them, some 
+minor work will need to be done. Find the wall types (MAPDATA.DEF) and the 
+object types (OBJDATA.DEF) that are undefined and define them in your *.DEF 
+files. 
+ 
+The aforementioned editors change the following files: 
+ 
+Map editors: 
+MAPHEAD.XXX 
+MAPTEMP.XXX 
+GAMEMAPS.XXX 
+where XXX is either .WL1 for the shareware version or .WL3 and .WL6 for the 
+registered 3/6 episode versions respectively. 
+Note that GAMEMAPS.XXX replaced MAPTEMP.XXX in versions of Wolfenstein 1.1 and 
+higher, i.e. MAPTEMP.XXX is only present in v1.0. It doesn't really make any 
+difference since the map editors will recognize that. 
+For Spear, XXX is either .SDM for the demo version or .SOD for the full 
+version. To have some of the map editors work with them, you'll need to rename 
+them to .WL6 files and then back to play the game. 
+Please consult Section 4.1 to see if the map editor you're using will recognize 
+SoD .SDM & .SOD file extensions. 
+ 
+Graphics editors: 
+VSWAP.XXX 
+where XXX is as before. 
+ 
+ My own word (Adam) on level editors: 
+ 
+ Basically, GET ONE NOW! They are very, very good. I use mapedit 8.0. I have 
+ a regular conversation going with Warren Buss, one of the writers, and 8.1 
+ is done, but not on general release. They are adding Corridor 7 support, and 
+ it will be released with a higher no than 8.1 when this is done. Mapedit 8.0 
+ supports every single object in wolf3d, and has many useful features. It 
+ also supports SoD and Blake Stone 3D. Before anyone asks, there are NO plans 
+ for Rise Of The Triad support - it is too different. Also, levels are very 
+ easy to knock up quickly, but don't. It is not as bad as Doom (2 months 
+ per level!), but try and think about it. Get the player lost. Build in 
+ traps. 
+	Graphics editing is very fun, but you need to be a reasonably talented 
+ computer artist, prepared to work for a long time to achieve results. Enemys 
+ have 20+ frames of animation, and these all need to be changed. I am working 
+ on a major add-on, Warhammer Wolfenstein, which is being done with two 
+ friends - they work on graphics, I do levels. We will have something decent 
+ out by february 95. 
+ 
+1.9 ARE THERE DIFFERENT SETS OF READY MADE MAPS/GRAPHICS FILES, AND WHERE? 
+ 
+If you are looking for an alternative set of map or graphic files for your 
+Wolfenstein game then the sites mentioned in Section 0.7 carry them as well 
+in the same or sibling directories. 
+MANITOBA has the add-on maps/graphics/editors, etc. in the same directory as 
+the game i.e. /pub/wolf3d . 
+Make sure you look through an index file (normally 00index* or README to see 
+what is what or --> See 5.1 & 5.2 for a short tour) 
+At UWP have a look at /pub/msdos/games/id/home-brew directories. 
+ 
+1.10 HOW CAN I CHEAT IN WOLFENSTEIN? 
+ 
+There is a document on ftp.cc.umanitoba.ca in /pub/wolf3d called wolfdbug.txt 
+that describes the various cheat options in Wolfenstein and how to access them. 
+I have reproduced it here with some updates. 
+---------------------------------------------------------------------------- 
+WARNING: SPOILER ALERT!!! SPOILER ALERT!!! SPOILER ALERT!!! SPOILER ALERT!!! 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+THE WOLFENSTEIN 3-D DEBUG MODE FILE 
+ 
+(v1.0 means Wolf3D version 1.0 and v1.1 means Wolf3D version 1.1. 
+Cheating with other versions is equivalent to v1.1 except as noted.) 
+ 
+To enter the mode, do the following: 
+ 
+1.  Invoke Wolfenstein 3-D with the "next" parameter (wolf3d -next) 
+	for v1.0, or the "goobers" parameter for v1.1.  You can also use 
+	whatever other command-line parameters you want. 
+ 
+2.  Begin or restore a game.  While in the game, hold down the TAB, 
+	CONTROL, and ENTER keys simultaneously for v1.0, or the LEFT SHIFT, 
+	ALT, and BACKSPACE keys for v1.1.  You should get a message stating 
+	that debugging keys are now available. 
+ 
+That's it! 
+ 
+To use debugging mode commands, hold down the TAB key and one of the 
+letter keys listed below simultaneously: 
+ 
+B   Changes the screen border color.  Don't ask me why it's here, but 
+	it's here. 
+ 
+C   Displays the number of statics, doors, and actors in the level. 
+	Statics are things like food, ammo, pools of blood, etc., and actors 
+	are the bad guys.  Doors should be self-explanatory. 
+ 
+E   Moves you ahead two levels.  That's right, not one level, but two. 
+	Unlike the W command (see below), this also takes you to the "level 
+	completed" screen and gives you percentages, bonuses, etc. 
+	In Wolf3D v1.4 and SoD, it moves ahead just one level. If you have 
+	also used the "-tedlevel" parameter (see below), this command exits 
+	the game. 
+ 
+F   Displays your current position on the level (X,Y) and orientation (A). 
+	To convert the X and Y values to coordinates that can be used in 
+	Mapedit, divide them by 65,536 and round down.  A is in degrees 
+	ranging counterclockwise from right.  ("Right" refers to the top 
+	view as seen in Mapedit.) 
+ 
+G   Turns what iD calls "GOD mode" on and off.  Basically it just means 
+	that you're invincible.  The screen still turns red when you would 
+	normally be hurt, though.  This can get very annoying if you want to 
+	do something fun like kill the episode's boss with your knife. 
+ 
+H   Hurts you (-16% health).  Not much use to us, but I guess iD had to 
+	debug their damage code just like everything else. 
+ 
+I   "Free items."  Ups your health, ammo, and score, and gives you the 
+	next most powerful weapon.  (Machine gun if you didn't have it, 
+	Gatling gun if you did.) 
+ 
+M   Displays memory usage.  Loads of fun. 
+ 
+N   Turns "No clipping" on or off.  This lets you walk through walls. 
+	Wall-walking does STRANGE things to the graphics (try approaching a 
+	door from the side and opening it).  It also does strange things 
+	to the bad guys.  If you walk into a room through the wall, often 
+	they won't notice you at all, even if you walk right in front of 
+	them or fire your machine gun (in some direction besides at them, 
+	of course).  This command is not available in the registered version 
+	of Wolf3D nor in shareware versions other than v1.0 but it is in SoD. 
+	(I guess we should be glad that ANY of the commands are available.) 
+ 
+O   Changes the main viewscreen to a map of the current level, which 
+	you can scroll through using the movement keys or the mouse.  It's 
+	neat, but I wish that it weren't so ugly.  Those numbers are from 
+	the internal level format.  ESC will get you out.  Unfortunately 
+	this command doesn't work in v1.1 nor in SoD. 
+ 
+P   Pauses the game, without putting up the little "Paused" window. 
+	I guess this makes it nice for taking a screen shot, although in 
+	v1.1 it changes the screen border to an ugly bright white. 
+ 
+Q   Bombs the machine in v1.0.  Exits the game in v1.1.  Both of these 
+	functions are about equally useless. 
+ 
+S   Turns slow motion on or off.  If you have a slow computer you don't 
+	need this. 
+ 
+T   Pops up a window which displays graphics and sounds from the game. 
+	Use the left and right arrow keys to page through the entries. 
+	If you come to a blank entry, keep going.  You'll know when you've 
+	reached the end (500-something) because you won't be able to go 
+	any higher.  ESC exits.  v1.1 has some interesting graphics that 
+	v1.0 lacks, including two sprites which are particularly intriguing. 
+	Don't bother calling Apogee and making yourself look like a fool 
+	only to be told that you didn't win anything; I already did. 
+	(You'll understand what I mean when you've seen the sprite.) 
+ 
+V   Asks you how many extra VBLs you want.  High values seem to make 
+	the game sluggish and not much else. 
+ 
+W   Warps to any level.  Although it prompts for a value from 1 to 10, 
+	you can actually enter any number up to 20 in the registered 
+	version.  Eleven through twenty correspond to levels one through 
+	ten in the episode following the one you're currently playing. 
+	In SoD, it prompts for a value from 1 to 21. 
+ 
+X   "Extra stuff."  Doesn't appear to do anything.  If you can amend 
+	this, let me know. 
+ 
+Miscellaneous notes: 
+ 
+TEDLEVEL - You can use the "-tedlevel" command-line parameter to quickly 
+start Wolf3D and warp to any level.  The parameter is followed by a 
+two-digit number.  The tens digit is the episode number minus one, and 
+the ones digit is the level number minus one.  For example, to go to 
+level 10 of episode three, type: 
+	wolf3d -tedlevel 29 
+and to go to the first episode, level 2, type: 
+	wolf3d -tedlevel 1 
+By default, you will play the level on the "Don't hurt me" difficulty 
+setting.  To change this, use one of the command-line parameters "-baby" 
+"-easy" "-normal" "-hard".  They stand for the obvious difficulties. 
+Using the "-tedlevel" parameter also gives you an infinite number of 
+lives.  Combine it with "-goobers" (or "-next") for even more fun. 
+ 
+DEMO RECORDING MODE - This "debugging" feature is not accessed in the 
+same way as the other commands, and it is available only in v1.0.  To 
+record a demo, follow step one from the beginning of this file, and 
+then hold down TAB at the title screen (the one with B.J. hiding from 
+a guard).  Unfortunately, there doesn't seem to be any way to display 
+these demos after they've been recorded, but if you've ever had a 
+secret desire to play Wolfenstein 3-D with a big "DEMO" sign at the 
+ top of the screen, this is how to do it. Theory: I do not have 1.0 of 
+ wolf3d - i use 1.1 - but I think that if you leave it on the title screen 
+ long enough, you get a demo, and this is probably what you are recording. 
+ 
+SPEAR OF DESTINY - SoD's debugging mode is quite similar to Wolf3D's. 
+Just use the command-line parameter "-debugmode" and the same key combo 
+as v1.1. Oh, and be sure to check out what happens to B.J. when you turn 
+on God mode... 
+ 
+-- Ben Rudiak-Gould 
+AOL: BenjaminRG 
+Internet: benrg@uclink.berkeley.edu 
+-------------------------------------------------------------------------------- 
+ 
+ and then there's always the LIM cheat. 
+ 
+What you do is press L, I and M all together and you get full health & ammo as 
+well as the chain gun and both keys ;) However, it will reset your score to 0! 
+ (This also renders the tab-I cheat useless). 
+ 
+The equivalent of this cheat for the Mac (I think...the sender did not name 
+system) is typing in BURGER. 
+ 
+IMPORTANT: It seems that in later registered versions of v1.4 of Wolf3d the 
+cheat mode has been disabled (appearently Apogee requested it). 
+At the moment I have no additional info to differentiate these two versions 
+of v1.4. If you have any such details (like file dates etc.) drop me a line. 
+ 
+Apogee has also stated that starting with release of their game 'Biomenace' 
+all their subsequent shareware game releases will be devoid of any in-built 
+cheat codes. This is apparently to encourage registering the game (where 
+the registered versions would have some kind of cheat mode (???) etc.) 
+ 
+  
+ 
+1.11 HOW CAN I CONTACT iD Software or Apogee? 
+ 
+If you have some difficulties with Wolfenstein or Spear that are unresolved 
+after reading this FAQ you can send e-mail to help@iDsoftware.com or 
+apogee@delphi.com. 
+Note that this FAQ is not produced or in any way sponsored by iD Software or 
+Apogee, so they are not responsible for the material included herein. 
+I would discourage asking them about the add-on products for Wolfenstein. 
+Mail only if you have a setup, installation or hardware conflict, etc. 
+ 
+1.12 I THINK I FOUND AN ERROR IN THE FAQ. 
+ 
+If you find some information contained within this article incorrect 
+I'll appreciate you informing me of it ASAP. 
+ 
+1.13 IS WOLFENSTEIN AVAILABLE ON ANY OTHER PLATFORM THAN AN IBM COMPATIBLE? 
+ 
+There is a SNES version (blood changed to sweat, dogs changed to rats) and 
+a Jaguar (uncensored, slightly altered graphics) version. Mac version IS now 
+availible, and uses the Jaguar graphics. The Archimedes version has just 
+come out. No info on graphics. 
+ 
+1.14 WHERE CAN I FIND VERSION X.Y OF WOLFENSTEIN? 
+ 
+If you're looking for older versions of shareware Wolfenstein then MANITOBA is 
+the place. 
+These are the files: 
+ 
+v1.0 - 1wolf3d.zip 
+v1.4 - wolf3d14.zip 
+ 
+If you want v1.1 (god knows why) you'll have to patch v1.0 using w3dpatch.zip 
+(--> See Section 5.3) 
+I don't know where to get shareware patch for v1.2 but the only difference 
+from 1.1 to 1.2 was the secret level bug fix on episode 1 level 1. 
+If you have an editor you can patch it yourself. But really, you should only 
+need v1.0 (for some add-ons) and v1.4 (for the rest). 
+ 
+1.15 WHERE DID iD GET THE INSPIRATION FOR WOLFENSTEIN? 
+ 
+The The idea for Wolfenstein came from an old Apple ][ game called Castle 
+Wolfenstein that the iD games liked. They had come up with the idea of the 
+3D, texture-mapped, smoothly scrolling engine, and needed a game to use it 
+with. Castle Wolfenstein seemed ideal. They couldn't think of a better name, 
+so their legal guys went out and got the copyright on the name, and 
+Wolfenstein 3D was born! 
+ 
+2.0 SPECIFIC QUESTIONS ABOUT THE GAME. 
+=============================================================================== 
+ 
+2.1 WHAT DO ALL THOSE GUARDS SAY IN GAME? (FOR THOSE WITH SOUNDBLASTER OR 
+	COMPATIBLE) 
+ 
+Who             When            Says What         Translation       
+------------------------------------------------------------------------ 
+Guard:          He sees you     Achtung!          "Warning" or "Attention"       
+				or hears you 
+				shoot. 
+  
+He dies.                       (irreproducible)    He just screams in     
+												   a variety of ways.    
+  
+Blue SS 
+Guard:          He sees you     Schutzstaffel!     "Body Guard" (literal),      
+				or hears you                       "SS!"      
+				shoot. 
+  
+				He dies.        Mein leben!        "My life!"      
+  
+  
+White 
+Officer:        He sees you     Spion!             "Spy!"      
+				or hears you 
+				shoot. 
+  
+				He dies.        Nein, so was!      "Well, I never!"      
+												   (colloquial)     
+  
+Undead 
+(Zombies):      He sees you     -                  Nothing. Silence      
+				or hears you 
+				shoot. 
+  
+				He dies         Khaaarrghkhkh!     (Really weird sound) 
+  
+Hans 
+Huge Blue 
+Guard, 
+episode 1:      He sees you.    Guten Tag!         "Good Day!" (strictly) 
+												   "Good Morning!" 
+  
+  
+				He dies.        Mutti!             "Mommy!" 
+  
+Dr. Schabbs, 
+episode 2:      He sees you.    Oohahahaha!        (Laughs) 
+  
+				He dies.      Mein Gott in Himmel! "My God in Heaven!" 
+  
+Hitler's 
+ghost, 
+episode 3:      He sees you.    Toter hund!        "Dead Dog!" 
+  
+				He dies.        Hahahahaha!        (Laughs) 
+  
+Hitler, 
+episode 3:      He sees you.    Die, Allied        "Die, Allied Pigdog!" 
+							   Schweinehund! 
+  
+				You blow away   Scheisse!          "Sh-t!" 
+				his armour. 
+  
+				He dies.        Eva, auf           "Good-bye Eva!" 
+								Wiedersehen!       (NB: Eva Braun was 
+												   Hitler's wife) 
+  
+Otto 
+Giftmacher 
+(Otto Poison- 
+ maker), 
+episode 4:      He sees you.    Eine kleine        "A little American!" 
+								Amerikaner! 
+ 
+				He dies.        Donnerwetter!      "Good heavens!" 
+  
+Greta Grosse 
+(Big Greta), 
+episode 5:      She sees you.   Kein Durchgang!    "No Trespassing!" 
+  
+				She dies.       Mein Busen!        "My repentance!" 
+  
+General 
+Fettgesicht 
+(General 
+ Fat-Face), 
+episode 6:      He sees you.    Erlauben Sie,      "Allow me, please!" 
+								bitte! 
+ 
+				He dies.        Roseknospe...      "Rosebud..." 
+												   (cf. film "Citizen Kane" 
+												   for joke.) 
+  
+Trans Grosse, 
+SoD floor 5:    He sees you.    Einer              "A mistake!" 
+								Sprachschnitzer! 
+ 
+				He dies.        Es ist schade!     "What a pity!" 
+  
+Barnacle 
+Wilhelm, 
+SoD floor 10:   He sees you.    Ach so!            "Oh, I see!" 
+  
+				He dies.        Wenn schon!        "So what!" 
+  
+UberMutant, 
+SoD floor 16:   He sees you.    -                  Nothing. Silence 
+  
+				He dies.        Argh!              (Wierd scream) 
+  
+Death Knight, 
+SoD floor 18:   He sees you.   Tod ist mein leben! "Death is my life!" 
+  
+				He dies.       Alles ist verloren! "All is lost!" 
+  
+Angel of Death, 
+SoD floor 21:   He sees you.    Prove your worth, human! 
+  
+				He dies.        You may wield the Spear... 
+-------------------------------------------------------------------------------- 
+ 
+2.16 HOW MANY SHOTS DO ALL THOSE ENEMIES TAKE TO KILL? 
+ 
+Here is detailed roughly how many shots each normal enemy takes to kill. 
+ 
+1. Dog 
+1 shot, 1 knife hit. 
+ 
+2. Brown Guard 
+1 shot if close up and on target, or hit in back, and 2 if at a distance. 
+If your aim is out it can be 3. About 2/3 knife hits. 
+ 
+3. SS Man 
+About 8 shots or 12 knife hits. 
+ 
+4. Officer 
+About 4 shots or 6 knife hits. 
+ 
+5. Mutant 
+About 8 shots or twelve knife hits. 
+ 
+6. Hitler's Ghost 
+About 6 shots or 10 knife hits. 
+ 
+2.17 WHAT WEAPONS DO ALL THOSE ENEMIES CARRY? 
+ 
+1. Dog 
+Bite 
+ 
+2. Brown Guard 
+Pistol 
+ 
+3. SS Man 
+Machine gun (you get it if you kill him) 
+ 
+4. Officer 
+Pistol (does more damage and fires more rapidly than the guard's) 
+ 
+5. Mutant 
+Pistol (Faster than officer's) 
+ 
+6. Hitler's Ghost 
+Fireballs 
+ 
+7. Hans Grosse 
+Two chainguns 
+ 
+8. Dr Schabbs 
+Syringes 
+ 
+9. Hitler 
+Four chainguns in armour, two out of it 
+ 
+10. Otto Giftmacher 
+Can't remember (fill me in someone) 
+ 
+11. Gretel Grosse 
+Two chainguns 
+ 
+12. General Fettgesicht 
+Two chainguns and rocket launcher 
+ 
+2.2 WHAT'S THE DIFFERENCE BETWEEN THE DIFFICULTY LEVELS OF THE GAME? 
+ 
+There are four main differences: 
+1) There are more guards on harder difficulty levels. 
+2) They are harder to kill (can take more shots and you have to aim better) 
+   on harder difficulty levels. 
+   NOTE: on the lowest level 'Can I play Daddy?' you can generally pick off a 
+	 guard even at long distance with one shot in the general direction 
+	 (well, not every time but often). On the hardest level this usually 
+	 will not happen. 
+3) On harder levels you take more damage when shot. 
+4) NB: There are a certain number of guards on difficulty 1 (can I play 
+ daddy), the same on difficulty 2 (don't hurt me), they just do more harm, 
+ more on difficulty level 3 (bring 'em on) and a hell of a lot on difficulty 
+ level 4 (I am death incarnate! meaning: I am death personified, made into 
+ a person). 
+ 
+There is another minor difference. On the lowest level the 'first-aid kit' 
+sometimes bumps up your health more than on other harder levels. 
+--> See 2.8 & 2.15 for more. 
+ 
+2.3 WHAT ARE THE SECRET ROOMS/DOORS IN THE GAME? HOW CAN I FIND ONE? 
+ 
+The secret rooms are like any other room in Wolfenstein except they are 
+accessed by a 'secret passage' (not really a door). There are certain wall 
+panels which can be pushed (acted on) like a normal door. The wall will then 
+slide back revealing a passage to another room. Secret rooms are usually used 
+to store treasure, food, first aid and ammo packs and more powerful guns, i.e. 
+the items of interest when survival is at stake (the treasure helps get more 
+points which accumulate to extra lives, etc.). Sometimes they are used to store 
+keys to locked doors, but not often (not in the Wolf3D shareware episode 
+anyway). 
+ 
+ NOTE: There is nowhere in the game that anything vital to completion is 
+ hidden behind a secret wall. Keys are just to shortcut routes. iD thought 
+ necessary secret rooms would be too hard to find. This is strictly untrue, 
+ but the areas it is used (Episode 1, level 8 for example) are in tiny rooms 
+ where it is dead easy to find the pushwall. 
+ 
+Although there are no strict guidelines to where a secret room might be, you 
+can get some slight hints on where one might be positioned. Since the maps in 
+Wolfenstein are true (i.e. they're not warped space) then if you see a block 
+of wall which is pretty thick and houses no standard rooms (operated by normal 
+sliding doors) it could potentially house a secret room. Try first the obvious 
+places on the walls e.g. Hitler's painting, nazi banner & other obvious wall 
+decorations. Some secret panels are in the corners of a room, others in the 
+middle of a wall (midpoint of a wall in a standard room). There are also a few 
+between two objects, like between two plants or two barrels positioned against 
+the walls. --> See 3.10 for more. 
+ 
+2.4 WHAT ARE SECRET LEVELS IN WOLFENSTEIN? HOW CAN I FIND ONE? 
+ 
+The secret levels are just another level which has been made a bit harder to 
+find than others. To get to a secret level you must take a special elevator 
+(well, they don't look special though, in fact in appearance they look like a 
+normal elevator) from one of the normal (non-secret levels). Elevators like 
+that are hidden. There's one secret level per episode (so there's one in the 
+shareware version too :). 
+When you arrive at a secret level it will be marked 'level 10' on your status 
+bar. In Spear there are two secret levels in total, marked 19 and 20. 
+After you finish the secret level the exit elevator will take you back to the 
+level that you should have gone were it not for the secret level. Say you got 
+to secret level from level 1, then after secret level (10) you'll end up on 
+level 2. 
+For a bit of a spoiler --> See 3.11 
+ 
+2.5 WHAT IS THAT FUNNY OBJECT/SPRITE IN THE GAME? 
+ 
+That funny object only occurs in the registered 3 or 6 episode version of the 
+game. It is a sign saying to call Apogee. See, it was going to be a part of a 
+competition with the game, like you find it and then call the distributor 
+(Apogee it was then) and you could win something (???). 
+The competition idea was dropped fairly quickly though, after all the mappers 
+and editors were unleashed only weeks after the game's release. OK, for all 
+those who haven't found it, the object is a wall saying "Phone Apogee Say 
+Aardwolf." It isn't very exciting, trust me. 
+ 
+2.6 WHAT IS THE PURPOSE OF THE CODES LISTED AT THE END OF GAME STATS? 
+ 
+Same thing as in 2.5 the code is the checksum for your score in game. It was 
+going to be a proof that you actually went through the game and obtain such and 
+such score. 
+NOTE: To my knowledge the codes only occur in Wolfenstein v1.0 & 1.1 
+	  (maybe 1.2, not sure) 
+ 
+2.7 ARE THERE GHOSTS IN WOLFENSTEIN? IF SO WHERE? CAN I KILL THEM? 
+ 
+There are two kinds of ghosts in Wolfenstein. The Hitler's ghosts which haunt 
+you in episode 3 level 9 (the boss level where you kill Hitler). You can 
+certainly kill those. 
+There are also some funny Pacman Ghosts in episode 3 level 10 (secret level). 
+You can't kill those but they can hurt you if you touch them. Just stay clear 
+and you'll be ok. (Or cheat with GOD MODE --> See 1.10) 
+In Spear there are ghosts in the final floor (21). These white ghosts can be 
+shot, but after a short while they reappear. They can also hurt you if you 
+touch them. 
+ 
+2.8 WHAT DO OTHER OBJECTS APART FROM AMMO, FOOD ETC. DO? 
+ 
+Umm, well ... nothing really. They're there 'cause they look nice. 
+ 
+Here's a short list of all the usable objects: 
+Ammo clip: gives you ammo (duh) 
+Ammo box (SoD only): gives you loads of ammo :) 
+Machine guns (Schmeisser (some people call it PM-40) & Gatling gun): increase 
+ your firepower. NOTE: They do not actually take more powerful bullets, but 
+ the machine gun has rapid-fire and the chain-gun has 2 bullets at a time 
+ rapid-fire. Two bullets from a pistol will kill a guard, so will two from 
+ a pistol - it is just easier to fire from a chain-gun. 
+Chicken meal, Dog food, Blood pool, Bloody skeleton & First aid kit: 
+extra health 
+Cross, Chalice, Treasure chest, Crown: points 
+Sphere with your face on it: extra life + health + ammo 
+ 
+Doors: open and close these. 
+Keys: access locked doors. 
+Elevator: use it to progress to next level. 
+ 
+2.9 I'VE HEARD YOU CAN DRINK BLOOD IN WOLFENSTEIN? IS THAT TRUE? HOW? 
+ 
+You can slurp up the blood pools and consume the bloody skeletons if your 
+health falls below 11%. 
+ 
+2.10 WHAT IS 'DEATH CAM'? HOW IS IT ACTIVATED? 
+ 
+Death Cam is a animation replay of the final few seconds of the killing 
+sequence of some the games bosses (you know, the huge guards). The only bosses 
+subject to Death Cam are: 
+	Dr. Schabbs (episode 2) 
+	Hitler (episode 3) 
+	Otto Giftmacher (episode 4) 
+	General Fettgesicht (episode 6) 
+The Death Cam is activated after you kill one of these bosses. After the replay 
+the current episode concludes regardless of whether you killed all other 
+guards, etc. 
+There is no Death Cam in Spear. It has a nice set of end screens though. 
+ 
+ NOTE: Deathcam does not replay your killing, from your viewpoint - it just 
+ shows all the guy's dying frames from close up, so it is always the same. 
+ 
+2.11 WHAT IS THE JUKEBOX FEATURE OF WOLFENSTEIN? HOW IS IT ACCESSED? 
+ 
+The JukeBox feature of Wolfenstein is just a menu of different music 
+scores that normally play through the different levels of Wolfenstein. 
+To access it press and hold 'm' while Wolfenstein starts (after you started 
+it from DOS). 
+Now you can listen to that favourite tune from the game. 
+The Jukebox is present in all versions as I understand (shareware/registered 
+1.0 through to 1.4). The menu of music scores may be different between 
+the versions but it nevertheless is there. 
+ 
+2.12 WHAT ARE THOSE MUSIC TUNES IN WOLFENSTEIN? 
+ 
+What is the theme music for Wolfenstein 3-D? 
+ 
+The tune that opens Wolf 3-D is known as the "Horst Wessel Lied" (Horst 
+Wessel's Song), which was the official Nazi party anthem.  Here are the 
+first couple of bars to the lyrics, though further research will follow: 
+ 
+(translated from the original German) 
+ 
+Raise high the flags! Stand rank-on-rank together.... SA will march with 
+steady, quiet tread.... 
+ 
+Historical background:  Horst Wessel was an average SA (Sturmabteilung -- 
+literally, Storm Detachment; which was the Nazi goon squad) trooper and 
+local party leader in Berlin.  He was killed in a street brawl with 
+Communists in 1930, but not before leaving the words and music to the tune 
+that became the Nazi anthem.   It was played along with the official German 
+national anthem, whose tune is still used today, although with different 
+lyrics than what was played in Nazi Germany. 
+ 
+Other musical trivia: a few bars of the U.S. Army, Navy, Air Force, and 
+Marine Corps anthems are played throughout the game.  In one of the music 
+pieces, a Morse-code message is played in the background... 
+ 
+ The music on episode 1, mission 9 is vaguely reminiscent of the British 
+ National Anthem, God Save The Queen/King (depending on who is the monarch 
+ at the time). 
+ 
+2.13 WHAT IS THAT MORSE CODE MESSAGE IN WOLFENSTEIN? 
+ 
+In Episodes 3 & 6 of the registered version the music seems to 
+include a Morse code beeping in the background. 
+ 
+I have scooped the following from UseNet's comp.sys.ibm.pc.games.action 
+(I don't know the originator, you know who you are) 
+ 
+Here it is: 
+ 
+TO BIG BAD WOLF DE ["de" means "from" in amateur radio Morse code jargon] 
+LITTLE RED RIDING HOOD 
+ELIMINATE HITLER 
+IMPERATIVE   COMPLETE MISSION WITHIN 24 HOURS 
+OUT 
+ 
+2.14 ARE THERE ANY MORE CHEATS/HINTS AVAILABLE? 
+ 
+Yes Siree! There's certainly that Wolfenstein hintbook you can obtain for some 
+extra $ (US$ 10 I last heard), when you order the full version of the game. 
+It's supposed to be packed with hints about the game levels and how to cheat in 
+the game (--> See 1.10). I don't know all the details 'cause I don't have it. 
+(Er, the game's too easy anyway (No flames! --> See 3.X)) 
+There's also the Spear of Destiny hintbook to be obtained for US$ 15. 
+It has lots of background info on the game, the storyline, its development 
+history and the guys at iD Software, plus hints for playing, the full set of 
+printed maps and how to access a few hidden features in the program. 
+ 
+2.15 THE STATISTICS & RECORDS SECTION (NUMBERS ABOUT THE GAME). 
+ 
+Ok, at the risk of repeating myself here goes: 
+ 
+The Wolfenstein game has: 
+10 levels per episode 
+6 episodes (full version) 
+1 secret level per episode. 
+ 
+The Spear of Destiny game has: 
+21 levels (full version) 
+2 secret levels and a special end level. 
+ 
+Both games have: 
+4 difficulty levels 
+4 weapon types: knife, pistol, machine gun & chain gun 
+2 key types: gold & silver. 
+ 
+Max ammo: 99 
+Ammo with guns: 6 
+Ammo with clips: 8 
+Ammo with guards' clips: 4 
+Ammo with ammo box (SoD only): 25 
+Ammo with X-tra life: 25 
+ 
+Max health: 100 % 
+Health for blood/bones: 1% (Note: health must be <11% for this to work) 
+Health for dog food: 4% 
+Health for chicken meal: 10% 
+Health for first aid: 25% or 35% depending on which level of difficulty 
+Health for X-tra life: 100% 
+ 
+Score for brown guards: 100 
+Score for dogs: 200 
+Score for white ghosts (SoD): 200 
+Score for white officers: 400 
+Score for blue SS troopers: 500 
+Score for undead: 700 
+Score for ghosts of Hitler: 2000 
+Score for bosses: 5000 
+Score for cross: 100 
+Score for chalace: 500 
+Score for treasure chest: 1000 
+Score for golden crown: 5000 
+Score for 100% completed: 10000 
+Score for secret level completed: 15000 
+Score for boss level completed (SoD): 15000 
+Score for 1 sec under par level time: 500 
+ 
+The following table shows the par level times for all Wolf3D episodes: 
+	Level 
+Episode 1       2       3       4       5       6       7       8 
+1   1:30    2:00    2:00    3:30    3:00    3:00    2:30    2:30 
+2   1:30    3:30    3:00    2:00    4:00    6:00    1:00    3:00 
+3   1:30    1:30    2:30    2:30    3:30    2:30    2:00    6:00 
+4   2:00    2:00    1:30    1:00    4:30    3:30    2:00    4:30 
+5   2:30    1:30    2:30    2:30    4:00    3:00    4:30    3:30 
+6   6:30    4:00    4:30    6:00    5:00    5:30    5:30    8:30 
+The boss and secret levels have no par level time. 
+ 
+The following table shows the par level times for all SoD levels: 
+Level   1   2   3   4   6   7   8 
+	1:30    3:30    2:45    3:30    4:30    3:15    2:45 
+Level   9   11  12  13  14  15  17 
+	4:45    6:30    4:30    2:45    4:30    6:00    6:00 
+Once again, the boss and secret levels have no par level time. 
+ 
+Extra life: every 40000 points or if you find the icon. 
+NOTE:   extra life icon counts as treasure! If you forget one --> no 100% 
+	treasure statistic! 
+ 
+ NOTE: Par times cannot be edited with any edit programs I know - anyone 
+ seen one? 
+ 
+Average number of rounds (on 'Death Incarnate' difficulty) required to kill: 
+Dog: 1 
+White ghost (SoD): 1 
+Brown guard: 2 
+SS trooper: 5 
+White officer: 3 
+Undead: 3 
+ 
+Minimum number of rounds required to kill: 
+Ghost of Hitler: 25 
+Hans: 40 
+Hitler: 70 to blast him out of his harness & 
+another 70 to finish him off. 
+Other Bosses: 80 
+ 
+ 
+3.0 THE FLAMING SECTION. (YOU'RE ANNOYED WITH WOLFENSTEIN BECAUSE...) 
+=============================================================================== 
+ 
+3.1 IT CRASHES. 
+ 
+Usually the reasons for Wolfenstein bombing out are these: 
+ 
+1) You have a hardware conflict with your soundcard. 
+2) You have a software configuration problem. 
+3) You have more than one version of Wolfenstein and some game files from the 
+   versions are mixed. 
+ 
+1 & 2 are discussed later --> See 6.1 & 6.2 
+ 
+If you mixed Wolfenstein versions or put different home-brew add-on maps in the 
+same directory then Wolfenstein might hang since map and graphics file formats 
+are different from version 1.1 onwards. 
+ 
+3.2 THE SOUNDS ARE ALL SCREWED. 
+ 
+Either your card is not fully Soundblaster compatible or you have IRQ or DMA 
+conflict. --> See 6.1 
+ 
+3.3 YOU ARE LEFT WITH A GUN AND 8 BULLETS AFTER YOU DIE. 
+ 
+Solution 
+a) Cheat (--> See 1.10) 
+b) Learn about secret rooms and how to find them (--> See 3.10), there is 
+   plenty of ammo/food inside them. 
+c) Save often. 
+d) The blue SS troopers carry machine guns. Toast one with your gun and you can 
+   pick up his machine gun. If you have the machine gun already, he just drops 
+   an ammo pouch. 
+ 
+3.4 IT'S TOO HARD. 
+ 
+--> See 3.3 & 3.10 
+Also start on an easy difficulty level. Don't despair, you'll get better. One 
+of the advantages of veteran players is that they know the layout of the maze. 
+They know where to find ammo, food, etc. 
+As you get familiar with the game you'll also be able to judge how many shots to 
+fire and where to aim. Thus you can conserve your ammo. 
+To preserve health learn how to use the strafe function (useful when ducking 
+around corners). 
+Also don't just plunge into rooms. Hang back and see if any guards come running 
+out. Then ... Pang! 
+Some difficulty can also be attributed to disorientation of new players. 
+Several corridors or rooms may look alike. Try look for dead bodies (i.e. the 
+trail that you've left behind) or other characteristic objects. 
+If you're having trouble with movement then --> See 3.6 & 3.7 
+One nice hint I've received is about slowing the game a little. If you have 
+turned on debugging keys then holding TAB slows the game down a bit (not as 
+slow as slow motion from the debugging options). This means that you can let 
+off a couple of accurate shots before the targets (guards etc.) have time 
+to react. Great for some tight rooms and conserves ammo as well. 
+ 
+3.5 IT'S TOO EASY. 
+ 
+Like a challenge eh? Check out some home-brew maps. --> See 5.1 
+You might also try to reduce your health with the cheat mode (--> See 1.10) 
+or decide to play without machine guns. Take that for a challenge. 
+ 
+3.6 YOU KEEP RUNNING INTO THE WALLS AND MISSING THE DOORS. 
+ 
+Sounds like a major new user disorientation syndrome to me, but could also be 
+attributed to a slow computer. See, slower machines sacrifice the frame rate to 
+keep the gameplay speed constant. Thus you might miss a few frames here and 
+there and that will fool you into overshooting your targets (doors, guards when 
+you're aiming your pistol at them, etc.) Strafe function helps here sometimes. 
+You can also try experimenting with various input devices. Mouse is more 
+accurate on position but slower when it comes to movement. Joystick is rather 
+inaccurate but easy to handle and still slow. Especially your rotation speed. 
+If you have a Thrustmaster or other joystick + configurable buttons you can 
+program these for strafe & run functions. That should make it a little easier. 
+ 
+3.7 YOU ARE FEELING DIZZY WHILE YOU PLAY IT. 
+ 
+There have been a lot of discussion about this phenomenon. In short some people 
+experience dizziness attributed to the game movement. There were many theories, 
+most along the line of motion sickness. 
+Some also said that the animation is too smooth so it fools your brain into 
+believing it to be real. Others said its too jerky and it makes you vomit like 
+being sea sick. Another popular theory is that lack of proper acceleration 
+(like on-off high speed) attribute to the nausea. 
+I will not go into discussion of why. Rather I'll post some steps people 
+suggested. Remedies are not guaranteed to work. There are many, all are 
+experimental and some will have opposite effects on different people. This, it 
+seems, is a very individual problem. 
+ 
+a) Try different display sizes. Either different size monitors or use the F5 
+   function to vary the display window. 
+b) Try sitting closer/further from the display (but don't stick your nose in 
+   it, I don't want you to get radiation sick). Combine with focusing/ 
+   defocusing on the display or surroundings (your room, etc.) This is to see 
+   if you're being aware that you're looking at the monitor (by seeing other 
+   objects around it) and hopefully it may convince your brain that what you 
+   play is not really real. 
+c) Try different machine speeds. If you have a turbo switch try playing with 
+   it on/off. See what the difference is. 
+d) Try different input devices (--> See 3.6) With a mouse you can control 
+   acceleration more accurately than with a joystick or the keyboard. 
+e) Play on your friend's/collegue's computer. See if it's better/worse. 
+f) Have breaks while you play. Play in turns. Watch others play & then play 
+   yourself. 
+g) If you have Soundblaster try playing with/without the sound. If your 
+   soundcard is stereo try playing with headphones on. Reverse the headphones 
+   so that left becomes right. Does it confuse you more. (It has no difference 
+   on me if you want to know ;) This one is not meant as a torture (Hehe) only 
+   to see if you're generally well adaptive. 
+ 
+After I switched machines from 386SX-25Mhz to 486DX-33Mhz I had problem 
+adjusting too. Everything seemed "too smooth". Now when I see it on the 386 it 
+makes me want to vomit. Sometimes you'll have to give it time to adjust. 
+ 
+3.8 IT NEVER GIVES YOU 100% STATS AT THE END OF LEVEL/GAME. 
+ 
+Hmm, must have missed some treasure/secret room/enemies. 
+ 
+Solution: 
+1) Improving secret room ratio --> See 3.10 
+2) Improving treasure ratio = Improving secret ratio since most remaining 
+   treasure you missed is probably hidden. 
+3) Improving kill ratio. 
+   A few dogs running wild may be the cause. 
+   There's also a few places in the maze where the guards can follow you in 
+   circles. Back up your tracks, you might smash into one around the corner. 
+ 
+3.9 YOU ALWAYS RUN OUT OF AMMO/HEALTH. 
+ 
+There's plenty of ammo/food/first aid around to last to twice the fun. Problem 
+is knowing where to find it. Be careful to not leave behind ammo clips dropped 
+by guards after you kill them. Its only 4 rounds but it adds up. Sometimes 
+ammo/food/first aid is concentrated in a couple of rooms on a level. If you 
+find that cache you'll have no problems. Some levels have relatively little 
+food/first aid but lots of ammo. It may be wise to plan ahead and stay healthy 
+for that level. You can also plainly waste ammo and overshoot ensuring you'll 
+be hit as little as possible. Other levels may have little ammo and lots of 
+food/first aid. Adopt ammo saving strategy there. 
+Remember that extra-life sphere boosts both your health and ammo. 
+Also --> See 3.10 
+ 
+3.10 YOU CAN NEVER FIND ANY SECRET ROOMS. 
+ 
+Secret rooms usually house most of the treasure, ammo and health bonuses as 
+well as machine guns and extra lives. 
+ 
+Some "obvious" places where a secret room may be located are shown below: 
+ 
+NOTE: W  = wall, o = static object like: barrel, drum, plant, etc. 
+	  #  = different wall panel like: Hitler's painting, Nazi banner, etc. 
+	  [  = Sliding door. 
+	  Possible secret doors are pointed to by < ^ and > or shown as ? 
+ 
+a) Different wall panels 
+ 
+WWWWWWWW#WWWWWWW#WWWWWWWW 
+W       ^       ^       W 
+W                       W 
+# <                     [ 
+W                       W 
+W                       W 
+WWWWWWWWWWWWWWWWWWWWWWWWW 
+ 
+b) Room corners. 
+ 
+W?WWWWWWWWWWWWWWWWWWWWW?W 
+?                       W 
+W                       W 
+W                       [ 
+W                       W 
+?                       W 
+W?WWWWWWWWWWWWWWWWWWWWW?W 
+ 
+c) Between objects and at midpoints of a wall. 
+ 
+WWWWWWWWWWWW?WWWWWWWWWWWW 
+Wo                      W 
+?                       W 
+Wo                      [ 
+W                       W 
+W               o o     W 
+WWWWWWWWWWWWWWWWW?WWWWWWW 
+ 
+d) In narrow alcoves 
+ 
+	W?W 
+	? ? 
+	? ? 
+WWWWWWWWW WWWWWWWWWW 
+W                  W 
+[                  [ 
+W                  W 
+WWWWWWWWWWWWWWWWWWWW 
+ 
+e) On wall panel in straight line extending from an object 
+   (classic object in this example is an overhead lamp!) 
+ 
+WWWWWWW?WWWWWWWWWWW 
+W 
+W 
+[      o               <-- A corridor 
+W 
+W 
+WWWWWWW?WWWWW 
+ 
+NOTE: Some secret rooms have secret rooms within them. Sometimes secret 
+	  movable panels can be moved to block each other. Be careful not to 
+	  block yourself in. This is also why sometimes you cannot get 100% 
+	  secret ratio for some levels. 
+ 
+3.11 YOU CAN NEVER FIND A SECRET LEVEL. 
+ 
+Well, if you read Section 2.4 you'd know that you need to find a secret level 
+elevator to get to a secret level. These elevators are hidden inside secret 
+rooms (that is, behind pushwall passages). They can be pretty darn hard to find 
+without a map. To get you going here's one from episode one. 
+ 
+WARNING: SPOILER ALERT!!! SPOILER ALERT!!! SPOILER ALERT!!! SPOILER ALERT!!! 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+Here we go. The secret level elevator for episode 1 is on level 1! It is 
+accessible by a series of secret doors (pushwalls) in the last room of that 
+level (the room with the normal elevator). I've drawn the room out below. 
+ 
+ 
+WWWWWWWWWWWWWWWW    L = the room with the normal 
+WWWWWWWeWWWWWWWW        elevator to level 2 
+WWWWWWWDWWWWWWWW    e = elevator to level 2 
+WWWWW     WWWWWW    E = elevator to level 10 
+WWWWW     WWWWWW    + = first aid kit :) 
+WWWWW     WWWWWW    [ = Sliding door 
+WWWWW  L  W WWWW    ? = secret door (aka pushwall) 
+WWWWW     W+WWWW    ^ = direction you face when you 
+WWWWW     ?  WWW        are about to enter the last room L 
+WWWWWWB[BWW?WWWW    D = Elevator door 
+WWWWW     W  WWW    B = Nazi banner wall 
+WWWWW     W   WW    H = Hitler's portrait wall. 
+WWWWW  ^  WW  WW 
+WWWWW     WW  WW 
+WWWWW     WW  WW 
+WWWWW     WW  WW 
+WWWWW     W   WW 
+	  W   WW 
+	  HBDBWW 
+	  WWEWWW 
+WWWWW     WWWWWW 
+WWWWW     WWWWWW 
+ 
+  
+ 
+3.12 YOU ALWAYS GET NUKED BY THAT BIG BAD BOSS (GUARD) AT THE END. 
+	 (THE STRATEGIES FOR DEFEATING THE BOSSES). 
+ 
+Note: This section is *far* from complete. Why not send in your hints 
+	  for wiping those tough guys at the end. 
+ 
+--- 
+Well, here's a general guide submitted by Douglas Bottoms  
+(BOTTOMS_DOGLAS_J@Lilly.com) 
+ 
+"Usually, I try to get as close to the boss as possible, then back STRAIGHT 
+away from the boss while firing. Then strafing left or right to hide behind 
+a wall (or get out of the way)." 
+--- 
+ 
+Note: You will find that most boss scenarios conveniently include blocks 
+of wall behind which you can hide while the boss fires its 'salvo'. 
+ 
+Here is a specific one pertaining the Mad Doc at end of Episode 2. 
+ 
+--- 
+Episode 2: This is the Mad Doctor who is creating all the Zombies. If you go 
+at him straight on he'll just zap you with his syringes and you'll go all 
+red-eyed and die. If you go to the corridor to the left of the room where 
+he's hiding and wait for him to come out you can zap him with the old chain 
+gun from the side. There's also a first-aid kit in there which helps. Once 
+he's retired back to the room rush out to the beginning of the level where 
+there is a secret room (which you will already have opened up) full of ammo 
+clips and restock on ammo. Now you can go back in for a frontal assault and 
+ finish him off. This guy doesn't fire much - I hit him a bit, get out of 
+ the way, hit him a bit, get out of the way... 
+--- 
+  
+.and here is one specific one for Hitler at the end of Episode 3. 
+--- 
+Episode 3: Hitler is to the left of the entrance to the final room in the 
+final level. Hit him with the chain gun until his armor drops away. Then 
+rush down to the end and turn right, knock off the 2 white guards in there 
+and you'll find lots of extra ammo and some first aid. If you lurk here 
+Hitler may come after you - in which case blast him, or if you wait long 
+enough he'll seem to go away. If this happens go right back to the beginning 
+of the level where there is a secret room full of ammo and stock up because 
+you'll find he's trailed you. So turn round fast and give him everything 
+you've got. 
+  
+ 
+4.0 MAP/GRAPHICS EDITORS SECTION 
+=============================================================================== 
+ 
+4.1 DISCUSSION OF AVAILABLE MAP/GRAPHICS EDITORS. 
+ 
+There are 6 map/graphics editors available as far as I know. 
+ 
+a) MAPEDIT v4.1 - Map editor. 
+ 
+a) MAPEDIT v4.2 - Map editor. 
+ 
+a) MAPEDIT v6.0 - Map editor. 
+ 
+a) MAPEDIT v8.0 - Map editor. 
+ 
+b) WOLFMAP v1.6 - Map editor/version convertor. 
+ 
+c) WOLFEDIT v2.1 - Graphics editor/extractor. 
+ 
+Mapedit v4.1 
+	- Written by Bill Kirby (who incidentally retired from working on his 
+	  creation). 
+	  This software will let you edit Wolfenstein's maps for any version 
+	  released to date (1.0 through to 1.4). It will recognize if your copy 
+	  is shareware, or registered (3 episode or 6 episode). 
+	  Turbo Pascal source is included so you can make your own adjustments. 
+	  NOTE: Not compatible with SoD. 
+ 
+	This is the 'vanilla' version of this editor. Many have changed this 
+	version to produce their custom 'enhanced' editors with more features 
+	etc. (Thus this version is where the version tree splits). 
+	The following two are the most popular. 
+ 
+Mapedit v4.2 
+	- Written by Ralf Seider (rauh@wrcd1.uni-wcppertal.de) 
+	  Some new functions were added to v4.1 
+	  - Item selection memory while editing. 
+	  - Can select items from map (pick up using mouse) 
+	  - Fill & rectangle functions for easier level construction. 
+	  NOTE: Not compatible with SoD. 
+ 
+Mapedit v6.0  
+	- Written by Dave Huntoon & Brian Baker 
+	  Some bugs of v4.1 fixed. 
+	  Some new functionality added 
+	  - Copy, Paste 
+	  - Exchange (maps) 
+	  - Help (ah, user friendly) 
+	  - Write / Read individual levels to / from disk 
+	  - Statistics display (# of actors on level etc.) 
+	  - Compatibility with SoD. 
+ 
+Mapedit v8.0 [*** FAQ editor's choice ***] 
+ 
+	- Written by Warren Buss, David Huntoon and Bryan Baker 
+	  - Blake Stone compatibility 
+	  - Zap function 
+	  - Loads of other useful stuff! 
+ 
+Wolfmap - Written by Jan Peter Dijkstra (Sysma Automatisering). 
+	  This one was based on v old version of Mapedit but then evolved into 
+	  an editor of its own. 
+	  It's really more of a Wolfenstein map processor with functions such 
+	  as: version conversion, level map export into intermediate file 
+	  (allows moving and copying of levels), level ASCII dump for printing 
+	  purposes, etc. The editor is really based on Mapedit visually with 
+	  slightly more functionality. C++ source included. 
+	  NOTE: Not compatible with SoD. 
+ 
+Wolfedit - Written by Bill Kirby (again!). This is a must if you want to change 
+	   Wolfenstein's graphics. Not only does it let you edit the wall 
+	   panels as well as images of guards and various objects. You can also 
+	   export/import images as GIF files. This makes editing with your 
+	   favorite paintbrush tool easy. The picture size is limited to 64x64 
+	   pixels but for importing images you can position a square on a 
+	   larger image and snap it into the editor. 
+	   Wolfedit will not read SoD graphics file as such (VSWAP.SOD file). 
+	   If you're trying to edit SoD graphics then just rename your 
+	   VSWAP.SOD file to VSWAP.WL6 before editing. Rename it back after 
+	   you finished. 
+ 
+4.2 RULES TO FOLLOW WHEN EDITING. 
+ 
+IMPORTANT! READ THIS! IMPORTANT! READ THIS! IMPORTANT! READ THIS! IMPORTANT! 
+******************************************************************************** 
+First of all I would like to stress that iD Software and Apogee are not 
+responsible for the home-brew add-ons floating around. They will offer 
+you no support whatsoever if you encounter problems with them so 
+DO NOT CALL Apogee about them!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+Even when Wolfenstein bombs out with an error message giving you the 
+1-800 number of Apogee DO NOT CALL if you were playing the non-original 
+maps/graphics. Apogee especially DOES NOT appreciate it. 
+If you want to get help about it read the rest of this section. If you find 
+no clues post to comp.sys.ibm.pc.games.action for help. 
+******************************************************************************** 
+ 
+Ok, Here's a few guidelines if you're just starting to play around with the 
+editors. I thought I'd put something down that might save you from screaming 
+ARGHHH!! after a few hours of editing. Most of these are just a few pointers. 
+ 
+- First of all save your work often. This one needs no explanation. 
+- Also test it often. Some editing quirks will produce game bugs that are just 
+  plain hard to get rid off. That might mean you'll have to start editing that 
+  level from scratch. 
+ 
+Mapping hints: 
+	- When placing elevators, put them like this:   
+	 
+   ******************** 
+   *                  *E 
+   [                  D E 
+   *                  *E 
+   ******************** 
+ 
+   [ = Normal door 
+   D = Elevator door 
+   E = Elevator segment. 
+ 
+	  Landscape objects are similar in that they are displayed as landscape 
+	  when aligned east/west and as starry skies when aligned north/south. 
+	  If you REALLY want to have elevators north/south then the elevator 
+	  lever would have to be one of the side panel (as you enter the 
+	  elevator). 
+	- Secret elevator needs floor number 6B (hex) inside it to work 
+	  properly. 
+	- Mobile guards and dogs can have arrows (turning points) to direct 
+	  them. Place these on the path you want them to move. When they notice 
+	  you they'll obviously break from that pattern, otherwise they'll 
+	  follow it. If no turning points are set, they will keep on walking in 
+	  the direction you set them off in, walking through walls and everything. 
+	  In other words, SET TURNING POINTS! 
+	- Note that when placing guards and dogs on the same arrowed path 
+	  you might screw up the pattern since dogs are faster than the guards 
+	  and will finally 'bunch up' behind them. 
+	  See map of episode 1 level 2 for an example of this. 
+	- Number of objects on one level is limited to 399. 
+	  Secret doors and guard guiding arrows are NOT objects. 
+	  Actors are not objects either. 
+	- Number of actors (guards/dogs, etc.) on one level is limited to 149. 
+	  Note that dead guards are considered actors too. 
+	- Number of doors (sliding doors, NOT secret doors) on one level is 
+	  limited to 64. This includes unlocked, locked and elevator doors. 
+	- Don't forget you need an entrance to a level. 
+	- You also should have an exit or game end trigger (see level 9 of the 
+	  shareware version to see how it's done.) 
+	- The exit must be the elevator icon unless you changed the graphic. 
+	- Exit from level 9 leads to level 10. Thus you can have 10 straight 
+	  levels with no secret level. 
+	- Secret doors can "collapse" onto one another. Thus if you have many 
+	  secret doors in a row with only the first secret door positioned over 
+	  a wall you can repeatedly push the same wall panel. 
+	- Too many guards in one room or area will result in the disappearing 
+	  bodies phenomenon. --> See 6.3 
+	- Only guards over the same floor as you will hear you shoot your gun. 
+	  Since this concept is quite important to game strategy here's a 
+	  little explanation: 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+If you fire your weapon (this does include the knife but only if you actually 
+poke someone) in a room then all the non-deaf guys in the same room who 
+stand/walk over the same floor values will hear you. That is they will become 
+active and try hunt you down. 
+Also guys in other rooms which are not connected to your present room at the 
+moment (What I mean is the doors between that room and your current room where 
+you are are closed) will also hear you if they stand/move over the same floor 
+value. 
+This allows for a variety of dynamic effects, e.g. see below: 
+ 
+   1               2                 3 
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW 
+   G1  G2 W        G4           W     G5 
+	  W                     W 
+	  [        G3           [ 
+   Y      W                     W 
+	  W                     W 
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW 
+^^^^^^          ^^^^^^^^            ^^^^^^^^^^^ 
+room             room                room 
+with             with                with 
+floor            floor               floor 
+ A                B                   A 
+ 
+Here's a quick sketch of 3 rooms (walls=W) connected by sliding doors [. 
+You (Y) are in room 1.  Rooms 1 & 3 have the same type of floor.  Room 2 has 
+a different type of floor.  G1-G5 are guards. 
+If you shoot your weapon in room 1 then guards G1, G2 as well as G5 will 
+become aware of your presence (G1 & G2 probably are already aware of you if 
+they saw you).  G5 will run from room 3 to room 2 (tracking your position in 
+straight line).  Eventually he would get to room 1.  If you fire your weapon 
+while either of the doors are open then G3 & G4 will will become aware of you 
+too. 
+NOTE: You didn't open either doors (I'm assuming G5 or G3 or G4 does that) 
+	  unless you ran for it ;) 
+ 
+The first floor value in the Mapedit/Wolfmap editor index is the DEAF floor 
+(hex value=6A; this should be annotated in map editors). 
+The guards standing on deaf floors will react only if you pass within their 
+sight (that seems to span slightly less than 180 degrees (~90 either side of 
+their face)). 
+ 
+Note that if you mix floors in one room (other than the DEAF floor) then only 
+the floor which connects to the door through which you entered will become 
+active.  Guards standing on other floors will be oblivious to you unless you 
+shoot at them (not sure if you can run through them). 
+ 
+In a way when you enter through the sliding doors a change of active floor 
+takes place (after the door shuts --> while it's open both floor values are 
+active). 
+ 
+A classic example is when you enter a room through a secret door.  If the 
+floor in that room is different then no guard in that room will respond to 
+you shooting. 
+ 
+If you're still unclear about this here's an explanation by iD's 
+J. Romero (straight from the horse's mouth so to speak): 
+ 
+"Wolfenstein 3-D is basically made up of a lot of closed 
+rooms.  When you open a door, the guards get a chance to 
+see you and opening the door connects your sound area to 
+the revealed room's sound area, so a gunshot will be heard 
+in both places. Guards in both places will respond to this 
+kind of action". 
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+	- Putting an object inside a wall allows you and other actors to walk 
+	  through that wall. Now you know how that guard jumped you from the 
+	  wall. 
+	- Directing moving actors (guards, dogs, etc.) into a wall of unity 
+	  thickness makes that square wall panel permeable. That is you can 
+	  walk through it in the same way as if you used the wall walking 
+	  cheat. (--> See 1.10) 
+	- You must have a minimum of at least the following on any level you 
+	  create: 
+	  1 enemy (guard, dog, etc...) 
+	  1 piece of treasure (cross, jewels, etc...) 
+	  1 secret door 
+	  They are needed because Wolfenstein tries to calculate the % of each 
+	  of that you have killed, opened, picked up, etc..., and if there are 
+	  0 items of any one of the above, Wolfenstein will crash trying to 
+	  divide by zero. 
+	- Secret doors can pass over/through any object that you can (kitchen 
+	  utensils, food, etc.) EXCEPT Dead Guards. 
+	- Be careful not to set up secret doors that might go beyond the edge 
+	  of either the bottom or left-hand sides. The top and right hand edges 
+	  of the "world" are solid, but the left and bottom sides are permeable 
+	  (no range checking), and weird things can happen. 
+	- Be careful not to set up secret doors such that a small passage 
+	  behind them is blocked when the 'pushwall moves too far' phenomenon 
+	  occurs. Either insure that the pushwall can move only 2 grid 
+	  locations or enlarge the passage. --> See 6.3 
+	- Doors should be parallel to the walls you are inserting them in, as 
+	  you will get phantom blocks of grey stone otherwise. 
+	  Try placing a door all by itself without any walls and you will see 
+	  that it is accompanied by two phantom walls on either side. This has 
+	  presumably something to do with the opening act of a door (???). You 
+	  can go through these blocks, and even open the doors within them. 
+	  To clarify that here's a sketch of a door just by itself with no 
+	  walls around: 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ 
+		P[P 
+ 
+		 ^ 
+ 
+	  [ - Door 
+	  P - Phantom wall block 
+	  ^ - Direction you face when opening the door. 
+ 
+ 
+	  Now, if you place the door perpendicular to the wall its embedded in 
+	  here's what you'll end up with: 
+ 
+		  P 
+	  WWWWWWWW[WWWWWW 
+		  P 
+ 
+	  Obviously you can't see the door until you pass through the P wall. 
+	  BTW: The phantom walls P look like the regular stone wall (or the 
+		   first wall in the graphics file for that matter). 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+	- Deaf Guard floors directly in front or behind a sliding door result 
+	  in the door being invisible. The floor seems to be replaced with a 
+	  "force field" (it becomes an invisible wall). 
+	  Of course, if what you want is an invisible barrier, then this is how 
+	  to do it. 
+	  Note that if you put a Deaf Guard in an elevator, you will not be 
+	  able to get in! (I think this only occurs in v1.0 of Wolfenstein, 
+	  later versions allow you to have deaf elevator floors) 
+	- If you make regular sliding doors into secret doors, they behave 
+	  rather strangely, when you "open" them. They move away and transform 
+	  into a random wall panel. 
+	- Placing two or more doors side-by-side will produce a bizarre "picket 
+	  fence" wall of crazed wall panels, and will not allow you to pass 
+	  through them (except the last door on the right side) but will let 
+	  the bad guys through. 
+ 
+Editing the graphics, hints: 
+	--> See later part of 4.5 
+ 
+4.3 COMMON EDITING ERRORS (WHAT NOT TO DO AND WHAT THEY'LL PRODUCE). 
+ 
+	- You forgot to put an entry position into a level. 
+	  When you start that level you'll find that you can't move around and 
+	  you see walls in all directions. 
+	- You put too many guards in one level. 
+	  Wolfenstein will terminate with the following error when entering 
+	  that level: 
+	  'GetNewActor: No free spots in objlist!' 
+	- You put too many objects in one level. 
+	  Wolfenstein will terminate with the following error when entering 
+	  that level: 
+	  'Too many static objects' 
+	- You put too many doors in one level. 
+	  Wolfenstein will terminate with the following error when entering 
+	  that level: 
+	  '64+ doors on level' 
+	- You included in your shareware episode map some objects used in 
+	  non-shareware episodes only. 
+	  Wolfenstein will terminate with the following error when that 
+	  object/wall comes into your view: 
+	  'Tried to load sparse page' 
+	  If you patch the map and try to continue from the last saved position 
+	  within the same level, you'll still get this error as Wolfenstein 
+	  stores the map as loaded on level entry in the save-game file. You 
+	  must restart from a saved position in the previous level. 
+	  Hint: always save before taking up the exit elevator of a level. 
+	- You have mixed versions of Wolfenstein maps or have corrupted 
+	  map files. 
+	  Wolfenstein will terminate with the following error when you start 
+	  the play: 
+	  'Map not 64x64' 
+	  Usually this is due to the fact that you might have only one 
+	  MAPHEAD.??? file in the editor's directory and many 
+	  MAPTEMP.???/GAMEMAPS.??? files. In short you're confusing the program. 
+	  Determine which map files are the ones you want to play and clean up 
+	  the directory. 
+	- One more error which I cannot attribute to anything I know can occur. 
+	  It happens when you die for the first time on a level. Wolfenstein 
+	  kicks out with this message: 
+	  'MM_GetPtr: Out of Memory!' 
+	  This can occur in spite of the fact that the level has few actors or 
+	  objects and there's plenty of RAM around. 
+	  If you know how to fix it or what the cause is let me know. 
+ 
+4.4 MAP/GRAPHICS FILES VERSION CONVERSION. 
+ 
+Map files version conversion: 
+	Wolfmap 1.6 can convert between any version of Wolfenstein map files. 
+	Maps for versions 1.1 and higher are considered equivalent. 
+	Note though that not all wall panels map directly to the same panels 
+	through this conversion. In particular the false door of v1.0 has been 
+	removed and after conversion to v1.1 will appear as a mud-wall which 
+	will cause you problems if the maps were only the 1-episode shareware 
+	which doesn't have the graphic for that wall. 
+	In short: don't trust the conversion. Look through the maps carefully 
+	to see if something has gone wrong. I suspect some objects are 
+	converted to 'unknown' objects as described by the editors. 
+	Also by using Mapedit 6.0 you can convert between versions of 
+	Wolfenstein 'by hand' using the individual map import / export 
+	facility. Just load up maps of one version, export all the levels 
+	to disk (one at a time). Quit the editor, restart with map files 
+	of a different version and import those individual levels in. 
+	Note: This does mean you have to have the destination version map 
+	file available (as a place holder for the imported maps). 
+ 
+Graphic files version conversion: 
+	No known convertors exist. If you know one let me know. 
+	Yes, that does mean you'll have to import all the walls etc. as GIFs 
+	into the version of the file you want. 
+ 
+4.5 EDITORS COMPATIBILITY WITH THE GAME AND EACH OTHER. 
+Mapedit, Wolfmap and Wolfedit are compatible with all versions of Wolfenstein 
+from 1.0 to 1.4 shareware and both of the registered releases. 
+Mapedit 6.0 and 8.0 will also read/write SoD files. For Wolfmap you'll need  
+new definition files. --> See 5.3 
+ 
+Wolfmap is compatible with Mapedit, but Mapedit is NOT compatible with Wolfmap. 
+That is, files processed by Wolfmap are not readable by Mapedit. 
+ 
+Sometimes the objects edited do not always appear as they should. An example is 
+missing sliding doors when they were placed in the map. The door vacancy is 
+present instead but you cannot move through it. Someone suggested that this 
+can by fixed by changing floor values next to the object/door in question. 
+You can also move the door to another place on the wall. 
+I know it may stuffup your design but it should help. 
+NOTE: Placing a deaf-floor by the door will always make it invisible. For some 
+	  reason v1.0 of Wolfenstein experiences more of these problems (?). 
+Also --> See 4.2 
+ 
+Wolfedit has no major problems with wall panel graphics. There are some 
+problems when it comes to objects such as lamps, dog food, guards, etc. It 
+seems each object has a 'size' parameter. Editing the object may overrun that 
+limit. Wolfedit won't let you save the file if any objects are at fault. 
+Curiously even editing the colour (shade) of an object may adversely affect it. 
+Most importantly though objects need to have a blank background. This is 
+denoted by the bright pink background colour in the Wolfedit editor. (Have a 
+look at some standard objects that came with Wolfenstein.) 
+ 
+4.6 HOW TO MAKE A HARDCOPY (PRINTOUT) OF THE MAPS. 
+ 
+I recall there are four ways. 
+1) Use printscreen key + graphics.com program under DOS to capture the screen 
+   of one of the map editors. 
+2) Use Wolfmap's ASCII map dump feature. Then print it as any file. There are 
+   also other utilities for that. --> See 5.3 
+3) Capture map screen under Windows and print it later (costly on ribbon or 
+   toner since in bitmap mode). 
+4) Use a TSR screen shot utility such as PCX-Dump to dump a screen from one 
+   of the editors. Then print it as you would a graphics file. 
+NOTE: If you only want maps to original Wolfenstein then there are some already 
+	  made. --> See 5.3 
+ 
+ 
+5.0 WOLFENSTEIN ADD-ON SECTION. 
+=============================================================================== 
+ 
+All of the programs listed in this section can be found on the two ftp sites 
+mentioned in Section 0.7 
+I will not include anything herein until it finds its way to either of these 
+two sites. 
+ 
+Version number in square brackets indicates which version of Wolfenstein you 
+will need with the specific programs listed. Also archive file extensions were 
+omitted (.zip .arj etc.) unless they differentiate two different add-ons 
+with otherwise same archive name. 
+For example: [1.1 S] means version 'The shareware version 1.1'. 
+ 
+I have also included my own rating (number of *'s). This is merely my opinion 
+of the maps/graphics originality/artwork & bloodbath factor. 
+* = tame/yawn, ***** = suicidal!/wicked! 
+ 
+Note: The shareware version of Wolf3D has been ranked '*' for bloodbath 
+factor at Death incarnate level to compare with ratings given to other maps 
+at the same level. This is in no way to hint at its playability and is just 
+for comparison purposes. 
+Remember versions 1.1 to 1.4 are equivalent! 
+ 
+To install any of the maps/graphics sets, just ensure you have the correct 
+version of Wolf3D and copy the files that came with the archive into your 
+Wolf3D directory (unless specifically stated otherwise. See below or 
+documentation that came with the add-on if any.) 
+ 
+Lastly if anyone knows of anymore maps etc. let me know eh? 
+ 
+5.1 EXTRA LEVELS. 
+ 
+- map1      [1.0 S] *   - Only level 1 was appreciably changed from 
+				  original maps. 
+- newwmap   [1.0 S] **  - Maps are the same as original. Only more 
+				  guards were added. 
+- wlfnwmap  [1.0 S] **  - All levels were changed. Levels 4,6,7 & 8 
+				  are very short & differ only in wall color. 
+- wlfset11  [1.0 S] *** - Extension Set One v1.1. All levels apart 
+				  from 1, 4 & 10 were designed from scratch. 
+				  Docs included. 
+- wolfmap   [1.0 S] *** - All levels are different from original. 
+				  Quite challenging. 
+- nitemare  [1.0 S] *** - Enigma's Nitemare I. Level 1 was greatly 
+				  changed. Others redesigned from scratch. 
+				  This one for really trigger happy! 
+- enite-ii  [1.1 S] ****    - Enigma's Nitemare II. This archive contains 
+				  maps + graphics replacements. All maps 
+				  different from original. Graphics cool. 
+				  Self-(de)installation (but you can bypass it 
+				  if you're paranoid about viruses etc.). 
+				  Intro + docs. 
+- enite3fx  [1.1 S] *****   - This is the third installment of Enigma's 
+				  Nitemare. In this package you'll find all 3 
+				  nitemare parts (many bugs corrected) plus the 
+				  graphics file as well. 
+				  This archive has a full intro/installation 
+				  with it so you need not mess with renaming 
+				  the files. Read the doc before you start. 
+				  For Wolf3D experts that one... 
+- enm3-v30  [1.1 S] *****   - This is the same as enite3fx but has some 
+				  more bugfixes. You should really get this 
+				  instead of any other Enigma maps. 
+- wolf316   [1.1 R] **  - First 30 maps were redesigned. This one quite 
+				  'mazey'. This archive also includes new 
+				  graphics file replacement. Guards have been 
+				  replaced with men in shirts + ties. All nazi 
+				  symbolism was replaced by 3:16 symbolism 
+				  (3:16 is a drug of some sort - the game now 
+				  has a drug cult worship of some kind). 
+				  Food etc. replaced with the drug itself. 
+				  Digitised sounds were also changed. 
+				  Weapons changed to lasers now. 
+- darkmap1  [1.0 S] *** 1/2 - DarkStar's Castle Wolfenstein-3D levels. 
+				  All levels redesigned from scratch. 
+				  Quite a toughie this one. 
+- w3d_cc1   [1.1 R] ****    - A total of 58 new maps (2 secret levels were 
+				  left unchanged). Not as hard as the Nitemare 
+				  series but nevertheless very enjoyable. 
+- sodblst2  [SoD R] ??? - Blast Brothers' Spear of Destiny levels. 
+				  Level 1 greatly extended and all others 
+				  redesigned from scratch. 
+- sod_cc1   [SoD R] ****    - All 21 levels either partially or completely 
+				  redesigned. Does a great job in keeping up 
+				  the 'spirit' of the original levels. 
+- insanity  [1.1 R] *****   - Temporary Insanity. By Nathaniel Rudiak-Gould. 
+				  What can I say, these levels are truly insane. 
+				  Enter 60 levels of mystery where pushing the 
+				  wrong wall or firing a shot can spell ... 
+				  Doom (no pun intended :). 
+				  These maps use various undocumented features 
+				  of Wolfenstein's engine to come up with a 
+				  variety of effects such as: 
+				  walk through walls/objects, self-moving wall 
+				  blocks, invisible enemies, areas where you 
+				  move uncontrolably, 'insanity areas' which 
+				  make you lose your m/gun, red hot walls, 
+				  unopenable doors, force fields, areas only 
+				  accessible on certain difficulty levels etc. 
+				  et al. 
+				  So if you love solving riddles this one is 
+				  definitely for you. It has a large (120K) 
+				  hint file with it if you get frustrated. 
+				  WARNING: This is definitelly not for all 
+				  you "wham! bam! thank you 'mam" type action 
+				  hero folks who like getting 100% stats every 
+				  time. This one will require some brain power. 
+- xmasswlf  [1.1 S] ****1/2 - The maps themselves will remind you of the 
+				  originals. The characters, however, have 
+				  been replaced with crazy Santas and Snowball 
+				  throwing snowman. Sounds have changed too. 
+				  Great Stuff. 
+- wolfen60  [1.1 R] ****    - This is basically a collection of various  
+				  levels floating around all rolled into  
+				  one 6 episode package. You'll recognise 
+				  a few of the levels from other add-ons. 
+ - wolflev1  [1.1 R] (can't really rate it - I did it!)  - This is my set 
+				  of levels - still in progress. So far, 17 levels done. 
+ - warwolf   [1.1 R] (I did it, and still early stages)    - This is the 
+				  all-new Warhammer Wolfenstein. All graphics will be changed 
+				  (at the moment, a few wall panels and some of the guns are 
+				  done) and it will be a full 60 levels. Looking BRILLIANT! 
+ 
+5.2 EXTRA GRAPHICS. 
+ 
+- wolfnpac  [1.0 S] **  - Replacement for the graphics file. The only 
+				  change is that it replaces the brown guard 
+				  with a 3D pacman sphere. Nice animation 
+				  sequence though. 
+- wlfnewgr  [1.0 S] **  - Replacement for the graphics file. Replaces 
+				  ordinary wall panels with ... x-rated images. 
+				  This one not for the kiddies ... although not 
+				  greatly explicit. 
+				  [WARNING! this add-on may be offensive!] 
+- wolfus    [1.1 S] *1/2    - Wolf3D U.S. All nazi symbolism replaced with 
+				  US symbolism. 
+- w3dcool   [1.1 S] *** - This is basically a package that has been 
+				  thrown together by someone. Don't get me 
+				  wrong, its nice but most of the graphics come 
+				  from SoD or registered Wolfenstein or other 
+				  games like X-Wing (a few tie bombers around) 
+				  and some real-life people etc. Try it for 
+				  really weird playing environment. 
+- wolfbonk  [?.? S] **  - Bonkenstien3D. Some graphics changed to 
+				  appear more 'appealing'. Treasure replaced 
+				  with computer supplies. Elevators replaced 
+				  with moongates. Guns replaced with ... 
+				  joysticks (?!!) 
+- wolfclwn  [1.1 S] **1/2   - Wolfenstein meets the Demon Clowns of Death. 
+				  The boring old brown SA guard replaced with 
+				  a colorful clown. 
+- wolfstf   [1.0 S] **1/2   - Wolfenstein-3d Street Fighter 2. 
+				  All characters have been replaced with Ryu, 
+				  Ken, and E. Honda. For SF2 die hard fans only. 
+- wlfkosh1  [1.1 S] **  - Wolfenstein 3-D kosher. By: Peter Ringering 
+				  Make your Wolfenstein 3-D a kosher game. 
+				  Instead of shooting at people, you shoot at 
+				  objects which will shoot at you. All the gory 
+				  stuff was removed as well. PG-rated if you 
+				  like. 
+- 3dbusse   [?.? S] *1/2    - Some minor touches to the graphics. SS guard's 
+				  m/guns now eject shells. Swastikas were 
+				  removed. Soldiers now wear camouflage helmets 
+				  & boots. Guns have targeting laser dots. 
+- barney10  [1.0 S] *** - This the the famous Barney patch.  
+				  Barney is the end of episode boss. The guards 
+				  are replaced by Beavis & Butthead. The sounds 
+				  are replaced also. 
+- barney14  [1.1 S] *** - This the the same Barney patch for v1.1/1.4 
+				  of Wolf3d. 
+ 
+For more graphics see enm3-v30, and wolf316 in Section 5.1. 
+ 
+5.3 OTHER ADD-ONS & UTILITIES. 
+ 
+- w3dpatch  [1.0 S]     - This is an official patch release of the 
+				  game to upgrade from version 1.0 to 1.1. 
+- w6patch   [1.1 R]     - This is the map upgrade for the full version 
+				  (6 episode) to version 1.2. Note though that 
+				  this is not an official patch that will fix 
+				  your version to say 1.2. Only the corrected 
+				  map files (since this is an only difference 
+				  between v1.1 & 1.2 anyway). 
+- wcheat    [1.0 S]     - Edit Wolf3D save game files. Add ammo, 
+				  health, guns, etc. 
+- winwolf   [N/A]       - Some BMP files of graphics from the game. 
+				  Great for Windows backdrop. 
+- wmap41    [All]       - Generates ASCII maps of any level you like. 
+				  Suitable for dump to printer. 
+- wmaps-60  [All R]     - ASCII maps of all 6 episodes of the game. 
+- wolf3d1.nfo   [1.0 S]     - Instructions on how to patch Wolfenstein 
+				  for infinite ammo, health, etc. 
+- wolfmaps  [All S]     - ASCII maps for the 1st (shareware) episode. 
+- wolfspk4.exe  [All versions]  - This little utility will redirect digitised 
+				  sounds in the game to the PC speaker. 
+				  (For all of you people with no soundcard!) 
+				  Some sounds come out a bit dodgy but all the 
+				  shooting & screaming is audible. This file 
+				  also works with Spear of Destiny. Note: there 
+				  are other files like this e.g. wolfspk3.exe, 
+				  wolfspk.exe, wolf1spk.exe, but wolfspk4.exe 
+				  supercedes them. 
+				  To revert back to PC squicker sounds 
+				  delete CONFIG.WL? file. 
+- wolfsnd   [1.1 Reg(6)]    - This is a little utility for exporting & 
+				  importing digitised sounds from the VSWAP.WL6 
+				  file. Reads/writes VOC files. 
+				  Must have the full 6 episode version. 
+- wfgrchrt  [All versions]  - A conversion chart showing the numbers (in 
+				  decimal) for all objects contained in the 
+				  various graphics files. 
+- wlfaud11  [All S]     - Audio Editor v1.1 
+				  Utility by Bill Neisius to export/import 
+				  digitised samples from/to shareware versions 
+				  of Wolfenstein. Will accept many formats 
+				  (.AU, .VOC, .WAV, .SND etc.) 
+				  Doesn't seem to handle ALL the sounds found in 
+				  the VSWAP.WL1 file (first 20 I think). 
+- allwolfsodmaps        - All Wolf3D and SoD maps (by Frans de Vries) 
+				  Contains a small Unix routine to print them 
+				  on separate pages. These WILL work on UNIX 
+				  & DOS boxes. Created using wmap41 and the 
+				  following add-on: 
+- allwolfsodmapdefs     - New definition files for the Wolfmap editor 
+				  (works with Mapedit v4.1 & v6.0 too :) and 
+				  the wmap41 ASCII dump utility. Standardizes 
+				  the legends, adds Spear definitions, improves 
+				  a few colors and adds missing objects/walls. 
+- ultwlf13  [?.? ?]     - Patches wolf for GUS support. Digitised 
+				  sounds will be redirected to your GUS in 
+				  native mode (No SBOS). Additionally some nice 
+				  MOD soundtracks will play in the background. 
+ 
+ 
+6.0 WOLFENSTEIN BUGS & PROBLEMS (KNOWN TO DATE), 
+	AND HOW TO FIX OR GET AROUND THEM. 
+=============================================================================== 
+ 
+6.1 HARDWARE PROBLEMS. 
+ 
+- Sound FX all screwed or cut out (SB + compat only). 
+	If your sounds are short or hang the machine shortly into the game 
+	then most likely you have an IRQ mismatch on your soundcard. Try 
+	changing it. Good values are 5 & 7. 
+	Also try DMA channel change, although #1 (default) should be ok. 
+	... and don't forget to set your BLASTER variable in DOS like this: 
+	(Best to put this in AUTOEXEC.BAT) 
+ 
+	SET BLASTER=A220 I5 D1 T4 
+			 ^^^  ^  ^  ^ 
+ 
+	A=??? port number for your soundcard. 
+	I=? interrupt number for your soundcard. 
+	D=? DMA channel number for your soundcard. 
+	T=? Type of your sound card (must consult manual). 
+	99% of the time you'll only need to fiddle around with I & T. 
+	NOTE: the values pointed at may be different for you. 
+		  Consult your SB & Computer manual. 
+	As far as I know T4=SB Pro & T3=Regular Sb. 
+	Dunno About others (anyone?). 
+ 
+- You get some weird graphics on the screen then later the games hangs. 
+	a) Change your SB IRQ number. Some graphics cards will clash with 
+	   it (Don't ask me why, it could help...) 
+	b) If your system is VLB you might try a newer Wolfenstein version. 
+	   Try version 1.4 (since version 1.0 has a video problem) 
+ 
+6.2 SOFTWARE PROBLEMS. 
+ 
+- Game hangs. Sound hangs on last note. 
+	Try getting rid of some TSRs. 
+	Also some EMM managers can cause the problem with older versions of 
+	Wolfenstein. 
+	v1.1 is notorious for hanging under EMM386.EXE. The problem is 
+	apparently related to VGA card compatibility. It seems some of the 
+	earlier HiColor cards (15/16 bit RAMDACs) do not coexist peacefully 
+	with Creative Labs. SB products. Some of the early SB chips are posing 
+	some problems too. 
+	If Wolfenstein hangs with EMM386 with EMS enabled (/RAM option) then 
+	try the /NOEMS switch. If still no joy then try only HIMEM.SYS with 
+	no EMM386 (extended memory only). 
+ 
+- Game hangs or refuses to run with memory problems. 
+	If you have DR-DOS 6.0 + QEMM with stealth then disable stealth mode. 
+	Wolfenstein doesn't quite agree with it. 
+ 
+- Game hangs at the 'Get Psyched' screen. 
+	Err, you probably mixed some version numbers and have a very messy 
+	directory with 999 add-on maps installed. Wolfenstein won't like that. 
+ 
+- Game hangs with some horizontal stripes through the status bar. 
+	- Heisen-bug, a glitch. Mostly with the add-on maps. 
+	  Reboot, probably won't happen again. 
+	- Also happens if you mixed versions of the VSWAP.??? file and of the 
+	  game itself. Make sure you have the appropriate version of the game. 
+ 
+- Game seems to run but all you can see is some weird graphics. 
+	- Must have got a slightly corrupt VSWAP.??? file. Hope you have 
+	  a backup somewhere (Nya Nya Nya!) 
+	- You cheater! You tried to go above the last level 10 with the TAB-W 
+	  cheat. Ha! (Yes this IS possible with some versions). 
+	- Err, if you edited that map then you forgot to place level entrance 
+	  somewhere (duh). 
+ 
+6.3 GAME SPECIFIC PROBLEMS. 
+ 
+- 'DISAPPEARING BODIES' phenomenon. This occurs when there are so many enemies 
+  in your view at a time that the game stops displaying some. The game engine as 
+  it seems is limited to only so many "sprites". Anything beyond that and you 
+  won't be sure which guys will start disappearing. This only occurs on a 
+  couple of levels in Wolfenstein I think. Be aware if you are editing your own 
+  map! There is no fix. The engine is set and iD won't rework it. 
+ 
+- 'PUSHWALL MOVES TOO FAR' phenomenon. This is when the pushwall (or secret door 
+  if you prefer) moves TOO FAR and blocks your further passage into the room 
+  full of goodies etc. I cannot recall if there is one in episode one, but 
+  apparently there are at least two places where this occurs in episode 6. 
+ 
+  Episode 6, level 2.  This is the FIRST pushwall in the map.  All others on 
+  this level are *behind* it. 
+ 
+  This is shown below: 
+ 
+before pushing: 
+WWWWWWWWWWWWWWWWW   WWW 
+WWWWWWWWWWWWWWWWW   WWW 
+WWWWWWWWWWWWWWWWW   WWW 
+WWWWWWWWWWWWW   W   WWW 
+		?*  WWW 
+WWWWWWWWWWWWWWWWW   WWW 
+WWWWWWWWWWWWWWWWW   WWW 
+WWWWWWWWWWWWWWWWW   WWW 
+ 
+after pushing: 
+WWWWWWWWWWWWWWWWW   WWW 
+WWWWWWWWWWWWWWWWW   WWW 
+WWWWWWWWWWWWWWWWW   WWW 
+WWWWWWWWWWWWW   W   WWW 
+		 ?   *  WWW 
+WWWWWWWWWWWWWWWWW   WWW 
+WWWWWWWWWWWWWWWWW   WWW 
+WWWWWWWWWWWWWWWWW   WWW 
+ 
+  You are where the '*' is, and you push the pushwall '?'. 
+  'W' is other parts of walls. 
+  It's supposed to move two grid locations and stop, so you can go around it. 
+  Instead, it moves three, and blocks everything. 
+ 
+  NOTE: This does not always happen. That is, sometimes the pushwall will move 
+	2 grid locations, i.e. correctly. 
+	Also any interference from guards behind it is not connected with this 
+	since that would prevent pushwall moving at all or impede it to move 
+	only 1 grid location. 
+ 
+  Solution: Well, it looks like there isn't one at the moment. 
+  There was a suggestion of inserting "stacks 9, 256" in the config.sys file, 
+  but this doesn't seem to help. 
+  The only suggestion is to save frequently and if you experience the problem, 
+  to start over from the last saved position. Maybe the pushwall moves back 
+  correctly this time. 
+ 
+7.0 WOLFENSTEIN SPIN-OFFS. 
+=============================================================================== 
+ 
+In this section of the FAQ, I will detail the many games which Wolfenstein 
+has inspired. If you can't get enough Wolfenstein, get some of these! NB: 
+I am not including RPG type games - ie Shadowcaster - as these have taken 
+their inspiration more from Ultima Underworld. 
+ 
+7.01 CATACOMB ABYSS. 
+ 
+This was an iD game for those with EGA monitors, loosely based on the 
+Wolfenstein engine. It was released by Gamer's Edge, who put nowhere near the 
+same standard of presentation on it as Apogee would have. The sound was bad -  
+no SB music! However, all this aside, Catacomb Abyss is a very good game. It 
+introduced some new features. You fire fireballs, of which you have an 
+unlimited number, at the undead enemies. Ha! Undead? DEAD! You can pick up 
+spells, such as the machine-gun effect spell, which streams off a line of 
+fireballs at the enemy. The graphics are nothing to write home about -  
+"functional" is as far as it gets. However, this is highly recommended to 
+Wolfenstein fans. 
+ 
+7.02 BLAKE STONE 3D. 
+ 
+This was the real sequel to Wolfenstein 3D. Released around the same time as 
+Doom (oops), it was set in a futuristic setting. Very similar to Wolfenstein, 
+although with more enemies, and some other new features, like food units, 
+"intelligent" enemies, floor mounted enemies, remote-linked doors and a cool 
+gun, the Plasma discharger. Basically a grenade launcher with a different 
+name. This is a very atmospheric game which did not get the attention it 
+deserved at the time, due to the release of... 
+ 
+7.03 DOOM. 
+ 
+Wow. What else can I say. This was (and still is) the ultimate 3D game. The 
+major differences between this and Wolfenstein were: 
+-Non-orthagonal walls (they can be at any angle to each other, not just 
+90 degrees) 
+-Different height levels 
+-Different lighting levels (ie: it's bloody dark) 
+-Weapons with different strengths (ie: the shotgun is more powerful than the 
+chaingun, but it's not rapid-fire) 
+-Real heavy-duty weapons (rocket-launcher? BFG-9000 (also known as the 
+Antichrist) 
+-Network, serial and modem multiplayer support 
+-Armour (yes, i'm British) 
+This is an absolute landmark of a game. If it isn't in your collection (and 
+you've got a VGA 386 with 4MB of ram or better), go get it now. 
+ 
+7.04 KEN'S LABYRINTH. 
+ 
+This was knocked up by one guy after playing Wolfenstein, and it shows. Crap. 
+Crap to the nth degree. Utter dog-poo. Don't waste the download time. 
+ 
+7.05 HUGO'S NITEMARE 3D. 
+ 
+This is an interesting game, firmly in the Wolfenstein mode. It puts a more 
+"puzzly" face onto things. Certain guns are more effective against certain 
+enemies. Try it if you liked Enigma for Wolfenstein (See Wolfenstein add-ons 
+section). 
+ 
+7.06 DOOM 2. 
+ 
+The new sequel to Doom, sub-titled Hell On Earth. This added a few new enemies 
+and a double-barreled shotgun. It is also insanely hard. You get about 50 
+enemies in one room attacking you...on level 3! The general opinion is that 
+it didn't add enough to Doom. 
+ 
+7.07 TERMINATOR: RAMPAGE. 
+ 
+A commercial Wolfenstein look-alike by Bethesda Softworks. This isn't very 
+good, the main criticisms being that it is: 
+a) Too slow 
+b) Too complicated. 
+It does have a good variety of weapons, though. 
+ 
+7.08 CORRIDOR 7. 
+ 
+This is another commercial offering, by Gametek. They licensed the Wolfenstein 
+engine, and proceeded to totally mess it up, and produce a boring, slow, 
+repetitive game. Oh dear...what a wasted oppurtunity. 
+ 
+7.09 THE FORTRESS OF DR RADIAKI. 
+ 
+This is yet another commercial offering, and has exactly the same criticisms 
+as the others. 
+ 
+7.10 OPERATION BODYCOUNT. 
+ 
+See above. 
+ 
+7.11 RISE OF THE TRIAD. 
+ 
+This is Apogee's new stunner. It should be released around December 
+(hopefully), and will feature digitised enemies, trillions of weapons, massive 
+maps, different heights, look up/down, different lighting, shoot everything 
+(windows, doors, walls, hamsters...)God power up (you become massive, and 
+walk on enemy soldiers), Dog power-up (God backwards) where you become 
+small (enabling you to go through small passages) and invincible, and bite 
+enemies. It still has those orthoganal (at 90 degrees to each other) walls, 
+though. Damn. 
+ 
+7.12 HERETIC. 
+ 
+This is a new game, by Raven Software, using the Doom engine. It should be 
+coming out the same time as ROtT, and little is known about it other than 
+the fact that it will be a fantasy setting (swords and sorcerors). 
+ 
+7.13 DUKE NUKEM 3: 3D. 
+ 
+Another new 3D game by Apogee's new offshoot, 3D Realms. You get the chance 
+to fly a jetpack. Should be out first quarter 95. 
+ 
+7.14 SHADOW WARRIOR 3D. 
+ 
+Another 3D Realms release. Should introduce some interesting concepts, like 
+throwing stars. First quarter 95. 
+ 
+7.15 RUINS 3D. 
+ 
+ANOTHER 3D Realms release. Set in a roughly Egyptian style. First quarter 95. 
+ 
+7.16 QUAKE. 
+ 
+This is the one iD are really into at the moment. This is going to go so far 
+ahead on technology - one of the iD guys said that it would be sort of like 
+"Doom = Pong". Among other things, it will have: 
+-Proper gravity. 
+-Character interaction. 
+-Programmed on a client/server basis (READ: LOADS of people over a network). 
+-Vehicles. 
+-Look up and down. 
+-Full world "hierarchy". 
+-Totally modular (READ: Easily hackable...add-ons galore). 
+-Maps made in 3D, not "forced" 3D (ie: 2D maps made 3D by the engine). 
+We won't see it before 96, though. 
+ 
+ 
+ 
+8.0 ACKNOWLEDGEMENTS. 
+=============================================================================== 
+ 
+Lastly I would like to thank all who contributed to this FAQ. 
+In no particular order, thanks go to: 
+ 
+Ben Rudiak-Gould    (benrg@ocf.Berkeley.EDU) 
+Jay Wilbur      (jayw@idcube.idsoftware.com) 
+Brian D Milner      (Brian.Milner@brunel.ac.uk) 
+Fred Brown      (brown@dgaust.oz.dg.com) 
+Nancy Rabinowitz    (nrabinow@itsmail1.hamilton.edu) 
+Greg Cohen      (rn.3332@rose.com) 
+Stephen Schimpf     (stephen@eggneb.astro.ucla.edu) 
+Don Campbell        (donc@cognos.com) 
+Andrew Baker Glazier    (glazier@isr.harvard.edu) 
+Tony Lezard         (tony@mantis.co.uk) 
+Frans P. de Vries   (fpv@xymph.iaf.nl) 
+John Edwards        (edwards@tincup.enet.dec.com) 
+*Bob O'Bob      (obrien@netcom.com) 
+Richard Ward        (rrward@netcom.com) 
+Dov Sherman     (ab3588@stat.appstate.edu) 
+Ben Castricum       (media03@relay.nluug.nl) 
+Mark Deplyn         (mbd@ukc.ac.uk) 
+Joe Siegler     (apogee@delphi.com) 
+Elias Papavassilopoulos (ep104@cus.cam.ac.uk) 
+*John Romero        (romero@idcube.idsoftware.com) 
+Iain Noble      (100020.2125@CompuServe.COM) 
+Douglas Bottoms     (BOTTOMS_DOGLAS_J@Lilly.com) 
+Charles E. Corway   (72672.1553@CompuServe.COM) 
+Stanley Stasiak (ooops...forgotten your e-mail address...apologies) 
+ 
+????? ????? brown@dgaust.oz.dg.com  <<< ( Could not trace this address ) 
+ 
+Lastly iD Software Inc. cannot be forgotten since without their efforts this 
+FAQ would never have existed (Buhahahahahaha!) 
+Oh, and did I mention Apogee, the friendly shareware distributors ;) 
+ 
+If I forgot your name here then e-mail me a whinge and I'll fix that. 
+ 
+* - means grabbed from News posts rather than e-mail 
+	so you may not even know you helped with the FAQ ;) 
+ 
+ Last, last note from the keeper (Adam): 
+ Can someone PLEASE write/tell me where there is an editor for the power 
+ of the weapons/guards. Then Warhammer Wolfenstein will REALLY rock! 
+	Oh, for anyone who knows anything about Warhammer, Hitler will be turned 
+ into a big Orc, and you will kill him (apparently). BUT, his body will 
+die, and the head will live on! Cool, eh? 
+ 
+9.0 REVISION HISTORY. 
+=============================================================================== 
+ 
+Changes to the FAQ - for anyone interested and my beta testers (Thank you ;) 
+ 
+2.0 -   Initial upgrade. Subdivided the whole FAQ into many sections. 
+	Extensive help on map editors, extra maps, trivia, etc. 
+	Officially started stamping version numbers on the FAQ. 
+2.01 -  Added Section 2.2 part 3) Tony Lezard (tony@mantis.co.uk) Thank you. 
+2.02 -  Added sounds of undead (Section 2.1), scores for undead & white 
+	officers (Section 2.15). Corrected tons of spelling & whitespace. 
+	fpv@xymph.iaf.nl (Frans de Vries) Thank you. 
+	Corrected some of the email info in preamble upfront. 
+2.02b - Filled paragraphs to at least 75 characters. Added Hitler's Ghost 
+	score plus kill averages (Section 2.15). 
+	Also some minor layout corrections. 
+	fpv@xymph.iaf.nl (Frans de Vries) Thank you. 
+2.02c - Added Section 9.0 Revision History. Also included 2nd reason for crash 
+	(Section 6.2) with horizontal stripes. 
+2.03  - Added 'pushwall phenomenon' (Section 6.3). 
+	fpv@xymph.iaf.nl (Frans de Vries) Thank you. 
+2.10  - Removed word 'castle' from Wolfenstein's title. 
+	Standardised name of iD Software throughout (thx Jay). 
+	(remember to rescan DEBUG file after each update) 
+	Added my e-mail address to the FAQ header proper. 
+	Added a copyright notice blurb (Section 0.1) 
+	Added object in wall bug & effect to Section 4.2 
+	Minute changes Section 9.0 
+	Standardised sample map characters (Sections 6.3 & 3.10) 
+	More help with SB setting (Section 6.1) 
+	Weird graphics cause added (Section 6.2) 
+	More maps/graphics add-ons info added (Sections 5.1 & 5.2) 
+	Added my sig to EOF. 
+2.10  - Added iD's help e-mail address (Section 1.11) 
+	Added Section 1.12 
+	Added Section 10.0 
+	Added more info on how to get most recent version of FAQ. 
+2.11  - Some spelling stuffups all over the place. 
+	Added Section 2.4 (secret levels etc.), renamed sections above 2.4 
+	Added Section 3.11 
+	Added sound import/export utility to Section 5.3 
+2.12  - Fixed a number of bugs in Section 4.2 (6c should be 6b etc.) 
+	ab3588@stat.appstate.edu (Dov Sherman) Thank you. 
+	Also added more guidelines to Section 4.2 
+	rrward@netcom.com (Richard Ward) Thank you. 
+	Section 4.6 .exe should be .com 
+	Added LIM Cheat to Section 1.10 
+	media03@relay.nluug.nl (Ben Castricum) Thanks for reminder. 
+	Added enm3-v30 and darkmap1 to Section 5.1 
+	More typos fixed (ARRGGGHH!) 
+	Added w3dcool to Section 5.2 
+2.13  - Section 2.15 bonus for time is 500 not 1000. 
+	Other minor numeric errors in Section 2.15 bosses score. 
+	Some Grammar in Section 2.4 
+2.14  - Inserted Section 2.10 Death Cam Question. Renumbered subsequent 
+	sections and pointers. 
+	Ran spell-checker again (!!!) 
+2.15  - More paragraphing and whitespace corrections. 
+	Included suggestion to Section 6.3. 
+	fpv@xymph.iaf.nl (Frans de Vries) Thank you. 
+2.16  - Removed references to self-extracting Wolfenstein archive from 
+	Sections 1.3 & 1.4 (No longer valid) 
+	and forgot to thank someone for it (hmm who was it?) 
+	Added info to Section 1.3 about where to find PkUnzip software. 
+	Changed the wording of Section 0.0 
+	Changed ftp FAQ upload compression from compress (.Z) to pkzip (.zip) 
+	Changed Section 1.12 to reflect the change. 
+2.17  - Removed one more reference to self-extracting archive (Section 1.3) 
+	Added another mapping hint for secret doors and fixed deaf floor 
+	value (Section 4.2). Elaborated on 'sparse page' problem (Section 4.3) 
+	Added secret level completion score and par level time table to 
+	Section 2.15  fpv@xymph.iaf.nl (Frans de Vries) Thank you. 
+2.17b - Removed e-mail addresses which will seize to be valid soon. 
+	More stuff for (Section 9.0) 
+	Added AUTOEXEC.BAT reference to Section 6.1. 
+	Identified 'mbd' in Section 9.0 and added Apogee ack (duh). 
+3.0   - Major upgrade to include info on Spear of Destiny. 
+	edwards@tincup.enet.dec.com (John Edwards) and 
+	fpv@xymph.iaf.nl (Frans de Vries) Thank you. 
+3.01  - More minor fixes all over the place (does this guy ever give up? :) 
+	Clarified debugging mode keys functionality for different versions of 
+	the games and added 'score lost' warning to LIM cheat (Section 1.10). 
+	Added 'landscape' mapping hint (Section 4.2) and 'input device' hint to 
+	dizziness phenomenon (Section 3.7). Added 'w3d_cc1' and 'sod_cc1' maps 
+	(Section 5.1) and 'wfgrchrt' add-on (Section 5.3) 
+	fpv@xymph.iaf.nl (Frans de Vries) Thank you. 
+3.10  - Small fixes all over the place apogee@delphi.com (Joe Siegler) 
+	Thank you. 
+	Game slowdown hint included in Section 3.4 ep104@cus.cam.ac.uk 
+	(Elias 'CaveMan' Papavassilopoulos) Thank you. 
+	Section 1.7 elaborated for SoD. 
+	Added SoD Boss sounds to Section 2.1 
+	Sections 2.8,2.15 'ammo chest' is now 'ammo box'. 
+	Added 'PM-40' and Elevator use to section 2.8 
+	Added SoD related info to Section 2.11 
+	Added number of weapons/keys to section 2.15 
+	fpv@xymph.iaf.nl (Frans de Vries) Thank you. 
+	Moved major section 2.X behind section 4.X and renamed the Sections 
+	accordingly. (section 2.X=4.X, 3.X=2.X, 4.X=3.X) Realigned all pointers 
+	(hopefully). 
+	Added 'map not 64x64' error to Section 4.3 
+	Added VLB suggestion (hopefully it works...) in Section 6.1 
+	Included both Unix & DOS versions in uploads. 
+3.11  - Basically a bugfix release. 
+	Some more hints for Section 4.2. 
+	(wolf sound area explanation J. Romero (romero@idcube.idsoftware.com)) 
+	Some more stuff in sections 4.3,4.4,4.5. 
+	Forgot to renumber section 9.0 consistent with section reshuffle 
+	in version 3.10. Fixed. 
+	Removed beta-testing remark in section 2.1 
+3.12  - Added 'cheat mode disabled' notice to Section 1.10 
+	Added '=' main section underlines. 
+	Changed 1.12 repost frequency info to 4 weeks. 
+	Changed 2.15 rounds/boss quoted as 'minimum' not 'average'. 
+	Added more editors info to Section 4.1 
+3.20  - Greatly expanded Section 0. 
+	Slightly changed Sections 1.3, 1.8 & 1.9 to comply with expansion 
+	of Section 0. 
+	Section 1.12 info moved to Section 0.5 
+	Section 1.12 replaced with info on bug finding within FAQ. 
+	Added non-existance of cheat modes in subsequent Apogee games 
+	notice to Section 1.10 
+	Added 'Death Incarnate' remark to Section 2.15 
+	Added info for 'by-hand' map version conversion with Mapedit 6.0 
+	to Section 4.4 
+	Added PCX-Dump option to Section 4.6 
+	Clarified EMM/RAMDAC related sound problems in Section 6.2 
+	Inserted new Section 2.11 (Jukebox feature) & moved up Sections 
+	above 2.11 
+	Added Section 1.13 Availability for other platforms. 
+	Added Section 3.12 Boss strategy BOTTOMS_DOGLAS_J@Lilly.com 
+	(Douglas Bottoms) Thank you. 
+	Added note about not calling Apogee about add-ons to Section 4.2 
+	Added 'music trivia' Section 2.12 & moved up Sections above 2.12 
+	72672.1553@CompuServe.COM (Charles E. Corway) Thank you. 
+	Added 'Morse code message' Section 2.13 & moved up Sections above 2.13 
+	(originator unknown) 
+	Added Wolf3D commercialisation note to Section 1.3 
+	Added info on finding different versions of Wolfenstein as Section 1.14 
+	Added 'wlfaud11' & 'morewolf3dmaps' to Section 5.3 
+	Added 'wolfbonk', 'wolfclwn' & 'wolfstf' to Section 5.2 
+	Added 'insanity' levels to Section 5.1 
+	Added '3dbusse' & 'wlfkosh1' to Section 5.2 
+	Added T4 & T3 to Section 6.1 
+3.21  - YABRE: Yet Another Bugfix ReleasE :)  (Yep, he does it one more time ;) 
+	Spelling, spacing and filling changes not tagged. 
+	Corrected pointer to Section 2.15 in Section 2.2, and numbering of 
+	Sections 2.14 & 2.15 
+	Added remark about Wolfmap definition files to Section 4.5 
+	Added rating & comment for 'sod_cc1' to Section 5.1 
+	Replaced 'morewolf3dmaps' with 'allwolfsodmaps' and added 
+	'allwolfsodmapdefs' to Section 5.3 
+	fpv@xymph.iaf.nl (Frans de Vries) Thank you. 
+3.30  - Added more boss strategies to Section 3.12  
+	100020.2125@CompuServe.COM (Ian Noble) Thank you. 
+		Fixed some of that German in Section 2.1 
+	Added 'xmasswlf' & 'wolfen60' to Section 5.1 
+	Added 'barney10' & 'barney14' to Section 5.2 
+	Added 'ultwlf13' to Section 5.3 
+ 
+4.00  - General update of information. 
+ 
+4.10  - Table 2.1 narrowed. "Where did iD Get the idea for Wolfenstein?" 
+	added. All occurences of id changed to iD (cos its the logo they used for 
+	the old Keen games and it looks cool). Added "Wolfenstein Spin-offs" 
+	section. 
+ 
+4.15  - Added "How many hits do all those enemies take?" and "What weapons 
+	all those enemies carry?" sections. 
+ 
+10.0 FUTURE ADDITIONS TO THE FAQ. 
+=============================================================================== 
+ 
+On the agenda are: 
+ 
+- More specific Boss strategies (call on info) 
+- Include pointer to detailed map/graphics filespecs (if and when they arrive) 
+ 
+------------------------------------------------------------------------------ 
+ 
+So there! Phew! 
+That's the end. 
+Now go and play the game! 
+ 
+Adam (The demon Wolf3d editor!) 
+ 
+--------------------------------------------                           
+-Doom is a load of rubbish.                - 
+-ARRRGGGHHL!                               - 
+-Put the chainsaw down...I was only joking.- 
+-------------------------------------------- 
+-Adam Williamson                           - 
+-------------------------------------------- 
+-adam@scss.demon.co.uk                     - 
+-------------------------------------------- 
+ 
+ 

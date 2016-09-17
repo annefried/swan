@@ -1,0 +1,394 @@
+
+THE
+FORCE
+SOURCEBOOK
+
+for use with the
+
+STAR WARS
+ROLEPLAYING GAME
+2nd Edition
+
+
+(Star Wars is a regisetered trademark of Lucasfilm Ltd. 1992
+Lucasfilm Ltd. owns all copyrights and trademarks in the following file.  
+Trademarks of Lucasfilm Ltd. used by West End Games under authorization.
+   The following  is an unofficial document,  not approved by Lucasfilm 
+Ltd. or West End Games.)
+
+
+CONTROL
+
+The ability to control one's own inner Force.  A Jedi with this skill 
+learns mastery over the functions of his own body and harmony with 
+nature.  A character who learns control  automatically learns three 
+control  Force powers.
+
+
+Absorb/Dissipate Energy
+	
+	Control Difficulty: Sunburn - Very Easy;  intense sun - Easy;  
+solar wind - Moderate;  radiation storm - Difficult. Characters may use 
+this power for energy attacks, such as blaster bolts and force lightning 
+- the difficulty is Moderate plus the damage roll of the attack.
+
+	The power may be kept "up" as long as the source of energy is 
+constant - it may not be kept "up" for blaster bolts or  Force 
+lightning.
+
+	Effect:  This power allows the Jedi to absorb or dissipate energy, 
+including light, heat, radiation and blaster bolts.  A successful 
+control  roll means that the energy is dissipated.  If the user fails 
+the roll, he takes full damage from the energy.
+	The character must activate the power in the same round to absorb 
+the blaster bolt or Force lightning - the character must be able to roll 
+the power before the attack lands.  He can't use the power after the 
+attack has hit.
+
+
+Accelerate Healing
+	
+	Control Difficulty:  Easy for wounded characters, Moderate for 
+incapacitated characters, Difficult for mortally wounded characters.
+	Time to use:  One minute
+	Effect:  If a Jedi uses this power successfully, He may make two 
+natural healing rolls for the current day regardless of his injury.  He 
+gets a +2 modifier to his roll for  both rolls.
+Control Pain
+	
+	Control Difficulty:  Very Easy for wounded characters,  Easy for 
+incapacitated characters,  Difficult for mortally wounded characters.  
+The difficulty for stunned characters is Easy if the character has not 
+fallen unconscious and Moderate if he has.
+	Effect:  A wounded Jedi who controls pain  can act as if he has 
+not been wounded,  starting with the round after the roll is made.  His 
+wound is not healed,  but it is ignored(no die roll reductions).  He 
+still needs to receive medical treatment as soon as possible  A Wounded 
+character who control pain and is wounded again becomes incapacitated.
+	Characters who use control pain to shrug off the effects of stun 
+damage eliminate the effects of the stun entirely.
+	If a Jedi is in pain for a reason other than a wound, this skill 
+can be used to ignore the pain and function normally.  This power can be 
+kept "up."
+
+
+Detoxify Poison
+	
+	Control Difficulty:   Very easy for a very mild poison (alcohol);  
+Easy for a mild poison;  Moderate for an average poison;  Difficult for 
+a virulent poison;  Very Difficult to Heroic for a neurotoxin.
+	Time to use:  Five minutes
+	Effect:  This power allows a Jedi to detoxify or eject poisons 
+that have entered his body.  If the Jedi makes the power roll,  the 
+poison doesn't affect him.
+
+
+Emptiness 
+	
+	Control Difficulty:   Moderate
+	Note:   Characters who are consumed by the Dark Side of the Force 
+may not use this power.
+	Required Powers:  Hibernation trance
+	Effect:   The user empties his mind and allows the Force to flow 
+through him.  The character seems to be in a deep meditation,  and a 
+character experiencing emptiness is oblivious to his surroundings.  A 
+character in emptiness  may not move or take any action except to try to 
+disengage from the emptiness.
+	While in emptiness ,  a character is difficult to sense or affect 
+with the Force.  When another character attempts to use a Force power on 
+a character in emptiness ,   add the meditating character's emptiness  
+roll to the difficulty for the other character's sense  or control  
+rolls (this affects only  the  sense  roll;  if the power doesn't use 
+the sense skill, then add the difficulty to the control  roll).  This 
+difficulty is added regardless of whether or not the empty  character 
+would be willingly receive the power's 
+effect.
+	Once the character comes out of emptiness ,  the character gets a 
++6 bonus modifier to all Force skill rolls for a period of time equal to 
+the amount of time the character spent in emptiness .  This bonus is 
+reduced by 1 for each Dark Side Point that the character has.
+	When in emptiness ,  characters dehydrate and hunger normally - 
+some initiates have died  because they lacked enough control to bring  
+themselves out of emptiness.
+	When a character enters into emptiness ,  the player must state 
+for how long the character will be in meditation.  A character must make 
+a difficult control  skill roll to bring himself out of emptiness ;  the 
+character may attempt to come out of meditation under the following 
+circumstances:
+
+   * When the stated  time has passed.
+
+   * Once each hour beyond the original time limit.
+
+   * The character's body  takes any damage more serious  than stun  
+damage.
+
+
+Enhanced Attribute
+	
+     "And  suddenly  Luke was gone,  a single leap  taking  him to the  
+top of  the X-wing..."
+
+	Control Difficulty:  Moderate
+	Effect:  A Jedi uses this power to increase a single attribute for 
+a limited amount of  time.  An increased attribute can help a Jedi jump 
+higher,  dodge quicker,  see better,  and run faster.  All skills 
+controlled by the enhanced attribute are increased by the appropriate 
+amount for as long as the power is in effect.
+
+
+	An attribute increased by this power remains enhanced for the 
+duration listed below.  Duration and attribute increase is determined by 
+how much a character's control  skill roll beats the difficulty number.   
+Duration can be extended through the use of character points - for every 
+character point a Jedi spends after invoking this power,  the duration 
+is extended by one combat round.  The points can be spent at any time 
+before the power fades.
+	A Jedi can only increase one attribute at a time.  If a character 
+invokes the power to enhance a second attribute while the first 
+attribute is still enhanced,  then the first enhancement fades and the 
+second attribute receives the benefit.
+
+Skill roll Beats	Attribute	
+	     Difficulty  By	    Increase	Duration
+	               
+	              0-13		       +1D	 3 rounds
+	             14-25		       +2D	 2 rounds
+	               26+		     +3D 	1 round
+
+
+Hibernation Trance
+	
+	Control Difficulty:  Difficult
+	Effect:  Using this power causes a Jedi to fall into a deep 
+trance,  remarkably slowing all body functions.  His heartbeat slows,  
+his breathing drops to barely perceivable levels,  and he falls 
+unconscious.  
+	Hibernation trance  serves two purposes.  It allows a Jedi to 
+"play dead."  It can also be used to survive when food  or air supplies 
+are low.  Anyone who comes across a Jedi in hibernation trance  assumes 
+the Jedi is dead unless he makes a point of testing him.  Another Jedi 
+with the Life detection  power and the sense  skill will be able to 
+detect the Force within the hibernating character and realize he is 
+still alive.
+	A hibernating  character uses about one tenth as much air as 
+someone who is simply sleeping.  He can hibernate for a week in a dry 
+climate or for up to a month in a wet one before dying from lack of 
+water.
+	A character can decide what stimuli will bring him out of the 
+trance,  or how long he will spend in the trance before coming out of 
+it.  The stimuli or length of time must be declared when the character 
+enters the trance.
+
+
+Instinctive Astrogation Control
+
+	Control Difficulty: Very Difficult. Modified by astrogation  
+difficulty.
+	Time To Use:  One minute
+	Effect: Instinctive Astrogation Control  is far more difficult 
+than the standard sense -based instinctive astrogation  power because 
+instead of trying to "feel" the correct solutions to the hyperspace 
+equations, the Jedicalculates them in his head.  This is quite possible, 
+and is often done as a training exercise, but the figures generated are 
+rarely  utilized because it is so easy even for a Jedi to make a 
+mistake.
+	The  difficulty number is modified by how hard the task is with 
+the nav computer:
+		Task is:			Modifier (add  to difficulty):
+
+		Very Easy 				       0
+		Easy					     +5
+		Moderate				     +10
+		Difficult				     +15
+		Very Difficult			     +20
+		Heroic				     +30
+
+
+	If the control  total is successful,  a Very Easy astrogation  
+roll is necessary to enter the correct routes into the nav computer.  If 
+the Jedi fails the attempt, he overlooks an obstacle, and sends the ship 
+downan inherently dangerous path and thus instaed of requiring a Very 
+Easy astrogation  total, the difficulty is automatically Very Difficult. 
+If the control  roll is missed by five or more points, increase the 
+difficulty to Heroic.
+	This is a largely unknown application of the control  power that 
+allows Jedi to plot astrogation paths, instead of using the more well-
+known sense -based instinctive astrogation  power. Instinctive 
+astrogation control  is little more than curiosity, studied only by a 
+few theoretical Jedi, the most prominent of which in recent memory was 
+Hart Daele.  In fact, Daele wrote a doctoral thesis on the subject, 
+proving that the high-order equations could be solved or under certain 
+special case situations, appoximated, using standard Jedi mediation 
+techniques.
+
+
+Rage
+	
+	Control Difficulty:  Difficult
+	Required Power:  Hibernation trance
+	WARNING:  A Jedi who uses this power gains a Dark Side Point
+	Note:  This power can only be used by characters who have been 
+consumed by the Dark Side of the Force.
+	Effect:  This power allows a character to feel the dread influence 
+of the Dark Side.  It functions as a counterpart to emptiness.
+	The character must tense herself completely,  and allow the 
+mindless rage of the Dark Side to possess her.  When using this power,  
+a character will appear lifeless.  They are amplifying the negative 
+aspects of their own personality,   Leaving the face clenched in a 
+rictus of horror and fear.
+	A character must determine how long she wishes to be in rage  when 
+she enters the trance.  Barring an attack or the arrival of a specific 
+person (as explained below),  the Jedi will stay in the trance for the 
+chosen duration.   The Jedi must make a difficult control  roll for 
+every four hours in the trance or she will have to come out of the 
+trance.
+	When the Jedi leaves this state,  she gets a +10 modifier to all 
+Force skill rolls for a period of time equal to the time spent in rage.   
+The character take son die of damage for every two hours they were in 
+the trance after the bonus has subsided.
+	Like emptiness,  this power makes characters oblivious to their 
+surroundings; they cannot move.  Unlike emptiness,  however, characters 
+this state strongly exude the Dark Side.  The internal focusing does 
+provide some protection for the character against others using the force 
+on them.  Add the rage control  roll to the difficulty roll when another 
+attempts to use a force power on someone in rage.
+	Characters hunger and dehydrate twice as fast normally when using 
+rage  and are even more susceptible to damage (-1D to Strength  to 
+resist damage from physical and energy attacks while in this state).  
+Characters who plan on an extended trance will need intravenous 
+nourishment.
+	In rage,  the character is less oblivious to her surroundings than 
+a corresponding Jedi in emptiness.   For example, any physical contact 
+by a living being may revive them (the Jedi must make a Difficult 
+control  roll to cease the attack before the offending character has 
+been killed.
+	A character using rage  can choose to anticipate the arrival of a 
+foe. They must make a Difficult sense  roll (modified by relationship) 
+with the life sense  power at the time they enter rage.  This will allow 
+them to instantly awaken (Easy control  roll) if the expected person 
+comes within five meters of the person in rage.  
+
+
+	Example:  While preparing  to transfer his life to a new clone 
+body, Palpatine expects an attack from Luke Skywalker.  When he enters 
+rage, he must also make a Difficult sense roll using the life sense 
+power to anticipate Luke entering the Clone Chamber. The difficulty is 
+20, +7 for relationship (they are acquaintances)  to equal 27, plus 
+Palpatine suffers a penalty for having to make two skill uses in one 
+round:  the sense roll for life sense and the control roll for rage.  
+Palpatine's roll is 44, so when Luke enters the chamber, Palpatine 
+instantly wakes from his rage and confronts  Luke...
+
+	This power may be used in a preparation ritual for the transfer 
+life   power. When a raged   person uses transfer life,  the original 
+body is instantly and totally consumed by the Dark Side, often bursting 
+into unholy blue flames.  For every three points by which the control  
+roll exceeded the rage  difficulty,  the body does 1D damage upon 
+explosion (three meter blast radius).
+
+	Example:  Palpatine,  while confronting Luke in the Clone Chamber,  
+has been in rage for three hours, gaining +10 to all is Force skills.  
+Palpatine's difficulty roll was 20. He rolled a 35.  He successfully 
+uses the   transfer life power and his old body explodes in a 5D damage 
+burst of flame.
+
+
+
+Reduce Injury
+	
+	Control Difficulty:  Moderate for incapacitated characters,  
+Difficult for mortally wounded characters,  Very Difficult for Dead 
+Characters.
+	Required  Powers:  Control pain
+	Note:  Spending Force points in this manner - not at the beginning 
+of the round - is  allowed.  Also, it is not always a "selfish" act to 
+save one's life,  so the character might  be able to get the Force point 
+back.  If  the character was fighting to save his friends from certain 
+doom - and if he falls,  they certainly  die - then this could even be 
+considered an heroic action.  It still involves great sacrifice.
+	Effect:  By using this power, a Jedi may call upon the Force to 
+reduce the amount of injury he suffers;  this power is normally only 
+used in desperation because of its long-term repercussions.
+	When the power is successfully used,  The Jedi loses a Force 
+point.  Any injury that is suffered is reduced to a wounded.  If the 
+original injury would have killed the character,  he must choose to 
+suffer a permanent injury of some kind.
+
+	Example:  Luke Skywalker and Darth Vader are fighting in the 
+Emperor's chambers on the new Death Star.  Luke batters down Vader's 
+defenses and makes a killing strike - But Vader uses the  reduce injury 
+power and expends a Force point.  He is now only  wounded, but he loses 
+his hand.
+
+Remain Conscious
+
+	Control Difficulty:  Easy for stunned characters,  Moderate for 
+incapacitated characters,  Difficult for mortally wounded characters.
+	Required Powers:  Control Pain
+	Effect:  Remain conscious  allows a Jedi to remain conscious even 
+when he has suffered injuries which would knock him unconscious.  In 
+game terms,  when a character with this power suffers this kind of 
+injury,  they lose all of their actions for the rest of the round,  but 
+they are still conscious (normal characters automatically pass out).  On 
+the next round,   the character may attempt to activate the power - this 
+must be the first action of that round;  the Jedi cannot even dodge  or 
+parry.
+
+	If the roll is unsuccessful,  the character passes out 
+immediately.  If the roll is successful, the Jedi can do any one other 
+action that he has declared for that round - often the character will 
+attempt control pain so that he will be able to remain conscious.  After 
+that other action has been completed,  the Jedi will lapse into 
+Unconsciousness,  unless he has activated control pain  or done 
+something else that will keep the character conscious.
+ 
+
+Resist Stun
+	
+	Control Difficulty:  Moderate
+	Time To Use:  One Minute
+	This power may be kept "up."
+	Effect:  Resist stun  allows the Jedi to prepare his body to 
+resist the effects of stun damage.  The power must be activated before 
+the character has suffered any damage.
+	Asuccessful result allows the Jedi to resist all stun results 
+except for unconscious  and normal injuries.  An unconscious  result 
+forces the Jedi to drop the power,  and he is considered stunned.   
+Normal injuries (wounded,  incapacitated,  mortally wounded   and killed  
+) are treated normally.
+
+
+Short-Term Memory Enhancement
+
+	"Luke closed his eyes,  reaching inward with the Force.  Short-
+term memory enhancement was one of the Jedi skills he'd learned from 
+Yoda.  The pictures flowed swiftly backward in time:  his walk to the 
+medical wing, his conversation with Wedge, his hunt for a public comm 
+desk ..."
+	
+	Control Difficulty:  Difficult
+	Required Powers:  Hibernation trance
+	Effect:  When a Jedi uses this power,  he or she can replay recent 
+events in order to more carefully examine images and peripheral 
+occurances.  Using the power, a Jedi can freeze images and even scan 
+memory  tracks to recall details that were seen but did 
+not register consciously at the time of observation.
+	In game terms,  this power can be used to alert  a Jedi to 
+information,  items,  other characters,  or anything else that passed 
+before his or her senses within a specific span of time.  In addition,  
+if a gamemaster provided clues or leads to clues the players originally 
+missed or ignored,  this power can be used to recall them.  When players 
+get stuck on a puzzle or a mystery within an adventure,  this power can 
+alert them to possible solutions,  if those solutions were observed 
+earlier in the adventure.
+	How far back a Jedi can remember with this power is determined by 
+the success of his control  skill roll.
+
+			Skill Roll Beats	Memory
+			Dificulty By	Extends Back...
+
+				0-8		Through Current Episode
+				9-20		Through Last Episode
+				21+		Through Last two Episodes
+

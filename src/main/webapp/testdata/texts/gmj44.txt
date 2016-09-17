@@ -1,0 +1,409 @@
+
+Hey, you!  GMJ Reader!  Please let us know what you think.. and if  you
+want to review a game for us, drop us a line!  Thanks..
+
+     GMJ: The first emag on the Net.. "There can only be one!"
+        Super NES * Genesis * 3DO * cd32 * arcades * Jaguar
++==================================================================+
+|     ____                        __  __           _               |
+|    / ___| __ _ _ __ ___   ___  |  \/  | __ _ ___| |_ ___ _ __    |
+|   | |  _ / _` | '_ ` _ \ / _ \ | |\/| |/ _` / __| __/ _ \ '__|   |
+|   | |_| | (_| | | | | | |  __/ | |  | | (_| \__ \ ||  __/ |      |
+|    \____|\__,_|_| |_| |_|\___| |_|  |_|\__,_|___/\__\___|_|      |
+|                                                                  |
+|                   _                              _               |
+|                  | | ___  _   _ _ __ _ __   __ _| |              |
+|               _  | |/ _ \| | | | '__| '_ \ / _` | |              |
+|              | |_| | (_) | |_| | |  | | | | (_| | |              |
+|               \____/\___/ \__,_|_|  |_| |_|\__,_|_|              |
+|                                                                  |
++==================================================================+
+|                                                    _  _   _  _   |
+| Part 3 of our Ultimate MK2 Guide                  | || | | || |  |
+| GMJ Top 5 returns                                 | || |_| || |_ |
+| Why be Raiden or Reptile?  +=====================+|__   _|__   _||
+|                            | April 8 to April 15 |   |_|    |_|  |
++============================+=====================+===============+
+ IF YOU HAVE ACCESS TO Internet Relay Chat (IRC), then join the GMJ
+ Chat Channel, #GMJ.   Tuesdays at 7pm Pacific some of the GMJ Crew
+ will be available to answer your questions.  Industry insiders
+ dropping by too! [Moderated.]
+
+ Ace's Angles
+   What's new, and why Super SF2 Turbo will fail
+ Express Mail
+   Mucho Mail-o, where's-a yours-o?
+ GMJ Top 5
+   Returns..!
+ Ultimate MK2 Guide part 3
+   EVERY SINGLE MOVE, only in GMJ
+          ___          _        ___              _
+         / _ \        ( )      / _ \            | |
+        | |_| | ___ __|/ ___  | |_| |_ __   __ _| | ___  ___
+        |  _  |/ __/ _ \/ __| |  _  | '_ \ / _` | |/ _ \/ __|
+        | | | | (_|  __/\__ \ | | | | | | | (_| | |  __/\__ \
+        |_| |_|\___\___||___/ |_| |_|_| |_|\__, |_|\___||___/
+                                            __/ |
+                                           |___/
+      This episode of Ace's Angles is in memory of Kurt Cobain.  Sometimes
+ life (and death) aren't fair.  Hi gang, it's Ace back again..  and my libido
+ is doing just peachy, thank you.  [Smells Like Teen Spirit reference (tm).]
+      Okay - what has been going on this week..? Word on the inside is that
+ videogame distributors and arcade operators are SICK of Capcom.  3 have goon
+ off-the-record with us, and have said that Capcom is releasing too many
+ 'upgrades' that do almost nothing but cost them money.  They have been burned
+ with SSF2 and many aren't interested in SSF2T.  And I don't blame them at
+ all.  Sorry Capcom, but until you can count to three my money is going into
+ MK2 and NBA Jam Tourney.
+      The scoop on Atari: they love GMJ.  How do we know this?  We were
+ mentioned in Atari's Roundtable on GEnie [it's like IRC for non- Internet
+ users.] Our April Fools joke was mentioned, as was the mag..  and I'd just
+ like to thank Bob Brodie (Director of Communications at ATC) and the check is
+ in the mail.  [Sarcasm, gang!!]
+      Williams has signed on with Nintendo to make the 64-bit Project Reality
+ arcade system.  WMS Industries has signed on with Atari for Jaguar products.
+ Nintendo says that they gave Atari nothing in the lawsuit Atari won.  Star Fox
+ was seen fighting Trevor McFur.  What is this world coming to?
+      Deadline? What's a deadline?....  Our special NBA Jam review section
+ will be in GMJ 45 as we have had a flood of quality writings that need to be
+ shown to the world =] NBA Jam TE is cool, BTW, and you should go and play it
+ *NOW*.  It's a nice change of pace..  no decapitations or anything!
+      Well, that's it for this week..  come visit us on Tuesday Night IRC
+ (see ad located elsewhere in this issue), please! It don't work without your
+ help..  :) Cya next Friday.
+ _____________________________________________________________________
+]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[
+] Innovative Creations                                                [
+] 3730 McClintock Ave #537  +--- +  + +--+ +--+ +--- +--  +--         [
+] Los Angeles, CA 90007     |-    ++  +--+ |-++ |-   +--+ +--+        [
+] (shubert@usc.edu)         +--- +  + |    |  \ +---  --+  --+        [
+]                                  |\ /| +--+ -+- |                   [
+]                                  |   | |--|  |  |                   [
+]                                  |   | |  | -+- +---                [
+]_____________________________________________________________________[
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ Mail, mail mail...  please send more mail.  Thanks!
+
+*** Reader wants more portable coverage
+
+ How about [more?] coverage for portables, especially Sega Game Gear.  It would
+ be nice to have a monthly 'Consumer's Guide' type of thing, telling what is a
+ good deal and what's not.  For example, say if its worth investing in the
+ 32-bit processor for the Genesis or just wait for Saturn.  Or projections on
+ the Jaguar saying if you think it will prosper or die out and whether its
+ worth buying for its present games.  Also which would be the best system to
+ invest in (CD?) or to wait for the Sega VR, or whatever.
+
+ ___                   _     ___
+| _ )_ _ _  _ __ _ _ _| |_  | __|__ _ _  __ _     Bryant Fong
+| _ \ '_| || / _` | ' \  _| | _/ _ \ ' \/ _` |    Los Altos, CA
+|___/_|  \_, \__,_|_||_\__| |_|\___/_||_\__, |    bryant@netcom.com
+         |__/                           |___/
+ [ACE: Hey, Bryant.. nice font in your .sig!  GMJ 46 will have a huge
+       "What to bother with" section, and that's a tenative title.  We
+       are waiting for our Jag review system and until then, we can't
+       really say that system A is better then system B.             ]
+
+
+*** Singe from the edge
+
+ Anthony,
+ Just read GMJ #43.  I realize the whole thing was an April Fool's joke but if
+ you're going to do that, don't say "everything in here is a joke!!!" You
+ really could have seen how many suckers are out there.  It just seems like a
+ waste of time.  Not trying to flame you (well, maybe just a singe...  :-) )
+ but, well, just seemed rather pointless to me! Good luck with the next issue.
+ Hey, you said you wanted e-mail! Later dude........
+
+ Joey
+ From berner@ushs01.ENET.dec.com  Apr  1 13:58:01 1994
+
+*** You guys are pathetic!
+
+ I am writing to you regarding Game Master Journal #43.  I found your "April
+ Fool's joke" to be one of the most tasteless, pathetic displays of careless
+ journalism I have ever had the pleasure of reading.  I look forward to each
+ issue in my mailbox; the only fault I ever find is that it is never long
+ enough.  Thank you for an incredulously stupid and stupifyingly hilarious
+ April 1.  (Sorry, ran out of adjectives, folks.)
+
+ From gnu@theporch.raider.net  Apr  2 17:27:26 1994
+
+ [ACE: Wow - thanks :) ]
+
+ .....................................................................
+ :WE are the only magazine that prints ALL EMAIL sent to us that is  :
+ :not vulgar or obscene.  So.. send your videogame hints, tips + Q's!:
+ :                                                                   :
+ :#   # #####  #   #  ###  #   # #####  ##### #   #  ###  ##### #    :
+ :#   # #      #   # #   # ##  #   #    #     ## ## #   #   #   #    :
+ :#   # ###    #   # ##### # # #   #    ###   # # # #####   #   #    :
+ :# # # #      # # # #   # #  ##   #    #     #   # #   #   #   #    :
+ : # #  #####   # #  #   # #   #   #    ##### #   # #   # ##### #####:
+ :                                           ........................:
+ :shubert@usc.edu       VOICE: 213-743-1877  :                       :
+ :------------------                         :   Without email, GMJ  :
+ :ccd@panix.com                              : can't work!  So tell  :
+ :tnkutasz@ugcs.caltech.edu                  :   us what you think!  :
+ :                                           :                       :
+ :...........................................:.......................:
+
+ *****************************************************************************
+                      Game Master Journal's TOP FIVE LISTS!
+ *****************************************************************************
+ SUPER NES                             SEGA CD
+ =====================================================================
+ Rating      Name of Game                 Rating    Name of Game
+ =====================================================================
+ 4.833       NBA Jam                      4.857     NHL '94
+ 4.600       Secret of Mana
+ 4.504       Zelda III:Link to the Past   4.750     Terminator
+ 4.393       Street Fighter 2 Turbo       4.480     Silpheed
+ 4.338       Final Fantasy 2 (4 [SFC])    4.188     AH3 Thunderstrike
+
+ GENESIS                               GAME BOY
+ ==========================================================================
+ 4.750       NBA Jam                      4.750     Mr. Do!
+ 4.675       NHL '94                      4.375     Link's Awakening
+ 4.600       Shining Force                4.125     Tetris
+ 4.600       PGA Tour Golf 2              3.900     Super Mario Land 2
+ 4.520       Disney's Aladdin             3.833     Metroid II
+
++-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+
+/ _______       Game Master_Journal's      _   _ _       _     _    \
+\|__   __|                | |             | \ | (_)     | |   | |   /
+/   | |_   _  ___  ___  __| | __ _ _   _  |  \| |_  __ _| |__ | |_  \
+\   | | | | |/ _ \/ __|/ _` |/ _` | | | | | . ` | |/ _` | '_ \| __| /
+/   | | |_| |  __/\__ \ (_| | (_| | |_| | | |\  | | (_| | | | | |_  \
+\   |_|___,_|____||___/\__,_|\__,_|\__, | |_| \_|_|\__, |_| |_|\__| /
+/   |_   _|  __ \ / ____|           __/ |           __/ |           \
+\     | | | |__) | |       8pm     |___/           |___/            /
+/     | | |  _  /| |       Pacific Time  +=-=-=-=-=-=-=-=-=-=-=-=-=-+
+\    _| |_| | \ \| |____   in channel    |THIS WEEK:                /
+/   |_____|_|  \_\\_____|  #GMJ          | Atari's survival chances \
++-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=+=-=-=-=-=-=-=-=-=-=-=-=-=-+
+
++-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+
+/  ###  ####  #####  ### #####  ###  #                                      \
+\ #     #   # #     #      #   #   # #                                      /
+/  ###  ####  ###   #      #   ##### #  ####  ##### ####   ###  ####  ##### \
+\     # #     #     #      #   #   # #  #   # #     #   # #   # #   #   #   /
+/ ####  #     #####  ### ##### #   # #######  ###   ####  #   # ####    #   \
+\                                       #  #  #     #     #   # #  #    #   /
+/                                       #   # ##### #      ###  #   #   #   \
++-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+
+                    Ultimate Mortal Kombat Guide part three
+                         Every move for every character
+                               Written by Tempest
+
+ ----------------------MORTAL KOMBAT II-Quick Guide v3.23----------------------
+
+ FC : Full Circle J.M.  !! : Quickly       +  : And (X & Y simultaneously)
+ HC : 1/2 Circle J.M.   St : Start         -  : Then (Do X then Y)
+ QC : 1/4 Circle J.M.   HP : High Punch    () : While (Hold X, do Y, release X)
+ T  : Toward            LP : Low Punch     #$ : Charge (Hold X for # sec, rel.)
+ A  : Away              Bl : Block         #X : Do X the designated # times
+ U  : Up                HK : High Kick     .. : Repeat last button rapidly
+ D  : Down              LK : Low Kick      [] : Optional
+
+ ------------------------------------------------------------------------------
+
+                       --BASIC ATTACKS (All Characters)--
+
+      STANDING     CROUCHED      CLOSE      + AWAY    JUMPING (Rising/Falling)
+HP > Face punch  Uppercut      Head blow  Face Punch   Hop punch/Flying punch
+LP > Body punch  Crouch punch  Throw      Body Punch   Hop punch/Flying punch
+Bl > Block high  Block low     Block      Bl. Throws      (Not Applicable)
+HK > Face kick   Ankle kick    Knee       Roundhouse    Hop kick/Flying kick
+LK > Chest kick  Crouch kick   Knee       Sweep         Hop kick/Flying kick
+
+* Use Bl(A+D) to crouch and block throws. CPU can always throw you however.
+* Close attacks differ: For example: Jax (HP), Cage (HK/LK), & Baraka (2HK).
+* Turn-Around Punch/Kick: Jump over opponent, HP, LP, HK, or HK.
+-------------------------------------------------------------------------------
++ FATAL:Pit/S. means a Pit II or Kombat Tomb fatality only. After using a
+  Kombat Tomb fatality, optionally hold down on both joysticks to make the
+  body fall from the spikes. Close range for both.
++ Dead Pool fatality is LP+LK(D+HP)-[D both joysicks]. Close range.
++ Babality/Friendship: Do not use HP or LP in the 2nd winning round. Any range.
++ {Any/Edge/Sweep/Jump/Close} is the range of a normal fatality.
++ [Air]: Move MAY be done in the air. <Air>: Move MUST be done in the air.
+-------------------------------------------------------------------------------
+     --SPECIAL ATTACKS & FINISHING MOVES (FATAL=Fatality / FR=Friendship)--
+
+*-LIU KANG-*                               *-KUNG LAO-*
+Standard Red Bolt : 2T-HP [Air]            Hat Throw       : A-T-LP-[U/D]
+Low Red Bolt      : 2T-LP                  Aerial T. Kick  : D+HK <Air>
+F. Thrust Kick    : 2T-HK                  Aura Spin       : Bl(2U)-LK[..]
+Bicycle Kick      : 4$LK                   Teleport        : D-U  !!
+FATAL:Dragon T.B. : D-T-2A-HK {Close}      FATAL:Hat Split : 3T-LK {Sweep}
+FATAL:Cartwheel & : Bl(FCA) {Sweep}        FATAL:Hat Decap : LP(A-T)-U {Edge}
+      Uppercut                             FATAL:Pit/S.    : 3T-HP
+FATAL:Pit/S.      : A-2T-LK                BABALITY        : 2A-2T-HK
+BABALITY          : 2D-T-A-LK              FR:Rabbit       : 3A-D-HK
+FR:Disco Dance    : T-3A-LK
+                                           *-REPTILE-*
+*-JOHNNY CAGE-*                            Acid Spit       : 2T-HP
+High Green Bolt  : HCA-HP                  Force Ball      : 2A-HP+LP
+Low Green Bolt   : HCT-LP                  Slide Kick      : A+LP+Bl+LK
+Shadow Uppercut  : A-D-A-HP                Invisibility    : Bl(2U-D)-HP
+Shadow Kick      : A-T-LK                  FATAL:Invisible : 2T-D-HK while
+Splits Punch     : Bl+LP                         Torso Rip   invisible {Close}
+FATAL:Torso Tear : 2D-2T-LP {Close}        FATAL:T. Decap  : 2A-D-LP {Jump}
+FATAL:Uppercut   : 2T-D-U-[D+Bl+LP+LK]     FATAL:Pit/S.    : D-2T-Bl
+      Decap(s)     {Close}                 BABALITY        : D-2A-LK
+FATAL:Pit/S.     : 3D-HK                   FR:Buy a Doll   : 2A-D-LK
+BABALITY         : 3A-HK
+FR:Signed Photo  : 4D-HK                   *-SHANG TSUNG-*
+                                           One F. Skull     : 2A-HP
+*-SUB-ZERO-*                               Two F. Skulls    : 2A-T-HP
+Ice Blast      : QCT-LP                    Three F. Skulls  : 2A-2T-HP
+Ground Freeze  : QCA-LK                    =MORPHS:Each last 17 seconds=
+SUB-ZERO (Continued)                                   SHANG TSUNG (Continued)
+Slide Kick     : A+LP+Bl+LK                Morph:Liu Kang   : A-2T-Bl
+FATAL:Freeze & : 2T-D-HK -> T-D-2F-HP      Morph:Kung Lao   : A-D-A-HK
+      Shatter    {Sweep}     {Close}       Morph:J. Cage    : 2A-D-LP
+FATAL:Grenade  : LP(2A-D-T) {Edge}         Morph:Reptile    : Bl(U-D)-HP
+FATAL:Pit/S.   : D-2T-Bl                   Morph:Sub-Zero   : T-D-T-HP
+BABALITY       : D-2A-HK                   Morph:Kitana     : 3Bl
+FR:Buy a Doll  : 2A-D-HK                   Morph:Jax        : D-T-A-HK
+                                           Morph:Mileena    : 2$HP
+*-KITANA-*                                 Morph:Baraka     : 2D-LK
+Fan Throw       : 2T-HP+LP [Air]           Morph:Scorpion   : Bl(2U)
+Fan Swipe       : A+HP                     Morph:Raiden     : D-A-T-LK
+Fan Lift        : 3A-HP                    FATAL:Life Drain : Bl(U-D-U)-LK
+Aerial T. Punch : HA-HP                                       {Close}
+FATAL:Inflation : LK(2F-D-T) {Close}       FATAL:Vapor E.   : 2$HK {Sweep}
+FATAL:F. Decap  : 3Bl-HK {Close}           FATAL:Kintaro S. : 30$LP {Sweep}
+FATAL:Pit/S.    : T-D-T-HK                 FATAL:Pit/S.     : Bl(2D-U-D)
+BABALITY        : 3D-LK                    BABALITY         : A-T-D-HK
+FR:Cake         : 3D-U-LK                  FR:Rainbow       : 2A-D-T-HK
+
+*-JAX-*                                    *-MILEENA-*
+Energy Wave        : HCA-HK                Energy Sais     : 2$HP [Air]
+Ground Smash       : 3$LK                  Teleport Kick   : 2T-LK
+Gotcha Grab        : 2T-LP..               G. Roll Attack  : 2A-D-HK
+Quad Slam          : Throw-HP..            FATAL:Deflation : 2$HK {Close}
+Aerial Backbreaker : Bl <Air>              FATAL:Sai Stab  : T-A-T-LP {Close}
+FATAL:Arm Rip      : 4Bl-LP {Close}        FATAL:Pit/S.    : T-D-T-LK
+FATAL:H.C. Decap   : LP(3T) {Close}        BABALITY        : 3D-HK
+FATAL:Pit/S.       : 2U-D-LK               FR:Flower       : 3D-U-HK
+BABALITY           : D-U-D-U-LK
+FR:Paper Dolls     : 2D-2U-LK              *-SCORPION-*
+                                           Harpoon        : 2A-LP
+*-BARAKA-*                                 Teleport Punch : QA-HP [Air]
+Blue Bolt      : QA-HP                     Leg Grab       : HCA-LK
+Blade Swipe    : A+HP                      Aerial Throw   : Bl <Air>
+B. Shredder    : 3A-LP                     FATAL:Torch    : Bl(2U)-HP {Sweep}
+FATAL:Skewer   : A-T-D-T-LP {Close}        FATAL:Toasty!! : 2D-Bl(2U)-HP {Any}
+FATAL:B. Decap : Bl(4A)-HP {Close}         FATAL:2xSlice  : HP(D-3T) {Close}
+FATAL:Pit/S.   : 2T-D-HK                   FATAL:Pit/S.   : D-2T-Bl
+BABALITY       : 3T-HK                     BABALITY       : D-2A-HK
+FR:Gift        : Bl(U-2T)-HK               FR:Buy a Doll  : 2A-D-HK
+
+*-RAIDEN-*
+Lightning Bolt  : QCT-LP                   Torpedo B. Push : 2A-T [Air]
+Shock Hold      : 4$HP                     Teleport        : D-U  !!
+FATAL:Shock &   : 6$LK-Bl..+LK..           FATAL:Uppercut  : 8$HP {Close}
+      Explode     {Close}                  FATAL:Pit/S.    : Bl(3U)-HP
+BABALITY        : 2D-U-HK                  FR:Kidd Thunder : D-A-T-HK
+
+===============================================================================
++ MK II SECRETS: A) Jade: Win one round using LK only in the match before the
+  question mark. B) Smoke: On the Portal Stage, get a "Toasty!!" and push Start
+  and Down simultaneously. C) Noob Saibot: Get 50 consecutive wins. D) Pong
+  game: Reach battle 250. E) Random select: Up+Start at the fighter selection
+  screen at the original selector position(s). F) No throws: (2P match only)
+  Down+HP (both joysticks) after the fighters have been selected. G) Hold Down
+  after preforming the Dead Pool fatality to hear a voice yell "almost" or
+  something like that.
++ DISCLAIMER: All information contained should be treated as unconfirmed.
+  This guide assumes MK II version 3.1 or above. All moves from MK2 FAQ.
+===============================================================================
+****
+ Why would anyone play Reptile?
+ :: Replies to last week's question
+****
+
+From alumn132@whscdp.whs.edu  Ukn Apr  1 23:34:18 1994
+
+ That "Why would anybody play Reptile?" gibe hit a nerve with me.  I find Rep a
+ very enjoyable char to play.  First of all, there aren't many Reps around, so
+ a good Rep is a surprise to see.  (I'm not that good yet, but I'm working on
+ it) Reptile is also good at aggravating people (Invisibility + a TAK is very
+ annoying) and is good at playing defensive if played correctly.  His acid spit
+ is lacking damage wise and Sub-0 can punish Rep for shooting it, but it is a
+ good anti-air attack and can be thrown into a combo here and there.
+
+ Reptile's forceball is a powerful weapon, if used correctly.  It is tough to
+ learn how + when to use it, but is intimidating and can yield a free uppercut
+ if it connects.  "But it can be jumped" you might say, but a good Rep can
+ always back up a forceball with that annoying ninja roundhouse.  If you fling
+ a FB and your victim sits there blocking like a dope, you throw.  Any way you
+ look at it, a FB is almost guaranteed to do damage if released right.
+
+ Invisibility is also annoying if used correctly.  Good Reps know how to keep
+ their position hidden for extended periods of time and get a flawless or two.
+ Invisibility often sends one's opponent into "panic mode", and they leave
+ themselves wide open for a few well-placed attacks.  Invisibility is also
+ useful for a cool fatality.  :)
+
+ Reptile may not be the most pow'fo guy, but he is a challenge to learn, and a
+ challenge to defeat if that Rep player has sunk plenty of $ into learning him.
+ He's also just plain cool, and runs a doll store on the side.  :)
+
+ I could go on for a while yet, but I'd start repeating myself, and I might
+ start repeating myself.  :)
+
+ Beowulf the abbreviator who supports intelligent MKII debates
+
+****
+ Why would anyone use Raiden?
+ :: Replies to last week's question
+****
+ From: molsen@ux4.cso.uiuc.edu
+
+ I must say that the biggest reason I use Raiden is out of loyalty.  I mean, he
+ was sooooo cool in MK I, and now he's been reduced to wearing the
+ Wal-Mart/Burger World apron.  But, I enhjoyed playing him in the original,
+ and still have fun platying him now.  Sure, he has the weakest throw and all,
+ but the in-the-air flying attack is cool.  I do agree he has been weakened to
+ a most cheese like degree, but I live close to Wisconsin anyways.
+ Thanks......
+
+****
+ OKAY - why would anyone use Kung Lao or Johnny Cage?  PLEASE send your
+ replies, and if it's the best one we get, we'll print it!
+****
+
++-------------------------------------------------------------------+
+|                                                                   |
+| IN THE NEXT      * SURVEY of all of GMJ's readers!                |
+|    ISSUE OF...   * NBA Jam section                                |
+|                                                                   |
+|   GAME MASTER    * Fiction contest, Ace's Angles                  |
+|     JOURNAL      * Much, much more!                               |
+|                                                                   |
++-------------------------------------------------------------------+
+
+Producer: Anthony Shubert       Online Layout Editor: Anthony Shubert
+Head Writing Staff:                Contributors:
+  HOME SYSTEMS  Reny Falzarano       Mr. Sims, the Pepperidge Farmer,
+ HEAD REVIEWERS Instigator                 Mr. Mojo Risin', Aquarius,
+  FUTURE WAVE   Tanya Kutasz                  Sai-Blade, Matrix, Shez
+CONTRIBUTING ED David Rubin
+
+We are not affiliated with or endorsed by the followig companies:
+Nintendo of America, Sega Enterprises, Turbo Technologies (NEC),
+Atari Corp., Atari Games, SMSG, or any other videogaming company.
+
+Product names are either (c) or trademarks of their respective
+companies, and the non-marking of such product is not a challenge to
+its status.
+
+Ace's Angles, Chronicle, Express Mail, Warp Zone, and all content are
+(c) 1990, 1991, 1992, 1993, 1994 Innovative Creations
+
+:: Some ASCII/ANSI work created with use of 'TheDraw' SW program ::
+:: Some ASCII work created with use of 'Figlet' freeware program ::
+

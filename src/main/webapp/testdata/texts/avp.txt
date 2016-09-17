@@ -1,0 +1,547 @@
+           _         _          _      ___       _   _ 
+          / \       | |        | |    |  _|     | | | |         (TM)
+         / _ \      | |        | |    | |_      |  \| |
+        |  _  |     | |        | |    |  _|     | |\  |
+        | | | |     | |__      | |    | |_      | | | |
+        |_| |_|     |____|     |_|    |___|     |_| |_|
+ ______  ______  ______ ______ VS.____  _______  _____  ______
+|   _  \|   _  \|   ___|   _  \ /  _  \|__   __|/  _  \|   _  \ (TM)
+|  |_|  |  |_|  |  |___|  | |  |  |_|  |  | |  |  | |  |  |_|  |
+|   ___/|   _  /|   ___|  | |  |   _   |  | |  |  | |  |   _  /
+||||    |||| \ \||||___|  |_|  |||| |  |  |||  ||||_|  |||| \ \
+||||    |||| |||||||||||||||||/|||| ||||  |||   \|||||/|||| ||||
+
+
+Alien vs. Predator Mini FAQ Version 2.1 10-06-94
+By: Rey Kanzaki (rkanzaki@netcom.com)
+
+SPECIAL THANKS TO THE AUTHOR OF AVP FAQ VERSION 1.0:
+     Mike "BBC" Long (mlong@world.std.com)
+
+MANY THANKS TO ALL WHO MADE THIS POSSIBLE:
+      Jeff W. Alexander (jwa@WLV.IIPO.GTEGSC.COM)
+      Alexander Wong (awong@emerald.tufts.edu)
+      Kevin Michael Malone (kmalone@falcon.tamucc.edu)
+      Herbert Tin Hoy Hu (hoy@uhunix.uhcc.hawaii.edu)
+      Devin Wong (devin@qedbbs.com)
+      m.a.hall (M.A.Hall@bradford.ac.uk)
+      Peter Yeung (yeung@staff.cs.su.oz.au)
+      Adam Tennant (ahriman@ccu1.auckland.ac.nz)
+      Alain Hoang (hoanga@rpi.edu)
+      Omega Red (omega%vikings@bts.com)
+      Van Hoang Nguyen (vanhn@ocf.berkeley.edu)
+      Andy Eddy (vidgames@netcom.com)
+      Albert Disanto (space port 11707)
+      Glenda (space port 11707)
+      Rick (space port 11707)
+      Scott (space port 11707)
+
+Send corrections, comments, suggestions to rkanzaki@netcom.com.
+
+
+
+
+
+1.  Story.
+
+Released by Capcom in the summer of 1994, Alien vs. Predator is
+loosely based on the movies _Alien_ and _Predator_ and is the latest
+of the Final-Fight genre games. The setting is San Drad, California,
+the largest city on the West Coast. The Wayland Yutani Corporation is
+developing biological weapons. An emergency situation occurs, and in
+72 hours, San Drad is overrun by Aliens. Incredibly outnumbered, two
+heroes, Dutch Schaefer and Linn Kurosawa, fight the Aliens in a
+losing battle. And when all seems lost, Predators materialize and side
+with the heroes to join in the "Hunt".
+
+The "Hunt" begins. Round 1 is "City of Despair". The fight takes place
+in the city amid hordes of Aliens. The boss is the Alien guard
+Chrysalis. Round 2 is "War in the Underpass". The fight continues in
+the sewers beneath the city. The boss is the fast and deadly Razor
+Claws. Round 3 is "Forced Assault". Atop a moving APC, the hunters
+shoot at Aliens as they storm their way to the Queen's liar. The boss
+is the agile Arachnoid. Round 4 is "Assault on a Queen". The fight
+takes the hunters directly to the Queen. The boss is the first Alien
+Queen. Round 5 is "Secrets". Investigating the crash of an aerial
+transport, the hunters find that the Aliens are part of a biological
+weapons development. The boss is a military service Power Loader.
+Round 6 is "Nightmare in the Lab". The fight is now inside the
+laboratories. The boss is the powerful "Mad Predator". Round 7 is
+"Hunt's End". The fight takes place aboard a space craft in outer
+space. The boss is the second Alien Queen.
+
+Having defeated the Alien Queen, the hunters board a escape pod and
+direct the space craft to crash on the base and explode on impact. The
+resulting explosion destroys all remaining Aliens. Then back on the
+planet, the Predators give the heroes the Alien Queen's tail hook. The
+Predators leave as the heroes wonder why they helped them.
+
+Note: Round 6, "Nightmare in the Lab", has a special stage where
+characters must destroy a control box. Failure to destroy it in 20
+seconds results in a crash, inflicting damage to the characters.
+
+
+
+
+
+2. Characters.
+
+|-Predator Warrior----------------+-Dutch Schaefer-------------------|
+|                                 |                                  |
+|   Favorite Weapon: Spear        |   Favorite Weapon: Anything he   |
+|   Gun: Shoulder Cannon          |   can get his hands on           |
+|                                 |   Gun: Smart Gun                 |
+|   A proud leader, he seeks      |   Abandoned by his superiors,    |
+|   both prey to hunt, and kin    |   he fights because it is what   |
+|   who have gone missing on      |   he knows ... and loves.        |
+|   this world.                   |                                  |
+|                                 |                                  |
+|   Speed: ******                 |   Speed: ***                     |
+|   Power: ****                   |   Power: **********              |
+|   Skill: *****                  |   Skill: *****                   |
+|                                 |                                  |
+|   A warrior from the stars      |   A cyborg created to fight      |
+|   who lives for combat. He      |   extraterrestials. He lost      |
+|   searches the galaxy for       |   his right arm in the 2nd       |
+|   worthy game to hunt.          |   Alien War, and has since had   |
+|   Equipped with powerful        |   it replaced with a smartgun    |
+|   weapons, his honor will not   |   rig. He lives only to avenge   |
+|   let him take unfair           |   himself against the aliens!    |
+|   advantage during a hunt.      |                                  |
+|                                 |                                  |
+|-Linn Kurosawa-------------------+-Predator Hunter------------------|
+|                                 |                                  |
+|   Favorite Weapon: Katana       |   Favorite Weapon: Halberd       |
+|   Gun: Large Caliber Pistol     |   Gun: Shoulder Cannon           |
+|                                 |                                  |
+|   Honor bound to defend those   |   A berserker, feared even by    |
+|   who betrayed her, she still   |   his own people. For him the    |
+|   prays that it was a           |   hunt is all.                   |
+|   mistake.                      |                                  |
+|                                 |                                  |
+|   Speed: ******                 |   Speed: ******                  |
+|   Power: **                     |   Power: *****                   |
+|   Skill: **********             |   Skill: ****                    |
+|                                 |                                  |
+|   A cyborg who lead the 13th    |   A hunter from beyond. This     |
+|   Colonial Marine Corps. She    |   young warrior seeks to prove   |
+|   is a master of ancient        |   himself by hunting the most    |
+|   martial arts which she        |   dangerous creatures known.     |
+|   combines with her super       |   He will destroy himself        |
+|   strength for lethal effect.   |   rather than be defeated.       |
+|   Always equipped with a        |                                  |
+|   Japanese Katana, the blade    |                                  |
+|   represents her soul.          |                                  |
+|_________________________________|__________________________________|
+
+
+
+
+
+3.  Weapons.
+
+The Predators are armed with shoulder cannons. The cannon fires single
+shots. On the ground, the cannon automatically targets the first enemy
+in the line of sight but cannot seem to track Chest Busters, Face
+Huggers, and the first Alien Queen. In the air, the cannon initially
+fires in the direction of the joystick, but the cannon's auto-tracking
+takes over almost immediately. Direct hits result in explosions
+affecting the target and other enemies near it. Those affected are
+enveloped in flame and are knocked down (except Alien Queens and Power
+Loaders). The reload status bar indicates firing availability. Each
+time the cannon is fired, the reload status bar decreases. If the
+reload status bar is totally depleted, the cannon has overheated,
+otherwise the reload status bar continuously refills. The cannon can
+QUICKLY overheat. The Warrior's native weapon is the spear, and the
+Hunter's native weapon is the halberd. They cannot use other melee
+weapons. They simply throw them.
+
+Schaefer is armed with a smart gun rig on his arm. He fires a barrage
+of smart gun bullets. On the ground, he fires by waving his arm up and
+down covering all angles in the direction he is facing. In the air, he
+fires according to the joystick direction. The reload status bar
+indicates firing availability. Each time he fires, the reload status
+bar decreases. If the reload status bar is totally depleted, the gun
+has overheated, otherwise the reload status bar continuously refills.
+Schaefer carries no melee weapons, but he can use ANY weapon that he
+picks up, including the Warrior's spear, the Hunter's halberd, and
+Linn's katana. 
+
+Linn is armed with a large caliber automatic pistol. She fires a
+stream of pulse gun bullets. On the ground, she fires an initial burst
+striking the ground and then proceeds to shoot horizontally in the
+direction she is facing. In the air, she fires according to the
+joystick direction. The reload status bar indicates firing
+availability. Each time she fires, the reload status bar decreases.
+Unlike the Predators or Schaefer, Linn does not have continuous
+refill. When the reload status bar is depleted, she must stop and
+reload her gun. Reload occurs immediately after depletion, even when
+surrounded by enemies. During reload, she is COMPLETELY VULNERABLE.
+Linn's native weapon is the katana. She cannot use other melee
+weapons. She simply throws them.
+
+Other Weapons:
+Super Cartridge: A character picking up this item can continuously
+           use his weapon to fire unlimited amount of rounds in a ten
+           second period. Super cartridges are found in some
+           containers and also appear whenever a player joins a game
+           in progress.
+
+Knife:     Basic weapon that affects all enemies in the line of
+           projection. This weapon is simply picked up and thrown. If
+           it hits a wall, it falls to the ground.
+
+Disc:      When thrown, the disc returns to the thrower along the line
+           of projection. If the thrower is not on the same horizontal
+           plane as the disc during its return, the disc will travel
+           off the screen and is lost. The disc is capable of knocking
+           down enemies with a single hit. Linn can use the disc to
+           hit enemies on the ground. If it hits a wall, it falls to
+           the ground.
+
+Flame Thrower: Use with care. Each blast lasts about a second, leaving
+           your backside vulnerable. This weapon is short-lived but is
+           very effective against hordes.
+
+Pipe:      A simple but effective weapon. Schaefer is the only one who
+           can use it to repeatedly smash enemies. The Predators and
+           Linn simply throw it. If it hits a wall, it falls to the
+           ground.
+
+Pulse Gun: A very effective weapon that bombards enemies with
+           constant fire. It has long range and is useful against
+           bosses. The bullets do not go through enemies.
+
+Smart Gun: Improvement over the Pulse Gun. More firepower. Unlike the
+           pulse gun, the smart gun shoots bullets that go through
+           enemies, affecting all in the line of fire.
+
+Hand Grenade: Powerful hand-thrown weapons. The explosion affects the
+           target and other enemies near it. Those affected are
+           enveloped in flame and are knocked down (except Alien
+           Queens). This weapon is very effective against Power
+           Loaders. If an enemy soldier is hit before he throws a
+           grenade, the fallen grenade can be picked up and used.
+           Grenades hit in mid-air can also be picked up and used.
+
+Grenade Launcher: Improvement over hand grenades. This is a very
+           powerful weapon. If the grenade hits, the following
+           explosion propagates to enemies that are in the direction
+           of firing. If fired from one end of the screen, one direct
+           hit is capable of enveloping in flames all enemies on
+           screen.
+
+
+
+
+
+4.  Items.
+
+There are numerous items placed throughout the game to aid you in your
+fight. Some items restore partial health, and some simply increase
+your score. The items are stored in some form of container, but be
+cautious, some containers store Aliens.
+
+|---------------------------------+----------------------------------|
+|   Item:      Points:  Health:   |   Item:                Points:   |
+|---------------------------------+----------------------------------|
+|   Soda Can   10,000    ?        |   Amber                 2,000    |
+|   Hot Dog              15%      |   Amethyst              2,000    |
+|   Salad      10,000    ?        |   Aquamarine            4,000    |
+|   Turkey     25,000    ?        |   Emerald               8,000    |
+|   Ham                  35%      |   Necklace              6,000    |
+|   Hamburger  15,000    30%      |   Ingot                20,000    |
+|   Beef Steak           20%      |   Lapis Lazui           8,000    |
+|   Cheese               20%      |   Ring                 10,000    |
+|   Meat                 35%      |   Topaz                 2,000    |
+|   Medicine   50,000   100%      |                                  |
+|   Chicken              25%      |   Radio                10,000    |
+|   Lobster              40%      |   Helmet               10,000    |
+|   Sea Breen  40,000    ?        |                                  |
+|   Porker     25,000    40%      |                                  |
+|   Pizza                ?        |                                  |
+|_________________________________|__________________________________|
+
+
+
+
+
+5.  Moves List.
+
+|-Legend--------------------------+----------------------------------|
+|   Joystick Controls             |   Character faces right.         |
+|    O  O  O                      |    A  = Weapon                   |
+|     \ | /                       |    B  = Attack                   |
+|    O- Q -O                      |    C  = Jump / Dash              |
+|     / | \                       |   ',' = "Followed by"            |
+|    O  O  O                      |   '*' = "Hold button"            |
+|                                 |         Ex: 'A*B' means press    |
+|                                 |         A and hold, press B      |
+|_________________________________|__________________________________|
+
+|-Predator Warrior---------------------------------------------------|
+|   The Warrior's normal attack pattern is three spear swipes        |
+|   followed by a stationary pole vault-like kick. This final kick   |
+|   has just a tad less range than the spean swipes, and sometimes   |
+|   misses the target. If weaponless, he punches instead. If he is   |
+|   hit by an enemy immediately behind him while attacking, he will  |
+|   execute a reverse sweep.                                         |
+|--------------------------------------------------------------------|
+|   -O  C                         Dash                               |
+|                                 (Moves about 1/2 screen width)     |
+|                                                                    |
+|   Dash,  B                      Dash Kick                          |
+|                                                                    |
+|   Dash,  |  B                   Dash Knee                          |
+|          O                                                         |
+|                                                                    |
+|   After initiating a Dash Kick, it is possible to land multiple    |
+|   kicks by further pressing the ATTACK button each time the        |
+|   Warrior connects with a target. Furthermore, the Warrior will    |
+|   rebound from connection in the current direction of the          |
+|   joystick, making it possible to dash into a group of aliens,     |
+|   kick several, and then bounce out without ever touching the      |
+|   ground.                                                          |
+|                                                                    |
+|   After initiating a Dash Knee, it is possible to turn it into a   |
+|   Dash Lunge Punch by pressing the ATTACK button once upon         |
+|   connecting with a target.                                        |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   O-  C                         Backward Hop                       |
+|                                 (Dash Kick and Dash Knee work      |
+|                                 too, but are awkward)              |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   |  C                          Short Slide                        |
+|   O                                                                |
+|                                                                    |
+|   \   C                         Long Slide                         |
+|    O                                                               |
+|                                                                    |
+|--------------------------------------------------------------------|
+|  Jump,  |  C                    Spear Dive                         |
+|         O                       (If he is without his spear or     |
+|                                 is holding another weapon, he      |
+|                                 executes a diving kick.            |
+|                                 Repeatedly pressing JUMP results   |
+|                                 in multiple hits. He is            |
+|                                 momentarily vulnerable after       |
+|                                 execution)                         |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   -O                            Grab                               |
+|                                 (Alien Queens and Power Loaders    |
+|                                 are immune to grabs)               |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   The following moves can be performed after a successful grab.    |
+|                                                                    |
+|   Center Joystick, Press B      Pummel                             |
+|   Repeatedly                                                       |
+|                                                                    |
+|   Jump,  |  B                   Ground Smash                       |
+|          O                                                         |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   |  O  B                       Flying Kick                        |
+|   O  |                          (This move is more defensive       |
+|                                 than offensive. It moves him a     |
+|                                 good distance and can hit          |
+|                                 several enemies)                   |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   Any two buttons               Escape Move                        |
+|                                 (He crouches and twirls his        |
+|                                 spear above his head. Without      |
+|                                 his spear, he hops and fires       |
+|                                 straight down, even when his       |
+|                                 weapon has overheated. This move   |
+|                                 drains energy for each enemy       |
+|                                 affected)                          |
+|                                                                    |
+|____________________________________________________________________|
+
+|-Dutch Schaefer-----------------------------------------------------|
+|   Schaefer's normal attack pattern is four punches. If he picks    |
+|   up any melee weapon, he will keep it and swing it repeatedly.    |
+|   If he is hit by an enemy immediately behind him while            |
+|   attacking, he will execute a reverse sweep.                      |
+|--------------------------------------------------------------------|
+|   -O  C                         Rush                               |
+|   (Also, center joystick        (Moves about 1/2 screen width)     |
+|   and tap C repeatedly)                                            |
+|                                                                    |
+|   Rush, B                       Rush and Punch                     |
+|   (Also, C * B)                                                    |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   \   C                         Slide                              |
+|    O                                                               |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   -O                            Grab                               |
+|                                 (Alien Queens and Power Loaders    |
+|                                 are immune to grabs)               |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   The following moves can be performed after a successful grab.    |
+|                                                                    |
+|   Center Joystick, Press B      Pummel                             |
+|   Repeatedly                                                       |
+|                                                                    |
+|   -O  B                         Suplex                             |
+|                                                                    |
+|   C * B                         Ground Smash                       |
+|                                 (Schaefer is immune to ALL         |
+|                                 attacks when executing this        |
+|                                 move)                              |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   |  O  B                       Rising Knee                        |
+|   O  |                          (The descent is slow, and it can   |
+|                                 leave him vulnerable)              |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   Any two buttons               Escape Move                        |
+|                                 (He overloads him arm and spins    |
+|                                 in place while sparks fly. This    |
+|                                 move drains energy for each        |
+|                                 enemy affected)                    |
+|____________________________________________________________________|
+
+|-Linn Kurosawa------------------------------------------------------|
+|   Linn's normal attack pattern is four Karate moves followed by    |
+|   a katana slice. Without her katana, she will only do four        |
+|   Karate moves. If she is hit by an enemy immediately behind her   |
+|   while attacking, she will execute a reverse sweep.               |
+|--------------------------------------------------------------------|
+|   If Linn's air attacks connect, she can rebound and execute       |
+|   another air attack. If executing a Jump Kick, she will rebound   |
+|   in the direction of the joystick. If executing a Stab she will   |
+|   rebound up. Repeated Stabs usually result in an Air Throw. She   |
+|   can also rebound off the walls.                                  |
+|                                                                    |
+|   Jump,  B                      Jump Kick                          |
+|                                                                    |
+|   Jump,  |  B                   Jumping Stab                       |
+|          O                      (If she is without her katana or   |
+|                                 is holding another weapon, she     |
+|                                 executes a Jump Kick)              |
+|                                                                    |
+|   Jump,  B                      Air Throw                          |
+|                                 (She must overlap with an Alien.   |
+|                                 She can also throw Aliens just     |
+|                                 when they are dropping from        |
+|                                 above)                             |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   \   C                         Slide Kick                         |
+|    O                                                               |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   Tap Joystick Forward Twice    Iaikiri                            |
+|                                 (If she is without the katana or   |
+|                                 is holding another weapon, she     |
+|                                 executes a roundhouse kick)        |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   Hold B For 2 Seconds, Then    Soukeiha [Double Power Wave]       |
+|   Release                       (She may freely move and use the   |
+|                                 SHOOT and JUMP buttons while       |
+|                                 charging. Even firing a picked     |
+|                                 up weapon will charge her bolt,    |
+|                                 often resulting in a discharge     |
+|                                 when the weapon clip is emptied    |
+|                                 and the button is released)        |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   |  O  B                       Koeikyaku [Tiger Shadow Kick]      |
+|   O  |                          (It also affects enemies on the    |
+|                                 ground)                            |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   Any Two Buttons               Senpuzan [Hurricane Slice]         |
+|                                 (She jumps into the air,           |
+|                                 spinning with her katana           |
+|                                 extended. She can do this in       |
+|                                 place or combined with a leap to   |
+|                                 one side. The leap can be          |
+|                                 directed by using the joystick     |
+|                                 when the buttons are pressed.      |
+|                                 Without her katana, she stays put  |
+|                                 and kicks the legs from under      |
+|                                 everything around her. This move   |
+|                                 drains energy for each enemy       |
+|                                 affected)                          |
+|                                                                    |
+|____________________________________________________________________|
+
+|-Predator Hunter----------------------------------------------------|
+|   The Hunter's normal attack pattern if four halberd swipes. If    |
+|   he is hit by an enemy immediately behind him, he executes a      |
+|   reverse sweep.                                                   |
+|--------------------------------------------------------------------|
+|   -O  C                         Dash                               |
+|                                 (Moves about 1/2 screen width)     |
+|                                                                    |
+|   Dash,  |  B                   Flying Tackle                      |
+|          O                                                         |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   |  C                          Short Slide                        |
+|   O                                                                |
+|                                                                    |
+|   \   C                         Long Slide                         |
+|    O                                                               |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   Jump,  |  C                   Ball Attack                        |
+|          O                      (Repeatedly pressing JUMP          |
+|                                 results in multiple hits. He is    |
+|                                 momentarily vulnerable after       |
+|                                 execution)                         |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   -O                            Grab                               |
+|                                 (Alien Queens and Power Loaders    |
+|                                 are immune to grabs)               |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   The following moves can be performed after a successful grab.    |
+|                                                                    |
+|   Center Joystick, Press B      Pummel                             |
+|   Repeatedly                                                       |
+|                                                                    |
+|   Jump,  |  B                   Ground Smash                       |
+|          O                                                         |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   O  |  B                       Uppercut                           |
+|   |  O                                                             |
+|                                                                    |
+|--------------------------------------------------------------------|
+|   Any Two Buttons               Escape Move                        |
+|                                 (He crouces and spins mini discs   |
+|                                 around himself. Without the        |
+|                                 halberd, he hops and fires         |
+|                                 straight down, even when his       |
+|                                 weapon has overheated. This move   |
+|                                 drains energy for each enemy       |
+|                                 affected)                          |
+|                                                                    |
+|____________________________________________________________________|
+
+
+
+
+
+Under no circumstance do I guarantee the accuracy and correctness of
+this FAQ. This FAQ may be freely copied and distributed. This FAQ is
+available in ftp.netcom.com /pub/vi/vidgames/faqs.
+--
+Rey Kanzaki         : A!MG TSZ FSS Gunnm : "Megami ga matteiru nara
+rkanzaki@netcom.com : MarikoNagai        :  tengoku datte nobotte
+                    : KahoruKohiruimaki  :  miseru sa"
+
+

@@ -1,0 +1,78 @@
+From uwm.edu!linac!att!ucbvax!plitvice.berkeley.edu!erc
+     Thu Mar  5 08:54:59 CST 1992
+Article: 28179 of rec.games.video
+Path: uwm.edu!linac!att!ucbvax!plitvice.berkeley.edu!erc
+From: erc@plitvice.berkeley.edu (Eric Ng)
+Newsgroups: rec.games.video
+Subject: ABOUT THE VIDEO GAME RATINGS REPORT (last modified Feb 1, 1992)
+Message-ID: <44053@ucbvax.BERKELEY.EDU>
+Date: 2 Mar 92 23:07:51 GMT
+Sender: nobody@ucbvax.BERKELEY.EDU
+Reply-To: video@irss.njit.edu
+Organization: University of California at Berkeley
+Lines: 64
+
+ABOUT THE VIDEO GAME RATINGS REPORT
+
+In this report, video games have been rated on a scale of 1 to 10,
+with 10 being the best and 1 being the worst.  For each video game,
+the total number of votes, the average rating, and the vote
+distribution are shown.  New video games are indicated by an `*'
+before their entry.
+
+The vote distribution uses a single character to represent the
+percentage of votes for each ranking.  The following characters codes
+can appear:
+     
+`.' no votes cast        `3' 30-39% of the votes  `7' 70-79% of the votes
+`0'  1-9%  of the votes  `4' 40-49% of the votes  `8' 80-89% of the votes
+`1' 10-19% of the votes  `5' 50-59% of the votes  `9' 90-99% of the votes
+`2' 20-29% of the votes  `6' 60-69% of the votes  `*' 100%   of the votes
+
+To have your votes tallied in the list, send mail to the video game
+ratings server (the address is given below).  In your letter, any line
+beginning with the word `vote' will be considered a vote.  All other
+lines are ignored.  Votes must be of the form:
+
+	vote rating system-code video-game-title
+
+where `rating' is an integer between 1 and 10, `system-code' is a
+two-letter code describing the system, and `video-game-title' is
+everything else on the line after `system-code'.  Valid system codes
+include:
+
+   Al	Atari Lynx
+   Gb	Nintendo Game Boy
+   Gg	Sega Game Gear
+   Ne	Nintendo Entertainment System (NES) or Famicom
+   Ng	SNK Neo Geo
+   Sn	Super Nintendo Entertainment System (SNES) or Super Famicom
+   Sg	Sega Genesis or Mega Drive
+   Tg	NEC Turbografx-16, Turboexpress, or PC-Engine
+
+Case is not considered in video game titles or system codes.  Valid votes
+might be
+
+	vote 10 Sg John Madden Football '92
+	vote 10 sn super mario world
+
+NO HUMAN WILL EVER SEE YOUR BALLOTS, AND YOU WILL NOT RECEIVE AN
+ACKNOWLEDGEMENT OF YOUR VOTES.  ALSO, THE VIDEO GAME RATINGS SERVER
+WILL SILENTLY IGNORE ALL INVALID VOTES.
+
+To make things easy, the `Reply-to' field of this posting is set to
+point to the video game ratings server.  If you are using the `rn'
+newsreader, simply hit `r' to send in your votes.
+
+The source code for this system and much of this text for this ratings
+report was provided by Chuck Musciano.  John Leo originally adapted
+this system for video games, and Eric Ng (the current video game
+ratings report administrator) has since made many more modifications.
+
+Thanks for participating in the rec.games.video ratings poll.
+
+Mail votes to video@irss.njit.edu or ...!uunet!irss.njit.edu!video; if
+you have any questions, mail them to video-request@irss.njit.edu or
+...!uunet!irss.njit.edu!video-request.
+--
+eric ng  erc@zabriskie.berkeley.edu  ...!ucbvax!zabriskie!erc

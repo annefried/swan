@@ -1,0 +1,115 @@
+From news Wed Mar  4 22:55:57 1992
+Path: uwm.edu!linac!att!ucbvax!plitvice.berkeley.edu!erc
+From: erc@plitvice.berkeley.edu (Eric Ng)
+Newsgroups: rec.games.video
+Subject: VIDEO GAME RATINGS REPORT (NEC TURBOGRAFX-16, TURBOEXPRESS)
+Message-ID: <44055@ucbvax.BERKELEY.EDU>
+Date: 2 Mar 92 23:18:37 GMT
+Sender: nobody@ucbvax.BERKELEY.EDU
+Reply-To: video@irss.njit.edu
+Organization: University of California at Berkeley
+Lines: 103
+
+For information on the list format and on submitting your ratings,
+consult the article entitled `ABOUT THE VIDEO GAME RATINGS REPORT' in
+the newsgroup rec.games.video.
+
+VIDEO GAME RATINGS REPORT
+
+NEC TURBOGRAFX-16, TURBOEXPRESS, AND PC-ENGINE
+New  Distribution  Votes  Rank  Title
+      ........*.       1   9.0  1943
+ *    .....*....       1   6.0  Addams Family, The
+      .......55.       2   8.5  Aero Blasters
+      ......*...       1   7.0  Afterburner II
+      .....126..       8   7.5  Alien Crush
+      .......55.       2   8.5  Andre' Panza Kick Boxing
+      ...*......       1   4.0  Batman
+      .....6.3..       3   6.7  Battle Royale
+      ...1...531      10   8.1  Blazing Lazers
+      .....27...       4   6.8  Bloody Wolf
+      .2......7.       4   7.2  Bomberman
+      .....1250.      12   7.5  Bonk's Adventure
+      .....2..7.       4   8.2  Bonk's Revenge
+      ....1142..       7   6.9  Cadash
+      .......*..       1   8.0  China Warrior
+      ........*.       1   9.0  Columns
+      ......55..       2   7.5  Cyber-Core
+      ........*.       2   9.0  Dead Moon
+ *    ..*.......       1   3.0  Deep Blue
+      ......1.35       6   9.2  Devil's Crush
+      ...25.2...       4   5.2  Double Dungeon
+      ........*.       2   9.0  Download 2
+      ........*.       1   9.0  Dragon Saber
+      ......6..3       3   8.0  Dragon Spirit
+      .....522..       8   6.8  Dungeon Explorer
+ *    ......*...       1   7.0  Exile
+      ..2.222...       4   5.2  Fantasy Zone
+ *    ....*.....       1   5.0  Fighting Street
+      ....252...       4   6.0  Final Lap Twin
+      ........*.       1   9.0  Final Soldier
+ *    ....55....       2   5.5  Final Zone II
+      ....1.33.2       9   7.8  Galaga '90
+      .........*       1  10.0  Gradius
+      ....*.....       1   5.0  J.J. & Jeff
+ *    ......*...       1   7.0  Jack Nicklaus Golf
+      .1413.1...      10   4.0  Keith Courage In The Alpha Zones
+      .....333..       6   7.0  Klax
+      .......*..       2   8.0  Last Alert
+      ...2.2321.      10   6.6  Legendary Axe
+      ....1.35..       8   7.2  Legendary Axe II
+      ..1....161       8   8.2  Military Madness
+      ........*.       1   9.0  Monster Lair
+      ...22..22.       4   6.5  Moto-Roader
+ *    .........*       1  10.0  Neutopia
+      .....2..52       4   8.5  Ninja Spirit
+      .....55...       2   6.5  Ordyne
+      ........*.       1   9.0  Outrun
+      ...5.5....       4   5.0  Pac-Land
+      .......*..       1   8.0  Parasol Stars
+      .......*..       1   8.0  Power Drift
+ *    .....*....       1   6.0  Power Golf
+      .....333..       3   7.0  Psychosis
+      ....12.211       7   7.4  R-Type
+      .......*..       1   8.0  Raiden
+ *    ......55..       2   7.5  Ranma 1/2
+      ......*...       2   7.0  Rayxanber II
+ *    ......*...       1   7.0  Road Spirits
+      ........*.       1   9.0  Salamander
+      ......*...       1   7.0  Sci
+      .....55...       2   6.5  Sidearms
+      ........*.       2   9.0  Silent Debuggers
+      .....55...       4   6.5  Sinistron
+      .....*....       2   6.0  Sonic Spike V'ball
+      .....55...       2   6.5  Space Harrier
+      ......63..       3   7.3  Splatterhouse
+ *    ........*.       1   9.0  Spriggan
+      .......55.       2   8.5  Super Darius
+      .2....26..       5   6.6  Super Star Soldier
+      ......*...       1   7.0  Super Volleyball
+      .....63...       3   6.3  T.V. Sports Football
+ *    .......*..       1   8.0  T.V. Sports Hockey
+ *    ......*...       1   7.0  Talespin
+      .........*       1  10.0  Time Cruise II
+      .......*..       1   8.0  Twin Hawk Custom
+ *    ......*...       2   7.0  Valis II
+ *    .......*..       1   8.0  Vasteel
+ *    ......*...       1   7.0  Veigues Tactical Gladiator
+      ...333....       3   5.0  Victory Run
+      .......*..       1   8.0  W-Ring
+      .....5.5..       2   7.0  World Class Baseball
+      .......*..       1   8.0  Xevious
+ *    .......3.6       3   9.3  Ys I & II
+ *    ......36..       3   7.7  Ys III
+
+In this report, video games have been rated on a scale of 1 to 10,
+with 10 being the best and 1 being the worst.  For each video game,
+the total number of votes, the average rating, and the vote
+distribution are shown.  New video games are indicated by an `*'
+before their entry.
+
+Mail votes to video@irss.njit.edu or ...!uunet!irss.njit.edu!video; if
+you have any questions, mail them to video-request@irss.njit.edu or
+...!uunet!irss.njit.edu!video-request.
+--
+eric ng  erc@zabriskie.berkeley.edu  ...!ucbvax!zabriskie!erc

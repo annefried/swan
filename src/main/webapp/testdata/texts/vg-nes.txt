@@ -1,0 +1,181 @@
+From news Wed Mar  4 22:56:03 1992
+Path: uwm.edu!linac!att!ucbvax!plitvice.berkeley.edu!erc
+From: erc@plitvice.berkeley.edu (Eric Ng)
+Newsgroups: rec.games.video
+Subject: VIDEO GAME RATINGS REPORT (NINTENDO SNES, NES, GAMEBOY)
+Message-ID: <44056@ucbvax.BERKELEY.EDU>
+Date: 2 Mar 92 23:19:35 GMT
+Sender: nobody@ucbvax.BERKELEY.EDU
+Reply-To: video@irss.njit.edu
+Organization: University of California at Berkeley
+Lines: 169
+
+For information on the list format and on submitting your ratings,
+consult the article entitled `ABOUT THE VIDEO GAME RATINGS REPORT' in
+the newsgroup rec.games.video.
+
+VIDEO GAME RATINGS REPORT
+
+NINTENDO GAMEBOY
+New  Distribution  Votes  Rank  Title
+ *    ...*......       1   4.0  Bases Loaded
+ *    .....*....       1   6.0  Batman
+ *    .......*..       1   8.0  Bill & Ted's Excellent Adventure
+ *    .*........       1   2.0  Boulderdash
+ *    ........*.       1   9.0  Boxxle
+ *    ...*......       1   4.0  Bubble Ghost
+ *    ......55..       2   7.5  Castlevania
+ *    .......*..       1   8.0  Castlevania II
+ *    ......*...       1   7.0  Chessmaster
+ *    .......*..       1   8.0  Choplifter II
+      ......*...       1   7.0  Crystal Quest
+ *    ......*...       1   7.0  Daedalus Opus
+ *    .......*..       1   8.0  Dr. Mario
+ *    ......*...       1   7.0  Dynablaster
+      ..2.2.22..       4   5.8  F-1 Race
+      ....1.2123       9   8.3  Final Fantasy Legend
+ *    .......5.5       2   9.0  Final Fantasy Legend II
+      .....222.2       4   7.8  Gargoyle's Quest
+      ...3....33       3   7.7  Golf
+ *    .....55...       2   6.5  Ishido: Way Of The Stones
+ *    ....*.....       1   5.0  Kwirk
+ *    ......*...       1   7.0  Lock 'N Chase
+ *    ........*.       1   9.0  Matchmania
+      .5.....5..       2   5.0  Megaman
+      .....3.33.       3   7.7  Metroid II
+ *    ....5....5       2   7.5  Nemesis
+ *    .........*       1  10.0  Nemesis II
+ *    ...*......       1   4.0  Paperboy
+ *    ........*.       1   9.0  Parodius
+      .2....2.22       4   7.0  Pipe Dream
+ *    ...*......       1   4.0  Play Action Football
+ *    ........*.       1   9.0  Probotector
+ *    .....*....       1   6.0  Puzzle Road
+ *    .......*..       1   8.0  Puzznic
+ *    ......*...       1   7.0  Qix
+ *    ...*......       1   4.0  Quarth
+      ..5....5..       2   5.5  R-Type
+      .....3.33.       3   7.7  Revenge Of The Gator
+      .*........       1   2.0  Robocop II
+ *    ........*.       1   9.0  Scrabble
+      ....*.....       1   5.0  Shanghai
+ *    .......*..       1   8.0  Side Pocket
+      .....5..5.       2   7.5  Skate Or Die
+ *    ..*.......       1   3.0  Sneaky Snakes
+      ....36....       3   5.7  Solar Striker
+      .....1.225      10   9.0  Super Mario Land
+ *    ........*.       1   9.0  Sword Of Hope
+      ....201031      16   7.5  Tetris
+ *    ........*.       1   9.0  Yakuman
+
+NINTENDO ENTERTAINMENT SYSTEM (NES) AND FAMICOM
+New  Distribution  Votes  Rank  Title
+ *    .........*       1  10.0  A Boy And His Blob
+      .......*..       1   8.0  Adventures Of Bayou Billy
+      ......25.2       4   8.2  Adventures Of Little Nemo In Dreamland
+      ...5...5..       2   6.0  Alien Syndrome
+      ..5.....5.       2   6.0  Baseball Stars
+      ....5.5...       2   6.0  Bases Loaded
+ *    ........*.       1   9.0  Battle Of Olympus
+      ....31.111       6   7.2  Blades Of Steel
+      ...3..3.3.       3   6.7  Blaster Master
+      ...*......       2   4.0  Bubble Bobble
+ *    .......*..       2   8.0  Castlevania
+      .....5...5       2   8.0  Contra
+      .......36.       3   8.7  Crystalis
+ *    .......*..       1   8.0  Deja Vu
+      ......55..       2   7.5  Destiny Of An Emperor
+ *    ....*.....       2   5.0  Double Dragon
+      .....*....       1   6.0  Double Dragon 2
+      .....36...       3   6.7  Dragon Warrior
+      1332......       9   2.7  Duck Hunt
+      ........*.       1   9.0  Dungeon Magic
+      ..*.......       2   3.0  Excite-Bike
+      .2.2..24..       5   5.8  Faxanadu
+      ..5..5....       2   4.5  Fester's Quest
+      ......22.6       5   9.0  Final Fantasy
+      ...2..7...       4   6.2  Gauntlet
+      ..5....5..       2   5.5  Gauntlet II
+ *    ....*.....       2   5.0  Gradius
+ *    ......*...       2   7.0  Gyruss
+      ....*.....       1   5.0  Heavy Barrel
+      .......*..       1   8.0  Iron Tank
+      ...*......       1   4.0  Ironsword
+ *    ....*.....       1   5.0  Journey To Silius
+      ..3....6..       3   6.3  Legacy Of The Wizard
+      .....21.24       9   8.6  Legend Of Zelda
+      ...5..2.2.       4   6.0  Life Force
+      .*........       1   2.0  Magic Johnson's Fast Break Basketball
+      .....36...       3   6.7  Magic Of Sheherazade
+      ........*.       1   9.0  Maniac Mansion
+ *    .....*....       2   6.0  Marble Madness
+      ......333.       3   8.0  Metroid
+      .....*....       2   6.0  Mike Tyson's Punch-Out
+      ......*...       1   7.0  Ms. Pac-Man
+      .....5...5       2   8.0  Ninja Gaiden
+      .....5..5.       2   7.5  Ninja Gaiden 2
+      ....*.....       1   5.0  Off-Road
+      .*........       1   2.0  Pinball Quest
+      .....*....       1   6.0  Pipe Dream
+      ......*...       1   7.0  R.B.I. Baseball
+      ....*.....       1   5.0  R.C. Pro-Am
+      ....5.5...       2   6.0  Rolling Thunder
+ *    ........*.       1   9.0  Romance Of The Three Kingdoms
+ *    .....*....       2   6.0  Rygar
+      ...*......       1   4.0  Skate Or Die
+      ....*.....       1   5.0  Solomon's Key
+      ...5..22..       4   5.8  Solstice
+      ......36..       3   7.7  Star Tropics
+ *    .....*....       2   6.0  Street Fighter 2010
+      ..5......5       2   6.5  Super C
+      0..011121.      17   6.4  Super Mario Brothers
+      ......225.       4   8.2  Super Mario Brothers 2
+      ...0...143      12   8.8  Super Mario Brothers 3
+      .....55...       2   6.5  Super Sprint
+      ....2...25       4   8.5  Super Tecmo Bowl
+      ....222.2.       4   6.8  Tecmo Bowl
+      ...22.22..       4   6.0  Teenage Mutant Ninja Turtles
+      ....3.6...       3   6.3  Teenage Mutant Ninja Turtles: The Arcade Game
+      .......*..       1   8.0  Time Lord
+      55........       2   1.5  Top Gun
+      .....33.3.       3   7.3  Willow
+ *    .....*....       2   6.0  Xenophobe
+      ......*...       2   7.0  Xevious
+      .....1..61       6   8.7  Zelda II: Adventures Of Link
+
+SUPER NINTENDO ENTERTAINMENT SYSTEM AND SUPER FAMICOM
+New  Distribution  Votes  Rank  Title
+      ..102.220.      17   6.2  Actraiser
+      25....2...       4   3.0  D-Force
+      .11.22.11.       8   5.5  Darius Twin
+      3.3...3...       3   3.7  Drakkhen
+      ....111122      17   7.9  F-Zero
+      .0.0.01222      14   7.6  Final Fantasy II
+      12....14..       7   5.1  Final Fight
+      .2..4.2.2.       5   5.6  John Madden Football
+ *    .......*..       1   8.0  Lagoon
+      ...2.2212.       9   6.7  Pilotwings
+      1...211.21       8   6.5  Populous
+      .....2222.       4   7.5  Sim City
+      .0.0.20041      15   7.5  Super Castlevania IV
+      ..0.00133.      16   7.5  Super Ghouls 'N Ghosts
+      .00.000123      27   8.4  Super Mario World
+      ....5.5...       2   6.0  Super Off-Road
+      ....2.42.2       5   7.4  Super R-Type
+      5.5.......       2   2.0  Super R.P.M. Racing
+ *    .........*       1  10.0  Super Smash T.V.
+      2....4.22.       5   6.0  Super Tennis
+      .0.0.1033.      13   7.2  U.N. Squadron
+      .224.2....       5   3.8  Wanderers From Ys III
+
+In this report, video games have been rated on a scale of 1 to 10,
+with 10 being the best and 1 being the worst.  For each video game,
+the total number of votes, the average rating, and the vote
+distribution are shown.  New video games are indicated by an `*'
+before their entry.
+
+Mail votes to video@irss.njit.edu or ...!uunet!irss.njit.edu!video; if
+you have any questions, mail them to video-request@irss.njit.edu or
+...!uunet!irss.njit.edu!video-request.
+--
+eric ng  erc@zabriskie.berkeley.edu  ...!ucbvax!zabriskie!erc

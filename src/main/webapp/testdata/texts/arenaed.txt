@@ -1,0 +1,574 @@
+                              DISCLAIMER
+                              ----------
+We have made every effort to ensure that ArenaEd functions as
+expected and without anomaly.  In particular we have gone out of our
+way to ensure the integrity of your saved-game files.  The bottom
+line, however, is that what you see is what you get.  Since we cannot
+control every possible use to which ArenaEd is put, we must pass the
+responsibility for its use on to you.
+
+WE DISCLAIM ALL WARRANTIES AS TO THIS SOFTWARE, WHETHER EXPRESS OR
+IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, FUNCTIONALITY,
+DATA INTEGRITY OR PROTECTION.
+
+
+Table Of Contents
+-----------------
+1. What is ArenaEd? 
+1.1. Introduction 
+1.2. Features In Brief 
+1.3. Special Features 
+1.3.1. Temporary Stats
+1.3.2. Race
+1.4. System Requirements 
+2. Quick Start 
+3. Up and Running 
+3.1. Where To Install 
+3.2. Getting In, Getting Out 
+3.3. What ArenaEd Will Do When It Runs 
+3.4. What Can You Edit 
+3.5. What You Can't Edit 
+3.6. What To Do After You Edit
+4. What You See On Screen 
+4.1. Menu Bar 
+4.1.1. Commands for the Menu 
+4.2. Status Line 
+4.3. DeskTop 
+4.4. Save-Game List 
+4.5. Character Window
+4.5.1. Commands for Windows 
+4.6. Other Windows 
+4.7. Edit Fields 
+4.7.1. Commands for Edit Fields 
+4.8. "Edit ..." Buttons 
+4.8.1. Commands for Buttons 
+5. General Good Advice
+5.1. Protect Yourself 
+5.2. Where To Find What You Are Looking For 
+5.3. Where To Look If You Can't Find It 
+6. How Does ArenaEd Work? 
+6.1. Editing The saveengn Files
+6.2. Saving Edits: File/Save 
+6.3. Discarding Edits: File/Reload 
+6.4. Make A Backup: File/Backup 
+6.5. Restore From Backup: File/Restore 
+7. Help in ArenaEd 
+7.1. Status-line Help 
+7.2. Help file 
+8. If Something Goes Wrong 
+8.1. Get Me Out Of Here! 
+8.2. Restore Your Backup 
+9. Hints On Playing Arena
+10. About ArenaEd 
+10.1. Who We Are 
+10.2. A Few Thoughts On Shareware 
+10.3. The Difference Between Editing And Cheating 
+10.4. How To Contact Us 
+10.5. Respect for Bethesda Softworks (tm)
+
+
+1. What is ArenaEd? 
+------------------- 
+1.1. Introduction 
+----------------- 
+ArenaEd is a gamer's utility for editing the saved-game files in The
+Elder Scrolls: Arena (tm) (version 1.05) from Bethesda Softworks (tm).
+ArenaEd is a DOS application that uses a sophisticated, window-based
+user interface. 
+ 
+The interface can be controlled using a mouse or keyboard. 
+ 
+1.2. Features In Brief 
+---------------------- 
+Arena allows the user to have up to ten (10) different save-game
+files, each file can save the status of a different character.
+ 
+ArenaEd will allow the player to edit all features of each character,
+in each of the saved games: race, gender, name, temporary and
+permanent attributes, current spell points, current and permanent
+health, current fatigue, gold, experience points and level are all
+editable.
+ 
+1.3. Special Features 
+---------------------
+1.3.1. Temporary Stats
+----------------------
+Although it is not immediately apparent in the game, each character
+has two distinct sets of stats (Str, Int, Wil, etc).  The first set
+of stats is temporary and the second set is permanent.  All other
+things being equal (i.e. no disease, etc) the temporary stats will be
+reset to the equal the permanent stats the next time the character
+gains a level.
+
+Since the temporary stats are reset every once in a while it makes
+them a great choice for temporarily giving your character a boost. 
+Feeling a little overwhelmed by those Minotour? Bump up your Strength
+a bit to even the odds.  When your character gains the next level
+your Strength will be reset and your character will carry on as
+before.
+
+1.3.2. Race
+-----------
+So you didn't really what to be an Argonian after all?  In the game
+your only choice is to start a new character.  Using ArenaEd you can
+change what the fates had in mind for you (at least a little) by
+changing your character's Race.  The portrait you get is more or less
+random but at least you can be the Race you prefer.
+
+1.4. System Requirements 
+------------------------ 
+ArenaEd has been extensively tested on a 486/33 (8 meg RAM) and a 386/25  
+(4 meg RAM) under DOS 5.00.  It runs nicely in a DOS-box in Windows 3.1  
+or from the DOS prompt itself.  It neither uses nor requires EMS/XMS but  
+is fully compatible with popular memory managers (eg. 386MAX and EMM386). 
+ 
+ArenaEd can be mouse-driven but is fully controllable from the keyboard. 
+Fully installed, ArenaEd requires about 350k of disk space. 
+ 
+2. Quick Start 
+--------------
+To get started quickly, simply run ArenaEd from the DOS prompt. 
+ 
+If you are not in the right directory ArenaEd will tell you that and 
+allow you to move to the directory where Arena is installed (see
+File/Change Directory).  Once there, you are in business. That's all
+there is to it. 
+ 
+3. Up and Running 
+----------------- 
+3.1. Where To Install 
+--------------------- 
+Generally speaking, your life will be simpler if you install ArenaEd in  
+the same directory that you have Arena installed. 
+ 
+While this is not necessary, since you can always change to the Arena
+directory from within ArenaEd, it will speed up the editing process
+by removing the need to change directory. 
+ 
+3.2. Getting In, Getting Out 
+---------------------------- 
+To start ArenaEd, simply type "ArenaEd" at the DOS prompt. 
+ 
+To exit ArenaEd, select File/Exit or use the "accelerator" key command  
+Alt-X. 
+ 
+3.3. What ArenaEd Will Do When It Runs 
+-------------------------------------- 
+When ArenaEd runs it will present a list of the saved-games in the
+current directory.  When you select a saved-game to edit ArenaEd will
+look to see that you have a backup file (if you are editing the third
+save-game, saveengn.02, the backup file will be called engn02.bak). 
+If the backup file exists, ArenaEd will load the save-game file and
+you'll be in business. 
+ 
+If the backup file does not exist, ArenaEd will try to create it. Once 
+the backup file exists, ArenaEd will be happy and will proceed to load 
+the save-game file for your editing pleasure. 
+ 
+3.4. What Can You Edit 
+---------------------- 
+
+ArenaEd has been designed to give the user maximum control over the
+player's character.  We've tried to allow the user to edit anything
+and everything related to a particular character's stats and
+abilities, insofar as it is safe to do so.
+ 
+If something isn't in the editor it is simply because (a) we don't
+know how to edit it or (b) editing it could corrupt the game. 
+Whatever we do know how to edit safely we've made editable by you. 
+ 
+3.5. What You Can't Edit 
+------------------------
+As powerful as ArenaEd is, it can't do everything.  Whatever you see
+on the screen during game play is pretty much beyond our control
+(i.e. spell effects, weapon types, character portrait, etc).
+
+One feature that we did not allow edits on is a character's Class. 
+Since a character's class is integral to the game (determines whether
+spells are available, etc) we decided to disallow edits in order to
+avoid corrupting the save-game files.
+
+Spells and weapons are not editable in ArenaEd version 1.0.
+
+3.6. What To Do After You Edit
+------------------------------
+As far as characters in Arena are concerned, the gods work while the
+character sleeps.  You've probably noticed that most changes that
+happen to the characters stats, abilities, etc happen while you
+camp.  The same is true of changes you make via ArenaEd.  To get the
+benefit of your edits, we recommend you Camp as soon as you restart
+the game after an editing session.  Resting for one (1) hour will
+usually do it.
+
+4. What You See On Screen 
+-------------------------
+4.1. Menu Bar 
+-------------
+The line at the top of your screen is the menu bar.  
+ 
+All features of ArenaEd appear as items on the menu bar or as items on  
+the drop-down menus that are controlled by the menu bar. 
+ 
+4.1.1 Commands for the Menu 
+--------------------------- 
+The menu can be controlled with the mouse in the usual manner.  Left- 
+click on something to select it, left-click and drag to move the focus.   
+The usual stuff, nothing fancy. 
+ 
+The menu system can also be fully controlled from the keyboard: 
+o F10 moves the focus to the menu bar. 
+o Alt-? will select a menu bar option where "?" is the highlighted  
+  character on the menu option (eg. Alt-F will drop the File menu, 
+  Alt-W the Window menu, etc). 
+o Alt-Spacebar will drop the System menu (left-most on the menu bar). 
+o Arrow keys can be used to move between menu items. 
+o Enter will select a highlighted menu option. 
+ 
+4.2. Status Line 
+----------------
+The line at the bottom of your screen is the status line. 
+ 
+The purpose of the status line is to show the user the "status" of  
+ArenaEd.  This usually means that it will display a helpful message. 
+ 
+4.3. DeskTop 
+------------
+Everything between the menu bar and the status line is the desktop. 
+ 
+When a window is open it is said to be "on the desktop".  If something  
+is on the desktop the user has control of it and can manipulate it. 
+ 
+4.4. Save-Game List 
+-------------------
+When ArenaEd begins it will open a window that lists the games you've
+saved, as indicated by the text you typed when you saved the game. 
+
+To select the save-game that has the focus (is highlighted) press the
+Spacebar.
+
+Selecting one of your saved games from the list will open a window
+that has the character's name in the title: let's call this the
+'character' window.
+
+4.5. Character Window
+---------------------
+If you  want to edit a particular character, or something related to
+that character, then the character window for that character is where
+you start.
+
+The character's name in the title is prefixed by the number of the
+saved game file.  This prefix is just for informational purposes.
+ 
+4.5.1. Commands for Windows 
+--------------------------- 
+o Items on the Window menu allow the following window operations:
+  o Size/Move the current window (Ctrl-F5)
+  o Cascade all windows
+  o move to Next window (F6)
+  o move to Previous window (Shift-F6)
+  o Close the current window (Alt-F3)
+o Tab will move the focus to the next field or button; Shift-Tab will
+  move back to the previous field.
+ 
+4.6. Other Windows 
+------------------
+ArenaEd organises the details of a character into sub-windows  
+accessible from the Character window. 
+ 
+The title of each window fully specifies the "ownership" of the data 
+within that window.  For example, a window entitled
+"03:WilliamTheRed/Temporary Stats"  contains data relevant to the
+temp stats of your character WilliamTheRed as saved in the fourth
+save-game on the save-game list. 
+ 
+4.7. Edit Fields 
+----------------
+If something is editable from a given window then an edit field will be  
+available within the window to allow the user to performs the edits.   
+What the user can do within a given edit field depends on the type of  
+data the edit field represents.  
+ 
+When a particular edit field has the focus (is highlighted) the status  
+line will display a message indicating what form of input is expected in  
+that field. 
+ 
+4.7.1. Commands for Edit Fields 
+-------------------------------
+The best advice here is to look at the help text on the status line.  
+The edit fields are fairly sophisticated and provide a wide range of 
+options to the user.  The help text will detail those options.  Here 
+is a quick summary: 
+ 
+o Text fields: type the text you want, Del to delete, Backspace to  
+  backspace-and-delete, Home to go to the start of the text, End to go  
+  to the end. 
+o Number fields: Up-arrow to decrement, Down-arrow to increment, Home  
+  for first valid value in the number's range, End for the last valid  
+  value in the number's range.  You can also enter a number from the  
+  keyboard. 
+o Named fields (eg. race, gender): Up-arrow to go to previous "value",
+  Down-arrow for next "value", Home for first "value", End for last
+  "value". 
+ 
+4.8. "Edit ..." Buttons 
+-----------------------
+As mentioned above, ArenaEd is organized into windows.  To move to a
+sub-window, select the appropriate "Edit ..." button (left-click or 
+Spacebar).
+ 
+4.8.1. Commands for Buttons 
+--------------------------- 
+o Using the mouse: simply left-click on the button. 
+o Using the keyboard: press the Spacebar to select the button. 
+ 
+5. General Good Advice
+----------------------
+5.1. Protect Yourself 
+--------------------- 
+The old saying goes that an ounce of prevention is worth a pound of  
+cure.  In the world of software, a minute of prevention is worth an  
+eternity of recovery. 
+ 
+We strongly suggest that you take that minute and copy your
+"saveengn.*" and "engn*.bak" files to a safe place, preferably a
+diskette that you reserve for just this purpose.  The word is that
+the sequel to Arena (Daggerfall?) will use characters from Arena so
+the backup will doubly useful.
+ 
+5.2. Where To Find What You Are Looking For 
+------------------------------------------- 
+Everything is in the menus.  Step through the menus to see what is  
+there. 
+ 
+Try things that look interesting.  The editor won't do anything  
+drastic without warning you first and you will have the option to  
+cancel.   
+ 
+5.3. Where To Look If You Can't Find It 
+--------------------------------------- 
+If you can't find what you are looking for on the menu, try Help on the  
+Help menu.  You'll get a text window showing this file.  Scrolling works  
+so you can zoom up and down through the file. 
+ 
+6. How does ArenaEd work? 
+------------------------ 
+6.1. Editing The saveengn Files
+-------------------------------
+ArenaEd does one thing: it edits files called "saveengn.0?".  Those
+files contain all of the information related to each character's
+'numbers' in Arena.  Using the editor, you modify the contents of the
+saveengn file.  The next time you boot the game, you will see the
+changes you made. 
+ 
+Any window that has had edits made in it will have the "unsaved
+changes" marker, '!!', in the title.  This is a quick visual
+indicator that you need to save.
+ 
+6.2. Saving Edits: File/Save 
+---------------------------- 
+Once you've made your edits, you'll want to save them: select File/Save.   
+When you save your edits the "saveengn" file is updated (i.e. the changes  
+are written to disk). 
+ 
+If you exit ArenaEd without saving your edits they will be discarded and  
+you won't see them next time you play. 
+ 
+To be on the safe side ArenaEd will warn you if there are edits 
+("unsaved changes") that have not been written back to the save-game 
+file. 
+ 
+Try a few edits and then select File/Exit.  This will pop up the 
+warning box.  Now you know that you can trust ArenaEd to protect you 
+from accidental loss of your edits. 
+ 
+6.3. Discarding Edits: File/Reload 
+---------------------------------- 
+Sometimes you make edits that you would rather discard: perhaps you 
+made a mistake, or been a little more generous than you think is 
+best. 
+ 
+To discard all the edits you've made since the last time you saved 
+simply reload the save-game file (File/Reload).  This dumps all your
+current unsaved changes and gets you back to a "clean" character file.
+ 
+6.4. Make A Backup: File/Backup 
+------------------------------- 
+ArenaEd will automatically make a backup for you the first time you 
+start an edit session.  If you are editing the second file in the
+list, the file you are editing is actually called 'saveengn.01'.  The
+backup file is called "engn01.bak".  The first time you edit
+saveengn.01, a backup will be made.  Subsequent edits will not
+automatically create a backup since the backup already exists. As
+mentioned above, we do suggest you copy these files to a diskette and
+put the diskette in a safe place. 
+
+If you really want to update your backup file, select File/Backup.  
+You will be warned that you are going to loose the old backup, but if
+that is really what you want to do, carry on.  The current saveengn
+file, say saveengn.01, will be copied to "engn01.bak" and the old
+"engn01.bak" will be lost. 
+ 
+6.5. Restore From Backup: File/Restore 
+-------------------------------------- 
+If you want to restore "saveengn.0?" to what it used to be, File/Restore
+will copy "engn0?.bak" to "saveengn.0?". 
+ 
+The next time you play Arena, you'll see the character stats,
+experience, gold, etc, as they were when the backup file was made. 
+ 
+7. Help in ArenaEd 
+------------------ 
+7.1. Status-line Help 
+--------------------- 
+The status line is the first place to look for help in ArenaEd.  Every  
+attempt has been made to assist the user by displaying helpful messages  
+on the status line. 
+ 
+ArenaEd is context-sensitive and the help text on the status line will  
+change to reflect the current context. 
+ 
+7.2. Help file 
+-------------- 
+You are reading the help file now.  This help file can be displayed from  
+within the game by selecting Help/Help.
+
+The Help file window is like any other window: Size/Move, Close,
+Cascade, Next, Previous all apply as per 4.5.1.
+
+The help file itself (arenaed.txt) is a straight text file.  This file
+can be printed using your favourite print utility.  At the very least
+you can type "print arenaed.txt" at the DOS prompt.
+ 
+8. If Something Goes Wrong 
+-------------------------- 
+We really don't think that anything bad will happen using ArenaEd.  We  
+have designed it such that the safety and integrity of the game data  
+file is of primary importance.  Extensive tests have shown that the data  
+is well protected and that ArenaEd behaves properly.  But the unexpected  
+does happen when you least expect it. 
+ 
+If -heaven forbid- a game data file (saveengn.0?) has been corrupted  
+somehow, ArenaEd will detect the invalid data and give the user LOTS of  
+warnings about it.  You can correct the data from ArenaEd on a field by  
+field basis.  If the file is truly corrupted this process can get  
+annoying.  The best option is to bail out of the editor and restore the  
+backup file.  Here's how: 
+ 
+8.1. Get Me Out Of Here! 
+------------------------ 
+Ctrl-Alt-Q means "get me out of here, now!".  No saves are done, no  
+backups, no nothing.  This is the only "secret" command in ArenaEd and is  
+there for emergencies only.  Hopefully you'll never need it, but at least  
+it is there if you do. 
+ 
+8.2. Restore Your Backup 
+------------------------ 
+If the game data has been trashed somehow, your best bet is your
+backup  file "engn0?.bak".  You can select File/Restore from ArenaEd,
+or simply copy "engn0?.bak" to "saveengn.0?" at the DOS prompt. Yes,
+you'll loose the latest stuff in your game, but this should recover
+from the corrupted game data file. 
+ 
+9. Hints On Playing Arena
+-------------------------
+We have logged more hours than we can count playing Arena.  We like the  
+game a lot and that is why we wrote this editor.  We have learned a few  
+things along the way.  Perhaps some of it will be useful to you. 
+ 
+o Giving yourself a temporary break is sometimes all you need.  Let's
+say you're in a real slug-fest and you just want a temporary boost to
+get you through the day.  Boost your Current Health, Current Fatigue
+or Current Spell Points (as appropriate to your character).  Health
+and Fatigue will be reset next time you sleep, Spell Points will wear
+out as you use them up; these boosts are truly temporary.
+
+o Getting started in a wicked world.  Arena can be pretty rough on
+the neophyte character.  A standard trick we use is to boost our new
+character's level to say 2 or 3.  This will get you hitting better
+and spells will be cheaper to cast.  When you've actually earned
+those levels (i.e. your experience has reached the appropriate
+magnitude) your character will gain levels as normal.  Note that there
+is a down-side to this technique: you'll loose the benefit of Health
+gain that comes with each level gain.
+
+o Getting ripped off at the local vendors?  A judicious increase in
+Personality will make the shop owners a lot more reasonable in their
+pricing.  Barter can be fun - if you have the Personality for it! 
+You can save a bundle in gold too.
+ 
+10. About ArenaEd 
+----------------- 
+10.1. Who we are 
+---------------- 
+ArenaEd's authors, Trevor Flory and Joe Mooney, are both professional  
+software designers with a combined total of over 20 years in the  
+business.  ArenaEd is the second in a series of game editors we are
+producing. 
+ 
+10.2. A Few Thoughts On Shareware 
+--------------------------------- 
+We think "try before you buy" is good for everyone.  We like it
+ourselves and we think it is one of the best ways to ensure that the
+user get what they pay for.  We encourage you to avail yourself of
+shareware's advantages: try the software, see if it works for you,
+make sure you can trust it to do what it says it will. 
+ 
+As wonderful as software is, it won't happen if it isn't worthwhile to  
+do it.  If you like ArenaEd, please give serious consideration to  
+registering.  See "Shareware!" on the ArenaEd menu bar for further  
+details. 
+ 
+10.3. The Difference Between Editing And Cheating 
+-------------------------------------------------
+If a game does something you don't like, we think you should be able to  
+change it. We feel that users have the right to edit games because they  
+paid money for them: the game designer's don't own the game, the user  
+does.  Editing isn't cheating, it is called getting your money's worth. 
+ 
+10.4. How To Contact Us 
+----------------------- 
+The fastest way to get our attention is through CompuServe.  Either
+of the following will do the job:
+
+                   Trevor Flory, CIS: 70711,3712
+                   Joe Mooney,   CIS: 71171,3042
+
+If you would like to send us money or simply prefer communicating
+via the postal service, our business address is:
+
+                   Box 119 - 154 Chadwick Court
+                   North Vancouver, B.C.
+                   CANADA  V7M-3K1
+
+This information is also available from within ArenaEd: see
+"Shareware!" on the ArenaEd menu bar.
+
+10.5. Respect for Bethesda Softworks (tm)
+-----------------------------------------
+Bethesda Softworks (tm) has been remarkably attentive to their Arena
+customers.  They've hung in for 5 upgrade cycles and all the
+attending user requests, suggestions, complaints and flames.  What
+this really means is that they have invested time, money and effort
+in keeping you and every other Arena user happy.
+
+Most companies don't like game editors because a buggy game editor
+can make their jobs infinately more difficult.  If we have one request
+it is that you be up-front with Bethesda about the fact that you have
+used a game editor.  If you talk to their customer service people
+don't 'forget' to mention that you have used an editor.  They won't
+like hearing that, but at least you will be telling them the truth.
+
+If fact, to ensure that everyone is happy, reproduce your problem in
+a save-game that has NOT been edited.  That will ensure that the
+problem is really their's and not ours, and it will be respecting
+the valiant efforts of their customer service people and their
+play-testers.
+
+For what it is worth, even though we wrote ArenaEd, we would never
+even think of calling their customer service department until we had
+reproduced any problem we were having in a save-game that had NEVER
+been edited, not even a little bit.
+
+
+Th-th-that's all folks.  Have fun, play safe, pay as you go.

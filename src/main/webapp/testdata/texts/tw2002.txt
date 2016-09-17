@@ -1,0 +1,1399 @@
+                         TRADE WARS 2002                           
+      (C) Copyright 1990, 1991 by Martech Software, Inc.
+
+
+         Another quality on-line game brought to you by
+                     Martech Software, Inc.
+                and the game development team at
+                         
+                        Castle RavenLoft
+                          Lawrence, KS
+                         (913) 842-0300
+                          WWIVnet @9354
+
+
+     You peer out the window of your private quarters onto the
+     vast unknown.  You ponder the possibilities of expanding
+     your one-ship trading company.  You've become comfortable
+     with your regular route; the familiar ports, the familiar
+     traders, no hassles, no dangers.  Maybe you've become too
+     comfortable.  Lately you've been hearing a nagging voice
+     in the back of your mind urging you to be more, do more
+     and experience more.  You feel there has to be more to
+     life than this easy, peaceful yet unfulfilling existence
+     your life has become.  
+
+     You put your feet up, sip your drink and resolve to
+     become the best trader the universe will allow you to be.
+
+
+
+
+Trade Wars 2002 combines adventure and exploration with strategy
+and cooperative play in an entertaining and exciting on-line game. 
+You compete against other BBSers to be the most powerful trader (or
+corporation of traders) in the universe.  Independent traders can
+compete quite effectively against large corporations.  Corporate
+members can perform specific duties (as directed by their C.E.O.)
+in specialized ships.  Traders can be "good guys" or "bad guys"
+with different avenues for advancement.  The universe can be
+different with each new game.  There is no right or wrong way to
+play and the possible strategies are limited only by one's
+imagination.
+
+
+PLAYING THE GAME
+
+When you enter the game, you will be piloting a Merchant Cruiser. 
+This is considered the most versatile ship in the Trade Wars
+armada.  In it, new players have a chance to try out all aspects of
+the game.
+
+Upon entering, you will be asked what alias you would like to use
+in the game and what name you would like to christen your ship. 
+The alias you choose will display in the player and corporate
+rankings and in several corporate listings.  Your ship name will be
+used in the docking logs at the ports.  You can use these names to
+be as conspicuous or as inconspicuous as you want.
+
+The equipment in your initial ship will include 20 holds to store
+the cargo that you can trade at the ports found throughout the
+universe.  Trading is the basic way to advance in the game.  By
+good trading, you can gain experience as well as gain credits.  The
+credits you earn can fund your military and can provide the capital
+you will need to expand your trading expeditions.
+
+The game will differ with each different group of players. 
+Individual traders are ranked by their experience.  You gain
+experience simply by playing the game.  The more things you do, the
+more experience you will get.  Good and Evil are represented by the
+titles each player receives.  Your experience combined with your
+alignment will determine whether you are a Lieutenant or a Dread
+Pirate.  When you do something that affects your alignment, you
+will get a message saying your alignment went up or down and by how
+much.  
+
+There are benefits and drawbacks whether you choose to play the
+game as a good trader or an evil trader.  Traders who follow the
+FedLaws are offered protection in FedSpace until they are
+experienced enough to protect themselves.  Traders who aspire to be
+very good can be awarded a Federal Commission.  This allows them to
+purchase an Imperial Starship.  This is one of the most powerful
+ships in the universe.  On the other hand, the evil traders are
+offered some options in the Underground.  Traders who have proved
+that they are truly evil can steal product or money from the ports.
+
+THE UNIVERSE
+
+You will be traveling in a 1000 sector universe.  Sectors may have
+planets, ports, other players, aliens, Ferrengi, Federation
+Starships, mines, message beacons, fighters (belonging to you,
+other players, rogue mercenaries, or the Ferrengi) or the sectors
+may contain nothing at all.  If in your travels you come across
+something undesirable, your initial ship comes equipped with 30
+fighters with which you can defend yourself.
+
+Many players find it useful to have a home sector or group of
+sectors.  Players, especially those just joining a game, need an
+out-of-the-way place to stay so they can build up their assets. 
+You can explore the universe and look for dead end sectors to use
+as a hiding place.  Corporate bases built in traffic lanes don't
+fare too well and those in the major thoroughfares (in the paths
+between the class 0 and class 9 ports) just don't stand much of a
+chance.  
+
+Planets play a key part in your success as a trader.  Terra, the
+first planet you encounter as you enter the game, is where the
+people can be found to colonize all other planets.  The other
+planets in the game will, if inhabited, produce Fuel Ore, Organics,
+Equipment and Fighters.  You and the other traders decide where the
+planets will be.  You can purchase a Genesis Torpedo and use it in
+almost any sector in the galaxy.  If the planet has enough of the
+required commodities and enough people to supply the labor to build
+it, you can begin construction of a Citadel.  The Citadel can
+provide you and the other members of your corporation with a secure
+place to dock your ships and deposit the credits you've earned.  As
+you progress in the game, your Citadel can be upgraded to provide
+additional protection to you and your corporation.  If you decide
+to build a planet in your home sector, be sure you can defend it. 
+A planets is very vulnerable until it has a Combat Control Computer
+(level 2 Citadel) to safeguard it.
+
+There are ten different types of ports scattered about the
+universe.  The ports are classified by the products they buy and/or
+sell.  Port classes 1 through 8 trade the three basic commodities:
+Fuel Ore, Organics and Equipment.  The universe also contains
+specialty ports for the other items you will need to advance in the
+game.  There are three Class 0 ports where you can purchase holds
+(beneficial for moving colonists to your planets as well as
+transporting goods for trade), fighters (to help protect your
+territory), or shields (to protect your ship from the traps laid by
+your enemies).  There is one Class 9 port that contains not only a
+Trading Port, but also a StarDock.  The StarDock houses the Stellar
+Hardware Emporium, the Federation Shipyards, the Lost Trader's
+Tavern, the 2nd National Galactic Bank, the Videon Cineplex and the
+Interstellar Space Police Headquarters.  There are other places of
+interest located in the StarDock.  These places you will have to
+discover on your own.  Some are not advertised because they are
+establishments of questionable repute.  Others are Federation
+buildings that house top secret government information.
+ 
+
+PEOPLE IN THE TRADE WARS UNIVERSE
+
+A large part of playing is interacting with others in the game. 
+You can mingle with other players in the Lost Traders Tavern,
+gambling against them, conversing with them, leaving announcements
+at the door or writing a message on the bathroom wall.  You can
+combine your assets with other players of the same alignment to
+form a Corporation.  Just be aware that more than one Corporation
+has been brought down by a con man who wormed his way into the
+Corporate structure.  You can have a chance encounter with other
+creatures of the universe, both real (other users) and Non-Player
+Characters (the Federals, Alien traders and the Ferrengi).  Chance
+encounters offer many possibilities and can advance you in your
+chosen career path.  Your alignment and experience and the
+alignment and experience of the creature you encounter will
+determine just how that advancement if affected.
+
+Other traders are users just like you.  They have alignment and
+experience points.  You can see all the others by Listing Traders
+from your ships computer.  By using the listing, you can see which
+players are good and which are evil.  You can estimate whether the
+other player would better serve your needs as an ally or adversary.
+
+The Federation is the main governing body of the cosmos.  You will
+meet the Feds if you go to the Police Station.  You might run into
+them as you roam around space.  The Feds don't look kindly on
+players who break FedLaws, so if you're not careful, they might
+visit you when you least want their company.
+
+Alien traders are visitors from another universe who are looking
+for better ports.  You can get a listing of the Aliens similar to
+the one you get for other traders.  Aliens also have experience and
+alignment, but you cannot form a Corporation with them.  
+
+The Ferrengi are a greedy, cowardly group.  Their primary purpose
+is the speedy acquisition of money.  They will steal from anyone no
+matter what the person's or corporation's alignment.  They seldom
+engage in face-to-face combat because they prefer the advantage of
+surprise when ambushing their opponent.  They often travel in
+groups and will spy on promising territory.  After targeting an
+area, they will raid the sector when it is least defended.  If they
+are attacked, that group will hold a grudge against the attacker
+and they will not rest until they feel the score has been settled.
+
+Explore the universe and take part in the adventure.  You can just
+look around or you can become a dominant factor.  Most of the
+displays are fully explained.  When you are asked to make a
+selection, anything displayed in brackets [], will be the default. 
+Most displays can be aborted by hitting the space bar.
+
+Good Trading and Good Luck.
+
+
+                          MENU OPTIONS
+
+MAIN MENU
+
+Navigation
+
+<D>  Re-display Sector.  This will re-display the information
+     about the sector where you are currently located. 
+     Information includes sector number and nebulae name,
+     marker beacons, port name and class, mines, fighters,
+     planets and any other ships.
+
+<P>  Port and Trade.  This will allow you to dock at the port
+     in your current sector.  This is the only way to trade
+     your commodities.  You will have some choices for what
+     action you would like to take at the port.  Most of the
+     choices are self-explanatory.  When you dock at the port,
+     you will be able to see the docking log.  This will show
+     you the name of the last ship to do business there.  If
+     there is a planet in the sector with this port, you will
+     be able to negotiate a Planetary Trade Agreement.  This
+     is a trade contract that will allow you to trade off all
+     your excess commodities to the port without wasting your
+     turns hauling one shipload at a time.  If you want to
+     build a new Starport and the universe is full or if you
+     decide that your adversaries have too big an advantage
+     and you need to get rid of that port they have been
+     using, you can attack and destroy a starport.  This is
+     never an easy task.  The starports are very heavily armed
+     and will retaliate, so you will need to have plenty of
+     military forces with you if you decide to proceed with
+     this selection.
+
+<M>  Move to a Sector.  The sectors adjacent to your current
+     location will be listed as warp lanes in the sector
+     display.  You can move to one of them, or you can choose
+     any other sector in the universe.  If you designate a
+     sector that doesn't have a direct warp lane, your ship's
+     computer will plot your course and ask you if you want to
+     engage your AutoPilot.  You will be able to use the
+     Autopilot in three different modes.  The default is Alert
+     mode.  This will suspend your travel in any sector where
+     there is a planet, port or other trader.  The second mode
+     is Express.  This speeds you to your destination provided
+     there are no enemy forces in your path.  The third mode
+     is Single Step.  This was developed by an enterprising
+     group of pioneers.  Their group was getting smaller due
+     to bold exploration of sectors filled with mines, so the
+     survivors manufactured an Autopilot that would stop in
+     each sector.  This allowed them to scan the next sector
+     for hazards before proceeding into it.  Select this
+     option if you feel the need for caution.  To move through
+     the AutoPilot course after choosing this option, you will
+     need to select M, then re-confirm your destination and
+     mode.
+
+<L>  Land on a Planet.  This option will enable you to
+     colonize your planets, build a Citadel and do business
+     there, pick up the fighters built by your colonists or
+     pick up the production of Fuel Ore, Organics and/or
+     Equipment.  If you have purchased a Planet Scanner at the
+     Hardware Emporium, it will automatically provide you with
+     additional information about the planet.  The Planet
+     Scanner will also allow you to abort the landing
+     procedure if, after looking at the defenses, you feel you
+     may not be able to land successfully.
+
+<S>  Long Range Scan.  If you have purchased a scanner from
+     the Hardware Emporium, you can use it to view adjacent
+     sectors.  All things in the Trade Wars universe have a
+     density value and you can use your Density Scanner to
+     display the relative density of the neighboring sectors. 
+     You can then use that information to determine what's
+     next door.  If you have a Holographic Scanner, you will
+     be able to see ports, planets, hazards and other players
+     all for just the cost of one turn.
+
+<R>  Release Beacon.  Choose this when you want to launch one
+     of the Marker Beacons you purchased at the Hardware
+     Emporium.  You will need to decide what message your
+     beacon will send when you launch it.
+
+<W>  Tow SpaceCraft.  This option lets you toggle your tractor
+     beam on and off.  The computer will ask you which trader
+     in your current sector you wish to tow.  The computer
+     will then calculate (using the size difference between
+     the two ships) the number of turns you will use for each
+     sector you tow this trader and his/her ship.  You can
+     then use the Move option to go to an adjacent sector or
+     you can engage your AutoPilot to move you and your
+     "passenger".  TransWarp drives were not made to be used
+     in conjunction with tractor beams, so if you use your
+     TransWarp, the tractor beam will automatically shut down. 
+     The person you are towing will not enter a sector until
+     you have safely entered.  The tractor beam will act as a
+     protective shield and will safeguard the towee from any
+     damage from mines, offensive fighters or Quasar cannons. 
+     If your ship is destroyed, the tractor beam will also be
+     destroyed and the person you are towing will be left
+     stranded.  To disengage the beam at any point, use this
+     option again.                       
+                                            
+Computer and Information
+
+<C>  Engage Crai XXV.  This command will activate your on-
+     board computer.
+
+<I>  Ship Info.  This will display all your current
+     statistics.  
+          Trader Name......Your alias in the game
+          Rank and Exp.....The number of experience points you have
+                           accumulated, the number of alignment  
+                           points you have accumulated and the
+                           title you have received
+          Times Blown Up...The number of times your ship has been
+                           destroyed
+          Ship Name........The name of the ship you are now using
+          Ship Info........Manufacturer and model
+                           Ported = The number of times this ship
+                           has docked at a Trading Port
+                           Kills = Number of other player's ships
+                           destroyed by this ship
+          Date Built.......The date this ship was purchased
+          Current Sector...Your current location
+          Turns Left.......Number of turns remaining for this ship
+          Total Holds......Number of holds this ship is carrying
+                           (This display also shows the breakdown
+                            of the cargo in the holds)
+     Additional information includes all the special equipment
+     your ship has and the number of credits you have on your
+     ship.
+
+<T>  Corporate Menu.  This will give you information about all
+     the corporations in the game.
+
+<U>  Use Genesis Torpedo.  If you are carrying a Genesis
+     Torpedo, you will be able to detonate it using this
+     command.  Have your planet name ready because these will
+     create your new world quickly.
+
+<J>  Jettison Cargo.  If your holds are full of some cargo you
+     just can't unload on any nearby port or planet, you may
+     use this selection to unceremoniously dump your holds
+     into space.  Remember that FedLaw prohibits littering in
+     FedSpace.  Dumping holds filled with colonists will leave
+     a negative impression on your alignment.
+                                                                 
+Tactical
+
+<A>  Attack Enemy Spacecraft.  When you encounter an opponent
+     (or other creature) in a sector you have the option of
+     going on the offense and attacking.  The controller will
+     ask you how many of your fighters you want to use in the
+     attack.  Attacking others can (and probably will) affect
+     your alignment.  If you attack a pirate or known terror
+     you will get good points.  On the other hand, if you
+     decide to pick on some good soul you will go down the
+     ladder of righteousness.
+
+<E>  Ethereal Probe.  Launch the Probe you purchased at the
+     Hardware Emporium.  Send the unmanned spy off to its
+     destination sending information back to you from every
+     sector it passes through.  Remember that this device has
+     no defensive capabilities so if it encounters any enemy
+     fighters, it will be destroyed.
+
+<F>  Take or Leave Fighters.  This enables you to deploy your
+     fighters.  You will have several options so you can
+     customize your defenses.  You can leave fighters as
+     either Personal so they recognize only you as an ally or
+     you can leave them as Corporate so any member of your
+     corporation will be treated with respect.  Fighters can
+     be Offensive, Defensive or Toll.  Defensive fighters
+     defend your territory.  They bar opponents from entering
+     a sector and will fight when attacked.  Offensive
+     fighters will send out an attack group on any poor soul
+     who happens into their sector.  The size of the attack
+     group depends on the fighter support escorting the
+     intruder.  After the initial attack, offensive fighters
+     fall back to defend their territory.  Toll fighters
+     simply stop the casual passers-by and ask them for money
+     to help with your cause.  The number of Toll Fighters
+     deployed will determine the amount of the toll charged. 
+     Toll fighters, as all other fighters, will fight back if
+     attacked.
+
+<G>  Show Deployed Fighters.  This display can be a very
+     useful tool as you plan your military strategies.  The
+     information shown contains the sector number where the
+     fighters are located, the quantity of fighters there,
+     whether the fighters are Personal or Corporate, the
+     strategic mode they are in (Offensive, Defensive or Toll)
+     and any tolls they have collected.
+
+<H>  Handle Space Mines.  Mines can be a very convincing way
+     of marking your territory.  This selection will let you
+     place or pick up the mines.  You will be able to choose
+     whether to set the mines as Personal or Corporate. 
+     Personal mines will recognize only you and Corporate
+     mines will recognize any member of your corporation. 
+     Mines don't always go off, but it stands to reason that
+     the more mines there are in a sector, the more likely one
+     is to detonate.
+
+<K>  Show Deployed Mines.  This display is similar to the Show
+     Deployed Fighters.  You get information about the sectors
+     containing your Personal and/or Corporate mines and how
+     many mines are located in each of those sectors.
+
+<O>  Starport Construction.  If there is not a Starport in the
+     sector, this menu selection will display the Starport
+     Construction Menu.  Starports are available throughout
+     the universe.  You may decide that you want your own
+     customized commerce center in a place you specify instead
+     of using the ones built by others.  You will see a
+     detailed graph of the different port classes, the
+     products they can import/export and the initial
+     construction costs.  The license bureau will check to see
+     that there is a planet in the sector to provide materials
+     for the construction.  They will also check for
+     sufficient funding to support the undertaking.  Be sure
+     to leave the specified amount of materials on the planet
+     every day during the construction phase or the building
+     will not progress.  If there is already a Starport in the
+     sector, the Upgrade Starport Menu will be displayed. 
+     This allows you to increase the trading levels of any or
+     all of the commodities.  The universe can support only so
+     many ports.  If the Starport Construction request tells
+     you that the universe is full, then you have to destroy
+     an existing port before you can begin construction on
+     your new one.  (See PORT AND TRADE)                     
+                                             
+Miscellaneous
+
+<Q>  Quit and Exit.  This exits you from the game and returns
+     you to the BBS.
+
+<!>  Main Menu Help.  Display the portion of the documentation
+     describing the Main Menu functions.
+
+<Z>  Trade Wars Docs.  Display this entire document.  Useful
+     menus are available anytime a ? appears in the prompt. 
+     Specific help files are available wherever an ! appears
+     in the menus.
+
+<V>  View Game Status.  Trade Wars 2002 can be configured in
+     a variety of ways by your SysOp.  This display will show
+     you the static information about the game as well as the
+     current information.  Static information includes the
+     version number, maximum number of sector, players, etc.,
+     whether or not the local display is on, and if this is a
+     registered version of the game.  The StarDock location
+     may also appear on this screen (SysOp option).  The
+     current information will show how many players are now in
+     the game with the percentage of good, how many planets
+     have been built, how many corporations are registered,
+     the amount of credits accumulated at the ports, the total
+     fighters and mines in the universe and how long the game
+     has been running.
+
+                                                                 
+AUTOPILOT MENU
+
+<Y>  Yes, stop here.  This will disengage the Autopilot and
+     will stop you in the current sector.
+
+<N>  No, continue on.  Continues on the pre-defined route.
+
+<E>  Express Non-stop.  This will speed you through the
+     sectors without pausing to ask if you want to stop in the
+     sectors with planets or ports.  Hitting the space bar
+     while in Express mode will put you into warp speed.  If
+     you encounter enemy forces you will have to react.  If
+     you retreat, the computer will re-plot your course
+     avoiding that sector from which you retreated.
+
+<I>  Ship Information.  This displays all your current
+     statistics.  The display is the same as option <I> from
+     the Main Menu.
+
+<R>  Port Report.  This will display the port report
+     information as if you chose <R> from your on-board
+     computer.
+
+<S>  Long Range Scan.  If you have purchased a Long Range
+     Scanner from the Hardware Emporium, you can use it during
+     your AutoPilot voyage without having to stop in the
+     sector.  
+
+<D>  Re-Display Sector.  This is the same sector display that
+     can be accessed by choosing option <D> from the Main
+     Menu.
+
+<P>  Port and Trade.  This will allow you to dock at a Trading
+     Port and conduct your business without having to
+     recalculate your Autopilot course when you're done.  You
+     will be selecting the same options as you would if you
+     chose the <P> selection from the Main Menu.
+
+<!>  Autopilot Help.  Displays this file.
+
+
+COMPUTER MENU
+
+Navigation
+
+<F>  Course Plotter.  This will show the number of moves it
+     will take to get from any sector in the universe to
+     another.  You can use this tool to avoid any surprise as
+     you travel between sectors.  You know the universe is
+     full of unexplained phenomenon and just because you got
+     from your home sector to this sector with a great port in
+     five moves doesn't mean you'll get back in five moves.
+
+<I>  Inter-Sector Warps.  This selection will show you the
+     warps lanes connected to any sector in the universe that
+     you have explored.  You just enter the sector number and
+     the computer will show you every sector directly linked
+     to that sector.  The computer will not have data to
+     display for those sectors you have yet to explore.
+
+<K>  Your Known Universe.  As you travel through space, you
+     will be creating your personal travelogue.  This will
+     store information about the sectors you've explored. 
+     Your computer will use this information to give you your
+     Port Reports and Inter-Sector Warps.  You may wish to see
+     what sectors you have (or don't have) in your travelogue. 
+     This option will tell you.  You will see what percentage
+     of the universe you have visited and the computer will
+     ask if you want the list of Explored or Unexplored
+     sectors.  When you reply, you will get a list of sector
+     numbers.
+
+<R>  Port Report.  This report gives you relatively up-to-date
+     information about any port located in a sector which you
+     have explored.  All you have to do is enter the sector
+     number in which the port is located.  You will see items
+     being traded at the port, the status of each of those
+     items (whether the port is buying them or selling them),
+     the number of units the port is willing to trade (and
+     what percentage of maximum that number represents) and
+     how many of each of the commodities you have in your
+     holds.  If for some reason you get the message that the
+     computer has no information on that port and you are sure
+     there is a port in the sector you indicated, there may be
+     enemy forces in that sector interfering with your
+     computer's scan.
+
+<V>  Avoid Sectors.  You will sometimes find sectors
+     containing things that are detrimental to your success in
+     the game.  This function will avoid those sectors when
+     doing any course plotting.  You just have to enter the
+     sector or sectors to be by-passed before you use the
+     computer to plot a course or to establish a route for
+     your AutoPilot.  If the computer encounters a situation
+     where there is not possible route between the sectors you
+     requested, then all voids will be cleared and will have
+     to be re-entered before any future course calculations.
+
+<W>  Use Mine Disrupter.  You are exploring a new region of
+     the universe and as you single-step your way along, your
+     scanner shows a number of mines in the next sector.  Send
+     one of the Mine Disrupters you purchased at the Hardware
+     Emporium into this mined sector so you don't have to take
+     the damage to your ship.  If the first Disrupter doesn't
+     disarm all the mines, you can send in another.
+
+<X>  List Current Avoids.  When you want to see just what
+     sectors are being avoided when the computer charts your
+     course, use this selection.  You can use this information
+     to determine if you want to make any changes.  Due to the
+     limited functionality of this module of the computer, if
+     you want to remove one or more avoided sectors from the
+     list, you must clear the entire list and re-enter the
+     sector numbers you still want to bypass.   
+
+<P>  Fire Photon Missile.  You can fire your Photon Missile
+     into the adjacent sector and run in to do your damage. 
+     Remember that the timer is running as soon as the missile
+     is launched so be quick!
+
+<B>  Begin Self-destruct Sequence.  If you have managed to
+     make a real mess of things and the only way to continue
+     is to start from scratch, then go ahead and use this
+     command.  You will escape from your ship moments before
+     it self-destructs.  Think it over carefully before you
+     hit the button.  This will not only destroy your ship and
+     all its inventory, but it will also affect your rank and
+     alignment.  Your spirit takes two days to migrate back to
+     Sector 1, so you won't have any turns the day after you
+     self-destruct.
+
+<!>  Computer Help.  Display the portion of the documentation
+     describing the Computer functions.
+
+<Q>  Exit Computer.  This option will return you to the bridge
+     of your ship.
+
+Miscellaneous
+
+<A>  Make Announcement.  Do you have something you want to
+     tell everyone in the game?  If so, prepare your
+     proclamation and enter it.  You will have 160 characters
+     for your announcement and it will be displayed in the
+     Daily Log for everyone to read as they enter the game.
+
+<C>  View Ship Catalog.  This tool lets you view the
+     specifications for all the available ships in the game. 
+     You can get a list of the ships and choose which ever one
+     strikes your fancy.  The display will show the following
+     information - 
+
+               Basic Hold Cost
+               Main Drive Cost
+               Computer Cost
+               Ship Hull Cost
+               Base Cost
+               Minimum and Maximum Holds
+               Maximum Fighters
+               Maximum Shields
+               Number of Moves per Day
+               Maximum Number of Mines
+               Maximum Number of Genesis Torpedoes
+               Offensive Odds for Combat
+               Maximum Number of Marker Beacons
+               TransWarp Drive Capability
+               Long Range Scanner Capability
+               Planet Scanner Capability
+
+     In addition to all this information, there is a brief
+     narrative about the capabilities and shortcomings of each
+     model.
+
+<D>  Read Daily Log.  This will re-display the Daily Journal
+     that you see when you enter the game.
+
+<E>  Display Evil Ranks.  This is a display of the titles to
+     which you can aspire if you are of negative alignment. 
+     It shows the levels, titles and the number of experience
+     points needed to attain that level.
+
+<G>  Display Good Ranks.  This is a display of the titles to
+     which you can aspire if you are of positive alignment. 
+     It shows the levels, titles and the number of experience
+     points needed to attain that level.
+
+<H>  List Aliens.  You will encounter traders from other
+     galaxies as you make your way through the universe.  You
+     can interact with these creatures the same as you do with
+     the Traders native to your 1000 sectors.  Of course,
+     aliens are either good or bad.  Their alignment (good or
+     evil) can make a big difference in how you want to
+     associate (or not associate) with them.  When you use
+     this selection, your computer will tell you everything
+     you need to know.
+
+<L>  List Traders.  This choice will show you all the players
+     in the game in order of experience.  Your prompt will ask
+     if you would like the list to show the Titles of the
+     players or their Values in Experience points.  Each
+     trader will be displayed with his or her title or value,
+     the number of the Corporation to which he/she belongs,
+     and the type of ship currently being used.
+
+<M>  Re-Read Your Mail.  This gives you a chance to review the
+     messages that were sent to you since the last time you
+     were in the game.
+
+<N>  Toggle ANSI On/Off.  That just about says it all.
+
+<S>  Send Mail.  When you need to get a message to one of the
+     other players, this will serve your need.  You will have
+     160 characters to get your message through.  You do not
+     need to know the player's entire name.  If you have part
+     of it, your computer will search the player file and
+     prompt you when it finds a match.
+
+<T>  Current Ship Time.  This will display the time and date
+     stored in your ship's computer.  (Remember, the game
+     began in the year 2002.)
+
+<Y>  List Your Planets.  If you have planets that you want to
+     keep as personal, you can view them using this option just
+     as you can view Corporate Planets using the <L> option in 
+     the Corporation Menu.
+
+
+PLANET MENU
+
+<A>  Take All Products.  This will load your empty holds with
+     the products available on the planet.  The dock workers
+     will load your ship to the brim with as much of each of
+     the products that is available beginning with the cargo
+     of greatest value (Equipment) to the least value (Fuel
+     Ore).
+
+<E>  Enter Citadel.  You enter the Citadel (and display the
+     Citadel Menu).  If there is no citadel on this planet,
+     you will have the option to build one.  The necessary
+     products and labor force needed in the construction will
+     display.  You will not be issued a building permit if you
+     don't have the necessary people and commodities.
+
+<D>  Display Planet.  This will show the planet number, type,
+     name and the alias of the player who created it.  There
+     is also an informative chart showing how many colonists
+     are working in each production area, how many units of
+     each product are being produced daily, the quantity of
+     each product currently available on the planet, and how
+     many of each you have on your ship.  Citadel information
+     including level, construction underway and credits in the
+     vault is also available.
+
+<M>  Change Military Levels.  You will want to move your
+     fighters around to protect your territory.  This option
+     will allow you to take fighters currently on the planet
+     or to leave fighters you have escorting you.  The
+     fighters on the planet are controlled by the Combat
+     Control Computer (level 2) in the Citadel.  If there is
+     no Combat Control Computer there, the fighters would
+     better serve you patrolling the sector outside the
+     planet.  Leaving fighters on a planet will designate the
+     planet as yours.
+
+<O>  Claim Ownership.  Let the entire universe know who
+     controls the planet.  Use this option to set the planet
+     as either Personal or Corporate.  This is a must when
+     you've gone to all the trouble to capture one of your
+     opponent's planets.  
+
+<P>  Change Population Levels.  Throughout the course of the
+     game you may wish to change the distribution of your
+     workforce among the commodities.  This selection provides
+     you with an easy, efficient way to order your workers to
+     the job you need done.
+
+<S>  Load/Unload Colonists.  Colonizing your planets can
+     contribute greatly to your trading profits.  This will
+     enable you to leave the colonists you've brought from
+     Terra or pack everyone up and move them to another
+     planet.  Keep a close watch on your planet's population
+     because many planets experience a growth/death cycle.  If
+     your planet has too many people to support, the raw
+     materials needed to produce your commodities will be used
+     up by the surplus population and your production rates
+     will be adversely affected.
+
+<T>  Take or Leave Product.  This will let you specify to the
+     dock workers which type of products you want to leave and
+     which ones you want loaded on your ship.
+
+<Z>  Try to Destroy Planet.  First you purchase Atomic
+     Detonators from the Hardware Emporium.  That is the easy
+     part.  You then have to fight your way into the sector
+     containing the planet.  After battling the fighters,
+     Quasar Cannons, and any other military defenses that may
+     be there, you have the ability to lay your Atomic
+     Detonators.  Colonists have been trained in the disarming
+     of detonators.  Most of the training was rushed and
+     provided by inexperienced teachers, so they aren't very
+     good at it.  Most of their attempts literally go up in
+     smoke, and if you are still on the planet when their
+     attempt goes awry, you go awry with it.  You have the
+     option of suing your conventional weapons to kill off the
+     colonists before you lay the detonators so you don't run
+     the risk of getting killed by their lack of skill.  If
+     you're willing to risk the bad Karma to be a little
+     safer, this might be the correct option for you.
+
+<L>  Leave This Planet.  Take off from the planet.
+
+<!>  Planetary Help.  Display the portion of the documentation
+     describing the Planetary functions.
+
+
+CITADEL MENU 
+
+<C>  Engage Ship's Computer.  Use this function to use all
+     your Crai's power just as you would by choosing <C> from
+     the Main Menu.
+
+<D>  Display Traders Here.  This will show you the guest
+     register of the other players who are parked in the
+     Citadel.  The register gives you the name of the player,
+     their ship type and how many fighters, shields and holds
+     they have.  This information could prove very useful if
+     you have just captured the planet from one of your
+     opponents.  
+
+<E>  Exchange Trader Ships.  If the other players parked in
+     the Citadel have specified their vehicle as available for
+     trade, then you have the option of exchanging your ship
+     for theirs.  Be sure to coordinate this carefully with
+     the other members of your corporation.  Only C.E.O.'s can
+     use Corporate Flagships so they are not available for
+     trade.  If you have seized this planet from an opponent
+     still parked in the Citadel, you may want to commandeer
+     his ship for your own use.
+
+<G>  Shield Generator Control.  If you have your level 5
+     Citadel completed, you can use this option to store your
+     shields.  You transfer your Ship's shields to the
+     Planetary Shielding System using this option (10 ship
+     shields = 1 planetary shield).  Stored shields will be
+     used in the defense of your planet.  The Planetary
+     Shielding System will protect your planet from your
+     enemies.  You will thwart your rivals' attempts to
+     incapacitate your defenses with Photon Missiles.  Your
+     opponents will even be unable to scan your planet.
+
+<I>  Personal Info.  This selection will enable you to see all
+     of your current statistics.  The information will display
+     same as it does when you choose option <I> from the Main
+     Menu.
+
+<M>  Military Reaction Level.  Another method of customizing
+     your protection, this will let you set the percentage of
+     fighters stationed there to be used as offensive or
+     defensive in case of an attack on the planet.  You must
+     have a Combat Control Computer (Level Two Citadel or
+     higher) to use this option.  The value you enter will be
+     the percentage of fighters that will attack offensively
+     as someone attempts to land on your planet.  The balance
+     of your fighters will fall back for defense of the planet
+     and Citadel.
+
+<P>  Planetary TransWarp.  The instructions for this feature
+     are in your Level Four Citadel.  Provided you have enough
+     Fuel Ore to power the mammoth engine, you can move your
+     planet to any sector where you currently have fighters
+     stationed.
+
+<Q>  Quasar Cannon R-level.  Use this option to set both the
+     Atmospheric and Sector reaction levels.  The Quasar
+     Cannon in your Level Three Citadel uses massive amounts
+     of Fuel Ore.  Use this option to adjust the percentage of
+     Ore on the planet used in this weapon's capability. 
+     PLEASE NOTE: The Quasar Cannon will use the entered
+     percentage of Fuel Ore remaining on the planet for EACH
+     SHOT it fires.  If you set the Sector value to 100% and
+     a Scout Marauder with 5 fighters wanders into your
+     sector, the Cannon will use all the Fuel Ore on your
+     planet to blow the intruder into space dust.  If another
+     player later tramps into your sector in a well-armed
+     BattleShip your Cannon will sit idle due to lack of
+     ammunition.  Another consideration when setting your
+     percentages is that the accuracy of the Cannon is much
+     better and the damage caused by the blast is greater when
+     the target is in the planet's atmosphere.
+
+<R>  Remain Here Overnight.  You can sleep feeling safe and
+     secure if you bed down inside the Citadel, out of the rat
+     race.  You will have the protection of your planetary
+     forces to guard you.  When you leave your ship, the valet
+     will ask if you want others who enter the Citadel to have
+     the privilege of exchanging ships with you.  It's
+     perfectly within your rights to keep your ship for
+     personal use only.
+
+<S>  Scan This Sector.  This option will let you see
+     everything in the sector around this planet.  The display
+     will be the same as you get from option <D> in the Main
+     Menu.
+
+<T>  Treasury Fund Transfers.  If you don't like to carry a
+     lot of credits on you when you're out exploring the
+     universe, you can deposit your excess in the Citadel. 
+     You can withdraw the credits whenever you need them.  Be
+     advised that the Treasury workers are quite lax in their
+     security measures and anyone who enters the Citadel can
+     withdraw any and all of the credits.
+
+<U>  Upgrade Citadel.  Once your Citadel construction is
+     complete, you may find you wish to upgrade.  Very few
+     people are content with a Level One Citadel.  You will
+     need more colonists and materials for each level of
+     improvements.  Level Two has a Combat Control System
+     which enables you to set the fighters deployed on the
+     planet as offensive or defensive.  Level Three contains
+     a Quasar Cannon which is a very powerful weapon, but uses
+     a considerable amount of Fuel Ore to operate.  Level Four
+     encloses the massive engine used for the TransWarp Drive. 
+     Level Five provides the power for the Planetary Shielding
+     System.  The PSS will provide a sturdy shield for your
+     planet which your enemies will have a hard time
+     penetrating with fighters or photon missiles.
+
+<V>  Evict Other Traders.  Now that you've survived all the
+     defenses your opponent placed to keep you out, you should
+     be able to come in and take over, right?  Occasionally
+     you go into a newly captured Citadel only to find the
+     trader (or traders) who previously controlled the planet. 
+     No need to have them in your way.  Simply select this
+     option to activate the Emergency Warning System in the
+     Citadel.  It will alert these unwanted guests to some
+     impending doom and their ships will blast off into orbit
+     around the planet.  The system will list the traders as
+     they escape.  You then may either stay in the Citadel out
+     of harm's way or you can go out into the sector to
+     inflict more damage on your enemy.
+
+<X>  Corporation Menu.  This option is the same as option <T>
+     from the Main Menu.
+
+<!>  Citadel Help.  Display the portion of the documentation
+     describing the Citadel functions.  
+
+<L>  Leave the Citadel.  Exit the Citadel and return to the
+     planet.
+
+
+CORPORATION MENU
+
+<D>  Display Corporations.  If you want to see how you and
+     your corporation compare with others in the game or if
+     you want to see who the members are of a specific
+     corporation, use this selection.  You will asked if you
+     want to List Corporations or Rank Corporations.  L will
+     give you a listing of all corporations registered at
+     Federation Hall showing the corporation's registration
+     number and the date of incorporation and all corporate
+     members with the C.E.O. labeled.  R will display a list
+     of all corporations ranked by experience.  The list shows
+     the rank, the corporate registration number and name, the
+     C.E.O.'s name, the corporate alignment and the corporate
+     experience.
+
+<J>  Join a Corporation.  When you want to join forces with a
+     corporation of the other traders, you will need to make
+     arrangements to get your corporate security pass.  When
+     a member of that corporation has approved your
+     membership, use this option to join.  You will need to be
+     of the same alignment as the C.E.O.  If at any time
+     during your tenure with the corporation, your alignment
+     is opposite that of the Chairman, you will be
+     automatically ousted from the Corporation.
+
+<M>  Make a New Corporation.  When you are prepared to make to
+     move from independent trader to Corporate C.E.O., this
+     option will file your Corporate Charter in the
+     Federation's Hall of Records.  As C.E.O. you will have
+     privileges that other players don't have such as owning
+     an Corporate Flagship and sending Corporate Memos to all
+     members of your Corporation.  You will be the one to
+     determine whether your Corporation is good or evil.  As
+     you go, so goes the Corporation.  A prospective member
+     will have to be of the same alignment as you to join.   
+
+<!>  Corporation Help.  Display the portion of the
+     documentation describing the Corporation functions.
+
+<Q>  Quit Corporation Menu.  Return to the game.
+
+Corporations Only
+
+<C>  Credit Transfer.  Use this option to transfer credits to
+     or from your corporate associate.  You have to be in the
+     same sector as the corporation member with whom you want
+     to exchange credits.
+
+<F>  Fighter Transfer.  Use this option to transfer fighters
+     to or from your corporate associate.  You have to be in
+     the same sector as the corporation member with whom you
+     want to exchange fighters.
+
+<H>  Mines Transfer.  Use this option to transfer mines to or
+     from your corporate associate.  You have to be in the
+     same sector as the corporation member with whom you want
+     to exchange mines.
+
+<S>  Shields Transfer.  Use this option to transfer shields to
+     or from your corporate associate.  You have to be in the
+     same sector as the corporation member with whom you want
+     to exchange shields.
+
+<X>  Leave Your Corporation.  There may come a time when you
+     feel you have to make a break with your current
+     corporation.  You may want to form your own new
+     corporation.  You may want to play the game with an
+     alignment different from that of your corporation's
+     members.  This will allow you to vacate your position in
+     your corporation.  Remember that you will no longer have
+     access to any of the corporation's assets.  If you are
+     the C.E.O. the corporation will be dissolved and all
+     corporate fighters will become rogue mercenaries.
+
+<L>  List Corporate Planets.  This will display a detailed
+     graph of your corporation's planets.  The information
+     includes 
+     -the sector where the planet is located
+     -the planet's name
+     -the current population
+     -the production rate for Fuel Ore, Organics and Equipment
+     -the current inventories of the commodities
+     -the number of fighters stationed there
+     -the level of the Citadel (if any)
+     -the amount of credits in the Citadel (if any)
+
+<A>  Show corporate Assets and Member Locations.  This is a
+     very handy tool to use in organizing your strategy with
+     that of the others in your Corporation.  The information
+     shown on this display is
+     -the Corporation member's name
+     -the sector where that member is located
+     -whether or not the member is on a planet in that sector
+     -the number of fighters, shields, mines and credits on him/her
+
+C.E.O.'s Only
+
+<T>  Send Corporate Memo.  When you want to give information
+     to all those in your organization, use this option. 
+     Whether it is instructions on where you want to establish
+     a new colony or a congratulatory dispatch for a job well
+     done, you can send your message quickly and efficiently.
+
+<P>  Corporate Security.  In a world where instances of
+     computer crime run rampant, a C.E.O. can never be too
+     careful.  Be sure you trust a player before you let him
+     or her in your organization.  And just as with your BBS
+     account, you can better maintain security if you change
+     passwords occasionally.
+
+<R>  Drop Corporate Member.  Do you have a problem with a
+     member of your Corporation?  Is that member showing signs
+     of insubordination?  You don't have to put up with the
+     stress.  Simply drop this trouble maker.  Remember that
+     the member can take any corporate assets on his/her ship
+     when kicked out.
+
+
+STARDOCK MENU
+
+<C>  The CinePlex Videon Theatres.  You can smell the popcorn
+     from the Hardware Emporium.  Come right in to see the
+     latest releases from HollyWorld.  You can choose from
+     several first-run offerings or you can opt for one of the
+     classics.  Don't take too long to make up your mind
+     because there are others waiting in line behind you.
+
+<G>  The 2nd National Galactic Bank.  Here is the place to
+     engage in matters of high finance.  You will be able to
+     put credits into your or another trader's account.  You
+     can take credits out of your account.  You can examine
+     the balance in your account.  The bank allows only
+     personal accounts.  Corporate funds should be stored in
+     secured Citadels.
+
+<H>  The Stellar Hardware Emporium.  This is the General Store
+     of the Trade Wars Universe.  If you want it, they have it
+     and if you have enough money, they'll sell it to you.
+
+<P>  The Federal Space Police HQ.  The home of law enforcement
+     in the galaxy.  Here you can register complaints against
+     other players, collect rewards or see the wanted posters.
+
+<S>  The Federation Shipyards.  This is the place where you
+     can trade your ship in for a newer model.  You can see
+     all the models available and all the specifications for
+     each style.  
+
+<T>  The Lost Trader's Tavern.  Traders come here for more
+     than just a drink and a meal.  Some of the more
+     interesting features of this game can be found here if
+     you ask the right questions.
+
+<!>  StarDock Help.  Display the portion of the documentation
+     describing the StarDock functions.
+
+<L>  Return to Your Ship and Leave.  Leave the Stardock and
+     return to the sector.
+
+
+HARDWARE MENU
+
+<A>  Atomic Detonators.  These detonators are used in the
+     destruction of planets.  If you don't have enough
+     military to take out a planet, you can set Atomic
+     Detonators and run like hell.  Warning: colonists have
+     been trained to disarm these detonators.  These units are
+     as unstable as they are powerful.  They can react like
+     Corbomite Devices when an enemy attacks your ship, and
+     they can also detonate by hitting mines or offensive
+     fighters as you journey through the galaxy.
+
+<B>  Marker Beacons.  Marker Beacons are the billboards of the
+     Trade Wars universe.  They are an inexpensive way to make
+     a statement.  They stay in the sector where they are
+     launched until they are destroyed.  They have absolutely
+     no defensive capability.  They are so fragile that if two
+     are launched in the same sector, they both explode.
+
+<C>  Corbomite Devices.  Corbomite devices are weapons to
+     avenge the destruction of your ship.  If one of your
+     opponents succeeds in obliterating your craft, that
+     person may suffer substantial damage as well when your
+     ship is equipped with one or more of these.  Corbomite
+     devices can also be viewed as protection.  Your enemies
+     may think twice about attacking you if you are armed with
+     these.  With each additional device you add to your
+     vessel, you increase your protection level.  You can have
+     up to a Level 1500 Corbomite Device on some ships and the
+     nice part is, your foe has no way to detect the device's
+     presence on your ship.
+
+<D>  Cloaking Device.  Cloaking devices can hide you from your
+     rivals when you are away from your home sector.  If you
+     feel you will be vulnerable, use your Cloaking Device to
+     conceal your ship.  Your location will be unknown to even
+     your Corporate associates who view the Member Location
+     display.  Remember that the Cloaking Device will use a
+     lot of your energy reserves and its effectiveness
+     decreases the longer it's used.  A well-known consumer
+     group has tested these devices and found that on the
+     average, after 72 hours of use, you stand a 50% chance of
+     being detected.  Cloaking Devices are relatively
+     inexpensive, but because some of the components decompose
+     quickly, they are a one-time use item.
+
+<E>  SubSpace Ether Probes.  Ethereal Probes are quite useful
+     when you want to know what wonders lie on the other side
+     of the universe, but you don't want to use up your turns
+     to explore.  You can launch the unmanned probes with a
+     preset destination.  As they maneuver their way across
+     the cosmos, they report back sector by sector.  They are
+     quite inexpensive for the amount of information that can
+     be obtained, but they are not sturdy.  They contain a
+     self-destruct mechanism that is triggered when the probe
+     reaches its destination.  The designers of the probe
+     thought this would provide anonymity for anyone using the
+     gadget.  This mechanism is so sensitive that it detonates
+     when the probe encounters any enemy fighters.  Since it
+     has no shielding capabilities, any ship it passes will be
+     able to detect its presence.
+
+<F>  Planet Scanners.  If you are planning an invasion of
+     another player's planet, this scanner can show you the
+     military system on the planet without landing.  Once you
+     are in the sector, scan the planet.  You can see who
+     created the planet, who currently controls the planet,
+     and the military defenses installed there.  You won't
+     find out the hard way that you don't have enough weapons
+     to take over the enemy forces.
+
+<M>  Space Mines.  This weapon can be a very effective way of
+     establishing your territory.  Space mines can cause
+     serious damage to smaller craft and can be a real
+     nuisance to larger vessels.  The latest technology has
+     provided mines with sensors capable of recognizing the
+     Federal I.D. codes.  This will keep the mines from
+     detonating by your ship or your Corporation's ships (most
+     of the time).
+
+<P>  Photon Missiles.  Only owners of Missile Frigates or
+     Imperial Starships can use these powerful weapons. 
+     Shields, both Ship and Planetary, are excellent
+     protection from the impact of this weapon.   However,
+     once shields have been destroyed, Photon Missiles can be
+     used to disable all Combat Control Computers (Level 2
+     Citadels) and Quasar Cannons (Level 3 Citadels) on
+     planets.  It neutralizes all mines and fighters stationed
+     in a sector.  Be advised that the effect of these
+     missiles is short-lived.  Get in, take care of your
+     business and get out before the effect wears off.  You
+     don't want to still be in the sector when the Quasar
+     Cannons regain their strength.  Great care should be used
+     in transporting these volatile weapons of destruction.  
+
+<R>  Long Range Scanners.  These scanners can provide the
+     explorer with multi-sector vision.  Your two options are
+     a Density Scanner or a Holographic Scanner.  The Density
+     Scanner is the cheaper and it provides the user with the
+     relative density of the surrounding sectors.  You can use
+     that information to determine what may be in the
+     neighborhood.  If you have sufficient funds, you can
+     purchase a Holographic Scanner which has both Density and
+     Holographic capabilities.  Using the Holographic mode,
+     you can see what and who is in the sectors adjacent to
+     the one you are currently occupying.  The scanner in
+     Holographic mode uses a small amount of your ship's fuel
+     (one turn's worth) but that is a small price to pay when
+     you consider the information and security it can provide.
+
+<S>  Mine Disrupters.  If you run across a heavily mined
+     sector but you really need to go in there, send in a Mine
+     Sweeper to clear your path.  They can absorb the damage
+     so you don't have to.
+
+<T>  Genesis Torpedoes.  Much improved since the first models,
+     these torpedoes can provide the foundation for the
+     production of your trading commodities.  The planets
+     generated from the torpedo's explosion will be able to
+     support a large number of colonists.  The colonists can
+     provide the labor needed to mine the Fuel Ore, grow the
+     Organics and manufacture the Equipment and Fighters you
+     will use in your trading company.
+
+<W>  TransWarp Drives.  Only Imperial Starships, Corporate
+     Flagships and Havoc Gunstars have hulls sturdy enough to
+     withstand TransWarp flight.  These drives use a massive
+     amount of Fuel Ore so make sure you have a source of Ore
+     for your return trip, too.  The TransWarp Drive uses a
+     homing device, so you should have at least one fighter in
+     your destination sector.
+
+<Y>  Psychic Probes.  Bartering at the ports is one of the
+     main elements of this game.  You get experience points
+     for making a good deal.  The better the deal, the more
+     points you get.  Psychic Probes are the next best thing
+     to insider trading, and they're legal.  If you want to
+     see exactly where your offer is compared to what they
+     would have accepted, you need one of these probes.  It
+     will not only show you where you went wrong, but it will
+     also help you improve your trading skills.
+
+<!>  Hardware Emporium Help.  Display the portion of the
+     documentation describing the Hardware Emporium functions.
+
+<L>  Leave the Emporium.  Return to the main area of the
+     StarDock.
+
+
+SHIPYARDS MENU
+
+<B>  Buy a New Ship.  When you are ready to upgrade, or if you
+     need a specialized ship, come to the Shipyards and talk
+     to Cal Worthington XXI about a trade-in.  You will be
+     offered a fair price for your current ship.  They will
+     take anything in your trade such as fighters,
+     accessories, mines, etc. so if you're trying to get a lot
+     on your trade-in, load your ship up before you talk to
+     them.  If you don't want to use all your extras in the
+     trade, you might want to leave as much as you can in a
+     secure place and pick it up after you purchase your new
+     ship.  New ships are very basic models.  The extras are
+     available at the Hardware Emporium and the Class 0 ports.
+
+<E>  Examine Ship Specs.  This is the same information
+     available to you from your ship's on-board computer, but
+     in includes (for ANSI users only) a picture of each ship,
+     both top and front view.  You may want to review the ship
+     specifications one last time before you make your
+     purchase.
+
+<P>  Buy Class 0 Items.  After you purchase your ship, you may
+     need to equip it with a few of the items normally
+     purchased at the Class 0 ports.  You wouldn't want to
+     take that brand new beauty out unprotected, would you? 
+     The merchants in the shipyards have obtained fighters,
+     shields and holds from "trade-ins" so they are offering
+     them right here where you buy your ship as a convenience
+     to you.  Be forewarned that you will be paying a premium
+     price for this convenience.    
+
+<R>  Change Ship Registration.  It's not paranoia when they're
+     really out to get you.  If your foes are tracking you
+     down by reading the logs at the StarPorts or they've
+     received information on your ship from a loose-tongued
+     fool at the tavern, go to this back room in the offices
+     of the Shipyards.  For a hefty fee, you can get revised
+     registration papers on your ship and christen it with a
+     new, untraceable name.
+
+<!>  Shipyards Help.  Display the portion of the documentation
+     describing the Shipyards functions.
+
+<L>  Leave the Shipyards.  Return to the main area of the
+     StarDock.
+
+
+TAVERN MENU
+
+<A>  Make an Announcement.  Do you have something of interest
+     for all the patrons of the tavern?  If so, pay the fee
+     and post your announcement.  It will stay there until the
+     next announcement is posted.
+
+<B>  Buy Something from the Bar.  Had a trying day?  Want a
+     little something to soothe your nerves?  Order up
+     whatever your heart desires.  You might even get it in a
+     clean glass.  Remember FedLaw says, don't drink and fly.
+
+<C>  Eavesdrop on Conversations.  See that group of
+     individuals gathered at the table in the darkest corner
+     of the tavern?  They seem to be engaged in some very
+     engrossing dialogue.  If you would care to listen in and
+     maybe even add some remarks of your own, use this option.
+
+<E>  Order Some Food.  You really need to keep your strength
+     up so you can take on the challenges of the cosmos. 
+     Order up the Blue Plate Special (the food is blue, not
+     the plate) and nourish yourself with some of the most
+     memorable edibles this side of Barlaam.
+
+<G>  Try Your Hand at Tri-Cron.  Do you feel lucky, Punk?  Put
+     your money down and see if you can beat the odds.  A
+     simple game of chance might relax you and you never know,
+     you might come away a big winner.  The game is easy - the
+     detailed instructions are available in the Tavern.  The
+     cost of playing is based on the size of the Top Winner's
+     Jackpot.  You'll have 10 rounds against the house.  If
+     you win, the payback is 2 to 1.  If you're the top
+     winner, you receive the accumulated jackpot.
+
+<T>  Talk to the Grimy Trader in Back.  Not much to look at,
+     but he can be a wealth of information.  Depending on how
+     many drinks he's had, his facts may be a bit suspect. 
+     Just ask him about a specific topic, give him a little
+     inducement and he'll tell you what he knows.  If you
+     speak to him respectfully, he'll be fair to you. 
+     Otherwise he might try to take advantage of your need for
+     information.  You'll have to pay dearly for it, but he
+     can sometimes get you information on specific Traders.
+
+<U>  Use the Facilities.  When Mother Nature calls, this
+     option will allow you to answer.  Feel free to read the
+     graffiti to keep yourself entertained.  You can even add
+     some of your own prose or poetry but beware of what may
+     be lurking in the next stall.
+
+<!>  Tavern Help.  Display the portion of the documentation
+     describing the Tavern functions.
+
+<L>  Leave the Tavern.  Exit back to the main area of the
+     Stardock.
+
+
+FEDPOLICE HEADQUARTERS MENU
+
+<A>  Apply for a Federal Commission.  The Federation awards
+     commissions to those individuals who have shown
+     themselves to be highly experienced and law abiding.  If
+     you believe yourself to qualify, apply at the Police
+     Headquarters.  If the Feds grant you a commission, you
+     will be able to procure an Imperial Starship.  This is a
+     very powerful ship but with it comes a lot of
+     responsibility.  The Federation may call upon you to aid
+     their cause of maintaining law and order throughout the
+     universe.  There are a limited number of Starships
+     available, so apply for your commission as soon as you
+     can.
+
+<C>  Claim a Federation Reward.  After you have done your duty
+     as a good FedLaw abiding citizen, you will want to claim
+     the reward that is rightfully yours.  March right into
+     the Police HQ and tell the sergeant that he no longer has
+     to worry about the scumbag you terminated.  Be sure to
+     put the reward money to good use.
+
+<E>  Examine the Ten Most Wanted List.  There is a listing
+     available in the FedPolice building of the most corrupt
+     players in the game.  This list shows the level of evil
+     the player has achieved, the corporation to which he/she
+     belongs, the number of bounties posted on that player and
+     the total reward for that player's demise.
+
+<P>  Post a Reward on Someone.  Would you like to make it a
+     little more rewarding for someone to get one of the
+     players on the Most Wanted list?  You can offer as small
+     or as large a payment as you would like.  Just see the
+     officer on duty and tell him you want to post a reward. 
+     You will be shown the list of the Most Wanted criminals. 
+     Tell the nice officer which one you would most like to
+     see brought to justice and how much you want to give to
+     help in the cause. 
+
+<!>  FedPolice Help.  Display the portion of the documentation
+     describing the FedPolice functions.
+
+<L>  Leave the Police Station.  Exit the building and return
+     to the main area of the StarDock.
+
+
+BANK MENU
+
+<D>  Make a Deposit.  You can inform the TellBorg that you
+     wish to deposit some or all of the credits you have with
+     you.  The transaction is recorded instantly so you don't
+     have to wait three days for your deposit to be reflected
+     in your account.  
+
+<E>  Examine Balance.  You might want to see if that other
+     trader who promised you a reward for helping out with the
+     Ferrengi has come through with the credits.  You might
+     only want to check your funds to see if you can go on a
+     spending spree at the Hardware Emporium.  This selection
+     can put the answer at your fingertips.
+
+<T>  Transfer Funds.  If you need to get funds to a Trader who
+     is not in your corporation, this option will authorize
+     you to make a deposit in that other Trader's account. 
+     Naturally, you must have the credits to be able to
+     transfer them.
+
+<W>  Withdraw Funds.  Saving can really pay off.  If your ship
+     has been destroyed and you don't want to start from
+     scratch in a Scout, a nest egg in the Galactic Bank can
+     allow you to come right back with the ship of your
+     choice.  Use this option to take your savings and spend
+     them any way you choose.  You and only you have the
+     authorization to withdraw credits from your account.
+
+<!>  Bank Help.  Display the portion of the documentation
+     describing the Bank functions.
+
+<L>  Leave the Bank.  Return to the main area of the StarDock.

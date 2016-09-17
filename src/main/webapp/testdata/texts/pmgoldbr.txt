@@ -1,0 +1,53 @@
+From stu1087 Mon Mar  1 19:38:27 1993
+Return-Path: <stu1087>
+Received: by discover.wright.edu (4.1/SMI-4.1)
+	id AA06397; Mon, 1 Mar 93 19:38:19 EST
+Date: Mon, 1 Mar 93 19:38:19 EST
+From: stu1087 (General Unix Account)
+Message-Id: <9303020038.AA06397@discover.wright.edu>
+To: jdeitch@gisatl.fidonet.org
+Subject: additions to folklore list
+Cc: stu1087@discover.wright.edu
+Status: R
+
+
+There are two games of concern here: Pac-man and Space Invaders Part II.
+
+Pac-man: I was personally inundated with the rumor of the gold bars in Pac-man.
+Several of my acquaintances had reported seeing them. Here are the facts:
+
+- depending on whom you talked to, they appeared after 12, 15, or 24 keys.
+
+- some machines had them, some did not. This explained why people had gone
+      really high and not seen the gold
+
+- even the book "How to Master the Video Games" by Tom Hirschfeld describes
+      "... a series of gold and silver bars"
+
+- the gold bars, worth 10,000 points each, were followed by two screwdrivers,
+      worth 25,000 points.
+
+- a related rumor said that eating the eyes (enroute back to the pen following
+      the eating of a blue monster) was worth "a lot of points". This clearly
+      never panned out, though.
+
+- one day I pressed a friend for what the gold bars looked like. She replied
+      "They're like .... striped". On a totally separate occasion, a somewhat
+      inarticulate maintenance man at King's Island amusement park near
+      Cincinnati, told me while in one of the video arcades "yah, afta the 
+      gode bars, dere's dese pointy-like things. 25,000 points each." in an
+      apparent reference to the screwdrivers.
+ 
+So as you can see, accepting that these gold bars are but a myth has been 
+quite difficult for me to swallow.
+
+Space Invaders Part II: Made by Taito, lic. to Midway, there is a wonderful
+"Rainbow Explosion" if a player manages to shoot a 10-point invader last.
+
+This one is said to be true.
+
+
+
+Michael E. Kotler
+stu1087@discover.wright.edu
+

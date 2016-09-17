@@ -1,0 +1,1781 @@
+                               The Unofficial 
+       
+      <<-----------  \\          // || |||||\\    //||||  ----------->> 
+                      \\        //  || ||    ||  //                     
+   <<--------------    \\ \\   //   || ||    || ||  ||||  -------------->> 
+                        \\ \\ //    || ||    ||  \\    .                 
+<<-----------------      \\ \//     || ||    ||   \\|||/  ----------------->> 
+                                                                            
+  //||||  /||||\   |||||\\  |||||\\      \\     |||||\\  ||||\\  ||||| |||\\ 
+ //      //    \\  ||    || ||    ||      \\    ||    || ||   ||           || 
+||      ||      || || || || || || ||   //  \\   ||    || ||   || ||||| |||// 
+ \\      \\    //  || || || || || ||  //    \\  ||    || ||   || ||        || 
+  \\||||  \||||/   || || || || || || ////////\\ ||    || ||||//  |||||     || 
+ 
+                            ==================== 
+                               ||    ||    || 
+                               ||    ||    || 
+                               ||    ||    || 
+                            ==================== 
+                            
+                           ,---     /\      .--.  
+                           |---    /__\     |  | 
+                           |   *  /    \ *  |_\| * 
+                                                 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+ 
+         The Unofficial *F*requently *A*sked *Q*uestions list for 
+                  Wing Commander III: Heart of the Tiger 
+ 
+                   Wing Commander III FAQ, revision 1.10 
+                         Released October 24, 1994 
+            Compiled by James Hogan (j-hogan@ux4.cso.uiuc.edu) 
+                 Copyright (C) 1994.  All rights reserved. 
+ 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+ 
+TABLE OF CONTENTS: 
+ 
+Any sections which are new or have been updated since the last significant  
+(1.x) revision are marked with asterisks (i.e., *7.4.* Revision history). 
+ 
+*0.*  FAQ v1.10 Preface -- A Word from the Author 
+ 
+1.  FAQ Introduction 
+    1.1.    Purpose of the FAQ 
+    1.2.    Trademark information 
+    1.3.    Disclaimer -- READ ME! 
+    1.4.    Spoiler warning 
+    1.5.    Acronyms 
+    *1.6.*  Obtaining the latest version of the FAQ 
+            *1.6.1.*  Accessing the FAQ on the World Wide Web 
+            *1.6.2.*  The WC3 FAQ Mailing List 
+ 
+2.  Background of Wing Commander III 
+    2.1.    What's this whole "Wing Commander" thing about? 
+    2.2.    What were the previous Wing Commander products? 
+            2.2.1.  Wing Commander I 
+                    *2.2.1.1.*  Super Wing Commander 
+            2.2.2.  Wing Commander II 
+                    *2.2.2.1.*  The Wing Commander I & II CD-ROM 
+            2.2.3.  Privateer 
+                    *2.2.3.1.*  The Privateer / Strike Commander CD-ROM 
+            2.2.4.  Wing Commander Academy 
+            *2.2.5.*  Wing Commander Armada 
+                    *2.2.5.1.*  Will there be an enhanced Wing Commander  
+                                Armada CD? 
+            2.2.6.  The Wing Commander novels 
+                    *2.2.6.1.*  What are the ISBN numbers of the WC novels? 
+    2.3.    Who's this "Bluehair" guy? 
+        
+3.  Technical questions 
+    *3.1.*  What will the system requirements for Wing Commander III be? 
+            *3.1.1.*  How fast will my processor need to be? 
+            3.1.2.  What kind of video card do I need? 
+            3.1.3.  How much RAM do I need? 
+            3.1.4.  Do I need a CD-ROM drive?  How fast? 
+    3.2.    Will Wing Commander III take advantage of a math coprocessor? 
+    *3.3.*  What kind of frame rates can I expect? 
+    *3.4.*  How big (in terms of disk space) is Wing Commander III? 
+    *3.5.*  Will Wing Commander III support both a VGA and SVGA mode? 
+            At what resolutions? 
+            *3.5.1.*  When can I switch between VGA and SVGA modes? 
+    *3.6.*  What's the sound support like? 
+            *3.6.1.*  What sound cards are supported? 
+                    *3.6.1.1.*  Will the digital sound capabilities of the  
+                                RAP-10 be used? 
+            *3.6.2.*  Will WC3 support multiple digitized sound samples being 
+                      played simultaneously? 
+    *3.7.*  Does Wing Commander III use bitmaps or polygon-based graphics? 
+            What's the difference? 
+        
+4.  Gameplay issues 
+    *4.1.*  Is the flight model in WC3 the same as in previous WC games? 
+    *4.2.*  What will capital ships and capital ship combat be like? 
+    *4.3.*  What will the planetside missions be like? 
+    *4.4.*  How many different ships comprise the Terran and Kilrathi fleets? 
+    4.5.    What new technologies are the Terrans armed with that the player 
+            can use? 
+    *4.6.*  How much control will the player have over the missions they fly 
+            (e.g., their ship, wingman, weapons loadout, etc.)? 
+            *4.5.1.*  How will the weapon selection work? 
+    *4.7.*  How good is the computer AI in WC3?  Compared to Armada? 
+    *4.8.*  What other notable game features are present in Wing Commander III? 
+            4.8.1.  The 3-D navigational map 
+            *4.8.2.*  Power management 
+            *4.8.3.*  More "intelligent" weaponry 
+            *4.8.4.*  Will there be a "virtual cockpit," as there was in Strike 
+                      Commander and Pacific Strike? 
+            *4.8.5.*  Will there be a VCR replay mode? 
+            *4.8.6.*  Will you be able to go back and replay specific missions? 
+            *4.8.7.*  Will the comm screens be in color? 
+            *4.8.8.*  Can you transfer characters from Wing Commander II? 
+            4.8.9.  Will Wing Commander III have multiplayer modem or network 
+                    support? 
+ 
+5.  Cinematics / storyline 
+    5.1.    What distinguishes the cinematics and storyline in Wing Commander 
+            III? 
+            5.1.1.  In what ways can choices made during the cinematic 
+                    sequences affect the storyline? 
+            *5.1.2.*  Can your wingmen actually die during an average mission, 
+                      or are there safeguards built in to prevent this? 
+    5.2.    How is live acting being integrated into Wing Commander III? 
+            *5.2.1.*  How much live acting is contained in the cinematic  
+                      sequences? 
+            5.2.2.  Why don't some of the actors look like their characters? 
+            5.2.3.  How is the acting for the Kilrathi characters accomplished? 
+    5.3.    Who are the characters in Wing Commander III, and who are the 
+            actors and actresses portraying them? 
+            5.3.1.  Col. Christopher Blair (Mark Hamill) 
+                    5.3.1.1.    Do I get to pick my player's name or callsign? 
+            5.3.2.  James "Paladin" Taggart (John Rhys-Davies) 
+            5.3.3.  Todd "Maniac" Marshall (Tom Wilson) 
+            5.3.4.  Melek (Tim Curry) 
+            5.3.5.  Admiral Geoffrey Tolwyn (Malcolm McDowell) 
+            5.3.6.  Rachel (Ginger Lynn Allen) 
+            5.3.7.  Flint (Jennifer MacDonald) 
+            *5.3.8.*  Col. Eisen (Jason Bernard) 
+            5.3.9.  Rollins (Courtney Gains) 
+            5.3.10. Flash (Joshua Lucas) 
+            5.3.11. Hobbes 
+            5.3.12. The Emperor and Prince Thrakhath 
+    *5.4.*  Will any other members of the Wing Commander cast (Angel,  
+            Doomsday, etc.) make an appearance in Wing Commander III? 
+            *5.4.1.*  What happened to Angel, anyway? 
+    *5.5.*  How good do the final cinematic sequences look? 
+    5.6.    What is the basic plot of Wing Commander III? 
+    5.7.    How do the events in the Wing Commander novels fit into the 
+            storyline? 
+     
+ 
+6.  Other miscellaneous questions 
+    *6.1.*  What is the current estimated release date? 
+    *6.2.*  What's this I hear about a "Premiere Edition"? 
+            *6.2.1.*  What does it contain? 
+            *6.2.2.*  Will there be a Premiere Edition for the 3DO version? 
+    6.3.    What platforms is Wing Commander III being released on? 
+            6.3.1.  How will the 3DO version differ from the PC version? 
+    *6.4.*  Will there be different versions of WC3 available for different 
+            languages? 
+    *6.5.*  Are there any screen shots available? 
+            *6.5.1.*  What do the screen shots contain? 
+            *6.5.2.*  Are those screen shots from playable sequences or 
+                      cinematic scenes? 
+            *6.5.3.*  Where can I find the screen shots? 
+    *6.6.*  Will a demo be released before the game comes out? 
+    *6.7.*  What is the list price for Wing Commander III, and how can I 
+            reserve a copy? 
+    *6.8.*  What is the budget for Wing Commander III? 
+    6.9.    Who is developing and filming Wing Commander III? 
+            6.9.1.  Who is involved with the cinematic side of the project? 
+            6.9.2.  Who is involved with the gameplay side of the project? 
+    *6.10.* Other Wing Commander III-related merchandise 
+            *6.10.1.* Will there be a Wing Commander III Playtester's Guide? 
+            *6.10.2.* Will the soundtrack for Wing Commander III be released on CD?             
+            *6.10.3.* Will any of these extra items from the Premiere Edition be 
+                      sold separately? 
+    *6.11.* Will WC3 be the last installment of the Wing Commander series? 
+    *6.12.* What other Wing Commander products are scheduled to be released 
+            in the future? 
+            *6.12.1.* Super Wing Commander for the Mac 
+            *6.12.2.* Privateer 2 
+            *6.12.3.* Wing Commander novels 
+            *6.12.4.* Wing Commander:  The Motion Picture? 
+      
+7.  In conclusion... 
+    *7.1.*  Credits / sources 
+    *7.2.*  Where to find out more 
+    *7.3.*  Contacting the FAQ author 
+            *7.3.1.*  The WC3 FAQ mailing list 
+    *7.4.*  Revision history 
+    7.5.    Conclusion 
+     
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+ 
+*********************************************** 
+0.  FAQ v1.10 Preface -- A Word from the Author 
+*********************************************** 
+ 
+Well, after two months of telling people "It'll be ready within a couple of 
+weeks," version 1.10 of the WC3 FAQ is finally here.  :)  I apologize to all 
+of you who have been waiting so patiently for this to be released.  Hopefully 
+I'll crank out future revisions a bit quicker than this one.  At least the 
+wait hasn't been for nothing -- this revision of the FAQ is significantly  
+larger (about 50%) than its predecessor! 
+ 
+The response to the initial revisions of the FAQ (1.0 and 1.01) have been 
+tremendous... much more so than I expected.  Download counts on America Online, 
+CompuServe, and GEnie have easily numbered in the thousands, which doesn't even 
+include the number of people who have gotten it from newsgroups or FTP sites 
+on the internet.  I've received over a hundred e-mails from WC fans living in 
+every corner of the globe, from Australia to Hong Kong to Russia and elsewhere, 
+who asked me questions, gave suggestions, or just wanted to voice their support 
+for the FAQ, so I'd like to take a moment to thank everyone out there who took 
+the time to write.  Your mail means a lot. 
+                                           
+Unlike the previous two FAQ revisions, a lot of people have contributed to  
+this version of the FAQ in one way or another.  Probably half of the new  
+questions that are in this version are here because they were suggested by  
+someone who e-mailed me, so your mail _is_ appreciated!  Every question that I 
+was asked that I didn't know the answer to I tried to find out about so I 
+could answer it in this version of the FAQ.  If you asked me a question that 
+you don't see answered here, don't accept my apology.  E-mail me and complain! 
+*grin* 
+ 
+Again, thanks to everyone who sent mail to me, and I encourage everyone to 
+keep sending me comments and questions!  Rest assured that if you send me 
+something, you'll get a reply.  (If you don't, mail me again.) 
+ 
+Enough of my rambling, though.  Like I said, there's a lot of new info in this 
+one, and as usual, much of it hasn't yet been published elsewhere.  So read on, 
+and start counting down to November 21st! 
+ 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+ 
+******************** 
+1.  FAQ Introduction 
+********************     
+ 
+1.1.    Purpose of the FAQ 
+========================== 
+ 
+This FAQ was created to answer some of the more commonly asked questions 
+about Origin Systems' upcoming release, Wing Commander III: Heart of the 
+Tiger, and to keep the online community informed about the latest developments 
+pertaining to this latest installment in the Wing Commander series.  Even if 
+you've been keeping up with all the magazine articles and previews on the 
+game, there's probably be some things in here you haven't yet heard, so read  
+on! 
+ 
+Please be sure to read the Disclaimer (section 1.3). 
+    
+ 
+1.2.    Trademark information 
+============================= 
+ 
+Origin, Wing Commander, the distinctive Wing Commander logo, Secret Missions,  
+Special Operations, Vengeance of the Kilrathi, Heart of the Tiger, Privateer, 
+Wing Commander Academy, and Wing Commander Armada are trademarks of Origin  
+Systems, Inc.  Origin Systems is a wholly owned subsidiary of Electronic Arts. 
+ 
+ 
+1.3.    Disclaimer -- READ ME! 
+============================== 
+ 
+This FAQ is not a paid advertisement, nor is it even officially endorsed by 
+Origin Systems.  When reading this FAQ, please remember that Wing Commander 
+III is a game which is still in development.  As such, the game design (and 
+hence, the contents of this FAQ) are subject to change at any time -- even 
+those at Origin do not yet have a crystal clear picture of exactly what  
+form the final product will take.   
+ 
+All information in this FAQ has, unless otherwise specified, been verified 
+by a reliable source (e.g., a preview in a professional gaming magazine, an 
+official Origin representative, etc.).  Keep in mind, however, that it may 
+very well be outdated by the time the finished game is released. 
+ 
+ 
+1.4.    Spoiler warning 
+======================= 
+ 
+Some sections of this FAQ contain plot spoilers about certain Wing Commander 
+products (i.e., games and/or novels).  Since Wing Commander II has been  
+available for several years, it is assumed that all FAQ readers have played 
+the first two Wing Commander games and all expansion disks; if you have not 
+yet done so, and wish to avoid plot spoilers on these games, then continue 
+reading at your own risk. 
+ 
+The Privateer games and the Wing Commander novels are new enough so that it 
+is _not_ assumed all FAQ readers have played (or read) these.  Sections of 
+the FAQ that contain plot spoilers for these will be marked with a "SPOILER" 
+label in the header. 
+ 
+ 
+1.5.    Acronyms 
+================ 
+ 
+The following acronyms will be used throughout the FAQ, some more often than 
+others: 
+ 
+FAQ:        Frequently Asked Questions list 
+OSI:        Origin Systems, Inc. 
+WC:         Wing Commander 
+WC1/2/3:    Wing Commander 1, 2, or 3 
+SM1/2:      Secret Missions 1 or 2 
+SO1/2:      Special Operations 1 or 2 
+WCA:        Wing Commander Academy 
+Armada:     Wing Commander Armada (I know, it's not an acronym; so sue me) 
+ 
+ 
+*1.6.*  Obtaining the latest version of the FAQ 
+================================================ 
+ 
+The FAQ has five official distribution sites, at which the latest version will 
+always be available for downloading: 
+ 
+*   The Origin BBS -- (512) 331-4446.  Modem settings are 300-14400 baud, 
+    no parity, eight data bits, and one stop bit. 
+ 
+*   America Online, in the Origin support base (keyword ORIGIN). 
+ 
+*   CompuServe, in the Game Publisher's Forum A (GO GAMAPUB), section 12 
+    (Origin Systems). 
+ 
+*   GEnie, at Scorpia's roundtable (type "M805;" at any "?" prompt), section 
+    16. 
+ 
+*   On the internet:  The wuarchive.wustl.edu FTP site, in the  
+    /pub/msdos_uploads/game_faq directory. 
+ 
+     
+    *1.6.1.*  Accessing the FAQ on the World Wide Web 
+    ------------------------------------------------- 
+    If you have access to the World Wide Web, then you can take a look at the 
+    FAQ in HTML format on the Games Domain WWW site, at the address 
+    http://wcl-rs.bham.ac.uk/~djh/index.html.  Note that at the time of this  
+    version's release, only v1.01 is available here; v1.10 will not be posted 
+    for a week or two, possibly longer.  Please be patient. 
+ 
+ 
+    *1.6.2.*  The WC3 FAQ Mailing List 
+    ---------------------------------- 
+ 
+    I maintain a mailing list of people who are interested in receiving updates 
+    to the FAQ via email as they become available.  If you'd like to be put on 
+    this list, just drop me a line (see section 7.3). 
+ 
+ 
+************************************ 
+2.  Background of Wing Commander III 
+************************************ 
+ 
+Admittedly, if you're reading this FAQ, you've probably already played the 
+other Wing Commander games and know pretty much what they're about; but 
+there's probably some Wing Commander newbies out there, too.  Besides, even  
+if you are a veteran of the Wing Commander world, a short refresher course 
+can never hurt... :-) 
+ 
+ 
+2.1.    What's this whole "Wing Commander" thing about? 
+======================================================= 
+ 
+Wing Commander, first released in 1990 by Origin Systems, is a simulation- 
+style action game interwoven with a cinematic storyline set in the 27th  
+century.  It does not attempt to model real-world physics with a completely  
+accurate simulation of space flight, but concentrates instead on providing a  
+fun, intense, first-person space dogfighting experience.  Several things 
+distinguished it from other games upon its initial release:  the graphics, 
+music, and sound were all revolutionary, surpassing most (if not all) other 
+competing products in the industry at the time.  The storyline, of which a 
+short segment unraveled after each mission the player flew, had many plot 
+devices rarely used before in a computer game of its type:  character  
+development, interpersonal conflict, ethics, and more.  To date, the series  
+has sold a total of over 1.5 million units worldwide. 
+ 
+ 
+2.2.    What were the previous Wing Commander products? 
+======================================================= 
+     
+    2.2.1.  Wing Commander I 
+    ------------------------ 
+     
+    Wing Commander I is the game that started it all.  In this, the player 
+    takes the role of a young Lieutenant who has just been assigned to the 
+    carrier ship Tiger's Claw, the pride of the Confederate Navy.  The main 
+    plot of WC1 is the Confederation's campaign to take Vega Sector from the 
+    Kilrathi, which eventually succeeds. 
+ 
+    WC1 had two add-on disks -- Secret Missions 1 and 2.  SM1 focused on a 
+    new Kilrathi secret weapon, and the Claw's attempts to hunt down and 
+    destroy it.  SM2 told the story of how the Confederation made an alliance 
+    with the avian Firekkan species, and also introduced two new characters: 
+    Doomsday and Jazz. 
+ 
+ 
+        *2.2.1.1.*    Super Wing Commander 
+        -------------------------------- 
+ 
+        A revamped version of WC1 was released for the 3DO system, 
+        incorporating completely redone hi-resolution graphics, full speech 
+        during all the cinematic sequences, and more.  SWC follows the 
+        plotline of the whole WC1 series, including SM1 and SM2. 
+ 
+ 
+    2.2.2.  Wing Commander II 
+    ------------------------- 
+     
+    The game begins with the Tiger's Claw being destroyed by three Kilrathi 
+    stealth (cloaked) fighters, and you are accused of allowing the carrier 
+    to be destroyed because of your negligence.  Your claims about the 
+    stealth fighters go unbelieved, your career is ruined, and you are 
+    assigned to a space station in the backwaters of the known galaxy. 
+ 
+    Ten years later, through a strange series of events, you end up on the  
+    flagship of the Confederate fleet (imagine that), the Concordia, where you  
+    meet up with some of your old pals who survived the destruction of the  
+    Claw -- Angel, Spirit, Paladin, Doomsday, and Jazz.  Eventually, you defeat  
+    the heir to the Kilrathi throne in a one-on-one dogfight (though he ejects  
+    to survive to fight again another day), destroy the Kilrathi headquarters 
+    in the sector, and find evidence that the stealth fighters exist, proving 
+    your innocence and restoring your career. 
+ 
+    WC2 also had two expansion disks -- Special Operations 1 and 2.  SO1 
+    introduced the character of Bear, the protagonist in the second two 
+    Wing Commander novels.  SO2 reunites you with Maniac, with whom you team 
+    up to destroy Ayer's Rock, an asteroid which a band of human traitors are 
+    using as a base. 
+     
+ 
+        *2.2.2.1.*  The Wing Commander I & II CD-ROM 
+        -------------------------------------------- 
+ 
+        Origin has recently released the first two Wing Commander games, 
+        including all expansion sets (Secret Missions 1 & 2, the WC2 Speech  
+        Pack, and Special Operations 1 & 2) on a single CD.  WC1 must be 
+        installed to your hard drive, but WC2 can be played off the CD to 
+        save drive space. 
+                       
+ 
+    2.2.3.  Privateer  (SPOILER) 
+    ---------------------------- 
+     
+    Privateer puts you in the shoes of a different character -- a privateer. 
+    This game, which takes place in the Gemini sector, is essentially 
+    unrelated (in terms of plot) to the main Wing Commander games.  As a 
+    freelance trader and mercenary, you undertake various missions to earn 
+    yourself enough credits to upgrade your ship and advance in the plotline. 
+    Eventually, you discover an old alien derelict, and take a working cannon 
+    from it and mount it on your ship.  After this, an alien drone begins 
+    to chase you; in the end, you team up with Confederate ships to destroy 
+    the threat the drone presents to the sector. 
+ 
+    One expansion disk has been released for Privateer -- Righteous Fire. 
+    This begins with your alien gun being stolen form your ship, and 
+    concentrates on your attempts to retrieve it. 
+                     
+ 
+        *2.2.3.1.*  The Privateer / Strike Commander CD-ROM 
+        --------------------------------------------------- 
+ 
+        Another recent release of Origin's, this CD contains the enhanced 
+        versions of both Privateer and Strike Commander on one disc.  Both 
+        games come with their expansion disk (Tactical Operations for Strike 
+        Commander, Righteous Fire for Privateer) and full speech.  Strike 
+        Commander also has an expanded introduction sequence. 
+ 
+ 
+    2.2.4.  Wing Commander Academy 
+    ------------------------------ 
+ 
+    A game with no plotline whatsoever, WCA was designed to appeal to the  
+    straight-out action gamers who prefer the dogfighting over the storyline.   
+    With all the ships from WC2 plus a couple of new ones and a mission builder  
+    included, this product is a great way to pass time while waiting for the  
+    next installment in the Wing Commander series.  :) 
+ 
+ 
+    *2.2.5.*  Wing Commander Armada 
+    -------------------------------        
+ 
+    Much as WCA was designed to appeal to those who wanted to be able to create 
+    their own missions, Armada is aimed towards those who want a multiplayer  
+    Wing Commander game.  Like Academy, there is no storyline to follow, but  
+    several new features not found in previous WC games are present... not only 
+    can the player fly in "Gauntlet" mode, a straight shoot-'em-up where wave  
+    after wave of increasingly powerful enemy ships is thrown at them, but a 
+    new "Armada" mode is present, which is a strategy game requiring the player 
+    to manage planetary resources and build up a fleet to hunt down and destroy 
+    his/her opponent.  Battle sequences in Armada mode place the player in the 
+    cockpit so they can directly affect the outcome of each battle, creating an 
+    interesting mix of strategy and action. 
+ 
+    Most players agree that Armada's strengths lie in it's multiplayer 
+    capabilities.  Using a high speed modem, NetBIOS-compatible network, or a 
+    split-screen mode on a single computer, two pilot jockeys can both climb  
+    into their own fighter and play head-to-head or cooperatively.  Needless  
+    to say, the two-player mode adds a dimension to the game not found in  
+    previous WC products. 
+ 
+ 
+            *2.2.5.1.*  Will there be an enhanced Wing Commander Armada CD? 
+            --------------------------------------------------------------- 
+ 
+            No.  The project has been scrapped.  A patch to allow six-player 
+            network play may still come out, however. 
+ 
+ 
+    2.2.6.  Wing Commander novels 
+    ----------------------------- 
+ 
+    Three novels set in the Wing Commander universe have been written to date: 
+    _Freedom Flight_, by Mercedes Lackey and Ellen Guon (the head writer for 
+    WC2), takes place during SM2, and has Paladin and Hunter as the main  
+    characters.  The novel goes into detail on the Kilrathi defectors who were  
+    briefly mentioned in SM2 (and of which Hobbes from WC2 was the leader of),  
+    and gives the reader a good look at Firekkan culture. 
+ 
+    _End Run_, by Christopher Stasheff and William R. Forstchen, features  
+    Jason "Bear" Bondarevsky (SO1) as the protagonist and tells the story 
+    of how he is assigned to a new ship, the Tarawa, which is sent on a 
+    suicide mission into Kilrathi space.  Other WC figures which are major 
+    characters in the novel are Paladin, Hunter, Sparks, and Admiral Tolwyn. 
+ 
+    _Fleet Action_, written by William R. Forstchen, is a direct sequel to 
+    _End Run_, picking up where its predecessor left off.  The Kilrathi launch 
+    a major counteroffensive against the Confederation, who must come up with 
+    a last-ditch plan to try to avoid annihilation. 
+ 
+ 
+        *2.2.6.1.*  What are the ISBN numbers of the WC novels? 
+        ------------------------------------------------------- 
+ 
+        A few FAQ readers have asked me for more details on these novels so 
+        that they could order them through their local bookstores.  Here's 
+        the authors, publishers, and ISBN numbers for all of the WC novels 
+        published to date: 
+ 
+            _Freedom Flight_, by Mercedes Lackey and Ellen Guon.  Published 
+                in 1992 by Baen Books.  ISBN 0-671-72145-3. 
+ 
+            _End Run_, by Christopher Stasheff and William R. Forstchen. 
+                Published in 1994 by Baen Books.  ISBN 0-671-72200-X. 
+ 
+            _Fleet Action_, by William R. Forstchen.  Published in 1994 by 
+                Baen Books.  ISBN 0-671-72211-5. 
+ 
+ 
+2.3.    Who's this "Bluehair" guy? 
+================================== 
+ 
+    Bluehair is the name by which Origin originally referred to the character 
+    the player takes the role of in the Wing Commander games... it comes from 
+    the fact that the character has dark blue hair (hence the name).  Since 
+    then, it has become a common term that gamers of the online community use  
+    to refer to the main character in the first two Wing Commander games. 
+ 
+ 
+*********************** 
+3.  Technical questions 
+*********************** 
+ 
+*3.1.*    What are the estimated system requirements for Wing Commander III? 
+============================================================================ 
+ 
+    Please note that these are only ESTIMATES -- the best guesses that can be 
+    made at this stage in the game's development.  These specs may very well 
+    change upon the game's release. 
+ 
+ 
+    *3.1.1.*  How fast will my processor need to be? 
+    ------------------------------------------------ 
+     
+    A 486SX/25 will probably be the slowest processor which will run the game 
+    at a playable pace in VGA mode.  The former requirement (as of about two 
+    months ago) was a 486/33. 
+ 
+     
+    3.1.2.  What kind of video card do I need? 
+    ------------------------------------------ 
+     
+    The game should technically run on any VGA-compatible graphics card,     
+    though a fast VESA or PCI local bus card will help matters greatly.  Of 
+    course, an SVGA card is required to play the game in SVGA mode. 
+ 
+     
+    3.1.3.  How much RAM do I need? 
+    ------------------------------- 
+     
+    8 megs are required; anything above that is optimal. 
+ 
+ 
+    3.1.4.  Do I need a CD-ROM drive?  How fast? 
+    -------------------------------------------- 
+ 
+    Since Wing Commander III will be a CD-ROM only release (no floppy version 
+    is planned, either before or after the CD-ROM release), yes, a CD-ROM 
+    drive is required.  It's not suggested to even try the game on a single 
+    speed drive; you'll want a doublespeed or higher to play it at an  
+    acceptable pace. 
+ 
+ 
+            3.1.4.1.  Will the game always need to load off the first CD? 
+            ------------------------------------------------------------- 
+ 
+            No.  Once you're finished playing on a CD, you'll be able to run 
+            the game off the following disc every time thereafter. 
+ 
+ 
+3.2.    Will Wing Commander III take advantage of a math coprocessor? 
+===================================================================== 
+ 
+No.  If it did, then the game would not run on 486SX or SX-2 systems, which 
+still represent a significant market share of Origin's target audience.  The 
+only other option would be to write two separate versions of the game, one for 
+486SX systems and the other for 486DX systems; unfortunately, this would add 
+too much time to the development cycle. 
+ 
+ 
+*3.3.*  What kind of frame rates can I expect? 
+============================================== 
+ 
+These estimates, of course, are still preliminary and may change by the time 
+the game is complete; however, here's a chart (officially released by Origin) 
+detailing how fast, in fps (frames per second), WC3 should run on your system: 
+ 
+            VGA     SVGA    SVGA (Local bus) 
+ 
+486/33      12       4      10 
+486/50      17      10      15 
+486/66      20      13      18 
+Pentium/60  24      15      20 
+Pentium/90  24      15      24 
+ 
+These numbers are averages for space combat with other fighters.  Around 
+capital ships, the game will run about 3-5 fps slower. 
+ 
+Cinematics should be no problem.  They should run acceptably in 640x480x256 on 
+a 486SX-25, and easily hit the 20-25 fps mark on faster systems.  The reason is 
+that their performance is mainly dependent on your system's memory rather than 
+processing power; that's why Wing 3 requires 8 megs of RAM, and is also why 
+slow systems should be able to run the cinematics so effectively.  
+ 
+ 
+*3.4.*  How big (in terms of disk space) is Wing Commander III? 
+=============================================================== 
+ 
+The game is currently slated to ship on FOUR (4) CDs, so probably somewhere  
+between 2 and 2.5 gigabytes.  At the very most, ten megs or so will need to be 
+installed on the hard drive... probably much less. 
+ 
+ 
+*3.5.*  Will Wing Commander III support both a VGA and SVGA mode?  At what 
+        resolutions? 
+========================================================================== 
+ 
+Yes.  WC3 is being made, first and foremost, as a VGA game, which will run 
+at standard 320x200x256 resolution.  A 640x480x256 SVGA mode is an optional 
+feature that you'll need a Pentium or higher to run. 
+ 
+The user has the option of running the gameplay and/or cinematic sequences at 
+either 640x240x256 or 320x200x256, depending on which is best suited for their 
+system.  No one should have any real problems here, though -- even on a 
+486-25 with a slow video card, the 640x480 mode should run okay.  See section 
+3.3 above for details. 
+ 
+It should also be noted that if the system can't keep up with the video at 
+the resolution the user has set, playback is not slowed down -- frames are  
+skipped so that game time still passes at the same rate.  In other words, it 
+will get choppier, but not slower. 
+ 
+ 
+    *3.5.1.*  When can I switch between VGA and SVGA mode?   
+    ------------------------------------------------------ 
+ 
+    Any time you want.  You won't be limited to doing it only between missions 
+    or anything like that; it can be done with a single keypress at any point 
+    during gameplay.  The game will even (optionally) switch between video 
+    resolutions for you automatically, dropping down to VGA if the frame rate 
+    gets too slow, and then jumping back to SVGA when it climbs back up. 
+ 
+                                                                            
+*3.6.*  What's the sound support like? 
+====================================== 
+ 
+    *3.6.1.*  What sound cards are supported? 
+    ----------------------------------------- 
+             
+    Right now, the plan is to support the SoundBlaster (and all its             
+    variations... SB Pro, the SB/16, etc.), Pro Audio Spectrum, Gravis 
+    UltraSound, Ensoniq Soundscape, Logitech Soundman Wave, and 
+    General MIDI devices (the Roland SCC-1, RAP-10, etc.) 
+             
+             
+            *3.6.1.1.*  Will the digital capabilities of the RAP-10 be used? 
+            ---------------------------------------------------------------- 
+     
+            If there's time to put in the code before the release date, yes. 
+ 
+     
+    3.6.2.  Will WC3 support multiple digitized sound samples being played 
+            simultaneously? 
+    ---------------------------------------------------------------------- 
+     
+    Yes.  Wing Commander III will be able to play 32 different digitized 
+    sound samples simultaneously. 
+     
+ 
+*3.7.*  Does Wing Commander III use bitmaps or polygon-based graphics? 
+        What's the difference? 
+====================================================================== 
+ 
+WC3, like all of Origin's flight sim games since Strike Commander, will use 
+texture-mapped polygons instead of plain bitmaps (as the first two Wing 
+Commander games did).  For those of you who aren't familiar with the 
+advantages of a polygon-based graphics engine, allow me to explain... 
+ 
+The first two Wing Commander games use bitmaps to represent the ships and 
+other objects in space.  The ships themselves are actually centered at a 
+single point in space, and their boundaries are defined by an invisible box  
+surrounding that point.  Note that their boundaries are defined by a 3-D  
+_box_, rather than the shape of the ship you see on the screen... that's why  
+gun shots that come really close to an enemy (but don't actually hit his  
+image on the screen) explode in the space next to him and still do  
+damage -- they hit the invisible box surrounding the ship.  As this box flies  
+around space and tries to shoot you, a 2-D image of a spaceship is placed on  
+it that changes depending on what angle you're looking at the box from.  Thus,  
+all of the ships in the first two WC games are actually flying boxes that just  
+have _pictures_ of one-man fighters slapped on them. 
+ 
+Still following?  Good.  Now, a polygon-based engine -- the kind WC3 uses -- 
+is much different.  Rather than having their boundaries defined by an 
+invisible box, objects are made up of geometric shapes... a cylinder might 
+represent the body of a plane, two triangles could represent for the wings,  
+and so forth.  These boundary-defining shapes _are_ visible to the player, 
+unlike the flying boxes of WC1 and 2.  Since a ship made up of plain polygons 
+can look a bit ugly (take a look at some flight simulators from four or five 
+years ago), various techniques are used to improve the appearance.  WC3 uses  
+"texture mapping", which means that a texture (a texture being a picture of  
+anything from a sheet of glass to a certain color of metal to a picture of a  
+pilot in a cockpit) is placed on these bare polygons to give them a more  
+attractive appearance. 
+ 
+The final result?  Ships that still look really cool, but that are much more 
+clearly "defined."  There are many more advantages to this than just not having 
+your gunfire hit the space next to your opponent and still do damage... check 
+out section 4.2 for some examples of what is made possible by the use of the 
+polygon-based flight engine in Wing 3. 
+ 
+                                       
+******************* 
+4.  Gameplay issues 
+*******************     
+     
+In some ways, WC3 scarcely resembles its predecessors; the SVGA graphics make 
+everything like four times as sharp, combat moves at a faster pace, and some 
+aspects (such as the capital ship and planetside combat) are an entirely new 
+experience altogether.  If everything comes together the way Origin plans, WC3 
+should play better than any previous OSI sim to date.  Read on... 
+ 
+ 
+*4.1.*  Is the flight model in WC3 the same as in previous WC games? 
+==================================================================== 
+ 
+Yes and no.  There are two flight models available in WC3 that the user can 
+choose to use:  the traditional WC flight model that was used in WC1 and WC2, 
+or a new flight model (similar to the one used in X-Wing) where your ship 
+will roll whenever you yaw (turn left or right). 
+ 
+ 
+*4.2*   What will capital ships and capital ship combat be like? 
+================================================================ 
+ 
+This is perhaps one of the biggest improvements over previous WC games.  The  
+days where all capital ships were little more than big, ugly-looking, sluggish  
+fighters that shot out a cloud of flak while waiting for you to fire your guns 
+and blast them to kingdom come are gone.  In WC3, the capital ships are huge -- 
+several screens long, in fact -- so that when you fly up to one, you really 
+are struck with a sense of awe rather than a sense of boredom.  The detail on 
+them is tremendous; you'll be able to make out things like a capital ship's  
+flight deck, the Confederate or Kilrathi insignia painted on the side, or  
+dozens of little windows dotting the hull. 
+ 
+The really neat thing is, these aren't all just for decoration, either... you  
+can actually fly around _inside_ of a ship's hangar (this is made possible by  
+that wonderful polygon technology talked about in section 3.7).  Theoretically, 
+the game engine should allow you to fly into an airlock on the side of the ship  
+and negotiate your fighter through a maze of twisting, turning passageways...  
+that particular example would probably be of little use in actual gameplay, but 
+it gives you a feel for what exactly what the game is capable of.  The primary 
+constraint is how much time the artists have to draw everything before the 
+game's release. 
+ 
+Actual combat with capships is much more involved, as well.  Destroying a  
+carrier in the earlier WC games often involved little more than a few strafing  
+runs, unloading your guns each time, until you broke through the shields and  
+armor (or, in the case of some of the ships in WC2, sitting there until you got  
+a torpedo lock and _then_ firing).  Either way, it was fairly monotonous and  
+generally not very challenging.  In WC3, this is no longer the case.  You know  
+those flak bullets that capital ships kept shooting at you while you were  
+trying to get a torpedo lock?  Target the gun turrets and blow them up.  Need  
+to stop the ship from reaching the jump point?  Shoot a couple missiles at its  
+engines to disable it.  Destroying the flight deck will be a vital step in  
+dispatching a capital ship, as well. 
+ 
+ 
+*4.3.*  What will the planetside missions be like? 
+================================================== 
+ 
+There will be four ground missions in Wing 3, all of which are vital to the 
+plot.  Planetside combat was designed with playability rather than realism in 
+mind, so there aren't a whole lot of real-world physics to worry about.  Your 
+ship's "repulsors" negate the effects of gravity; you also don't have to worry 
+about g-forces, engine stalls, and other similar considerations present in 
+most flight sims.  These same repulsors limit you to an altitude of 1000-2000 
+meters (a limitation imposed by the WC3 team because the terrain looked better 
+from there than at higher altitudes). 
+ 
+For all practical purposes, planetside missions handle just like space combat, 
+though you've got terrain to avoid crashing into.  Mission objectives will 
+also vary, and will including bombing and strafing runs on ground targets. 
+ 
+ 
+*4.4.*  How many different ships comprise the Terran and Kilrathi fleets? 
+========================================================================= 
+ 
+The Terran Confederation has five fighters and five capital ships at its 
+disposal; the Empire of Kilrah has eight fighters and eight or nine capital 
+ships.  None of the old WC1/WC2 ships are used. 
+ 
+ 
+4.5.    What new technologies are the Terrans armed with that the player can  
+        use? 
+============================================================================ 
+ 
+In addition to the five new types of fighters in WC3 that the player will 
+have a chance to fly, the Confederation has also discovered the secret of  
+cloaking technology, so you'll be able to fly stealth ships as well in this  
+one.  Missile technology has improved, too -- see section 4.8.3 below. 
+ 
+Each of the fighters available to you is designed with a different purpose in  
+mind, so there won't be one single fighter more powerful than the rest which  
+you'll want to fly every single time.  The best ship to take into a big  
+dogfight, for example, will NOT be the best ship to fly when you're planning  
+to take out a capship. 
+ 
+ 
+*4.6.*  How much control will the player have over the missions they fly 
+        (e.g., their ship, wingman, weapons loadout, etc.)? 
+======================================================================== 
+ 
+You're allowed to choose who your wingman will be, what ship you'll fly, and 
+your ship's weapon loadout for each mission.  You won't be able to choose 
+which pilots fly on the other wings -- that's a predetermined part of the 
+plot.   
+ 
+ 
+        *4.6.1.*  How does the weapon selection work? 
+        ------------------------------------------- 
+ 
+        The guns on your ship are fixed and can't be changed, but you always 
+        get to allocate the rest of your equipment however you like.  Unlike  
+        the weapon selection in Strike Commander, you have an unlimited supply 
+        of missiles to use, and a heavy payload won't affect your flight 
+        dynamics, either.  This doesn't, however, mean that you'll want to load 
+        up your ship with as many Friend-or-Foe missiles as you can each time 
+        you fly a mission.  
+         
+        A cloaking device, for example, takes up a missile slot -- you may want 
+        to sacrifice a few missiles if you think stealth flying will be to your 
+        advantage on a particular sortie.  Heat-seeking and image recognition 
+        missiles are also _better_ than Friend-or-Foe missiles in certain  
+        situations; you might damage a Kilrathi's cloaking device so that it no 
+        longer masks the heat from his engines, enabling you to lock on to him 
+        with a missile while you can't see him on your radar; or maybe your 
+        wingman's communication systems are damaged, and you opt to use an 
+        image recognition on your enemy to avoid hitting your partner. 
+        Choosing the appropriate weapon loadout for the task at hand may make a 
+        significant difference in your performance in battle. 
+ 
+ 
+*4.7.*  How good is the computer AI in WC3?  Compared to Armada? 
+================================================================ 
+ 
+The AI in WC3 is very dynamic; each pilot has a wide range of maneuvers at 
+his/her disposal and won't use exactly the same techniques over and over.  
+Ideally, you should never feel like you're flying exactly the same mission  
+twice.  There should be a bit of unpredictability involved each time through. 
+ 
+The biggest problem some people have with the AI in Armada's single player 
+mode is that it can get monotonous... it's very hard to maneuver behind and  
+tail a Kilrathi, so combat can often end up being a series of head-on volleys 
+of cannon fire until someone is destroyed.  It sounds as if the AI in WC3 will 
+certainly be more varied than that in Armada, so that should be a welcome 
+improvement. 
+             
+     
+*4.8.*  What other notable game features are present in Wing Commander III? 
+=========================================================================== 
+         
+        4.8.1.  The 3-D navigational map 
+        -------------------------------- 
+         
+        The first two WC games used a two-dimensional navigation map to show 
+        the area surrounding the player.  The obvious failing of this system is 
+        that it could not show Z coordinates; the map could show the player's 
+        ship directly on top of a jump point, when in reality he/she was a 
+        hundred thousand clicks _above_ his destination. 
+ 
+        WC3 employs an actual three-dimensional nav map to give the player a 
+        better idea of his/her surroundings.  The map can be rotated on all 
+        three axes and zoomed in and out so that the environment may be viewed 
+        from any angle and any distance. 
+         
+ 
+        *4.8.2.*  Power management 
+        -------------------------- 
+         
+        Yes, you can allocate your ship's power as you want in this one,         
+        moving energy between your guns, damage control systems, and possibly 
+        other parts of your ship. 
+ 
+ 
+        *4.8.3.*  More "intelligent" weaponry 
+        ------------------------------------- 
+         
+        Missiles and missile decoy pods will now report back do you when         
+        they're finished and tell you if they were successful or not... one 
+        less thing to keep track of in the middle of a chaotic dogfight. 
+         
+         
+        *4.8.4.*  Will there be a "virtual cockpit," as there was in Strike 
+                  Commander and Pacific Strike? 
+        ------------------------------------------------------------------- 
+         
+        No, the primary reason being that it slowed things down too much in 
+        SVGA mode and became more of a hindrance than a help.  The usual left, 
+        right, and rear views are present, plus some new fun and useful 
+        external camera angles to observe the action from. 
+ 
+        You can still turn the cockpit off altogether, however -- the WC3 ships 
+        all have a HUD, so all vital information is still on the screen when 
+        the cockpit graphics are off. 
+         
+         
+        *4.8.5.*  Will there be a VCR replay mode? 
+        ------------------------------------------ 
+         
+        Time allowing, yes, though nothing is certain at this point. 
+         
+         
+        *4.8.6.*  Will you be able to go back and replay specific missions? 
+        ------------------------------------------------------------------- 
+         
+        Nope. 
+         
+         
+        *4.8.7.*  Will the comm screens be in color? 
+        -------------------------------------------- 
+         
+        No.  They tried, but the space color palette didn't support flesh 
+        tones very well. 
+         
+ 
+        *4.8.8.*  Can you transfer characters from Wing Commander II? 
+        ------------------------------------------------------------- 
+ 
+        Sorry, no. 
+ 
+         
+        4.8.9.  Will Wing Commander III have multiplayer modem or network 
+        support? 
+        ----------------------------------------------------------------- 
+     
+        No.  If you want multiplayer Wing Commander, then give Wing Commander 
+        Armada a try (see section 2.2.5.). 
+       
+     
+************************** 
+5.  Cinematics / storyline 
+************************** 
+ 
+5.1.    What distinguishes the cinematics and storyline in Wing Commander III? 
+============================================================================== 
+ 
+There are two fundamental differences between the cinematics in WC3 and those 
+in WC1 and 2.  First, the live acting; all of the cinematic sequences are 
+played out in full motion video by live actors, rather than being hand- and 
+computer-drawn as in the first two games.  This has led to several new 
+filming techniques being used, as well:  A wider variety of camera angles is 
+present, rather than the frontal face shots that were used nearly exclusively 
+in WC1 and 2, plus pans, zooms, etc. 
+ 
+Secondly, the cinematic sequences are no longer completely passive.  The 
+player can now choose how he/she responds in certain situations be selecting 
+one of several choices from a list of possible dialogue responses.  This, in  
+turn, alters the way the story unfolds, so two people who play the game with  
+different dialogue choices may experience quite a different plotline.  (A  
+normal movie script is about 120 pages; the script for WC3 was 300 pages long  
+so that all of the different outcomes and dialogue choices were covered.) 
+ 
+ 
+    5.1.1.  In what ways can choices made during the cinematic sequences alter 
+            the storyline? 
+    -------------------------------------------------------------------------- 
+ 
+    First and foremost, it can affect your relationships with your shipmates, 
+    and being the squadron commander, this can affect morale on board ship. 
+    Telling a pilot "That flying was horrible -- whose side are you fighting 
+    for?" obviously will be perceived more negatively than "Well, kid, it was 
+    a tough mission.  Let's hope we can do better next time."  (Of course, in 
+    some cases, maybe the pilot _deserves_ to be chewed out; it's a judgment 
+    call you'll have to make.)  You also get to choose a love interest for the  
+    game, which will have a major impact on the plotline. 
+ 
+    In the end, your flying skills and storyline decisions will combine to 
+    finish the story in one of three different ways -- one grand, victorious 
+    ending, one mediocre, and one not-so-grand. 
+ 
+ 
+    *5.1.2.*  Can your wingmen actually die during an average mission, or are 
+              there safeguards built in to prevent this? 
+    ------------------------------------------------------------------------- 
+ 
+    In Wing Commander I, it wasn't only your life at stake when you went up 
+    against the Kilrathi -- your wingman were constantly in danger of getting 
+    killed, as well.  If the Kilrathi nailed your partner, he/she was gone. 
+    Permanently.  Taken off the flight roster.  You even got to attend their 
+    funeral. 
+ 
+    In Wing Commander II, this was not the case.  The writers wanted more 
+    control over who died and when, because otherwise the branching storyline 
+    was too hard to write; there were just too many variables.  Some of the 
+    characters in WC2 still died from time to time, but it was always at a 
+    predetermined time when the writers wanted it to happen -- not just because 
+    the Kilrathi got a few lucky shots in during one of your sorties.  If the 
+    cats did destroy your wingman's ship, the victim would always manage to 
+    eject first.  You'd be without help until you got back to your carrier, but 
+    the person would always still be alive when you got back. 
+ 
+    Unfortunately, this will still be the case with Wing 3.  It tends to make 
+    the plot slightly more linear, but it's a necessary evil to make the 
+    various permutations of the plotline manageable for the game designers. 
+ 
+ 
+5.2.    How is live acting being integrated into the cinematic sequences? 
+========================================================================= 
+     
+All acting is done in advance in front of a green screen -- which is, as 
+the name suggests, a cloth backdrop spray painted green.  The backgrounds 
+are rendered on a Silicon Graphics workstation (the same ones used in the 
+making of Jurassic Park).  After the acting is done and the backgrounds have 
+been generated, they backgrounds are overlaid over the green backdrop in the 
+film footage.  The result is a video sequence with live actors in front of a  
+very realistic-looking computer-generated setting. 
+ 
+     
+    *5.2.1.*  How much live acting is contained in the cinematic sequences? 
+    ----------------------------------------------------------------------- 
+ 
+    About three and a half hours of footage was filmed for the game.  Of  
+    course, you won't see all of this playing the game through just once, since 
+    it has a branching storyline. 
+ 
+ 
+    5.2.2.  Why don't some of the actors look like their characters? 
+    ---------------------------------------------------------------- 
+ 
+    During the casting for Wing Commander III, the primary concern was finding 
+    actors who could accurately portray the Wing Commander characters' 
+    personalities; physical appearance was secondary.  While it was certainly 
+    nice to find an actor or actress who not only was able to play the role 
+    well but looked like the character in mind, this wasn't always possible, 
+    as in the case of the actor taking the role of Paladin (John Rhys-Davies). 
+ 
+ 
+    5.2.3.  How is the acting for the Kilrathi characters accomplished? 
+    ------------------------------------------------------------------- 
+ 
+    Think "Darth Vader", and you'll have a pretty good idea.  An actor wears  
+    an elaborate set of costumes and makeup (made by the same group who did the 
+    masks for the Teenage Mutant Ninja Turtles movies, by the way), and acts 
+    out the motions and lip movements for his character.  Voices are dubbed 
+    over later by a separate voice actor. 
+ 
+    Apparently this combination works pretty well.  A "behind-the-scenes" 
+    article about WC3 in the August '94 issue of Computer Game Review said 
+    that "The Kilrathi, while having occasionally over-exaggerated movements, 
+    do not look at all unreal." 
+                                          
+ 
+5.3.    Who are the characters in Wing Commander III, and who are the actors  
+        and actresses playing their roles? 
+============================================================================ 
+ 
+    5.3.1.  Col. Christopher Blair (Mark Hamill) 
+    -------------------------------------------- 
+         
+    In Wing Commander III, the player takes the role of Colonel Christopher 
+    Blair, a veteran Confederate pilot who commands the fighter squadron on   
+    his ship.  Throughout the course of the game, you not only fly dozens of  
+    missions against the Kilrathi, but deal with intercharacter relationships  
+    with your shipmates as well -- you even get to choose your own love  
+    interest. 
+     
+    Blair is portrayed by Mark Hamill, best known for his starring role as Luke 
+    Skywalker in the "Star Wars" movie trilogy.  He has also been seen in "The 
+    Guyver," "The Night the Lights Went Out in Georgia," "Britannia Hospital", 
+    and others.  Voice acting work includes playing The Joker in the Batman  
+    animated television series and "Mask of the Phantasm" motion picture, and  
+    a role in Sierra's interactive adventure game, "Gabriel Knight." 
+     
+ 
+        5.3.1.1.    Do I get to pick my player's name or callsign? 
+        ---------------------------------------------------------- 
+         
+        Your name (Christopher Blair) is assigned to you and cannot be 
+        changed.  You will be able to pick a callsign for yourself, though 
+        it will not be used during the cinematic sequences, since the spoken  
+        dialogue cannot change to reflect the callsign you choose.  The   
+        callsign will instead be used in places such as the flight roster  
+        posted on the ship, while during the cinematics you are referred to  
+        by your "real" name (Blair). 
+ 
+             
+    5.3.2.  James "Paladin" Taggart (John Rhys-Davies) 
+    -------------------------------------------------- 
+         
+    Veterans of the first two Wing Commander games will certainly remember 
+    Paladin, the Scottish officer who has been serving in the Navy for several 
+    decades.  Taking this role is John Rhys-Davies, who has appeared in 
+    "Raiders of the Lost Ark," "Indiana Jones and the Last Crusade," "The Living 
+    Daylights," "Firewalker," and others.  He is currently starring in "The  
+    Untouchables" TV series and is the host of the Discovery Channel's  
+    "Archaeology." 
+ 
+ 
+    5.3.3.  Todd "Maniac" Marshall (Tom Wilson) 
+    ------------------------------------------- 
+         
+    Another character from the earlier WC games, Maniac is a brash, 
+    unpredictable pilot who has a stubborn "to-hell-with-the-rules" attitude 
+    that has put himself and his shipmates in danger countless times.  He is, 
+    however, a highly skilled flier whose talents are desperately needed in 
+    the war against the Kilrathi. 
+ 
+    Maniac is portrayed by Tom Wilson, who you've probably seen as Biff in the 
+    "Back to the Future" trilogy.  Wilson has also been in "Blood In... Blood 
+    Out," "Action Jackson," "April Fool's Day," and others.   
+     
+     
+    5.3.4.  Melek (Tim Curry) 
+    ------------------------- 
+         
+    Melek is a Kilrathi warrior, and the right-hand man of Prince Thrakhath. 
+ 
+    Tim Curry, probably most easily remembered as the transvestite in "The 
+    Rocky Horror Picture Show," is doing the voice acting for Melek in WC3. 
+    Curry also did voice acting in Sierra's "Gabriel Knight," along with WC3 
+    co-star Mark Hamill. 
+ 
+ 
+    5.3.5.  Admiral Geoffrey Tolwyn (Malcolm McDowell) 
+    -------------------------------------------------- 
+         
+    Those who only played WC2 probably remember Tolwyn as a hard-nosed, strict 
+    commander who never really seemed to care about much besides making the  
+    player's life difficult.  Those who read the WC novels should have a 
+    more positive impression of him; that of a just, honorable officer who 
+    places morality and ethics above authority and discipline.  (Yeah, it  
+    sounds cliched, but true.) 
+ 
+    Whatever picture you have of Tolwyn, he'll be present in WC3, played by 
+    Malcolm McDowell.  McDowell has been in movies such as "A Clockwork 
+    Orange," "Time After Time," "Cat People" (too bad he's not playing a 
+    Kilrathi...) ;), "Britannia Hospital" (with WC3 co-star Mark Hamill), and 
+    others.  He is also playing the role of the villain Soran in the upcoming 
+    "Star Trek: Generations" motion picture. 
+ 
+ 
+    5.3.6.  Rachel (Ginger Lynn Allen) 
+    ---------------------------------- 
+         
+    Rachel is a tech officer on the ship on which Blair serves, and is one 
+    of the two potential love interests for the player.  The actress who 
+    plays her, Ginger Lynn Allen, has starred in "Young Guns II," "Skin Deep," 
+    "Leather Jackets", and other "adult" films.  TV credits include "Silk 
+    Stalkings," "Sunset Beat," and a current recurring role on "NYPD Blue." 
+ 
+     
+    5.3.7.  Flint (Jennifer MacDonald) 
+    ---------------------------------- 
+         
+    The other possible love interest for the player, Flint is a member of   
+    Blair's flight squadron whose dynamic character is hidden underneath a  
+    cool, calm exterior.  Flint is played by Jennifer MacDonald, who has been 
+    seen in "Terminal Force," "The Collector," "Shades of Black," "Dream On," 
+    "The Adventures of Brisco County, Jr.," and others. 
+ 
+ 
+    *5.3.8.*  Col. Eisen (Jason Bernard) 
+    ---------------------------------- 
+         
+    Eisen, the commander of the TCS Victory, is another newcomer to the Wing  
+    Commander saga, played by Jason Bernard (currently starring in the TV  
+    series "Herman's Head.")  Bernard has also appeared on "The Cosby Show,"  
+    "St. Elsewhere," "Knot's Landing," "Night Court," "The Flash," and others.   
+    Film credits include, but are not limited to, "War Games," "Paint It  
+    Black," and "Blue Thunder" (with WC3 co-star Malcolm McDowell). 
+ 
+ 
+    5.3.9.  Rollins (Courtney Gains) 
+    -------------------------------- 
+         
+    Courtney Gains takes on the role of Rollins in WC3.  Gains has been seen 
+    in "Memphis Belle," "The 'Burbs," "Colors," "Can't Buy Me Love," and "Back  
+    to the Future," among others.  TV credits include "Seinfeld," "Tales From  
+    the Crypt," and "In the Heat of the Night," and more. 
+ 
+ 
+    5.3.10. Flash (Joshua Lucas) 
+    ---------------------------- 
+         
+    Joshua Lucas, the actor playing Flash, is a regular on "The Man From Snowy 
+    River".  On the big screen, he has been seen in "Alive" and "Class of '61." 
+ 
+ 
+    5.3.11. Hobbes 
+    -------------- 
+     
+    Originally assigned to be a bridge officer on your ship, you pull some 
+    strings to get him placed on your fighter squadron, where he again takes 
+    the role of one of your fellow wingmen. 
+     
+     
+    5.3.12. The Emperor and Prince Thrakhath 
+    ---------------------------------------- 
+ 
+    Yup, it's been confirmed that they're both back for the grand finale. 
+    That, however, is all that's been confirmed.  :) 
+ 
+ 
+5.4.    Will any other members of the Wing Commander cast (Angel, Doomsday, 
+        etc.) make an appearance in Wing Commander III? 
+========================================================================= 
+ 
+Since nothing has been announced, probably not.  They may be mentioned in the  
+dialogue, but an actual appearance is unlikely. 
+ 
+ 
+    5.4.1.  What happened to Angel, anyway? 
+    --------------------------------------- 
+ 
+    Since Angel (who, in case you forgot, was romantically involved with Blair  
+    at the end of SO2) isn't one of the WC3 regulars, the question of what 
+    became of her is raised.  The only thing known for certain is that she was 
+    _not_ killed on the Concordia (see section 5.5 below).  Origin didn't just 
+    forget about her, but they aren't saying what happened to her, either. 
+    This will be revealed in WC3. 
+ 
+ 
+*5.5.*  How good do the final cinematic sequences look?         
+======================================================= 
+ 
+This is obviously a difficult question to answer, not only because it's hard 
+to define in words, but also because it's largely a matter of opinion.  Most 
+people I've talked to who have seen some of the actual cinematic footage agree 
+that while it isn't "Star Wars" caliber, and has it's small share of bad  
+acting, most of it is fine and some of it is actually quite good.  Though the 
+Kilrathi are fairly easily identifiable as puppets/machines, they have quite a 
+wide range of facial expressions and the lip synching for them is very well 
+done.  In any case, it's probably a significant step above other interactive 
+movies on the market today, and should be something to look forward to. 
+       
+Again, note that these are the opinions of the people I spoke with and are 
+subject to your own whims and preferences.  Personal mileage may vary. 
+       
+ 
+5.6.    What is the basic plot of Wing Commander III? 
+===================================================== 
+ 
+The year is 2669 (two years after the end of SO2), and the Kilrathi again have  
+gained the upper hand in the Galactic War.  Your old carrier, the TCS  
+Concordia, has been recently destroyed, and you are reassigned to the decrepit  
+TCS Victory.  It is here that your adventure begins. 
+ 
+The Terrans have developed a weapon of terrifyingly destructive power called  
+the Behemoth, which they are hoping can tip the scales back in their favor --  
+but before they can use it, a human traitor hands the plans for the weapon over 
+to the Kilrathi.  The scientist who designed the weapon is taken to a Kilrathi 
+prison, and you, of course, have to rescue him.  As the war draws closer to its 
+climactic finish, you volunteer for a final, desperate suicide mission which 
+is guaranteed to end the war one way or the other. 
+ 
+ 
+5.7.    How do the events in the Wing Commander novels fit into the storyline? 
+        (SPOILER) 
+============================================================================== 
+ 
+First off, let it be said that the novels _are_ considered "official" 
+material -- that is, the events that transpired in them are assumed to have 
+happened in the "real" (i.e., computer game) WC universe.  Among these are the 
+death of Hunter, the adventures of the Tarawa, and the Kilrathi fleet's attack 
+on the core Confederate worlds, including Earth.  (A very brief summary of the 
+events in the third novel can be found on page 12 of the WCArmada manual.) 
+ 
+The second and third novels take place in the two-year gap between WC2 and WC3. 
+ 
+ 
+********************************* 
+6.  Other miscellaneous questions 
+*********************************     
+     
+*6.1.*  What is the current estimated release date? 
+=================================================== 
+ 
+November 21, 1994.  This is (obviously) subject to change.  Filming was 
+completed several months ago, so all that's left now is on the technical end. 
+The 3DO version (see section 6.3) is scheduled to be released in January '95. 
+ 
+ 
+*6.2.*  What's this I hear about a "Premiere Edition?" 
+====================================================== 
+ 
+A special collector's "Premiere Edition" of WC3 is being produced along with 
+(and will be released at the same time as) the normal game.  While the game 
+itself will be exactly the same as the one in the regular edition, the  
+Premiere Edition contains several extra items you can't get elsewhere.  There 
+is a limited number of these being produced, though Origin isn't saying what 
+number that is -- so if you want one, get your order in soon!  :) 
+ 
+ 
+        *6.2.1.*  What does it contain? 
+        ------------------------------- 
+ 
+        The Premiere Edition will contain all of the items found in the regular 
+        game, plus: 
+ 
+        Special Film Canister Packaging:  As the inauguration of the ORIGIN  
+        Interactive Movie (TM) line, only the Wing Commander III Premiere  
+        Edition will be packaged in an authentic motion-picture film canister. 
+                 
+        The Making of Wing Commander III:  A video documentary chronicling all  
+        the production aspects of the game, from ORIGIN to Hollywood.  This  
+        video features exclusive interviews with all of the stars and key  
+        product development team members. 
+ 
+        Wing Commander novel:  Fleet Action, by William R. Forstchen.  The  
+        third in the successful series of Wing Commander novels by Baen Books. 
+             
+        Wing Commander III t-shirt:  Featuring the Terran Confederation  
+        insignia and classic movie poster cover art created by ORIGIN's Sam  
+        Yeates. 
+ 
+        ORIGIN Audio CD:  Volume 3 of the ORIGIN soundtrack series with award- 
+        winning music from games such as Wing Commander III, ULTIMA VIII:  
+        Pagan, Wings of Glory, Pacific Strike, BioForge and Wing Commander  
+        Armada. 
+         
+        Wing Commander III calendar:  A full-size calendar with scenes lifted  
+        directly from the game. Something to use all year. 
+         
+        Plus more!  
+ 
+ 
+        *6.2.2.*  Will there be a Premiere Edition for the 3DO version? 
+        --------------------------------------------------------------- 
+ 
+        Nothing is absolutely certain yet, but probably not. 
+ 
+ 
+6.3.    What platforms is Wing Commander III being released on? 
+=============================================================== 
+         
+Both an IBM and a 3DO version are planned.  The PC version should run reliably  
+on OS/2 systems with 16 or more megs of RAM.  In-house testing is currently  
+being done on this at Origin. 
+ 
+                                                                        
+    6.3.1.  How will the 3DO version differ from the PC version? 
+    ---------------------------------------------------------------- 
+ 
+    The 3DO version will be optimized to take advantage of the 3DO's better 
+    graphics and sound capabilities -- this includes true 16-bit color, a full 
+    stereo soundtrack throughout the game, and Dolby Surround sound effects. 
+    There will be no installation program required (obviously), so you should 
+    be able to just jump in and start playing.  CD delays should be shorter, 
+    as well. 
+ 
+    Ideally, the 3DO and PC versions will ship as close to simultaneously as 
+    possible. 
+ 
+ 
+*6.4.*  Will there be different versions of WC3 available for different 
+        languages? 
+======================================================================= 
+ 
+Versions are planned for French and German, with different voice actors 
+re-dubbing the voices in the appropriate languages.  Subtitled versions of the 
+game will be simultaneously released with the English version; the actual 
+French and German dubs will come at a later date. 
+ 
+ 
+*6.5.*  Are there any screen shots available? 
+============================================= 
+     
+Yes; two sets of screen shots have been uploaded onto several major online 
+services by Origin.  The first were from some fairly early stages in game 
+development and did not accurately represent what the final product would look 
+like, so they were taken down.  The second batch was uploaded within the past 
+few weeks and is still available for downloading.  
+ 
+ 
+    *6.5.1.*  What do the screen shots contain? 
+    ------------------------------------------- 
+     
+    Some external shots of a Confederate Arrow (a light fighter) flying in     
+    space and near a capital ship are present.  There are also some images 
+    from the cinematic sequences, including a scene with Blair and Paladin 
+    standing planetside, Rachel (the flight mechanic) on the flight deck, and  
+    Admiral Tolwyn leaning over the desk in his office.  No cockpit shots or  
+    enemy fighters are present in any of the images. 
+ 
+     
+    *6.5.2.*  Are those screen shots from playable sequences or cinematic 
+              scenes? 
+    --------------------------------------------------------------------- 
+         
+    Yes, the external shots of the Arrow flying by the Kilrathi capital ship 
+    are from the playable portion of the game.  It is obvious which of the 
+    pictures are from the cinematic sequences and these also reflect how the 
+    game should look on your screen. 
+     
+ 
+    *6.5.3.*  Where can I find the screen shots? 
+    -------------------------------------------- 
+ 
+    You can get them from the official Origin support forum on most online  
+    services, or from the Origin BBS.  See section 1.6 for details. 
+ 
+ 
+*6.6.*  Will a demo be released before the game comes out? 
+========================================================== 
+ 
+Yep, and what a demo it will be.  It wil be fully playable -- the first mission 
+will be included, so players can take a look at the new engine and see how it 
+runs on their machine.  There won't be any cinematics directly related to this 
+mission included (an intro sequence, mission briefing or debriefing, etc.), 
+but there will be a full-motion video trailer for the movie portion of the 
+game, much like any other trailer you'd see on TV for a movie at the local 
+theater. 
+ 
+The demo is going to be distributed on CD-ROM, and will be included free with 
+the December issues of PC Gamer and CD-ROM Today (which should both hit  
+newsstands on November 8).  You'll also be able to buy it at your local 
+software store at about the same time. 
+ 
+ 
+*6.7.*  What is the list price for Wing Commander III, and how can I 
+        reserve a copy? 
+==================================================================== 
+ 
+List price is $69.95.  You can reserve a copy by contacting your local software 
+dealer or Electronic Arts Direct Sales at (800) 245-4525. 
+ 
+Pre-orders for the Wing Commander III Premiere Edition began October 1st.  To  
+reserve your copy, call Electronic Arts Direct Sales at (800) 245-4525.  The  
+price is $99.95 plus shipping and handling (within the U.S.)  Orders received 
+before November 1st will be shipped to arrive by the first day that Wing  
+Commander III hits retail store shelves. 
+ 
+ 
+*6.8.*  What is the budget for Wing Commander III? 
+================================================== 
+ 
+No official figures have been released, but estimates are that it's approaching 
+the area of four million dollars ($4,000,000) -- the largest budget ever for a  
+computer game. 
+ 
+ 
+6.9.    Who is developing and filming Wing Commander III? 
+========================================================= 
+           
+    6.9.1.  Who is involved with the cinematic side of the project? 
+    ------------------------------------------------------------------- 
+ 
+    Over 50 professional filmmakers are on the WC3 team to help bring together 
+    the cinematic portion of the game.  Here is a partial list: 
+ 
+    Director/Executive Producer        Chris Roberts 
+    Producer                           Donna Burkons 
+    Screenwriters                      Terry Borst 
+                                       Frank DePalma 
+    Cinematographer                    Virgil Harper 
+    Art Director                       Chris Douglas 
+    Music                              George Oldizey 
+    
+ 
+    6.9.2.   Who is involved with the gameplay side of the project? 
+    ------------------------------------------------------------------ 
+ 
+    Following is a list of the programmers working on the PC version of 
+    the game: 
+     
+    Project Director : Frank Savage 
+        o Spaceflight engine conversion 
+        o New technologies (i.e., Capital ships) 
+ 
+    Programmer       : Frank Roan 
+        o Spaceflight object system and weapon systems  
+        o Artificial Intelligence 
+        o Mission system 
+ 
+    Programmer       : Anthony Morone 
+        o Cockpit/HUD displays and interface 
+        o 3D Navigation Map 
+        o Communication system and sound effects programming 
+ 
+    Programmer       : Chris Todd 
+        o Gameflow programming 
+        o Cinematics integration 
+ 
+    Programmer       : Jason Yenawine 
+        o Full-motion video compressor and player 
+        o Memory management 
+ 
+     
+    There is a second team of programmers in charge of the 3DO version: 
+ 
+    Programmer       : Peter Shelus 
+        o 3D spaceflight and object systems 
+        o Artificial Intelligence 
+ 
+    Programmer       : Brent Thale 
+        o 3DO conversion of video compressor and player 
+ 
+             
+*6.10.* Other Wing Commander III-related merchandise 
+==================================================== 
+ 
+    *6.10.1.* Will there be a Wing Commander III Playtester's Guide? 
+    ---------------------------------------------------------------- 
+     
+    Rather than the typical "Playtester's Guide" that Origin has released with 
+    all of their games as of late, they're compiling a larger strategy guide 
+    for WC3 similar to Mike Harrison's _Wing Commander I & II:  The Ultimate  
+    Strategy Guide_.  It should be out within one to two months of the game's 
+    release. 
+     
+     
+    *6.10.2.* Will the soundtrack for Wing Commander III be released on CD? 
+    ----------------------------------------------------------------------- 
+     
+    Sort of.  :)  While a separate WC3 soundtrack may not be released, several 
+    tracks of the game's music will be included on the next Origin soundtrack 
+    (volume 3) along with selections from other OSI releases.  This CD will 
+    also be included with the Premiere Edition -- see section 6.2. 
+     
+     
+    *6.10.3.* Will any of these extra items from the Premiere Edition be 
+              sold separately? 
+    -------------------------------------------------------------------- 
+    Some of them probably will be, but which ones they are, how much they'll 
+    cost, and when they'll be available are still up in the air. 
+ 
+ 
+*6.11.* Will WC3 be the last installment of the Wing Commander series? 
+====================================================================== 
+ 
+There will certainly be other games set in the Wing Commander universe (see  
+section 6.12).  Whether there will be a direct continuation of WC3 (WC4, in  
+other words), however, remains to be seen, though it seems very likely.  Chris  
+Roberts originally envisioned the Wing Commander series as a trilogy, and it  
+sounds as if the story in WC3 will see the end of the Terran-Kilrathi war.  If  
+the series continues, WC4 may just be the beginning of a second WC trilogy,  
+rather than a direct continuation of WC3.   
+ 
+Word has it that an actual motion picture may be developed in conjunction with 
+the next installment in the Wing Commander series... wait and see.  (Note that  
+this is not based on any official word from Origin). 
+ 
+ 
+*6.12.*  What other Wing Commander products are planned for the future? 
+======================================================================     
+                     
+    *6.12.1.* Privateer 2 
+    ---------------------         
+ 
+    "Privateer 2:  Darkside" will be the next installment in the Privateer 
+    series.  The project, headed by Erin Roberts (Chris Roberts' brother), is 
+    currently in the initial planning stages.  Like WC3, it will utilize live 
+    acting for all of the cinematic sequences, and will use an updated version 
+    of the WC3 engine for the actual gameplay. 
+     
+    Privateer 2 is being developed and filmed entirely in the United Kingdom. 
+    The current (unofficial) target date is Christmas '95.  Origin is taking 
+    a lot of suggestions from gamers out there for this one, so if you've got 
+    some ideas you'd like to share, send them an e-mail (see section 7.2)! 
+ 
+ 
+    *6.12.2.* Super Wing Commander for the Mac 
+    ------------------------------------------ 
+     
+    After several years, Origin is once again venturing into the Mac arena with 
+    a port of the 3DO's Super Wing Commander.  This will be a CD-ROM only 
+    release that should be available this March. 
+ 
+     
+    *6.12.3.* Wing Commander novels 
+    ------------------------------- 
+ 
+    Three new Wing Commander novels are in the works, one of which will be a 
+    novelization of the events in WC3.  The "plot path" that the WC3 novel 
+    takes (remember, the game has a branching storyline) will most likely 
+    involve most of the harder missions from the game, and end with the 
+    victorious finish.  It is being written by William R. Forstchen (the author 
+    of _End Run_ and _Fleet Action_) and Bill Keith. 
+ 
+    The second novel will jump back in time and focus on Hunter (when he was 
+    still alive).  It is being written by Ellen Guon (co-author of _Freedom 
+    Flight_ and lead writer for Wing Commander II).  The third novel has been 
+    contracted, but the content has not yet been decided; it might be take 
+    place over on the Privateer side of the galaxy... 
+     
+     
+    *6.12.4.* Wing Commander:  The Motion Picture? 
+    ---------------------------------------------- 
+ 
+    There's serious talk going around of an actual Wing Commander movie being 
+    made.  We're not talking green-screen acting with computer-generated 
+    backgrounds, either, but a real, full-blown motion picture.  Nothing is  
+    known about the content as of yet, though it may be a crossover with WC4. 
+     
+    There has also been some talk of a WC TV series, though nothing is certain, 
+    and again, no other details are available right now.  Stay tuned. 
+                                                                 
+ 
+******************** 
+7.  In conclusion... 
+******************** 
+ 
+*7.1.*    Credits / sources 
+=========================== 
+ 
+The Wing Commander III FAQ was complied and written by James Hogan, but I've 
+had plenty of help... 
+ 
+Thanks to those Origin employees who have taken time from their schedule to 
+answer my questions: 
+  Tony Morone 
+  Frank Roan 
+  Frank Savage 
+  Galen Svanas 
+  Chris Todd 
+ 
+Mark Meytin is the person responsible for doing the HTML translation of the 
+WC3 FAQ, which it a tremendous help to those people who access it over the 
+World Wide Web.  Thanks, Mark. 
+ 
+Richard Poffley provided me with coverage of the WC3 display at the ECTS 
+(European Computer Trade Show)... thanks! 
+ 
+And a big thanks to all the other people who have forwarded me info, given 
+me ideas, suggested a question or topic to cover, or otherwise helped me with  
+the production of the FAQ... 
+  Nicholas Albright 
+  Wayne Baker 
+  Ron Blancarte 
+  Gary Goodman 
+  Paul Fleming 
+  Pham Hoang 
+  Dieter Janssen 
+  Tommy McClain 
+  Richard Scanlan   
+  BenHerd@aol.com 
+ 
+Other sources include the following magazines... 
+ 
+Computer Gaming World, June 1994, page 14 
+Computer Games Strategy Plus, August 1994, pages 20-23 
+PC Gamer, August 1994, pages 8-11 
+Interactive Entertainment, Episode 3 
+ 
+Additional thanks to Wayne Baker at Origin for helping to answer all of my 
+seemingly endless questions.  :) 
+ 
+ 
+*7.2.*  Where to find out more 
+============================== 
+ 
+There have already been several magazines and other periodicals that have 
+had information on WC3 in them.  If you'd like to check any of them out for 
+yourself, here's a list: 
+ 
+    AP Newswire                     June 23, 1994 
+    Austin American Statesman       June 20, 1994 
+    CD-ROM Today                    August/September, 1994 
+    Computer Game Review            July, 1994 
+    Computer Games Strategy Plus    August, 1994 
+    Computer Gaming World           May 1994, June 1994 
+    Daily Variety Magazine 
+    Electronic Entertainment        April 1994, June 1994 
+    The Hollywood Reporter          May 17, 1994 
+    Interactive Entertainment       Episode 3 
+    Los Angeles Daily News          June 28, 1994 
+    PC Gamer                        July 1994, August 1994 
+    PC Format (United Kingdom)      July, 1994 
+    PC World (New Zealand)          June, 1994 
+ 
+Have more questions about WC3 that aren't in the FAQ, or just want to find 
+something out straight from the source?  Ask Origin directly: 
+ 
+    CompuServe: 71333,136 
+    America Online: OSI 
+    GEnie: origin.mkt 
+    Internet: osi@aol.com 
+ 
+ 
+*7.3.*    Contacting the FAQ author 
+=================================== 
+ 
+Did you find out another bit of information you'd like to see added?  Did I  
+screw something up?  Have any questions you'd like answered in the next 
+revision of the FAQ? 
+ 
+If, for these or any other reasons, you'd like to contact me, I can be reached 
+in the following ways (note the change in my AOL screen name): 
+ 
+Internet e-mail:  j-hogan@ux4.cso.uiuc.edu  (checked several times daily) 
+America Online:   JamesH42                  (checked once per week) 
+CompuServe:       70524,1343                (checked once per week) 
+ 
+If you contact me about additional information to include in the FAQ, please 
+tell me your source.  I'd like to verify all new info to keep the FAQ as 
+accurate as possible. 
+ 
+ 
+        *7.3.1.*  The WC3 FAQ mailing list 
+        ---------------------------------- 
+ 
+        I also maintain a mailing list of people who would like to receive the 
+        latest version of the WC3 FAQ when it is released.  If you'd like to 
+        be on this, just drop me a line and tell me your name and e-mail 
+        address, and I'll see to it that you're added to the list. 
+ 
+ 
+*7.4.*  Revision history 
+======================== 
+ 
+Version 1.0:    Initial release. 
+(8/5/94) 
+ 
+Version 1.01:   A few minor changes, including the addition of the WC3  
+(8/11/94)       periodical reference list and this revision history section. 
+ 
+Version 1.10:   Revision history section heavily abridged so that it didn't 
+(10/24/94)      expand to five or ten pages upon this version's release. 
+ 
+                FAQ grew by about 50%; most new info was in section 4, 
+                including more detailed descriptions of what capital ship 
+                combat and planetside missions would be like.  A basic 
+                explanation of what a polygon-based graphics engine is was 
+                put in section 3.7.  Official information from Origin regarding 
+                estimated frame rates, and the WC3 Premiere Edition added to 
+                sections 3 and 6.  Several other less significant changes too  
+                numerous to list. 
+ 
+ 
+7.5.    Conclusion 
+================== 
+ 
+Well, that's it for this release of the WC3 FAQ.  Please write and let me know  
+what you thought; was it useful?  Had you already heard all of the information? 
+Was it well-written?  Even if you don't have any comments to speak of, please  
+just drop me a line and let me know if you read through it. 
+ 
+Assuming I can scrounge up some more information, a new revision of the FAQ 
+should follow within a couple weeks.  (Now where have we heard that before...)   
+Announcements will be posted on AOL, CIS, comp.sys.ibm.pc.games.action, and  
+comp.sys.ibm.pc.games.flight-sim. 
+ 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
