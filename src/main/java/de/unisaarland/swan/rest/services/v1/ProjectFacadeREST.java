@@ -25,13 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.*;
 import javax.persistence.NoResultException;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.apache.commons.io.FileUtils;
@@ -201,16 +195,19 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
     }
 
     @GET
-    @Path("/byuser/{userId}")
+    @Path("/byuser/")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getProjectsByUserId(@PathParam("userId") Long userId) {
+    public Response getProjectsByUserId(@QueryParam("userId") Long userId, @QueryParam("page") Integer page) {
 
         try {
+            if (page < 1) throw new IllegalArgumentException();
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
 
-            List<Project> list = service.getAllProjectsByUserId(userId);
+            Users user = (Users) usersDAO.find(userId, false);
+            List<Project> list = service.getProjectsByUser(user, page);
 
-            return Response.ok(mapper.writerWithView(View.Projects.class)
+            Class clazz = user.getRole() == Users.RoleType.annotator ? View.ProjectsForUser.class : View.Projects.class;
+            return Response.ok(mapper.writerWithView(clazz)
                                         .withRootName("projects")
                                         .writeValueAsString(list))
                             .build();
@@ -219,8 +216,30 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         } catch (JsonProcessingException ex) {
             Logger.getLogger(SchemeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
             return Response.serverError().build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
+    }
+
+    @GET
+    @Path("/count/byuser/{userId}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getProjectCountsByUserId(@PathParam("userId") Long userId) {
+
+        try {
+            LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+
+            Long number = service.getProjectCountsByUser(userId);
+
+            return Response.ok(mapper.writeValueAsString(number)).build();
+        } catch (SecurityException e) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(SchemeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.serverError().build();
+        }
+
     }
 
     /**

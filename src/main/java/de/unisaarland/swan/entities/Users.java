@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.swan.TimestampAdapter;
 import de.unisaarland.swan.rest.view.View;
+
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
@@ -147,7 +148,7 @@ public class Users extends BaseEntity {
         joinColumns={@JoinColumn(name="USERS_ID", referencedColumnName="id")},
         inverseJoinColumns={@JoinColumn(name="PROJECT_ID", referencedColumnName="id")})
     private Set<Project> projects = new HashSet<>();
-    
+
     @JsonView({ View.UsersWithProjects.class })
     @ManyToMany(mappedBy = "projectManager",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },

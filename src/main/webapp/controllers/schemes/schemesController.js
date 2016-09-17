@@ -18,9 +18,10 @@ angular
          */
         $scope.init = function () {
             $scope.loaded = false;
-            var httpProjects = $scope.loadProjects2();
+			$rootScope.schemesTable = {};	// For scheme view
+			$rootScope.tableSchemes = [];
             var httpSchemes = $scope.loadSchemes();
-            $q.all([httpSchemes, httpProjects]).then(function () {
+            $q.all([httpSchemes]).then(function () {
                 $scope.loaded = true;
                 $scope.buildTableSchemes();
             });
@@ -46,53 +47,25 @@ angular
         };
 
         /**
-         * TODO refactor
-         *
-         * Request list of all Projects.
-         * @returns http-Object of query
-         */
-        $scope.loadProjects2 = function () {
-            const url = "swan/project/byuser/" + $window.sessionStorage.uId;
-            
-            var httpProjects = $http.get(url).success(function (response) {
-                $scope.projects = JSOG.parse(JSON.stringify(response)).projects;
-            }).error(function (response) {
-                if (response == "") {
-                    $rootScope.redirectToLogin();
-                }
-            });
-            return httpProjects;
-        };
-
-        /**
          * Construct displayed table from Scheme and Project information.
          */
         $scope.buildTableSchemes = function () {
-            this.tableSchemes = [];
-            $rootScope.schemesTable = {};
-            $scope.schemeCounter = 0;
+            $scope.schemeCounter = 0;   // TODO does this have any effect?
 
             for (var i = 0; i < $scope.schemes.length; i++) {
                 var scheme = this.schemes[i];
-                $rootScope.schemesTable[scheme.name] = scheme;
-                var newProjects = [];
-                for (var j = 0; j < $scope.projects.length; j++) {
-                    if ($scope.projects[j].scheme.name === scheme.name) {
-                        newProjects.push($scope.projects[j]);
-                    }
-                }
+				$rootScope.schemesTable[scheme.name] = scheme;
                 var schemePreview = {
                     'id': scheme.id,
                     'name': scheme.name,
                     'creator': scheme.creator,
-                    'projects': newProjects,
+                    'projects': scheme.projects,
                     'tableIndex': $scope.schemeCounter
                 };
 
-                this.tableSchemes.push(schemePreview);
+				$rootScope.tableSchemes.push(schemePreview);
             }
 
-            $rootScope.tableSchemes = this.tableSchemes;
         };
 
         $scope.isDeletingPossible = function (scheme) {

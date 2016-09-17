@@ -23,10 +23,12 @@ angular
                 $scope.loaded = false;
                 // Used to determine which projects are currently toggled
                 $rootScope.collapsed = {};
+                $scope.currentPageNumber = 1;
+                var httpNumberProjects = $rootScope.loadProjectsCount();
                 var httpProjects = $rootScope.loadProjects();
                 var httpSchemes = $scope.loadSchemes();
-                // Wait for both http requests to be answered
-                $q.all([httpProjects, httpSchemes]).then(function () {
+                // Wait for http requests to be answered
+                $q.all([httpNumberProjects, httpProjects, httpSchemes]).then(function () {
                     $scope.loaded = true;
                     $rootScope.buildTableProjects();
                 });
@@ -152,6 +154,17 @@ angular
                 //Variables in the sessionStorage have to be Strings
                 $window.sessionStorage.users = JSON.stringify(users);
                 $location.path('/annotation');
+            };
+
+            $scope.pageChanged = function () {
+                $scope.loaded = false;
+                var httpNumberProjects = $rootScope.loadProjectsCount();
+                var httpProjects = $rootScope.loadProjects($scope.currentPageNumber);
+                // Wait for both http requests to be answered
+                $q.all([httpNumberProjects, httpProjects]).then(function () {
+                    $scope.loaded = true;
+                    $rootScope.buildTableProjects();
+                });
             };
 
             /******************

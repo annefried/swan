@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import de.unisaarland.swan.rest.view.View;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -41,7 +42,7 @@ public class Document extends BaseEntity {
      */
     public static final String QUERY_FIND_BY_ID = "Document.QUERY_FIND_BY_ID";
 
-    @JsonView({ View.Documents.class, View.Projects.class })
+    @JsonView({ View.Documents.class, View.Projects.class, View.ProjectsForUser.class })
     @Column(name = "Name")
     private String name;
     
@@ -53,7 +54,7 @@ public class Document extends BaseEntity {
     @JsonProperty(access = Access.WRITE_ONLY)
     @Column(name = "Text", columnDefinition = "TEXT")
     private String text;
-    
+
     @JsonView({ View.Documents.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 optional = false,
@@ -61,7 +62,7 @@ public class Document extends BaseEntity {
     @JoinColumn(name = "project_fk")
     private Project project;
     
-    @JsonView({ View.Documents.class, View.Projects.class })
+    @JsonView({ View.Documents.class, View.Projects.class, View.ProjectsForUser.class })
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 mappedBy = "document",
                 fetch = FetchType.LAZY)

@@ -212,7 +212,7 @@ public class Annotation extends BaseEntity {
     public void setNotSure(boolean notSure) {
         this.notSure = notSure;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -223,7 +223,7 @@ public class Annotation extends BaseEntity {
         hash = 29 * hash + this.end;
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object o){
         if(!(o instanceof Annotation) ){
@@ -239,9 +239,9 @@ public class Annotation extends BaseEntity {
 
     /**
      * Returns a clone of an annotation without id and empty labelMap.
-     * 
+     *
      * @return
-     * @throws CloneNotSupportedException 
+     * @throws CloneNotSupportedException
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -254,7 +254,7 @@ public class Annotation extends BaseEntity {
         newAnno.setUser(this.user);
         newAnno.setDocument(this.document);
         newAnno.setLabels(new HashSet<Label>());
-        
+
         return newAnno;
     }
 
