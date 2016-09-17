@@ -5,6 +5,8 @@
  */
 package de.unisaarland.swan.dao;
 
+import de.unisaarland.swan.entities.Project;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +50,10 @@ public abstract class BaseEntityDAO<Entity> extends AbstractDAO {
     protected List<Entity> executeQuery(String queryName) {
         return executeQuery(queryName, Collections.EMPTY_MAP);
     }
+
+    protected List<Entity> executeQuery(String queryName, final int firstResult, final int maxResult) {
+        return executeQueryWithPaging(queryName, Collections.EMPTY_MAP, firstResult, maxResult);
+    }
     
     protected Entity executeQuery(String queryName, Map<String, ?> parameters, boolean nullOptional) {
         List<Entity> entities = executeQuery(queryName, parameters);
@@ -72,6 +78,13 @@ public abstract class BaseEntityDAO<Entity> extends AbstractDAO {
     
     protected List<Entity> executeQuery(String queryName, Map<String, ?> parameters) {
         TypedQuery<Entity> query = prepareQuery(queryName, parameters);
+        return query.getResultList();
+    }
+
+    protected List<Entity> executeQueryWithPaging(String queryName, Map<String, ?> parameters, final int firstResult, final int maxResult) {
+        TypedQuery<Entity> query = prepareQuery(queryName, parameters);
+        query.setFirstResult(firstResult);
+        query.setMaxResults(maxResult);
         return query.getResultList();
     }
 

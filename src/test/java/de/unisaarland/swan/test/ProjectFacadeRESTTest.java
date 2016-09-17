@@ -65,7 +65,7 @@ public class ProjectFacadeRESTTest extends BaseTest {
         proj.setScheme(scheme);
         projRESTService.create(proj);
         
-        Response respProjects = projRESTService.getProjectsByUserId(admin.getId());
+        Response respProjects = projRESTService.getProjectsByUserId(admin.getId(), 0);
         JSONObject jsonProjects = new JSONObject((String) respProjects.getEntity());
         JSONArray projects = jsonProjects.getJSONArray("projects");
         assertTrue(projects.length() == 1);
@@ -103,7 +103,7 @@ public class ProjectFacadeRESTTest extends BaseTest {
         assertTrue(resp.getStatus() == 200);
         assertNull(resp.getEntity());
         
-        Response respProjects = projRESTService.getProjectsByUserId(user.getId());
+        Response respProjects = projRESTService.getProjectsByUserId(user.getId(), 0);
         assertTrue(respProjects.getStatus() == 200);
         
         JSONObject jsonProjects = new JSONObject((String) respProjects.getEntity());
@@ -143,7 +143,7 @@ public class ProjectFacadeRESTTest extends BaseTest {
     }
     
     private Project getFirstProject(Users user) throws JSONException, IOException {
-        Response respProjects = projRESTService.getProjectsByUserId(user.getId());
+        Response respProjects = projRESTService.getProjectsByUserId(user.getId(), 0);
         JSONObject jsonProjects = new JSONObject((String) respProjects.getEntity());
         JSONArray projects = jsonProjects.getJSONArray("projects");
         
@@ -154,7 +154,7 @@ public class ProjectFacadeRESTTest extends BaseTest {
     }
     
     private Project getFirstProjectByUserId(Long userId) throws JSONException, IOException {
-        Response respProjects = projRESTService.getProjectsByUserId(userId);
+        Response respProjects = projRESTService.getProjectsByUserId(userId, 0);
         JSONObject jsonProjects = new JSONObject((String) respProjects.getEntity());
         JSONArray projects = jsonProjects.getJSONArray("projects");
         

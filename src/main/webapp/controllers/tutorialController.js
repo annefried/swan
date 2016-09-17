@@ -130,7 +130,7 @@ angular
                         }
                     ]
                 });
-                // 
+
                 $scope.schemeTour = new Tour({
                     name: "Swan_scheme_tutorial",
                     container: "body",
@@ -154,7 +154,7 @@ angular
                             title: "Annotation scheme tutorial",
                             content: "In this tutorial, you'll learn how to create a new annotation scheme from scratch. Later on, you can also load and modify an existing scheme."
                         },
-                        // SCHEME MANAGMENT
+                        // SCHEME MANAGEMENT
                         {
                             // dummy
                             element: "#1-schemes-header",
@@ -386,7 +386,7 @@ angular
                     ]
                 });
                 var annotTour = $scope.annotTour;
-                // go to editor only if project + document exists
+                // go to editor only if project + at least one document exists
                 if ($rootScope.tableProjects.length > 0) {
                     var redirect = $scope.existsDocumentsInProjects($rootScope.tableProjects);
                     annotTour.addStep({

@@ -25,44 +25,66 @@ import javax.validation.constraints.NotNull;
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 @NamedQueries({
     @NamedQuery(
-        name = Project.QUERY_FIND_ALL,
+        name = Project.QUERY_COUNT_AS_ADMIN,
+        query = "SELECT COUNT(p.id) " +
+                "FROM Project p"
+    ),
+    @NamedQuery(
+        name = Project.QUERY_COUNT_AS_PROJECT_MANAGER,
+        query = "SELECT COUNT(p.id) " +
+                "FROM Project p " +
+                "WHERE :" + Project.PARAM_USER + " MEMBER OF p.projectManager"
+    ),
+    @NamedQuery(
+        name = Project.QUERY_COUNT_AS_USER,
+        query = "SELECT COUNT(p.id) " +
+                "FROM Project p " +
+                "WHERE :" + Project.PARAM_USER + " MEMBER OF p.users"
+    ),
+    @NamedQuery(
+        name = Project.QUERY_FIND_FOR_ADMIN,
         query = "SELECT DISTINCT p " +
                 "FROM Project p " +
-                "LEFT JOIN FETCH p.documents docs " +
-                "LEFT JOIN FETCH p.projectManager " +
-                "LEFT JOIN FETCH p.watchingUsers " +
-                "LEFT JOIN FETCH p.users " +
-                "LEFT JOIN FETCH p.scheme ",
+                "ORDER BY p.id DESC",
         hints = {
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.states")
+            // TODO evaluate QueryHints.LOAD_GROUP_ATTRIBUTE
+            // I did not see any effect
+            @QueryHint(name = QueryHints.BATCH, value = "p.documents"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.documents.states"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.projectManager"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.watchingUsers"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.users"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.scheme"),
+            @QueryHint(name = QueryHints.READ_ONLY, value = "true")
         }
     ),
     @NamedQuery(
-        name = Project.QUERY_FIND_PROJECTS_BY_USER,
+        name = Project.QUERY_FIND_PROJECTS_FOR_PROJECT_MANAGER,
         query = "SELECT DISTINCT p " +
                 "FROM Project p " +
-                "LEFT JOIN FETCH p.documents docs " +
-                "LEFT JOIN FETCH p.projectManager " +
-                "LEFT JOIN FETCH p.watchingUsers " +
-                "LEFT JOIN FETCH p.users " +
-                "LEFT JOIN FETCH p.scheme " +
-                "WHERE :" + Project.PARAM_USER + " MEMBER OF p.users",
+                "WHERE :" + Project.PARAM_USER + " MEMBER OF p.projectManager " +
+                "ORDER BY p.id DESC",
         hints = {
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.states")
+            @QueryHint(name = QueryHints.BATCH, value = "p.documents"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.documents.states"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.projectManager"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.watchingUsers"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.users"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.scheme"),
+            @QueryHint(name = QueryHints.READ_ONLY, value = "true")
         }
     ),
-    @NamedQuery(
-        name = Project.QUERY_FIND_PROJECTS_BY_PROJECT_MANAGER,
+    @NamedQuery(    // No need to fetch watchingUsers, users and scheme
+        name = Project.QUERY_FIND_PROJECTS_FOR_USER,
         query = "SELECT DISTINCT p " +
                 "FROM Project p " +
-                "LEFT JOIN FETCH p.documents docs " +
-                "LEFT JOIN FETCH p.projectManager " +
-                "LEFT JOIN FETCH p.watchingUsers " +
-                "LEFT JOIN FETCH p.users " +
-                "LEFT JOIN FETCH p.scheme " +
-                "WHERE :" + Project.PARAM_USER + " MEMBER OF p.projectManager",
+                "WHERE :" + Project.PARAM_USER + " MEMBER OF p.users " +
+                "ORDER BY p.id DESC",
         hints = {
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "p.documents.states")
+            @QueryHint(name = QueryHints.BATCH, value = "p.documents"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.documents.states"),
+            @QueryHint(name = QueryHints.BATCH, value = "p.projectManager"),
+            @QueryHint(name = QueryHints.READ_ONLY, value = "true")
         }
     ),
     @NamedQuery(
@@ -95,20 +117,37 @@ import javax.validation.constraints.NotNull;
 })
 public class Project extends BaseEntity {
 
+    public static final String ITEMS_PER_PAGE = "" + 5;
+
     /**
-     * Named query identifier for "find all".
+     * Named query identifier for "count as admin".
      */
-    public static final String QUERY_FIND_ALL = "Project.QUERY_FIND_ALL";
+    public static final String QUERY_COUNT_AS_ADMIN = "Project.QUERY_COUNT_AS_ADMIN";
+
+    /**
+     * Named query identifier for "count as project manager".
+     */
+    public static final String QUERY_COUNT_AS_PROJECT_MANAGER = "Project.QUERY_COUNT_AS_PROJECT_MANAGER";
+
+    /**
+     * Named query identifier for "count as user".
+     */
+    public static final String QUERY_COUNT_AS_USER = "Project.QUERY_COUNT_AS_USER";
+
+    /**
+     * Named query identifier for "find for admin".
+     */
+    public static final String QUERY_FIND_FOR_ADMIN = "Project.QUERY_FIND_FOR_ADMIN";
 
     /**
      * Named query identifier for "find projects by user".
      */
-    public static final String QUERY_FIND_PROJECTS_BY_USER = "Project.QUERY_FIND_PROJECTS_BY_USER";
+    public static final String QUERY_FIND_PROJECTS_FOR_USER = "Project.QUERY_FIND_PROJECTS_FOR_USER";
 
     /**
      * Named query identifier for "find projects by project manager".
      */
-    public static final String QUERY_FIND_PROJECTS_BY_PROJECT_MANAGER = "Project.QUERY_FIND_PROJECTS_BY_PROJECT_MANAGER";
+    public static final String QUERY_FIND_PROJECTS_FOR_PROJECT_MANAGER = "Project.QUERY_FIND_PROJECTS_FOR_PROJECT_MANAGER";
 
     /**
      * Named query identifier for "find project to delete"
@@ -134,21 +173,24 @@ public class Project extends BaseEntity {
         Whitespace, Characterwise, Spanish, English, German, French;
     }
 
-    @JsonView({ View.Projects.class, View.Documents.class })
+    @JsonView({ View.Projects.class,
+                View.ProjectsForUser.class,
+                View.Documents.class,
+                View.Schemes.class })
     @Column(name = "Name", unique = true)
     private String name;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     private TokenizationLang tokenizationLang;
-    
-    @JsonView({ View.Projects.class })
+
+    @JsonView({ View.Projects.class, View.ProjectsForUser.class })
     @OneToMany(mappedBy = "project",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
                 fetch = FetchType.LAZY)
     private Set<Document> documents = new HashSet<>();
-    
-    @JsonView({ View.Projects.class })
+
+    @JsonView({ View.Projects.class, View.ProjectsForUser.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     @JoinTable(
@@ -156,7 +198,7 @@ public class Project extends BaseEntity {
         joinColumns={@JoinColumn(name="PROJECT_ID", referencedColumnName="id")},
         inverseJoinColumns={@JoinColumn(name="MANAGER_ID", referencedColumnName="id")})
     private Set<Users> projectManager = new HashSet<>();
-    
+
     @JsonView({ View.Projects.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
             fetch = FetchType.LAZY)
@@ -165,13 +207,13 @@ public class Project extends BaseEntity {
         joinColumns={@JoinColumn(name="PROJECT_ID", referencedColumnName="id")},
         inverseJoinColumns={@JoinColumn(name="WATCHINGUSER_ID", referencedColumnName="id")})
     private Set<Users> watchingUsers = new HashSet<>();
-    
+
     @JsonView({ View.Projects.class })
     @ManyToMany(mappedBy = "projects",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     private Set<Users> users = new HashSet<>();
-    
+
     @JsonView({ View.Projects.class })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)

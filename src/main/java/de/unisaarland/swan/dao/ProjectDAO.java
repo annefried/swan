@@ -13,6 +13,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -28,22 +29,17 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
         super(Project.class);
     }
 
-    public List<Project> getAllProjectsAsAdmin() {
-        return executeQuery(Project.QUERY_FIND_ALL);
+    private int calculateFirstRow(final Integer page) {
+        return (page - 1) * Integer.parseInt(Project.ITEMS_PER_PAGE);
     }
 
-    /**
-     * Returns a list of all projects whose user id is included
-     * in the the projects users list. Currently used to
-     * retrieve all projects by users with user role 'annotator'.
-     *
-     * @param user
-     * @return
-     */
-    public List<Project> getAllProjectsByUser(final Users user) {
-        return executeQuery(
-                Project.QUERY_FIND_PROJECTS_BY_USER,
-                Collections.singletonMap(Project.PARAM_USER, user));
+    public List<Project> getProjectsForAdmin(final Integer page) {
+        return executeQuery(Project.QUERY_FIND_FOR_ADMIN, calculateFirstRow(page), Integer.parseInt(Project.ITEMS_PER_PAGE));
+    }
+
+    public Long getNumberOfProjectsAsAdmin() {
+        Query query = em.createNamedQuery(Project.QUERY_COUNT_AS_ADMIN);
+        return (Long)query.getSingleResult();
     }
 
     /**
@@ -54,10 +50,40 @@ public class ProjectDAO extends BaseEntityDAO<Project> {
      * @param user
      * @return
      */
-    public List<Project> getAllProjectsAsProjectManagerByUser(final Users user) {
-        return executeQuery(
-                Project.QUERY_FIND_PROJECTS_BY_PROJECT_MANAGER,
-                Collections.singletonMap(Project.PARAM_USER, user));
+    public List<Project> getProjectsForProjectManagerByUser(final Users user, final Integer page) {
+        return executeQueryWithPaging(
+                Project.QUERY_FIND_PROJECTS_FOR_PROJECT_MANAGER,
+                Collections.singletonMap(Project.PARAM_USER, user),
+                calculateFirstRow(page),
+                Integer.parseInt(Project.ITEMS_PER_PAGE));
+    }
+
+    public Long getNumberOfProjectsAsProjectManager(Users user) {
+        Query query = em.createNamedQuery(Project.QUERY_COUNT_AS_PROJECT_MANAGER);
+        query.setParameter(Project.PARAM_USER, user);
+        return (Long)query.getSingleResult();
+    }
+
+    /**
+     * Returns a list of all projects whose user id is included
+     * in the the projects users list. Currently used to
+     * retrieve all projects by users with user role 'annotator'.
+     *
+     * @param user
+     * @return
+     */
+    public List<Project> getProjectsForUser(final Users user, final Integer page) {
+        return executeQueryWithPaging(
+                Project.QUERY_FIND_PROJECTS_FOR_USER,
+                Collections.singletonMap(Project.PARAM_USER, user),
+                calculateFirstRow(page),
+                Integer.parseInt(Project.ITEMS_PER_PAGE));
+    }
+
+    public Long getNumberOfProjectsAsUser(Users user) {
+        Query query = em.createNamedQuery(Project.QUERY_COUNT_AS_USER);
+        query.setParameter(Project.PARAM_USER, user);
+        return (Long)query.getSingleResult();
     }
 
     public Project getProjectToDelete(final Long projId) {

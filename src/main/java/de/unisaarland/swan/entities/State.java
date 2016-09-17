@@ -66,19 +66,19 @@ public class State extends BaseEntity {
      * Query parameter constant for the attribute "user".
      */
     public static final String PARAM_USER = "user";
-    
+
     /**
      * Query parameter constant for the attribute "document".
      */
     public static final String PARAM_DOC = "doc";
     
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinColumn(name="document_fk")
     private Document document;
     
     @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.EAGER)
+                fetch = FetchType.LAZY)
     @JoinColumn(name="user_fk")
     private Users user;
     

@@ -35,7 +35,8 @@ public class BaseEntity implements Serializable {
         View.Users.class,
         View.Login.class,
         View.Links.class,
-        View.Projects.class})
+        View.Projects.class,
+        View.ProjectsForUser.class})
     @Id
     // this forces the DB to take care of primary key generation per table.
     @GeneratedValue(strategy = GenerationType.IDENTITY)

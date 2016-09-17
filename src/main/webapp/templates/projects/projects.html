@@ -20,7 +20,7 @@ and open the template in the editor.
         <div class="col-sm-12 col-md-12 main">
             <h2 class="sub-header" id="1-projects-header" style="display: inline-block">Projects</h2>
             <uib-alert ng-repeat="alert in alerts"
-                       type="{{alert.type}}" 
+                       type="{{alert.type}}"
                        close="closeAlert($index)"
                        dismiss-on-timeout="5000">
                 {{alert.msg}}
@@ -59,7 +59,7 @@ and open the template in the editor.
                     <tbody ng-hide="loaded">
                         <tr>
                             <td>
-                                <span class="glyphicon glyphicon-refresh spinning "></span> 
+                                <span class="glyphicon glyphicon-refresh spinning "></span>
                             </td>
                             <td></td>
                             <td></td>
@@ -78,8 +78,6 @@ and open the template in the editor.
                                 <a>
                                     <span  class="glyphicon "  ng-class="{ 'glyphicon-plus': !toggeled[x.id] ,'glyphicon-minus': toggeled[x.id]}"
                                            ng-click="projectToggeled(x.id)">
-                                        <!--                                          data-toggle="collapse" data-target=".relateTo{{x.id}}"-->
-
                                     </span>
                                 </a>
                             </td>
@@ -92,7 +90,7 @@ and open the template in the editor.
                                     <span class="glyphicon glyphicon-send" style="color:gray" title="Receive weekly E-Mail notification"></span>
                                 </a>
                             </td>
-                            <td class="col-md-2 vert-align"> 
+                            <td class="col-md-2 vert-align">
                                 <!-- progress bar visible for ADMIN & PM -->
                                 <div ng-hide="isUnprivileged === 'true'"
                                      ng-repeat="cur in x.users" class="userprogress progress">
@@ -192,8 +190,8 @@ and open the template in the editor.
                             <td class="col-md-1 vert-align"><b ng-hide="isUnprivileged === 'true'">Delete</b></td>
                             <td class="col-md-2 vert-align"><b></b></td>
                         </tr>
-                        <tr class="collapse  relateTo{{x.id}}" 
-                            ng-class="{'in': toggeled[x.id]}" 
+                        <tr class="collapse  relateTo{{x.id}}"
+                            ng-class="{'in': toggeled[x.id]}"
                             ng-repeat="doc in x.documents">
                             <td class="col-md-1 vert-align"></td>
                             <td class="col-md-2 vert-align">{{doc.name}}</td>
@@ -287,11 +285,21 @@ and open the template in the editor.
                                 </button>
                             </td>
                         </tr>
-                    </tbody> 
+                    </tbody>
 
                 </table>
+
+                <uib-pagination
+                        class="pagination-sm"
+                        ng-model="currentPageNumber"
+                        ng-change="pageChanged()"
+                        items-per-page="{{itemsPerPage}}"
+                        total-items="numberOfTotalProjects"
+                        max-size="15"
+                        boundary-links="true">
+                </uib-pagination>
+
             </div>
-
+        </div>
+    </div>
 </div>
-
-

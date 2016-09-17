@@ -50,7 +50,7 @@ angular
                 this.linkData = linkService.getLinks($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                 this.tokenData = tokenService.getTokens($window.sessionStorage.docId);
                 // Retrieve projects and process projects
-                var httpProjects = $rootScope.loadProjects();
+                var httpProjects = $rootScope.loadProjects();   // TODO different query this is really inefficient
                 // Wait for projects to be processed
                 $q.all([httpProjects]).then(function () {
                     $rootScope.buildTableProjects();

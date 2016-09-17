@@ -432,25 +432,39 @@ public class Service {
     //  GET
     ///////////////////////////////////////////////
 
-    public List<Project> getAllProjectsByUserId(Long userId) {
-
-        Users user = (Users) usersDAO.find(userId, false);
+    public List<Project> getProjectsByUser(Users user, Integer page) {
 
         List<Project> list = null;
 
         switch (user.getRole()) {
             case admin:
-                list = projectDAO.getAllProjectsAsAdmin();
+                list = projectDAO.getProjectsForAdmin(page);
                 break;
             case projectmanager:
-                list = projectDAO.getAllProjectsAsProjectManagerByUser(user);
+                list = projectDAO.getProjectsForProjectManagerByUser(user, page);
                 break;
             case annotator:
-                list = projectDAO.getAllProjectsByUser(user);
+                list = projectDAO.getProjectsForUser(user, page);
                 break;
         }
 
         return list;
+    }
+
+    public Long getProjectCountsByUser(final Long userId) {
+
+        Users user = (Users) usersDAO.find(userId, false);
+
+        switch (user.getRole()) {
+            case admin:
+                return projectDAO.getNumberOfProjectsAsAdmin();
+            case projectmanager:
+                return projectDAO.getNumberOfProjectsAsProjectManager(user);
+            case annotator:
+                return projectDAO.getNumberOfProjectsAsUser(user);
+            default:
+                throw new IllegalStateException();
+        }
     }
     
     
