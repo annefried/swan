@@ -8,7 +8,7 @@
 /**
  * Controller for the annotation window that provides the visualization directives
  * with the necessary data.
- * 
+ *
  * Noteworthy: Some requests are designed as POST requests and not DELETE because
  * of a bug with Jersey or AngularJS. It could not put arguments in the body.
  */
@@ -100,7 +100,7 @@ angular
                         $window.sessionStorage.project,
                         $window.sessionStorage.completed);
             };
-            
+
             $scope.changeCallbackCont = function () {
                 $rootScope.changeCallback();
             };
@@ -131,7 +131,7 @@ angular
                 }
 
             };
-            
+
             this.buildAnnotations = function () {
 
                 this.initializeDataStructure();
@@ -160,7 +160,7 @@ angular
                     this.addAnnotationToDataStructure(anno);
                 }
             };
-            
+
             this.buildLinks = function () {
                 this.annotationLinks = {};
                 for (var i = 0; i < this.linkData.length; i++) {
@@ -191,7 +191,7 @@ angular
                     }
                 }
             };
-            
+
             // Set the currently selected/active annotation
             this.setSelected = function (item) {
                 if (item === null && this.tempAnno !== undefined && this.tempAnno !== null)
@@ -202,7 +202,7 @@ angular
                     this.selectedNode = item;
                 }
             };
-            
+
             // Change the label of the currently selected annotation
             this.setSelectedLabel = function (label, labelSet) {
                 if (this.selectedNode !== null
@@ -226,22 +226,22 @@ angular
 
                     // Annotation
                     if (this.selectedNode.type === AnnoType.Annotation) {
-                        
+
                         labelTemplate = {
                             id: label.id,
                             name: label.tag,
                             labelSet: { id: labelSet.id }
                         };
-                        
+
                         url = labeled ? 'swan/annotations/addlabel/' : 'swan/annotations/removelabel/';
                     } else { // Link
-                        
+
                         labelTemplate = {
                             id: label.id,
                             name: label.tag,
                             linkType: { id: labelSet.id }
                         };
-                        
+
                         url = labeled ? 'swan/links/addlabel/' : 'swan/links/removelabel/';
                     }
                     $http.post(url + this.selectedNode.id, labelTemplate);
@@ -251,7 +251,7 @@ angular
                     this.changeLinkLabel = { "link": this.selectedNode, "label": label};
                 }
             };
-            
+
             // Update an existing annotation and send request
             this.updateAnno = function (newAnno, oldStart, newStart, oldEnd, newEnd) {
 
@@ -291,14 +291,14 @@ angular
                     $rootScope.addAlert({type: 'danger', msg: 'No server Connection!'});
                 });
             };
-            
+
             // Reset sizeIncreased variable to prevent changes from happening twice
             this.resetSizeIncreased = function () {
                 this.sizeIncreased = undefined;
                 this.selectedNode.updatedWords = [];
                 this.selectedNode.removedWord = undefined;
             };
-            
+
             // Increase size of currently selected Node by one word
             this.increaseSelectedAnnoSizeRight = function (oldStart, oldEnd) {
                 if (this.selectedNode !== null
@@ -379,7 +379,7 @@ angular
                     }
                 }
             };
-            
+
             this.decreaseSelectedAnnoSizeLeft = function () {
                 if (this.selectedNode !== null
                         && this.selectedNode !== undefined
@@ -426,7 +426,7 @@ angular
                             $rootScope.checkResponseStatusCode(response.status);
                         });
                     }
-                    
+
                     this.selectedNode.setSpanType(spanType);
                     this.selectedNode.color = this.getColor(spanType, undefined);
                     this.lastSet = this.selectedNode;
@@ -440,7 +440,7 @@ angular
                     this.removeConnectedLinks(this.selectedNode);
                 }
             };
-            
+
             // Set span type of the temporal annotations
             this.setTemporarySpanType = function (spanType) {
                 this.tempAnno.setSpanType(spanType);
@@ -448,12 +448,12 @@ angular
                 this.addAnnotation(this.tempAnno);
                 this.tempAnno = null;
             };
-            
+
             /**
              * Sets the temporary annotation. It can be used to create a new annotation.
              * It will be transformed into a persistent annotation when a a span type
              * is applied.
-             * 
+             *
              * @param words
              */
             this.setTemporaryAnnotation = function (words) {
@@ -476,7 +476,7 @@ angular
                         this.setTemporarySpanType(sType);
                 }
             };
-            
+
             //Adds a new annotation and makes a callback to the backend
             this.addAnnotation = function (annotation) {
 
@@ -509,7 +509,7 @@ angular
                     $rootScope.checkResponseStatusCode(err.status);
                 });
             };
-            
+
             //Deletes an annotation and makes a callback to the backend
             this.removeAnnotation = function (annotation) {
                 this.sizeIncreased = undefined;
@@ -531,7 +531,7 @@ angular
                     });
                 }
             };
-            
+
             //Add a new link and make a corresponding callback to the backend
             this.addLink = function (source, target) {
                 var deferred = $q.defer();
@@ -612,7 +612,7 @@ angular
 
                 return deferred.promise;
             };
-            
+
             // Checks if two annotations are linkable depending on their span type
             this.linkable = function (source, target) {
                 if (this.annotationLinks !== undefined && this.annotationLinks[source.id] !== undefined) {
@@ -624,7 +624,7 @@ angular
                         && this.linkLabels[source.sType.tag][target.sType.tag] !== undefined
                         && !alreadyExists;
             };
-            
+
             // Remove a link and make a corresponding callback to the backend
             this.removeLink = function (link) {
 
@@ -647,7 +647,7 @@ angular
                     });
                 }
             };
-            
+
             // Remove each link that is connected to the object
             this.removeConnectedLinks = function (object) {
 
@@ -665,7 +665,7 @@ angular
                     }
                 }
             };
-            
+
             // Read all data from the committed scheme
             this.readSchemes = function () {
                 $scope.graph = {
@@ -685,14 +685,14 @@ angular
                         $scope.timeline.show = visElement.visState === "hidden" ? false : true;
                         $scope.timeline.isOpen = visElement.visState === "opened" ? true : false;
                     }
-                }		
+                }
 
                 this.buildSpanTypes();
                 this.buildLabels();
                 this.buildLinkLabels();
                 this.setAnnotationMode();
             };
-            
+
             this.buildSpanTypes = function () {
                 this.spanTypes = {};
                 for (var i = 0; i < this.scheme.spanTypes.length; i++) {
@@ -701,7 +701,7 @@ angular
                     this.spanTypes[spanType.tag] = spanType;
                 }
             };
-            
+
             //Return as specific span type when there only this one is
             //assignable in the whole document
             this.getOnlySpanType = function () {
@@ -715,7 +715,7 @@ angular
                 if (counter === 1)
                     return spanType;
             };
-            
+
             this.buildLabels = function () {
                 this.labelTable = {};
                 for (var i = 0; i < this.scheme.labelSets.length; i++) {
@@ -767,7 +767,7 @@ angular
                     }
                 }
             };
-            
+
             this.getAnnotationById = function (id) {
                 return this.annotationIdMap[id];
             };
@@ -813,24 +813,24 @@ angular
                 // which have that start attribute
                 this.annotationStartMap = {};
             };
-            
+
             // Sets whether every word is annotatable or only preselected span types
             this.setAnnotationMode = function () {
                 //TODO: read this from scheme
                 this.annotationMode = AnnotationMode.Everything;
             };
-            
+
             // Get span type by its tag
             this.getSpanType = function (tag) {
                 return this.spanTypes[tag];
             };
-            
+
             // Checks if a character can be characterized as punctuation
             this.isPunctuation = function (string) {
                 return string !== undefined &&
                         (string.length === 1 && (string === "," || string === "." || string === "!" || string === "?"));
             };
-            
+
             this.getCharacterSum = function (str) {
                 var sum = 0;
                 for (var i = 0; i < str.length; i++) {
@@ -838,7 +838,7 @@ angular
                 }
                 return sum;
             };
-            
+
             // Returns a color for a specific label type
             this.getColor = function (type, anno) {
                 if (type === undefined || type.id === undefined)
@@ -855,7 +855,7 @@ angular
 
                 return col;
             };
-            
+
             // Helper function to find next word
             this.nextWord = function (end) {
                 var found = false;
@@ -903,7 +903,7 @@ angular
                     }
                 }
             };
-            
+
             //Helper function for finding corresponding words in the text
             //that are indexed by start and end
             this.findWords = function (start, end, object) {
@@ -915,16 +915,16 @@ angular
                     lineStart++;
                     endL = this.annotationText[lineStart].end;
                 }
-                
+
                 //Search for last corresponding line
                 var lineEnd = lineStart;
                 while (this.annotationText[lineEnd].end < end) {
                     lineEnd++;
                 }
-                
+
                 var firstLine = this.annotationText[lineStart];
                 var lastLine = this.annotationText[lineEnd];
-                
+
                 while (lastLine.words.length === 0) {
                     // use previous line as last line
                     lineEnd--;
@@ -936,18 +936,18 @@ angular
                         && firstLine.words[rowStart].start < start) {
                     rowStart++;
                 }
-                
+
                 var rowEnd = 0;
                 while (lastLine.words[rowEnd].end < end) {
                     rowEnd++;
                 }
-                    
+
                 var currentLine = lineStart;
                 var currentRow = rowStart;
                 while (currentLine < lineEnd) {
                     for (var w = currentRow; w < this.annotationText[currentLine].words.length; w++) {
 
-                        var textWord = this.annotationText[currentLine].words[w];
+                        const textWord = this.annotationText[currentLine].words[w];
                         if (textWord !== undefined) {
                             textWord.setIndices(currentLine, w);
                             object.addWord(textWord);
@@ -966,7 +966,7 @@ angular
                     }
                 }
             };
-            
+
             this.nextDoc = function (next) {
                 var found = false;
                 const proj = $rootScope.currProj;
@@ -997,7 +997,7 @@ angular
                     throw "AnnotationController: Could not find the given project and document";
                 }
             };
-            
+
             this.setDocCompleted = function () {
                 var payload = {
                     value: $scope.completed
@@ -1017,7 +1017,7 @@ angular
                     $rootScope.checkResponseStatusCode(response.status);
                 });
             };
-            
+
             // TODO change here, should be called with a second parameter "true"/ "false"
             // and change the hardcoded payload
             this.setAnnotationNotSure = function (anno) {
@@ -1045,7 +1045,7 @@ angular
                         if (anno.endIndex() == node.endIndex()
                                 && anno.sType == targetSpanType
                                 && anno !== node) {
-                            
+
                             return true;
                         }
                     }
@@ -1090,7 +1090,7 @@ angular
                 delete $window.sessionStorage.shownUser;
                 $rootScope.initialized = 'false';
             });
-            
+
             if ($rootScope.initialized !== 'true')
                 this.init();
         }
