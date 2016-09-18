@@ -1,7 +1,6 @@
 /target/
 /bin/
 /.idea/
-/src/main/webapp/node_modules/
 /node_modules/
 /.classpath
 /.settings/

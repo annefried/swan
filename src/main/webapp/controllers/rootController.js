@@ -30,14 +30,14 @@ angular
             } else if (statusCode >= 400 && statusCode < 500) {
                 $rootScope.addAlert({type: 'danger', msg: 'This action is not allowed.'});
             } else if (statusCode >= 500 && statusCode < 600) {
-                $rootScope.addAlert({type: 'danger', msg: 'No server connection or an internal server error occured.'});
+                $rootScope.addAlert({type: 'danger', msg: 'No server connection or an internal server error occurred.'});
             }
         };
 
         $rootScope.redirectToLogin = function () {
             window.location = "/swan/signin.html";
         };
-        
+
         $rootScope.validateSignedInUser = function () {
         	if ($window.sessionStorage.role != 'admin'
         			&& $window.sessionStorage.role != 'annotator'
@@ -72,7 +72,7 @@ angular
          * Load projects depending on the user role from the backend.
          */
         $rootScope.loadProjects = function (page = 1) {
-        	
+
         	const url = "swan/project/byuser/";
 
             var httpProjects = $http.get(url, {params:{userId: $window.sessionStorage.uId, page: page}})
@@ -81,7 +81,7 @@ angular
             }).error(function (response) {
                 $rootScope.checkResponseStatusCode(response.status);
             });
-            
+
             return httpProjects;
         };
 
@@ -305,7 +305,7 @@ angular
             }
             throw "rootController: Project not found";
         };
-        
+
         $rootScope.getProjectByProjectId = function (projId, projects) {
             for (var i = 0; i < projects.length; i++) {
                 var proj = projects[i];
@@ -325,7 +325,7 @@ angular
             }
             throw "rootController: Document not found";
         };
-        
+
         $rootScope.getSchemeBySchemeId = function (schemeId, schemes) {
             for (var i = 0; i < schemes.length; i++) {
                 var scheme = schemes[i];
@@ -337,7 +337,7 @@ angular
         };
 
         /**
-         * 
+         *
          * @param {type} timeLogArr
          * @returns {String} String representation of the total logged time
          */
@@ -354,7 +354,7 @@ angular
         /**
          * Compares two documents by their lastEdit value. Can be used to
          * sort the documents in a project. (Not currently used.)
-         * 
+         *
          * @param {Document} doc1
          * @param {Document} doc2
          * @returns {Integer} return negative val, 0 or positive val
@@ -389,7 +389,7 @@ angular
 
         /**
          * Initialize the annotation tool
-         * 
+         *
          * @param {String} docId The document id to annotate
          * @param {String} docName name
          * @param {String} projectName the Projects name
