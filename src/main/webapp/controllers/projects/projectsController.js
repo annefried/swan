@@ -11,10 +11,10 @@ angular
        function ($scope, $rootScope, $window, $http, $uibModal, $location, hotkeys, schemeByIdService, $q) {
 
             $rootScope.validateSignedInUser();
-    	
+
             $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
             $rootScope.currUser = {'id': parseInt($window.sessionStorage.uId)};
-            
+
             /**
              * Called at the end of Controller construction.
              * Initializes fields with data from backend.
@@ -201,7 +201,7 @@ angular
 
             /**
              * Opens the SchemeViewModal. Called upon clicking the 'Page'-Button.
-             * 
+             *
              * @param {type} projectId
              */
             $scope.openProjectSchemeModal = function (projectId) {
@@ -252,11 +252,12 @@ angular
             /**
              * Called upon clicking the 'x'-Button
              * Opens the ProjectDeleteModal
-             * @param {type} projectId the projects id
+             * @param {type} project
              */
-            $scope.openProjectDeleteModal = function (projectId) {
-                $rootScope.currentProjectIndex = $scope.getProjectIndexById(projectId);
-                $rootScope.currentProjectId = projectId;
+            $scope.openProjectDeleteModal = function (project) {
+                $rootScope.currentProjectIndex = $scope.getProjectIndexById(project.id);
+                $rootScope.currentProjectId = project.id;	// TODO why is this set?
+                $rootScope.projectToBeDeleted = $rootScope.tableProjects[$rootScope.currentProjectIndex];
                 var modalInstance = $uibModal.open({
                     animation: $scope.animationsEnabled,
                     templateUrl: 'templates/projects/projectDeleteModal.html',
@@ -264,7 +265,7 @@ angular
                 });
 
                 modalInstance.result.then(function (response) {
-
+                    $rootScope.projectToBeDeleted = undefined;
                 });
                 $scope.toggleAnimation = function () {
                     $scope.animationsEnabled = !$scope.animationsEnabled;
@@ -277,20 +278,22 @@ angular
             * @param documentId
             * @param projId
             */
-            $scope.openDocumentDeleteModal = function (documentId, projId) {
-                $rootScope.documentId = documentId;
-                $rootScope.projId = projId;
-                var modalInstance = $uibModal.open({
+            $scope.openDocumentDeleteModal = function (document, project) {
+                $rootScope.documentId = document.id;
+                $rootScope.projId = project.id;
+                $rootScope.documentToBeDeleted = document;
+
+		var modalInstance = $uibModal.open({
                     animation: $scope.animationsEnabled,
                     templateUrl: 'templates/projects/documentDeleteModal.html',
                     controller: 'documentDeleteModalController'
                 });
 
                 modalInstance.result.then(function (response) {
-
-                });
-                $scope.toggleAnimation = function () {
-                    $scope.animationsEnabled = !$scope.animationsEnabled;
+		    $rootScope.documentToBeDeleted = undefined;
+		});
+		$scope.toggleAnimation = function () {
+		    $scope.animationsEnabled = !$scope.animationsEnabled;
                 };
             };
 
@@ -344,18 +347,18 @@ angular
                                         break;
                                     }
                                 }
-                                
+
                                 // Add project manager to the corresponding project manager list
                                 $http.post("swan/project/addManager/" + template.id + "/" + $window.sessionStorage.uId).success(function (response) {
                                     $rootScope.tableProjects.push(template);
                                 }).error(function (response) {
                                     $rootScope.checkResponseStatusCode(response.status);
                                 });
-                                
+
                             }).error(function (response) {
                                 $rootScope.checkResponseStatusCode(response.status);
                             });
-                            
+
                         }
                         $scope.projectToggeled(response.data);
 
@@ -405,8 +408,5 @@ angular
 
             $scope.init();
         }
-    
+
     ]);
-
-
-

@@ -157,7 +157,7 @@ and open the template in the editor.
                                 <span class="glyphicon glyphicon-remove"
                                         ng-hide="isUnprivileged === 'true'"
                                         style="color:red"
-                                        ng-click="openProjectDeleteModal(x.id)">
+                                        ng-click="openProjectDeleteModal(x)">
                                 </span>
                             </td>
                             <td class="col-md-2 vert-align" id="project-export">
@@ -235,7 +235,7 @@ and open the template in the editor.
                                     <span class="glyphicon glyphicon-remove"
                                           style="color:red"
                                           ng-hide="isUnprivileged === 'true'"
-                                          ng-click="openDocumentDeleteModal(doc.id, x.id)">
+                                          ng-click="openDocumentDeleteModal(doc, x)">
                                     </span>
                                 </a>
                             </td>
