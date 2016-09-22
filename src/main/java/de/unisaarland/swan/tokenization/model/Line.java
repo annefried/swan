@@ -25,7 +25,7 @@ public class Line {
     public int getLineLength() {
         int length = 0;
         for (Token t : tokens) {
-            length += t.getText().length();
+            length += t.getEnd() - t.getStart();
         }
         
         return length;
