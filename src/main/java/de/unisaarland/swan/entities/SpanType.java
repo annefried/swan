@@ -51,7 +51,7 @@ public class SpanType extends ColorableBaseEntity {
     @JsonIgnore
     @ManyToMany(mappedBy = "appliesToSpanTypes",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.LAZY)
+                fetch = FetchType.EAGER)
     private List<LabelSet> labelSets = new ArrayList<>();
 
 
