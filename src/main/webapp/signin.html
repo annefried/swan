@@ -26,7 +26,7 @@ and open the template in the editor.
     <body ng-app="app">
         <div>
             <div class="container">
-                <form method="post" class="form-signin" ng-controller="LoginController as log">
+                <form method="post" class="form-signin" ng-controller="LoginController as loginCtr">
                     <script type="text/javascript">
                         wrong = true;
                     </script>
@@ -38,7 +38,7 @@ and open the template in the editor.
                     <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" ng-model="credentials.username" required autofocus>
                     <label for="inputPassword" class="sr-only">Password</label>
                     <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="credentials.password" required>
-                    <button class="btn btn-default" ng-click="login(credentials)">Sign in</button>
+                    <button class="btn btn-default" ng-click="loginCtr.login(credentials)">Sign in</button>
                 </form>
             </div>
         </div>

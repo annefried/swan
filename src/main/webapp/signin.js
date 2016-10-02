@@ -4,36 +4,47 @@
  * and open the template in the editor.
  */
 'use strict';
-
-angular
-    .module('app', [])
-    .controller('LoginController', ['$scope', '$http', '$window', '$rootScope', function ($scope, $http, $window, $rootScope) {
-
-        $scope.credentials = {
-            username: '',
-            password: ''
-        };
-
-        $scope.login = function (credentials) {
-            $http({
-                method: 'POST',
-                url: 'swan/usermanagment/login',
-                data: $.param({email: credentials.username, password: credentials.password}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (response) {
-                $window.sessionStorage.uId = response.user.id;
-                $window.sessionStorage.prename = response.user.prename;
-                $window.sessionStorage.lastname = response.user.lastname;
-                $window.sessionStorage.email = response.user.email;
-                $window.sessionStorage.role = response.user.role;
-                $window.sessionStorage.isAnnotator = (response.user.role === 'annotator');
-                $window.sessionStorage.h = 'false';
-
-                window.location = "/swan/#/dashboard";
-            }).error(function (response) {
-                $scope.wrong = 'false';
-            });
-
-        };
-    }
-]);
+var app;
+(function (app_1) {
+    var Controllers;
+    (function (Controllers) {
+        var LoginController = (function () {
+            function LoginController($rootScope, $scope, $http, $window) {
+                this.rootScope = $rootScope;
+                this.scope = $scope;
+                this.http = $http;
+                this.window = $window;
+                this.scope.credentials = {
+                    username: '',
+                    password: ''
+                };
+            }
+            LoginController.prototype.login = function (credentials) {
+                this.http({
+                    method: 'POST',
+                    url: 'swan/usermanagment/login',
+                    data: $.param({ email: credentials.username, password: credentials.password }),
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                }).success(function (response) {
+                    window.sessionStorage.uId = response.user.id;
+                    window.sessionStorage.prename = response.user.prename;
+                    window.sessionStorage.lastname = response.user.lastname;
+                    window.sessionStorage.email = response.user.email;
+                    window.sessionStorage.role = response.user.role;
+                    window.sessionStorage.isAnnotator = (response.user.role === 'annotator');
+                    window.sessionStorage.h = 'false';
+                    window.location = "/swan/#/dashboard";
+                }).error(function (response) {
+                    this.scope.wrong = 'false';
+                });
+            };
+            ;
+            return LoginController;
+        }());
+        Controllers.LoginController = LoginController;
+        // Define the Angular module for our application.
+        var app = angular.module("app", []);
+        app.controller("LoginController", ["$rootScope", "$scope", "$http", "$window", LoginController]);
+    })(Controllers = app_1.Controllers || (app_1.Controllers = {}));
+})(app || (app = {}));
+//# sourceMappingURL=signin.js.map
