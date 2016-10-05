@@ -45,7 +45,7 @@ angular
 	        "</div>" +
 	        "</div>";
         
-        var httpProjects = $rootScope.loadProjects();
+        var httpProjects = $rootScope.loadProjects(1);
         $q.all([httpProjects]).then(function () {
         	
             $rootScope.buildTableProjects();
@@ -396,7 +396,7 @@ angular
                         content: "Great, you already have an assigned project and document. Click 'Next' to check out the editor.",
                         placement: "bottom",
                         onNext: function () {
-                            $rootScope.initAnnoTool(redirect.docId, redirect.docName, redirect.projectName, redirect.completed);
+                            $rootScope.initAnnoTool(redirect.docId, redirect.docName, redirect.projectName, redirect.completed, 1);
                         }
                     });
                     if (redirect === undefined) {

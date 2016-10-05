@@ -925,7 +925,7 @@ describe('Test rootController', function () {
          */
 
         it('Test initAnnoTool', function () {
-            $rootScope.initAnnoTool(3, 'DogName', 'ProjName', true);
+            $rootScope.initAnnoTool(3, 'DogName', 'ProjName', true, 1);
             expect($window.sessionStorage.docId).toEqual('3');
             expect($window.sessionStorage.title).toEqual('DogName');
             expect($window.sessionStorage.project).toEqual('ProjName');

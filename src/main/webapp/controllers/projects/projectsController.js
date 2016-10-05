@@ -25,7 +25,7 @@ angular
                 $rootScope.collapsed = {};
                 $scope.currentPageNumber = 1;
                 var httpNumberProjects = $rootScope.loadProjectsCount();
-                var httpProjects = $rootScope.loadProjects();
+                var httpProjects = $rootScope.loadProjects($scope.currentPageNumber);
                 var httpSchemes = $scope.loadSchemes();
                 // Wait for http requests to be answered
                 $q.all([httpNumberProjects, httpProjects, httpSchemes]).then(function () {
@@ -150,7 +150,7 @@ angular
              */
             $scope.openAnnoTool = function (docId, docName, projectName, completed, users) {
                 $scope.alertVisible = true;
-                $rootScope.initAnnoTool(docId, docName, projectName, completed);
+                $rootScope.initAnnoTool(docId, docName, projectName, completed, $scope.currentPageNumber);
                 //Variables in the sessionStorage have to be Strings
                 $window.sessionStorage.users = JSON.stringify(users);
                 $location.path('/annotation');
