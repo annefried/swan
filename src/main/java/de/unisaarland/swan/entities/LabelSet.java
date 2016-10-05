@@ -17,8 +17,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * The LabelSet Entity represents a set of labels as defined in a
- * given scheme. 
- * 
+ * given scheme.
+ *
  * The JsonIdentityInfo annotations prevents infinite recursions.
  *
  * @author Timo Guehring
@@ -52,13 +52,13 @@ public class LabelSet extends ColorableBaseEntity {
      */
     @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-                fetch = FetchType.LAZY)
+                fetch = FetchType.EAGER)
     @JoinTable(
         name="SPANTYPE_LABELSET",
         joinColumns={@JoinColumn(name="LABEL_SET_ID", referencedColumnName="id")},
         inverseJoinColumns={@JoinColumn(name="SPANTYPE_ID", referencedColumnName="id")})
     private List<SpanType> appliesToSpanTypes = new ArrayList<>();
-    
+
     @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
     @OneToMany(mappedBy = "labelSet",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE },
@@ -72,7 +72,7 @@ public class LabelSet extends ColorableBaseEntity {
     public List<SpanType> getAppliesToSpanTypes() { return appliesToSpanTypes; }
 
     public void setAppliesToSpanTypes(List<SpanType> appliesToSpanTypes) { this.appliesToSpanTypes = appliesToSpanTypes; }
-    
+
     public void addAppliesToSpanTypes(SpanType spanType) { this.appliesToSpanTypes.add(spanType); }
 
     public List<Label> getLabels() { return labels; }
@@ -82,5 +82,5 @@ public class LabelSet extends ColorableBaseEntity {
     public LabelMenuStyle getLabelMenuStyle() { return labelMenuStyle; }
 
     public void setLabelMenuStyle(LabelMenuStyle labelMenuStyle) { this.labelMenuStyle = labelMenuStyle; }
-    
+
 }
