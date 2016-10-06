@@ -71,7 +71,7 @@ angular
         /**
          * Load projects depending on the user role from the backend.
          */
-        $rootScope.loadProjects = function (page = 1) {
+        $rootScope.loadProjects = function (page) {
 
         	const url = "swan/project/byuser/";
 
@@ -395,11 +395,12 @@ angular
          * @param {String} projectName the Projects name
          * @param {Boolean} completed state of the document
          */
-        $rootScope.initAnnoTool = function (docId, docName, projectName, completed) {
+        $rootScope.initAnnoTool = function (docId, docName, projectName, completed, pageNumber) {
             $window.sessionStorage.docId = docId;
             $window.sessionStorage.title = docName;
             $window.sessionStorage.project = projectName;
             $window.sessionStorage.completed = completed;
+			$window.sessionStorage.pageNumber = pageNumber;
         };
 
     }
