@@ -71,7 +71,7 @@ angular
         /**
          * Load projects depending on the user role from the backend.
          */
-        $rootScope.loadProjects = function (page = 1) {
+        $rootScope.loadProjects = function (page) {
 
         	const url = "swan/project/byuser/";
 
@@ -84,6 +84,22 @@ angular
 
             return httpProjects;
         };
+
+		/**
+		 * Load project from database by project id.
+		 */
+		$rootScope.loadProjectById = function (id) {
+
+			const url = "swan/project/byId/" + id;
+
+			var httpProject = $http.get(url).success(function (response) {
+				$rootScope.currProj = JSOG.parse(JSON.stringify(response)).project;
+			}).error(function (response) {
+				$rootScope.checkResponseStatusCode(response.status);
+			});
+
+			return httpProject;
+		};
 
         $rootScope.loadProjectsCount = function () {
 
@@ -296,16 +312,6 @@ angular
             return false;
         };
 
-        $rootScope.getProjectByProjectName = function (projName, projects) {
-            for (var i = 0; i < projects.length; i++) {
-                const proj = projects[i];
-                if (proj.name === projName) {
-                    return proj;
-                }
-            }
-            throw "rootController: Project not found";
-        };
-
         $rootScope.getProjectByProjectId = function (projId, projects) {
             for (var i = 0; i < projects.length; i++) {
                 var proj = projects[i];
@@ -390,15 +396,17 @@ angular
         /**
          * Initialize the annotation tool
          *
-         * @param {String} docId The document id to annotate
+         * @param {String} docId the document id to annotate
          * @param {String} docName name
-         * @param {String} projectName the Projects name
+		 * @param {String} projectId the project's id
+         * @param {String} projectName the project's name
          * @param {Boolean} completed state of the document
          */
-        $rootScope.initAnnoTool = function (docId, docName, projectName, completed) {
+        $rootScope.initAnnoTool = function (docId, docName, projectId, projectName, completed) {
             $window.sessionStorage.docId = docId;
             $window.sessionStorage.title = docName;
-            $window.sessionStorage.project = projectName;
+            $window.sessionStorage.projectId = projectId;
+			$window.sessionStorage.projectName = projectName;
             $window.sessionStorage.completed = completed;
         };
 

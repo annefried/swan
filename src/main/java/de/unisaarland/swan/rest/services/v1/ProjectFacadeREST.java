@@ -44,19 +44,19 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
 
     @EJB
     Service service;
-    
+
     @EJB
     UsersDAO usersDAO;
 
     @EJB
     ProjectDAO projectDAO;
-    
+
     @EJB
     AnnotationDAO annotationDAO;
-    
+
     @EJB
     LinkDAO linkDAO;
-    
+
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
@@ -91,12 +91,12 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         }
 
     }
-    
+
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/add/{projId}/{userId}")
     public Response addUserToProject(@PathParam("projId") Long projId, @PathParam("userId") Long userId) throws CloneNotSupportedException {
-        
+
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.addUserToProject(projId, userId);
@@ -108,12 +108,12 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         }
 
     }
-    
+
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/del/{projId}/{userId}")
     public Response deleteUserFromProject(@PathParam("projId") Long projId, @PathParam("userId") Long userId) {
-        
+
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.removeUserFromProject(projId, userId);
@@ -125,7 +125,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         }
 
     }
-    
+
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/addManager/{projId}/{userId}")
@@ -142,12 +142,12 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         }
 
     }
-    
+
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/delManager/{projId}/{userId}")
     public Response deleteProjectManagerFromProject(@PathParam("projId") Long projId, @PathParam("userId") Long userId) {
-        
+
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.removeProjectManagerFromProject(projId, userId);
@@ -159,12 +159,12 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         }
 
     }
-    
+
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/addWatchingUser/{projId}/{userId}")
     public Response addWatchingUserToProject(@PathParam("projId") Long projId, @PathParam("userId") Long userId) {
-        
+
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.addWatchingUserToProject(projId, userId);
@@ -176,12 +176,12 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         }
 
     }
-    
+
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/delWatchingUser/{projId}/{userId}")
     public Response deleteWatchingUserFromProject(@PathParam("projId") Long projId, @PathParam("userId") Long userId) {
-        
+
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.removeWatchingUserFromProject(projId, userId);
@@ -219,8 +219,33 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        
+
     }
+
+	@GET
+	@Path("/byId/{projId}")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response getProjectById(@PathParam("projId") Long projId) {
+
+		try {
+			LoginUtil.check(usersDAO.checkLogin(getSessionID()));
+
+			Project proj = (Project) projectDAO.find(projId, false);
+
+			return Response.ok(mapper.writerWithView(View.Projects.class)
+					.withRootName("project")
+					.writeValueAsString(proj))
+					.build();
+		} catch (SecurityException e) {
+			return Response.status(Response.Status.FORBIDDEN).build();
+		} catch (JsonProcessingException ex) {
+			Logger.getLogger(SchemeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+			return Response.serverError().build();
+		} catch (IllegalArgumentException e) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+
+	}
 
     @GET
     @Path("/count/byuser/{userId}")
@@ -270,14 +295,14 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         }
 
     }
-    
+
     /**
      * This method returns a zip archive containing all Users annotations project
      * related. For each document and user pair will be a single .xml file
      * created in the de.unisaarland.disacnno.export.model format.
-     * 
+     *
      * @param projId
-     * @return 
+     * @return
      */
     @GET
     @Path("/export/{projId}")
@@ -288,10 +313,10 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
 
             Project proj = (Project) projectDAO.find(projId, false);
-            
+
             ExportUtil exportUtil = new ExportUtil(annotationDAO, linkDAO);
             File file = exportUtil.getExportDataInXML(proj);
-            
+
             return Response
                         .ok(FileUtils.readFileToByteArray(file))
                         .header("Content-Disposition", "attachment; filename=\"export_" + proj.getName() + ".zip\"")
@@ -304,16 +329,16 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         } catch (NoResultException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        
+
     }
-    
+
      /**
      * This method returns a zip archive containing all Users annotations project
      * related. For each document and user pair will be a single .xmi file
      * created in the UIMA format.
-     * 
+     *
      * @param projId
-     * @return 
+     * @return
      */
     @GET
     @Path("/exportXmi/{projId}")
@@ -324,10 +349,10 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
 
             Project proj = (Project) projectDAO.find(projId, false);
-            
+
             ExportUtil exportUtil = new ExportUtil(annotationDAO, linkDAO);
             File file = exportUtil.getExportDataInXMI(proj);
-            
+
             return Response
                         .ok(FileUtils.readFileToByteArray(file))
                         .header("Content-Disposition", "attachment; filename=\"exportXmi_" + proj.getName() + ".zip\"")
@@ -340,7 +365,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
         } catch (NoResultException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        
+
     }
 
     @POST

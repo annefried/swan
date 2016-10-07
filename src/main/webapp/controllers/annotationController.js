@@ -49,12 +49,10 @@ angular
                 this.scheme = schemeService.getScheme($window.sessionStorage.docId);
                 this.linkData = linkService.getLinks($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                 this.tokenData = tokenService.getTokens($window.sessionStorage.docId);
-                // Retrieve projects and process projects
-                var httpProjects = $rootScope.loadProjects();   // TODO different query this is really inefficient
+                // Retrieve project and process project
+                var httpProject = $rootScope.loadProjectById($window.sessionStorage.projectId);
                 // Wait for projects to be processed
-                $q.all([httpProjects]).then(function () {
-                    $rootScope.buildTableProjects();
-                    $rootScope.currProj = $rootScope.getProjectByProjectName($window.sessionStorage.project, $rootScope.tableProjects);
+                $q.all([httpProject]).then(function () {
                     $rootScope.currDoc = $rootScope.getDocumentByDocumentId($window.sessionStorage.docId, $rootScope.currProj);
                 });
 
@@ -65,11 +63,12 @@ angular
              *
              * @param {String} docId The document id to annotate
              * @param {String} docName name
-             * @param {String} projectName the Projects name
+			 * @param {String} projectId the project's id
+             * @param {String} projectName the project's name
              * @param {Boolean} completed state of the document
              */
-            $scope.openAnnoTool = function (docId, docName, projectName, completed) {
-                $rootScope.initAnnoTool(docId, docName, projectName, completed);
+            $scope.openAnnoTool = function (docId, docName, projectId, projectName, completed) {
+                $rootScope.initAnnoTool(docId, docName, projectId, projectName, completed);
                 $window.location.reload();
             };
 
@@ -97,7 +96,8 @@ angular
                 $window.sessionStorage.shownUser = form.elements["users"].value;
                 $scope.openAnnoTool($window.sessionStorage.docId,
                         $window.sessionStorage.title,
-                        $window.sessionStorage.project,
+                        $window.sessionStorage.projectId,
+						$window.sessionStorage.projectName,
                         $window.sessionStorage.completed);
             };
 
@@ -989,7 +989,8 @@ angular
                         }
 
                         found = true;
-                        $scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.project, doc.completed);
+                        $scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.projectId, 
+							$window.sessionStorage.projectName, doc.completed);
                     }
                 }
 

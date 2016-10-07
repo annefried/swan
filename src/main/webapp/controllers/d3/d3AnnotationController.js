@@ -9,7 +9,7 @@ angular
     .module('app')
     .controller('d3AnnotationController', ['$scope', '$window', function ($scope, $window) {
             
-        this.project = $window.sessionStorage.project;
+        this.projectName = $window.sessionStorage.projectName;
         this.title = $window.sessionStorage.title;
 
         $scope.isPunctuation = function (string) {

@@ -11,13 +11,13 @@ angular
     function ($scope, $rootScope, $window, $http, $uibModal, $q) {
 
     	$rootScope.validateSignedInUser();
-    	
+
         // Note: Unfortunately bootstrap-tour is a little buggy when
         // the tour redirects to another page. Therefore dummy entries
         // were added with 1 ms duration as a workaround. Additionally
         // the corresponding controllers have to check for the tour
         // in the $rootScope and resume if specified.
-        // For modals, the first step must have a delay of 1000, 
+        // For modals, the first step must have a delay of 1000,
         // allowing time for loading and updating the DOM.
 
         $scope.existsDocumentsInProjects = function (projects) {
@@ -27,13 +27,14 @@ angular
                     var doc = proj.documents[0];
                     return {"docId": doc.id,
                         "docName": doc.name,
-                        "projectName": proj.name,
+                        "projectId": proj.id,
+						"projectName": proj.name,
                         "completed": doc.completed};
                 }
             }
             return undefined;
         };
-        
+
         const popupDesign =
         	"<div class='popover tour'>" +
 	        "<div class='arrow'></div>" +
@@ -44,12 +45,12 @@ angular
 	        "<button class='btn btn-default' data-role='end'>End tour</button>" +
 	        "</div>" +
 	        "</div>";
-        
-        var httpProjects = $rootScope.loadProjects();
+
+        var httpProjects = $rootScope.loadProjects(1);
         $q.all([httpProjects]).then(function () {
-        	
+
             $rootScope.buildTableProjects();
-        	
+
             // project manager tour
             if ($window.sessionStorage.role === 'admin' || $window.sessionStorage.role === "projectmanager") {
 
@@ -396,7 +397,7 @@ angular
                         content: "Great, you already have an assigned project and document. Click 'Next' to check out the editor.",
                         placement: "bottom",
                         onNext: function () {
-                            $rootScope.initAnnoTool(redirect.docId, redirect.docName, redirect.projectName, redirect.completed);
+                            $rootScope.initAnnoTool(redirect.docId, redirect.docName, redirect.projectId, redirect.projectName, redirect.completed);
                         }
                     });
                     if (redirect === undefined) {
