@@ -50,7 +50,7 @@ angular
                 this.linkData = linkService.getLinks($window.sessionStorage.shownUser, $window.sessionStorage.docId);
                 this.tokenData = tokenService.getTokens($window.sessionStorage.docId);
                 // Retrieve projects and process projects
-                var httpProjects = $rootScope.loadProjects($window.sessionStorage.pageNumber);   // TODO different query this is really inefficient
+                var httpProjects = $rootScope.loadProjects();   // TODO different query this is really inefficient
                 // Wait for projects to be processed
                 $q.all([httpProjects]).then(function () {
                     $rootScope.buildTableProjects();
@@ -67,10 +67,9 @@ angular
              * @param {String} docName name
              * @param {String} projectName the Projects name
              * @param {Boolean} completed state of the document
-			 * @param {Integer} the page number the project is listed on
              */
             $scope.openAnnoTool = function (docId, docName, projectName, completed) {
-                $rootScope.initAnnoTool(docId, docName, projectName, completed, $window.sessionStorage.pageNumber);
+                $rootScope.initAnnoTool(docId, docName, projectName, completed);
                 $window.location.reload();
             };
 
