@@ -748,38 +748,7 @@ describe('Test rootController', function () {
 
             expect(boolVal).toEqual(false);
         });
-
-
-        /**
-         * Test 'getProjectByProjectName'
-         */
-
-        it('Test getProjectByProjectName with 3 different projects', function () {
-            var projects = [
-                {name: 'DiscourseModeProj'},
-                {name: 'GreekProj'},
-                {name: 'Proj1'}
-            ];
-            var nameExists = 'Proj1';
-            var nameNotExists = 'Proj2';
-            var proj = $rootScope.getProjectByProjectName(nameExists, projects);
-
-            expect(proj.name).toEqual(nameExists);
-
-            expect(function () {
-                $rootScope.getProjectByProjectName(nameNotExists, projects);
-            }).toThrow();
-        });
-
-        it('Test getProjectByProjectName with empty projects', function () {
-            var projects = [ ];
-            var name = 'Proj1';
-
-            expect(function () {
-                $rootScope.getProjectByProjectName(name, projects);
-            }).toThrow();
-        });
-
+		
 
         /**
          * Test 'getProjectByProjectId'
@@ -925,10 +894,11 @@ describe('Test rootController', function () {
          */
 
         it('Test initAnnoTool', function () {
-            $rootScope.initAnnoTool(3, 'DogName', 'ProjName', true);
+            $rootScope.initAnnoTool(3, 'DogName', 1, 'ProjName', true);
             expect($window.sessionStorage.docId).toEqual('3');
             expect($window.sessionStorage.title).toEqual('DogName');
-            expect($window.sessionStorage.project).toEqual('ProjName');
+			expect($window.sessionStorage.projectId).toEqual('1');
+            expect($window.sessionStorage.projectName).toEqual('ProjName');
             expect($window.sessionStorage.completed).toEqual('true');
         });
 
