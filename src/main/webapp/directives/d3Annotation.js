@@ -45,7 +45,7 @@ angular
             link: function ($scope, iElement) {
                 const lineHeight = 40; // Height of each displayed line of text
                 const wordHeight = 40; // Height of lines in annotation boxes
-                const margin = 80; // Space on top of text
+                const topMargin = 80; // Space on top of text
                 const annotationHeight = wordHeight / 2.4; // Distance between multiple annotations on top of each other
                 const scale = 1.2; // Scaling factor of text size
                 const jDistance = 30; // Amount of lines after which text should be redrawn
@@ -59,12 +59,14 @@ angular
                     .on("mouseup", function () {
                         $scope.textMarkable(true);
                     });
+				const arity = Math.max(Math.floor(Math.log10(Math.abs($scope.data.length))), 0) + 1; // Number of digits in line numbers
 
-                var width, height;
-                var lineCount;
-                var textWidth;
+                var width; // Width (in pixels) of the entire annotation box
+				var height;
+                var formLineCount;
+				var leftMargin; // Width (in pixels) of left margin, containing line prefixes/numbers
+                var textWidth; // Approximate width (in pixels) of space containing the actual annotation text
                 var textHeight = 0;
-                var arity = 1;
                 var linkStart;
                 var formText = [];
                 var formAnnotations = {};
@@ -796,72 +798,62 @@ angular
                 $scope.formatText = function () {
                     formText = [];
                     prefixes = [];
-                    var charSizeApproximation = 8.5;
-                    width = d3.select(iElement[0])[0][0].offsetWidth / charSizeApproximation;
-                    textWidth = width;
-                    var maxLines = $scope.data.length;
-                    arity = Math.max(Math.floor(Math.log10(Math.abs(maxLines))), 0) + 1;
-                    var iY = 0;
-                    //Iterate over every line
+
+                    width = d3.select(iElement[0])[0][0].offsetWidth;
+					leftMargin = 40 + arity * 20;
+                    textWidth = width - leftMargin;
+
+					formLineCount = 0;
                     for (var i = 0; i < $scope.data.length; i++) {
-                        //Determine line number
-                        var lineArity = Math.max(Math.floor(Math.log10(Math.abs(i + 1))), 0) + 1;
-                        var prefix = "";
-                        while (lineArity < arity) {
-                            prefix += "0";
-                            lineArity++;
-                        }
-                        prefixes.push(new linePrefix(prefix + (i + 1) + " | ", lineHeight));
-                        //Determine size of line
-                        var line = $scope.data[i].words;
-                        var lineLength = $scope.data[i].end - $scope.data[i].start;
-                        //Split lines if they're to large
-                        if (lineLength > textWidth) {
-                            var iX = 0;
-                            var index = 0;
-                            var added = 0;
-                            var newLine = [];
-                            //Iterate over every text and search split positions
-                            while (index < line.length) {
-                                var currLength = 0;
-                                var nextWord = line[index].text;
-                                var nextWordLength = (nextWord !== undefined) ? nextWord.length * scale : 0;
-                                var word = nextWord;
-                                iX = 0;
-                                while ((currLength * (wordSpacing / 4.25) + nextWordLength < textWidth)
-                                        || $scope.$parent.isSpace(word)
-                                        || $scope.$parent.isPunctuation(word)) {
-
-                                    currLength += word.length + 1;
-                                    newLine.push(new formTextWord(line[index], undefined, 0, 0, iX, iY));
-                                    iX++;
-                                    index++;
-                                    if (line[index] !== undefined)
-                                        word = line[index].text;
-                                    if (index >= line.length)
-                                        break;
-                                }
-
-                                added++;
-                                if (added > 1)
-                                    prefixes.push(new linePrefix("", lineHeight));
-                                iY++;
-                            }
-
-                            formText.push(newLine);
-                        } else {
-                            var newLine = [];
-                            for (var j = 0; j < line.length; j++) {
-                                newLine.push(new formTextWord(line[j], undefined, 0, 0, j, iY));
-                            }
-
-                            formText.push(newLine);
-                            iY++;
-                        }
+						$scope.addLine(i);
                     }
-
-                    lineCount = iY;
                 };
+
+				$scope.addLine = function(lineNum) {
+					$scope.addLinePrefix(lineNum);
+					var line = $scope.data[lineNum].words;
+					var newLine = [];
+					$scope.formatWordsInLine(line, newLine);
+					formText.push(newLine);
+					formLineCount++;
+				};
+
+				$scope.formatWordsInLine = function(line, formLine) {
+					var xPos = 0; // Position of word in line
+					var currLineWidth = 0;
+
+					for (var index=0; index<line.length; index++) {
+						var nextWord = line[index].text;
+						var nextWordWidth = (nextWord !== undefined) ? $scope.calculateWordWidth(nextWord) : 0;
+
+						if ((currLineWidth + nextWordWidth < textWidth)
+							|| $scope.$parent.isSpace(nextWord)
+							|| $scope.$parent.isPunctuation(nextWord)) {
+							formLine.push(new formTextWord(line[index], undefined, 0, 0, xPos, formLineCount));
+							currLineWidth += nextWordWidth;
+							xPos++;
+						} else {
+							if (index > 0) {
+								formLineCount++;
+								prefixes.push(new linePrefix("", lineHeight));
+							}
+							xPos = 0;
+							formLine.push(new formTextWord(line[index], undefined, 0, 0, xPos, formLineCount));
+							currLineWidth = 0 + nextWordWidth;
+							xPos++;
+						}
+					}
+				};
+
+				$scope.addLinePrefix = function(lineNum) {
+					var lineArity = Math.max(Math.floor(Math.log10(Math.abs(lineNum + 1))), 0) + 1;
+					var prefix = "";
+					while (lineArity < arity) {
+						prefix += "0";
+						lineArity++;
+					}
+					prefixes.push(new linePrefix(prefix + (lineNum + 1) + " | ", lineHeight));
+				};
 
                 //Set the height of the lines according to the amount
                 //of annotations that the most annotated word in this line has.
@@ -908,7 +900,7 @@ angular
                             prefixes[currentLine].height = newHeight;
                     }
 
-                    textHeight = margin;
+                    textHeight = topMargin;
                     //Set the height of the overall text to the sum
                     //of the heights of the prefixes
                     for (var g = 0; g < prefixes.length; g++) {
@@ -1122,7 +1114,7 @@ angular
                     svg.selectAll(".annotationtext").remove();
                     var pre = 30 + 20 * arity;
                     var currentLine = 0;
-                    var currentHeight = margin;
+                    var currentHeight = topMargin;
                     //Estimate which lines actually need to be drawn.
                     //This is necessary because one text line can occupy
                     //several actual lines on the screen.
@@ -1258,9 +1250,131 @@ angular
                             });
                 };
 
+				$scope.calculateWordWidth = function(word) {
+					if ($scope.isWhitespace(word)) {
+						return 3;
+					}
+					var len = 0;
+					for (var i=0; i<word.length; i++)
+					{
+						if ((word.codePointAt(i) >= 0xD800 && word.codePointAt(i) <= 0xDFFF) ||
+							(word.codePointAt(i) >= 0xFE00 && word.codePointAt(i) <= 0xFE0F)) {
+							continue; // Skip UTF-16 surrogate characters and variators
+						}
+						if ((word.codePointAt(i) >= 0x2000 && word.codePointAt(i) <= 0x2BBF) || word.codePointAt(i) >= 0x1F000) {
+							len += 17; // Assumed average length for symbols, emojis etc.
+							continue;
+						}
+						if (word.codePointAt(i) >= 0x530) {
+							len += 20; // Assume extreme width for non-latin/-greek/-cyrillic characters (e.g. Chinese)
+							continue;
+						}
+						switch (word[i]) { // Detailed handling of latin characters and common punctuation, since this is the most common case
+							case 'i':
+								len += 3;
+								break;
+							case 'j':
+							case 'l':
+							case '!':
+								len += 4;
+								break;
+							case 'I':
+							case 'f':
+							case 't':
+							case '.':
+							case ',':
+							case ':':
+							case ';':
+								len += 5;
+								break;
+							case 'r':
+							case '(':
+							case ')':
+							case '-':
+							case '"':
+								len += 6;
+								break;
+							case 'J':
+							case 'L':
+							case 'b':
+							case 'c':
+							case 'd':
+							case 'k':
+							case 's':
+							case 'u':
+							case 'v':
+							case 'x':
+							case 'y':
+							case 'z':
+								len += 9;
+								break;
+							case 'F':
+							case 'T':
+							case 'Z':
+							case 'a':
+							case 'e':
+							case 'g':
+							case 'h':
+							case 'n':
+							case 'o':
+							case 'p':
+							case 'q':
+							case '_':
+							case '?':
+								len += 10;
+								break;
+							case 'B':
+							case 'K':
+							case 'S':
+							case 'V':
+							case 'X':
+							case 'Y':
+								len += 11;
+								break;
+							case 'A':
+							case 'C':
+							case 'D':
+							case 'E':
+							case 'N':
+							case 'P':
+							case 'U':
+								len += 12;
+								break;
+							case 'G':
+							case 'H':
+							case 'O':
+							case 'Q':
+							case 'R':
+							case 'w':
+								len += 13;
+								break;
+							case 'M':
+							case 'm':
+								len += 14;
+								break;
+							case '%':
+								len += 15;
+								break;
+							case 'W':
+								len += 16;
+								break;
+							default:
+								len += 9; // Approximation of average latin/greek/cyrillic character width
+						}
+					}
+
+					if ($rootScope.currProj.tokenizationLang === "Characterwise") {
+						return len + 3; // Add 3 pixels to account for space between tokens
+					}
+					else {
+						return len;
+					}
+				};
+
                 $scope.isWhitespace = function(str) {
                     return $.trim(str) === "";
                 };
+
 
                 $scope.applyLink = function (d) {
                     var link;
@@ -1612,7 +1726,7 @@ angular
                     svg.selectAll("text.linenumber").remove();
                     //Estimate the position of the first line number on
                     //the screen
-                    var currentHeight = margin;
+                    var currentHeight = topMargin;
                     if (minLine > 0) {
                         const min = (formText[0].length === 0) ? minLine : minLine - 1;
                         for (var i = 0; i < min; i++) {
