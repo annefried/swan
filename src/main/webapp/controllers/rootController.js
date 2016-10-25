@@ -135,12 +135,10 @@ angular
             for (var i = 0; i < $rootScope.projects.length; i++) {
 
                 var proj = $rootScope.projects[i];
-                var projComplAdmin = new Array(proj.users.length);
-                for(var p = 0; p < projComplAdmin.length; p++) projComplAdmin[p] = 0;
-                var documents = [];
 
-                const retVal = $scope.buildDocumentsPrivileged(proj, documents, projComplAdmin);
-                const lastEditedDocument = retVal.lastEditedDocument;
+                const retVal = $scope.buildDocumentsPrivileged(proj);
+				const documents = retVal.documents;
+				const projComplAdmin = retVal.projComplAdmin;
                 const template = {
                     'id': proj.id,
                     'name': proj.name,
@@ -152,8 +150,7 @@ angular
                     'documents': documents,
                     'pms': proj.projectManager,
                     'watchingUsers': proj.watchingUsers,
-                    'isWatching': $rootScope.containsUser(proj.watchingUsers, currUser),
-                    'lastEditedDocument': lastEditedDocument
+                    'isWatching': $rootScope.containsUser(proj.watchingUsers, currUser)
                 };
 
                 $rootScope.tableProjects.push(template);
@@ -166,9 +163,9 @@ angular
             for (var i = 0; i < $rootScope.projects.length; i++) {
 
                 var proj = $rootScope.projects[i];
-                var documents = [];
 
-                const retVal = $scope.buildDocumentsUnprivileged(proj, documents);
+                const retVal = $scope.buildDocumentsUnprivileged(proj);
+				const documents = retVal.documents;
                 const lastEditedDocument = retVal.lastEditedDocument;
                 const projComplUser = retVal.projComplUser;
                 const template = {
@@ -188,10 +185,15 @@ angular
 
         };
 
-        $scope.buildDocumentsPrivileged = function (proj, documents, projComplAdmin) {
+        $scope.buildDocumentsPrivileged = function (proj) {
 
-            var projComplUser = 0;
-            var lastEditedDocComp = { lastEditedDocument: null, lastEdit: -1 };
+			var documents = [];
+
+			var projComplAdmin = new Array(proj.users.length);
+			for (var p = 0; p < projComplAdmin.length; p++) {
+				projComplAdmin[p] = 0;
+			}
+
             // Used to order the states in the same order as the
             // user array and therefore the completed array. Necessary for
             // the progress bars.
@@ -242,10 +244,12 @@ angular
             // Sort the documents alphabetically
             documents.sort($rootScope.compareDocumentsByName);
 
-            return {lastEditedDocument: lastEditedDocComp.lastEditedDocument, projComplUser: projComplUser};
+            return {documents: documents, projComplAdmin: projComplAdmin};
         };
 
         $scope.buildDocumentsUnprivileged = function (proj, documents) {
+
+			var documents = [];
 
             var projComplUser = 0;
             var lastEditedDocComp = { lastEditedDocument: null, lastEdit: -1 };
@@ -289,7 +293,7 @@ angular
             // Sort the documents alphabetically
             documents.sort($rootScope.compareDocumentsByName);
 
-            return {lastEditedDocument: lastEditedDocComp.lastEditedDocument, projComplUser: projComplUser};
+            return {documents: documents, lastEditedDocument: lastEditedDocComp.lastEditedDocument, projComplUser: projComplUser};
         };
 
         $rootScope.getUserIdIndexMap = function (users) {

@@ -232,7 +232,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
 
 			Project proj = (Project) projectDAO.find(projId, false);
 
-			return Response.ok(mapper.writerWithView(View.Projects.class)
+			return Response.ok(mapper.writerWithView(View.ProjectsForUser.class)
 					.withRootName("project")
 					.writeValueAsString(proj))
 					.build();
