@@ -28,9 +28,11 @@ angular
                 $scope.role = $window.sessionStorage.role;
                 if ($window.sessionStorage.role == 'annotator') {
                     $window.sessionStorage.shownUser = $window.sessionStorage.uId;
-                } else {
+                } else if($window.sessionStorage.role == 'projectmanager' || $window.sessionStorage.role == 'admin') {
                     this.setUpAnnoView();
-                }
+                } else {
+					throw "user role not specified!";
+				}
                 this.readData();
                 this.readSchemes();
                 this.buildText();
@@ -989,7 +991,7 @@ angular
                         }
 
                         found = true;
-                        $scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.projectId, 
+                        $scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.projectId,
 							$window.sessionStorage.projectName, doc.completed);
                     }
                 }
