@@ -133,7 +133,7 @@ and open the template in the editor.
                                 <a style="cursor: pointer"
                                    ng-href
                                    ng-hide="x.documents.length == 0 || isUnprivileged === 'false'"
-                                   ng-click="openAnnoTool(x.lastEditedDocument.id, x.lastEditedDocument.name, x.id, x.name, x.lastEditedDocument.completed)">
+                                   ng-click="openAnnoTool(x.lastEditedDocument.id, x.lastEditedDocument.name, x.id, x.name, x.tokenizationLang, x.users)">
                                         {{x.lastEditedDocument.name}}
                                 </a>
                             </td>
@@ -206,7 +206,7 @@ and open the template in the editor.
                                     <div class="progress-bar progress-bar-success"
                                          role="progressbar"
                                          aria-valuenow="{{doc.completed}}"
-                                         aria-valuemin="0"
+                                         aria-valuemin="0"us
                                          aria-valuemax="x.users.length"
                                          style="width: {{100 * doc.completed / x.users.length}}%;">
                                         <span>{{doc.completed}}/{{x.users.length}}</span>
@@ -222,11 +222,11 @@ and open the template in the editor.
                                     <!-- Show open eye for admin/ project manager and pencil for user -->
                                     <span class="glyphicon glyphicon-eye-open"
                                           ng-hide="isUnprivileged === 'true'"
-                                          ng-click="openAnnoTool(doc.id, doc.name, x.id, x.name, doc.completed, x.users)">
+                                          ng-click="openAnnoTool(doc.id, doc.name, x.id, x.name, x.tokenizationLang, x.users)">
                                     </span>
                                     <span class="glyphicon glyphicon-pencil"
                                           ng-hide="isUnprivileged === 'false'"
-                                          ng-click="openAnnoTool(doc.id, doc.name, x.id, x.name, doc.completed, x.users)">
+                                          ng-click="openAnnoTool(doc.id, doc.name, x.id, x.name, x.tokenizationLang, x.users)">
                                     </span>
                                 </a>
                             </td>

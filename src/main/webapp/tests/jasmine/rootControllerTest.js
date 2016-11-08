@@ -977,26 +977,23 @@ describe('Test rootController', function () {
                 {id: 3}
             ];
 
-            var project = {documents: documents};
-
             var idExists = 1;
             var idNotExists = 4;
-            var proj = $rootScope.getDocumentByDocumentId(idExists, project);
+            var proj = $rootScope.getDocumentByDocumentId(idExists, documents);
 
             expect(proj.id).toEqual(idExists);
 
             expect(function () {
-                $rootScope.getDocumentByDocumentId(idNotExists, project);
+                $rootScope.getDocumentByDocumentId(idNotExists, documents);
             }).toThrow();
         });
 
         it('Test getDocumentByDocumentId with empty projects', function () {
             var documents = [ ];
-            var project = {documents: documents};
             var id = 1;
 
             expect(function () {
-                $rootScope.getDocumentByDocumentId(id, project);
+                $rootScope.getDocumentByDocumentId(id, documents);
             }).toThrow();
         });
 
@@ -1079,12 +1076,12 @@ describe('Test rootController', function () {
          */
 
         it('Test initAnnoTool', function () {
-            $rootScope.initAnnoTool(3, 'DogName', 1, 'ProjName', true);
+            $rootScope.initAnnoTool(3, 'DogName', 1, 'ProjName', 'English');
             expect($window.sessionStorage.docId).toEqual('3');
             expect($window.sessionStorage.title).toEqual('DogName');
 			expect($window.sessionStorage.projectId).toEqual('1');
             expect($window.sessionStorage.projectName).toEqual('ProjName');
-            expect($window.sessionStorage.completed).toEqual('true');
+            expect($window.sessionStorage.tokenizationLang).toEqual('English');
         });
 
     });

@@ -1363,7 +1363,7 @@ angular
 						}
 					}
 
-					if ($rootScope.currProj.tokenizationLang === "Characterwise") {
+					if ($window.sessionStorage.tokenizationLang === "Characterwise") {
 						return len + 3; // Add 3 pixels to account for space between tokens
 					}
 					else {

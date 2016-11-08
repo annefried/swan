@@ -29,7 +29,7 @@ angular
                         "docName": doc.name,
                         "projectId": proj.id,
 						"projectName": proj.name,
-                        "completed": doc.completed};
+                        "tokenizationLang": proj.tokenizationLang};
                 }
             }
             return undefined;
@@ -397,7 +397,7 @@ angular
                         content: "Great, you already have an assigned project and document. Click 'Next' to check out the editor.",
                         placement: "bottom",
                         onNext: function () {
-                            $rootScope.initAnnoTool(redirect.docId, redirect.docName, redirect.projectId, redirect.projectName, redirect.completed);
+                            $rootScope.initAnnoTool(redirect.docId, redirect.docName, redirect.projectId, redirect.projectName, redirect.tokenizationLang);
                         }
                     });
                     if (redirect === undefined) {
