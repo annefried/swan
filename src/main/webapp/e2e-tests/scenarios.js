@@ -2,41 +2,34 @@
 
 /* https://github.com/angular/protractor/blob/master/docs/toc.md */
 
-describe('my app', function() {
+describe('SWAN', function() {
 
-
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
+  beforeEach(function() {
+    browser.get('');
+    if (browser.getCurrentUrl() === 'http://localhost:8080/swan/#/dashboard') {
+        var logoutButton = element(by.id('logoutButton'));
+        logoutButton.click();
+    }
   });
 
-
-  describe('view1', function() {
-
-    beforeEach(function() {
-      browser.get('index.html#/view1');
-    });
-
-
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
-    });
-
+  it('should redirect to the the signin page if not logged in', function() {
+    browser.get('');
+    expect(browser.getCurrentUrl()).toBe('http://localhost:8080/swan/signin.html');
   });
 
+  it('should allow an admin to log in', function() {
+    browser.get('http://localhost:8080/swan/signin.html');
 
-  describe('view2', function() {
+    var userName = element(by.id('inputEmail'));
+    var password = element(by.id('inputPassword'));
+    var signinButton = element(by.id('signinButton'));
 
-    beforeEach(function() {
-      browser.get('index.html#/view2');
-    });
-
-
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
-    });
-
+    userName.sendKeys('admin@discanno.de');
+    password.sendKeys('secret');
+	signinButton.click();
+	  
+	expect(browser.getCurrentUrl()).toBe('http://localhost:8080/swan/#/dashboard');
+	expect(browser.executeScript("return window.sessionStorage.role")).toEqual("admin");
   });
 });
+
