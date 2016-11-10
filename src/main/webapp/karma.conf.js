@@ -4,6 +4,7 @@ module.exports = function(config){
     basePath : './',
 
     files : [
+    	// Include here external libraries for the tests if needed
         'bower_components/jquery/dist/jquery.min.js',
         'bower_components/d3/d3.min.js',
         'bower_components/d3/d3.js',
@@ -20,6 +21,7 @@ module.exports = function(config){
 
         'other/annotationStructures.js',
         'other/xml2json.js',
+        'other/jquery.jscrollpane.min.js',
 
         'components/**/*.js',
         'modules/*.js',

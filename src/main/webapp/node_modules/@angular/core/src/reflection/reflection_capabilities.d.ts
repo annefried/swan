@@ -5,14 +5,13 @@ export declare class ReflectionCapabilities implements PlatformReflectionCapabil
     private _reflect;
     constructor(reflect?: any);
     isReflectionEnabled(): boolean;
-    factory(t: Type<any>): Function;
-    parameters(typeOrFunc: Type<any>): any[][];
+    factory<T>(t: Type<T>): (args: any[]) => T;
+    parameters(type: Type<any>): any[][];
     annotations(typeOrFunc: Type<any>): any[];
     propMetadata(typeOrFunc: any): {
         [key: string]: any[];
     };
-    interfaces(type: Type<any>): any[];
-    hasLifecycleHook(type: any, lcInterface: Type<any>, lcProperty: string): boolean;
+    hasLifecycleHook(type: any, lcProperty: string): boolean;
     getter(name: string): GetterFn;
     setter(name: string): SetterFn;
     method(name: string): MethodFn;

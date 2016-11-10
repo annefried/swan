@@ -314,7 +314,11 @@ export var DomElementSchemaRegistry = (function (_super) {
      * 'NONE' security context, i.e. that they are safe inert string values. Only specific well known
      * attack vectors are assigned their appropriate context.
      */
-    DomElementSchemaRegistry.prototype.securityContext = function (tagName, propName) {
+    DomElementSchemaRegistry.prototype.securityContext = function (tagName, propName, isAttribute) {
+        if (isAttribute) {
+            // NB: For security purposes, use the mapped property name, not the attribute name.
+            propName = this.getMappedPropName(propName);
+        }
         // Make sure comparisons are case insensitive, so that case differences between attribute and
         // property names do not have a security impact.
         tagName = tagName.toLowerCase();
@@ -328,6 +332,29 @@ export var DomElementSchemaRegistry = (function (_super) {
     };
     DomElementSchemaRegistry.prototype.getMappedPropName = function (propName) { return _ATTR_TO_PROP[propName] || propName; };
     DomElementSchemaRegistry.prototype.getDefaultComponentElementName = function () { return 'ng-component'; };
+    DomElementSchemaRegistry.prototype.validateProperty = function (name) {
+        if (name.toLowerCase().startsWith('on')) {
+            var msg = ("Binding to event property '" + name + "' is disallowed for security reasons, ") +
+                ("please use (" + name.slice(2) + ")=...") +
+                ("\nIf '" + name + "' is a directive input, make sure the directive is imported by the") +
+                " current module.";
+            return { error: true, msg: msg };
+        }
+        else {
+            return { error: false };
+        }
+    };
+    DomElementSchemaRegistry.prototype.validateAttribute = function (name) {
+        if (name.toLowerCase().startsWith('on')) {
+            var msg = ("Binding to event attribute '" + name + "' is disallowed for security reasons, ") +
+                ("please use (" + name.slice(2) + ")=...");
+            return { error: true, msg: msg };
+        }
+        else {
+            return { error: false };
+        }
+    };
+    DomElementSchemaRegistry.prototype.allKnownElementNames = function () { return Object.keys(this._schema); };
     DomElementSchemaRegistry.decorators = [
         { type: Injectable },
     ];

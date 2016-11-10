@@ -1,5 +1,5 @@
 /**
- * @license Angular v2.0.1
+ * @license Angular v2.1.2
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -53,7 +53,6 @@
     // Need to declare a new variable for global here since TypeScript
     // exports the original value of the symbol.
     var global$1 = globalScope;
-    var Date = global$1.Date;
     // TODO: remove calls to assert in production environment
     // Note: Can't just export this and import in in other files
     // as `assert` is a reserved keyword in Dart
@@ -61,22 +60,10 @@
         // TODO: to be fixed properly via #2830, noop for now
     };
     function isPresent(obj) {
-        return obj !== undefined && obj !== null;
+        return obj != null;
     }
     function isBlank(obj) {
-        return obj === undefined || obj === null;
-    }
-    function isNumber(obj) {
-        return typeof obj === 'number';
-    }
-    function isString(obj) {
-        return typeof obj === 'string';
-    }
-    function isFunction(obj) {
-        return typeof obj === 'function';
-    }
-    function isArray(obj) {
-        return Array.isArray(obj);
+        return obj == null;
     }
     function stringify(token) {
         if (typeof token === 'string') {
@@ -93,147 +80,8 @@
         }
         var res = token.toString();
         var newLineIndex = res.indexOf('\n');
-        return (newLineIndex === -1) ? res : res.substring(0, newLineIndex);
+        return newLineIndex === -1 ? res : res.substring(0, newLineIndex);
     }
-    var StringWrapper = (function () {
-        function StringWrapper() {
-        }
-        StringWrapper.fromCharCode = function (code) { return String.fromCharCode(code); };
-        StringWrapper.charCodeAt = function (s, index) { return s.charCodeAt(index); };
-        StringWrapper.split = function (s, regExp) { return s.split(regExp); };
-        StringWrapper.equals = function (s, s2) { return s === s2; };
-        StringWrapper.stripLeft = function (s, charVal) {
-            if (s && s.length) {
-                var pos = 0;
-                for (var i = 0; i < s.length; i++) {
-                    if (s[i] != charVal)
-                        break;
-                    pos++;
-                }
-                s = s.substring(pos);
-            }
-            return s;
-        };
-        StringWrapper.stripRight = function (s, charVal) {
-            if (s && s.length) {
-                var pos = s.length;
-                for (var i = s.length - 1; i >= 0; i--) {
-                    if (s[i] != charVal)
-                        break;
-                    pos--;
-                }
-                s = s.substring(0, pos);
-            }
-            return s;
-        };
-        StringWrapper.replace = function (s, from, replace) {
-            return s.replace(from, replace);
-        };
-        StringWrapper.replaceAll = function (s, from, replace) {
-            return s.replace(from, replace);
-        };
-        StringWrapper.slice = function (s, from, to) {
-            if (from === void 0) { from = 0; }
-            if (to === void 0) { to = null; }
-            return s.slice(from, to === null ? undefined : to);
-        };
-        StringWrapper.replaceAllMapped = function (s, from, cb) {
-            return s.replace(from, function () {
-                var matches = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    matches[_i - 0] = arguments[_i];
-                }
-                // Remove offset & string from the result array
-                matches.splice(-2, 2);
-                // The callback receives match, p1, ..., pn
-                return cb(matches);
-            });
-        };
-        StringWrapper.contains = function (s, substr) { return s.indexOf(substr) != -1; };
-        StringWrapper.compare = function (a, b) {
-            if (a < b) {
-                return -1;
-            }
-            else if (a > b) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        };
-        return StringWrapper;
-    }());
-    var NumberWrapper = (function () {
-        function NumberWrapper() {
-        }
-        NumberWrapper.toFixed = function (n, fractionDigits) { return n.toFixed(fractionDigits); };
-        NumberWrapper.equal = function (a, b) { return a === b; };
-        NumberWrapper.parseIntAutoRadix = function (text) {
-            var result = parseInt(text);
-            if (isNaN(result)) {
-                throw new Error('Invalid integer literal when parsing ' + text);
-            }
-            return result;
-        };
-        NumberWrapper.parseInt = function (text, radix) {
-            if (radix == 10) {
-                if (/^(\-|\+)?[0-9]+$/.test(text)) {
-                    return parseInt(text, radix);
-                }
-            }
-            else if (radix == 16) {
-                if (/^(\-|\+)?[0-9ABCDEFabcdef]+$/.test(text)) {
-                    return parseInt(text, radix);
-                }
-            }
-            else {
-                var result = parseInt(text, radix);
-                if (!isNaN(result)) {
-                    return result;
-                }
-            }
-            throw new Error('Invalid integer literal when parsing ' + text + ' in base ' + radix);
-        };
-        Object.defineProperty(NumberWrapper, "NaN", {
-            get: function () { return NaN; },
-            enumerable: true,
-            configurable: true
-        });
-        NumberWrapper.isNumeric = function (value) { return !isNaN(value - parseFloat(value)); };
-        NumberWrapper.isNaN = function (value) { return isNaN(value); };
-        NumberWrapper.isInteger = function (value) { return Number.isInteger(value); };
-        return NumberWrapper;
-    }());
-    // Can't be all uppercase as our transpiler would think it is a special directive...
-    var Json = (function () {
-        function Json() {
-        }
-        Json.parse = function (s) { return global$1.JSON.parse(s); };
-        Json.stringify = function (data) {
-            // Dart doesn't take 3 arguments
-            return global$1.JSON.stringify(data, null, 2);
-        };
-        return Json;
-    }());
-    var DateWrapper = (function () {
-        function DateWrapper() {
-        }
-        DateWrapper.create = function (year, month, day, hour, minutes, seconds, milliseconds) {
-            if (month === void 0) { month = 1; }
-            if (day === void 0) { day = 1; }
-            if (hour === void 0) { hour = 0; }
-            if (minutes === void 0) { minutes = 0; }
-            if (seconds === void 0) { seconds = 0; }
-            if (milliseconds === void 0) { milliseconds = 0; }
-            return new Date(year, month - 1, day, hour, minutes, seconds, milliseconds);
-        };
-        DateWrapper.fromISOString = function (str) { return new Date(str); };
-        DateWrapper.fromMillis = function (ms) { return new Date(ms); };
-        DateWrapper.toMillis = function (date) { return date.getTime(); };
-        DateWrapper.now = function () { return new Date(); };
-        DateWrapper.toJson = function (date) { return date.toJSON(); };
-        return DateWrapper;
-    }());
     function setValueOnPath(global, path, value) {
         var parts = path.split('.');
         var obj = global;
@@ -252,243 +100,47 @@
         obj[parts.shift()] = value;
     }
 
-    var _clearValues = (function () {
-        if ((new Map()).keys().next) {
-            return function _clearValues(m) {
-                var keyIterator = m.keys();
-                var k;
-                while (!((k = keyIterator.next()).done)) {
-                    m.set(k.value, null);
-                }
-            };
-        }
-        else {
-            return function _clearValuesWithForeEach(m) {
-                m.forEach(function (v, k) { m.set(k, null); });
-            };
-        }
-    })();
-    // Safari doesn't implement MapIterator.next(), which is used is Traceur's polyfill of Array.from
-    // TODO(mlaval): remove the work around once we have a working polyfill of Array.from
-    var _arrayFromMap = (function () {
-        try {
-            if ((new Map()).values().next) {
-                return function createArrayFromMap(m, getValues) {
-                    return getValues ? Array.from(m.values()) : Array.from(m.keys());
-                };
-            }
-        }
-        catch (e) {
-        }
-        return function createArrayFromMapWithForeach(m, getValues) {
-            var res = new Array(m.size), i = 0;
-            m.forEach(function (v, k) {
-                res[i] = getValues ? v : k;
-                i++;
-            });
-            return res;
-        };
-    })();
     /**
-     * Wraps Javascript Objects
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
      */
-    var StringMapWrapper = (function () {
-        function StringMapWrapper() {
-        }
-        StringMapWrapper.get = function (map, key) {
-            return map.hasOwnProperty(key) ? map[key] : undefined;
-        };
-        StringMapWrapper.set = function (map, key, value) { map[key] = value; };
-        StringMapWrapper.keys = function (map) { return Object.keys(map); };
-        StringMapWrapper.values = function (map) {
-            return Object.keys(map).map(function (k) { return map[k]; });
-        };
-        StringMapWrapper.isEmpty = function (map) {
-            for (var prop in map) {
-                return false;
-            }
-            return true;
-        };
-        StringMapWrapper.forEach = function (map, callback) {
-            for (var _i = 0, _a = Object.keys(map); _i < _a.length; _i++) {
-                var k = _a[_i];
-                callback(map[k], k);
-            }
-        };
-        StringMapWrapper.merge = function (m1, m2) {
-            var m = {};
-            for (var _i = 0, _a = Object.keys(m1); _i < _a.length; _i++) {
-                var k = _a[_i];
-                m[k] = m1[k];
-            }
-            for (var _b = 0, _c = Object.keys(m2); _b < _c.length; _b++) {
-                var k = _c[_b];
-                m[k] = m2[k];
-            }
-            return m;
-        };
-        StringMapWrapper.equals = function (m1, m2) {
-            var k1 = Object.keys(m1);
-            var k2 = Object.keys(m2);
-            if (k1.length != k2.length) {
-                return false;
-            }
-            for (var i = 0; i < k1.length; i++) {
-                var key = k1[i];
-                if (m1[key] !== m2[key]) {
-                    return false;
-                }
-            }
-            return true;
-        };
-        return StringMapWrapper;
-    }());
-    var ListWrapper = (function () {
-        function ListWrapper() {
-        }
-        // JS has no way to express a statically fixed size list, but dart does so we
-        // keep both methods.
-        ListWrapper.createFixedSize = function (size) { return new Array(size); };
-        ListWrapper.createGrowableSize = function (size) { return new Array(size); };
-        ListWrapper.clone = function (array) { return array.slice(0); };
-        ListWrapper.forEachWithIndex = function (array, fn) {
-            for (var i = 0; i < array.length; i++) {
-                fn(array[i], i);
-            }
-        };
-        ListWrapper.first = function (array) {
-            if (!array)
-                return null;
-            return array[0];
-        };
-        ListWrapper.last = function (array) {
-            if (!array || array.length == 0)
-                return null;
-            return array[array.length - 1];
-        };
-        ListWrapper.indexOf = function (array, value, startIndex) {
-            if (startIndex === void 0) { startIndex = 0; }
-            return array.indexOf(value, startIndex);
-        };
-        ListWrapper.contains = function (list, el) { return list.indexOf(el) !== -1; };
-        ListWrapper.reversed = function (array) {
-            var a = ListWrapper.clone(array);
-            return a.reverse();
-        };
-        ListWrapper.concat = function (a, b) { return a.concat(b); };
-        ListWrapper.insert = function (list, index, value) { list.splice(index, 0, value); };
-        ListWrapper.removeAt = function (list, index) {
-            var res = list[index];
-            list.splice(index, 1);
-            return res;
-        };
-        ListWrapper.removeAll = function (list, items) {
-            for (var i = 0; i < items.length; ++i) {
-                var index = list.indexOf(items[i]);
-                list.splice(index, 1);
-            }
-        };
-        ListWrapper.remove = function (list, el) {
-            var index = list.indexOf(el);
-            if (index > -1) {
-                list.splice(index, 1);
-                return true;
-            }
-            return false;
-        };
-        ListWrapper.clear = function (list) { list.length = 0; };
-        ListWrapper.isEmpty = function (list) { return list.length == 0; };
-        ListWrapper.fill = function (list, value, start, end) {
-            if (start === void 0) { start = 0; }
-            if (end === void 0) { end = null; }
-            list.fill(value, start, end === null ? list.length : end);
-        };
-        ListWrapper.equals = function (a, b) {
-            if (a.length != b.length)
-                return false;
-            for (var i = 0; i < a.length; ++i) {
-                if (a[i] !== b[i])
-                    return false;
-            }
-            return true;
-        };
-        ListWrapper.slice = function (l, from, to) {
-            if (from === void 0) { from = 0; }
-            if (to === void 0) { to = null; }
-            return l.slice(from, to === null ? undefined : to);
-        };
-        ListWrapper.splice = function (l, from, length) { return l.splice(from, length); };
-        ListWrapper.sort = function (l, compareFn) {
-            if (isPresent(compareFn)) {
-                l.sort(compareFn);
-            }
-            else {
-                l.sort();
-            }
-        };
-        ListWrapper.toString = function (l) { return l.toString(); };
-        ListWrapper.toJSON = function (l) { return JSON.stringify(l); };
-        ListWrapper.maximum = function (list, predicate) {
-            if (list.length == 0) {
-                return null;
-            }
-            var solution = null;
-            var maxValue = -Infinity;
-            for (var index = 0; index < list.length; index++) {
-                var candidate = list[index];
-                if (isBlank(candidate)) {
-                    continue;
-                }
-                var candidateValue = predicate(candidate);
-                if (candidateValue > maxValue) {
-                    solution = candidate;
-                    maxValue = candidateValue;
-                }
-            }
-            return solution;
-        };
-        ListWrapper.flatten = function (list) {
-            var target = [];
-            _flattenArray(list, target);
-            return target;
-        };
-        ListWrapper.addAll = function (list, source) {
-            for (var i = 0; i < source.length; i++) {
-                list.push(source[i]);
-            }
-        };
-        return ListWrapper;
-    }());
-    function _flattenArray(source, target) {
-        if (isPresent(source)) {
-            for (var i = 0; i < source.length; i++) {
-                var item = source[i];
-                if (isArray(item)) {
-                    _flattenArray(item, target);
-                }
-                else {
-                    target.push(item);
-                }
-            }
-        }
-        return target;
-    }
-
     var CAMEL_CASE_REGEXP = /([A-Z])/g;
     var DASH_CASE_REGEXP = /-([a-z])/g;
     function camelCaseToDashCase(input) {
-        return StringWrapper.replaceAllMapped(input, CAMEL_CASE_REGEXP, function (m /** TODO #9100 */) { return '-' + m[1].toLowerCase(); });
+        return input.replace(CAMEL_CASE_REGEXP, function () {
+            var m = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                m[_i - 0] = arguments[_i];
+            }
+            return '-' + m[1].toLowerCase();
+        });
     }
     function dashCaseToCamelCase(input) {
-        return StringWrapper.replaceAllMapped(input, DASH_CASE_REGEXP, function (m /** TODO #9100 */) { return m[1].toUpperCase(); });
+        return input.replace(DASH_CASE_REGEXP, function () {
+            var m = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                m[_i - 0] = arguments[_i];
+            }
+            return m[1].toUpperCase();
+        });
     }
 
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
     var _DOM = null;
     function getDOM() {
         return _DOM;
     }
     function setRootDomAdapter(adapter) {
-        if (isBlank(_DOM)) {
+        if (!_DOM) {
             _DOM = adapter;
         }
     }
@@ -548,7 +200,8 @@
             this._initialized = true;
             var keyframes = this.keyframes.map(function (styles) {
                 var formattedKeyframe = {};
-                StringMapWrapper.forEach(styles, function (value, prop) {
+                Object.keys(styles).forEach(function (prop) {
+                    var value = styles[prop];
                     formattedKeyframe[prop] = value == _angular_core.AUTO_STYLE ? _computeStyle(_this.element, prop) : value;
                 });
                 return formattedKeyframe;
@@ -647,15 +300,16 @@
     function _populateStyles(element, styles, defaultStyles) {
         var data = {};
         styles.styles.forEach(function (entry) {
-            StringMapWrapper.forEach(entry, function (val, prop) {
+            Object.keys(entry).forEach(function (prop) {
+                var val = entry[prop];
                 var formattedProp = dashCaseToCamelCase(prop);
                 data[formattedProp] =
                     val == _angular_core.AUTO_STYLE ? val : val.toString() + _resolveStyleUnit(val, prop, formattedProp);
             });
         });
-        StringMapWrapper.forEach(defaultStyles, function (value, prop) {
+        Object.keys(defaultStyles).forEach(function (prop) {
             if (!isPresent(data[prop])) {
-                data[prop] = value;
+                data[prop] = defaultStyles[prop];
             }
         });
         return data;
@@ -663,7 +317,7 @@
     function _resolveStyleUnit(val, userProvidedProp, formattedProp) {
         var unit = '';
         if (_isPixelDimensionStyle(formattedProp) && val != 0 && val != '0') {
-            if (isNumber(val)) {
+            if (typeof val === 'number') {
                 unit = 'px';
             }
             else if (_findDimensionalSuffix(val.toString()).length == 0) {
@@ -677,7 +331,7 @@
     var _$PERIOD = 46;
     function _findDimensionalSuffix(value) {
         for (var i = 0; i < value.length; i++) {
-            var c = StringWrapper.charCodeAt(value, i);
+            var c = value.charCodeAt(i);
             if ((c >= _$0 && c <= _$9) || c == _$PERIOD)
                 continue;
             return value.substring(i, value.length);
@@ -746,28 +400,28 @@
             this._animationPrefix = null;
             this._transitionEnd = null;
             try {
-                var element = this.createElement('div', this.defaultDoc());
-                if (isPresent(this.getStyle(element, 'animationName'))) {
+                var element_1 = this.createElement('div', this.defaultDoc());
+                if (isPresent(this.getStyle(element_1, 'animationName'))) {
                     this._animationPrefix = '';
                 }
                 else {
                     var domPrefixes = ['Webkit', 'Moz', 'O', 'ms'];
                     for (var i = 0; i < domPrefixes.length; i++) {
-                        if (isPresent(this.getStyle(element, domPrefixes[i] + 'AnimationName'))) {
+                        if (isPresent(this.getStyle(element_1, domPrefixes[i] + 'AnimationName'))) {
                             this._animationPrefix = '-' + domPrefixes[i].toLowerCase() + '-';
                             break;
                         }
                     }
                 }
-                var transEndEventNames = {
+                var transEndEventNames_1 = {
                     WebkitTransition: 'webkitTransitionEnd',
                     MozTransition: 'transitionend',
                     OTransition: 'oTransitionEnd otransitionend',
                     transition: 'transitionend'
                 };
-                StringMapWrapper.forEach(transEndEventNames, function (value, key) {
-                    if (isPresent(_this.getStyle(element, key))) {
-                        _this._transitionEnd = value;
+                Object.keys(transEndEventNames_1).forEach(function (key) {
+                    if (isPresent(_this.getStyle(element_1, key))) {
+                        _this._transitionEnd = transEndEventNames_1[key];
                     }
                 });
             }
@@ -782,12 +436,10 @@
         };
         GenericBrowserDomAdapter.prototype.supportsDOMEvents = function () { return true; };
         GenericBrowserDomAdapter.prototype.supportsNativeShadowDOM = function () {
-            return isFunction(this.defaultDoc().body.createShadowRoot);
+            return typeof this.defaultDoc().body.createShadowRoot === 'function';
         };
-        GenericBrowserDomAdapter.prototype.getAnimationPrefix = function () {
-            return isPresent(this._animationPrefix) ? this._animationPrefix : '';
-        };
-        GenericBrowserDomAdapter.prototype.getTransitionEnd = function () { return isPresent(this._transitionEnd) ? this._transitionEnd : ''; };
+        GenericBrowserDomAdapter.prototype.getAnimationPrefix = function () { return this._animationPrefix ? this._animationPrefix : ''; };
+        GenericBrowserDomAdapter.prototype.getTransitionEnd = function () { return this._transitionEnd ? this._transitionEnd : ''; };
         GenericBrowserDomAdapter.prototype.supportsAnimation = function () {
             return isPresent(this._animationPrefix) && isPresent(this._transitionEnd);
         };
@@ -810,7 +462,7 @@
         'class': 'className',
         'innerHtml': 'innerHTML',
         'readonly': 'readOnly',
-        'tabindex': 'tabIndex'
+        'tabindex': 'tabIndex',
     };
     var DOM_KEY_LOCATION_NUMPAD = 3;
     // Map to convert some key or keyIdentifier values to what will be returned by getEventKey
@@ -866,64 +518,42 @@
         }
         BrowserDomAdapter.prototype.parse = function (templateHtml) { throw new Error('parse not implemented'); };
         BrowserDomAdapter.makeCurrent = function () { setRootDomAdapter(new BrowserDomAdapter()); };
-        BrowserDomAdapter.prototype.hasProperty = function (element /** TODO #9100 */, name) { return name in element; };
+        BrowserDomAdapter.prototype.hasProperty = function (element, name) { return name in element; };
         BrowserDomAdapter.prototype.setProperty = function (el, name, value) { el[name] = value; };
         BrowserDomAdapter.prototype.getProperty = function (el, name) { return el[name]; };
-        BrowserDomAdapter.prototype.invoke = function (el, methodName, args) {
-            el[methodName].apply(el, args);
-        };
+        BrowserDomAdapter.prototype.invoke = function (el, methodName, args) { (_a = el)[methodName].apply(_a, args); var _a; };
         // TODO(tbosch): move this into a separate environment class once we have it
-        BrowserDomAdapter.prototype.logError = function (error /** TODO #9100 */) {
-            if (window.console.error) {
-                window.console.error(error);
-            }
-            else {
-                window.console.log(error);
-            }
+        BrowserDomAdapter.prototype.logError = function (error) { (window.console.error || window.console.log)(error); };
+        BrowserDomAdapter.prototype.log = function (error) { window.console.log(error); };
+        BrowserDomAdapter.prototype.logGroup = function (error) {
+            window.console.group && window.console.group(error);
+            this.logError(error);
         };
-        BrowserDomAdapter.prototype.log = function (error /** TODO #9100 */) { window.console.log(error); };
-        BrowserDomAdapter.prototype.logGroup = function (error /** TODO #9100 */) {
-            if (window.console.group) {
-                window.console.group(error);
-                this.logError(error);
-            }
-            else {
-                window.console.log(error);
-            }
-        };
-        BrowserDomAdapter.prototype.logGroupEnd = function () {
-            if (window.console.groupEnd) {
-                window.console.groupEnd();
-            }
-        };
+        BrowserDomAdapter.prototype.logGroupEnd = function () { window.console.groupEnd && window.console.groupEnd(); };
         Object.defineProperty(BrowserDomAdapter.prototype, "attrToPropMap", {
             get: function () { return _attrToPropMap; },
             enumerable: true,
             configurable: true
         });
         BrowserDomAdapter.prototype.query = function (selector) { return document.querySelector(selector); };
-        BrowserDomAdapter.prototype.querySelector = function (el /** TODO #9100 */, selector) {
+        BrowserDomAdapter.prototype.querySelector = function (el, selector) {
             return el.querySelector(selector);
         };
-        BrowserDomAdapter.prototype.querySelectorAll = function (el /** TODO #9100 */, selector) {
-            return el.querySelectorAll(selector);
-        };
-        BrowserDomAdapter.prototype.on = function (el /** TODO #9100 */, evt /** TODO #9100 */, listener /** TODO #9100 */) {
-            el.addEventListener(evt, listener, false);
-        };
-        BrowserDomAdapter.prototype.onAndCancel = function (el /** TODO #9100 */, evt /** TODO #9100 */, listener /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.querySelectorAll = function (el, selector) { return el.querySelectorAll(selector); };
+        BrowserDomAdapter.prototype.on = function (el, evt, listener) { el.addEventListener(evt, listener, false); };
+        BrowserDomAdapter.prototype.onAndCancel = function (el, evt, listener) {
             el.addEventListener(evt, listener, false);
             // Needed to follow Dart's subscription semantic, until fix of
             // https://code.google.com/p/dart/issues/detail?id=17406
             return function () { el.removeEventListener(evt, listener, false); };
         };
-        BrowserDomAdapter.prototype.dispatchEvent = function (el /** TODO #9100 */, evt /** TODO #9100 */) { el.dispatchEvent(evt); };
+        BrowserDomAdapter.prototype.dispatchEvent = function (el, evt) { el.dispatchEvent(evt); };
         BrowserDomAdapter.prototype.createMouseEvent = function (eventType) {
             var evt = document.createEvent('MouseEvent');
             evt.initEvent(eventType, true, true);
             return evt;
         };
-        BrowserDomAdapter.prototype.createEvent = function (eventType /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.createEvent = function (eventType) {
             var evt = document.createEvent('Event');
             evt.initEvent(eventType, true, true);
             return evt;
@@ -935,11 +565,11 @@
         BrowserDomAdapter.prototype.isPrevented = function (evt) {
             return evt.defaultPrevented || isPresent(evt.returnValue) && !evt.returnValue;
         };
-        BrowserDomAdapter.prototype.getInnerHTML = function (el /** TODO #9100 */) { return el.innerHTML; };
-        BrowserDomAdapter.prototype.getTemplateContent = function (el /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.getInnerHTML = function (el) { return el.innerHTML; };
+        BrowserDomAdapter.prototype.getTemplateContent = function (el) {
             return 'content' in el && el instanceof HTMLTemplateElement ? el.content : null;
         };
-        BrowserDomAdapter.prototype.getOuterHTML = function (el /** TODO #9100 */) { return el.outerHTML; };
+        BrowserDomAdapter.prototype.getOuterHTML = function (el) { return el.outerHTML; };
         BrowserDomAdapter.prototype.nodeName = function (node) { return node.nodeName; };
         BrowserDomAdapter.prototype.nodeValue = function (node) { return node.nodeValue; };
         BrowserDomAdapter.prototype.type = function (node) { return node.type; };
@@ -951,11 +581,11 @@
                 return node;
             }
         };
-        BrowserDomAdapter.prototype.firstChild = function (el /** TODO #9100 */) { return el.firstChild; };
-        BrowserDomAdapter.prototype.nextSibling = function (el /** TODO #9100 */) { return el.nextSibling; };
-        BrowserDomAdapter.prototype.parentElement = function (el /** TODO #9100 */) { return el.parentNode; };
-        BrowserDomAdapter.prototype.childNodes = function (el /** TODO #9100 */) { return el.childNodes; };
-        BrowserDomAdapter.prototype.childNodesAsList = function (el /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.firstChild = function (el) { return el.firstChild; };
+        BrowserDomAdapter.prototype.nextSibling = function (el) { return el.nextSibling; };
+        BrowserDomAdapter.prototype.parentElement = function (el) { return el.parentNode; };
+        BrowserDomAdapter.prototype.childNodes = function (el) { return el.childNodes; };
+        BrowserDomAdapter.prototype.childNodesAsList = function (el) {
             var childNodes = el.childNodes;
             var res = new Array(childNodes.length);
             for (var i = 0; i < childNodes.length; i++) {
@@ -963,50 +593,43 @@
             }
             return res;
         };
-        BrowserDomAdapter.prototype.clearNodes = function (el /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.clearNodes = function (el) {
             while (el.firstChild) {
                 el.removeChild(el.firstChild);
             }
         };
-        BrowserDomAdapter.prototype.appendChild = function (el /** TODO #9100 */, node /** TODO #9100 */) { el.appendChild(node); };
-        BrowserDomAdapter.prototype.removeChild = function (el /** TODO #9100 */, node /** TODO #9100 */) { el.removeChild(node); };
-        BrowserDomAdapter.prototype.replaceChild = function (el, newChild /** TODO #9100 */, oldChild /** TODO #9100 */) {
-            el.replaceChild(newChild, oldChild);
-        };
-        BrowserDomAdapter.prototype.remove = function (node /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.appendChild = function (el, node) { el.appendChild(node); };
+        BrowserDomAdapter.prototype.removeChild = function (el, node) { el.removeChild(node); };
+        BrowserDomAdapter.prototype.replaceChild = function (el, newChild, oldChild) { el.replaceChild(newChild, oldChild); };
+        BrowserDomAdapter.prototype.remove = function (node) {
             if (node.parentNode) {
                 node.parentNode.removeChild(node);
             }
             return node;
         };
-        BrowserDomAdapter.prototype.insertBefore = function (el /** TODO #9100 */, node /** TODO #9100 */) {
-            el.parentNode.insertBefore(node, el);
+        BrowserDomAdapter.prototype.insertBefore = function (el, node) { el.parentNode.insertBefore(node, el); };
+        BrowserDomAdapter.prototype.insertAllBefore = function (el, nodes) {
+            nodes.forEach(function (n) { return el.parentNode.insertBefore(n, el); });
         };
-        BrowserDomAdapter.prototype.insertAllBefore = function (el /** TODO #9100 */, nodes /** TODO #9100 */) {
-            nodes.forEach(function (n /** TODO #9100 */) { return el.parentNode.insertBefore(n, el); });
-        };
-        BrowserDomAdapter.prototype.insertAfter = function (el /** TODO #9100 */, node /** TODO #9100 */) {
-            el.parentNode.insertBefore(node, el.nextSibling);
-        };
-        BrowserDomAdapter.prototype.setInnerHTML = function (el /** TODO #9100 */, value /** TODO #9100 */) { el.innerHTML = value; };
-        BrowserDomAdapter.prototype.getText = function (el /** TODO #9100 */) { return el.textContent; };
-        // TODO(vicb): removed Element type because it does not support StyleElement
-        BrowserDomAdapter.prototype.setText = function (el /** TODO #9100 */, value) { el.textContent = value; };
-        BrowserDomAdapter.prototype.getValue = function (el /** TODO #9100 */) { return el.value; };
-        BrowserDomAdapter.prototype.setValue = function (el /** TODO #9100 */, value) { el.value = value; };
-        BrowserDomAdapter.prototype.getChecked = function (el /** TODO #9100 */) { return el.checked; };
-        BrowserDomAdapter.prototype.setChecked = function (el /** TODO #9100 */, value) { el.checked = value; };
+        BrowserDomAdapter.prototype.insertAfter = function (el, node) { el.parentNode.insertBefore(node, el.nextSibling); };
+        BrowserDomAdapter.prototype.setInnerHTML = function (el, value) { el.innerHTML = value; };
+        BrowserDomAdapter.prototype.getText = function (el) { return el.textContent; };
+        BrowserDomAdapter.prototype.setText = function (el, value) { el.textContent = value; };
+        BrowserDomAdapter.prototype.getValue = function (el) { return el.value; };
+        BrowserDomAdapter.prototype.setValue = function (el, value) { el.value = value; };
+        BrowserDomAdapter.prototype.getChecked = function (el) { return el.checked; };
+        BrowserDomAdapter.prototype.setChecked = function (el, value) { el.checked = value; };
         BrowserDomAdapter.prototype.createComment = function (text) { return document.createComment(text); };
-        BrowserDomAdapter.prototype.createTemplate = function (html /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.createTemplate = function (html) {
             var t = document.createElement('template');
             t.innerHTML = html;
             return t;
         };
-        BrowserDomAdapter.prototype.createElement = function (tagName /* TODO #9100 */, doc) {
+        BrowserDomAdapter.prototype.createElement = function (tagName, doc) {
             if (doc === void 0) { doc = document; }
             return doc.createElement(tagName);
         };
-        BrowserDomAdapter.prototype.createElementNS = function (ns /* TODO #9100 */, tagName /* TODO #9100 */, doc) {
+        BrowserDomAdapter.prototype.createElementNS = function (ns, tagName, doc) {
             if (doc === void 0) { doc = document; }
             return doc.createElementNS(ns, tagName);
         };
@@ -1030,38 +653,34 @@
         BrowserDomAdapter.prototype.getShadowRoot = function (el) { return el.shadowRoot; };
         BrowserDomAdapter.prototype.getHost = function (el) { return el.host; };
         BrowserDomAdapter.prototype.clone = function (node) { return node.cloneNode(true); };
-        BrowserDomAdapter.prototype.getElementsByClassName = function (element /** TODO #9100 */, name) {
+        BrowserDomAdapter.prototype.getElementsByClassName = function (element, name) {
             return element.getElementsByClassName(name);
         };
-        BrowserDomAdapter.prototype.getElementsByTagName = function (element /** TODO #9100 */, name) {
+        BrowserDomAdapter.prototype.getElementsByTagName = function (element, name) {
             return element.getElementsByTagName(name);
         };
-        BrowserDomAdapter.prototype.classList = function (element /** TODO #9100 */) {
-            return Array.prototype.slice.call(element.classList, 0);
-        };
-        BrowserDomAdapter.prototype.addClass = function (element /** TODO #9100 */, className) { element.classList.add(className); };
-        BrowserDomAdapter.prototype.removeClass = function (element /** TODO #9100 */, className) {
-            element.classList.remove(className);
-        };
-        BrowserDomAdapter.prototype.hasClass = function (element /** TODO #9100 */, className) {
+        BrowserDomAdapter.prototype.classList = function (element) { return Array.prototype.slice.call(element.classList, 0); };
+        BrowserDomAdapter.prototype.addClass = function (element, className) { element.classList.add(className); };
+        BrowserDomAdapter.prototype.removeClass = function (element, className) { element.classList.remove(className); };
+        BrowserDomAdapter.prototype.hasClass = function (element, className) {
             return element.classList.contains(className);
         };
-        BrowserDomAdapter.prototype.setStyle = function (element /** TODO #9100 */, styleName, styleValue) {
+        BrowserDomAdapter.prototype.setStyle = function (element, styleName, styleValue) {
             element.style[styleName] = styleValue;
         };
-        BrowserDomAdapter.prototype.removeStyle = function (element /** TODO #9100 */, stylename) {
-            element.style[stylename] = null;
+        BrowserDomAdapter.prototype.removeStyle = function (element, stylename) {
+            // IE requires '' instead of null
+            // see https://github.com/angular/angular/issues/7916
+            element.style[stylename] = '';
         };
-        BrowserDomAdapter.prototype.getStyle = function (element /** TODO #9100 */, stylename) {
-            return element.style[stylename];
-        };
-        BrowserDomAdapter.prototype.hasStyle = function (element /** TODO #9100 */, styleName, styleValue) {
+        BrowserDomAdapter.prototype.getStyle = function (element, stylename) { return element.style[stylename]; };
+        BrowserDomAdapter.prototype.hasStyle = function (element, styleName, styleValue) {
             if (styleValue === void 0) { styleValue = null; }
             var value = this.getStyle(element, styleName) || '';
             return styleValue ? value == styleValue : value.length > 0;
         };
-        BrowserDomAdapter.prototype.tagName = function (element /** TODO #9100 */) { return element.tagName; };
-        BrowserDomAdapter.prototype.attributeMap = function (element /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.tagName = function (element) { return element.tagName; };
+        BrowserDomAdapter.prototype.attributeMap = function (element) {
             var res = new Map();
             var elAttrs = element.attributes;
             for (var i = 0; i < elAttrs.length; i++) {
@@ -1070,38 +689,32 @@
             }
             return res;
         };
-        BrowserDomAdapter.prototype.hasAttribute = function (element /** TODO #9100 */, attribute) {
+        BrowserDomAdapter.prototype.hasAttribute = function (element, attribute) {
             return element.hasAttribute(attribute);
         };
-        BrowserDomAdapter.prototype.hasAttributeNS = function (element /** TODO #9100 */, ns, attribute) {
+        BrowserDomAdapter.prototype.hasAttributeNS = function (element, ns, attribute) {
             return element.hasAttributeNS(ns, attribute);
         };
-        BrowserDomAdapter.prototype.getAttribute = function (element /** TODO #9100 */, attribute) {
+        BrowserDomAdapter.prototype.getAttribute = function (element, attribute) {
             return element.getAttribute(attribute);
         };
-        BrowserDomAdapter.prototype.getAttributeNS = function (element /** TODO #9100 */, ns, name) {
+        BrowserDomAdapter.prototype.getAttributeNS = function (element, ns, name) {
             return element.getAttributeNS(ns, name);
         };
-        BrowserDomAdapter.prototype.setAttribute = function (element /** TODO #9100 */, name, value) {
-            element.setAttribute(name, value);
-        };
-        BrowserDomAdapter.prototype.setAttributeNS = function (element /** TODO #9100 */, ns, name, value) {
+        BrowserDomAdapter.prototype.setAttribute = function (element, name, value) { element.setAttribute(name, value); };
+        BrowserDomAdapter.prototype.setAttributeNS = function (element, ns, name, value) {
             element.setAttributeNS(ns, name, value);
         };
-        BrowserDomAdapter.prototype.removeAttribute = function (element /** TODO #9100 */, attribute) {
-            element.removeAttribute(attribute);
-        };
-        BrowserDomAdapter.prototype.removeAttributeNS = function (element /** TODO #9100 */, ns, name) {
+        BrowserDomAdapter.prototype.removeAttribute = function (element, attribute) { element.removeAttribute(attribute); };
+        BrowserDomAdapter.prototype.removeAttributeNS = function (element, ns, name) {
             element.removeAttributeNS(ns, name);
         };
-        BrowserDomAdapter.prototype.templateAwareRoot = function (el /** TODO #9100 */) {
-            return this.isTemplateElement(el) ? this.content(el) : el;
-        };
+        BrowserDomAdapter.prototype.templateAwareRoot = function (el) { return this.isTemplateElement(el) ? this.content(el) : el; };
         BrowserDomAdapter.prototype.createHtmlDocument = function () {
             return document.implementation.createHTMLDocument('fakeTitle');
         };
         BrowserDomAdapter.prototype.defaultDoc = function () { return document; };
-        BrowserDomAdapter.prototype.getBoundingClientRect = function (el /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.getBoundingClientRect = function (el) {
             try {
                 return el.getBoundingClientRect();
             }
@@ -1111,20 +724,13 @@
         };
         BrowserDomAdapter.prototype.getTitle = function () { return document.title; };
         BrowserDomAdapter.prototype.setTitle = function (newTitle) { document.title = newTitle || ''; };
-        BrowserDomAdapter.prototype.elementMatches = function (n /** TODO #9100 */, selector) {
-            var matches = false;
+        BrowserDomAdapter.prototype.elementMatches = function (n, selector) {
             if (n instanceof HTMLElement) {
-                if (n.matches) {
-                    matches = n.matches(selector);
-                }
-                else if (n.msMatchesSelector) {
-                    matches = n.msMatchesSelector(selector);
-                }
-                else if (n.webkitMatchesSelector) {
-                    matches = n.webkitMatchesSelector(selector);
-                }
+                return n.matches && n.matches(selector) ||
+                    n.msMatchesSelector && n.msMatchesSelector(selector) ||
+                    n.webkitMatchesSelector && n.webkitMatchesSelector(selector);
             }
-            return matches;
+            return false;
         };
         BrowserDomAdapter.prototype.isTemplateElement = function (el) {
             return el instanceof HTMLElement && el.nodeName == 'TEMPLATE';
@@ -1132,26 +738,19 @@
         BrowserDomAdapter.prototype.isTextNode = function (node) { return node.nodeType === Node.TEXT_NODE; };
         BrowserDomAdapter.prototype.isCommentNode = function (node) { return node.nodeType === Node.COMMENT_NODE; };
         BrowserDomAdapter.prototype.isElementNode = function (node) { return node.nodeType === Node.ELEMENT_NODE; };
-        BrowserDomAdapter.prototype.hasShadowRoot = function (node /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.hasShadowRoot = function (node) {
             return isPresent(node.shadowRoot) && node instanceof HTMLElement;
         };
-        BrowserDomAdapter.prototype.isShadowRoot = function (node /** TODO #9100 */) { return node instanceof DocumentFragment; };
-        BrowserDomAdapter.prototype.importIntoDoc = function (node) {
-            var toImport = node;
-            if (this.isTemplateElement(node)) {
-                toImport = this.content(node);
-            }
-            return document.importNode(toImport, true);
-        };
+        BrowserDomAdapter.prototype.isShadowRoot = function (node) { return node instanceof DocumentFragment; };
+        BrowserDomAdapter.prototype.importIntoDoc = function (node) { return document.importNode(this.templateAwareRoot(node), true); };
         BrowserDomAdapter.prototype.adoptNode = function (node) { return document.adoptNode(node); };
         BrowserDomAdapter.prototype.getHref = function (el) { return el.href; };
-        BrowserDomAdapter.prototype.getEventKey = function (event /** TODO #9100 */) {
+        BrowserDomAdapter.prototype.getEventKey = function (event) {
             var key = event.key;
             if (isBlank(key)) {
                 key = event.keyIdentifier;
                 // keyIdentifier is defined in the old draft of DOM Level 3 Events implemented by Chrome and
-                // Safari
-                // cf
+                // Safari cf
                 // http://www.w3.org/TR/2007/WD-DOM-Level-3-Events-20071221/events.html#Events-KeyboardEvents-Interfaces
                 if (isBlank(key)) {
                     return 'Unidentified';
@@ -1166,19 +765,16 @@
                     }
                 }
             }
-            if (_keyMap.hasOwnProperty(key)) {
-                key = _keyMap[key];
-            }
-            return key;
+            return _keyMap[key] || key;
         };
         BrowserDomAdapter.prototype.getGlobalEventTarget = function (target) {
-            if (target == 'window') {
+            if (target === 'window') {
                 return window;
             }
-            else if (target == 'document') {
+            if (target === 'document') {
                 return document;
             }
-            else if (target == 'body') {
+            if (target === 'body') {
                 return document.body;
             }
         };
@@ -1186,32 +782,27 @@
         BrowserDomAdapter.prototype.getLocation = function () { return window.location; };
         BrowserDomAdapter.prototype.getBaseHref = function () {
             var href = getBaseElementHref();
-            if (isBlank(href)) {
-                return null;
-            }
-            return relativePath(href);
+            return isBlank(href) ? null : relativePath(href);
         };
         BrowserDomAdapter.prototype.resetBaseElement = function () { baseElement = null; };
         BrowserDomAdapter.prototype.getUserAgent = function () { return window.navigator.userAgent; };
-        BrowserDomAdapter.prototype.setData = function (element /** TODO #9100 */, name, value) {
+        BrowserDomAdapter.prototype.setData = function (element, name, value) {
             this.setAttribute(element, 'data-' + name, value);
         };
-        BrowserDomAdapter.prototype.getData = function (element /** TODO #9100 */, name) {
+        BrowserDomAdapter.prototype.getData = function (element, name) {
             return this.getAttribute(element, 'data-' + name);
         };
-        BrowserDomAdapter.prototype.getComputedStyle = function (element /** TODO #9100 */) { return getComputedStyle(element); };
+        BrowserDomAdapter.prototype.getComputedStyle = function (element) { return getComputedStyle(element); };
         // TODO(tbosch): move this into a separate environment class once we have it
         BrowserDomAdapter.prototype.setGlobalVar = function (path, value) { setValueOnPath(global$1, path, value); };
-        BrowserDomAdapter.prototype.supportsWebAnimation = function () { return isFunction(Element.prototype['animate']); };
+        BrowserDomAdapter.prototype.supportsWebAnimation = function () {
+            return typeof Element.prototype['animate'] === 'function';
+        };
         BrowserDomAdapter.prototype.performanceNow = function () {
             // performance.now() is not available in all browsers, see
             // http://caniuse.com/#search=performance.now
-            if (isPresent(window.performance) && isPresent(window.performance.now)) {
-                return window.performance.now();
-            }
-            else {
-                return DateWrapper.toMillis(DateWrapper.now());
-            }
+            return window.performance && window.performance.now ? window.performance.now() :
+                new Date().getTime();
         };
         BrowserDomAdapter.prototype.supportsCookies = function () { return true; };
         BrowserDomAdapter.prototype.getCookie = function (name) { return parseCookieValue(document.cookie, name); };
@@ -1224,18 +815,18 @@
     }(GenericBrowserDomAdapter));
     var baseElement = null;
     function getBaseElementHref() {
-        if (isBlank(baseElement)) {
+        if (!baseElement) {
             baseElement = document.querySelector('base');
-            if (isBlank(baseElement)) {
+            if (!baseElement) {
                 return null;
             }
         }
         return baseElement.getAttribute('href');
     }
     // based on urlUtils.js in AngularJS 1
-    var urlParsingNode = null;
-    function relativePath(url /** TODO #9100 */) {
-        if (isBlank(urlParsingNode)) {
+    var urlParsingNode;
+    function relativePath(url) {
+        if (!urlParsingNode) {
             urlParsingNode = document.createElement('a');
         }
         urlParsingNode.setAttribute('href', url);
@@ -1380,7 +971,7 @@
                 });
             };
             if (!global$1['frameworkStabilizers']) {
-                global$1['frameworkStabilizers'] = ListWrapper.createGrowableSize(0);
+                global$1['frameworkStabilizers'] = [];
             }
             global$1['frameworkStabilizers'].push(whenAllStable);
         };
@@ -1428,6 +1019,128 @@
         Title.prototype.setTitle = function (newTitle) { getDOM().setTitle(newTitle); };
         return Title;
     }());
+
+    // Safari doesn't implement MapIterator.next(), which is used is Traceur's polyfill of Array.from
+    // TODO(mlaval): remove the work around once we have a working polyfill of Array.from
+    var _arrayFromMap = (function () {
+        try {
+            if ((new Map()).values().next) {
+                return function createArrayFromMap(m, getValues) {
+                    return getValues ? Array.from(m.values()) : Array.from(m.keys());
+                };
+            }
+        }
+        catch (e) {
+        }
+        return function createArrayFromMapWithForeach(m, getValues) {
+            var res = new Array(m.size), i = 0;
+            m.forEach(function (v, k) {
+                res[i] = getValues ? v : k;
+                i++;
+            });
+            return res;
+        };
+    })();
+    /**
+     * Wraps Javascript Objects
+     */
+    var StringMapWrapper = (function () {
+        function StringMapWrapper() {
+        }
+        StringMapWrapper.merge = function (m1, m2) {
+            var m = {};
+            for (var _i = 0, _a = Object.keys(m1); _i < _a.length; _i++) {
+                var k = _a[_i];
+                m[k] = m1[k];
+            }
+            for (var _b = 0, _c = Object.keys(m2); _b < _c.length; _b++) {
+                var k = _c[_b];
+                m[k] = m2[k];
+            }
+            return m;
+        };
+        StringMapWrapper.equals = function (m1, m2) {
+            var k1 = Object.keys(m1);
+            var k2 = Object.keys(m2);
+            if (k1.length != k2.length) {
+                return false;
+            }
+            for (var i = 0; i < k1.length; i++) {
+                var key = k1[i];
+                if (m1[key] !== m2[key]) {
+                    return false;
+                }
+            }
+            return true;
+        };
+        return StringMapWrapper;
+    }());
+    var ListWrapper = (function () {
+        function ListWrapper() {
+        }
+        ListWrapper.removeAll = function (list, items) {
+            for (var i = 0; i < items.length; ++i) {
+                var index = list.indexOf(items[i]);
+                list.splice(index, 1);
+            }
+        };
+        ListWrapper.remove = function (list, el) {
+            var index = list.indexOf(el);
+            if (index > -1) {
+                list.splice(index, 1);
+                return true;
+            }
+            return false;
+        };
+        ListWrapper.equals = function (a, b) {
+            if (a.length != b.length)
+                return false;
+            for (var i = 0; i < a.length; ++i) {
+                if (a[i] !== b[i])
+                    return false;
+            }
+            return true;
+        };
+        ListWrapper.maximum = function (list, predicate) {
+            if (list.length == 0) {
+                return null;
+            }
+            var solution = null;
+            var maxValue = -Infinity;
+            for (var index = 0; index < list.length; index++) {
+                var candidate = list[index];
+                if (candidate == null) {
+                    continue;
+                }
+                var candidateValue = predicate(candidate);
+                if (candidateValue > maxValue) {
+                    solution = candidate;
+                    maxValue = candidateValue;
+                }
+            }
+            return solution;
+        };
+        ListWrapper.flatten = function (list) {
+            var target = [];
+            _flattenArray(list, target);
+            return target;
+        };
+        return ListWrapper;
+    }());
+    function _flattenArray(source, target) {
+        if (isPresent(source)) {
+            for (var i = 0; i < source.length; i++) {
+                var item = source[i];
+                if (Array.isArray(item)) {
+                    _flattenArray(item, target);
+                }
+                else {
+                    target.push(item);
+                }
+            }
+        }
+        return target;
+    }
 
     /**
      * A DI Token representing the main rendering context. In a browser this is the DOM Document.
@@ -1599,7 +1312,7 @@
         }
         DomRootRenderer.prototype.renderComponent = function (componentProto) {
             var renderer = this.registeredComponents.get(componentProto.id);
-            if (isBlank(renderer)) {
+            if (!renderer) {
                 renderer = new DomRenderer(this, componentProto, this.animationDriver);
                 this.registeredComponents.set(componentProto.id, renderer);
             }
@@ -1644,7 +1357,7 @@
         }
         DomRenderer.prototype.selectRootElement = function (selectorOrNode, debugInfo) {
             var el;
-            if (isString(selectorOrNode)) {
+            if (typeof selectorOrNode === 'string') {
                 el = getDOM().querySelector(this._rootRenderer.document, selectorOrNode);
                 if (isBlank(el)) {
                     throw new Error("The selector \"" + selectorOrNode + "\" did not match any elements");
@@ -1752,11 +1465,10 @@
         DomRenderer.prototype.setBindingDebugInfo = function (renderElement, propertyName, propertyValue) {
             var dashCasedPropertyName = camelCaseToDashCase(propertyName);
             if (getDOM().isCommentNode(renderElement)) {
-                var existingBindings = StringWrapper.replaceAll(getDOM().getText(renderElement), /\n/g, '')
-                    .match(TEMPLATE_BINDINGS_EXP);
-                var parsedBindings = Json.parse(existingBindings[1]);
+                var existingBindings = getDOM().getText(renderElement).replace(/\n/g, '').match(TEMPLATE_BINDINGS_EXP);
+                var parsedBindings = JSON.parse(existingBindings[1]);
                 parsedBindings[dashCasedPropertyName] = propertyValue;
-                getDOM().setText(renderElement, StringWrapper.replace(TEMPLATE_COMMENT_TEXT, '{}', Json.stringify(parsedBindings)));
+                getDOM().setText(renderElement, TEMPLATE_COMMENT_TEXT.replace('{}', JSON.stringify(parsedBindings, null, 2)));
             }
             else {
                 this.setElementAttribute(renderElement, propertyName, propertyValue);
@@ -1822,19 +1534,19 @@
     var HOST_ATTR = "_nghost-" + COMPONENT_VARIABLE;
     var CONTENT_ATTR = "_ngcontent-" + COMPONENT_VARIABLE;
     function _shimContentAttribute(componentShortId) {
-        return StringWrapper.replaceAll(CONTENT_ATTR, COMPONENT_REGEX, componentShortId);
+        return CONTENT_ATTR.replace(COMPONENT_REGEX, componentShortId);
     }
     function _shimHostAttribute(componentShortId) {
-        return StringWrapper.replaceAll(HOST_ATTR, COMPONENT_REGEX, componentShortId);
+        return HOST_ATTR.replace(COMPONENT_REGEX, componentShortId);
     }
     function _flattenStyles(compId, styles, target) {
         for (var i = 0; i < styles.length; i++) {
             var style = styles[i];
-            if (isArray(style)) {
+            if (Array.isArray(style)) {
                 _flattenStyles(compId, style, target);
             }
             else {
-                style = StringWrapper.replaceAll(style, COMPONENT_REGEX, compId);
+                style = style.replace(COMPONENT_REGEX, compId);
                 target.push(style);
             }
         }
@@ -2114,23 +1826,21 @@
         };
         KeyEventsPlugin.prototype.addEventListener = function (element, eventName, handler) {
             var parsedEvent = KeyEventsPlugin.parseEventName(eventName);
-            var outsideHandler = KeyEventsPlugin.eventCallback(element, StringMapWrapper.get(parsedEvent, 'fullKey'), handler, this.manager.getZone());
+            var outsideHandler = KeyEventsPlugin.eventCallback(element, parsedEvent['fullKey'], handler, this.manager.getZone());
             return this.manager.getZone().runOutsideAngular(function () {
-                return getDOM().onAndCancel(element, StringMapWrapper.get(parsedEvent, 'domEventName'), outsideHandler);
+                return getDOM().onAndCancel(element, parsedEvent['domEventName'], outsideHandler);
             });
         };
         KeyEventsPlugin.parseEventName = function (eventName) {
             var parts = eventName.toLowerCase().split('.');
             var domEventName = parts.shift();
-            if ((parts.length === 0) ||
-                !(StringWrapper.equals(domEventName, 'keydown') ||
-                    StringWrapper.equals(domEventName, 'keyup'))) {
+            if ((parts.length === 0) || !(domEventName === 'keydown' || domEventName === 'keyup')) {
                 return null;
             }
             var key = KeyEventsPlugin._normalizeKey(parts.pop());
             var fullKey = '';
             modifierKeys.forEach(function (modifierName) {
-                if (ListWrapper.contains(parts, modifierName)) {
+                if (parts.indexOf(modifierName) > -1) {
                     ListWrapper.remove(parts, modifierName);
                     fullKey += modifierName + '.';
                 }
@@ -2141,23 +1851,23 @@
                 return null;
             }
             var result = {};
-            StringMapWrapper.set(result, 'domEventName', domEventName);
-            StringMapWrapper.set(result, 'fullKey', fullKey);
+            result['domEventName'] = domEventName;
+            result['fullKey'] = fullKey;
             return result;
         };
         KeyEventsPlugin.getEventFullKey = function (event) {
             var fullKey = '';
             var key = getDOM().getEventKey(event);
             key = key.toLowerCase();
-            if (StringWrapper.equals(key, ' ')) {
+            if (key === ' ') {
                 key = 'space'; // for readability
             }
-            else if (StringWrapper.equals(key, '.')) {
+            else if (key === '.') {
                 key = 'dot'; // because '.' is used as a separator in event names
             }
             modifierKeys.forEach(function (modifierName) {
                 if (modifierName != key) {
-                    var modifierGetter = StringMapWrapper.get(modifierKeyGetters, modifierName);
+                    var modifierGetter = modifierKeyGetters[modifierName];
                     if (modifierGetter(event)) {
                         fullKey += modifierName + '.';
                     }
@@ -2168,7 +1878,7 @@
         };
         KeyEventsPlugin.eventCallback = function (element, fullKey, handler, zone) {
             return function (event /** TODO #9100 */) {
-                if (StringWrapper.equals(KeyEventsPlugin.getEventFullKey(event), fullKey)) {
+                if (KeyEventsPlugin.getEventFullKey(event) === fullKey) {
                     zone.runGuarded(function () { return handler(event); });
                 }
             };
@@ -2857,7 +2567,7 @@
          * ```
          */
         AngularProfiler.prototype.timeChangeDetection = function (config) {
-            var record = isPresent(config) && config['record'];
+            var record = config && config['record'];
             var profileName = 'Change Detection';
             // Profiler is not available in Android browsers, nor in IE 9 without dev tools opened
             var isProfilerAvailable = isPresent(win.console.profile);
@@ -2880,7 +2590,7 @@
             }
             var msPerTick = (end - start) / numTicks;
             win.console.log("ran " + numTicks + " change detection cycles");
-            win.console.log(NumberWrapper.toFixed(msPerTick, 2) + " ms per check");
+            win.console.log(msPerTick.toFixed(2) + " ms per check");
             return new ChangeDetectionPerfRecord(msPerTick, numTicks);
         };
         return AngularProfiler;

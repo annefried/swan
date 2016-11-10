@@ -1,4 +1,8 @@
-/**
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ *
  * Created by Timo Guehring on 11.05.16.
  */
 'use strict';
@@ -26,7 +30,7 @@ describe('Test rootController', function () {
             $q = _$q_;
             deferred = _$q_.defer();
             $rootScope = _$rootScope_;
-            $scope = $rootScope.$new;
+            $scope = $rootScope.$new();
             $window = _$window_;
             $http = _$http_;
             $timeout = _$timeout_;
