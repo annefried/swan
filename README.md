@@ -8,9 +8,8 @@ Its key features are:
 
 Check out the [GitHub Wiki](https://github.com/annefried/swan/wiki) for more information on functionality and setup!
 
-Want to try it out?
-Find our web demo [here](http://swan.coli.uni-saarland.de).
-
+## Screenshot
+![A SWAN screenshot](https://raw.githubusercontent.com/wiki/annefried/swan/images/swan_example.png)
 
 ## Technologies
 * **Frontend**:
@@ -35,9 +34,6 @@ Find our web demo [here](http://swan.coli.uni-saarland.de).
     * Mockito 1.9.5
     * h2 as local testing database
     * JaCoCo for report generation
-
-## Screenshot
-![A SWAN screenshot](https://raw.githubusercontent.com/wiki/annefried/swan/images/swan_example.png)
 
 ## Contact
 We are happy to hear from you!
