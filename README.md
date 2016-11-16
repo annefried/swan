@@ -34,6 +34,8 @@ Check out the [GitHub Wiki](https://github.com/annefried/swan/wiki) for more inf
     * Mockito 1.9.5
     * h2 as local testing database
     * JaCoCo for report generation
+  * End-to-end:
+    * Protractor
 
 ## Contact
 We are happy to hear from you!
