@@ -247,7 +247,7 @@ angular
             return {documents: documents, projComplAdmin: projComplAdmin};
         };
 
-        $scope.buildDocumentsUnprivileged = function (proj, documents) {
+        $scope.buildDocumentsUnprivileged = function (proj) {
 
 			var documents = [];
 
@@ -277,9 +277,6 @@ angular
                 if (stateTarget == undefined) {
                     throw "rootController: No corresponding state object existing";
                 }
-                if (lastEdit > lastEditedDocComp.lastEdit) {
-                    lastEditedDocComp = { lastEditedDocument: doc, lastEdit: lastEdit };
-                }
 
                 const docTemplate = {
                     'id': doc.id,
@@ -289,12 +286,49 @@ angular
                     'lastEdit': lastEdit
                 };
                 documents.push(docTemplate);
+
+				if (lastEdit > lastEditedDocComp.lastEdit) {
+					lastEditedDocComp = { lastEditedDocument: docTemplate, lastEdit: lastEdit };
+				}
             }
             // Sort the documents alphabetically
             documents.sort($rootScope.compareDocumentsByName);
 
             return {documents: documents, lastEditedDocument: lastEditedDocComp.lastEditedDocument, projComplUser: projComplUser};
         };
+
+		$rootScope.buildDocumentsByAnnotator = function (proj, userId) {
+			
+			var documents = [];
+
+			for (var j = 0; j < proj.documents.length; j++) {
+
+				const doc = proj.documents[j];
+				var docCompl;
+
+				var stateTarget;
+				for (var t = 0; t < doc.states.length; t++) {
+					const state = doc.states[t];
+					if (userId == state.user.id) {
+						stateTarget = state;
+						docCompl = state.completed;
+						break;
+					}
+				}
+
+				const docTemplate = {
+					'id': doc.id,
+					'name': doc.name,
+					'completed': docCompl,
+				};
+				documents.push(docTemplate);
+			}
+
+			// Sort the documents alphabetically
+			documents.sort($rootScope.compareDocumentsByName);
+			
+			return documents;
+		};
 
         $rootScope.getUserIdIndexMap = function (users) {
             var userIdIndexMap = {};
@@ -326,9 +360,9 @@ angular
             throw "rootController: Project not found";
         };
 
-        $rootScope.getDocumentByDocumentId = function (docId, project) {
-            for (var i = 0; i < project.documents.length; i++) {
-                var doc = project.documents[i];
+        $rootScope.getDocumentByDocumentId = function (docId, documents) {
+            for (var i = 0; i < documents.length; i++) {
+                var doc = documents[i];
                 if (doc.id == docId) {
                     return doc;
                 }
@@ -404,14 +438,14 @@ angular
          * @param {String} docName name
 		 * @param {String} projectId the project's id
          * @param {String} projectName the project's name
-         * @param {Boolean} completed state of the document
+         * @param {String} tokenizationLang tokenization language of the project
          */
-        $rootScope.initAnnoTool = function (docId, docName, projectId, projectName, completed) {
+        $rootScope.initAnnoTool = function (docId, docName, projectId, projectName, tokenizationLang) {
             $window.sessionStorage.docId = docId;
             $window.sessionStorage.title = docName;
             $window.sessionStorage.projectId = projectId;
 			$window.sessionStorage.projectName = projectName;
-            $window.sessionStorage.completed = completed;
+            $window.sessionStorage.tokenizationLang = tokenizationLang;
         };
 
     }

@@ -37,7 +37,6 @@ angular
 				this.buildText();
 				this.buildAnnotations();
 				this.buildLinks();
-				$scope.completed = $window.sessionStorage.completed === 'true';
 				if ($rootScope.tour !== undefined) {
 					$rootScope.tour.resume();
 				}
@@ -54,7 +53,9 @@ angular
 				var httpProject = $rootScope.loadProjectById($window.sessionStorage.projectId);
 				// Wait for projects to be processed
 				$q.all([httpProject]).then(function () {
-					$rootScope.currDoc = $rootScope.getDocumentByDocumentId($window.sessionStorage.docId, $rootScope.currProj);
+					$rootScope.documents = $rootScope.buildDocumentsByAnnotator($rootScope.currProj,$window.sessionStorage.shownUser);
+					$rootScope.currDoc = $rootScope.getDocumentByDocumentId($window.sessionStorage.docId, $rootScope.documents);
+					$scope.completed = $rootScope.currDoc.completed;
 				});
 
 			};
@@ -66,10 +67,10 @@ angular
 			 * @param {String} docName name
 			 * @param {String} projectId the project's id
 			 * @param {String} projectName the project's name
-			 * @param {Boolean} completed state of the document
+			 * @param {String} tokenizationLang tokenization language of the project
 			 */
-			$scope.openAnnoTool = function (docId, docName, projectId, projectName, completed) {
-				$rootScope.initAnnoTool(docId, docName, projectId, projectName, completed);
+			$scope.openAnnoTool = function (docId, docName, projectId, projectName, tokenizationLang) {
+				$rootScope.initAnnoTool(docId, docName, projectId, projectName, tokenizationLang);
 				$window.location.reload();
 			};
 
@@ -99,7 +100,7 @@ angular
 					$window.sessionStorage.title,
 					$window.sessionStorage.projectId,
 					$window.sessionStorage.projectName,
-					$window.sessionStorage.completed);
+					$window.sessionStorage.tokenizationLang);
 			};
 
 			$scope.changeCallbackCont = function () {
@@ -970,28 +971,28 @@ angular
 
 			this.nextDoc = function (next) {
 				var found = false;
-				const proj = $rootScope.currProj;
-				for (var j = 0; j < proj.documents.length && !found; j++) {
-					var doc = proj.documents[j];
+				var documents = $rootScope.documents;
+				for (var j = 0; j < documents.length && !found; j++) {
+					var doc = documents[j];
 					if (doc.id == $window.sessionStorage.docId) {
 						// Next document
 						if (next === 1) {
-							if (j + 1 >= proj.documents.length) {
-								doc = proj.documents[0];
+							if (j + 1 >= documents.length) {
+								doc = documents[0];
 							} else {
-								doc = proj.documents[j + 1];
+								doc = documents[j + 1];
 							}
 						} else if (next === -1) { // Previous document
 							if (j - 1 < 0) {
-								doc = proj.documents[proj.documents.length - 1];
+								doc = documents[documents.length - 1];
 							} else {
-								doc = proj.documents[j - 1];
+								doc = documents[j - 1];
 							}
 						}
 
 						found = true;
 						$scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.projectId,
-							$window.sessionStorage.projectName, doc.completed);
+							$window.sessionStorage.projectName, $window.sessionStorage.tokenizationlang);
 					}
 				}
 
@@ -1005,7 +1006,7 @@ angular
 					value: $scope.completed
 				};
 				var payloadJson = JSON.stringify(payload);
-				var docUser = $window.sessionStorage.docId + '/' + $window.sessionStorage.uId;
+				var docUser = $window.sessionStorage.docId + '/' + $window.sessionStorage.shownUser;
 
 				$http.post("swan/document/" + docUser, payloadJson).success(function (response) {
 					$window.sessionStorage.completed = $scope.completed;

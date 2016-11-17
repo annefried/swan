@@ -17,11 +17,10 @@ and open the template in the editor.
                         <label class="headerinfo">Project: </label>
                         <label class="infotitle">{{d3Anno.projectName}}&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <label class="headerinfo">Document: </label>
-                        <label class="infotitle">{{d3Anno.title}}</label>
-                        <label ng-hide="isUnprivileged == 'false'">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label class="infotitle">{{d3Anno.title}}&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <div style="display: inline-block;"
                              ng-controller="annotationController as annoCon"
-                             ng-hide="isUnprivileged == 'false'" align="right">
+                             ng-hide="isUnprivileged=='false' && completed==undefined" align="right">
                             <input type="checkbox"
                                    value=""
                                    style="margin: 0px;"

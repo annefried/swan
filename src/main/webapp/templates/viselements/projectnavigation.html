@@ -14,22 +14,22 @@ and open the template in the editor.
 
     <label>{{this.currProj.name}}</label>
     <table class="table">
-        <tr ng-repeat="doc in this.currProj.documents">
+        <tr ng-repeat="doc in this.documents">
             <td>
                 <a ng-if="doc.id != currDoc.id"
-                   ng-click="openAnnoTool(doc.id, doc.name, this.currProj.id, this.currProj.name, doc.completed)"
+                   ng-click="openAnnoTool(doc.id, doc.name, this.currProj.id, this.currProj.name, this.currProj.tokenizationLang)"
                    style="cursor: pointer">
                     {{doc.name}}
                 </a>
                 <a ng-if="doc.id == currDoc.id"
                    ng-href
-                   ng-click="openAnnoTool(doc.id, doc.name, this.currProj.id, this.currProj.name, doc.completed)"
+                   ng-click="openAnnoTool(doc.id, doc.name, this.currProj.id, this.currProj.name, this.currProj.tokenizationLang)"
                    style="color: gray; cursor: pointer">
                     {{doc.name}}
                 </a>
             </td>
             <td>
-                <span ng-hide="doc.completed === false || isUnprivileged == 'false'"
+                <span ng-hide="doc.completed === false || doc.completed === undefined"
                       class="glyphicon glyphicon-ok">
                 </span>
             </td>

@@ -147,11 +147,11 @@ angular
              * @param {String} docName name
              * @param {String} projectId the project's id
 			 * @param {String} projectName the project's name
-             * @param {Boolean} completed state of the document
+             * @param {String} tokenizationLang tokenization language of the project
              */
-            $scope.openAnnoTool = function (docId, docName, projectId, projectName, completed, users) {
+            $scope.openAnnoTool = function (docId, docName, projectId, projectName, tokenizationLang, users) {
                 $scope.alertVisible = true;
-                $rootScope.initAnnoTool(docId, docName, projectId, projectName, completed);
+                $rootScope.initAnnoTool(docId, docName, projectId, projectName, tokenizationLang);
                 //Variables in the sessionStorage have to be Strings
                 $window.sessionStorage.users = JSON.stringify(users);
                 $location.path('/annotation');
