@@ -60,6 +60,72 @@ angular
                         $scope.textMarkable(true);
                     });
 				const arity = Math.max(Math.floor(Math.log10(Math.abs($scope.data.length))), 0) + 1; // Number of digits in line numbers
+				const charWidth = {
+					'A': 12,
+					'B': 11,
+					'C': 12,
+					'D': 12,
+					'E': 12,
+					'F': 10,
+					'G': 13,
+					'H': 13,
+					'I': 5,
+					'J': 9,
+					'K': 11,
+					'L': 9,
+					'M': 14,
+					'N': 12,
+					'O': 13,
+					'P': 12,
+					'Q': 13,
+					'R': 13,
+					'S': 11,
+					'T': 10,
+					'U': 12,
+					'V': 11,
+					'W': 16,
+					'X': 11,
+					'Y': 11,
+					'Z': 10,
+					'a': 10,
+					'b': 9,
+					'c': 9,
+					'd': 9,
+					'e': 10,
+					'f': 5,
+					'g': 10,
+					'h': 10,
+					'i': 3,
+					'j': 4,
+					'k': 9,
+					'l': 4,
+					'm': 14,
+					'n': 10,
+					'o': 10,
+					'p': 10,
+					'q': 10,
+					'r': 6,
+					's': 9,
+					't': 5,
+					'u': 9,
+					'v': 9,
+					'w': 13,
+					'x': 9,
+					'y': 9,
+					'z': 9,
+					'!': 4,
+					'.': 5,
+					',': 5,
+					':': 5,
+					';': 5,
+					'(': 6,
+					')': 6,
+					'-': 6,
+					'"': 6,
+					'_': 10,
+					'?': 10,
+					'%': 15
+				};
 
                 var width; // Width (in pixels) of the entire annotation box
 				var height;
@@ -1269,97 +1335,11 @@ angular
 							len += 20; // Assume extreme width for non-latin/-greek/-cyrillic characters (e.g. Chinese)
 							continue;
 						}
-						switch (word[i]) { // Detailed handling of latin characters and common punctuation, since this is the most common case
-							case 'i':
-								len += 3;
-								break;
-							case 'j':
-							case 'l':
-							case '!':
-								len += 4;
-								break;
-							case 'I':
-							case 'f':
-							case 't':
-							case '.':
-							case ',':
-							case ':':
-							case ';':
-								len += 5;
-								break;
-							case 'r':
-							case '(':
-							case ')':
-							case '-':
-							case '"':
-								len += 6;
-								break;
-							case 'J':
-							case 'L':
-							case 'b':
-							case 'c':
-							case 'd':
-							case 'k':
-							case 's':
-							case 'u':
-							case 'v':
-							case 'x':
-							case 'y':
-							case 'z':
-								len += 9;
-								break;
-							case 'F':
-							case 'T':
-							case 'Z':
-							case 'a':
-							case 'e':
-							case 'g':
-							case 'h':
-							case 'n':
-							case 'o':
-							case 'p':
-							case 'q':
-							case '_':
-							case '?':
-								len += 10;
-								break;
-							case 'B':
-							case 'K':
-							case 'S':
-							case 'V':
-							case 'X':
-							case 'Y':
-								len += 11;
-								break;
-							case 'A':
-							case 'C':
-							case 'D':
-							case 'E':
-							case 'N':
-							case 'P':
-							case 'U':
-								len += 12;
-								break;
-							case 'G':
-							case 'H':
-							case 'O':
-							case 'Q':
-							case 'R':
-							case 'w':
-								len += 13;
-								break;
-							case 'M':
-							case 'm':
-								len += 14;
-								break;
-							case '%':
-								len += 15;
-								break;
-							case 'W':
-								len += 16;
-								break;
-							default:
-								len += 9; // Approximation of average latin/greek/cyrillic character width
+
+						if (word[i] in charWidth) { // Detailed handling of latin characters and common punctuation, since this is the most common case
+							len += charWidth[word[i]];
+						} else {
+							len += 9; // Approximation of average latin/greek/cyrillic character width
 						}
 					}
 
