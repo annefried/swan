@@ -992,7 +992,7 @@ angular
 
 						found = true;
 						$scope.openAnnoTool(doc.id, doc.name, $window.sessionStorage.projectId,
-							$window.sessionStorage.projectName, $window.sessionStorage.tokenizationlang);
+							$window.sessionStorage.projectName, $window.sessionStorage.tokenizationLang);
 					}
 				}
 
