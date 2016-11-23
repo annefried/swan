@@ -315,13 +315,13 @@ function AnnotationColor(name, num, shades, back, line) {
     this.name = name;
     this.num = num;
     this.fill = function () {
-        var mod = num % shades.length;
-        if (num !== 0 && mod === 0) {
-            mod = (num + 1) % shades.length; // TODO better solution needed
+        var mod = this.num % shades.length;
+        if (this.num !== 0 && mod === 0) {
+            mod = (this.num + 1) % shades.length; // TODO better solution needed
         }
         return shades[mod];
-    },
-            this.shades = shades;
+    };
+	this.shades = shades;
     this.back = back;
     this.line = (line === undefined) ? back : line;
 }
@@ -336,7 +336,7 @@ function AnnotationLabel(id, tag, options, setID) {
     this.toString = function (maxSize) {
         if (this.tag.length <= maxSize) {
             return this.tag;
-        } 
+        }
 
         return this.tag.substring(0, maxSize - 3) + "...";
     };
@@ -370,31 +370,6 @@ function AnnotationLabel(id, tag, options, setID) {
     };
 }
 
-// Represents a setable span type
-function SpanType(id, tag) {
-    this.id = id;
-    this.tag = tag;
-    this.selectableLabels = {};
-
-    this.addSelectableLabel = function (labelSet) {
-        if (labelSet !== undefined)
-            this.selectableLabels[labelSet.id] = labelSet;
-    };
-}
-
-//Represents label and link label sets
-function LabelSet(id, name, exclusive) {
-    this.id = id;
-    this.name = name;
-    this.exclusive = exclusive;
-    this.labels = [];
-
-    this.addLabel = function (label) {
-        if (label !== undefined)
-            this.labels.push(label);
-    };
-}
-
 //Represents the formatted version of a word in the text
 function formTextWord(word, element, x, y, lX, lY, width, height) {
     this.word = word;
@@ -419,7 +394,7 @@ function formTextWord(word, element, x, y, lX, lY, width, height) {
     };
 }
 
-//Represents the formatted version of an annotation in th text
+//Represents the formatted version of an annotation in the text
 function formAnnotation(annotation, isTarget) {
     this.annotation = annotation;
     this.annotationBoxes = [];

@@ -19,9 +19,8 @@ module.exports = function(config){
         'bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js',
         'bower_components/jsog/lib/JSOG.js',
 
-        'other/annotationStructures.js',
-        'other/xml2json.js',
-        'other/jquery.jscrollpane.min.js',
+        'other/*.js',
+        'entities/*.js',
 
         'components/**/*.js',
         'modules/*.js',

@@ -30,7 +30,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <exclude-output />
@@ -58,11 +58,17 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jasmine-DefinitelyTyped" level="application" />
-    <orderEntry type="library" name="Maven: ma.glasnost.orika:orika-core:1.4.6" level="project" />
-    <orderEntry type="library" name="Maven: org.javassist:javassist:3.19.0-GA" level="project" />
-    <orderEntry type="library" name="Maven: com.thoughtworks.paranamer:paranamer:2.7" level="project" />
-    <orderEntry type="library" name="Maven: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.2_jdk5" level="project" />
-    <orderEntry type="library" name="Maven: com.carrotsearch:java-sizeof:0.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20151123" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:eclipselink:2.6.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa.modelgen.processor:2.6.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.core:2.6.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.asm:2.6.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa:2.6.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.antlr:2.6.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa.jpql:2.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:1.4.191" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:1.9.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:1.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.7.0" level="project" />
@@ -71,19 +77,19 @@
     <orderEntry type="library" name="Maven: asm:asm:3.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jersey:jersey-bundle:1.19" level="project" />
     <orderEntry type="library" name="Maven: javax.ws.rs:jsr311-api:1.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20151123" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jersey:jersey-server:1.19" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jersey:jersey-core:1.19" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:eclipselink:2.6.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:eclipselink:2.6.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:commonj.sdo:2.1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.glassfish:javax.json:1.0.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa.modelgen.processor:2.6.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.core:2.6.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.asm:2.6.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa:2.6.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.antlr:2.6.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa.jpql:2.6.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa.modelgen.processor:2.6.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.core:2.6.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.asm:2.6.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa:2.6.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.antlr:2.6.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa.jpql:2.6.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.persistence:javax.persistence:2.1.1" level="project" />
     <orderEntry type="library" name="Maven: javax.ejb:ejb-api:3.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.glassfish.main.extras:glassfish-embedded-all:4.1" level="project" />
@@ -162,8 +168,8 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.grizzly:grizzly-framework:2.2.16" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.grizzly:grizzly-http-server:2.2.16" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.grizzly:grizzly-rcm:2.2.16" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:1.4.191" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:1.9.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:1.4.192" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:1.10.19" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:2.1" level="project" />
   </component>
 </module>
