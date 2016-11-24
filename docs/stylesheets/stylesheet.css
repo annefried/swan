@@ -490,7 +490,7 @@ header h2 {
 
 #main-content {
   float: left;
-  width: 690px;
+  width: 780px;
 }
 
 #main-content img {
@@ -499,7 +499,7 @@ header h2 {
 
 aside#sidebar {
   float: right;
-  width: 200px;
+  width: 130px;
   min-height: 504px;
   padding-left: 20px;
   font-size: 12px;
@@ -878,4 +878,3 @@ footer a:hover {
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) { }
-
