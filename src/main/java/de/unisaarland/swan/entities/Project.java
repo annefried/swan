@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * The Entity Project represents a set of documents and has a unique name.
- * 
+ *
  * @author Timo Guehring
  */
 @Entity
@@ -181,6 +181,7 @@ public class Project extends BaseEntity {
     private String name;
 
     @NotNull
+	@JsonView({ View.Projects.class, View.ProjectsForUser.class })
     @Enumerated(EnumType.STRING)
     private TokenizationLang tokenizationLang;
 
@@ -220,7 +221,7 @@ public class Project extends BaseEntity {
     @JoinColumn(name="Scheme", nullable = false)
     private Scheme scheme;
 
-    
+
     public String getName() {
         return name;
     }
@@ -244,11 +245,11 @@ public class Project extends BaseEntity {
     public void setDocuments(Set<Document> documents) {
         this.documents = documents;
     }
-    
+
     public void addDocuments(Document document) {
         this.documents.add(document);
     }
-    
+
     public void removeDocuments(Document document) {
         this.documents.remove(document);
     }
@@ -260,7 +261,7 @@ public class Project extends BaseEntity {
     public void setUsers(Set<Users> users) {
         this.users = users;
     }
-    
+
     public void addUsers(Users users) {
         this.users.add(users);
     }
@@ -276,11 +277,11 @@ public class Project extends BaseEntity {
     public void setProjectManager(Set<Users> projectManager) {
         this.projectManager = projectManager;
     }
-    
+
     public void addProjectManager(Users users) {
         this.projectManager.add(users);
     }
-    
+
     public void removeProjectManager(Users users) {
         this.projectManager.remove(users);
     }
@@ -292,11 +293,11 @@ public class Project extends BaseEntity {
     public void setWatchingUsers(Set<Users> watchingUsers) {
         this.watchingUsers = watchingUsers;
     }
-    
+
     public void addWatchingUsers(Users user) {
         this.watchingUsers.add(user);
     }
-    
+
     public void removeWatchingUser(Users user) {
         this.watchingUsers.remove(user);
     }
@@ -308,5 +309,5 @@ public class Project extends BaseEntity {
     public void setScheme(Scheme scheme) {
         this.scheme = scheme;
     }
-    
+
 }

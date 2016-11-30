@@ -142,7 +142,7 @@ angular
                 const template = {
                     'id': proj.id,
                     'name': proj.name,
-                    'tokenizationLang': proj.lang,
+                    'tokenizationLang': proj.tokenizationLang,
                     'users': proj.users,
                     'completed': projComplAdmin,
                     'scheme': proj.scheme,
@@ -171,6 +171,7 @@ angular
                 const template = {
                     'id': proj.id,
                     'name': proj.name,
+					'tokenizationLang': proj.tokenizationLang,
                     'users': proj.users,
                     'completed': projComplUser,
                     'scheme': proj.scheme,
@@ -298,7 +299,7 @@ angular
         };
 
 		$rootScope.buildDocumentsByAnnotator = function (proj, userId) {
-			
+
 			var documents = [];
 
 			for (var j = 0; j < proj.documents.length; j++) {
@@ -326,7 +327,7 @@ angular
 
 			// Sort the documents alphabetically
 			documents.sort($rootScope.compareDocumentsByName);
-			
+
 			return documents;
 		};
 
