@@ -28,9 +28,9 @@ and open the template in the editor.
             <div class="container">
                 <form method="post" class="form-signin" ng-controller="LoginController as loginCtr">
                     <script type="text/javascript">
-                        wrong = true;
+                        invalidLogin = false;
                     </script>
-                    <div class="alert alert-danger" ng-hide="!wrong">
+                    <div class="alert alert-danger" ng-show="invalidLogin">
                         <strong>Oh snap!</strong> Email or password was wrong.
                     </div>
                     <h2 class="form-signin-heading">{{projectName}} Login</h2>
