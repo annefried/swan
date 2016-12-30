@@ -1,1 +1,1 @@
-{"version":3,"file":"Label.js","sourceRoot":"","sources":["Label.ts"],"names":[],"mappings":"AAAA;;;;GAIG;AACH,YAAY,CAAC;AAEb;IAII,eAAY,EAAU,EAAE,IAAY;QAChC,IAAI,CAAC,EAAE,GAAG,EAAE,CAAC;QACb,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;IACrB,CAAC;IAEL,YAAC;AAAD,CAAC,AATD,IASC"}
+{"version":3,"file":"Label.js","sourceRoot":"","sources":["Label.ts"],"names":[],"mappings":"AAAA;;;GAGG;AACH,YAAY,CAAC;AAEb;IAII,eAAY,EAAU,EAAE,IAAY;QAChC,IAAI,CAAC,EAAE,GAAG,EAAE,CAAC;QACb,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;IACrB,CAAC;IAEL,YAAC;AAAD,CAAC,AATD,IASC"}

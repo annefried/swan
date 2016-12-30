@@ -1,1 +1,1 @@
-{"version":3,"file":"VisElement.js","sourceRoot":"","sources":["VisElement.ts"],"names":[],"mappings":"AAAA;;;;GAIG;AACH,YAAY,CAAC;AAEb;IAII,oBAAY,QAAQ,EAAE,OAAO;QACzB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;QACzB,IAAI,CAAC,OAAO,GAAG,OAAO,CAAC;IAC3B,CAAC;IAEL,iBAAC;AAAD,CAAC,AATD,IASC"}
+{"version":3,"file":"VisElement.js","sourceRoot":"","sources":["VisElement.ts"],"names":[],"mappings":"AAAA;;;GAGG;AACH,YAAY,CAAC;AAEb;IAII,oBAAY,QAAQ,EAAE,OAAO;QACzB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;QACzB,IAAI,CAAC,OAAO,GAAG,OAAO,CAAC;IAC3B,CAAC;IAEL,iBAAC;AAAD,CAAC,AATD,IASC"}

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
+Licensed under the GPLv2 License. See LICENSE in the project root for license information.
+-->
 <!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
 <resources>
     <!-- Unfortunately creating the mail resource with glassfish-resources.xml does not work -->

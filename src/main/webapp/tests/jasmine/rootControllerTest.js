@@ -1,11 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- *
- * Created by Timo Guehring on 06.11.16.
+ * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
+ * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
 'use strict';
+/**
+ * Created by Timo Guehring on 06.11.16.
+ */
 describe('Test rootController', function () {
     beforeEach(angular.mock.module('app'));
     var $controller;

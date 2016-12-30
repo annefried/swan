@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
+ * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
 package de.unisaarland.swan.test;
 

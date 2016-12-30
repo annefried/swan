@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
+Licensed under the GPLv2 License. See LICENSE in the project root for license information.
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.unisaarland</groupId>
@@ -7,6 +11,13 @@
     <packaging>war</packaging>
     <name>swan</name>
     <url>https://github.com/annefried/swan</url>
+    
+    <licenses>
+        <license>
+            <name>GNU General Public License, Version 2</name>
+            <url>https://www.gnu.org/licenses/gpl-2.0.txt</url>
+        </license>
+    </licenses>
 
     <issueManagement>
         <url>https://github.com/annefried/swan/issues</url>
