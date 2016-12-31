@@ -39,9 +39,9 @@ import javax.persistence.*;
                 "LEFT JOIN FETCH s.creator " +
                 "LEFT JOIN FETCH s.visElements " +
                 "LEFT JOIN FETCH s.colorScheme " +
-                "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.labelSets " +
                 "LEFT JOIN FETCH s.linkTypes " +
+		 "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.projects " +
                 "WHERE s.id = :" + Scheme.PARAM_ID,
         hints = {
@@ -62,9 +62,9 @@ import javax.persistence.*;
                 "LEFT JOIN FETCH s.creator " +
                 "LEFT JOIN FETCH s.visElements " +
                 "LEFT JOIN FETCH s.colorScheme " +
-                "LEFT JOIN FETCH s.spanTypes " +
                 "LEFT JOIN FETCH s.labelSets " +
                 "LEFT JOIN FETCH s.linkTypes " +
+		 "LEFT JOIN FETCH s.spanTypes " +
                 "WHERE EXISTS( " +
                     "SELECT d " +
                     "FROM Document d " +
@@ -83,10 +83,10 @@ import javax.persistence.*;
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.colorScheme.linkLabelColors"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.colorScheme.labelSetColors"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.colorScheme.linkTypeColors"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels.options"),
             @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.appliesToSpanTypes"),
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.labels")
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.labelSets.labels"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels"),
+            @QueryHint(name = QueryHints.LEFT_FETCH, value = "s.linkTypes.linkLabels.options")
         }
     ),
     @NamedQuery(

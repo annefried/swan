@@ -21,11 +21,18 @@ import java.util.Map;
 @Stateless
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class SpanTypeDAO extends BaseEntityDAO<SpanType> {
-    
+
     public SpanTypeDAO() {
         super(SpanType.class);
     }
 
+	/**
+	 * Returns the SpanType by scheme and SpanType for checking targets/ default annotations.
+	 *
+	 * @param project
+	 * @param spanType
+	 * @return
+	 */
     public SpanType getSpanTypeBySchemeAndSpanTypeId(final Project project, final SpanType spanType) {
         Map<String, Object> params = new HashMap<>();
         params.put(SpanType.PARAM_PROJECT, project);

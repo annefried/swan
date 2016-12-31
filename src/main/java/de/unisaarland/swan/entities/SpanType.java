@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
+import de.unisaarland.swan.rest.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,8 @@ public class SpanType extends ColorableBaseEntity {
      */
     public static final String PARAM_PROJECT = "project";
 
-    @JsonView({ })
+//	@JsonView({ })
+	@JsonView({ View.SchemeByDocId.class, View.SchemeById.class }) // TODO Not sure, has to be tested
     @JsonIgnore
     @ManyToMany(mappedBy = "appliesToSpanTypes",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
