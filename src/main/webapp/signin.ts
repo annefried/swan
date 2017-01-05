@@ -27,6 +27,7 @@ module app.Controllers {
         }
 
         public login(credentials): void {
+            var loginCtrl = this;
             this.http({
                 method: 'POST',
                 url: 'swan/usermanagment/login',
@@ -43,7 +44,7 @@ module app.Controllers {
 
                 window.location = "/swan/#/dashboard";
             }).error(function (response) {
-                this.scope.wrong = 'false';
+                loginCtrl.scope.invalidLogin = true;
             });
 
         };

@@ -20,6 +20,7 @@ var app;
                 };
             }
             LoginController.prototype.login = function (credentials) {
+                var loginCtrl = this;
                 this.http({
                     method: 'POST',
                     url: 'swan/usermanagment/login',
@@ -35,7 +36,7 @@ var app;
                     window.sessionStorage.h = 'false';
                     window.location = "/swan/#/dashboard";
                 }).error(function (response) {
-                    this.scope.wrong = 'false';
+                    loginCtrl.scope.invalidLogin = true;
                 });
             };
             ;
