@@ -451,7 +451,7 @@ header {
   padding-top: 40px;
   padding-bottom: 40px;
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
-  background: #2e7bcf url(../images/header-bg.jpg) 0 0 repeat-x;
+  background: #202020 url(../images/header-bg.jpg) 0 0 repeat-x;
   border-bottom: solid 1px #275da1;
 }
 
@@ -533,7 +533,7 @@ a.button small {
 header a.button {
   position: absolute;
   top: 0;
-  right: 0;
+  right: -71px;
   background: transparent url(../images/github-button.png) 0 0 no-repeat;
 }
 aside a.button {
@@ -623,9 +623,9 @@ form {
 }
 
 #main-content h1:before {
-  padding-right: 0.3em;
+  padding-right: 0.18em;
   margin-left: -0.9em;
-  color: #9ddcff;
+  color: #aaaaaa;
   content: "/";
 }
 
@@ -638,10 +638,10 @@ form {
   text-indent: 4px;
 }
 #main-content h2:before {
-  padding-right: 0.3em;
+  padding-right: 0.4em;
   margin-left: -1.5em;
   content: "//";
-  color: #9ddcff;
+  color: #aaaaaa;
 }
 
 #main-content h3 {
@@ -655,10 +655,10 @@ form {
 }
 
 #main-content h3:before {
-  padding-right: 0.3em;
+  padding-right: 0.9em;
   margin-left: -2em;
   content: "///";
-  color: #9ddcff;
+  color: #aaaaaa;
 }
 
 #main-content h4 {
@@ -674,7 +674,7 @@ h4:before {
   padding-right: 0.3em;
   margin-left: -2.8em;
   content: "////";
-  color: #9ddcff;
+  color: #aaaaaa;
 }
 
 #main-content h5 {
@@ -688,7 +688,7 @@ h5:before {
   padding-right: 0.3em;
   margin-left: -3.2em;
   content: "/////";
-  color: #9ddcff;
+  color: #aaaaaa;
 }
 
 #main-content h6 {
@@ -702,7 +702,7 @@ h6:before {
   padding-right: 0.3em;
   margin-left: -3.7em;
   content: "//////";
-  color: #9ddcff;
+  color: #aaaaaa;
 }
 
 p {

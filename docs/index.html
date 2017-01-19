@@ -11,6 +11,17 @@ Licensed under the GPLv2 License. See LICENSE in the project root for license in
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/slick-theme.css"/>
+	  
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <style>
+      .slick-prev::before, .slick-next::before
+      {
+          color: black;
+      }
+    </style>
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -23,8 +34,8 @@ Licensed under the GPLv2 License. See LICENSE in the project root for license in
     <header>
       <div class="inner">
         <!--<h1>SWAN</h1>-->
-        <img src="images/swan.png" style="max-width: 280px;" />
-        <h2>Saar Web-based ANotation system</h2>
+        <img src="images/swan.png" style="max-width: 280px;" alt="SWAN" />
+        <h2 style="color: #aaaaaa;"><span style="color: white;">S</span>aar <span style="color: white;">W</span>eb-based <span style="color: white;">AN</span>otation system</h2>
         <a href="https://github.com/annefried/swan/" class="button"><small>View project on</small> GitHub</a>
       </div>
     </header>
@@ -50,13 +61,51 @@ Its key features are:</p>
 <p>If you want to learn more, read <a href="https://www.linguistics.rub.de/konvens16/pub/14_konvensproc.pdf">our paper</a>
   and check out the <a href="https://github.com/annefried/swan/wiki">GitHub Wiki</a> for more information on functionality and setup!</p>
 
+
 <h2>
   <a id="screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
   Screenshots
 </h2>
 
-<p><img src="https://raw.githubusercontent.com/wiki/annefried/swan/images/swan_example.png" alt="A SWAN screenshot"></p>        
-          
+<h3>Admin view</h3>
+
+<div class="slider single-item" style="width:700px; height:350px; margin-left: auto; margin-right: auto;">
+					<div><img src="images/signin.png" style="max-width: 700px;" /></div>
+					<div><img src="images/dashboard.png" style="max-width: 700px;" /></div>
+					<div><img src="images/projects.png" style="max-width: 700px;" /></div>
+					<div><img src="images/annoschemes.png" style="max-width: 700px;" /></div>
+					<div><img src="images/users.png" style="max-width: 700px;" /></div>
+                    <div><img src="images/annoview_admin_1.png" style="max-width: 700px;" /></div>
+                    <div><img src="images/annoview_admin_2.png" style="max-width: 700px;" /></div>
+				</div>
+   
+<h3>Annotator view</h3>
+
+<div class="slider single-item" style="width:700px; height:350px; margin-left: auto; margin-right: auto;">
+					<div><img src="images/annoview1.png" style="max-width: 700px;" /></div>
+					<div><img src="images/annoview2.png" style="max-width: 700px;" /></div>
+					<div><img src="images/annoview3.png" style="max-width: 700px;" /></div>
+					<div><img src="images/projects_user.png" style="max-width: 700px;" /></div>
+					<div><img src="images/timelogging.png" style="max-width: 700px;" /></div>
+				</div>
+   
+<script type="text/javascript" src="scripts/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="scripts/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="scripts/slick.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.single-item').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      });
+    });
+
+  </script>
+    
 <h2>
   <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
   Demo
@@ -64,8 +113,18 @@ Its key features are:</p>
 
 <p>
 If you want to try out (a slightly older version of) SWAN yourself, check out our <a href="http://swan.coli.uni-saarland.de:8080/SwanDemo/">Web Demo</a>!  
-</p>          
-          
+</p> 
+   
+<h2>
+Roadmap
+</h2>
+<ul>
+    <li>Add support for crowdsourcing services like Amazon Mechanical Turk</li>
+    <li>Add support for cross-document annotation (links between multiple documents)</li>
+    <li>General performance and editor improvements</li>
+    <li>For ongoing development and suggestions, see our <a href="https://github.com/annefried/swan/issues/">issues page</a></li>
+</ul>
+
 <h2>
   <a id="contact" class="anchor" href="#contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
   Contact
