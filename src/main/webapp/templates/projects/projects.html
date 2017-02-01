@@ -4,7 +4,7 @@ Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights re
 Licensed under the GPLv2 License. See LICENSE in the project root for license information.
 -->
 <link href="css/explorer.css" rel="stylesheet">
-  <div id="blackout" ng-hide="alertVisible === undefined"></div>
+<div id="blackout" ng-hide="alertVisible === undefined"></div>
 <div class="alert alert-danger waitAlert" ng-hide="alertVisible === undefined">
     <p><b>Loading...</b></p>
     <p>This may take a while!</p>
@@ -12,213 +12,263 @@ Licensed under the GPLv2 License. See LICENSE in the project root for license in
 <div class="container-fluid">
     <script type="text/ng-template" id="alert.html">
         <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
-        <div ng-transclude></div>
+            <div ng-transclude></div>
         </div>
     </script>
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
-            <h2 class="sub-header" id="1-projects-header" style="display: inline-block">Projects</h2>
+            <h2 class="sub-header" id="1-projects-header" style="display: inline-block">
+                Projects
+
+                <!-- Search bar -->
+                <div class="input-group" id="adv-search" style="padding-top: 10px">
+                    <input type="text" class="form-control" placeholder="Search for projects and documents (at least 3 characters long)"
+                           ng-model="searchKeyword" pattern=".{3,}"  ng-keyup="$event.keyCode == 13 && search(searchKeyword)" />
+                    <div class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            <!-- Later on more options
+                            <div class="dropdown dropdown-lg">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <label for="filter">Filter by</label>
+                                            <select class="form-control">
+                                                <option value="0" selected>All Snippets</option>
+                                                <option value="1">Featured</option>
+                                                <option value="2">Most popular</option>
+                                                <option value="3">Top rated</option>
+                                                <option value="4">Most commented</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Author</label>
+                                            <input class="form-control" type="text" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Contains the word in the project name or document name</label>
+                                            <input class="form-control" type="text" placeholder="Search for projects and documents (at least 3 characters long)" ng-model="searchKeyword" pattern=".{3,}"/>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" ng-click="search(searchKeyword)">
+                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            -->
+                            <button type="submit" class="btn btn-primary" ng-click="search('')" ng-hide="activeSearch === false">
+                                <span class="glyphicon glyphicon-remove" style="color:white"></span>
+                            </button>
+                            <button type="submit" class="btn btn-primary" ng-click="search(searchKeyword)">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </h2>
             <uib-alert ng-repeat="alert in alerts"
                        type="{{alert.type}}"
                        close="closeAlert($index)"
                        dismiss-on-timeout="5000">
                 {{alert.msg}}
             </uib-alert>
+
             <div class="table-responsive">
                 <table class="table">
 
                     <!-- Projects thead -->
                     <thead>
-                        <tr class="headDark">
-                            <th class="col-md-1 vert-align" id="pe_expand_documents"></th>
-                            <th class="col-md-2 vert-align">Name</th>
-                            <th class="col-md-2 vert-align">Progress</th>
-                            <th class="col-md-2 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'">Annotators</span>
-                            </th>
-                            <th class="col-md-2 vert-align">Project manager</th>
-                            <th class="col-md-2 vert-align">
-                                <span ng-hide="isUnprivileged === 'false'">Last edited document</span>
-                            </th>
-                            <th class="col-md-1 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'">Scheme</span>
-                            </th>
-                            <th class="col-md-1 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'" id="pe_edit_project">Edit</span>
-                            </th>
-                            <th class="col-md-1 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'">Delete</span>
-                            </th>
-                            <th class="col-md-2 vert-align">
-                                <span ng-hide="isUnprivileged === 'true'" id="pe_export">Export</span>
-                            </th>
-                        </tr>
+                    <tr class="headDark">
+                        <th class="col-md-1 vert-align" id="pe_expand_documents"></th>
+                        <th class="col-md-2 vert-align">Name</th>
+                        <th class="col-md-2 vert-align">Progress</th>
+                        <th class="col-md-2 vert-align">
+                            <span ng-hide="isUnprivileged === 'true'">Annotators</span>
+                        </th>
+                        <th class="col-md-2 vert-align">Project manager</th>
+                        <th class="col-md-2 vert-align">
+                            <span ng-hide="isUnprivileged === 'false'">Last edited document</span>
+                        </th>
+                        <th class="col-md-1 vert-align">
+                            <span ng-hide="isUnprivileged === 'true'">Scheme</span>
+                        </th>
+                        <th class="col-md-1 vert-align">
+                            <span ng-hide="isUnprivileged === 'true'" id="pe_edit_project">Edit</span>
+                        </th>
+                        <th class="col-md-1 vert-align">
+                            <span ng-hide="isUnprivileged === 'true'">Delete</span>
+                        </th>
+                        <th class="col-md-2 vert-align">
+                            <span ng-hide="isUnprivileged === 'true'" id="pe_export">Export</span>
+                        </th>
+                    </tr>
                     </thead>
 
                     <tbody ng-hide="loaded">
-                        <tr>
-                            <td>
-                                <span class="glyphicon glyphicon-refresh spinning "></span>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <span class="glyphicon glyphicon-refresh spinning "></span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                     </tbody>
 
                     <tbody ng-repeat="x in this.tableProjects">
-                        <tr>
-                            <td class="col-md-1 vert-align" >
-                                <a>
+                    <tr>
+                        <td class="col-md-1 vert-align" >
+                            <a>
                                     <span  class="glyphicon "  ng-class="{ 'glyphicon-plus': !toggeled[x.id] ,'glyphicon-minus': toggeled[x.id]}"
                                            ng-click="projectToggeled(x.id)">
                                     </span>
-                                </a>
-                            </td>
-                            <td class="col-md-2 vert-align" id="project-name">
-                                {{x.name}}
-                                <a ng-show="x.isWatching && this.role == 'projectmanager'">
-                                    <span class="glyphicon glyphicon-send" title="Receive weekly E-Mail notification"></span>
-                                </a>
-                                <a ng-show="!x.isWatching && this.role == 'projectmanager'">
-                                    <span class="glyphicon glyphicon-send" style="color:gray" title="Receive weekly E-Mail notification"></span>
-                                </a>
-                            </td>
-                            <td class="col-md-2 vert-align">
-                                <!-- progress bar visible for ADMIN & PM -->
-                                <div ng-hide="isUnprivileged === 'true'"
-                                     ng-repeat="cur in x.users" class="userprogress progress">
-                                    <div class="progress-bar
+                            </a>
+                        </td>
+                        <td class="col-md-2 vert-align" id="project-name">
+                            {{x.name}}
+                            <a ng-show="x.isWatching && this.role == 'projectmanager'">
+                                <span class="glyphicon glyphicon-send" title="Receive weekly E-Mail notification"></span>
+                            </a>
+                            <a ng-show="!x.isWatching && this.role == 'projectmanager'">
+                                <span class="glyphicon glyphicon-send" style="color:gray" title="Receive weekly E-Mail notification"></span>
+                            </a>
+                        </td>
+                        <td class="col-md-2 vert-align">
+                            <!-- progress bar visible for ADMIN & PM -->
+                            <div ng-hide="isUnprivileged === 'true'"
+                                 ng-repeat="cur in x.users" class="userprogress progress">
+                                <div class="progress-bar
                                          progress-bar-success"
-                                         role="progressbar"
-                                         aria-valuenow="{{x.completed}}"
-                                         aria-valuemin="0"
-                                         aria-valuemax="{{x.numberOfDocuments}}"
-                                         style="width: {{100 * x.completed[$index] / x.numberOfDocuments}}%;">
-                                        <span>{{x.completed[$index]}}/{{x.numberOfDocuments}}</span>
-                                    </div>
+                                     role="progressbar"
+                                     aria-valuenow="{{x.completed}}"
+                                     aria-valuemin="0"
+                                     aria-valuemax="{{x.numberOfDocuments}}"
+                                     style="width: {{100 * x.completed[$index] / x.numberOfDocuments}}%;">
+                                    <span>{{x.completed[$index]}}/{{x.numberOfDocuments}}</span>
                                 </div>
-                                <!-- progress bar visible for ANNOTATOR -->
-                                <div ng-hide="isUnprivileged === 'false'" class="userprogress progress">
-                                    <div class="progress-bar
+                            </div>
+                            <!-- progress bar visible for ANNOTATOR -->
+                            <div ng-hide="isUnprivileged === 'false'" class="userprogress progress">
+                                <div class="progress-bar
                                          progress-bar-success"
-                                         role="progressbar"
-                                         aria-valuenow="{{x.completed}}"
-                                         aria-valuemin="0"
-                                         aria-valuemax="{{x.numberOfDocuments}}"
-                                         style="width: {{100 * x.completed / x.numberOfDocuments}}%;">
-                                        <span>{{x.completed}}/{{x.numberOfDocuments}}</span>
-                                    </div>
+                                     role="progressbar"
+                                     aria-valuenow="{{x.completed}}"
+                                     aria-valuemin="0"
+                                     aria-valuemax="{{x.numberOfDocuments}}"
+                                     style="width: {{100 * x.completed / x.numberOfDocuments}}%;">
+                                    <span>{{x.completed}}/{{x.numberOfDocuments}}</span>
                                 </div>
-                            </td>
-                            <td class="col-md-2 vert-align">
-                                <p ng-hide="isUnprivileged === 'true'"
-                                   class="userprogress"
-                                   ng-repeat="cur in x.users">
-                                        {{cur.email}}
-                                </p>
-                            </td>
-                            <td class="col-md-2 vert-align">
-                                <p ng-repeat="cur in x.pms">
-                                       {{cur.email}}
-                                </p>
-                            </td>
-                            <td class="col-md-2 vert-align">
-                                <a style="cursor: pointer"
-                                   ng-href
-                                   ng-hide="x.documents.length == 0 || isUnprivileged === 'false'"
-                                   ng-click="openAnnoTool(x.lastEditedDocument.id, x.lastEditedDocument.name, x.id, x.name, x.tokenizationLang, x.users)">
-                                        {{x.lastEditedDocument.name}}
-                                </a>
-                            </td>
-                            <td class="col-md-1 vert-align">
-                                <a ng-hide="isUnprivileged === 'true'"
-                                   class="glyphicon glyphicon-file"
-                                   id="project-scheme-view"
-                                   ng-click="openProjectSchemeModal(x.id)">
-                                </a>
-                            </td>
-                            <td class="col-md-1 vert-align">
-                                <a>
+                            </div>
+                        </td>
+                        <td class="col-md-2 vert-align">
+                            <p ng-hide="isUnprivileged === 'true'"
+                               class="userprogress"
+                               ng-repeat="cur in x.users">
+                                {{cur.email}}
+                            </p>
+                        </td>
+                        <td class="col-md-2 vert-align">
+                            <p ng-repeat="cur in x.pms">
+                                {{cur.email}}
+                            </p>
+                        </td>
+                        <td class="col-md-2 vert-align">
+                            <a style="cursor: pointer"
+                               ng-href
+                               ng-hide="x.documents.length == 0 || isUnprivileged === 'false'"
+                               ng-click="openAnnoTool(x.lastEditedDocument.id, x.lastEditedDocument.name, x.id, x.name, x.tokenizationLang, x.users)">
+                                {{x.lastEditedDocument.name}}
+                            </a>
+                        </td>
+                        <td class="col-md-1 vert-align">
+                            <a ng-hide="isUnprivileged === 'true'"
+                               class="glyphicon glyphicon-file"
+                               id="project-scheme-view"
+                               ng-click="openProjectSchemeModal(x.id)">
+                            </a>
+                        </td>
+                        <td class="col-md-1 vert-align">
+                            <a>
                                     <span class="glyphicon glyphicon-list"
-                                        id="project-edit"
-                                        ng-hide="isUnprivileged === 'true'"
-                                        ng-click="editProject(x.id, x.name)">
+                                          id="project-edit"
+                                          ng-hide="isUnprivileged === 'true'"
+                                          ng-click="editProject(x.id, x.name)">
                                     </span>
-                                </a>
-                            </td>
-                            <td class="col-md-1 vert-align">
+                            </a>
+                        </td>
+                        <td class="col-md-1 vert-align">
                                 <span class="glyphicon glyphicon-remove"
-                                        ng-hide="isUnprivileged === 'true'"
-                                        style="color:red"
-                                        ng-click="openProjectDeleteModal(x)">
+                                      ng-hide="isUnprivileged === 'true'"
+                                      style="color:red"
+                                      ng-click="openProjectDeleteModal(x)">
                                 </span>
-                            </td>
-                            <td class="col-md-2 vert-align" id="project-export">
-                                <a class="glyphicon glyphicon-share"
-                                   ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
-                                   ng-href="{{ exportProject(x.id) }}"
-                                   ng-hide="isUnprivileged === 'true'">(XML)
-                                </a>
-                                <br/>
-                                 <a class="glyphicon glyphicon-share"
-                                   ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
-                                   ng-href="{{ exportProjectXmi(x.id) }}"
-                                   ng-hide="isUnprivileged === 'true'">(XMI)
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="collapse relateTo{{x.id}} headLight topBorder" ng-class="{'in': toggeled[x.id]}">
-                            <td class="col-md-1 vert-align"><b>Documents</b></td>
-                            <td class="col-md-2 vert-align"><b>Filename</b></td>
-                            <td class="col-md-2 vert-align"><b>Completed</b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                            <td class="col-md-1 vert-align"></td>
-                            <td class="col-md-1 vert-align">
-                                <!-- Show 'View' for admin/ project manager and 'Edit' for user -->
-                                <b ng-hide="isUnprivileged === 'true'">View</b>
-                                <b ng-hide="isUnprivileged === 'false'">Edit</b>
-                            </td>
-                            <td class="col-md-1 vert-align"><b ng-hide="isUnprivileged === 'true'">Delete</b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                        </tr>
-                        <tr class="collapse  relateTo{{x.id}}"
-                            ng-class="{'in': toggeled[x.id]}"
-                            ng-repeat="doc in x.documents">
-                            <td class="col-md-1 vert-align"></td>
-                            <td class="col-md-2 vert-align">{{doc.name}}</td>
-                            <td class="col-md-2 vert-align">
-                                <!-- Show check mark if the user role is user and the document is completed
-                                     and show nothing if the document is not completed and show the
-                                     progress bar if the user is admin/ project manager -->
+                        </td>
+                        <td class="col-md-2 vert-align" id="project-export">
+                            <a class="glyphicon glyphicon-share"
+                               ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
+                               ng-href="{{ exportProject(x.id) }}"
+                               ng-hide="isUnprivileged === 'true'">(XML)
+                            </a>
+                            <br/>
+                            <a class="glyphicon glyphicon-share"
+                               ng-class="(isExportPossible(x.id)=='true') ? 'enabled' : 'disabled'"
+                               ng-href="{{ exportProjectXmi(x.id) }}"
+                               ng-hide="isUnprivileged === 'true'">(XMI)
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="collapse relateTo{{x.id}} headLight topBorder" ng-class="{'in': toggeled[x.id]}">
+                        <td class="col-md-1 vert-align"><b>Documents</b></td>
+                        <td class="col-md-2 vert-align"><b>Filename</b></td>
+                        <td class="col-md-2 vert-align"><b>Completed</b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                        <td class="col-md-1 vert-align"></td>
+                        <td class="col-md-1 vert-align">
+                            <!-- Show 'View' for admin/ project manager and 'Edit' for user -->
+                            <b ng-hide="isUnprivileged === 'true'">View</b>
+                            <b ng-hide="isUnprivileged === 'false'">Edit</b>
+                        </td>
+                        <td class="col-md-1 vert-align"><b ng-hide="isUnprivileged === 'true'">Delete</b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                    </tr>
+                    <tr class="collapse  relateTo{{x.id}}"
+                        ng-class="{'in': toggeled[x.id]}"
+                        ng-repeat="doc in x.documents">
+                        <td class="col-md-1 vert-align"></td>
+                        <td class="col-md-2 vert-align">{{doc.name}}</td>
+                        <td class="col-md-2 vert-align">
+                            <!-- Show check mark if the user role is user and the document is completed
+                                 and show nothing if the document is not completed and show the
+                                 progress bar if the user is admin/ project manager -->
                                 <span class="glyphicon glyphicon-ok"
                                       ng-if="isUnprivileged === 'true' && doc.completed === true"></span>
-                                <div ng-hide="isUnprivileged === 'true'" class="userprogress progress">
-                                    <!-- TODO: adjust progress bar -->
-                                    <div class="progress-bar progress-bar-success"
-                                         role="progressbar"
-                                         aria-valuenow="{{doc.completed}}"
-                                         aria-valuemin="0"us
-                                         aria-valuemax="x.users.length"
-                                         style="width: {{100 * doc.completed / x.users.length}}%;">
-                                        <span>{{doc.completed}}/{{x.users.length}}</span>
-                                    </div>
+                            <div ng-hide="isUnprivileged === 'true'" class="userprogress progress">
+                                <!-- TODO: adjust progress bar -->
+                                <div class="progress-bar progress-bar-success"
+                                     role="progressbar"
+                                     aria-valuenow="{{doc.completed}}"
+                                     aria-valuemin="0"us
+                                     aria-valuemax="x.users.length"
+                                     style="width: {{100 * doc.completed / x.users.length}}%;">
+                                    <span>{{doc.completed}}/{{x.users.length}}</span>
                                 </div>
-                            </td>
-                            <td class="col-md-2 vert-align"></td>
-                            <td class="col-md-2 vert-align"></td>
-                            <td class="col-md-2 vert-align"></td>
-                            <td class="col-md-1 vert-align"></td>
-                            <td class="col-md-1 vert-align">
-                                <a>
-                                    <!-- Show open eye for admin/ project manager and pencil for user -->
+                            </div>
+                        </td>
+                        <td class="col-md-2 vert-align"></td>
+                        <td class="col-md-2 vert-align"></td>
+                        <td class="col-md-2 vert-align"></td>
+                        <td class="col-md-1 vert-align"></td>
+                        <td class="col-md-1 vert-align">
+                            <a>
+                                <!-- Show open eye for admin/ project manager and pencil for user -->
                                     <span class="glyphicon glyphicon-eye-open"
                                           ng-hide="isUnprivileged === 'true'"
                                           ng-click="openAnnoTool(doc.id, doc.name, x.id, x.name, x.tokenizationLang, x.users)">
@@ -227,68 +277,69 @@ Licensed under the GPLv2 License. See LICENSE in the project root for license in
                                           ng-hide="isUnprivileged === 'false'"
                                           ng-click="openAnnoTool(doc.id, doc.name, x.id, x.name, x.tokenizationLang, x.users)">
                                     </span>
-                                </a>
-                            </td>
-                            <td class="col-md-1 vert-align">
-                                <a>
+                            </a>
+                        </td>
+                        <td class="col-md-1 vert-align">
+                            <a>
                                     <span class="glyphicon glyphicon-remove"
                                           style="color:red"
                                           ng-hide="isUnprivileged === 'true'"
                                           ng-click="openDocumentDeleteModal(doc, x)">
                                     </span>
-                                </a>
-                            </td>
-                            <td class="col-md-2 vert-align"></td>
-                        </tr>
-                        <tr class="headLight collapse relateTo{{x.id}} bottomBorder"
-                            ng-hide="isUnprivileged === 'true'"
-                            ng-class="{'in': toggeled[x.id]}" >
-                            <td class="col-md-1 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align"></td>
-                            <td class="col-md-2 vert-align"></td>
-                            <td class="col-md-2 vert-align"></td>
-                            <td class="col-md-1 vert-align"></td>
-                            <td class="col-md-1 vert-align"></td>
-                            <td class="col-md-1 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align">
-                                <button class="btn btn-primary tableButton"
-                                        id ="pe_addDocumentsButton"
-                                        ng-click="openDocumentAddModal(x.id)"
-                                        ng-hide="isUnprivileged === 'true'">
-                                    + Document
-                                </button>
-                            </td>
-                        </tr>
+                            </a>
+                        </td>
+                        <td class="col-md-2 vert-align"></td>
+                    </tr>
+                    <tr class="headLight collapse relateTo{{x.id}} bottomBorder"
+                        ng-hide="isUnprivileged === 'true'"
+                        ng-class="{'in': toggeled[x.id]}" >
+                        <td class="col-md-1 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align"></td>
+                        <td class="col-md-2 vert-align"></td>
+                        <td class="col-md-2 vert-align"></td>
+                        <td class="col-md-1 vert-align"></td>
+                        <td class="col-md-1 vert-align"></td>
+                        <td class="col-md-1 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align">
+                            <button class="btn btn-primary tableButton"
+                                    id ="pe_addDocumentsButton"
+                                    ng-click="openDocumentAddModal(x.id)"
+                                    ng-hide="isUnprivileged === 'true'">
+                                + Document
+                            </button>
+                        </td>
+                    </tr>
                     </tbody>
 
                     <tbody>
-                        <tr class="headLight" ng-hide="isUnprivileged === 'true'">
-                            <td class="col-md-1 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align"><b></b></td>
-                            <td class="col-md-1 vert-align"></td>
-                            <td class="col-md-1 vert-align"><b></b></td>
-                            <td class="col-md-1 vert-align"><b></b></td>
-                            <td class="col-md-2 vert-align" id="projects-add-button">
-                                <button class="btn btn-primary tableButton"
-                                        id="pe_addProject_button"
-                                        type="button"
-                                        ng-hide="isUnprivileged === 'true'"
-                                        ng-click="openProjectAddModal()">
-                                    + Project
-                                </button>
-                            </td>
-                        </tr>
+                    <tr class="headLight" ng-hide="isUnprivileged === 'true'">
+                        <td class="col-md-1 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align"><b></b></td>
+                        <td class="col-md-1 vert-align"></td>
+                        <td class="col-md-1 vert-align"><b></b></td>
+                        <td class="col-md-1 vert-align"><b></b></td>
+                        <td class="col-md-2 vert-align" id="projects-add-button">
+                            <button class="btn btn-primary tableButton"
+                                    id="pe_addProject_button"
+                                    type="button"
+                                    ng-hide="isUnprivileged === 'true'"
+                                    ng-click="openProjectAddModal()">
+                                + Project
+                            </button>
+                        </td>
+                    </tr>
                     </tbody>
 
                 </table>
 
                 <uib-pagination
+                        ng-hide="activeSearch === true"
                         class="pagination-sm"
                         ng-model="currentPageNumber"
                         ng-change="pageChanged()"
