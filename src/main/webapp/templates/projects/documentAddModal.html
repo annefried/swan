@@ -18,27 +18,27 @@ Licensed under the GPLv2 License. See LICENSE in the project root for license in
                 </button>
                 <h4 class="modal-title" id="myModalLabel">Add text documents</h4>
             </div>
-            <div class="col-lg-6">
-                <uib-alert ng-repeat="alert in alerts"
-                           type="{{alert.type}}"
-                           dismiss-on-timeout="6000"
-                           close="closeAlert($index)">
-                    {{alert.msg}}
-                </uib-alert>
-            </div>
             <div class="modal-body">
                 <table class="table">
                     <thead class="headDark">
                     <th>Filename</th>
                     <th>Pre-defined span annotations</th>
+                    <th>Remove</th>
                     </thead>
                     <tbody>
                         <tr ng-repeat="(fileName, fileContent) in this.textFileMap">
                             <td><span title="{{fileContent}}">{{fileName}}</span></td>
-                        <td ng-if="this.targetFileMap[fileName] !== undefined">
-                            <span class="glyphicon glyphicon-ok" style="color:green" title="{{this.targetFileMap[fileName]}}">
-                                    </span>
-                        </td>
+                            <td>
+                                <span ng-if="this.targetFileMap[fileName] !== undefined"
+                                      class="glyphicon glyphicon-ok" style="color:green" title="{{this.targetFileMap[fileName]}}">
+                                </span>
+                            </td>
+                            <td>
+                                <span class="glyphicon glyphicon-remove"
+                                      style="color:red"
+                                      ng-click="removeDocument(fileName)">
+                                </span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -55,9 +55,11 @@ Licensed under the GPLv2 License. See LICENSE in the project root for license in
                            id="text"
                            ng-model="doc"
                            on-read-file="this.sendText($fileContent,$fileName)"
-                           ng-click="clearFileMap()"
+                           style="display:none;"
                            multiple/>
                     <br/>
+                    <label for="text" class="btn btn-default">Choose Files</label>
+                    <br/><br/>
                     <label for="targets">Upload pre-defined span annotations (*.json format):</label>
                     <input type="file"
                            accept=".xml,.json"
@@ -65,9 +67,17 @@ Licensed under the GPLv2 License. See LICENSE in the project root for license in
                            id="targets"
                            ng-model="target"
                            on-read-file="this.sendTargets($fileContent,$fileName)"
-                           ng-click="clearTargetFileMap()"
+                           style="display:none;"
                            multiple/>
+                    <br/>
+                    <label for="targets" class="btn btn-default">Choose Files</label>
                 </div>
+                <uib-alert ng-repeat="alert in alerts"
+                           type="{{alert.type}}"
+                           dismiss-on-timeout="6000"
+                           close="closeAlert($index)">
+                    {{alert.msg}}
+                </uib-alert>
             </div>
             <div class="modal-footer">
                 <button type="button"
