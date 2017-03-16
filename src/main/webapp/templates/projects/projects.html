@@ -291,7 +291,7 @@ Licensed under the GPLv2 License. See LICENSE in the project root for license in
                         <td class="col-md-2 vert-align"></td>
                     </tr>
                     <tr class="headLight collapse relateTo{{x.id}} bottomBorder"
-                        ng-hide="isUnprivileged === 'true'"
+                        ng-hide="isUnprivileged === 'true' || x.numberOfDocuments == 50"
                         ng-class="{'in': toggeled[x.id]}" >
                         <td class="col-md-1 vert-align"><b></b></td>
                         <td class="col-md-2 vert-align"><b></b></td>

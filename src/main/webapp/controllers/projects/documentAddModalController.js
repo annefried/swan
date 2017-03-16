@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -11,22 +11,23 @@ angular
         $scope.init = function () {
             $scope.textFileMap = {};
             $scope.targetFileMap = {};
-        };
-
-        $scope.clearFileMap = function () {
-            $scope.textFileMap = {};
-        };
-
-        $scope.clearTargetFileMap = function () {
-            $scope.targetFileMap = {};
+			$scope.numberOfDocuments = $rootScope.currProj.numberOfDocuments;
         };
 
         $scope.sendText = function ($fileContent, $fileName) {
-            $scope.textFileMap[$fileName] = $fileContent;
+			$scope.textFileMap[$fileName] = $fileContent;
+			$scope.numberOfDocuments += 1;
         };
+
         $scope.sendTargets = function ($fileContent, $fileName) {
             $scope.targetFileMap[$fileName] = $fileContent;
         };
+
+		$scope.removeDocument = function (fileName) {
+			delete $scope.textFileMap[fileName];
+			delete $scope.targetFileMap[fileName];
+			$scope.numberOfDocuments -= 1;
+		};
 
         /**
          * Validates the uploaded targets. Checks whether all specified target types
@@ -54,11 +55,11 @@ angular
                 }
             }
         };
-        
+
         /**
          * Returns a map which includes all span types to the given scheme.
          * The map provides constant access for validation purposes.
-         * 
+         *
          * @param {type} scheme
          * @returns {type} sTypeMap
          */
@@ -72,6 +73,13 @@ angular
         };
 
         $scope.submit = function () {
+			if ($scope.numberOfDocuments > 50) {
+				$rootScope.addAlert({
+					type: 'warning',
+					msg: "You have selected too many documents. The maximum number of documents allowed per project is 50."
+				});
+				return;
+			}
             try {
                 for (var curFileName in $scope.textFileMap) {
                     // Parse Target File
@@ -116,21 +124,21 @@ angular
 
                     $http.post("swan/document/adddoctoproject", JSON.stringify(documentTemplate)).then(function (curFileName) {
                         return function (response) {
-                        	
+
                         	$rootScope.currProj = $rootScope.getProjectByProjectId($rootScope.currentProjectId, $rootScope.tableProjects);
-                        	
+
                             var docTemplate = {
                                 'completed': 0,
                                 'id': response.data,
                                 'name': curFileName,
                                 'states': undefined
                             };
-                            
+
                             docTemplate.states = $scope.getStatesArrayForNewDoc(docTemplate, $rootScope.currProj);
-                            
+
                             $rootScope.currProj.numberOfDocuments++;
                             $rootScope.currProj.documents.push(docTemplate);
-                            
+
                             $uibModalInstance.close();
                         };
                     }(curFileName), function (response) {
@@ -151,14 +159,14 @@ angular
             }
 
         };
-        
+
         /**
          * Returns an array which consists of states for each user for
          * a new document.
          */
         $scope.getStatesArrayForNewDoc = function (doc, proj) {
         	var states = [];
-        	
+
         	for (var i = 0; i < proj.users.length; i++) {
         		var user = proj.users[i];
         		var state = {
@@ -166,10 +174,10 @@ angular
     				'document': doc,
     				'user': user
         		};
-        		
+
         		states.push(state);
         	}
-        	
+
         	return states;
         };
 
