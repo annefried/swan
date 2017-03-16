@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -16,7 +16,7 @@ import javax.persistence.*;
 /**
  * The Entity LinkLabel represents a label which can be used for annotations
  * of links between sections.
- * 
+ *
  * The JsonIdentityInfo annotations prevents infinite recursions.
  *
  * @author Timo Guehring
@@ -31,12 +31,12 @@ public class LinkLabel extends ColorableBaseEntity {
         horizontal, vertical;
     }
 
-    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class })
+    @JsonView({ View.SchemeByDocId.class, View.SchemeById.class, View.Links.class })
     @ElementCollection(targetClass = LinkLabelOpts.class, fetch = FetchType.LAZY)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "LINKLABEL_OPTIONS")
     private Set<LinkLabelOpts> options = new HashSet<>();
-    
+
     /**
      * The relationship shows to which linktypes the linklabel belongs.
      */
@@ -61,9 +61,9 @@ public class LinkLabel extends ColorableBaseEntity {
     public LinkType getLinkType() {
         return linkType;
     }
-    
+
     public void setLinkType(LinkType linkType) {
         this.linkType = linkType;
     }
-    
+
 }
