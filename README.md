@@ -39,14 +39,14 @@ Check out the [GitHub Wiki](https://github.com/annefried/swan/wiki) for more inf
 
 ## Contact
 We are happy to hear from you!
-If you love SWAN, send us an email.
+If you love SWAN, send us an <a href="mailto:swan.coli.uni-saarland.de">email</a>.
 If you find some bugs or if you have suggestions for improvements, please open an issue on this GitHub site!
 
 SWAN was developed by:
 * Timo Gühring (Saarland University, Department of Computer Science)
-* Nicklas Linz (German Research Center for Artificial Intelligence (DFKI GmbH), nicklas.linz@dfki.de)
+* Nicklas Linz (German Research Center for Artificial Intelligence (DFKI GmbH))
 * Rafael Theis (Saarland University, Department of Computer Science)
-* Annemarie Friedrich (Saarland University, Department of Computational Linguistics, afried@coli.uni-saarland.de)
+* Annemarie Friedrich (Saarland University, Department of Computational Linguistics)
 * Julia Dembowski (Saarland University, Department of Computational Linguistics)
 * Stefan Grünewald (Saarland University, Department of Computational Linguistics)
 * Janna Herrmann (Saarland University, Department of Computer Science)
