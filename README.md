@@ -39,7 +39,7 @@ Check out the [GitHub Wiki](https://github.com/annefried/swan/wiki) for more inf
 
 ## Contact
 We are happy to hear from you!
-If you love SWAN, send us an <a href="mailto:swan.coli.uni-saarland.de">email</a>.
+If you love SWAN, send us an <a href="mailto:swan@coli.uni-saarland.de">email</a>.
 If you find some bugs or if you have suggestions for improvements, please open an issue on this GitHub site!
 
 SWAN was developed by:
