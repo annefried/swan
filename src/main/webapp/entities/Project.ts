@@ -9,11 +9,11 @@ class Project {
     name: string;
     scheme: Scheme;
     users: Array<User>;
-    documents: Array<Document>;
+    documents: Array<DocumentEntity>;
     projectManager: Array<User>;
     watchingUsers: Array<User>;
 
-    constructor(id: number, name: string, scheme: Scheme, users: Array<User>, documents: Array<Document>, projectManager?: Array<User>,
+    constructor(id: number, name: string, scheme: Scheme, users: Array<User>, documents: Array<DocumentEntity>, projectManager?: Array<User>,
                     watchingUsers?: Array<User>) {
 
         this.id = id;

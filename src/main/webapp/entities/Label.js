@@ -8,6 +8,10 @@ var Label = (function () {
         this.id = id;
         this.name = name;
     }
+    Label.prototype.setLabelSet = function (labelSet) {
+        this.labelSet = labelSet;
+    };
+    ;
     return Label;
 }());
 //# sourceMappingURL=Label.js.map

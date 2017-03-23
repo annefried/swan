@@ -1380,13 +1380,13 @@ angular
                     for (var key in d.annotation.activeLabels) {
                         var set = d.annotation.activeLabels[key];
                         for (var i = 0; i < set.length; i++) {
-                            text += (set[i].tag + " ");
+                            text += (set[i].name + " ");
                         }
                     }
-                    if (d.annotation.sType === undefined) {
+                    if (d.annotation.sType === null) {
                         return "";
                     } else {
-                        return 'Type: ' + d.annotation.sType.tag + " | Labels: " + text;
+                        return 'Type: ' + d.annotation.sType.name + " | Labels: " + text;
                     }
                 };
 

@@ -4,7 +4,7 @@
  */
 'use strict';
 
-class Document {
+class DocumentEntity {
     id: number;
     name: string;
     states: Array<State>;

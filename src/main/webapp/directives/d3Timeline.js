@@ -83,6 +83,7 @@ angular
                 };
 
                 $scope.getPositioningOptionInteger = function (linkLabel) {
+					console.log(linkLabel);
                     for (var i = 0; i < linkLabel.options.length; i++) {
                         var opt = linkLabel.options[i];
                         if (opt.toUpperCase() === HORIZONTAL_STR) {

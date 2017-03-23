@@ -237,7 +237,7 @@ describe('Test rootController', function () {
                 var resultDocs = retVal.documents;
                 var projComplAdmin = retVal.projComplAdmin;
 
-                expect(documents.length).toEqual(3);
+                expect(testDocuments.length).toEqual(3);
                 expect(testProject.users.length).toEqual(3);
                 expect(testProject.documents.length).toEqual(3);
 
@@ -255,9 +255,9 @@ describe('Test rootController', function () {
                 expect(doc0.completed).toEqual(3);
                 expect(doc0.lastEdit).toEqual(1463320311347);
                 expect(doc0.states.length).toEqual(3);
-                expect(doc0.states[0]).toEqual(states1[0]);
-                expect(doc0.states[1]).toEqual(states1[2]);
-                expect(doc0.states[2]).toEqual(states1[1]);
+                expect(doc0.states[0]).toEqual(testStates1[0]);
+                expect(doc0.states[1]).toEqual(testStates1[2]);
+                expect(doc0.states[2]).toEqual(testStates1[1]);
 
                 var doc1 = resultDocs[1];
                 expect(doc1.id).toEqual(169);
@@ -265,9 +265,9 @@ describe('Test rootController', function () {
                 expect(doc1.completed).toEqual(2);
                 expect(doc1.lastEdit).toEqual(1463320311348);
                 expect(doc1.states.length).toEqual(3);
-                expect(doc1.states[0]).toEqual(states3[2]);
-                expect(doc1.states[1]).toEqual(states3[1]);
-                expect(doc1.states[2]).toEqual(states3[0]);
+                expect(doc1.states[0]).toEqual(testStates3[2]);
+                expect(doc1.states[1]).toEqual(testStates3[1]);
+                expect(doc1.states[2]).toEqual(testStates3[0]);
 
                 var doc2 = resultDocs[2];
                 expect(doc2.id).toEqual(5);
@@ -275,9 +275,9 @@ describe('Test rootController', function () {
                 expect(doc2.completed).toEqual(1);
                 expect(doc2.lastEdit).toEqual(1463320311347);
                 expect(doc2.states.length).toEqual(3);
-                expect(doc2.states[0]).toEqual(states2[0]);
-                expect(doc2.states[1]).toEqual(states2[1]);
-                expect(doc2.states[2]).toEqual(states2[2]);
+                expect(doc2.states[0]).toEqual(testStates2[0]);
+                expect(doc2.states[1]).toEqual(testStates2[1]);
+                expect(doc2.states[2]).toEqual(testStates2[2]);
 
             });
 
@@ -288,7 +288,7 @@ describe('Test rootController', function () {
                 var lastEditedDocument = retVal.lastEditedDocument;
                 var projComplUser = retVal.projComplUser;
 
-                expect(documents.length).toEqual(3);
+                expect(testDocuments.length).toEqual(3);
                 expect(testProject.users.length).toEqual(3);
                 expect(testProject.documents.length).toEqual(3);
 
@@ -303,7 +303,7 @@ describe('Test rootController', function () {
                 expect(doc0.completed).toBeTruthy();
                 expect(doc0.lastEdit).toEqual(1463320311346);
                 expect(doc0.states.length).toEqual(1);
-                expect(doc0.states[0]).toEqual(states1[1]);
+                expect(doc0.states[0]).toEqual(testStates1[1]);
 
                 var doc1 = resultDocs[1];
                 expect(doc1.id).toEqual(169);
@@ -311,7 +311,7 @@ describe('Test rootController', function () {
                 expect(doc1.completed).toBeFalsy();
                 expect(doc1.lastEdit).toEqual(1463320311345);
                 expect(doc1.states.length).toEqual(1);
-                expect(doc1.states[0]).toEqual(states3[0]);
+                expect(doc1.states[0]).toEqual(testStates3[0]);
 
                 var doc2 = resultDocs[2];
                 expect(doc2.id).toEqual(5);
@@ -319,7 +319,7 @@ describe('Test rootController', function () {
                 expect(doc2.completed).toBeFalsy();
                 expect(doc2.lastEdit).toEqual(1463320311347);
                 expect(doc2.states.length).toEqual(1);
-                expect(doc2.states[0]).toEqual(states2[2]);
+                expect(doc2.states[0]).toEqual(testStates2[2]);
 
             });
         });
@@ -411,7 +411,7 @@ describe('Test rootController', function () {
                 new State(2, false, 1463320311343, users[1])
             ];
 
-            var documents = [new Document(0, 'TestDoc', states)];
+            var documents = [new DocumentEntity(0, 'TestDoc', states)];
             var proj = new Project(431, 'TestProj', null, users, documents, [], []);
 
             expect(function () {
@@ -438,7 +438,7 @@ describe('Test rootController', function () {
                 new State(5, false, 1463320311347, unknownUser)
             ];
 
-            var documents = [new Document(0, 'TestDoc1', states1), new Document(1, 'TestDoc2', states2)];
+            var documents = [new DocumentEntity(0, 'TestDoc1', states1), new DocumentEntity(1, 'TestDoc2', states2)];
             var proj = new Project(1, 'TestProj', null, users, documents, [], []);
 
             expect(function () {
@@ -474,8 +474,8 @@ describe('Test rootController', function () {
             ];
             var states2: Array<State> = [new State(6, false, 1463320311345, users2[0])];
 
-            var documents1 = [new Document(43, 'Doc2', states1), new Document(44, 'Food', states1)];
-            var documents2 = [new Document(22, 'Kumbaja', states2)];
+            var documents1 = [new DocumentEntity(43, 'Doc2', states1), new DocumentEntity(44, 'Food', states1)];
+            var documents2 = [new DocumentEntity(22, 'Kumbaja', states2)];
 
             var testProjects1 = [
                 new Project(431, 'Heavy like Heaven', scheme1, users1, documents1, [], watchingUsers),
@@ -652,7 +652,7 @@ describe('Test rootController', function () {
                 new User(3, "", "", "", "annotator")
             ];
 
-            var userIdIndexMap = $rootScope.getUserIdIndexMap(users);
+            var userIdIndexMap = $rootScope.getUserIdIndexMap(testUsers);
 
             expect(Object.keys(userIdIndexMap).length).toEqual(3);
             expect(userIdIndexMap[0]).toEqual(0);
@@ -683,11 +683,11 @@ describe('Test rootController', function () {
 
             var userExists = {id: 0};
             var userNotExists = {id: 4};
-            var boolVal = $rootScope.containsUser(users, userExists);
+            var boolVal = $rootScope.containsUser(testUsers, userExists);
 
             expect(boolVal).toEqual(true);
 
-            boolVal = $rootScope.containsUser(users, userNotExists);
+            boolVal = $rootScope.containsUser(testUsers, userNotExists);
 
             expect(boolVal).toEqual(false);
         });

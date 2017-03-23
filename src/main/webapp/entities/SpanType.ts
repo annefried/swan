@@ -6,15 +6,15 @@
 
 class SpanType {
     id: number;
-    tag: string;    // TODO change to name
-    selectableLabels = {};
+    name: string;  
+    selectableLabels: { [id: number]: LabelSet } = {};
 
     constructor(id: number, name: string) {
         this.id = id;
-        this.tag = name;
+        this.name = name;
     }
 
-    public addSelectableLabel(labelSet) {   // TODO typing
+    public addSelectableLabel(labelSet: LabelSet) {
         if (labelSet !== undefined)
             this.selectableLabels[labelSet.id] = labelSet;
     };
