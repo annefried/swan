@@ -4,13 +4,14 @@ language: java
 jdk:
     - oraclejdk8
 node_js:
-  - "6.0"
+  - "7.0"
+  - "node"
 addons:
   firefox: "48.0"
 before_install:
   - cd ./src/main/webapp/
 
-before_script:
+install:
   - export DISPLAY=:99.0
   - export CHROME_BIN=/usr/bin/google-chrome
   - sh -e /etc/init.d/xvfb start
@@ -18,12 +19,13 @@ before_script:
   - sudo apt-get install -y libappindicator1 fonts-liberation
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
+  - npm install -g bower
   - bower install
+
+script:
   - npm start > /dev/null &
   #- npm run update-webdriver
   - sleep 1 # give server time to start
-
-script:
   - node_modules/.bin/karma start karma.conf.js --no-auto-watch --single-run --reporters=dots
   #- node_modules/.bin/protractor e2e-tests/protractor.conf.js --browser=firefox
   - cd ../../../
