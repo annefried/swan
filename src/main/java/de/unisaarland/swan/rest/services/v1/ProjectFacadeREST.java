@@ -304,7 +304,7 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
 			LoginUtil.check(usersDAO.checkLogin(getSessionID()));
 
 			Users user = (Users) usersDAO.find(userId, false);
-			List<Project> list = projectDAO.search(user, searchKeyword);
+			List<Project> list = projectDAO.search(user, searchKeyword.toLowerCase());
 
 			Class clazz = user.getRole() == Users.RoleType.annotator ? View.ProjectsForUser.class : View.Projects.class;
 			return Response.ok(mapper.writerWithView(clazz)

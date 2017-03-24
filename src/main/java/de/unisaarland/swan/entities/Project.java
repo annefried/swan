@@ -117,9 +117,9 @@ import javax.validation.constraints.NotNull;
 		name = Project.QUERY_SEARCH_FOR_PROJECTS_AND_DOCUMENTS,
 		query = "SELECT DISTINCT p " +
 			"FROM Project p " +
-			"WHERE p.name LIKE :" + Project.PARAM_NAME + " " +
+			"WHERE LOWER(p.name) LIKE :" + Project.PARAM_NAME + " " +
 			"OR EXISTS( " +
-			"SELECT d FROM Document d WHERE d MEMBER OF p.documents AND d.name LIKE :" + Project.PARAM_NAME + ") " +
+			"SELECT d FROM Document d WHERE d MEMBER OF p.documents AND LOWER(d.name) LIKE :" + Project.PARAM_NAME + ") " +
 			"ORDER BY p.name ASC"
 	)
 })
