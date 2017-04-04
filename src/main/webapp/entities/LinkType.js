@@ -4,11 +4,15 @@
  */
 'use strict';
 var LinkType = (function () {
-    function LinkType(name, startSpanType, endSpanType, linkLabels) {
+    function LinkType(id, name, startSpanType, endSpanType, linkLabels) {
+        this.id = id;
         this.name = name;
         this.startSpanType = startSpanType;
         this.endSpanType = endSpanType;
         this.linkLabels = linkLabels;
+        for (var i = 0; i < this.linkLabels.length; i++) {
+            this.linkLabels[i].setLinkType(this);
+        }
     }
     return LinkType;
 }());

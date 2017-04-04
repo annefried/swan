@@ -52,11 +52,15 @@ angular
 				var httpProject = $rootScope.loadProjectById($window.sessionStorage.projectId);
 				// Wait for projects to be processed
 				$q.all([httpProject]).then(function () {
-					$rootScope.documents = $rootScope.buildDocumentsByAnnotator($rootScope.currProj,$window.sessionStorage.shownUser);
-					$rootScope.currDoc = $rootScope.getDocumentByDocumentId($window.sessionStorage.docId, $rootScope.documents);
-					$scope.completed = $rootScope.currDoc.completed;
+					$scope.buildDocuments();
 				});
 
+			};
+
+			$scope.buildDocuments = function () {
+				$rootScope.documents = $rootScope.buildDocumentsByAnnotator($rootScope.currProj,$window.sessionStorage.shownUser);
+				$rootScope.currDoc = $rootScope.getDocumentByDocumentId($window.sessionStorage.docId, $rootScope.documents);
+				$scope.completed = $rootScope.currDoc.completed;
 			};
 
 			/**
@@ -108,7 +112,6 @@ angular
 
 			//Split words of the text in data structure
 			this.buildText = function () {
-
 				this.annotationText = [];
 				var start = 0;
 				var end = -1;
@@ -173,21 +176,22 @@ angular
 						var annotationLink = new AnnotationLink(link.id, source, target);
 						//Add label sets
 						if (this.linkable(source, target)) {
-							for (var id in this.linkLabels[source.sType.tag][target.sType.tag]) {
-								const linkType = this.linkLabels[source.sType.tag][target.sType.tag][id];
+							for (var id in this.linkLabels[source.sType.name][target.sType.name]) {
+								const linkType = this.linkLabels[source.sType.name][target.sType.name][id];
 								annotationLink.addSelectableLabel(linkType);
 							}
 						}
 						for (var j = 0; j < link.linkLabels.length; j++) {
 							var label = link.linkLabels[j];
 							const setId = label.linkType.id;
-							const labelSet = this.linkLabels[source.sType.tag][target.sType.tag][setId];
+							const labelSet = this.linkLabels[source.sType.name][target.sType.name][setId];
 							const linkLabel = new AnnotationLabel(label.id, label.name, label.options, setId);
 							annotationLink.setLabel(labelSet, linkLabel);
 						}
 
-						if (this.annotationLinks[source.id] === undefined)
+						if (this.annotationLinks[source.id] === undefined) {
 							this.annotationLinks[source.id] = {};
+						}
 						this.annotationLinks[source.id][target.id] = annotationLink;
 					}
 				}
@@ -213,8 +217,8 @@ angular
 						if (this.selectedNode.type === AnnoType.Annotation)
 							labelSet = this.labelTable[label.setID];
 						else {
-							var source = this.selectedNode.source.sType.tag;
-							var target = this.selectedNode.target.sType.tag;
+							var source = this.selectedNode.source.sType.name;
+							var target = this.selectedNode.target.sType.name;
 							labelSet = this.linkLabels[source][target][label.setID];
 						}
 					}
@@ -230,7 +234,7 @@ angular
 
 						labelTemplate = {
 							id: label.id,
-							name: label.tag,
+							name: label.name,
 							labelSet: {id: labelSet.id}
 						};
 
@@ -239,7 +243,7 @@ angular
 
 						labelTemplate = {
 							id: label.id,
-							name: label.tag,
+							name: label.name,
 							linkType: {id: labelSet.id}
 						};
 
@@ -260,6 +264,10 @@ angular
 				// so that the start, end and span types are the same which is not allowed
 				if ((oldStart != newStart || oldEnd != newEnd)
 					&& this.isSpanTypeAlreadyApplied(newAnno, newAnno.sType)) {
+					if (oldStart != newStart) {
+						// Since data structure has not been updated, the annotation is still saved with its old start
+						this.removeAnnotationFromDataStructure(newAnno, oldStart);
+					}
 					this.removeAnnotation(newAnno);
 					this.displayDuplicateAnnotationWarning();
 					return;
@@ -272,7 +280,7 @@ angular
 					},
 					"spanType": {
 						"id": newAnno.sType.id,
-						"name": newAnno.sType.tag
+						"name": newAnno.sType.name
 					},
 					"document": {
 						"id": $window.sessionStorage.docId
@@ -410,6 +418,9 @@ angular
 			 * @param spanType
 			 */
 			this.setSelectedSpanTypeAndAdd = function (spanType) {
+				if (this.selectedNode.sType == spanType) {
+					return;
+				}
 				if (this.selectedNode !== null
 					&& this.selectedNode !== undefined
 					&& spanType !== undefined
@@ -419,9 +430,9 @@ angular
 						this.removeAnnotation(this.selectedNode);
 						this.displayDuplicateAnnotationWarning();
 						return;
-					} else if (this.selectedNode.sType !== undefined) {
+					} else if (this.selectedNode.sType !== null) {
 						const url = "swan/annotations/changest/" + this.selectedNode.id;
-						$http.post(url, {'id': spanType.id, 'name': spanType.tag}).success(function (response) {
+						$http.post(url, {'id': spanType.id, 'name': spanType.name}).success(function (response) {
 
 						}).error(function (response) {
 							$rootScope.checkResponseStatusCode(response.status);
@@ -488,7 +499,7 @@ angular
 					},
 					"spanType": {
 						"id": annotation.sType.id,
-						"name": annotation.sType.tag
+						"name": annotation.sType.name
 					},
 					"document": {
 						"id": $window.sessionStorage.docId
@@ -591,8 +602,8 @@ angular
 							var newId = response.data;
 							var link = new AnnotationLink(newId, source, target);
 							//Add link types
-							for (var id in object.linkLabels[source.sType.tag][target.sType.tag]) {
-								const linkType = object.linkLabels[source.sType.tag][target.sType.tag][id];
+							for (var id in object.linkLabels[source.sType.name][target.sType.name]) {
+								const linkType = object.linkLabels[source.sType.name][target.sType.name][id];
 								link.addSelectableLabel(linkType);
 							}
 
@@ -621,8 +632,8 @@ angular
 				} else {
 					var alreadyExists = false;
 				}
-				return this.linkLabels[source.sType.tag] !== undefined
-					&& this.linkLabels[source.sType.tag][target.sType.tag] !== undefined
+				return this.linkLabels[source.sType.name] !== undefined
+					&& this.linkLabels[source.sType.name][target.sType.name] !== undefined
 					&& !alreadyExists;
 			};
 
@@ -664,6 +675,9 @@ angular
 							delete source[targetID];
 						}
 					}
+					if (Object.keys(source).length <= 0) {
+						delete this.annotationLinks[sourceID];
+					}
 				}
 			};
 
@@ -698,8 +712,8 @@ angular
 				this.spanTypes = {};
 				for (var i = 0; i < this.scheme.spanTypes.length; i++) {
 					var type = this.scheme.spanTypes[i];
-					var spanType = new SpanType(type.id, type.name);
-					this.spanTypes[spanType.tag] = spanType;
+					var spanType = new AnnotationSpanType(type.id, type.name);
+					this.spanTypes[spanType.name] = spanType;
 				}
 			};
 
@@ -721,7 +735,7 @@ angular
 				this.labelTable = {};
 				for (var i = 0; i < this.scheme.labelSets.length; i++) {
 					var labSet = this.scheme.labelSets[i];
-					var labelSet = new LabelSet(labSet.id, labSet.name, labSet.exclusive);
+					var labelSet = new AnnotationLabelSet(labSet.id, labSet.name, labSet.exclusive);
 					//Add labels to set
 					var listLabel = labSet.labels;
 					for (var j = 0; j < listLabel.length; j++) {
@@ -735,8 +749,8 @@ angular
 					// Connect label set to correlating span types
 					var applySpanTypes = labSet.appliesToSpanTypes;
 					for (var a = 0; a < applySpanTypes.length; a++) {
-						var tag = applySpanTypes[a].name;
-						var spanType = this.spanTypes[tag];
+						var name = applySpanTypes[a].name;
+						var spanType = this.spanTypes[name];
 						spanType.addSelectableLabel(labelSet);
 					}
 
@@ -754,16 +768,16 @@ angular
 						this.linkLabels[startSpanType] = {};
 					if (this.linkLabels[startSpanType][endSpanType] === undefined)
 						this.linkLabels[startSpanType][endSpanType] = {};
-					var linkLabelSet = new LabelSet(linkType.id, linkType.name, true);
+					var linkLabelSet = new AnnotationLabelSet(linkType.id, linkType.name, true);
 					this.linkLabels[startSpanType][endSpanType][linkType.id] = linkLabelSet;
 					//Add labels to set
 					for (var j = 0; j < linkType.linkLabels.length; j++) {
 						var linkLabel = linkType.linkLabels[j];
-						var tag = linkLabel.name;
-						if (tag === undefined) {
-							tag = "UndefTag";
+						var name = linkLabel.name;
+						if (name === undefined) {
+							name = "UndefTag";
 						}
-						var annotationLabel = new AnnotationLabel(linkLabel.id, tag, linkLabel.options, linkType.id);
+						var annotationLabel = new AnnotationLabel(linkLabel.id, name, linkLabel.options, linkType.id);
 						linkLabelSet.addLabel(annotationLabel);
 					}
 				}
@@ -787,9 +801,14 @@ angular
 				}
 			};
 
-			this.removeAnnotationFromDataStructure = function (annotation) {
+			this.removeAnnotationFromDataStructure = function (annotation, oldstart) {
 				delete this.annotationIdMap[annotation.id];
-				const annoList = this.annotationStartMap[annotation.startIndex()];
+
+				if (oldstart == undefined) {
+					oldstart = annotation.startIndex();;
+				}
+
+				const annoList = this.annotationStartMap[oldstart];
 				for (var i = 0; i < annoList.length; i++) {
 					if (annotation === annoList[i]) {
 						annoList.splice(i, 1);
@@ -821,15 +840,15 @@ angular
 				this.annotationMode = AnnotationMode.Everything;
 			};
 
-			// Get span type by its tag
-			this.getSpanType = function (tag) {
-				return this.spanTypes[tag];
+			// Get span type by its name
+			this.getSpanType = function (name) {
+				return this.spanTypes[name];
 			};
 
 			// Checks if a character can be characterized as punctuation
 			this.isPunctuation = function (string) {
 				return string !== undefined &&
-					(string.length === 1 && (string === "," || string === "." || string === "!" || string === "?"));
+					(string.length === 1 && (string === "," || string === "." || string === "!" || string === "?" || string === ";"));
 			};
 
 			this.getCharacterSum = function (str) {
@@ -849,7 +868,7 @@ angular
 					var labelMapId = Object.keys(anno.activeLabels)[0];
 					if (labelMapId !== undefined) {
 						var labelSet = anno.activeLabels[labelMapId];
-						var num = this.getCharacterSum(labelSet[0].tag);
+						var num = this.getCharacterSum(labelSet[0].name);
 						return this.cloneAnnotationColor(num, col);
 					}
 				}

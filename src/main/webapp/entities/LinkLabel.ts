@@ -5,12 +5,19 @@
 'use strict';
 
 class LinkLabel {
+    id: number;
     name: string;
     options;
+    linkType: LinkType;
 
-    constructor(name: string, options) {
+    constructor(id: number, name: string, options) {
+        this.id = id;
         this.name = name;
         this.options = options;
+    }
+    
+    public setLinkType(linkType: LinkType) {
+        this.linkType = linkType;
     }
 
 }

@@ -23,7 +23,7 @@ describe('Test schemeUploadModalController', function () {
         $q = _$q_;
         deferred = _$q_.defer();
         $rootScope = _$rootScope_;
-        $scope = $rootScope.$new;
+        $scope = $rootScope.$new();
         $window = _$window_;
         $http = _$http_;
         $timeout = _$timeout_;

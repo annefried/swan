@@ -3,13 +3,13 @@
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
 'use strict';
-var Document = (function () {
-    function Document(id, name, states) {
+var DocumentEntity = (function () {
+    function DocumentEntity(id, name, states) {
         this.id = id;
         this.name = name;
         this.states = states;
     }
-    return Document;
+    return DocumentEntity;
 }());
 ;
-//# sourceMappingURL=Document.js.map
+//# sourceMappingURL=DocumentEntity.js.map

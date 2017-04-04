@@ -7,7 +7,7 @@ var SpanType = (function () {
     function SpanType(id, name) {
         this.selectableLabels = {};
         this.id = id;
-        this.tag = name;
+        this.name = name;
     }
     SpanType.prototype.addSelectableLabel = function (labelSet) {
         if (labelSet !== undefined)

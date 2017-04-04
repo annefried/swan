@@ -7,10 +7,14 @@
 class Label {
     id: number;
     name: string;
+    labelSet: LabelSet;
 
     constructor(id: number, name: string) {
         this.id = id;
         this.name = name;
     }
-
+    
+    public setLabelSet(labelSet: LabelSet) {
+        this.labelSet = labelSet;
+    };
 }

@@ -32,9 +32,9 @@ angular
                 $scope.isAnnotator = ($window.sessionStorage.isAnnotator === "true");
                 // used to compare labels
                 $scope.labelComp = function (a, b) {
-                    if (a.tag < b.tag)
+                    if (a.name < b.name)
                         return -1;
-                    if (a.tag > b.tag)
+                    if (a.name > b.name)
                         return 1;
                     return 0;
                 };
@@ -227,10 +227,10 @@ angular
                             .enter()
                             .append("button")
                             .attr("id", function (d) {
-                                return "tt_" + d.value.tag;
+                                return "tt_" + d.value.name;
                             })
                             .attr("title", function (d) {
-                                return d.value.tag;
+                                return d.value.name;
                             })
                             .classed("btn btn-default btn-xs", true)
                             // TODO: create utility function for the two functions below
@@ -254,7 +254,7 @@ angular
                                 }
                             })
                             .text(function (d) {
-                                return d.value.tag;
+                                return d.value.name;
                             })
                             .on("click", function (d) {
                                 $scope.$apply(function () {
@@ -329,7 +329,7 @@ angular
                                     return false;
                                 })
                                 .attr("title", function (d) {
-                                    return d.tag;
+                                    return d.name;
                                 })
                                 .attr("disabled", function () {
                                     if (!$scope.isAnnotator) {

@@ -4,10 +4,14 @@
  */
 'use strict';
 var LinkLabel = (function () {
-    function LinkLabel(name, options) {
+    function LinkLabel(id, name, options) {
+        this.id = id;
         this.name = name;
         this.options = options;
     }
+    LinkLabel.prototype.setLinkType = function (linkType) {
+        this.linkType = linkType;
+    };
     return LinkLabel;
 }());
 //# sourceMappingURL=LinkLabel.js.map
