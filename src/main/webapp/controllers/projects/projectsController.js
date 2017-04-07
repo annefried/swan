@@ -365,7 +365,7 @@ angular
 						};
 
 						if ($window.sessionStorage.role != 'projectmanager') {
-							$rootScope.tableProjects.push(template);
+							$rootScope.tableProjects.unshift(template);
 						} else {
 							// TODO create REST interface getUser by Id
 							// Get the current user (there is no REST interface for getUser by ID)
@@ -381,7 +381,7 @@ angular
 
 								// Add project manager to the corresponding project manager list
 								$http.post("swan/project/addManager/" + template.id + "/" + $window.sessionStorage.uId).success(function (response) {
-									$rootScope.tableProjects.push(template);
+									$rootScope.tableProjects.unshift(template);
 								}).error(function (response) {
 									$rootScope.checkResponseStatusCode(response.status);
 								});
