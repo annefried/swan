@@ -48,10 +48,10 @@ angular
                 const annotationHeight = wordHeight / 2.4; // Distance between multiple annotations on top of each other
                 const scale = 1.2; // Scaling factor of text size
                 const jDistance = 30; // Amount of lines after which text should be redrawn
-                const defaultLinkOpacity = 0.3; // Opacity of currently unselected / unrelated links
+                const defaultLinkOpacity = 0.5; // Opacity of currently unselected / unrelated links
                 const wordSpacing = 3.5; // Space beween two adjacent tokens
-                const opacityRelated = 0.55; // Opacity of elements that are related to the current selection
-                const opacityUnrelated = 0.15; // Opacity of elements that are unrelated to the current selection
+                const opacityRelated = 0.7; // Opacity of elements that are related to the current selection
+                const opacityUnrelated = 0.3; // Opacity of elements that are unrelated to the current selection
                 const svg = d3.select(iElement[0])
                     .append("svg")
                     .attr("width", "100%")
