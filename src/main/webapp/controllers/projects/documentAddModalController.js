@@ -26,6 +26,7 @@ angular
 		$scope.removeDocument = function (fileName) {
 			delete $scope.textFileMap[fileName];
 			delete $scope.targetFileMap[fileName];
+			$("#text").val('');
 			$scope.numberOfDocuments -= 1;
 		};
 
@@ -79,6 +80,17 @@ angular
 					msg: "You have selected too many documents. The maximum number of documents allowed per project is 50."
 				});
 				return;
+			}
+			for (var i = 0; i < $rootScope.currProj.documents.length; i++) {
+				var docName = $rootScope.currProj.documents[i].name;
+				if ($scope.textFileMap[docName] != undefined) {
+					$rootScope.addAlert({
+						type: 'warning',
+						msg: "The document '" + docName + "' already exists in this project."
+					});
+					delete $scope.textFileMap[docName];
+					delete $scope.targetFileMap[docName];
+				}
 			}
             try {
                 for (var curFileName in $scope.textFileMap) {
