@@ -142,12 +142,23 @@ angular
                             $uibModalInstance.close();
                         };
                     }(curFileName), function (response) {
-                        if (response.status >= 400 && response.status < 500) {
-                            $rootScope.addAlert({
-                                type: 'danger',
-                                msg: "The start or end spans of the target does not match the text or another error occured."
-                            });
-                        } else {
+
+						if (response.status === 400) {
+							$rootScope.addAlert({
+								type: 'danger',
+								msg: "The predefined spans do not match the text or another error occured."
+							});
+						} else if (response.status === 412) {
+							$rootScope.addAlert({
+								type: 'danger',
+								msg: "Your file is too large. The maximum allowed size is 1 MB. "
+							});
+						} else if (response.status === 415) {
+							$rootScope.addAlert({
+								type: 'danger',
+								msg: "There seems to be a problem with your file such as invalid characters."
+							});
+						} else {
                             $rootScope.checkResponseStatusCode(response.status);
                         }
                     });
