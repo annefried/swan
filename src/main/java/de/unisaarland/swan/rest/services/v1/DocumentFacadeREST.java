@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.CreateException;
 import javax.ejb.EJB;
+import javax.ejb.EJBTransactionRolledbackException;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 import javax.ws.rs.Consumes;
@@ -43,17 +44,17 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
 
     // Needed to write JSON with specific properties e.g. views
     private static final ObjectMapper mapper = new ObjectMapper();
-    
+
     @EJB
     Service service;
-    
+
     @EJB
     UsersDAO usersDAO;
-    
+
     @EJB
     DocumentDAO documentDAO;
-    
-    
+
+
     @POST
     @Path("/{docId}/{userId}")
     @Consumes({MediaType.APPLICATION_JSON})
@@ -61,7 +62,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
                         @PathParam("docId") Long docId,
                         @PathParam("userId") Long userId,
                         BooleanHelper boolVal) {
-        
+
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.annotator));
             Document doc = service.markDocumentAsCompletedByDocIdUserId(docId, userId, boolVal.isValue());
@@ -72,15 +73,19 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
         } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        
+
     }
-    
+
     @POST
     @Path("/adddoctoproject")
     @Consumes({MediaType.APPLICATION_JSON})
     public Response addDocumentToProjectREST(Document entity) throws CloneNotSupportedException {
-        
+
         try {
+			if (entity.getText().getBytes().length > 1000000) {
+				return Response.status(Response.Status.PRECONDITION_FAILED).build();
+			}
+
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             Document doc = service.addDocumentToProject(entity);
             return documentDAO.create(doc);
@@ -88,14 +93,16 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
             return Response.status(Response.Status.FORBIDDEN).build();
         } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-        
+        } catch (EJBTransactionRolledbackException e) {
+			return Response.status(Response.Status.UNSUPPORTED_MEDIA_TYPE).build();
+		}
+
     }
 
     @DELETE
     @Path("{id}")
     public Response remove(@PathParam("id") Long id) {
-        
+
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.removeDocument(documentDAO.findDocumentById(id));
@@ -105,14 +112,14 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
         } catch (CreateException | NoResultException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        
+
     }
 
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Document find(@PathParam("id") Long id) {
-        
+
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
             Document doc = documentDAO.findDocumentById(id);
@@ -120,29 +127,29 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
         } catch (SecurityException | NoResultException e) {
            return null;
         }
-        
+
     }
-    
+
     /**
      * Returns the tokenized text of the document.
-     * 
+     *
      * The document will be tokenized with every call of getTokensByDocId. Tests
      * showed that the tokenization with the creation of the document and storing
      * the data in the database carries big performance disadvantages. Tokenize
      * the document with every request is faster than retrieving them out of
      * the database and sorting the values per token position and line.
-     * 
+     *
      * @param docId
-     * @return 
+     * @return
      */
     @GET
     @Path("/tokens/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response getTokensByDocId(@PathParam("id") Long docId) {
-        
+
         try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID()));
-            
+
             List<Line> list = service.getTokensByDocId(docId);
             return Response.ok(mapper.writerWithView(View.Tokens.class)
                                         .withRootName("tokens")
@@ -156,7 +163,7 @@ public class DocumentFacadeREST extends AbstractFacade<Document> {
             Logger.getLogger(DocumentFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
-        
+
     }
 
 }
