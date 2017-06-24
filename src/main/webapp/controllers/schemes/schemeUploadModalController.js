@@ -197,6 +197,7 @@ angular
                             'projects': []
                         };
                         $rootScope.tableSchemes.push(schemePreview);
+						$rootScope.allSchemes.push(schemePreview);
 
                         // Check if the guided tour can continue
                         if ($rootScope.tour !== undefined) {

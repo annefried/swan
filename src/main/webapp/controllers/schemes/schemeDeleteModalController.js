@@ -14,9 +14,11 @@ angular
 
         $scope.submit = function () {
             $http.delete("swan/scheme/" + $rootScope.currentSchemeId).success(function (response) {
+            	$rootScope.tableSchemes = $rootScope.allSchemes;
                 for (var i = 0; i < $rootScope.tableSchemes.length; i++) {
                     if ($rootScope.tableSchemes[i].id === $rootScope.currentSchemeId) {
                         $rootScope.tableSchemes.splice(i, 1);
+						$rootScope.allSchemes.splice(i, 1);
                     }
                 }
                 $uibModalInstance.close();
