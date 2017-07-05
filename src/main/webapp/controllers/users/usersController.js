@@ -8,13 +8,14 @@ angular
     .module('app')
     .controller('usersController', ['$rootScope', '$scope', '$http', '$window', '$uibModal', '$q', 'hotkeys',
         function ($rootScope, $scope, $http, $window, $uibModal, $q, hotkeys) {
-            
+
             $rootScope.validateSignedInUser();
             $scope.isUnprivileged = $window.sessionStorage.isAnnotator;
 
             // Initialize user view
             $scope.init = function () {
                 $scope.loaded = false;
+				$scope.activeSearch = false;
                 //Pop Up
                 $scope.animationsEnabled = true;
                 $scope.getUsers();
@@ -22,13 +23,15 @@ angular
                 if ($rootScope.tour !== undefined) {
                     $rootScope.tour.resume();
                 }
+
             };
 
             // Request list of users from backend
             $scope.getUsers = function () {
                 $http.get("swan/user").success(function (response) {
                     var res = JSOG.parse(JSON.stringify(response));
-                    $scope.users = res.users;
+                    $scope.allUsers = res.users;
+                    $scope.users = $scope.allUsers;
                     /* TODO change this cruel code
                         it evokes for every user a single project and timelogging request
                     for (var i = 0; i < $scope.users.length; i++) {
@@ -40,6 +43,39 @@ angular
                     $rootScope.checkResponseStatusCode(response.status);
                 });
             };
+
+			$scope.search = function (searchKeyword) {
+				if (searchKeyword == undefined) {
+					$rootScope.addAlert({type: 'warning', msg: 'Please enter at least three characters.'});
+					return;
+				}
+				if (searchKeyword == "") {
+					if ($scope.activeSearch) {
+						$scope.activeSearch = false;
+						$scope.searchKeyword = "";
+						$scope.users = $scope.allUsers;
+					}
+				} else {
+					$scope.loaded = false;
+					var lowerSearch = searchKeyword.toLowerCase();
+					var res = [];
+
+					for (var i = 0; i < $scope.allUsers.length; i++) {
+						var user = $scope.allUsers[i];
+						var fullName = user.prename.toLowerCase() + " " + user.lastname.toLowerCase();
+						if (fullName.includes(lowerSearch) || user.email.toLowerCase().includes(lowerSearch)) {
+							res.push(user);
+						}
+					}
+
+					$scope.users = res;
+					$scope.loaded = true;
+					$scope.activeSearch = true;
+					if (res.length == 0) {
+						$rootScope.addAlert({msg: 'Sorry, there are no users matching your search.'});
+					}
+				}
+			};
 
             $scope.isVisible = function (user) {
                 return user.id == $window.sessionStorage.uId;
@@ -141,6 +177,7 @@ angular
                 // Callback on Submit
                 modalInstance.result.then(function (response) {
                     $scope.users.push(response);
+					$scope.allUsers.push(response);
 
                     // Check if the guided tour can continue
                     if ($rootScope.tour !== undefined) {
@@ -163,9 +200,11 @@ angular
                 });
 
                 modalInstance.result.then(function (response) {
+                	$scope.users = $scope.allUsers;
                     for (var i = 0; i < $scope.users.length; i++) {
                         if ($scope.users[i].id === response) {
                             $scope.users.splice(i, 1);
+							$scope.allUsers.splice(i, 1);
                         }
                     }
                 });
@@ -189,7 +228,7 @@ angular
 
             // Initialize View
             $scope.init();
-            
+
         }
     ]);
 

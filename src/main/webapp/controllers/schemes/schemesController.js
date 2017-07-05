@@ -16,6 +16,7 @@ angular
          * Initializes fields with data from Server.
          */
         $scope.init = function () {
+			$scope.activeSearch = false;
             $scope.loaded = false;
 			$rootScope.schemesTable = {};	// For scheme view
 			$rootScope.tableSchemes = [];
@@ -23,6 +24,7 @@ angular
             $q.all([httpSchemes]).then(function () {
                 $scope.loaded = true;
                 $scope.buildTableSchemes();
+                $rootScope.allSchemes = $rootScope.tableSchemes;
             });
 
             if ($rootScope.tour !== undefined) {
@@ -66,6 +68,38 @@ angular
             }
 
         };
+
+		$scope.search = function (searchKeyword) {
+			if (searchKeyword == undefined) {
+				$rootScope.addAlert({type: 'warning', msg: 'Please enter at least three characters.'});
+				return;
+			}
+			if (searchKeyword == "") {
+				if ($scope.activeSearch) {
+					$scope.activeSearch = false;
+					$scope.searchKeyword = "";
+					$rootScope.tableSchemes = $rootScope.allSchemes;
+				}
+			} else {
+				$scope.loaded = false;
+				var lowerSearch = searchKeyword.toLowerCase();
+				var res = [];
+
+				for (var i = 0; i < $rootScope.allSchemes.length; i++) {
+					var scheme = $rootScope.allSchemes[i];
+					if (scheme.name.toLowerCase().includes(lowerSearch)) {
+						res.push(scheme);
+					}
+				}
+
+				$rootScope.tableSchemes = res;
+				$scope.loaded = true;
+				$scope.activeSearch = true;
+				if (res.length == 0) {
+					$rootScope.addAlert({msg: 'Sorry, there are no users matching your search.'});
+				}
+			}
+		};
 
         $scope.isDeletingPossible = function (scheme) {
             return scheme.projects.length < 1

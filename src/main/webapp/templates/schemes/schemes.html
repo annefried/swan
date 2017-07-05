@@ -13,7 +13,25 @@ Licensed under the GPLv2 License. See LICENSE in the project root for license in
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
 
-            <h2 class="sub-header" id="1-schemes-header" style="display: inline-block">Annotation schemes</h2>
+            <h2 class="sub-header" id="1-schemes-header" style="display: inline-block">
+                Annotation schemes
+
+                <!-- Search bar -->
+                <div class="input-group" id="adv-search" style="padding-top: 10px">
+                    <input type="text" class="form-control" placeholder="Search for annotation schemes (at least three characters)"
+                           ng-model="searchKeyword" pattern=".{3,}"  ng-keyup="$event.keyCode == 13 && search(searchKeyword)" />
+                    <div class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary" ng-click="search('')" ng-hide="activeSearch === false">
+                                <span class="glyphicon glyphicon-remove" style="color:white"></span>
+                            </button>
+                            <button type="submit" class="btn btn-primary" ng-click="search(searchKeyword)">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </h2>
             <uib-alert ng-repeat="alert in alerts"
                        type="{{alert.type}}"
                        close="closeAlert($index)"
