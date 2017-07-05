@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -45,8 +45,7 @@ public class SpanType extends ColorableBaseEntity {
      * Query parameter constant for the attribute "project".
      */
     public static final String PARAM_PROJECT = "project";
-
-    @JsonView({ })
+	
     @JsonIgnore
     @ManyToMany(mappedBy = "appliesToSpanTypes",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
