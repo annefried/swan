@@ -31,7 +31,7 @@ angular
                 $http.get("swan/user").success(function (response) {
                     var res = JSOG.parse(JSON.stringify(response));
                     $scope.allUsers = res.users;
-                    $scope.users = $scope.allUsers;
+                    $scope.users = $scope.allUsers.slice();
                     /* TODO change this cruel code
                         it evokes for every user a single project and timelogging request
                     for (var i = 0; i < $scope.users.length; i++) {
@@ -53,7 +53,7 @@ angular
 					if ($scope.activeSearch) {
 						$scope.activeSearch = false;
 						$scope.searchKeyword = "";
-						$scope.users = $scope.allUsers;
+						$scope.users = $scope.allUsers.slice();
 					}
 				} else {
 					$scope.loaded = false;
@@ -200,7 +200,7 @@ angular
                 });
 
                 modalInstance.result.then(function (response) {
-                	$scope.users = $scope.allUsers;
+                	$scope.users = $scope.allUsers.slice();
                     for (var i = 0; i < $scope.users.length; i++) {
                         if ($scope.users[i].id === response) {
                             $scope.users.splice(i, 1);

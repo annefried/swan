@@ -14,7 +14,7 @@ angular
 
         $scope.submit = function () {
             $http.delete("swan/scheme/" + $rootScope.currentSchemeId).success(function (response) {
-            	$rootScope.tableSchemes = $rootScope.allSchemes;
+            	$rootScope.tableSchemes = $rootScope.allSchemes.slice();
                 for (var i = 0; i < $rootScope.tableSchemes.length; i++) {
                     if ($rootScope.tableSchemes[i].id === $rootScope.currentSchemeId) {
                         $rootScope.tableSchemes.splice(i, 1);
