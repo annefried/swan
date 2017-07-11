@@ -552,6 +552,7 @@ describe('Test schemeUploadModalController', function () {
 
             $rootScope.schemesTable = {};
             $rootScope.tableSchemes = [];
+            $rootScope.allSchemes = [];
             $scope.sendScheme();
             expect($httpBackend.flush).not.toThrow();
 

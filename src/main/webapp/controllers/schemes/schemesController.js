@@ -24,7 +24,7 @@ angular
             $q.all([httpSchemes]).then(function () {
                 $scope.loaded = true;
                 $scope.buildTableSchemes();
-                $rootScope.allSchemes = $rootScope.tableSchemes;
+                $rootScope.allSchemes = $rootScope.tableSchemes.slice();
             });
 
             if ($rootScope.tour !== undefined) {
@@ -78,7 +78,7 @@ angular
 				if ($scope.activeSearch) {
 					$scope.activeSearch = false;
 					$scope.searchKeyword = "";
-					$rootScope.tableSchemes = $rootScope.allSchemes;
+					$rootScope.tableSchemes = $rootScope.allSchemes.slice();
 				}
 			} else {
 				$scope.loaded = false;
