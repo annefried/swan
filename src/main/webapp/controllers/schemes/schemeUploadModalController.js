@@ -203,6 +203,7 @@ angular
                         if ($rootScope.tour !== undefined) {
                             $("#tour-next-button").prop("disabled", false);
                         }
+						$uibModalInstance.close();
                     }).error(function (response) {
                         $rootScope.checkResponseStatusCode(response.status);
                         $rootScope.addAlert({type: 'danger', msg: 'A scheme with this name already exists.'});
@@ -809,7 +810,6 @@ angular
                 }
 
                 $scope.sendScheme();
-                $uibModalInstance.close();
             }
         };
 

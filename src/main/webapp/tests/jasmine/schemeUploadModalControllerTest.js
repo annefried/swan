@@ -10,7 +10,7 @@
 describe('Test schemeUploadModalController', function () {
     beforeEach(module('app'));
 
-    var $controller, $injector, $scope, $rootScope, $window, $http, $sce, $uibModal, $uibModalInstance, $timeout, $location;
+    var $controller, $injector, $scope, $rootScope, $window, $http, $sce, $uibModal, $uibModalInstance, $timeout;
     var controller, rootController, schemesController, UtilityService;
 
     // For asynchronous statements and promises
@@ -27,6 +27,7 @@ describe('Test schemeUploadModalController', function () {
         $window = _$window_;
         $http = _$http_;
         $timeout = _$timeout_;
+		$uibModalInstance = {};
 
         $window.sessionStorage.role = 'admin';
         $window.sessionStorage.isAnnotator = 'false';
@@ -546,6 +547,9 @@ describe('Test schemeUploadModalController', function () {
             $httpBackend
                 .expect('POST', url);
 
+			$uibModalInstance.close = {};
+			spyOn($uibModalInstance, "close").and.callFake(function () {});
+
             $scope.timelineView.checked = true;
             $scope.noView.checked = false;
             $scope.linkTypes.push(timelineLinkType);
@@ -567,6 +571,7 @@ describe('Test schemeUploadModalController', function () {
             expect($rootScope.tableSchemes.length).toEqual(1);
             var preview = $rootScope.tableSchemes[0];
             expect(preview.name).toEqual($scope.schemeName);
+			expect($uibModalInstance.close).toHaveBeenCalled();
         });
 
     });
