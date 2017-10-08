@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
+Licensed under the GPLv2 License. See LICENSE in the project root for license information.
+-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<!-- Project Modal -->
+<form role="form">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Import project</h4>
+    </div>
+    <div class="modal-body">
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
+        <div class="form-group">
+            <br/>
+            <label for="importProject">Choose the project to import (*.zip format):</label>
+            <input type="file"
+                   accept=".zip"
+                   name="importProject"
+                   id="importProject"
+                   ng-model="proj"
+                   on-read-file="this.sendProject($fileContent,$fileName)"
+                   style="display:none;"/>
+            <br/>
+            <label for="importProject" class="btn btn-default">Choose Project</label>
+        </div>
+        <div class="form-group">
+            <label for="name">Project name:</label>
+            <input type="text" class="form-control" id="name" ng-model="projName" required>
+            <span ng-show="hasError(projName)" class="help-block">Project name already taken.</span>
+            <i>Please change the project name if another project with the same name already exists.</i>
+        </div>
+        <div class="form-group">
+            <label>Tokenization language:</label>
+            <select
+                    data-ng-model="selectedTokLang"
+                    ng-options="language as language for language in this.languages">
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"
+                id="pe_createProjectButton"
+                class="btn btn-primary"
+                ng-disabled="!projName || !selectedTokLang || $scope.hasError(projName)"
+                ng-click="submit(projName, selectedTokLang)">
+            Submit
+        </button>
+    </div>
+</form>
+
+</body>
+</html>

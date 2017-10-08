@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -25,18 +25,18 @@ import javax.persistence.NoResultException;
 @Stateless
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class AnnotationDAO extends BaseEntityDAO<Annotation> {
-    
+
     public AnnotationDAO() {
         super(Annotation.class);
     }
-    
-    
+
+
     /**
      * Marks an annotation as "not sure"
-     * 
+     *
      * @param annoId
      * @param value
-     * @return 
+     * @return
      */
     public Annotation setNotSure(Long annoId, boolean value) throws CreateException {
         try {
@@ -47,20 +47,20 @@ public class AnnotationDAO extends BaseEntityDAO<Annotation> {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     public List<Annotation> getAllAnnotationsByUserIdDocId(final Long userId, final Long docId) {
         Map<String, Long> map = new HashMap<>();
         map.put(Annotation.PARAM_USER, userId);
         map.put(Annotation.PARAM_DOCUMENT, docId);
         return executeQuery(Annotation.QUERY_FIND_BY_USER_AND_DOC, map);
     }
-    
+
     /**
      * Returns all annotations by a specific user id. Just for remove
      * purposes.
-     * 
+     *
      * @param entity
-     * @return 
+     * @return
      */
     public List<Annotation> getAllAnnotationsByUserId(Users entity) {
         return executeQuery(
@@ -89,5 +89,18 @@ public class AnnotationDAO extends BaseEntityDAO<Annotation> {
                 Annotation.QUERY_DELETE_BY_USER,
                 Collections.singletonMap(Annotation.PARAM_USER, entity));
     }
-    
+
+	/**
+	 * Removes all annotations belonging to a user in a document.
+	 *
+	 * @param userId
+	 * @param docId
+	 */
+	public void removeAllAnnotationsByUserAndDocument(final Long userId, final Long docId) {
+		Map<String, Long> map = new HashMap<>();
+		map.put(Annotation.PARAM_USER, userId);
+		map.put(Annotation.PARAM_DOCUMENT, docId);
+		executeUpdate(Annotation.QUERY_DELETE_BY_USER_AND_DOCUMENT, map);
+	}
+
 }

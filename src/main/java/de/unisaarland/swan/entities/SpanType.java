@@ -45,7 +45,7 @@ public class SpanType extends ColorableBaseEntity {
      * Query parameter constant for the attribute "project".
      */
     public static final String PARAM_PROJECT = "project";
-	
+
     @JsonIgnore
     @ManyToMany(mappedBy = "appliesToSpanTypes",
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },

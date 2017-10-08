@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -37,66 +37,66 @@ import javax.ws.rs.core.Response;
  */
 @Stateless
 public class Service {
-    
+
     // Determines which kind of user can create another user with the allowed role
     private static EnumMap<Users.RoleType, List<Users.RoleType>>
             userPermissionMap = new EnumMap<>(Users.RoleType.class);
-    
+
     static {
         userPermissionMap.put(Users.RoleType.admin,
                 Arrays.asList(Users.RoleType.admin, Users.RoleType.projectmanager, Users.RoleType.annotator));
         userPermissionMap.put(Users.RoleType.projectmanager,
                 Arrays.asList(Users.RoleType.annotator));
     }
-    
+
     @EJB
     ProjectDAO projectDAO;
-    
+
     @EJB
     AnnotationDAO annotationDAO;
-    
+
     @EJB
     DocumentDAO documentDAO;
-    
+
     @EJB
     LabelDAO labelDAO;
-    
+
     @EJB
     LinkDAO linkDAO;
-    
+
     @EJB
     TimeLoggingDAO timeLoggingDAO;
-    
+
     @EJB
     StateDAO stateDAO;
-    
+
     @EJB
     UsersDAO usersDAO;
-    
+
     @EJB
     SchemeDAO schemeDAO;
-    
+
     @EJB
     LinkLabelDAO linkLabelDAO;
-    
+
     @EJB
     LinkTypeDAO linkTypeDAO;
-    
+
     @EJB
     LabelSetDAO labelSetDAO;
-    
+
     @EJB
     SpanTypeDAO spanTypeDAO;
-    
+
     @EJB
     EmailProvider emailProvider;
-    
+
     /**
      * Creates a new state object and sets given user and document.
-     * 
+     *
      * @param u User
      * @param d Document
-     * @return 
+     * @return
      */
     private State getNewState(Users u, Document d) {
         State state = new State();
@@ -106,10 +106,10 @@ public class Service {
         state.setLastEdit(Utility.getCurrentTime());
         return state;
     }
-    
+
     /**
      * Updates the lastEdit field of state in a document.
-     * 
+     *
      * @param d Document
      * @param u User
      */
@@ -125,19 +125,19 @@ public class Service {
 
     /**
      * Tokenizes the given document and returns them.
-     * 
+     *
      * @param docId
-     * @return 
+     * @return
      */
     public List<Line> getTokensByDocId(Long docId) {
-        
+
         Document doc = (Document) documentDAO.find(docId, true);
         String lang = doc.getProject().getTokenizationLang().toString();
         List<Line> lines = TokenizationUtil.tokenize(doc.getText(), lang);
-        
+
         return lines;
     }
-    
+
     public Response edit(Annotation entity) throws CreateException {
         try {
             Annotation annoOrig = annotationDAO.find(entity.getId(), false);
@@ -149,7 +149,7 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     ///////////////////////////////////////////////
     //  PROCESS
     //
@@ -159,9 +159,9 @@ public class Service {
     //  entities with the same key and values but
     //  different instances.
     ///////////////////////////////////////////////
-    
+
     public void process(Annotation entity) throws CreateException {
-        
+
         try {
             Users user = (Users) usersDAO.find(entity.getUser().getId(), false);
             entity.setUser(user);
@@ -183,9 +183,9 @@ public class Service {
         } catch (NullPointerException | NoResultException e) {
             throw new CreateException(e.getMessage());
         }
-        
+
     }
-    
+
     public void process(Set<Annotation> annotations) throws CreateException {
         for (Annotation a : annotations)
             process(a);
@@ -223,7 +223,7 @@ public class Service {
     }
 
     public void process(Scheme entity) throws CreateException {
-        
+
         try {
             if (entity.getCreator() != null
                     && entity.getCreator().getId() != null) {
@@ -290,7 +290,7 @@ public class Service {
                 SpanType et = spanTypeMap.get(lt.getEndSpanType().getName());
                 if (et == null) throw new CreateException("Service: end span type null.");
                 lt.setEndSpanType(et);
-                
+
                 for (LinkLabel ll : lt.getLinkLabels()) {
                     linkTypeLabelMap.get(lt.getName()).put(ll.getName(), ll);
                     ll.setLinkType(lt);
@@ -350,13 +350,13 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     public void process(Document entity) throws CreateException {
         Project project = (Project) projectDAO.find(entity.getProject().getId(), false);
         entity.setProject(project);
         process(entity.getDefaultAnnotations());
     }
-    
+
     // TODO user and doc id handling
     public void process(Link entity) throws CreateException {
         try {
@@ -396,15 +396,15 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     public void process(Users currUser, Users newUser) throws CreateException {
-        
+
         // Check user roles
         List<Users.RoleType> allowedRoles = userPermissionMap.get(currUser.getRole());
         if (!allowedRoles.contains(newUser.getRole())) {
             throw new CreateException("Service: The requested user role is not allowed.");
         }
-        
+
         Set<Project> proSet = new HashSet<>();
         for (Project p : newUser.getProjects()) {
             Project proj = (Project) projectDAO.find(p.getId(), false);
@@ -416,7 +416,7 @@ public class Service {
                 Utility.hashPassword(
                         newUser.getPassword()));
     }
-    
+
     public void process(TimeLogging entity) throws CreateException {
         try {
             Users user = (Users) usersDAO.find(entity.getUsers().getId(), false);
@@ -465,8 +465,8 @@ public class Service {
                 throw new IllegalStateException();
         }
     }
-    
-    
+
+
     ///////////////////////////////////////////////
     //  CHANGE, SET AND ADD
     //
@@ -474,17 +474,17 @@ public class Service {
     //  or more values of an entity and return the
     //  instance to be merged.
     ///////////////////////////////////////////////
-    
+
     /**
      * Adds a user to a project and creates the targets/ default annotations
      * for this specific user.
-     * 
+     *
      * @param projId
      * @param userId
-     * @throws CloneNotSupportedException 
+     * @throws CloneNotSupportedException
      */
     public void addUserToProject(Long projId, Long userId) throws CloneNotSupportedException, CreateException {
-        
+
         try {
             Project proj = (Project) projectDAO.getProjectToAddUser(projId);
             Users user =  (Users) usersDAO.find(userId, false);
@@ -503,7 +503,7 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     public void addProjectManagerToProject(Long projId, Long userId) throws CreateException {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
@@ -518,7 +518,7 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     public void addWatchingUserToProject(Long projId, Long userId) throws CreateException {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
@@ -533,14 +533,14 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     /**
      * TODO: There is no real control mechanism that there is not a wrong
      * Label added to the annotation.
-     * 
+     *
      * @param annoId
      * @param label
-     * @return  
+     * @return
      * @throws javax.ejb.CreateException
      */
     public Annotation addLabelToAnnotation(Long annoId, Label label) throws CreateException {
@@ -583,19 +583,19 @@ public class Service {
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
-        
+
     }
-    
+
     public Link addLinkLabelToLink(Long linkId, LinkLabel label) throws CreateException {
 
         Link link = (Link) linkDAO.find(linkId, false);
 
         updateDocument(link.getDocument(), link.getUser());
-        
+
         if (label.getLinkType() == null) {
             throw new CreateException("Service: Adding LinkLabel to Link failed.");
         }
-        
+
         try {
             LinkLabel newLabel = (LinkLabel) linkLabelDAO.find(label.getId(), false);
             LinkType newLinkType = (LinkType) linkTypeDAO.find(newLabel.getLinkType().getId(), false);
@@ -625,16 +625,16 @@ public class Service {
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
-        
+
     }
-    
+
     private void checkTargets(Document entity) throws CreateException {
 
         String lang = entity.getProject().getTokenizationLang().toString();
         HashMap<String, HashMap<Integer, CoreLabel>> maps = TokenizationUtil.getTokenMap(entity.getText(), lang);
         HashMap<Integer, CoreLabel> mapStart = maps.get("start");
         HashMap<Integer, CoreLabel> mapEnd = maps.get("end");
-        
+
         // It is expected that the defaultAnnotations/ targets don't have user ids,
         // so set all attributes to null or empty sets except
         for (Annotation a : entity.getDefaultAnnotations()) {
@@ -642,7 +642,7 @@ public class Service {
             a.setLabels(new HashSet<Label>());
             a.setNotSure(false);
             a.setUser(null);
-            
+
             if (a.getSpanType() == null) {
                 throw new CreateException("Service: No span type specified!");
             } else {
@@ -658,18 +658,18 @@ public class Service {
             }
         }
     }
-    
+
     /**
      * Adds a document to a project and creates the new targets/ default annotations
      * for the existing users.
-     * 
+     *
      * @param entity
      * @return
      * @throws javax.ejb.CreateException
-     * @throws CloneNotSupportedException 
+     * @throws CloneNotSupportedException
      */
     public Document addDocumentToProject(Document entity) throws CreateException, CloneNotSupportedException {
-        
+
         try {
             Project project = (Project) projectDAO.find(entity.getProject().getId(), false);
             entity.setProject(project);
@@ -686,55 +686,61 @@ public class Service {
 
             generateTargets(project, entity);
 
-            project.addDocuments(entity);
+            project.addDocument(entity);
 
             return entity;
         } catch (NoResultException e) {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     /**
      * Generates the default annotations for every user and document. Wrapper method.
-     * 
+     *
      * @param proj
      * @param doc
-     * @throws CloneNotSupportedException 
+     * @throws CloneNotSupportedException
      */
     private void generateTargets(Project proj, Document doc) throws CloneNotSupportedException {
         for (Users u : proj.getUsers()) {
             generateTargets(doc, u);
         }
     }
-    
+
     /**
      * Generates the default annotations for every user and document. Wrapper method.
-     * 
+     *
      * @param proj
      * @param user
-     * @throws CloneNotSupportedException 
+     * @throws CloneNotSupportedException
      */
     private void generateTargets(Project proj, Users user) throws CloneNotSupportedException {
         for (Document doc : proj.getDocuments()) {
             generateTargets(doc, user);
         }
     }
-    
+
     /**
      * Generates the default annotations for one user and one document.
-     * 
+     *
      * @param user
      * @param doc
-     * @throws CloneNotSupportedException 
+     * @throws CloneNotSupportedException
      */
     private void generateTargets(Document doc, Users user) throws CloneNotSupportedException {
-        for (Annotation a : doc.getDefaultAnnotations()) {
-            Annotation newAnno = (Annotation) a.clone();
-            newAnno.setUser(user);
-            annotationDAO.create(newAnno);
-        }
+		Set<Annotation> defaultAnnotations = doc.getDefaultAnnotations();
+
+		if (defaultAnnotations.size() > 0) {
+			if (annotationDAO.getAllAnnotationsByUserIdDocId(user.getId(), doc.getId()).size() == 0) {
+				for (Annotation a : defaultAnnotations) {
+					Annotation newAnno = (Annotation) a.clone();
+					newAnno.setUser(user);
+					annotationDAO.create(newAnno);
+				}
+			}
+		}
     }
-    
+
     public Annotation changeSpanType(Long annoId, SpanType spanType) throws CreateException {
 
         try {
@@ -759,10 +765,10 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     /**
      * Sets the state of a document and user to the desired value.
-     * 
+     *
      * @param docId
      * @param userId
      * @param completed
@@ -778,7 +784,7 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     public Response resetUserPassword(Users entity) throws CreateException {
         try {
             Users user = usersDAO.find(entity.getId(), false);
@@ -801,11 +807,11 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     ///////////////////////////////////////////////
     //  REMOVE
     ///////////////////////////////////////////////
-    
+
     public void removeProject(final Long projId) throws CreateException {
 
         Project entity = projectDAO.getProjectToDelete(projId);
@@ -828,7 +834,7 @@ public class Service {
             throw new CreateException("The project to be deleted does not exist.");
         }
     }
-    
+
     public void removeUserFromProject(Long projId, Long userId) throws CreateException {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
@@ -845,7 +851,7 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     public void removeProjectManagerFromProject(Long projId, Long userId) throws CreateException {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
@@ -860,7 +866,7 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     public void removeWatchingUserFromProject(Long projId, Long userId) throws CreateException {
         try {
             Project proj = (Project) projectDAO.find(projId, false);
@@ -875,7 +881,7 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     public void removeDocument(Document entity) throws CreateException {
         try {
             entity.removeDefaultAnnotations();
@@ -908,14 +914,14 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     /**
      * Removes a label from an annotation.
      * The Label must exist in the annotation otherwise an
      * IllegalArgumentException will be thrown.
-     * 
+     *
      * @param anno
-     * @param label 
+     * @param label
      */
     public void removeLabelFromAnnotation(Annotation anno, Label label) throws CreateException {
 
@@ -929,7 +935,7 @@ public class Service {
         annotationDAO.merge(anno);
         return;
     }
-    
+
     public void removeLabelFromLink(Link link, LinkLabel label) throws CreateException {
 
         Set<LinkLabel> labels = link.getLinkLabels();
@@ -977,10 +983,10 @@ public class Service {
             throw new CreateException(e.getMessage());
         }
     }
-    
+
     /**
      * Removes a scheme.
-     * 
+     *
      * @param schemeId
      * @throws CreateException is thrown when the scheme references projects
      */

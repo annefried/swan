@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -7,10 +7,8 @@ package de.unisaarland.swan.export;
 import de.unisaarland.swan.dao.AnnotationDAO;
 import de.unisaarland.swan.dao.LinkDAO;
 import de.unisaarland.swan.entities.*;
-import de.unisaarland.swan.export.model.xml.Annotation;
-import de.unisaarland.swan.export.model.xml.AnnotationSet;
-import de.unisaarland.swan.export.model.xml.Document;
-import de.unisaarland.swan.export.model.xml.Label;
+import de.unisaarland.swan.entities.Users;
+import de.unisaarland.swan.export.model.xml.*;
 import de.unisaarland.swan.export.model.uima.SwanAnnotation;
 import de.unisaarland.swan.export.model.uima.SwanLabel;
 import de.unisaarland.swan.export.model.uima.SwanLink;
@@ -34,6 +32,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import de.unisaarland.swan.export.model.xml.Label;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
@@ -82,6 +81,7 @@ public class ExportUtil {
             ZipOutputStream zos = createZipOutputStream(zipFile);
 
             for (de.unisaarland.swan.entities.Document d : proj.getDocuments()) {
+            	addTxtFile(d, zos);
                 File xmiFile = createXMIFileForDocument(d);
                 createZipEntry(xmiFile, zos);
             }
@@ -89,7 +89,7 @@ public class ExportUtil {
             // Add type system for convenience
             File typeSystemFile = createTypeSystemFile();
             createZipEntry(typeSystemFile, zos);
-
+			zos.finish();
             zos.close();
 
             return zipFile;
@@ -139,7 +139,7 @@ public class ExportUtil {
         dAnnot.setAnnotationId(annotation.getId().toString());
         annotsById.put(annotation.getId(), dAnnot);
 
-        Set<Label> labels = convertLabelsToExportLabelSet(annotation.getLabels());
+		Set<Label> labels = convertLabelsToExportLabelSet(annotation.getLabels());
         FSList list = createLabelList(jCas, labels);
 
         dAnnot.setLabels(list);
@@ -153,7 +153,7 @@ public class ExportUtil {
         dLink.setLinkEnd(annotsById.get(link.getAnnotation2().getId()));
         dLink.setAnnotatorId(link.getUser().getEmail());
 
-        Set<Label> labels = convertLinkLabelsToExportLabelSet(link.getLinkLabels());
+        Set<de.unisaarland.swan.export.model.xml.Label> labels = convertLinkLabelsToExportLabelSet(link.getLinkLabels());
         FSList list = createLabelList(jCas, labels);
 
         dLink.setLabels(list);
@@ -179,9 +179,9 @@ public class ExportUtil {
      * @param labels Set<Label> labels
      * @return list FSList
      */
-    private FSList createLabelList(JCas jCas, Set<Label> labels) {
+    private FSList createLabelList(JCas jCas, Set<de.unisaarland.swan.export.model.xml.Label> labels) {
         FSList list = new EmptyFSList(jCas);
-        for (Label label : labels) {
+        for (de.unisaarland.swan.export.model.xml.Label label : labels) {
             for (String labelName : label.getLabel()) {
                 SwanLabel uimaLabel
                         = new SwanLabel(jCas);
@@ -222,6 +222,10 @@ public class ExportUtil {
             ZipOutputStream zos = createZipOutputStream(zipFile);
 
             for (de.unisaarland.swan.entities.Document d : proj.getDocuments()) {
+            	// Insert text file
+				addTxtFile(d, zos);
+
+				// Insert annotations
                 for (Users u : proj.getUsers()) {
 
                     String fileName = proj.getName()
@@ -230,11 +234,14 @@ public class ExportUtil {
                             + ".xml";
                     File docUserfile = new File(fileName);
 
+					de.unisaarland.swan.export.model.xml.Users user = convertUserToExportUser(u);
+
                     List<de.unisaarland.swan.entities.Annotation> annotations
                             = annotationDAO.getAllAnnotationsByUserIdDocId(u.getId(), d.getId());
+                    System.out.println(annotations.size());
                     List<de.unisaarland.swan.entities.Link> links
                             = linkDAO.getAllLinksByUserIdDocId(u.getId(), d.getId());
-                    Document exportDoc = convertToExportDocument(d, annotations, links);
+                    de.unisaarland.swan.export.model.xml.Document exportDoc = convertToExportDocument(d, annotations, links, user);
 
                     marshalXMLToSingleFile(exportDoc, docUserfile);
                     createZipEntry(docUserfile, zos);
@@ -243,7 +250,7 @@ public class ExportUtil {
 
             // Insert scheme
             marshalScheme(proj, zos);
-
+            zos.finish();
             zos.close();
 
             return zipFile;
@@ -263,10 +270,28 @@ public class ExportUtil {
     }
 
     private void createZipEntry(File file, ZipOutputStream zos) throws IOException {
-        zos.putNextEntry(new ZipEntry(file.getName()));
+    	ZipEntry ze = new ZipEntry(file.getName());
+        zos.putNextEntry(ze);
         zos.write(FileUtils.readFileToByteArray(file));
         zos.closeEntry();
     }
+
+	/**
+	 * Inserts the .txt file of a document into the zip file.
+	 *
+	 * @param d
+	 * @param zos
+	 * @throws IOException
+	 */
+	private void addTxtFile(de.unisaarland.swan.entities.Document d, ZipOutputStream zos) throws IOException {
+		// Insert text file
+		String txtFileName = d.getName() +".txt";
+		File txtFile = new File(txtFileName);
+		FileOutputStream fos = new FileOutputStream(txtFile);
+		fos.write(d.getText().getBytes());
+		fos.close();
+		createZipEntry(txtFile, zos);
+	}
 
 	private void marshalScheme(Project proj, ZipOutputStream zos) throws IOException {
         final Scheme schemeOrig = proj.getScheme();
@@ -278,7 +303,8 @@ public class ExportUtil {
 
         marshalXMLToSingleFile(schemeExport, schemefile);
 
-        zos.putNextEntry(new ZipEntry(fileName));
+        ZipEntry ze = new ZipEntry(fileName);
+        zos.putNextEntry(ze);
         zos.write(FileUtils.readFileToByteArray(schemefile));
         zos.closeEntry();
     }
@@ -305,11 +331,14 @@ public class ExportUtil {
         throw new RuntimeException("ExportUtil: Something went wrong while marshalling the XML");
     }
 
-    private Document convertToExportDocument(de.unisaarland.swan.entities.Document d,
-                                             List<de.unisaarland.swan.entities.Annotation> annotations,
-                                             List<de.unisaarland.swan.entities.Link> links) {
+    private de.unisaarland.swan.export.model.xml.Document convertToExportDocument(de.unisaarland.swan.entities.Document d,
+																				  List<de.unisaarland.swan.entities.Annotation> annotations,
+																				  List<de.unisaarland.swan.entities.Link> links,
+																				  de.unisaarland.swan.export.model.xml.Users user) {
 
-        Document document = new Document();
+        de.unisaarland.swan.export.model.xml.Document document = new de.unisaarland.swan.export.model.xml.Document();
+        document.setName(d.getName());
+        document.setUser(user);
         document.setAnnotations(
                 convertAnnotationsToAnnotationSet(annotations));
         document.setLinks(
@@ -320,7 +349,7 @@ public class ExportUtil {
 
     private AnnotationSet convertAnnotationsToAnnotationSet(List<de.unisaarland.swan.entities.Annotation> annotations) {
         AnnotationSet annotationSet = new AnnotationSet();
-        Set<Annotation> annotatiosExport = new HashSet<>();
+        Set<de.unisaarland.swan.export.model.xml.Annotation> annotatiosExport = new HashSet<>();
 
         for (de.unisaarland.swan.entities.Annotation a : annotations) {
             annotatiosExport.add(
@@ -331,22 +360,29 @@ public class ExportUtil {
         return annotationSet;
     }
 
-    private Annotation convertAnnotationToExportAnnotation(de.unisaarland.swan.entities.Annotation a) {
-        Annotation anno = new Annotation();
+    private de.unisaarland.swan.export.model.xml.Annotation convertAnnotationToExportAnnotation(de.unisaarland.swan.entities.Annotation a) {
+        de.unisaarland.swan.export.model.xml.Annotation anno = new de.unisaarland.swan.export.model.xml.Annotation();
         anno.setId(a.getId());
         anno.setStart(a.getStart());
         anno.setEnd(a.getEnd());
-       // anno.setText(a.getText());
+        // anno.setText(a.getText());
         anno.setSpanType(a.getSpanType().getName());
+
         anno.setLabels(
                 convertLabelsToExportLabelSet(
                         a.getLabels()));
         return anno;
     }
 
-    private Set<Label> convertLabelsToExportLabelSet(Set<de.unisaarland.swan.entities.Label> labelEntities) {
-        Set<Label> labels = new HashSet<>();
+    private de.unisaarland.swan.export.model.xml.Users convertUserToExportUser(Users u) {
+		de.unisaarland.swan.export.model.xml.Users user = new de.unisaarland.swan.export.model.xml.Users();
+		user.setPrename(u.getPrename());
+		user.setLastname(u.getLastname());
+		user.setEmail(u.getEmail());
+		return user;
+	}
 
+    private Set<Label> convertLabelsToExportLabelSet(Set<de.unisaarland.swan.entities.Label> labelEntities) {
 
         // collect selected labels per LabelSet
         Map<String, Set<String>> setToLabelsMap = new HashMap<>();
@@ -361,16 +397,22 @@ public class ExportUtil {
 
         }
 
-        // TODO duplicate code
-        for (String labelSetName : setToLabelsMap.keySet()) {
-            Label annotatedLabel = new Label();
-            annotatedLabel.setLabel(setToLabelsMap.get(labelSetName));
-            annotatedLabel.setLabelSetName(labelSetName);
-            labels.add(annotatedLabel);
-        }
+        Set<de.unisaarland.swan.export.model.xml.Label> labels = createExportLabelsFromMap(setToLabelsMap);
 
         return labels;
     }
+
+    private Set<de.unisaarland.swan.export.model.xml.Label> createExportLabelsFromMap(Map<String, Set<String>> setToLabelsMap) {
+		Set<de.unisaarland.swan.export.model.xml.Label> labels = new HashSet<>();
+		for (String labelSetName : setToLabelsMap.keySet()) {
+			de.unisaarland.swan.export.model.xml.Label annotatedLabel = new de.unisaarland.swan.export.model.xml.Label();
+			annotatedLabel.setLabel(setToLabelsMap.get(labelSetName));
+			annotatedLabel.setLabelSetName(labelSetName);
+			labels.add(annotatedLabel);
+		}
+		return labels;
+
+	}
 
     private de.unisaarland.swan.export.model.xml.LinkType convertLinksToLinkType(List<de.unisaarland.swan.entities.Link> links) {
 
@@ -397,8 +439,7 @@ public class ExportUtil {
         return newLink;
     }
 
-    private Set<Label> convertLinkLabelsToExportLabelSet(Set<de.unisaarland.swan.entities.LinkLabel> linkLabels) {
-        Set<Label> labels = new HashSet<>();
+    private Set<de.unisaarland.swan.export.model.xml.Label> convertLinkLabelsToExportLabelSet(Set<de.unisaarland.swan.entities.LinkLabel> linkLabels) {
 
         // collect selected labels per LabelSet
         Map<String, Set<String>> setToLabelsMap = new HashMap<>();
@@ -413,15 +454,7 @@ public class ExportUtil {
 
         }
 
-        // TODO duplicate code
-        for (String labelSetName : setToLabelsMap.keySet()) {
-            Label annotatedLabel = new Label();
-            annotatedLabel.setLabel(setToLabelsMap.get(labelSetName));
-            annotatedLabel.setLabelSetName(labelSetName);
-            labels.add(annotatedLabel);
-        }
-
-        return labels;
+		return createExportLabelsFromMap(setToLabelsMap);
     }
 
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -22,15 +22,15 @@ import javax.ejb.TransactionAttributeType;
 @Stateless
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class UsersDAO extends BaseEntityDAO<Users> {
-    
+
     public UsersDAO() {
         super(Users.class);
     }
-    
+
     public Users checkLogin(String session, Users.RoleType role) {
 
         Users user = getUserBySession(session);
-        
+
         if (user == null
                 || user.getRole() == null
                 || (!role.equals(user.getRole()) && !( user.getRole().equals(Users.RoleType.admin)|| user.getRole().equals(Users.RoleType.projectmanager)))
@@ -40,7 +40,7 @@ public class UsersDAO extends BaseEntityDAO<Users> {
 
         return user;
     }
-    
+
     public Users checkLogin(String session) throws SecurityException {
         return checkLogin(session, Users.RoleType.annotator);
     }
@@ -52,18 +52,25 @@ public class UsersDAO extends BaseEntityDAO<Users> {
         return firstResult(
                 executeQuery(Users.QUERY_FIND_BY_EMAIL_AND_PASSWORD, params));
     }
-    
+
+    public Users getUserByEmail(String email) {
+		return firstResult(
+			executeQuery(
+			Users.QUERY_FIND_BY_EMAIL,
+			Collections.singletonMap(Users.PARAM_EMAIL, email)));
+	}
+
     public Users getUserBySession(String session) {
         return firstResult(
                     executeQuery(
                         Users.QUERY_FIND_BY_SESSION,
                         Collections.singletonMap(Users.PARAM_SESSION, session)));
     }
-    
+
     /**
      * Returns all users with their corresponding projects ascending by
      * their email.
-     * 
+     *
      * @return List<Users>
      */
     public List<Users> getAllUsersWithProjectsAscending() {

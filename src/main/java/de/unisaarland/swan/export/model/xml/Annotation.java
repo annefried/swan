@@ -1,9 +1,10 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
 package de.unisaarland.swan.export.model.xml;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -18,20 +19,20 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder={ "id", "start", "end", "spanType", "labels"})
 public class Annotation {
-    
-    private Long id;
-    
-    private int start;
-    
-    private int end;
-    
-    //private String text;
-    
-    private String spanType;
-    
-    private Set<Label> labels;
 
-    
+    private Long id;
+
+    private int start;
+
+    private int end;
+
+    // private String text;
+
+    private String spanType;
+
+    //private LabelSet labels;
+    private Set<Label> labels = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -56,13 +57,9 @@ public class Annotation {
         this.end = end;
     }
 
-//    public String getText() {
-//        return text;
-//    }
-//
-//    public void setText(String text) {
-//        this.text = text;
-//    }
+    // public String getText() { return text; }
+
+    // public void setText(String text) { this.text = text; }
 
     public Set<Label> getLabels() {
         return labels;
@@ -79,5 +76,4 @@ public class Annotation {
     public void setSpanType(String spanType) {
         this.spanType = spanType;
     }
-    
 }
