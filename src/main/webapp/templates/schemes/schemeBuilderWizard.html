@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="css/explorer.css" rel="stylesheet">
+    </head>
+    <body>
+        <form role="form">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="myModalLabel">Annotation scheme builder</h3>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs nav-justified">
+                    <li ng-class="{'active':isCurrentStep(0)}"><a data-toggle="tab" ng-click="setCurrentStep(0)">Name</a></li>
+                    <li ng-class="{'active':isCurrentStep(1)}"><a data-toggle="tab" ng-click="setCurrentStep(1)">Visualization</a></li>
+                    <li ng-class="{'active':isCurrentStep(2)}"><a data-toggle="tab" ng-click="setCurrentStep(2)">Span Types</a></li>
+                    <li ng-class="{'active':isCurrentStep(3)}"><a data-toggle="tab" ng-click="setCurrentStep(3)">Label Sets</a></li>
+                    <li ng-class="{'active':isCurrentStep(4)}"><a data-toggle="tab" ng-click="setCurrentStep(4)">Link Types </a></li>
+                    <li ng-class="{'active':isCurrentStep(5)}"><a data-toggle="tab" ng-click="setCurrentStep(5)">Preview</a></li>
+                </ul>
+                <br>
+                <div ng-switch="this.getCurrentStep()" class="slide-frame">
+                    <div ng-switch-when="name" class="wave">
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <input ng-model="modal.collapseUpload" type="checkbox" id="sb_createFromExisting">
+                                <label for="sb_createFromExisting">Create from existing scheme</label>
+                            </div>
+
+                            <!-- Upload scheme or select from existing schemes -->
+                            <div class="form-group col-lg-12" ng-show="modal.collapseUpload">
+                                <div class="sb_left">
+                                    <label>Load existing scheme from database...</label>
+                                    <div class="sb_inputText">
+                                        <select class="form-control input-sm"
+                                                ng-model="modal.preloadedScheme"
+                                                ng-options="scheme as scheme.name for scheme in this.loadedSchemes">
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-default btn-sm"
+                                            type="button"
+                                            ng-click="loadPreloadedScheme(modal.preloadedScheme)"
+                                            ng-disabled="modal.preloadedScheme === undefined"
+                                            id="sb_loadbutton">
+                                        Load scheme
+                                    </button>
+                                </div>
+                                <div class="sb_right">
+                                    <label>... or upload scheme (json/xml):</label>
+                                    <input type="file"
+                                           ng-model="file"
+                                           name="scheme"
+                                           id="loadFileButton"
+                                           accept=".xml,.json"
+                                           on-read-file="this.uploadScheme($fileContent)"/>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+
+                        <div class="row">
+                            <!-- Scheme name -->
+                            <div class="form-group col-lg-9">
+                                <div class="form-group">
+                                    <label>Scheme name:</label>
+                                    <input type="text" id="scheme-name-input"
+                                           placeholder="Enter name..."
+                                           class="form-control sb_inputName"
+                                           ng-model="modal.schemeName"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Visualization -->
+                    <div ng-switch-when="visualization" class="wave">
+                        <label>Visualization</label>
+                        <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                              onmouseenter="$(this).tooltip('show')"
+                              title="Optionally, a visualization for a scheme can be selected, which will be displayed next to the annotation window.">
+                        </span>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                                    <label class="radio-inline">
+                                        <input type="radio"
+                                               name="optradioVis"
+                                               value="None"
+                                               ng-model="modal.visKind"
+                                               ng-change="watchVisualizationChange(modal.visKind)">
+                                        None
+                                    </label>
+                                    <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                          onmouseenter="$(this).tooltip('show')"
+                                          title="There will be no visualization available. This cannot be changed later.">
+                                    </span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="radio-inline">
+                                        <input type="radio"
+                                               name="optradioVis"
+                                               value="Graph"
+                                               ng-model="modal.visKind"
+                                               ng-change="watchVisualizationChange(modal.visKind)">
+                                        Graph
+                                    </label>
+                                    <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                          onmouseenter="$(this).tooltip('show')"
+                                          title="Visualizes the annotation structure of a document as a graph.">
+                                    </span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="radio-inline">
+                                        <input type="radio"
+                                               name="optradioVis"
+                                               value="Timeline"
+                                               ng-model="modal.visKind"
+                                               ng-change="watchVisualizationChange(modal.visKind)">
+                                        Timeline
+                                    </label>
+                                    <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                          onmouseenter="$(this).tooltip('show')"
+                                          title="Visualizes the annotation structure of a document as a timeline. This option limits the scheme to at most one link type for which the directions of the links (horizontal/vertical) are specified.">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-show="modal.noView.checked || modal.graphView.checked || modal.timelineView.checked">
+                            <div class="form-group col-lg-4">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <div class="checkbox" ng-show="modal.graphView.checked">
+                                    <label>
+                                        <input type="checkbox"
+                                               ng-model="modal.graphView.open">
+                                        expand by default
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <div class="checkbox" ng-show="modal.timelineView.checked">
+                                    <label>
+                                        <input type="checkbox"
+                                               ng-model="modal.timelineView.open">
+                                        expand by default
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Span Types -->
+                    <div ng-switch-when="spanTypes">
+                        <div class="row">
+                            <div class="form-group col-lg-7">
+                                <div class="form-group" >
+                                    <label>
+                                        Span Types
+                                    </label>
+                                    <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                          onmouseenter="$(this).tooltip('show')"
+                                          title="Span annotations in SWAN consist of spans (any number of contiguous tokens) and are assigned a span type.">
+                                    </span>
+                                    <table class="listingTable">
+                                        <tbody>
+                                            <tr ng-repeat="spanType in this.spanTypes">
+                                                <td class="tableRowWithGlyph">
+                                                    {{spanType.name}}
+                                                </td>
+                                                <td>
+                                                    <span class="glyphicon glyphicon-remove"
+                                                          onmouseenter="$(this).tooltip('show')" title="Any label sets or link types using this span type will also be removed."
+                                                          style="color:red;" ng-click="removeSpanType(spanType)">
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="input-group col-lg-6 sb_inputName">
+                                    <input type="text"
+                                           ng-model="modal.spanTypeName"
+                                           class="form-control input-sm"
+                                           placeholder="Enter name...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-sm"
+                                                type="button"
+                                                id="span-types-input"
+                                                ng-disabled="disableTextInputButton(modal.spanTypeName)"
+                                                ng-click="addSpanType(modal.spanTypeName)">
+                                            Add
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Label Sets -->
+                    <div ng-switch-when="labelSets">
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <label>Label Sets</label>
+                                <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                      onmouseenter="$(this).tooltip('show')"
+                                      title="A label set defines a set of labels which can be and applied to particular span types.">
+                                </span>
+                                <table class="form-group labelLinkTypeTable table" ng-show="this.labelSets.length != 0">
+                                    <thead class="headDark">
+                                    <th class="col-md-2">
+                                        Name
+                                    </th>
+                                    <th class="col-md-1">
+                                        Exclusive?
+                                    </th>
+                                    <th class="col-md-2">
+                                        Span types
+                                    </th>
+                                    <th class="col-md-1">
+                                        Labels
+                                    </th>
+                                    <th class="col-md-1"/>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="labelSet in labelSets">
+                                            <td>
+                                                {{labelSet.name}}
+                                            </td>
+                                            <td>
+                                                {{labelSet.exclusive}}
+                                            </td>
+                                            <td>
+                                                <p ng-repeat="spanType in labelSet.appliesToSpanTypes">
+                                                    {{spanType.name}}
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p ng-repeat="label in labelSet.labels">
+                                                    {{label.name}}
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <span class="glyphicon glyphicon-edit"
+                                                      ng-click="editLabelSet(labelSet.name)">
+                                                </span>
+                                                <span class="glyphicon glyphicon-remove"
+                                                      style="color:red;"
+                                                      ng-click="removeLabelSet(labelSet.name)">
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Create Label Sets -->
+                            <div class="form-group col-lg-12" ng-show="modal.editingLabelSet == false">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default"
+                                            id ="sb_newLabelSetButton"
+                                            ng-click="newLabelSet()">
+                                        + Label Set
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12" id="addLabelSetsDiv" ng-show="modal.editingLabelSet == true">
+                                <div class="row">
+                                    <div class="form-group col-xs-6">
+                                        <div class="form-group">
+                                            <label>
+                                                Name:
+                                            </label>
+                                            <input type="text" placeholder="Enter name..."
+                                                   class="sb_form-control input-sm"
+                                                   ng-model="modal.nameLabelSet"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"
+                                                           ng-init="modal.exclusiveLabelSet = false"
+                                                           ng-model="modal.exclusiveLabelSet">
+                                                    exclusive
+                                                </label>
+                                                <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                                      onmouseenter="$(this).tooltip('show')"
+                                                      title="Only one label per span can be selected.">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                Applies to Span Types:
+                                            </label>
+                                            <table class="listingTable form-group">
+                                                <tbody>
+                                                    <tr ng-repeat="spanType in this.selectedSpanTypesOfLabelSet">
+                                                        <td class="tableRowWithGlyph">
+                                                            {{spanType.name}}
+                                                        </td>
+                                                        <td>
+                                                            <span class="glyphicon glyphicon-remove"
+                                                                  style="color:red;"
+                                                                  ng-click="removeSpanTypeFromLabelSet(spanType.name)">
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                        class="btn btn-default dropdown-toggle btn-sm"
+                                                        data-toggle="dropdown">
+                                                    Add Span Type
+                                                    <span class="caret"> </span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li ng-repeat="spanType in this.spanTypes| filter:selectedSpanTypeLabelSetFilter">
+                                                        <a ng-click="addSpanTypeToLabelSet(spanType)">
+                                                            {{spanType.name}}
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label>
+                                            Labels:
+                                        </label>
+                                        <table class="listingTable form-group" ng-show="this.currentLabelsOfLabelSet.length != 0">
+                                            <tbody>
+                                            <tr ng-repeat="label in this.currentLabelsOfLabelSet">
+                                                <td class="tableRowWithGlyph">
+                                                    {{label.name}}
+                                                </td>
+                                                <td>
+                                        <span class="glyphicon glyphicon-remove"
+                                              style="color:red;"
+                                              ng-click="removeLabelFromLabelSet(label.name)">
+                                        </span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="input-group col-xs-11">
+                                            <input type="text" ng-model="modal.labelName"
+                                                   class="form-control input-sm"
+                                                   placeholder="Enter name...">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default btn-sm" type="button"
+                                                        ng-disabled="disableTextInputButton(modal.labelName)"
+                                                        ng-click="addLabelToLabelSet(modal.labelName)">
+                                                Add
+                                            </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group sb_right">
+                                    <button type="button" class="btn btn-success"
+                                            id ="sb_addLabelSetButton"
+                                            ng-disabled="disableLabelSetButton()"
+                                            ng-click="addLabelSet()">
+                                        Add Label Set
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Link Types -->
+                    <div ng-switch-when="linkTypes">
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <label ng-bind="getLinkTypeHeadline()">Link Types</label>
+                                <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                      onmouseenter="$(this).tooltip('show')"
+                                      title="Link annotations are edges from one span annotation to another. Link types define the type of a link annotation.">
+                                </span>
+                                <label ng-show="modal.timelineView.checked" class="sb_graySmalltext">When timeline is selected only one link type is allowed, the link type has to be exclusive and each link label must have one relative position assigned.</label>
+                                <table class="form-group labelLinkTypeTable table" ng-show="this.linkTypes.length != 0">
+                                    <thead class="headDark">
+                                        <th class="col-md-2">
+                                            Name
+                                        </th>
+                                        <th class="col-md-1">
+                                            Start s. type
+                                        </th>
+                                        <th class="col-md-2">
+                                            End s. type
+                                        </th>
+                                        <th class="col-md-1">
+                                            Labels
+                                        </th>
+                                        <th class="col-md-1"/>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="linkType in linkTypes">
+                                            <td>
+                                                {{linkType.name}}
+                                            </td>
+                                            <td>
+                                                {{linkType.startSpanType.name}}
+                                            </td>
+                                            <td>
+                                                {{linkType.endSpanType.name}}
+                                            </td>
+                                            <td>
+                                                <div ng-repeat="label in linkType.linkLabels" style="inline-box-align: initial">
+                                                    <p>{{label.name}}</p>
+                                                    <span ng-show="label.options.length > 0">{{label.options}}</span>
+
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="glyphicon glyphicon-edit"
+                                                      ng-click="editLinkType(linkType.name)">
+                                                </span>
+                                                <span class="glyphicon glyphicon-remove"
+                                                      style="color:red;"
+                                                      ng-click="removeLinkType(linkType.name)">
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="modal.timelineView.checked == false || this.linkTypes.length == 0">
+                            <div class="form-group col-lg-12" ng-show="modal.editingLinkType == false">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default"
+                                            id ="sb_newLinkTypeButton"
+                                            ng-click="newLinkType()">
+                                        + Link Type
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12" id="scheme_add_links_div" ng-show="modal.editingLinkType == true">
+                                <div class="row">
+                                    <div class="form-group col-xs-6">
+                                        <div class="form-group">
+                                            <label>
+                                                Name:
+                                            </label>
+                                            <input type="text" placeholder="Enter name..."
+                                                   class="sb_form-control input-sm"
+                                                   ng-model="modal.nameLinkType"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-xs-5">
+                                                Start s. type:
+                                            </label>
+                                            <div class = "btn-group sb_margin">
+                                                <select class="form-control input-sm"
+                                                        ng-options="spanType.name for spanType in this.spanTypes"
+                                                        ng-model="modal.startSpanType">
+                                                </select>
+                                            </div>
+                                            <br/>
+                                            <label class="col-xs-5">
+                                                End s. type:
+                                            </label>
+                                            <div class = "btn-group">
+                                                <select class="form-control input-sm col-xs-1"
+                                                        ng-options="spanType.name for spanType in this.spanTypes"
+                                                        ng-model="modal.endSpanType">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label>
+                                            Labels:
+                                        </label>
+                                        <table class="form-group listingTable" ng-show="this.currentLinkLabels.length != 0">
+                                            <tbody>
+                                            <tr ng-repeat="label in this.currentLinkLabels">
+                                                <td class="tableRowWithGlyph">
+                                                    <label class="sb_normalText">{{label.name}}</label>
+                                                    <label class="sb_normalText" ng-show="label.options != undefined && label.options != null && label.options.length > 0">{{label.options}}</label>
+                                                </td>
+                                                <td>
+                                                    <span class="glyphicon glyphicon-remove"
+                                                          style="color:red;"
+                                                          ng-click="removeLabelFromLinkType(label.name)">
+
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div ng-init="modal.positioningTitle = 'Choose positioning'"
+                                             class="input-group col-xs-11">
+                                            <input type="text"
+                                                   ng-model="modal.linkLabelName"
+                                                   class="form-control input-sm"
+                                                   placeholder="Enter name...">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle btn-sm sb_choosePos"
+                                                        data-toggle="dropdown" ng-show="modal.timelineView.checked">
+                                                {{modal.positioningTitle}}
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li ng-model="modal.positioning">
+                                                    <a ng-click="modal.positioning = modal.positioningTitle = 'horizontal'">horizontal</a>
+                                                    <a ng-click="modal.positioning = modal.positioningTitle = 'vertical'">vertical</a>
+                                                </li>
+                                            </ul>
+                                            <button class="btn btn-default btn-sm"
+                                                    type="button"
+                                                    ng-disabled="disableLinkLabelButton(modal.linkLabelName, modal.positioning)"
+                                                    ng-click="addLabelToLinkTypeWithSingleOpt(modal.linkLabelName, modal.positioning)">
+                                                Add
+                                            </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group sb_right">
+                                    <button type="button" class="btn btn-success" id ="sb_addLinkTypeButton"
+                                            ng-disabled="disableLinkTypeButton()"
+                                            ng-click="addLinkType()">
+                                        Add Link Type
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Preview -->
+                    <div ng-switch-when="preview">
+                        <div>
+                            <label>Name:</label> {{modal.schemeName}}
+                        </div>
+                        <div ng-show="modal.visKind != 'None'">
+                            <label>Visualization:</label> {{modal.visKind}}
+                        </div>
+                        <div class="form-group" >
+                            <label>
+                                Span Types:
+                            </label>
+                            <table class="listingTable">
+                                <tbody>
+                                <tr ng-repeat="spanType in this.spanTypes">
+                                    <td class="tableRowWithGlyph">
+                                        {{spanType.name}}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-12" ng-show="this.labelSets.length !=0">
+                                <label>Label sets:</label>
+                                <table class="form-group labelLinkTypeTable table">
+                                    <thead class="headDark">
+                                    <th class="col-md-2">
+                                        Name
+                                    </th>
+                                    <th class="col-md-1">
+                                        Exclusive?
+                                    </th>
+                                    <th class="col-md-2">
+                                        Span Types
+                                    </th>
+                                    <th class="col-md-1">
+                                        Labels
+                                    </th>
+                                    <th class="col-md-1"/>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="labelSet in labelSets">
+                                        <td>
+                                            {{labelSet.name}}
+                                        </td>
+                                        <td>
+                                            {{labelSet.exclusive}}
+                                        </td>
+                                        <td>
+                                            <p ng-repeat="spanType in labelSet.appliesToSpanTypes">
+                                                {{spanType.name}}
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p ng-repeat="label in labelSet.labels">
+                                                {{label.name}}
+                                            </p>
+                                        </td>
+                                        <td />
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-12" ng-show="this.linkTypes.length != 0">
+                                <label ng-bind="getLinkTypeHeadline()">Link types:</label>
+                                <table class="form-group labelLinkTypeTable table">
+                                    <thead class="headDark">
+                                    <th class="col-md-2">
+                                        Name
+                                    </th>
+                                    <th class="col-md-1">
+                                        Start s. type
+                                    </th>
+                                    <th class="col-md-2">
+                                        End s. type
+                                    </th>
+                                    <th class="col-md-1">
+                                        Labels
+                                    </th>
+                                    <th class="col-md-1"/>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="linkType in linkTypes">
+                                        <td>
+                                            {{linkType.name}}
+                                        </td>
+                                        <td>
+                                            {{linkType.startSpanType.name}}
+                                        </td>
+                                        <td>
+                                            {{linkType.endSpanType.name}}
+                                        </td>
+                                        <td>
+                                            <div ng-repeat="label in linkType.linkLabels" style="inline-box-align: initial">
+                                                <p>{{label.name}}</p>
+                                                <span ng-show="label.options.length > 0">{{label.options}}</span>
+                                            </div>
+                                        </td>
+                                        <td />
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <uib-alert ng-repeat="alert in alerts"
+                           type="{{alert.type}}"
+                           dismiss-on-timeout="10000"
+                           close="closeAlert($index)">
+                    {{alert.msg}}
+                </uib-alert>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="handlePrevious()" ng-show="!this.isFirstStep()">Previous</button>
+                <button type="button" class="btn btn-primary" ng-click="handleNext()">{{nextLabel}}</button>
+
+            </div>
+        </form>
+
+    </body>
+</html>

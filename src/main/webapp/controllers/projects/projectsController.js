@@ -33,6 +33,9 @@ angular
 					$rootScope.buildTableProjects();
 				});
 
+				//Pop Up
+				$scope.animationsEnabled = true;
+
 				if ($rootScope.tour !== undefined) {
 					$rootScope.tour.resume();
 				}
