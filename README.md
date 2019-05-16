@@ -1,4 +1,7 @@
 # Welcome to SWAN <!--[![Build Status](https://travis-ci.org/annefried/swan.png?branch=master)](https://travis-ci.org/annefried/swan)-->
+
+Check out the [offical web site of swan](https://annefried.github.io/swan/) for more details and access to the demo!
+
 SWAN is a web-based system for natural language annotation.
 Its key features are:
 * support of discourse annotation (i.e., annotation of complete texts) by allowing to scroll through the entire document
