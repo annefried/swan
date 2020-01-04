@@ -10,7 +10,7 @@ angular
       function ($scope, $rootScope, $window, $http, $uibModal) {
 
     	$rootScope.validateSignedInUser();
-    	
+
     	const monthMapNumName = {};
         monthMapNumName[1] = "Jan";
         monthMapNumName[2] = "Feb";
@@ -46,6 +46,9 @@ angular
         $scope.init = function () {
             $scope.getUser();
             $scope.getTime();
+
+			//Pop Up
+			$scope.animationsEnabled = true;
 
             if ($rootScope.tour !== undefined) {
                 $rootScope.tour.resume();
@@ -203,7 +206,7 @@ angular
 angular
     .module('app')
     .directive('numbersOnly', function () {
-        
+
         return {
             require: 'ngModel',
             link: function (scope, element, attr, ngModelCtrl) {

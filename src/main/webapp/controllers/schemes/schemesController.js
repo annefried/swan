@@ -27,6 +27,9 @@ angular
                 $rootScope.allSchemes = $rootScope.tableSchemes.slice();
             });
 
+			//Pop Up
+			$scope.animationsEnabled = true;
+
             if ($rootScope.tour !== undefined) {
                 $rootScope.tour.resume();
             }
@@ -142,10 +145,11 @@ angular
         $scope.openUploadSchemeModal = function () {
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: 'templates/schemes/schemeUploadModal.html',
-                controller: 'schemeUploadModalController',
+				templateUrl: 'templates/schemes/schemeBuilderWizard.html',
+				controller: 'schemeBuilderWizardController',
+				controllerAs: 'modal',
                 size: 'lg',
-                backdrop: false
+                backdrop: 'static'
             });
 
             modalInstance.result.then(function (response) {
