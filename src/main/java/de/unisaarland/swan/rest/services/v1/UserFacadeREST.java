@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -39,30 +39,30 @@ import javax.ws.rs.core.Response;
 @Stateless
 @Path("/user")
 public class UserFacadeREST extends AbstractFacade<Users> {
-    
+
     // Needed to write JSON with specific properties e.g. views
     private static ObjectMapper mapper = new ObjectMapper();
-    
+
     @EJB
     Service service;
-    
+
     @EJB
     ProjectDAO projectDAO;
-    
+
     @EJB
     UsersDAO usersDAO;
-    
-    
+
+
     /**
      * Inserts an user and hashes the password before.
-     * 
-     * @param Users entity
-     * @return  
+     *
+     * @param entity
+     * @return
      */
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     public Response create(Users entity) {
-        
+
         try {
             String session = getSessionID();
             LoginUtil.check(usersDAO.checkLogin(session, Users.RoleType.projectmanager));
@@ -73,15 +73,15 @@ public class UserFacadeREST extends AbstractFacade<Users> {
         } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        
+
     }
-    
+
     @POST
     @Path("/reset")
     @Consumes({MediaType.APPLICATION_JSON})
     public Response resetUserPassword(Users entity) {
-        
-        try {   
+
+        try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.admin));
             return service.resetUserPassword(entity);
         } catch (SecurityException e) {
@@ -89,9 +89,9 @@ public class UserFacadeREST extends AbstractFacade<Users> {
         } catch (CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        
+
     }
-    
+
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_JSON})
@@ -113,8 +113,8 @@ public class UserFacadeREST extends AbstractFacade<Users> {
     @DELETE
     @Path("{id}")
     public Response remove(@PathParam("id") Long id) {
-        
-        try {   
+
+        try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
             service.removeUser(usersDAO.find(id));
             return Response.status(Response.Status.OK).build();
@@ -123,19 +123,19 @@ public class UserFacadeREST extends AbstractFacade<Users> {
         } catch (NoResultException | CreateException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        
+
     }
 
     @GET
     @Path("/withprojects")
     @Produces({MediaType.APPLICATION_JSON})
     public Response getUsersWithProjects() {
-        
-        try {   
+
+        try {
             LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
-            
+
             List<Users> list = usersDAO.getAllUsersWithProjectsAscending();
-            
+
             return Response.ok(mapper.writerWithView(View.UsersWithProjects.class)
                                         .withRootName("users")
                                         .writeValueAsString(list))
@@ -168,5 +168,5 @@ public class UserFacadeREST extends AbstractFacade<Users> {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
     }
-    
+
 }

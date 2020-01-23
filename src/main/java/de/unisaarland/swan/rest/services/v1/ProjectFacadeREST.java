@@ -8,13 +8,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.unisaarland.swan.LoginUtil;
 import de.unisaarland.swan.business.Service;
-import de.unisaarland.swan.dao.AnnotationDAO;
-import de.unisaarland.swan.dao.LinkDAO;
-import de.unisaarland.swan.dao.ProjectDAO;
-import de.unisaarland.swan.dao.UsersDAO;
+import de.unisaarland.swan.dao.*;
 import de.unisaarland.swan.export.ExportUtil;
 import de.unisaarland.swan.entities.Project;
 import de.unisaarland.swan.entities.Users;
+import de.unisaarland.swan.reimport.ImportUtil;
 import de.unisaarland.swan.rest.view.View;
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +25,11 @@ import javax.persistence.NoResultException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.apache.commons.io.FileUtils;
+import org.xml.sax.SAXException;
 
 /**
  * The REST service responsible for projects.
@@ -55,6 +57,9 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
 
 	@EJB
 	LinkDAO linkDAO;
+
+	@EJB
+	SchemeDAO schemeDAO;
 
 
 	@POST
@@ -392,18 +397,43 @@ public class ProjectFacadeREST extends AbstractFacade<Project> {
 
 	}
 
+
+	/**
+	 * Import a previously exported project in .zip format
+	 *
+	 * @param userId
+	 * @param projectName
+	 * @param tokenizationLang
+	 * @param is
+	 * @return
+	 */
 	@POST
-	@Path("/reimport/")
+	@Path("/reimport/{userId}/{projectName}/{tokenizationLang}")
 	@Consumes(MediaType.APPLICATION_OCTET_STREAM)
-	public Response reimportProjectAsZip(InputStream is) {
+	public Response reimportProjectAsZip(@PathParam("userId") Long userId, @PathParam("projectName") String projectName,
+										 @PathParam("tokenizationLang") Project.TokenizationLang tokenizationLang, InputStream is) {
 
 		try {
 			LoginUtil.check(usersDAO.checkLogin(getSessionID(), Users.RoleType.projectmanager));
-			service.reimportProject(is);
-			return Response.ok().build();
+
+			ImportUtil importUtil = new ImportUtil(annotationDAO, linkDAO, usersDAO, schemeDAO, projectDAO, service);
+			return importUtil.importProjectXML(is, userId, projectName, tokenizationLang);
 		} catch (SecurityException e) {
 			return Response.status(Response.Status.FORBIDDEN).build();
 		} catch (CreateException ex) {
+			ex.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		} catch (SAXException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		} catch (JAXBException e) {
+			e.printStackTrace();
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 

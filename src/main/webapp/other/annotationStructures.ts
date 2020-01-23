@@ -239,8 +239,9 @@ class Annotation extends AnnotationObject{
 
     //Removes the last word
     public removeLastWord(): TextWord {
+        var word;
         if (this.words.length > 1) {
-            var word = this.words.pop();
+            word = this.words.pop();
             word.annotatedBy--;
             var start = this.text.lastIndexOf(word.text);
             this.text = this.text.substring(0, start);
@@ -249,8 +250,9 @@ class Annotation extends AnnotationObject{
     };
 
     public removeFirstWord(): TextWord {
+        var word;
         if (this.words.length > 1) {
-            var word = this.words[0];
+            word = this.words[0];
             var words = [];
             for (var i = 1; i < this.words.length; i++) {
                 words.push(this.words[i]);

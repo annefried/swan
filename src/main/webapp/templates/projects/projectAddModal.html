@@ -13,37 +13,98 @@ Licensed under the GPLv2 License. See LICENSE in the project root for license in
         <form role="form">
             <div class="modal-header">
                 <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Create new project</h4>
+                <h4 class="modal-title" id="myModalLabel">Add Project</h4>
             </div>
             <div class="modal-body">
-                <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
-                <div class="form-group">
-                    <label for="name">Project name:</label>
-                    <input type="text" class="form-control" id="name" ng-model="vm.name" required>
-                    <span ng-show="hasError(vm.name)" class="help-block">Project name already taken.</span>
-                    <i>The name of your project needs to be unique. You cannot use project names used by other project managers, as annotators may work for more than one project manager.</i>
+                <ul class="nav nav-tabs nav-justified">
+                    <li ng-class="{'active':isCurrentMode(0)}"><a data-toggle="tab" ng-click="setCurrentMode(0)">New Project</a></li>
+                    <li ng-class="{'active':isCurrentMode(1)}"><a data-toggle="tab" ng-click="setCurrentMode(1)">Import</a></li>
+                </ul>
+                <br>
+                <div ng-switch="this.getCurrentMode()" class="slide-frame">
+                    <div ng-switch-when="createNew" class="wave">
+                        <!-- Create new -->
+                        <div class="form-group">
+                            <label>Project name</label>
+                            <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                  onmouseenter="$(this).tooltip('show')"
+                                  title="The name of your project needs to be unique. You cannot use project names used by other project managers, as annotators may work for more than one project manager.">
+                            </span>
+                            <input type="text" class="form-control" ng-model="modal.projName" required>
+                            <span ng-show="hasError(modal.projName)" class="help-block">Project name already taken.</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Annotation scheme</label>
+                            <select
+                                    data-ng-model="modal.selectedScheme"
+                                    ng-options="scheme as scheme.name for scheme in this.schemes">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tokenization language</label>
+                            <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                  onmouseenter="$(this).tooltip('show')"
+                                  title="This defines how the documents will be tokenized.">
+                            </span>
+                            <select
+                                    data-ng-model="modal.selectedTokLang"
+                                    ng-options="language as language for language in this.languages">
+                            </select>
+                        </div>
+                    </div>
+                    <div ng-switch-when="import" class="wave">
+                        <!-- Import -->
+                        <div class="form-group">
+                            <label for="importProject">Choose the project to import (*.zip format)</label>
+                            <input class="btn btn-default btn-file"
+                                   type="file"
+                                   accept=".zip"
+                                   name="importProject"
+                                   id="importProject"
+                                   ng-model="modal.proj"
+                                   on-read-file="this.sendProjName($fileName)">
+                        </div>
+                        <div class="form-group">
+                            <label>Project name</label>
+                            <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                  onmouseenter="$(this).tooltip('show')"
+                                  title="The name of your project needs to be unique. Please change the project name if another project with the same name already exists.">
+                            </span>
+                            <input type="text" class="form-control" ng-model="modal.projName" required>
+                            <span ng-show="hasError(modal.projName)" class="help-block">Project name already taken.</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Tokenization language</label>
+                            <span class="glyphicon glyphicon-question-sign" style="color:#c5c5C5;"
+                                  onmouseenter="$(this).tooltip('show')"
+                                  title="This defines how the documents will be tokenized. At the moment this information is not exported,
+                                  which is why it needs to be selected here.">
+                            </span>
+                            <select
+                                    data-ng-model="modal.selectedTokLang"
+                                    ng-options="language as language for language in this.languages">
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="sel1">Annotation scheme:</label>
-                    <select
-                            data-ng-model="selectedOption"
-                            ng-options="scheme as scheme.name for scheme in this.schemes">
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="toklanguage">Tokenization language:</label>
-                    <select
-                            data-ng-model="selectedTokLang"
-                            ng-options="language as language for language in this.lanaguages">
-                    </select>
-                </div>
+
+
+            </div>
+            <div class="col-lg-6">
+                <uib-alert ng-repeat="alert in alerts"
+                           type="{{alert.type}}"
+                           dismiss-on-timeout="10000"
+                           close="closeAlert($index)">
+                    {{alert.msg}}
+                </uib-alert>
             </div>
             <div class="modal-footer">
                 <button type="button"
                         id="pe_createProjectButton"
                         class="btn btn-primary"
-                        ng-disabled="!vm.name || !selectedOption || !selectedTokLang || $scope.hasError(vm.name)"
-                        ng-click="submit(vm.name, selectedOption, selectedTokLang)">
+                        ng-disabled="!modal.projName  || !modal.selectedTokLang || $scope.hasError(modal.projName) ||
+                        (isCurrentMode(0) && !modal.selectedScheme) || (isCurrentMode(1) && !modal.fileSelected)"
+                        ng-click="submit()">
                     Submit
                 </button>
             </div>

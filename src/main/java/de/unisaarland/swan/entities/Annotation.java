@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -30,16 +30,18 @@ import javax.xml.bind.annotation.XmlRootElement;
     // FIXME
     // This query triggers two more not necessary queries: LABEL_LABELSET, SPANTYPE_LABELSET
     // Maybe the ColorableBaseEntity inheritage hierarchy is the problem.
+	// The left joins are commented out because they caused duplicate entries in the result when an annotation has more
+	// than one label.
     @NamedQuery(
         name = Annotation.QUERY_FIND_BY_USER_AND_DOC,
         query = "SELECT a " +
                 "FROM Annotation a " +
-                "LEFT JOIN FETCH a.spanType " +
-                "LEFT JOIN FETCH a.labels " +
+                 // "LEFT JOIN FETCH a.spanType " +
+                 // "LEFT JOIN FETCH a.labels " +
                 "WHERE a.user.id = :" + Annotation.PARAM_USER + " AND a.document.id = :" + Annotation.PARAM_DOCUMENT,
-        hints = {
-            @QueryHint(name = QueryHints.LEFT_FETCH, value = "a.labels.labelSet"),
-        }
+		hints = {
+        	@QueryHint(name = QueryHints.LEFT_FETCH, value = "a.labels.labelSet"),
+		}
     ),
     @NamedQuery(
         name = Annotation.QUERY_DELETE_BY_DOCUMENT,
@@ -52,7 +54,14 @@ import javax.xml.bind.annotation.XmlRootElement;
         query = "DELETE " +
                 "FROM Annotation a " +
                 "WHERE a.user = :" + Annotation.PARAM_USER
-    )
+    ),
+	@NamedQuery(
+		name = Annotation.QUERY_DELETE_BY_USER_AND_DOCUMENT,
+		query = "DELETE " +
+			"FROM Annotation a " +
+			"WHERE a.user.id = :" + Annotation.PARAM_USER +
+			" AND a.document.id = :" + Annotation.PARAM_DOCUMENT
+	)
 })
 public class Annotation extends BaseEntity {
 
@@ -60,7 +69,7 @@ public class Annotation extends BaseEntity {
      * Named query identifier for "find by user".
      */
     public static final String QUERY_FIND_BY_USER = "Annotation.QUERY_FIND_BY_USER";
-    
+
     /**
      * Named query identifier for "find by user and doc".
      */
@@ -76,16 +85,21 @@ public class Annotation extends BaseEntity {
      */
     public static final String QUERY_DELETE_BY_USER = "Annotation.QUERY_DELETE_BY_USER";
 
+	/**
+	 * Named query identifier for "delete by user and document"
+	 */
+	public static final String QUERY_DELETE_BY_USER_AND_DOCUMENT = "Annotation.QUERY_DELETE_BY_USER_AND_DOCUMENT";
+
     /**
      * Query parameter constant for the attribute "document".
      */
     public static final String PARAM_DOCUMENT = "document";
-    
+
     /**
      * Query parameter constant for the attribute "user".
      */
     public static final String PARAM_USER = "user";
-    
+
     @JsonView({ })
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY,
@@ -108,7 +122,7 @@ public class Annotation extends BaseEntity {
                 fetch = FetchType.LAZY)
     @JoinColumn(name = "spanType_fk")
     private SpanType spanType;
-    
+
     @JsonView({ View.Annotations.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
@@ -117,29 +131,29 @@ public class Annotation extends BaseEntity {
         joinColumns={@JoinColumn(name="ANNOTATION_ID", referencedColumnName="id")},
         inverseJoinColumns={@JoinColumn(name="LABEL_ID", referencedColumnName="id")})
     private Set<Label> labels = new HashSet<>();
-    
+
     /**
      * "start" is a postgres keyword so use "start*" instead
      */
     @Column(name = "StartS")
     private int start;
-    
+
     /**
      * "end" is a postgres keyword so use "end*" instead
      */
     @Column(name = "EndS")
     private int end;
-    
+
     /**
      * The text between start and end.
      */
     @Column(name = "Text", columnDefinition = "TEXT")
     private String text;
-    
+
     @Column(name = "NotSure")
     private boolean notSure;
 
-    
+
     public Users getUser() {
         return user;
     }
@@ -199,7 +213,7 @@ public class Annotation extends BaseEntity {
     public void addLabel(Label label) {
         this.labels.add(label);
     }
-    
+
     public void removeLabel(Label label) {
         this.labels.remove(label);
     }

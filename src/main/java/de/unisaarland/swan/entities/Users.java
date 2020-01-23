@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * The Entity Users represents an user.
  * Note: "User" is a keyword in the database, therefore the entity is named
  * "Users"
- * 
+ *
  * @author Timo Guehring
  */
 @Entity
@@ -51,6 +51,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
                 "FROM Users u " +
                 "WHERE u.email = :" + Users.PARAM_EMAIL + " AND u.password = :" + Users.PARAM_PASSWORD
     ),
+	@NamedQuery(
+		name = Users.QUERY_FIND_BY_EMAIL,
+		query = "SELECT u " +
+			"FROM Users u " +
+			"WHERE u.email = :" + Users.PARAM_EMAIL
+	),
     @NamedQuery(
         name = Users.QUERY_FIND_BY_SESSION,
         query = "SELECT u " +
@@ -79,12 +85,17 @@ public class Users extends BaseEntity {
      * Named query identifier for "find by email and password".
      */
     public static final String QUERY_FIND_BY_EMAIL_AND_PASSWORD = "Users.QUERY_FIND_BY_EMAIL_AND_PASSWORD";
-    
+
+	/**
+	 * Named query identifier for "find by email".
+	 */
+	public static final String QUERY_FIND_BY_EMAIL = "Users.QUERY_FIND_BY_EMAIL";
+
     /**
      * Named query identifier for "find by session".
      */
     public static final String QUERY_FIND_BY_SESSION = "Users.QUERY_FIND_BY_SESSION";
-    
+
     /**
      * Named query identifier for "get all users with projects ascending by email".
      */
@@ -99,46 +110,46 @@ public class Users extends BaseEntity {
      * Query parameter constant for the attribute "uuid".
      */
     public static final String PARAM_EMAIL = "email";
-    
+
     /**
      * Query parameter constant for the attribute "password".
      */
     public static final String PARAM_PASSWORD = "password";
-    
+
     /**
      * Query parameter constant for the attribute "session".
      */
     public static final String PARAM_SESSION = "session";
-    
-    
+
+
     public static enum RoleType {
         admin, annotator, projectmanager;
     }
 
     @Column(name = "Prename")
     private String prename;
-    
+
     @Column(name = "Lastname")
     private String lastname;
-    
+
     @Column(name = "EMail", unique = true)
     private String email;
-    
+
     @JsonIgnore
     @Column(name = "Password")
     private String password;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "Role")
     private RoleType role;
-    
+
     @Column(name = "session")
     private String session;
-    
+
     @XmlJavaTypeAdapter(TimestampAdapter.class)
     @Column(name = "CreateDate")
     private Timestamp createDate;
-    
+
     @JsonView({ View.UsersWithProjects.class })
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },
             fetch = FetchType.LAZY)
@@ -153,7 +164,7 @@ public class Users extends BaseEntity {
                 cascade = { CascadeType.PERSIST, CascadeType.MERGE },
                 fetch = FetchType.LAZY)
     private Set<Project> managingProjects = new HashSet<>();
-    
+
     /**
      * All projects which are watched by project manager i.e. E-Mail notification.
      */
@@ -163,7 +174,7 @@ public class Users extends BaseEntity {
                 fetch = FetchType.LAZY)
     private Set<Project> watchingProjects = new HashSet<>();
 
-    
+
     public String getPrename() {
         return prename;
     }
@@ -211,7 +222,7 @@ public class Users extends BaseEntity {
     public void setSession(String session) {
         this.session = session;
     }
-    
+
     public void setRole(RoleType role) {
         this.role = role;
     }
@@ -231,7 +242,7 @@ public class Users extends BaseEntity {
     public void setProjects(Set<Project> projects) {
         this.projects = projects;
     }
-    
+
     public void addProjects(Project project) {
         this.projects.add(project);
     }
@@ -247,7 +258,7 @@ public class Users extends BaseEntity {
     public void setManagingProjects(Set<Project> managingProjects) {
         this.managingProjects = managingProjects;
     }
-    
+
     public void addManagingProjects(Project project) {
         this.managingProjects.add(project);
     }
@@ -263,9 +274,9 @@ public class Users extends BaseEntity {
     public void setWatchingProjects(Set<Project> watchingProjects) {
         this.watchingProjects = watchingProjects;
     }
-    
+
     public void addWatchingProjects(Project project) {
         this.watchingProjects.add(project);
     }
-    
+
 }

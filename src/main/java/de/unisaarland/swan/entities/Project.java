@@ -264,7 +264,7 @@ public class Project extends BaseEntity {
 		this.documents = documents;
 	}
 
-	public void addDocuments(Document document) {
+	public void addDocument(Document document) {
 		this.documents.add(document);
 	}
 

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) SWAN (Saar Web-based ANotation system) contributors. All rights reserved.
  * Licensed under the GPLv2 License. See LICENSE in the project root for license information.
  */
@@ -16,13 +16,25 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder={ "annotations", "links" })
+@XmlType(propOrder={ "name", "user", "annotations", "links" })
 public class Document {
 
+	private String name;
+
+	private Users user;
+
     private AnnotationSet annotations;
-    
+
     private LinkType links;
-    
+
+    public String getName() {return name; }
+
+	public void setName(String name) { this.name = name; }
+
+	public Users getUser() { return user; }
+
+	public void setUser(Users user) { this.user = user; }
+
     public AnnotationSet getAnnotations() {
         return annotations;
     }

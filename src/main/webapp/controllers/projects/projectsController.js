@@ -337,65 +337,26 @@ angular
 				var modalInstance = $uibModal.open({
 					animation: $scope.animationsEnabled,
 					templateUrl: 'templates/projects/projectAddModal.html',
-					controller: 'projectAddModalController'
+					controller: 'projectAddModalController',
+					controllerAs: 'modal'
 				});
 
-				modalInstance.result.then(function (full) {
-					var projectTemplate = {
-						'id': null,
-						'name': full.name,
-						'tokenizationLang': full.lang,
-						'documents': [],
-						'scheme': {
-							'id': full.scheme.id
-						}
-					};
+				modalInstance.result.then(function (id) {
 
-					$http.post('swan/project', JSON.stringify(projectTemplate)).then(function (response) {
-						var template = {
-							'id': response.data,
-							'name': full.name,
-							'tokenizationLang': full.lang,
-							'scheme': projectTemplate.scheme,
-							'users': [],
-							'pms': [],
-							'completed': [],
-							'numberOfDocuments': 0,
-							'documents': []
-						};
+					if ($window.sessionStorage.role != 'projectmanager') {
+						$scope.currentPageNumber = 1;
+						$scope.pageChanged();
+					} else {
+						// Add project manager to the corresponding project manager list
+						$http.post("swan/project/addManager/" + id + "/" + $window.sessionStorage.uId).success(function (response) {
+							$scope.currentPageNumber = 1;
+							$scope.pageChanged();
+						}).error(function (response) {
+							$rootScope.checkResponseStatusCode(response.status);
+						});
+					}
 
-						if ($window.sessionStorage.role != 'projectmanager') {
-							$rootScope.tableProjects.unshift(template);
-						} else {
-							// TODO create REST interface getUser by Id
-							// Get the current user (there is no REST interface for getUser by ID)
-							$http.get("swan/user/withprojects").success(function (response) {
-								var users = JSOG.parse(JSON.stringify(response)).users;
-								for (var i = 0; i < users.length; i++) {
-									var u = users[i];
-									if ($window.sessionStorage.uId == u.id) {
-										template.pms = [u];
-										break;
-									}
-								}
-
-								// Add project manager to the corresponding project manager list
-								$http.post("swan/project/addManager/" + template.id + "/" + $window.sessionStorage.uId).success(function (response) {
-									$rootScope.tableProjects.unshift(template);
-								}).error(function (response) {
-									$rootScope.checkResponseStatusCode(response.status);
-								});
-
-							}).error(function (response) {
-								$rootScope.checkResponseStatusCode(response.status);
-							});
-
-						}
-						$scope.projectToggeled(response.data);
-
-					}, function () {
-						$rootScope.addAlert({type: 'danger', msg: 'A Project with this name already exists.'});
-					});
+					$scope.projectToggeled(id);
 
 					if ($rootScope.tour !== undefined) {
 						$("#tour-next-button").prop("disabled", false);
